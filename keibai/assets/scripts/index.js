@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
         videoWidget.addEventListener('click',(e)=>{
            e.preventDefault();
 
-            if(!e.target.closest('.video-widget__controls')){
+            if(!e.target.closest('.video-widget__controls') && !videoWidget.classList.contains('active')){
                 videoWidget.classList.add('active');
                 video.muted = false;
                 video.currentTime = 0;
