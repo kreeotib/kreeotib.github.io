@@ -534,7 +534,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const video = videoWidget.querySelector('video'),
             videoClose = videoWidget.querySelector('.video-widget-close'),
             videoMute = videoWidget.querySelector('.video-widget-mute');
-
+        video.addEventListener('loadeddata', () => {
+            videoWidget.classList.add('loaded');
+        });
         video.play();
         video.controls = false;
         video.muted = true;
