@@ -486,6 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const src = img.src;
         const match = src.match(/\/(\d+)\.jpg$/);
 
+        console.log(match)
         if (match) {
             const numberBeforeJpg = match[1];
             img.dataset.index = numberBeforeJpg;
@@ -503,22 +504,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const uniqueArray = galleryImgArray.filter((img, index, self) =>
-            index === self.findIndex((t) => (
-                t.src === img.src
-            ))
-    ).sort((a, b) => {
-        const indexA = Number(a.dataset.index);
-        const indexB = Number(b.dataset.index);
-
-        if (indexA < indexB) {
-            return -1;
-        }
-        if (indexA > indexB) {
-            return 1;
-        }
-        return 0;
-    });
+    const uniqueArray = galleryImgArray
+        .filter((img, index, self) => {
+            const src = img.src;
+            const match = src.match(/\/(\d+)\.jpg$/);
+            return match && index === self.findIndex((t) => t.src === img.src);
+        })
+        .sort((a, b) => {
+            const indexA = Number(a.dataset.index);
+            const indexB = Number(b.dataset.index);
+            return indexA - indexB; // Simplified comparison
+        });
 
     popupGallery.removeAllSlides();
     uniqueArray.forEach((element,index) => {
