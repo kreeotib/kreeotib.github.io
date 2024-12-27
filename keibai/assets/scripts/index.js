@@ -368,6 +368,20 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll');
             if (!header.classList.contains('header--fixed')) header.classList.toggle('header--fixed');
         });
+
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+        if (anchorLinks.length) {
+            anchorLinks.forEach(link => {
+                if (link.hash.length > 0) {
+                    link.addEventListener('click', (e) => {
+                        menu.classList.remove('menu--active');
+                        burger.classList.remove('burger--active');
+                        document.body.classList.remove('no-scroll');
+                    })
+                }
+            });
+        }
     }
     window.addEventListener('scroll', () => header.classList.toggle('header--fixed', window.scrollY > 0));
 
@@ -468,6 +482,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
 
 
     const form = document.querySelectorAll('form');

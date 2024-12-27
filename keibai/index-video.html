@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+
     <!--   fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,7 +169,7 @@
                     </div>
                 </div>
             </div>
-            <section class="section">
+            <section id="examples" class="section">
                 <div class="section__wrapper">
                     <div class="section__header">
                         <div class="container">
@@ -416,7 +422,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section documents">
+            <div id="documents" class="section documents">
                 <div class="section__wrapper">
                     <div class="container container--full">
                         <div class="block__wrapper block__wrapper--circles">
@@ -498,7 +504,7 @@
                     </div>
                 </div>
             </div>
-            <section class="section">
+            <section id="scheme" class="section">
                 <div class="section__wrapper">
                     <div class="container">
                         <div class="section__header">
@@ -601,7 +607,7 @@
                     </div>
                 </div>
             </section>
-            <div class="section">
+            <div id="personal" class="section">
                 <div class="section__wrapper">
                     <div class="container container--full">
                         <div class="block__wrapper block__wrapper--white">
@@ -628,7 +634,7 @@
                     </div>
                 </div>
             </div>
-            <section class="section questions">
+            <section id="questions" class="section questions">
                 <div class="section__wrapper">
                     <div class="container">
                         <div class="section__header">
@@ -746,7 +752,7 @@
                                             <svg class="button__icon">
                                                 <use xlink:href="assets/images/sprite.svg#tg"></use>
                                             </svg>
-                                            <span class="button__text">WhatsApp</span>
+                                            <span class="button__text">Telegram</span>
                                         </a>
                                     </div>
                                 </div>
@@ -757,7 +763,7 @@
             </section>
         </div>
     </main>
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="footer-content">
             <div class="container">
                 <div class="footer-grid">
@@ -847,22 +853,22 @@
                         <nav class="nav">
                             <ul class="nav__list">
                                 <li class="nav__item">
-                                    <a href="#" class="nav-link">Примеры авто</a>
+                                    <a href="#examples" class="nav-link">Примеры авто</a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="#" class="nav-link">Документы</a>
+                                    <a href="#documents" class="nav-link">Документы</a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="#" class="nav-link">Схема покупки</a>
+                                    <a href="#scheme" class="nav-link">Схема покупки</a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="#" class="nav-link">Персональный подбор</a>
+                                    <a href="#personal" class="nav-link">Персональный подбор</a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="#" class="nav-link">Популярные вопросы</a>
+                                    <a href="#questions" class="nav-link">Популярные вопросы</a>
                                 </li>
                                 <li class="nav__item">
-                                    <a href="#" class="nav-link">Контакты</a>
+                                    <a href="#contact" class="nav-link">Контакты</a>
                                 </li>
                             </ul>
                         </nav>
@@ -915,6 +921,7 @@
     </div>
     <video src="assets/video/video.mp4" muted playsinline class="video-widget__video"></video>
 </div>
+
 
 <div class="popup popup-order">
     <div class="popup__wrapper">

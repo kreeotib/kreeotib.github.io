@@ -75,6 +75,13 @@ body {
   font-feature-settings: "lnum" 1;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+div,section{
+  scroll-margin-top: 70px;
+}
 
 body.no-scroll {
   overflow: hidden;
