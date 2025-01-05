@@ -339,8 +339,36 @@ const hideAllPopups = () => {
     document.removeEventListener('keyup', checkTargetOrKey);
 };
 
+const downloadFiles = () => {
+    const files = ['assets/documents/details.docx', 'assets/documents/contract.docx'];
+    let delay = 0;
+
+    files.forEach(file => {
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = file;
+            link.download = file.split('/').pop();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }, delay);
+        delay += 1000; // Increase delay for each file (1 second)
+    });
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
+    const downloadButton = document.querySelectorAll('.js-download');
+
+    if(downloadButton.length){
+        downloadButton.forEach(button=>{
+            button.addEventListener('click',(e)=>{
+                e.preventDefault();
+
+                downloadFiles();
+            })
+        })
+    }
     const burger = document.querySelector('.burger'),
         menu = document.querySelector('.menu'),
         header = document.querySelector('.header');
@@ -501,13 +529,11 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryImgArray.forEach(img => {
         const src = img.src;
         const match = src.match(/\/(\d+)\.jpg$/);
-
-        console.log(match)
         if (match) {
             const numberBeforeJpg = match[1];
             img.dataset.index = numberBeforeJpg;
         } else {
-            console.log("No match found");
+            // console.log("No match found");
         }
         img.addEventListener('click', (e) => {
             e.preventDefault();
