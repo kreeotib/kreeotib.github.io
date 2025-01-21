@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+
+    <link rel="stylesheet" href="assets/styles/css/fonts.css">
+
+    <style>
+        .preloader {
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+
+            background: #104136;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5.5vw;
+
+            overflow: hidden;
+
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            transition: .3s 1s opacity, .5s 1s visibility;
+        }
+
+        .preloader.hidden .preloader-text__wrapper span{
+            animation: none !important;
+        }
+        .preloader.hidden .preloader-line__current{
+            animation: none!important;
+        }
+
+        .preloader.hidden{
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .preloader-line {
+            width: clamp(215px, 30vw, 30vw);
+            height: 2px;
+            background: rgba(256, 256, 256, .3);
+            display: block;
+            position: relative;
+        }
+
+        .preloader-text {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            font-family: 'PP Neue Montreal', sans-serif;
+            font-size: clamp(45px, 4vw, 4vw);
+            color: #fff;
+            font-weight: 500;
+            line-height: 1;
+
+            letter-spacing: -0.03rem;
+
+            overflow: hidden;
+
+            text-align: center;
+        }
+
+        .preloader-text__wrapper{
+            display: inline-block;
+            line-height: 1.1;
+            overflow: hidden;
+        }
+
+        .preloader-text__wrapper span {
+            /*transform: translateY(calc(-100% + 30px));*/
+            display: inline-block;
+        }
+
+        .preloader-text__wrapper{
+            &:nth-child(1) {
+                span{
+                    animation: preloaderText 4s linear infinite;
+                }
+            }
+
+            &:nth-child(2) {
+                span{
+                    animation: preloaderText2 4s linear infinite;
+                }
+            }
+
+            &:nth-child(3) {
+                span{
+                    animation: preloaderText3 4s linear infinite;
+                }
+            }
+
+            &:nth-child(4) {
+                span{
+                    animation: preloaderText4 4s linear infinite;
+                }
+            }
+
+            &:nth-child(5) {
+                span{
+                    animation: preloaderText5 4s linear infinite;
+                }
+            }
+
+            &:nth-child(6) {
+                span{
+                    animation: preloaderText6 4s linear infinite;
+                }
+            }
+        }
+
+        .preloader-line__current {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: #fff;
+
+            animation: preloaderLine 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+        }
+
+        @keyframes preloaderLine {
+            0% {
+                width: 0%;
+            }
+            15% {
+                width: 15%;
+            }
+            30% {
+                width: 30%;
+            }
+            60% {
+                width: 60%;
+            }
+            90% {
+                width: 90%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes preloaderText {
+            0% {
+                transform: translateY(-100%);
+            }
+            10% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes preloaderText2 {
+            0% {
+                transform: translateY(-100%);
+            }
+            10% {
+                transform: translateY(-100%);
+            }
+            20% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes preloaderText3 {
+            0% {
+                transform: translateY(-100%);
+            }
+            10% {
+                transform: translateY(-100%);
+            }
+            20% {
+                transform: translateY(-100%);
+            }
+            30% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes preloaderText4 {
+            0% {
+                transform: translateY(-100%);
+            }
+            10% {
+                transform: translateY(-100%);
+            }
+            20% {
+                transform: translateY(-100%);
+            }
+            30% {
+                transform: translateY(-100%);
+            }
+            40% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes preloaderText5 {
+            0% {
+                transform: translateY(-100%);
+            }
+            10% {
+                transform: translateY(-100%);
+            }
+            20% {
+                transform: translateY(-100%);
+            }
+            30% {
+                transform: translateY(-100%);
+            }
+            40% {
+                transform: translateY(-100%);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes preloaderText6 {
+            0% {
+                transform: translateY(-100%);
+            }
+            10% {
+                transform: translateY(-100%);
+            }
+            20% {
+                transform: translateY(-100%);
+            }
+            30% {
+                transform: translateY(-100%);
+            }
+            40% {
+                transform: translateY(-100%);
+            }
+            50% {
+                transform: translateY(-100%);
+            }
+            60% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .preloader-header{
+            fill: #fff;
+            width: 3.5vw;
+            height: 3.5vw;
+            position: relative;
+
+            display: block;
+        }
+
+        .preloader-logo{
+            position: fixed;
+            left: 50%;
+            top: calc(50% - 7vw);
+            transform: translateX(-50%) translateY(-50%);
+            width: 3.5vw;
+            height: 3.5vw;
+            transition: 1s linear;
+        }
+
+        .preloader-logo.loaded{
+            position: fixed;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        
+        @media screen and (max-width: 767px) {
+            .preloader {
+                gap: 17vw;
+            }
+            .preloader-header{
+                width: 12vw;
+                height: 12vw;
+            }
+            .preloader-logo{
+                width: 12vw;
+                height: 12vw;
+                top: calc(50% - 30vw);
+            }
+            .preloader-text {
+                font-size: 10vw;
+            }
+            .preloader-logo.loaded{
+                left: 20px;
+                transform: translateY(0);
+            }
+            .preloader-text__wrapper:first-child{
+                width: 100%;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<style>
+    .preloader {
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        background: #104136;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5.5vw;
+
+        overflow: hidden;
+
+
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        transition: 1s 1s opacity, .8s 1s visibility;
+    }
+
+
+    .preloader.hidden .preloader-text__wrapper span {
+        animation: none !important;
+    }
+
+    .preloader.hidden .preloader-line__current {
+        animation: none !important;
+    }
+
+    .preloader.hidden .preloader-logo__icon {
+        animation: none !important;
+    }
+
+    .preloader-logo {
+        overflow: hidden;
+    }
+
+    .preloader-logo__icon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+        animation: preloaderIcon 4s .3s ease-in infinite;
+    }
+
+    .preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .preloader-line {
+        width: clamp(215px, 30vw, 30vw);
+        height: 2px;
+        background: rgba(256, 256, 256, .3);
+        display: block;
+        position: relative;
+    }
+
+    .preloader-text {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        font-family: 'PP Neue Montreal', sans-serif;
+        font-size: clamp(45px, 4vw, 4vw);
+        color: #fff;
+        font-weight: 500;
+        line-height: 1;
+
+        letter-spacing: -0.03rem;
+
+        overflow: hidden;
+
+        text-align: center;
+    }
+
+    .preloader-text__wrapper {
+        display: inline-block;
+        line-height: 1.1;
+        overflow: hidden;
+    }
+
+    .preloader-text__wrapper span {
+        /*transform: translateY(calc(-100% + 30px));*/
+        display: inline-block;
+    }
+
+    .preloader-text__wrapper {
+        &:nth-child(1) {
+            span {
+                animation: preloaderText 4s .3s ease-in infinite;
+            }
+        }
+
+        &:nth-child(2) {
+            span {
+                animation: preloaderText2 4s .3s ease-in infinite;
+            }
+        }
+
+        &:nth-child(3) {
+            span {
+                animation: preloaderText3 4s .3s ease-in infinite;
+            }
+        }
+
+        &:nth-child(4) {
+            span {
+                animation: preloaderText4 4s .3s ease-in infinite;
+            }
+        }
+
+        &:nth-child(5) {
+            span {
+                animation: preloaderText5 4s .3s ease-in infinite;
+            }
+        }
+
+        &:nth-child(6) {
+            span {
+                animation: preloaderText6 4s .3s ease-in infinite;
+            }
+        }
+    }
+
+    .preloader-line__current {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: #fff;
+
+        animation: preloaderLine 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+    }
+
+    @keyframes preloaderLine {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+
+    @keyframes preloaderIcon {
+        0% {
+            transform: translateY(-100%);
+        }
+        10% {
+            transform: translateY(0);
+        }
+        99% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes preloaderText {
+        0% {
+            transform: translateY(-100%);
+        }
+        20% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes preloaderText2 {
+        0% {
+            transform: translateY(-100%);
+        }
+        15% {
+            transform: translateY(-100%);
+        }
+        30% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes preloaderText3 {
+        0% {
+            transform: translateY(-100%);
+        }
+        15% {
+            transform: translateY(-100%);
+        }
+        30% {
+            transform: translateY(-100%);
+        }
+        45% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes preloaderText4 {
+        0% {
+            transform: translateY(-100%);
+        }
+        15% {
+            transform: translateY(-100%);
+        }
+        30% {
+            transform: translateY(-100%);
+        }
+        45% {
+            transform: translateY(-100%);
+        }
+        60% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes preloaderText5 {
+        0% {
+            transform: translateY(-100%);
+        }
+        15% {
+            transform: translateY(-100%);
+        }
+        30% {
+            transform: translateY(-100%);
+        }
+        45% {
+            transform: translateY(-100%);
+        }
+        60% {
+            transform: translateY(-100%);
+        }
+        75% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes preloaderText6 {
+        0% {
+            transform: translateY(-100%);
+        }
+        15% {
+            transform: translateY(-100%);
+        }
+        30% {
+            transform: translateY(-100%);
+        }
+        45% {
+            transform: translateY(-100%);
+        }
+        60% {
+            transform: translateY(-100%);
+        }
+        75% {
+            transform: translateY(-100%);
+        }
+        90% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .preloader-header {
+        fill: #fff;
+        width: 3.5vw;
+        height: 3.5vw;
+        position: relative;
+
+        display: block;
+    }
+
+    .preloader-logo {
+        position: fixed;
+        left: 50%;
+        top: calc(50% - 7vw);
+        transform: translateX(-50%) translateY(-50%);
+        width: 3.5vw;
+        height: 3.5vw;
+        transition: 1s linear;
+    }
+
+    .preloader-logo.loaded {
+        position: fixed;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+
+    @media screen and (max-width: 767px) {
+        .preloader {
+            gap: 17vw;
+        }
+
+        .preloader-header {
+            width: 12vw;
+            height: 12vw;
+        }
+
+        .preloader-logo {
+            width: 12vw;
+            height: 12vw;
+            top: calc(50% - 30vw);
+        }
+
+        .preloader-text {
+            font-size: 10vw;
+        }
+
+        .preloader-logo.loaded {
+            left: 20px;
+            transform: translateY(0);
+        }
+
+        .preloader-text__wrapper:first-child {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="preloader">
+    <div class="preloader-header">
+        <div class="preloader-logo">
+            <svg class="preloader-logo__icon" width="41" height="52" viewBox="0 0 41 52" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M40.1656 34.0204H34.9414L25.4438 42.8197C25.3782 42.8805 25.3782 42.9792 25.4438 43.04L35.0839 51.971H40.3076L30.5489 42.9301L40.1656 34.0204Z"
+                      fill="white"/>
+                <path d="M24.1883 51.971H30.0356L20.2769 42.9301L29.8931 34.0204H24.0463L14.664 42.712C14.5342 42.8323 14.5342 43.0274 14.664 43.1477L24.1883 51.971Z"
+                      fill="white"/>
+                <path d="M21.0215 22.2699L5.67332 8.05073L9.02448 4.94654L24.3727 19.1657L21.0215 22.2699Z"
+                      fill="white"/>
+                <path d="M26.7917 16.9242L11.443 2.70507L14.0592 0.282189C14.4654 -0.094063 15.1234 -0.094063 15.5296 0.282189L29.4065 13.1378C29.8131 13.5145 29.8131 14.1256 29.4065 14.5023L26.7917 16.9242Z"
+                      fill="white"/>
+                <path d="M18.8685 34.5105L14.5577 38.4902V27.3676C14.5577 27.1148 14.4492 26.8724 14.2561 26.6935L0.593244 14.0356C0.212408 13.6828 0.212408 13.1101 0.593244 12.7568L3.25423 10.2921L18.8096 24.7027C19.1214 24.9916 19.2965 25.3836 19.2965 25.7923V33.5552C19.2965 33.9139 19.1428 34.2573 18.8685 34.5105Z"
+                      fill="white"/>
+                <path d="M19.6052 52H14.5712V47.3363L19.6052 52Z" fill="white"/>
+            </svg>
+        </div>
+    </div>
+    <div class="preloader-text">
+        <span class="preloader-text__wrapper">
+            <span>Подбираем</span>
+        </span>
+        <span class="preloader-text__wrapper">
+            <span> ключ</span>
+        </span>
+        <span class="preloader-text__wrapper">
+            <span>к</span>
+        </span>
+        <span class="preloader-text__wrapper">
+            <span> решению</span>
+        </span>
+        <span class="preloader-text__wrapper">
+            <span> ваших</span>
+        </span>
+        <span class="preloader-text__wrapper">
+            <span>проблем</span>
+        </span>
+    </div>
+    <span class="preloader-line">
+        <span class="preloader-line__current"></span>
+    </span>
+</div>
+
+<script>
+    document.body.classList.add('fixed');
+    window.onload = (event) => {
+        const headerLogo = document.querySelector('.header__logo'),
+            preloaderLogo = document.querySelector('.preloader-logo'),
+            preloaderLine = document.querySelector('.preloader-line__current');
+
+
+        preloaderLine.addEventListener('animationiteration', () => {
+            // preloaderLogo.classList.add('loaded');
+            // preloaderLogo.style.height = `${headerLogo.getBoundingClientRect().height}px`;
+            // preloaderLogo.style.width = `${headerLogo.getBoundingClientRect().width}px`;
+            // preloaderLogo.style.top = `${headerLogo.getBoundingClientRect().top}px`;
+
+            // document.querySelector('.preloader').classList.add('hidden');
+
+            //animation init
+            // const animation = new Animations();
+            // animation.init();
+            //
+            // document.body.classList.remove('fixed');
+        });
+    };
+</script>
+
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>

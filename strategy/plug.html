@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/fonts.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <main class="content">
+        <section class="hero video-bg animation-wrapper">
+            <div class="video-bg__item">
+                <video src="assets/video/hero-bg.mp4" playsinline loop muted autoplay controls="false"></video>
+            </div>
+            <div class="hero__wrapper">
+                <div class="container">
+                    <div class="hero__content">
+                        <div class="hero-header grid">
+                            <div class="hero__title">
+                                <div class="animation-item animation-text">
+                                    <p class="title title--big title--big--line--normal title--white animation-text__item">
+                                        Стратегический
+                                    </p>
+                                </div>
+                                <div class="animation-item animation-text">
+                                    <p class="title title--big title--white animation-text__item">
+                                        консалтинг
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="grid__row">
+                                <div class="grid__column grid__column--end">
+                                    <div class="animation-item animation-text">
+                                        <p class="text text--base text--white--light animation-text__item">
+                                            Подбираем ключ к решению <br> ваших проблем
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-footer">
+                            <div class="hero-footer__text">
+                                <div class="animation-item animation-text">
+                                    <p class="text text--middle text--white animation-text__item">
+                                        В&nbsp;эпоху постоянных перемен мы&nbsp;помогаем клиентам находить эффективные
+                                        решения и&nbsp;превращать вызовы в&nbsp;возможности. Наша экспертиза&nbsp;&mdash;
+                                        ваш компас в&nbsp;быстро меняющемся мире. </p>
+                                </div>
+                            </div>
+                            <a href="#" style="opacity: 0; pointer-events: none" class="button button--base button--white">
+                                <span class="button__text">Сформулировать задачу</span>
+                                <span class="button__icon">
+                                    <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#arrow-button"> </use>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    class Animations {
+        constructor() {
+            this.animationWrapperArray = document.querySelectorAll('.animation-wrapper');
+        }
+
+        toggleAnimation(animationWrapperElement) {
+            const animationItemArray = animationWrapperElement.querySelectorAll('.animation-item');
+
+            // if preloader present need to set value (preloader animation end + 0.5) if(preloader transition .5s) 1
+            const counter = animationWrapperElement.closest('.hero') && document.querySelector('.preloader') ? 1.5 : 0;
+
+            animationItemArray.forEach((animationItemElement, animationItemIndex) => {
+                animationItemElement.style.setProperty('--animation-delay', `${animationItemIndex * 0.2 + counter}s`);
+                animationItemElement.classList.add('animated');
+            });
+        }
+
+        handleIntersection(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.toggleAnimation(entry.target);
+                }
+            });
+        }
+
+        init() {
+            if (!this.animationWrapperArray.length) return;
+
+            const observer = new IntersectionObserver(this.handleIntersection.bind(this), {
+                // rootMargin:''
+            });
+            this.animationWrapperArray.forEach(animationWrapper => {
+                observer.observe(animationWrapper);
+            });
+        }
+    }
+    const animation = new Animations();
+    animation.init();
+
+    window.addEventListener('load', () => {
+        const videoBgItemArray = document.querySelectorAll('.video-bg__item');
+
+        if(videoBgItemArray.length){
+            videoBgItemArray.forEach(video=>{
+                const videoElement = video.querySelector('video');
+
+                if(videoElement) {
+                    videoElement.play();
+                    videoElement.controls = false;
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
