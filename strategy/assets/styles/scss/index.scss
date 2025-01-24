@@ -1272,7 +1272,7 @@ a.text--white--light:hover {
       overflow: visible;
     }
 
-    &:not(:first-child) {
+    &:not(:first-child):not(.principles-card--empty) {
       border-left: 1px solid rgba(#fff, .3);
     }
 

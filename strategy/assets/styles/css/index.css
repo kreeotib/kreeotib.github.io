@@ -218,22 +218,22 @@ a.text--white--light:hover {
 
 .title--big {
   font-size: var(--title-size-big);
-  line-height: 1.1;
+  line-height: 0.75;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 .title--big--line--normal {
-  line-height: 1.1;
+  line-height: 1;
 }
 .title--middle {
   font-size: var(--title-size-middle);
-  line-height: 1.1;
+  line-height: 1;
   font-weight: 500;
 }
 .title--base {
   font-size: var(--title-size-base);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 .title--team {
@@ -622,10 +622,6 @@ a.text--white--light:hover {
 }
 .section__row--footer {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-#about .grid__wrapper{
-  grid-auto-rows: 1fr;
 }
 
 .grid__wrapper {
@@ -1094,13 +1090,10 @@ a.text--white--light:hover {
   flex-shrink: 0;
   height: 100%;
 }
-.principles-card .active {
-  width: 50vw;
-}
 .principles-card:last-child {
   overflow: visible;
 }
-.principles-card:not(:first-child) {
+.principles-card:not(:first-child):not(.principles-card--empty) {
   border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 @media screen and (max-width: 1240px) {
@@ -1117,13 +1110,7 @@ a.text--white--light:hover {
 }
 @media screen and (max-width: 1240px) {
   .principles-card__wrapper {
-
     padding: 30px 10px 30px 20px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .principles-card__wrapper {
-
   }
 }
 .video-bg__item {
@@ -1570,6 +1557,14 @@ a.text--white--light:hover {
   transform: translateY(100%);
 }
 
+@keyframes textWrapperAnimation {
+  0% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: visible;
+  }
+}
 @keyframes textAnimation {
   0% {
     opacity: 0;

@@ -57,20 +57,20 @@ const animateScroll = (scrollableContainer, end, duration) => {
     requestAnimationFrame(scrollAnimation);
 };
 
-// window.addEventListener('load', () => {
-//     const videoBgItemArray = document.querySelectorAll('.video-bg__item');
-//
-//     if (videoBgItemArray.length) {
-//         videoBgItemArray.forEach(video => {
-//             const videoElement = video.querySelector('video');
-//
-//             if (videoElement) {
-//                 videoElement.play();
-//                 videoElement.controls = false;
-//             }
-//         });
-//     }
-// });
+window.addEventListener('load', () => {
+    const videoBgItemArray = document.querySelectorAll('.video-bg__item');
+
+    if (videoBgItemArray.length) {
+        videoBgItemArray.forEach(video => {
+            const videoElement = video.querySelector('video');
+
+            if (videoElement) {
+                videoElement.play();
+                videoElement.controls = false;
+            }
+        });
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tl.to(".principles .principles-card", {
                 x: () => -(principlesScroll.scrollWidth - document.documentElement.clientWidth) + "px",
                 ease: "none",
-
                 // end: () => "+=" + principlesScroll.offsetWidth,
             });
         }
