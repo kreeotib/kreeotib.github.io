@@ -73,8 +73,6 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-
-
     const preloader = document.querySelector('.preloader');
 
     if (!preloader) {
