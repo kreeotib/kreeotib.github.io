@@ -671,7 +671,7 @@
 }
 
 .container--big {
-  max-width: 13000px;
+  max-width: 1300px;
 }
 
 @media screen and (min-width: 768px) {
