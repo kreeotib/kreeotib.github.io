@@ -400,6 +400,21 @@
   }
 }
 
+.button--base {
+  gap: 6px;
+}
+.button--base .icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+@media screen and (max-width: 767px) {
+  .button--base--mobile--small {
+    padding: 10px;
+  }
+}
+
 .button--base--big {
   width: max-content;
   max-width: 100%;

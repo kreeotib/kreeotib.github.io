@@ -458,6 +458,27 @@
   }
 }
 
+.button--base{
+  gap: 6px;
+
+  .icon{
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+  }
+
+  &--mobile{
+    &--small{
+      @media screen and (max-width: 767px) {
+        padding: 10px;
+      }
+    }
+  }
+}
+
 .button--base--big{
   width: max-content;
   max-width: 100%;
