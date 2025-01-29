@@ -214,6 +214,8 @@
       width: 20px;
       height: 20px;
       flex-shrink: 0;
+
+      transform: translateY(4px);
     }
 
     &--green {
@@ -451,12 +453,26 @@
   font-weight: 600;
 }
 
+.button--max--content{
+  width: max-content;
+  max-width: 100%;
+}
+
 .button--mobile--full{
   @media screen and (max-width: 767px) {
     width: 100%;
     max-width: 100%;
   }
 }
+
+.button--mobile--auto--height{
+  @media screen and (max-width: 767px) {
+    height: auto;
+    min-height: 50px;
+  }
+}
+
+
 
 .button--base{
   gap: 6px;
