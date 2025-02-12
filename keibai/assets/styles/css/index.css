@@ -134,6 +134,9 @@ body.no-scroll {
 .text--blue {
   color: #CCD5E1;
 }
+.text--link {
+  color: #2284CB;
+}
 .text--grey {
   color: #34455C;
 }

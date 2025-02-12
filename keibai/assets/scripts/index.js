@@ -369,6 +369,32 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+
+    const formArray = document.querySelectorAll('form');
+
+    if (formArray.length) {
+        formArray.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                fetch("/mail.php", {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                        } else {
+                        }
+                    })
+                    .catch(error => {
+                    });
+                hideAllPopups();
+            });
+        })
+    }
+
     const burger = document.querySelector('.burger'),
         menu = document.querySelector('.menu'),
         header = document.querySelector('.header');

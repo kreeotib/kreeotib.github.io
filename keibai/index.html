@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Keibai</title>
 
     <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96"/>
     <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg"/>
@@ -43,7 +43,7 @@
                     <div class="social">
                         <ul class="social__list">
                             <li class="social__item">
-                                <a href="#" class="social-link social-link--tg">
+                                <a href="https://t.me/jostik027" target="_blank" class="social-link social-link--tg">
                                     <svg class="social-link__icon">
                                         <use xlink:href="assets/images/sprite.svg#tg"></use>
                                     </svg>
@@ -130,19 +130,19 @@
                 <div class="swiper hero-slider__item hero-slider-element">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide hero-img">
-                            <img src="assets/images/hero/1.jpg" alt="" class="hero-img__item">
+                            <img loading="lazy" src="assets/images/hero/1.jpg" alt="" class="hero-img__item">
                         </div>
                         <div class="swiper-slide hero-img">
-                            <img src="assets/images/hero/2.jpg" alt="" class="hero-img__item">
+                            <img loading="lazy" src="assets/images/hero/2.jpg" alt="" class="hero-img__item">
                         </div>
                         <div class="swiper-slide hero-img">
-                            <img src="assets/images/hero/3.jpg" alt="" class="hero-img__item">
+                            <img loading="lazy" src="assets/images/hero/3.jpg" alt="" class="hero-img__item">
                         </div>
                         <div class="swiper-slide hero-img">
-                            <img src="assets/images/hero/4.jpg" alt="" class="hero-img__item">
+                            <img loading="lazy" src="assets/images/hero/4.jpg" alt="" class="hero-img__item">
                         </div>
                         <div class="swiper-slide hero-img">
-                            <img src="assets/images/hero/5.jpg" alt="" class="hero-img__item">
+                            <img loading="lazy" src="assets/images/hero/5.jpg" alt="" class="hero-img__item">
                         </div>
                     </div>
                 </div>
@@ -718,7 +718,7 @@
                                         <div class="questions-item__content">
                                             <div class="questions-item__text">
                                                 <p class="text text--base text--blue">
-                                                    Да, мы заключаем агентский договор с каждым клиентом перед началом
+                                                    Да, мы <a class="text text--link"  href="assets/documents/contract.docx">заключаем агентский договор</a> с каждым клиентом перед началом
                                                     работы.
                                                 </p>
                                             </div>
@@ -745,7 +745,7 @@
                                             </svg>
                                             <span class="button__text">WhatsApp</span>
                                         </a>
-                                        <a href="#" class="button button--full button--accent button--base">
+                                        <a href="https://t.me/jostik027" target="_blank" class="button button--full button--accent button--base">
                                             <svg class="button__icon">
                                                 <use xlink:href="assets/images/sprite.svg#tg"></use>
                                             </svg>
@@ -935,15 +935,15 @@
                         <div class="form__column">
                             <div class="input">
                                 <label for="name" class="input__label">Ваше имя</label>
-                                <input id="name" name="name" type="text" class="input__item" placeholder="Александр">
+                                <input required minlength="3" id="name" name="name" type="text" class="input__item" placeholder="Александр">
                             </div>
                             <div class="input">
                                 <label for="phone" class="input__label">Ваш телефон</label>
-                                <input id="phone" name="name" type="text" class="input__item" placeholder="+7">
+                                <input required id="phone" name="phone" type="text" class="input__item" placeholder="+7">
                             </div>
                             <div class="input">
                                 <label for="text" class="input__label">Какое авто вас интересует?</label>
-                                <textarea class="input__item input__item--textarea" name="text" id="text"
+                                <textarea required class="input__item input__item--textarea" name="text" id="text"
                                           placeholder="Впишите в свободной форме интересующие вас автомобили. Это поле необязательно для заполнения"></textarea>
                             </div>
                         </div>
@@ -995,16 +995,16 @@
                         <div class="form__column">
                             <div class="input">
                                 <label for="bid-name" class="input__label">Ваше имя</label>
-                                <input id="bid-name" name="name" type="text" class="input__item"
+                                <input required minlength="3" id="bid-name" name="name" type="text" class="input__item"
                                        placeholder="Александр">
                             </div>
                             <div class="input">
                                 <label for="bid-phone" class="input__label">Ваш телефон</label>
-                                <input id="bid-phone" name="phone" type="text" class="input__item" placeholder="+7">
+                                <input required id="bid-phone" name="phone" type="text" class="input__item" placeholder="+7">
                             </div>
                             <div class="input">
                                 <label for="bid-text" class="input__label">Какое авто вас интересует?</label>
-                                <textarea class="input__item input__item--textarea" name="text" id="bid-text"
+                                <textarea required minlength="3" class="input__item input__item--textarea" name="text" id="bid-text"
                                           placeholder="Впишите в свободной форме интересующие вас автомобили. Это поле необязательно для заполнения"></textarea>
                             </div>
                         </div>
@@ -1038,12 +1038,12 @@
                         <div class="form__column">
                             <div class="input">
                                 <label for="question-name" class="input__label">Ваше имя</label>
-                                <input id="question-name" name="name" type="text" class="input__item"
+                                <input required minlength="3" id="question-name" name="name" type="text" class="input__item"
                                        placeholder="Александр">
                             </div>
                             <div class="input">
                                 <label for="question-phone" class="input__label">Ваш телефон</label>
-                                <input id="question-phone" name="phone" type="text" class="input__item"
+                                <input required id="question-phone" name="phone" type="text" class="input__item"
                                        placeholder="+7">
                             </div>
                         </div>
