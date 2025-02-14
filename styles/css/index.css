@@ -790,7 +790,7 @@
 }
 @media screen and (max-width: 991px) {
   .home-about__block {
-    padding-right: 16px;
+    margin-right: 16px;
   }
 }
 .home-about__content {
@@ -814,9 +814,14 @@
   right: -120px;
   top: calc(50% - 105px);
 }
+.home-about__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 @media screen and (max-width: 991px) {
   .home-about__img {
-    top: -70px;
+    top: -80px;
     right: 0;
   }
 }
@@ -847,6 +852,45 @@
   flex-direction: column;
   gap: 30px;
 }
+.home-block__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.home-block__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.home-block__text {
+  font-size: 16px;
+  line-height: 1.1;
+  color: #777777;
+}
+@media screen and (max-width: 991px) {
+  .home-block__text {
+    font-size: 13px;
+  }
+}
+.home-block__yd {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 991px) {
+  .home-block__yd {
+    height: 500px;
+  }
+}
+.home-block__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+@media screen and (max-width: 991px) {
+  .home-block__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .home-block__container {
   width: 100%;
 }
@@ -872,7 +916,7 @@
 }
 
 .sort {
-  z-index: 10;
+  z-index: 8;
   position: relative;
 }
 .sort.active .sort-select__list {
@@ -1099,7 +1143,7 @@
 .catalog-category__wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 15px;
   overflow: auto;
   width: 100%;
@@ -2246,6 +2290,20 @@
   }
 }
 
+a.advantages-item__wrapper--white:hover {
+  background-color: #F5F5F5;
+}
+
+@media screen and (max-width: 991px) {
+  .advantages--desktop {
+    display: none;
+  }
+}
+@media screen and (min-width: 992px) {
+  .advantages--mobile {
+    display: none;
+  }
+}
 .advantages__wrapper {
   height: 100%;
   display: grid;
@@ -2271,6 +2329,7 @@
   background-color: #F5F5F5;
   padding: 18px 16px;
   gap: 8px;
+  transition: 0.3s background-color;
 }
 @media screen and (max-width: 991px) {
   .advantages-item__wrapper {
@@ -2411,6 +2470,10 @@
 
 .range-slider .range-slider__thumb[data-disabled] {
   width: 0;
+}
+
+.js-toggle-block-link:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.css.map */
