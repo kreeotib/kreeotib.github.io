@@ -934,7 +934,7 @@
   position: relative;
 }
 .sort-select__icon {
-  transition: 0.3s trasnform;
+  transition: 0.3s transform;
 }
 .sort-select__list {
   position: absolute;
