@@ -871,7 +871,7 @@
         object-fit: contain;
       }
       @media screen and (max-width: 991px) {
-        top: -65px;
+        top: -35px;
         right: -16px;
       }
     }
@@ -890,6 +890,9 @@
 
       max-width: 490px;
       width: 100%;
+      @media screen and (max-width: 991px ) and (min-width: 450px){
+        padding-right: 120px;
+      }
       &--small{
         @media screen and (max-width: 991px) {
           padding-right: 120px;
@@ -937,6 +940,9 @@
       }
     }
     &__container{
+      &--full{
+        width: 100%;
+      }
     }
     &__header{
       margin: 0 0 20px 0;
@@ -1917,13 +1923,16 @@
 }
 
 .product-scroll{
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none; // Hides the scrollbar for WebKit browsers (Chrome, Safari)
-  }
+  overflow: hidden;
+  &__wrapper{
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none; // Hides the scrollbar for WebKit browsers (Chrome, Safari)
+    }
 
-  -ms-overflow-style: none; // Hides the scrollbar for Internet Explorer and Edge
-  scrollbar-width: none; // Hides the scrollbar
+    -ms-overflow-style: none; // Hides the scrollbar for Internet Explorer and Edge
+    scrollbar-width: none; // Hides the scrollbar
+  }
   &__row{
     display: grid;
     grid-template-columns: repeat(4,minmax(200px,1fr));
