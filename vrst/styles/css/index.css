@@ -821,7 +821,7 @@
 }
 @media screen and (max-width: 991px) {
   .home-about__img {
-    top: -35px;
+    top: -14%;
     right: -16px;
   }
 }
