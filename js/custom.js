@@ -41,6 +41,42 @@ document.addEventListener("DOMContentLoaded", function () {
             el: '.product-card__pagination',
         },
     });
+
+    const mobileFilter = document.querySelector('.mobile-filter'),
+        filterButtonArray = document.querySelectorAll('.js-filter-button');
+
+    if(filterButtonArray.length && mobileFilter){
+        filterButtonArray.forEach(button=>{
+            button.addEventListener('click',(e)=>{
+                e.preventDefault();
+
+                mobileFilter.classList.toggle('active')
+            })
+        })
+    }
+
+
+    const sortArray = document.querySelectorAll('.sort');
+
+    if(sortArray.length){
+        sortArray.forEach(sort=>{
+            const sortCurrent = sort.querySelector('.sort-select__current');
+            sortCurrent.addEventListener('click',(e)=>{
+                e.preventDefault();
+
+                sort.classList.toggle('active');
+            });
+
+            sort.addEventListener('change',(e)=>{
+                const sortText = e.target.closest('.sort-input').querySelector('.sort-input__text').textContent;
+
+                sortCurrent.querySelector('span').textContent = sortText;
+
+                sort.classList.remove('active')
+            })
+        });
+    }
+
     const rangeArray = document.querySelectorAll('.js-range');
 
     if (rangeArray.length > 0) {
@@ -102,4 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
     }
+
+
+
+    Fancybox.bind("[data-fancybox]", {
+        // Your custom options
+    });
 });

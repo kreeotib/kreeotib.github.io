@@ -416,17 +416,49 @@
                     <p class="page__title">
                         Слова поиска
                     </p>
-                    <div class="sort">
+                    <div class="search-result__filter">
+                        <a href="#" class="filter-button js-filter-button">
+                            Фильтры
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.125 10.5C8.36764 10.5 9.375 11.5073 9.375 12.75C9.375 13.9926 8.36764 15 7.125 15C5.88236 15 4.875 13.9926 4.875 12.75C4.875 11.5073 5.88236 10.5 7.125 10.5Z" stroke="#333333" stroke-width="1.125"/>
+                                <path d="M10.875 2.99998C9.63236 2.99998 8.625 4.00734 8.625 5.24998C8.625 6.49262 9.63236 7.49998 10.875 7.49998C12.1176 7.49998 13.125 6.49262 13.125 5.24998C13.125 4.00734 12.1176 2.99998 10.875 2.99998Z" stroke="#333333" stroke-width="1.125"/>
+                                <path d="M11.25 12.7192L16.5 12.7192" stroke="#333333" stroke-width="1.125" stroke-linecap="round"/>
+                                <path d="M6.75 5.21924L1.5 5.21924" stroke="#333333" stroke-width="1.125" stroke-linecap="round"/>
+                                <path d="M1.5 12.7192L3 12.7192" stroke="#333333" stroke-width="1.125" stroke-linecap="round"/>
+                                <path d="M16.5 5.21924L15 5.21924" stroke="#333333" stroke-width="1.125" stroke-linecap="round"/>
+                            </svg>
+
+                        </a>
+                    </div>
+                    <div class="search-result__sort sort">
                         <p class="sort__title">
                             Сортировать:
                         </p>
-                        <div class="sort__select">
-                            <select >
-                                <option value="">По умолчанию</option>
-                                <option value="">Название (А-Я)</option>
-                                <option value="">Название (Я-А)</option>
-                                <option value="">Цена (низкая>высокая)</option>
-                            </select>
+                        <div class="sort-select">
+                            <div class="sort-select__current">
+                                <span>Рейтинг (начиная с высокого)</span>
+                                <svg class="sort-select__icon" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 13.9998L6.29289 8.70696C6.68342 8.31643 7.31658 8.31643 7.70711 8.70696L13 13.9998" stroke="#777777" stroke-width="1.6" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="sort-select__list">
+                                <label  class="sort-input">
+                                    <input type="radio" name="sort" id="" class="sort-input__item">
+                                    <span class="sort-input__text">По умолчанию</span>
+                                </label>
+                                <label  class="sort-input">
+                                    <input type="radio" name="sort" id="" class="sort-input__item">
+                                    <span class="sort-input__text">Название (А-Я)</span>
+                                </label>
+                                <label  class="sort-input">
+                                    <input type="radio" name="sort" id="" class="sort-input__item">
+                                    <span class="sort-input__text">Название (Я-А)</span>
+                                </label>
+                                <label  class="sort-input">
+                                    <input type="radio" name="sort" id="" class="sort-input__item">
+                                    <span class="sort-input__text">Цена (высокая>низкая)</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -928,6 +960,409 @@
             </div>
         </div>
     </main>
+    <div class="mobile-filter">
+        <div class="mobile-filter__wrapper">
+            <form action="#" class="filter">
+                <div class="filter__header">
+                    <button type="reset" class="filter__reset">Очистить</button>
+                    <div class="filter__header">
+                        <p class="filter__title">
+                            Фильтры
+                        </p>
+                    </div>
+                    <a href="#" class="filter__close js-filter-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.75391 5.58472L14.5927 14.4236" stroke="#777777" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.75879 14.4153L14.5976 5.57645" stroke="#777777" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="filter__wrapper">
+                    <div class="filter-block" >
+                        <div class="filter-block__header" >
+                            <p class="filter-block__title">
+                                Запуск
+                            </p>
+                        </div>
+                        <div class="filter-block__content filter-block__content--range">
+                            <div class="filter-range js-range">
+                                <div class="filter-range__row">
+                                    <label class="label filter-range__input">
+                                        <input type="text" class=" js-range-from-input">
+                                    </label>
+                                    <label class="label filter-range__input">
+                                        <input type="text" class=" js-range-to-input">
+                                    </label>
+                                </div>
+                                <div class="range-slider" data-min="1" data-max="20"
+                                     data-step="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-block " >
+                        <div class="filter-block__header " >
+                            <p class="filter-block__title">
+                                Розничная цена, ₽
+                            </p>
+                            <div class="tip">
+                                <div class="tip__content">
+                                    <p>Текст подсказки</p>
+                                </div>
+                                <div class="tip-link">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.5" cy="8.5" r="8" fill="#F5F5F5"
+                                                stroke="#777777"/>
+                                        <path d="M9.04492 10.3926H7.55078C7.55469 10.041 7.58203 9.73828 7.63281 9.48438C7.6875 9.22656 7.7793 8.99414 7.9082 8.78711C8.04102 8.58008 8.2168 8.375 8.43555 8.17188C8.61914 8.00781 8.7793 7.85156 8.91602 7.70312C9.05273 7.55469 9.16016 7.40234 9.23828 7.24609C9.31641 7.08594 9.35547 6.9082 9.35547 6.71289C9.35547 6.48633 9.32031 6.29883 9.25 6.15039C9.18359 5.99805 9.08203 5.88281 8.94531 5.80469C8.8125 5.72656 8.64453 5.6875 8.44141 5.6875C8.27344 5.6875 8.11719 5.72461 7.97266 5.79883C7.82812 5.86914 7.70898 5.97852 7.61523 6.12695C7.52539 6.27539 7.47852 6.4707 7.47461 6.71289H5.77539C5.78711 6.17773 5.91016 5.73633 6.14453 5.38867C6.38281 5.03711 6.70117 4.77734 7.09961 4.60938C7.49805 4.4375 7.94531 4.35156 8.44141 4.35156C8.98828 4.35156 9.45703 4.44141 9.84766 4.62109C10.2383 4.79688 10.5371 5.05664 10.7441 5.40039C10.9512 5.74023 11.0547 6.1543 11.0547 6.64258C11.0547 6.98242 10.9883 7.28516 10.8555 7.55078C10.7227 7.8125 10.5488 8.05664 10.334 8.2832C10.1191 8.50977 9.88281 8.74414 9.625 8.98633C9.40234 9.18555 9.25 9.39453 9.16797 9.61328C9.08984 9.83203 9.04883 10.0918 9.04492 10.3926ZM7.375 12.2031C7.375 11.9531 7.46094 11.7461 7.63281 11.582C7.80469 11.4141 8.03516 11.3301 8.32422 11.3301C8.60938 11.3301 8.83789 11.4141 9.00977 11.582C9.18555 11.7461 9.27344 11.9531 9.27344 12.2031C9.27344 12.4453 9.18555 12.6504 9.00977 12.8184C8.83789 12.9863 8.60938 13.0703 8.32422 13.0703C8.03516 13.0703 7.80469 12.9863 7.63281 12.8184C7.46094 12.6504 7.375 12.4453 7.375 12.2031Z"
+                                              fill="#777777"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-block__content filter-block__content--range">
+                            <div class="filter-range js-range">
+                                <div class="filter-range__row">
+                                    <label class="label filter-range__input">
+                                        <input type="text" class=" js-range-from-input">
+                                    </label>
+                                    <label class="label filter-range__input">
+                                        <input type="text" class=" js-range-to-input">
+                                    </label>
+                                </div>
+                                <div class="range-slider" data-min="1" data-max="20"
+                                     data-step="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-block " >
+                        <div class="filter-block__header " >
+                            <p class="filter-block__title">
+                                Запуск
+                            </p>
+                            <div class="tip">
+                                <div class="tip__content">
+                                    <p>Текст подсказки</p>
+                                </div>
+                                <div class="tip-link">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.5" cy="8.5" r="8" fill="#F5F5F5"
+                                                stroke="#777777"/>
+                                        <path d="M9.04492 10.3926H7.55078C7.55469 10.041 7.58203 9.73828 7.63281 9.48438C7.6875 9.22656 7.7793 8.99414 7.9082 8.78711C8.04102 8.58008 8.2168 8.375 8.43555 8.17188C8.61914 8.00781 8.7793 7.85156 8.91602 7.70312C9.05273 7.55469 9.16016 7.40234 9.23828 7.24609C9.31641 7.08594 9.35547 6.9082 9.35547 6.71289C9.35547 6.48633 9.32031 6.29883 9.25 6.15039C9.18359 5.99805 9.08203 5.88281 8.94531 5.80469C8.8125 5.72656 8.64453 5.6875 8.44141 5.6875C8.27344 5.6875 8.11719 5.72461 7.97266 5.79883C7.82812 5.86914 7.70898 5.97852 7.61523 6.12695C7.52539 6.27539 7.47852 6.4707 7.47461 6.71289H5.77539C5.78711 6.17773 5.91016 5.73633 6.14453 5.38867C6.38281 5.03711 6.70117 4.77734 7.09961 4.60938C7.49805 4.4375 7.94531 4.35156 8.44141 4.35156C8.98828 4.35156 9.45703 4.44141 9.84766 4.62109C10.2383 4.79688 10.5371 5.05664 10.7441 5.40039C10.9512 5.74023 11.0547 6.1543 11.0547 6.64258C11.0547 6.98242 10.9883 7.28516 10.8555 7.55078C10.7227 7.8125 10.5488 8.05664 10.334 8.2832C10.1191 8.50977 9.88281 8.74414 9.625 8.98633C9.40234 9.18555 9.25 9.39453 9.16797 9.61328C9.08984 9.83203 9.04883 10.0918 9.04492 10.3926ZM7.375 12.2031C7.375 11.9531 7.46094 11.7461 7.63281 11.582C7.80469 11.4141 8.03516 11.3301 8.32422 11.3301C8.60938 11.3301 8.83789 11.4141 9.00977 11.582C9.18555 11.7461 9.27344 11.9531 9.27344 12.2031C9.27344 12.4453 9.18555 12.6504 9.00977 12.8184C8.83789 12.9863 8.60938 13.0703 8.32422 13.0703C8.03516 13.0703 7.80469 12.9863 7.63281 12.8184C7.46094 12.6504 7.375 12.4453 7.375 12.2031Z"
+                                              fill="#777777"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-block__content">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной/Электро
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" disabled name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Электро
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-block " >
+                        <div class="filter-block__header " >
+                            <p class="filter-block__title">
+                                Количество фаз
+                            </p>
+                            <div class="tip">
+                                <div class="tip__content">
+                                    <p>Текст подсказки</p>
+                                </div>
+                                <div class="tip-link">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.5" cy="8.5" r="8" fill="#F5F5F5"
+                                                stroke="#777777"/>
+                                        <path d="M9.04492 10.3926H7.55078C7.55469 10.041 7.58203 9.73828 7.63281 9.48438C7.6875 9.22656 7.7793 8.99414 7.9082 8.78711C8.04102 8.58008 8.2168 8.375 8.43555 8.17188C8.61914 8.00781 8.7793 7.85156 8.91602 7.70312C9.05273 7.55469 9.16016 7.40234 9.23828 7.24609C9.31641 7.08594 9.35547 6.9082 9.35547 6.71289C9.35547 6.48633 9.32031 6.29883 9.25 6.15039C9.18359 5.99805 9.08203 5.88281 8.94531 5.80469C8.8125 5.72656 8.64453 5.6875 8.44141 5.6875C8.27344 5.6875 8.11719 5.72461 7.97266 5.79883C7.82812 5.86914 7.70898 5.97852 7.61523 6.12695C7.52539 6.27539 7.47852 6.4707 7.47461 6.71289H5.77539C5.78711 6.17773 5.91016 5.73633 6.14453 5.38867C6.38281 5.03711 6.70117 4.77734 7.09961 4.60938C7.49805 4.4375 7.94531 4.35156 8.44141 4.35156C8.98828 4.35156 9.45703 4.44141 9.84766 4.62109C10.2383 4.79688 10.5371 5.05664 10.7441 5.40039C10.9512 5.74023 11.0547 6.1543 11.0547 6.64258C11.0547 6.98242 10.9883 7.28516 10.8555 7.55078C10.7227 7.8125 10.5488 8.05664 10.334 8.2832C10.1191 8.50977 9.88281 8.74414 9.625 8.98633C9.40234 9.18555 9.25 9.39453 9.16797 9.61328C9.08984 9.83203 9.04883 10.0918 9.04492 10.3926ZM7.375 12.2031C7.375 11.9531 7.46094 11.7461 7.63281 11.582C7.80469 11.4141 8.03516 11.3301 8.32422 11.3301C8.60938 11.3301 8.83789 11.4141 9.00977 11.582C9.18555 11.7461 9.27344 11.9531 9.27344 12.2031C9.27344 12.4453 9.18555 12.6504 9.00977 12.8184C8.83789 12.9863 8.60938 13.0703 8.32422 13.0703C8.03516 13.0703 7.80469 12.9863 7.63281 12.8184C7.46094 12.6504 7.375 12.4453 7.375 12.2031Z"
+                                              fill="#777777"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="filter-block__content">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной/Электро
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" disabled name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Электро
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-block " >
+                        <div class="filter-block__header " >
+                            <p class="filter-block__title">
+                                Подключение автоматики
+                            </p>
+                            <div class="tip">
+                                <div class="tip__content">
+                                    <p>Текст подсказки</p>
+                                </div>
+                                <div class="tip-link">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.5" cy="8.5" r="8" fill="#F5F5F5"
+                                                stroke="#777777"/>
+                                        <path d="M9.04492 10.3926H7.55078C7.55469 10.041 7.58203 9.73828 7.63281 9.48438C7.6875 9.22656 7.7793 8.99414 7.9082 8.78711C8.04102 8.58008 8.2168 8.375 8.43555 8.17188C8.61914 8.00781 8.7793 7.85156 8.91602 7.70312C9.05273 7.55469 9.16016 7.40234 9.23828 7.24609C9.31641 7.08594 9.35547 6.9082 9.35547 6.71289C9.35547 6.48633 9.32031 6.29883 9.25 6.15039C9.18359 5.99805 9.08203 5.88281 8.94531 5.80469C8.8125 5.72656 8.64453 5.6875 8.44141 5.6875C8.27344 5.6875 8.11719 5.72461 7.97266 5.79883C7.82812 5.86914 7.70898 5.97852 7.61523 6.12695C7.52539 6.27539 7.47852 6.4707 7.47461 6.71289H5.77539C5.78711 6.17773 5.91016 5.73633 6.14453 5.38867C6.38281 5.03711 6.70117 4.77734 7.09961 4.60938C7.49805 4.4375 7.94531 4.35156 8.44141 4.35156C8.98828 4.35156 9.45703 4.44141 9.84766 4.62109C10.2383 4.79688 10.5371 5.05664 10.7441 5.40039C10.9512 5.74023 11.0547 6.1543 11.0547 6.64258C11.0547 6.98242 10.9883 7.28516 10.8555 7.55078C10.7227 7.8125 10.5488 8.05664 10.334 8.2832C10.1191 8.50977 9.88281 8.74414 9.625 8.98633C9.40234 9.18555 9.25 9.39453 9.16797 9.61328C9.08984 9.83203 9.04883 10.0918 9.04492 10.3926ZM7.375 12.2031C7.375 11.9531 7.46094 11.7461 7.63281 11.582C7.80469 11.4141 8.03516 11.3301 8.32422 11.3301C8.60938 11.3301 8.83789 11.4141 9.00977 11.582C9.18555 11.7461 9.27344 11.9531 9.27344 12.2031C9.27344 12.4453 9.18555 12.6504 9.00977 12.8184C8.83789 12.9863 8.60938 13.0703 8.32422 13.0703C8.03516 13.0703 7.80469 12.9863 7.63281 12.8184C7.46094 12.6504 7.375 12.4453 7.375 12.2031Z"
+                                              fill="#777777"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="filter-block__content">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной/Электро
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" disabled name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Электро
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-block " >
+                        <div class="filter-block__header " >
+                            <p class="filter-block__title">
+                                Высокие пусковые токи
+                            </p>
+                            <div class="tip">
+                                <div class="tip__content">
+                                    <p>Текст подсказки</p>
+                                </div>
+                                <div class="tip-link">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.5" cy="8.5" r="8" fill="#F5F5F5"
+                                                stroke="#777777"/>
+                                        <path d="M9.04492 10.3926H7.55078C7.55469 10.041 7.58203 9.73828 7.63281 9.48438C7.6875 9.22656 7.7793 8.99414 7.9082 8.78711C8.04102 8.58008 8.2168 8.375 8.43555 8.17188C8.61914 8.00781 8.7793 7.85156 8.91602 7.70312C9.05273 7.55469 9.16016 7.40234 9.23828 7.24609C9.31641 7.08594 9.35547 6.9082 9.35547 6.71289C9.35547 6.48633 9.32031 6.29883 9.25 6.15039C9.18359 5.99805 9.08203 5.88281 8.94531 5.80469C8.8125 5.72656 8.64453 5.6875 8.44141 5.6875C8.27344 5.6875 8.11719 5.72461 7.97266 5.79883C7.82812 5.86914 7.70898 5.97852 7.61523 6.12695C7.52539 6.27539 7.47852 6.4707 7.47461 6.71289H5.77539C5.78711 6.17773 5.91016 5.73633 6.14453 5.38867C6.38281 5.03711 6.70117 4.77734 7.09961 4.60938C7.49805 4.4375 7.94531 4.35156 8.44141 4.35156C8.98828 4.35156 9.45703 4.44141 9.84766 4.62109C10.2383 4.79688 10.5371 5.05664 10.7441 5.40039C10.9512 5.74023 11.0547 6.1543 11.0547 6.64258C11.0547 6.98242 10.9883 7.28516 10.8555 7.55078C10.7227 7.8125 10.5488 8.05664 10.334 8.2832C10.1191 8.50977 9.88281 8.74414 9.625 8.98633C9.40234 9.18555 9.25 9.39453 9.16797 9.61328C9.08984 9.83203 9.04883 10.0918 9.04492 10.3926ZM7.375 12.2031C7.375 11.9531 7.46094 11.7461 7.63281 11.582C7.80469 11.4141 8.03516 11.3301 8.32422 11.3301C8.60938 11.3301 8.83789 11.4141 9.00977 11.582C9.18555 11.7461 9.27344 11.9531 9.27344 12.2031C9.27344 12.4453 9.18555 12.6504 9.00977 12.8184C8.83789 12.9863 8.60938 13.0703 8.32422 13.0703C8.03516 13.0703 7.80469 12.9863 7.63281 12.8184C7.46094 12.6504 7.375 12.4453 7.375 12.2031Z"
+                                              fill="#777777"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="filter-block__content">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной/Электро
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" disabled name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Электро
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-block " >
+                        <div class="filter-block__header " >
+                            <p class="filter-block__title">
+                                Инверторная технология
+                            </p>
+                            <div class="tip">
+                                <div class="tip__content">
+                                    <p>Текст подсказки</p>
+                                </div>
+                                <div class="tip-link">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.5" cy="8.5" r="8" fill="#F5F5F5"
+                                                stroke="#777777"/>
+                                        <path d="M9.04492 10.3926H7.55078C7.55469 10.041 7.58203 9.73828 7.63281 9.48438C7.6875 9.22656 7.7793 8.99414 7.9082 8.78711C8.04102 8.58008 8.2168 8.375 8.43555 8.17188C8.61914 8.00781 8.7793 7.85156 8.91602 7.70312C9.05273 7.55469 9.16016 7.40234 9.23828 7.24609C9.31641 7.08594 9.35547 6.9082 9.35547 6.71289C9.35547 6.48633 9.32031 6.29883 9.25 6.15039C9.18359 5.99805 9.08203 5.88281 8.94531 5.80469C8.8125 5.72656 8.64453 5.6875 8.44141 5.6875C8.27344 5.6875 8.11719 5.72461 7.97266 5.79883C7.82812 5.86914 7.70898 5.97852 7.61523 6.12695C7.52539 6.27539 7.47852 6.4707 7.47461 6.71289H5.77539C5.78711 6.17773 5.91016 5.73633 6.14453 5.38867C6.38281 5.03711 6.70117 4.77734 7.09961 4.60938C7.49805 4.4375 7.94531 4.35156 8.44141 4.35156C8.98828 4.35156 9.45703 4.44141 9.84766 4.62109C10.2383 4.79688 10.5371 5.05664 10.7441 5.40039C10.9512 5.74023 11.0547 6.1543 11.0547 6.64258C11.0547 6.98242 10.9883 7.28516 10.8555 7.55078C10.7227 7.8125 10.5488 8.05664 10.334 8.2832C10.1191 8.50977 9.88281 8.74414 9.625 8.98633C9.40234 9.18555 9.25 9.39453 9.16797 9.61328C9.08984 9.83203 9.04883 10.0918 9.04492 10.3926ZM7.375 12.2031C7.375 11.9531 7.46094 11.7461 7.63281 11.582C7.80469 11.4141 8.03516 11.3301 8.32422 11.3301C8.60938 11.3301 8.83789 11.4141 9.00977 11.582C9.18555 11.7461 9.27344 11.9531 9.27344 12.2031C9.27344 12.4453 9.18555 12.6504 9.00977 12.8184C8.83789 12.9863 8.60938 13.0703 8.32422 13.0703C8.03516 13.0703 7.80469 12.9863 7.63281 12.8184C7.46094 12.6504 7.375 12.4453 7.375 12.2031Z"
+                                              fill="#777777"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="filter-block__content">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Ручной/Электро
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" disabled name="starter"
+                                       class="filter-checkbox__input">
+                                <span class="filter-checkbox__checkmark">
+                                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1.72925 3.89575L3.31258 5.47909L7.27092 1.52075"
+                                                              stroke="white" stroke-width="1.6" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
+                                Электро
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter__footer">
+                    <button type="reset" class="filter__button">Применить</button>
+                    <button type="submit" class="filter__button">Очистить</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <footer class="footer">
         <div class="footer__container">
             <div class="footer__col">
