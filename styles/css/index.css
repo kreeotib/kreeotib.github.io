@@ -821,8 +821,8 @@
 }
 @media screen and (max-width: 991px) {
   .home-about__img {
-    top: -80px;
-    right: 0;
+    top: -65px;
+    right: -16px;
   }
 }
 .home-about__title {
@@ -844,7 +844,7 @@
 }
 @media screen and (max-width: 991px) {
   .home-about__text--small {
-    padding-right: 150px;
+    padding-right: 120px;
   }
 }
 .home-block {
@@ -890,9 +890,6 @@
   .home-block__grid {
     grid-template-columns: minmax(0, 1fr);
   }
-}
-.home-block__container {
-  width: 100%;
 }
 .home-block__header {
   margin: 0 0 20px 0;
