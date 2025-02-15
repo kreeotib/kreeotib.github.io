@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="#" class="header__logo logo">
+                        <img src="assets/images/logo.svg" alt="" class="logo__img">
+                    </a>
+                    <img src="assets/images/plane.webp" alt="" class="header__plane">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <form action="#" class="form form-login">
+            <div class="container">
+                <div class="form-login__wrapper form__wrapper form__wrapper--gap--small">
+                    <div class="form__text">
+                        Ваш код входа отправлен на указанный e-mail.
+                    </div>
+                    <div class="form__content">
+                        <div class="form-input">
+                            <label for="login-email" class="form-input__label">E-mail</label>
+                            <input type="email" id="login-email" name="login-email" class="form-input__item">
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <button type="submit" class="button button--base button--accent form__button">
+                            ПОЛУЧИТЬ КОД
+                        </button>
+                        <a href="#" class="button button--base button--accent form__button">
+                            НЕТ e-mail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="#" class="form form--hidden form-code">
+            <div class="container">
+                <div class="form-login__wrapper form__wrapper form__wrapper--gap--small">
+                    <div class="form__text">
+                        Ваш код входа отправлен на указанный e-mail.
+                    </div>
+                    <div class="form__content">
+                        <div class="form-input">
+                            <label for="login-code" class="form-input__label">Код входа</label>
+                            <input type="email" id="login-code" name="login-code" class="form-input__item">
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <button type="submit" class="button button--base button--accent form__button">
+                            ВОЙТИ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+
+
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="#" class="header__logo logo">
+                        <img src="assets/images/logo.svg" alt="" class="logo__img">
+                    </a>
+                    <img src="assets/images/plane.webp" alt="" class="header__plane">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <form action="#" class="form form-lottery">
+            <div class="container">
+                <div class="form-lottery__wrapper">
+                    <p class="form__title">
+                        РЕГИСТРАЦИЯ УЧАСТНИКА ЛОТЕРЕИ
+                    </p>
+                    <div class="form-lottery__box">
+                        <div class="form__wrapper">
+                            <div class="form__content">
+                                <div class="form-input">
+                                    <label for="lottery-name" class="form-input__label">Ф.И.О.</label>
+                                    <input type="email" id="lottery-name" name="lottery-name" class="form-input__item">
+                                </div>
+                                <div class="form-input">
+                                    <label for="lottery-phone" class="form-input__label">Телефон</label>
+                                    <input type="email" id="lottery-phone" name="lottery-phone"
+                                           class="form-input__item">
+                                </div>
+                                <div class="form-input">
+                                    <label for="lottery-email" class="form-input__label">E-mail</label>
+                                    <input type="email" id="lottery-email" name="lottery-email"
+                                           class="form-input__item">
+                                </div>
+                            </div>
+                            <label class="form-checkbox">
+                                <input type="checkbox" class="form-checkbox__input">
+                                <span class="form-checkbox__checkmark">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="698" height="512"
+                                         viewBox="0 0 698 512">
+                                        <path fill="currentColor"
+                                              d="M673.667 78.158l-398.967 398.966c-7.253 7.252-14.508 10.882-25.388 10.882s-18.135-3.63-25.388-10.882l-181.347-181.348c-14.508-14.508-14.508-36.269 0-50.778s36.27-14.508 50.778 0l155.959 155.959 373.575-373.577c14.508-14.508 36.273-14.508 50.781 0s14.508 36.27 0 50.778z"></path>
+                                        </svg>
+                                </span>
+                                <a href="#" class="form-checkbox__text">
+                                    СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ
+                                </a>
+                            </label>
+                            <div class="form__footer">
+                                <button type="submit" class="button button--base button--accent form__button">
+                                    ОТПРАВИТЬ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+
+<div class="popup popup-register">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <a href="#" class="popup__close"></a>
+            <div class="register-popup">
+                <div class="register-popup__wrapper">
+                    <div class="register-popup__content">
+                        <p>
+                            <span>Фамилия Имя Отчество!</span>
+                        </p>
+                        <p>
+                            Вы зарегистрировались для участия в лотерее.
+                        </p>
+                        <p>
+                            <span>Ваш номер участника: 0000</span>
+                        </p>
+                        <p>
+                            Розыгрыш состоится <span>00 февраля 2025 года!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>
