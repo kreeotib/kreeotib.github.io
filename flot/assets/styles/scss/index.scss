@@ -13,6 +13,12 @@ body {
   line-height: 1.2;
 }
 
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
 .logo {
   display: flex;
   align-items: center;
