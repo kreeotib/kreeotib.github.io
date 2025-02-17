@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row header__row--top">
+                    <p class="text text--date">
+                        Вторник, 4 февраля, 2025 года
+                    </p>
+                    <ul class="header-links">
+                        <li class="header-links__item">
+                            <a href="#" class="header-links__label">
+                                О проекте
+                            </a>
+                        </li>
+                        <li class="header-links__item">
+                            <a href="#" class="header-links__label">
+                                Сотрудничество
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header__row header__row--middle">
+                    <a href="#" class="header__logo logo">
+                        <img src="assets/images/logo.svg" alt="" class="logo__img">
+                    </a>
+                    <div class="header__burger">
+                        <a href="#" class="burger js-menu-burger">
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                        </a>
+                    </div>
+                    <div class="header-banner">
+                        <img src="assets/images/banner.jpg" alt="" class="header-banner__img">
+                    </div>
+                </div>
+                <div class="header__row header__row--bottom">
+                    <nav class="nav">
+                        <ul class="nav-list">
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    новости
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    события
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    интервью
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    исследования
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    видео
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    мероприятия
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="header__search search">
+                        <label class="search-input">
+                            <svg class="search-input__icon">
+                                <use xlink:href="assets/images/sprite.svg#loop"></use>
+                            </svg>
+                            <input type="text" placeholder="поиск" class="search-input__item">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content__wrapper home">
+            <div class="container">
+                <div class="home__wrapper">
+                    <div class="home-tabs">
+                        <div class="home-tabs__list">
+                            <label class="home-tabs__item">
+                                <input type="radio" checked name="home-tabs" value="js-home-main">
+                                Главная
+                            </label>
+                            <label class="home-tabs__item">
+                                <input type="radio" name="home-tabs" value="js-home-news">
+                                Новости
+                            </label>
+                        </div>
+                    </div>
+                    <div class="home-grid">
+                        <div class="home-grid__aside aside">
+                            <div class="aside__wrapper">
+                                <div class="aside__news news-block js-home-news">
+                                    <div class="news-block__header">
+                                        <p class="title title--base title--black">
+                                            НОВОСТИ ДНЯ
+                                        </p>
+                                    </div>
+                                    <div class="news-block__content">
+                                        <ul class="news-list">
+                                            <li class="news-list__item news-small">
+                                                <a href="#" class="news-small__wrapper">
+                                                    <p class="text text--base text--black">
+                                                        В Великобритании принят закон, обессмысливающий забостовки
+                                                    </p>
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 16:14
+                                                    </p>
+                                                </a>
+                                            </li>
+                                            <li class="news-list__item news-small">
+                                                <a href="#" class="news-small__wrapper">
+                                                    <p class="text text--base text--black">
+                                                        В Великобритании принят закон, обессмысливающий забостовки
+                                                    </p>
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 16:14
+                                                    </p>
+                                                </a>
+                                            </li>
+                                            <li class="news-list__item news-small">
+                                                <a href="#" class="news-small__wrapper">
+                                                    <p class="text text--base text--black">
+                                                        В Великобритании принят закон, обессмысливающий забостовки
+                                                    </p>
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 16:14
+                                                    </p>
+                                                </a>
+                                            </li>
+                                            <li class="news-list__item news-small">
+                                                <a href="#" class="news-small__wrapper">
+                                                    <p class="text text--base text--black">
+                                                        В Великобритании принят закон, обессмысливающий забостовки
+                                                    </p>
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 16:14
+                                                    </p>
+                                                </a>
+                                            </li>
+                                            <li class="news-list__item news-small">
+                                                <a href="#" class="news-small__wrapper">
+                                                    <p class="text text--base text--black">
+                                                        В Великобритании принят закон, обессмысливающий забостовки
+                                                    </p>
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 16:14
+                                                    </p>
+                                                </a>
+                                            </li>
+                                            <li class="news-list__item news-small">
+                                                <a href="#" class="news-small__wrapper">
+                                                    <p class="text text--base text--black">
+                                                        В Великобритании принят закон, обессмысливающий забостовки
+                                                    </p>
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 16:14
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" class="button button--base button--accent button--full button--mobile">
+                                        Показать ещё
+                                    </a>
+                                    <div class="news-block__footer news-block__footer--mobile--hidden">
+                                        <a href="#" class="text text--link">ВСЕ НОВОСТИ</a>
+                                    </div>
+                                </div>
+                                <div class="aside__mailing news-block js-home-news">
+                                    <div class="news-block__header">
+                                        <p class="title title--base title--black">
+                                            Рассылка Infranews
+                                        </p>
+                                    </div>
+                                    <div class="news-block__content">
+                                        <a href="#" class="button button--base button--accent button--full">
+                                            Подписаться на рассылку
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="aside__banners news-block js-home-news">
+                                    <div class="news-block__content aside-banners">
+                                        <div class="aside-banners__wrapper">
+                                            <a href="#" class="aside-banners__item aside-banner">
+                                                <img src="assets/images/banner-aside.jpg" alt=""
+                                                     class="aside-banner__item">
+                                            </a>
+                                            <a href="#" class="aside-banners__item aside-banner">
+                                                <img src="assets/images/banner-aside.jpg" alt=""
+                                                     class="aside-banner__item">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="news-block__footer">
+                                        <a href="#" class="text text--link">РЕКЛАМА НА САЙТЕ</a>
+                                    </div>
+                                </div>
+                                <div class="aside__video news-block js-home-main">
+                                    <div class="news-block__header">
+                                        <p class="title title--base title--black">
+                                            НОВЫЕ ВИДЕО
+                                        </p>
+                                    </div>
+                                    <div class="news-block__content">
+                                        <div class="aside-video">
+                                            <img src="assets/images/video.jpg" alt="" class="aside-video__item">
+                                        </div>
+                                    </div>
+                                    <div class="news-block__footer">
+                                        <a href="#" class="text text--link">ВСЕ ВИДЕО</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-grid__block home-grid__block--main news-block js-home-main">
+                            <div class="news-block__header">
+                                <p class="title title--base title--black">
+                                    тема недели
+                                </p>
+                            </div>
+                            <div class="news-block__content news-card">
+                                <div class="news-card__wrapper">
+                                    <div class="news-card__img">
+                                        <img src="assets/images/news-photo.jpg" alt="">
+                                    </div>
+                                    <div class="news-card__content">
+                                        <div class="news-card__info">
+                                            <p class="title title--middle title--black">
+                                                Контейнерный отчет по итогам 9 месяцев 2024 года
+                                            </p>
+                                            <p class="text text--large text--black">
+                                                Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024 года.
+                                                Мировой рынок, железнодорожные перевозки, морской фронт
+                                            </p>
+                                        </div>
+                                        <div class="news-card__date">
+                                            <p class="text text--date">
+                                                Июль 26, 2022, 10:26
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-block__footer news-block__footer--bordered">
+                                <a href="#" class="text text--link">все сюжеты</a>
+                            </div>
+                        </div>
+                        <div class="home-grid__block home-grid__block--main news-block js-home-main">
+                            <div class="news-block__header">
+                                <p class="title title--base title--black">
+                                    Свежие исследования
+                                </p>
+                            </div>
+                            <div class="news-block__content news-card">
+                                <div class="news-card__wrapper">
+                                    <div class="news-card__img">
+                                        <img src="assets/images/news-photo.jpg" alt="">
+                                    </div>
+                                    <div class="news-card__content">
+                                        <div class="news-card__info">
+                                            <p class="title title--middle title--black">
+                                                Контейнерный отчет по итогам 9 месяцев 2024 года
+                                            </p>
+                                            <p class="text text--large text--black">
+                                                Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024 года.
+                                                Мировой рынок, железнодорожные перевозки, морской фронт
+                                            </p>
+                                        </div>
+                                        <div class="news-card__date">
+                                            <p class="text text--date">
+                                                Июль 26, 2022, 10:26
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-block__footer news-block__footer--bordered">
+                                <a href="#" class="text text--link">все сюжеты</a>
+                            </div>
+                        </div>
+                        <div class="home-grid__block home-grid__block--main news-block js-home-main">
+                            <div class="news-block__content news-card">
+                                <div class="news-card__box">
+                                    <div class="news-card__header">
+                                        <p class="title title--base title--white">
+                                            Интервью
+                                        </p>
+                                    </div>
+                                    <div class="news-card__wrapper">
+                                        <div class="news-card__img news-card__img--small">
+                                            <img src="assets/images/news-photo.jpg" alt="">
+                                        </div>
+                                        <div class="news-card__content">
+                                            <div class="news-card__info">
+                                                <p class="title title--middle title--white">
+                                                    Контейнерный отчет по итогам 9 месяцев 2024 года
+                                                </p>
+                                                <p class="text text--large text--white">
+                                                    Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024
+                                                    года. Мировой рынок, железнодорожные перевозки, морской фронт
+                                                </p>
+                                            </div>
+                                            <div class="news-card__date">
+                                                <p class="text text--date text--date--white">
+                                                    Июль 26, 2022, 10:26
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="news-block__footer news-block__footer--bordered">
+                                <a href="#" class="text text--link">ВСЕ ИССЛЕДОВАНИЯ</a>
+                            </div>
+                        </div>
+                        <div class="home-grid__block home-grid__block--main news-grid js-home-main">
+                            <div class="news-grid__row">
+                                <div class="news-block">
+                                    <div class="news-block__header">
+                                        <p class="title title--base title--black">
+                                            Статистика
+                                        </p>
+                                    </div>
+                                    <div class="news-block__content news-card">
+                                        <div class="news-card__wrapper news-card__wrapper--desktop--column">
+                                            <div class="news-card__img">
+                                                <img src="assets/images/news-photo.jpg" alt="">
+                                            </div>
+                                            <div class="news-card__content">
+                                                <div class="news-card__info">
+                                                    <p class="title title--middle title--black">
+                                                        Контейнерный отчет по итогам 9 месяцев 2024 года
+                                                    </p>
+                                                    <p class="text text--large text--black">
+                                                        Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024
+                                                        года. Мировой рынок, железнодорожные перевозки, морской
+                                                        фронт
+                                                    </p>
+                                                </div>
+                                                <div class="news-card__date">
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 10:26
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="news-block__footer news-block__footer--bordered">
+                                        <a href="#" class="text text--link">СТАТИСТИКА</a>
+                                    </div>
+                                </div>
+                                <div class="news-block">
+                                    <div class="news-block__header">
+                                        <p class="title title--base title--black">
+                                            Контейнеры
+                                        </p>
+                                    </div>
+                                    <div class="news-block__content news-card">
+                                        <div class="news-card__wrapper news-card__wrapper--desktop--column">
+                                            <div class="news-card__img">
+                                                <img src="assets/images/news-photo.jpg" alt="">
+                                            </div>
+                                            <div class="news-card__content">
+                                                <div class="news-card__info">
+                                                    <p class="title title--middle title--black">
+                                                        Контейнерный отчет по итогам 9 месяцев 2024 года
+                                                    </p>
+                                                    <p class="text text--large text--black">
+                                                        Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024
+                                                        года. Мировой рынок, железнодорожные перевозки, морской
+                                                        фронт
+                                                    </p>
+                                                </div>
+                                                <div class="news-card__date">
+                                                    <p class="text text--date">
+                                                        Июль 26, 2022, 10:26
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="news-block__footer news-block__footer--bordered">
+                                        <a href="#" class="text text--link">Контейнеры</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-grid__block home-grid__footer home-grid__block--full js-home-main">
+                            <div class="news-grid">
+                                <div class="news-grid__row">
+                                    <div class="news-block">
+                                        <div class="news-block__header">
+                                            <p class="title title--base title--black">
+                                                Море
+                                            </p>
+                                        </div>
+                                        <div class="news-block__content news-card">
+                                            <div class="news-card__wrapper news-card__wrapper--desktop--column">
+                                                <div class="news-card__img news-card__img--tablet--big">
+                                                    <img src="assets/images/news-photo.jpg" alt="">
+                                                </div>
+                                                <div class="news-card__content">
+                                                    <div class="news-card__info">
+                                                        <p class="title title--middle title--black">
+                                                            Контейнерный отчет по итогам 9 месяцев 2024 года
+                                                        </p>
+                                                        <p class="text text--large text--black">
+                                                            Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024
+                                                            года. Мировой рынок, железнодорожные перевозки, морской
+                                                            фронт
+                                                        </p>
+                                                    </div>
+                                                    <div class="news-card__date">
+                                                        <p class="text text--date">
+                                                            Июль 26, 2022, 10:26
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="news-block__footer news-block__footer--bordered">
+                                            <a href="#" class="text text--link">Морские перевозки</a>
+                                        </div>
+                                    </div>
+                                    <div class="news-block">
+                                        <div class="news-block__header">
+                                            <p class="title title--base title--black">
+                                                Железная дорога
+                                            </p>
+                                        </div>
+                                        <div class="news-block__content news-card">
+                                            <div class="news-card__wrapper news-card__wrapper--desktop--column">
+                                                <div class="news-card__img news-card__img--tablet--big">
+                                                    <img src="assets/images/news-photo.jpg" alt="">
+                                                </div>
+                                                <div class="news-card__content">
+                                                    <div class="news-card__info">
+                                                        <p class="title title--middle title--black">
+                                                            Контейнерный отчет по итогам 9 месяцев 2024 года
+                                                        </p>
+                                                        <p class="text text--large text--black">
+                                                            Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024
+                                                            года. Мировой рынок, железнодорожные перевозки, морской
+                                                            фронт
+                                                        </p>
+                                                    </div>
+                                                    <div class="news-card__date">
+                                                        <p class="text text--date">
+                                                            Июль 26, 2022, 10:26
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="news-block__footer news-block__footer--bordered">
+                                            <a href="#" class="text text--link">ЖД ПЕРЕВОЗКИ</a>
+                                        </div>
+                                    </div>
+                                    <div class="news-block">
+                                        <div class="news-block__header">
+                                            <p class="title title--base title--black">
+                                                За рубежом
+                                            </p>
+                                        </div>
+                                        <div class="news-block__content news-card">
+                                            <div class="news-card__wrapper news-card__wrapper--desktop--column">
+                                                <div class="news-card__img news-card__img--tablet--big">
+                                                    <img src="assets/images/news-photo.jpg" alt="">
+                                                </div>
+                                                <div class="news-card__content">
+                                                    <div class="news-card__info">
+                                                        <p class="title title--middle title--black">
+                                                            Контейнерный отчет по итогам 9 месяцев 2024 года
+                                                        </p>
+                                                        <p class="text text--large text--black">
+                                                            Всё о рынке контейнерных перевозок по итогам 9 месяцев 2024
+                                                            года. Мировой рынок, железнодорожные перевозки, морской
+                                                            фронт
+                                                        </p>
+                                                    </div>
+                                                    <div class="news-card__date">
+                                                        <p class="text text--date">
+                                                            Июль 26, 2022, 10:26
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="news-block__footer news-block__footer--bordered">
+                                            <a href="#" class="text text--link">МЕЖДУНАРОДНЫЕ НОВОСТИ</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div class="menu">
+    <div class="menu__wrapper">
+        <div class="menu__header">
+            <div class="menu__row">
+                <a href="#" class="menu__logo logo">
+                    <img src="assets/images/logo.svg" alt="" class="logo__img">
+                </a>
+                <a href="#" class="burger js-menu-burger">
+                    <span class="burger__item"></span>
+                    <span class="burger__item"></span>
+                    <span class="burger__item"></span>
+                </a>
+            </div>
+            <div class="menu-search search">
+                <div class="menu-search__wrapper">
+                    <div class="menu-search__date">
+                        <p class="text text--date">
+                            Вторник, 4 февраля, 2025 года
+                        </p>
+                    </div>
+                    <div class="menu-search__input">
+                        <label class="search-input search-input--big">
+                            <svg class="search-input__icon">
+                                <use xlink:href="assets/images/sprite.svg#loop"></use>
+                            </svg>
+                            <input type="text" placeholder="поиск" class="search-input__item">
+                        </label>
+                    </div>
+                    <div class="search-category">
+                        <div class="search-category__wrapper">
+                            <div class="search-category__header">
+                                <p class="title title--middle title--black">
+                                    Новости
+                                </p>
+                            </div>
+                            <ul class="search-category__list">
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Все новости
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        События
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Контейнеры
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Интервью
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Море
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Исследования
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Железная дорога
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Видео
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Автотранспорт
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Мероприятия
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Воздух
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="search-result__wrapper">
+                            <ul class="search-result__list">
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a href="#" class="button button--base button--accent search-result__button">
+                                Все результаты
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="menu-block">
+                <div class="menu-block__grid">
+                    <div class="menu-block__list">
+                        <p class="title title--middle title--black">
+                            Наши Telegram-каналы:
+                        </p>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                                INFRANEWS Официальный
+                            </span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                              Безбородов. Не только логистика
+                            </span>
+                        </a>
+                    </div>
+                    <div class="menu-block__list">
+                        <p class="title title--middle title--black">
+                            Наши Telegram-каналы:
+                        </p>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                               LogiStan. Экономика Центральной Азии
+                            </span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                             Стратегическая география
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-block">
+                <div class="menu-block__list">
+                    <a href="tel:+74959409061" class="title title--middle title--black">
+                        +7 (495) 940-90-61
+                    </a>
+                    <a href="mailto:info@infranews.ru" class="title title--middle title--black">info@infranews.ru</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/scripts/index.js"></script>
+</body>
+</html>
