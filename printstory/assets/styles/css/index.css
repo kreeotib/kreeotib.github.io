@@ -577,6 +577,9 @@ body.no-scroll {
   transition: 0.3s border-color;
   background-color: #fff;
 }
+.selection-img:hover {
+  cursor: pointer;
+}
 .selection-img--square {
   width: 48px;
   height: 48px;

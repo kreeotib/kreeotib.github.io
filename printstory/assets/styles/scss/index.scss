@@ -687,6 +687,10 @@ body.no-scroll {
     padding:6px;
     transition: .3s border-color;
     background-color: #fff;
+
+    &:hover{
+      cursor: pointer;
+    }
     &--square{
       width: 48px;
       height: 48px;
