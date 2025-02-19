@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <header class="header">
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main__wrapper">
+                    <a href="#" class="header__logo logo">
+                        <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo"></use>
+                        </svg>
+                    </a>
+                    <ul class="header-links">
+                        <li class="header-links__item">
+                            <a href="#" class="profile-link">
+                                <svg class="profile-link__icon">
+                                    <use xlink:href="assets/images/sprite.svg#settings"></use>
+                                </svg>
+                                Для профессионалов
+                            </a>
+                        </li>
+                        <li class="header-links__item">
+                            <a href="#" class="profile-link">
+                                <svg class="profile-link__icon">
+                                    <use xlink:href="assets/images/sprite.svg#image"></use>
+                                </svg>
+                                Мои проекты
+                            </a>
+                        </li>
+                        <li class="header-links__item">
+                            <a href="#" class="profile-link">
+                                <svg class="profile-link__icon">
+                                    <use xlink:href="assets/images/sprite.svg#user"></use>
+                                </svg>
+                                Авторизация/Регистрация
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="header__burger">
+                        <a href="#" class="burger">
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-nav">
+            <div class="container">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link current">
+                                Фотокниги
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">
+                                Выпускные альбомы
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">
+                                Фотопечать
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">
+                                Информация для вас
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">
+                                Акции и новости
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">
+                                Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="content page">
+        <div class="content__wrapper">
+            <div class="content__breadcrumbs breadcrumbs">
+                <div class="breadcrumbs__wrapper">
+                    <div class="container">
+                        <ul class="breadcrumbs__list">
+                            <li class="breadcrumbs__item">
+                                <a href="#" class="breadcrumbs__link">
+                                    Главная
+                                </a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                                <a href="#" class="breadcrumbs__link">
+                                    Фотокниги
+                                </a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                                <a href="#" class="breadcrumbs__link">
+                                    Фотокнига Премиум
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="back-link">
+                <div class="container">
+                    <a href="#" class="back-link__wrapper">
+                        <svg class="back-link__icon">
+                            <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                        </svg>
+                        <span class="text text--link">Назад</span>
+                    </a>
+                </div>
+            </div>
+            <div class="page__wrapper">
+                <div class="product-card">
+                    <div class="container">
+                        <div class="product-card__wrapper">
+                            <div class="product-card__img">
+                                <img src="assets/images/product/1.webp" alt="">
+                            </div>
+                            <div class="product-card__content">
+                                <div class="product-card__column product-card__column--info">
+                                    <div class="product-card__header">
+                                        <p class="title title--big title--black">
+                                            Фотокнига ПРЕМИУМ
+                                        </p>
+                                        <p class="text text--base text--black">
+                                            Кожзам Линкольн, с орнаментом
+                                        </p>
+                                    </div>
+                                    <div class="product-card__selection selection">
+                                        <div class="selection-block">
+                                            <div class="selection-block__wrapper">
+                                                <div class="selection-block__header">
+                                                    <p class="text text--base text--black text--semibold">
+                                                        Формат
+                                                    </p>
+                                                </div>
+                                                <div class="selection-block__content">
+                                                    <div class="selection-list">
+                                                        <div class="selection-list__item">
+                                                            <label class="selection-label">
+                                                                <input type="radio" checked name="card-selection"
+                                                                       class="selection-label__input">
+                                                                <span class="selection-label__text">25x20</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="selection-list__item">
+                                                            <label class="selection-label">
+                                                                <input type="radio" name="card-selection"
+                                                                       class="selection-label__input">
+                                                                <span class="selection-label__text">25x25</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="selection-list__item">
+                                                            <label class="selection-label">
+                                                                <input type="radio" name="card-selection"
+                                                                       class="selection-label__input">
+                                                                <span class="selection-label__text">25x30</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="selection-list__item">
+                                                            <div class="select">
+                                                                <div class="selection-label select-current">
+                                                                    <span class="selection-label__text js-select-current">Еще</span>
+                                                                    <svg class="select-current__icon">
+                                                                        <use xlink:href="assets/images/sprite.svg#arrow-down"></use>
+                                                                    </svg>
+                                                                </div>
+                                                                <div class="select__list">
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            15x15
+                                                                        </span>
+                                                                    </label>
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            22x15
+                                                                        </span>
+                                                                    </label>
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            33x15
+                                                                        </span>
+                                                                    </label>
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            15x15
+                                                                        </span>
+                                                                    </label>
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            15x15
+                                                                        </span>
+                                                                    </label>
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            15x15
+                                                                        </span>
+                                                                    </label>
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            15x15
+                                                                        </span>
+                                                                    </label>
+                                                                    <label class="select-label">
+                                                                        <input type="radio" name="card-selection"
+                                                                               class="select-label__input">
+                                                                        <span class="select-label__text">
+                                                                            15x15
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-card__column product-card__column--price">
+                                    <div class="product-card__price price">
+                                        <div class="price__wrapper">
+                                            <div class="price__row">
+                                                <p class="price__label">
+                                                    от 3 925 ₽
+                                                </p>
+                                                <a href="#" class="text text--link">за 10 разворотов</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__column product-card__column--buttons">
+                                        <a href="#" class="button button--small button--transparent product-card__calc">
+                                            <svg class="button__icon">
+                                                <use xlink:href="assets/images/sprite.svg#faq"></use>
+                                            </svg>
+                                            Посчитаем стоимость
+                                        </a>
+                                        <div class="product-card__buttons">
+                                            <a href="#" class="button button--base button--white">
+                                                Заказать
+                                            </a>
+                                            <a href="#" class="button button--base button--accent">
+                                                Перейти в конструктор
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card__footer tabs">
+                                <div class="selection ">
+                                    <div class="selection-list">
+                                        <div class="selection-list__item">
+                                            <a href="#" class="selection-label tabs__link">
+                                                <span class="selection-label__text">Описание</span>
+                                            </a>
+                                        </div>
+                                        <div class="selection-list__item">
+                                            <a href="#" class="selection-label tabs__link">
+                                                <span class="selection-label__text">Сроки печати</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="product-card__desc">
+                                        <div class="product-card__text">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+                                                aperiam fugit, mollitia nihil nostrum optio quia recusandae. Aliquid
+                                                consequuntur culpa incidunt iure libero nemo, nihil pariatur rerum sit
+                                                sunt! Amet cupiditate dicta dolore error eum eveniet ex excepturi
+                                                exercitationem ipsam iure pariatur quo quos reiciendis repellat
+                                                repudiandae voluptas, voluptate. Consequuntur facilis odit provident
+                                                quaerat repellendus repudiandae sunt veniam veritatis. Aliquid
+                                                assumenda, at deleniti dicta doloremque ea, eaque eligendi facere
+                                                molestias natus nemo provident quae, ratione repellendus reprehenderit
+                                                tenetur ut vero? Alias aliquid amet animi aspernatur consequatur cum
+                                                delectus deserunt dolorem dolores, ea eius eveniet excepturi fugit iusto
+                                                magni maiores minima minus molestias nesciunt nobis non, optio
+                                                praesentium quia quis quos sint soluta suscipit, temporibus ullam
+                                                veniam! Accusamus architecto debitis deleniti facilis necessitatibus
+                                                perspiciatis provident repellat sit, tempore temporibus totam ullam,
+                                                velit voluptatum. Animi, deleniti dolorem ea eaque expedita impedit
+                                                inventore iure non quam unde veniam, voluptas. Ex fuga harum veniam.
+                                            </p>
+                                        </div>
+                                        <label class="toggle-input">
+                                            <input checked type="checkbox" name="product-card-desc"
+                                                   class="toggle-input__item">
+                                            <span class="text text--link toggle-input__text" data-open="Развернуть"
+                                                  data-close="Свернуть">
+
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="product-card__desc">
+                                        <p class="text text--base text--black">
+                                            Стандарт — <span class="text text--accent--light">14.02.2025</span>
+                                        </p>
+                                        <p class="text text--base text--black">
+                                            Экспресс (24 часа) — <span
+                                                class="text text--accent--light">10.02.2025</span>
+                                        </p>
+                                        <p class="text text--base text--black">
+                                            Суперэкспресс (3 часа) — <span class="text text--accent--light">09.02.2025 17:00</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page__content">
+                    <div class="page__title">
+                        <div class="container">
+                            <p class="title title--base title--black">
+                                Персонализация фотокниги и дополнительные опции
+                            </p>
+                        </div>
+                    </div>
+                    <div class="page-grid">
+                        <div class="container">
+                            <div class="page-grid__row">
+                                <div class="page-grid__content category-list">
+                                    <div class="category-list__row">
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/1.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Фотообложка">
+                                                            Фотообложка
+                                                        </p>
+                                                        <p class="text text--base text--black category-card__text">
+                                                            Описание в 2-3 строки, если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/2.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Кожзам">
+                                                            Кожзам
+                                                        </p>
+                                                        <p class="text text--base text--black">
+                                                            Описание в 2-3 строки, если это необходимо
+                                                            если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/3.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Ткань">
+                                                            Ткань
+                                                        </p>
+                                                        <p class="text text--base text--black">
+                                                            Описание в 2-3 строки
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/4.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Alcantara">
+                                                            Alcantara
+                                                        </p>
+                                                        <p class="text text--base text--black category-card__text">
+                                                            Описание в 2-3 строки, если это необходимо Описание в 2-3
+                                                            строки, если это необходимо если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/5.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Тиснение золотом или серебром">
+                                                            Тиснение золотом или серебром
+                                                        </p>
+                                                        <p class="text text--base text--black category-card__text">
+                                                            Описание в 2-3 строки, если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="step-3.html"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/6.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Печать на обложке УФ красками">
+                                                            Печать на обложке УФ красками
+                                                        </p>
+                                                        <p class="text text--base text--black category-card__text">
+                                                            Описание в 2-3 строки, если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/7.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Фотоокно">
+                                                            Фотоокно
+                                                        </p>
+                                                        <p class="text text--base text--black category-card__text">
+                                                            Описание в 2-3 строки, если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/8.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title=" Металлизированные таблички">
+                                                            Металлизированные таблички
+                                                        </p>
+                                                        <p class="text text--base text--black category-card__text">
+                                                            Описание в 2-3 строки, если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="category-card">
+                                            <div class="category-card__wrapper">
+                                                <div class="category-card__img">
+                                                    <img src="assets/images/category/9.webp" alt="">
+                                                </div>
+                                                <div class="category-card__content">
+                                                    <div class="category-card__header">
+                                                        <p class="title title--small title--black category-card__title"
+                                                           title="Фотовставки">
+                                                            Фотовставки
+                                                        </p>
+                                                        <p class="text text--base text--black category-card__text">
+                                                            Описание в 2-3 строки, если это необходимо
+                                                        </p>
+                                                    </div>
+                                                    <a href="#"
+                                                       class="button button--base  button--accent button--full category-card__button">Выбрать</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="page-grid__aside menu">
+                                    <div class="menu__wrapper">
+                                        <div class="menu-block menu-block--mobile">
+                                            <div class="menu-block__wrapper">
+                                                <div class="menu-item">
+                                                    <div class="menu-item__wrapper">
+                                                        <div class="menu-item__header">
+                                                            <a href="#"
+                                                               class="menu-item__title menu-item__title--underline">Фотокниги</a>
+                                                        </div>
+                                                        <div class="menu-item__content">
+                                                            <ul class="menu-list">
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Выпускные альбомы
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотопечать
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Информация для вас
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Акции и новости
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Контакты
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="menu-block">
+                                            <div class="menu-block__wrapper">
+                                                <div class="menu-item">
+                                                    <div class="menu-item__wrapper">
+                                                        <div class="menu-item__header">
+                                                            <a href="#" class="menu-item__title">Часто задаваемые
+                                                                вопросы</a>
+                                                        </div>
+                                                        <div class="menu-item__content">
+                                                            <ul class="menu-list">
+                                                                <li class="menu-list__item active">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Примеры работ
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Форматы фотокниг
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Сроки печати
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Сроки и стоимость доставки
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Как оплатить
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Как заказать
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Технические требования к файлам
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Стоимость фотокниг
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Подарочная упаковка
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-item">
+                                                    <div class="menu-item__wrapper">
+                                                        <div class="menu-item__header">
+                                                            <a href="#" class="menu-item__title">Персонализация фотокниги
+                                                                и дополнительные опции
+                                                            </a>
+                                                        </div>
+                                                        <div class="menu-item__content">
+                                                            <ul class="menu-list">
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотообложка
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Кожзам
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Ткань
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Alcantara
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Тиснение золотом или серебром
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Печать на обложке УФ красками
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотоокно
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Металлизированные таблички
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотовставки
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-item">
+                                                    <div class="menu-item__wrapper">
+                                                        <div class="menu-item__header">
+                                                            <a href="#" class="menu-item__title">
+                                                                Тематические фотокниги
+                                                            </a>
+                                                        </div>
+                                                        <div class="menu-item__content">
+                                                            <ul class="menu-list menu-list--small">
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Свадебные
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Детские
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Семейные
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Alcantara
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Тиснение золотом или серебром
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Печать на обложке УФ красками
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотоокно
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Металлизированные таблички
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотовставки
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <label class="menu-toggle">
+                                                                        <input checked type="checkbox" class="menu-toggle__item">
+                                                                        <span class="text text--link text--link--small menu-toggle__text" data-close="Свернуть" data-open="Еще"></span>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="menu-item">
+                                                    <div class="menu-item__wrapper">
+                                                        <div class="menu-item__header">
+                                                            <a href="#" class="menu-item__title">
+                                                                Каталоги
+                                                            </a>
+                                                        </div>
+                                                        <div class="menu-item__content">
+                                                            <ul class="menu-list menu-list--small">
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Материалы для обложки
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Клише для тиснения
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Макеты для гравировки
+                                                                        и УФ печати
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Alcantara
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Тиснение золотом или серебром
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Печать на обложке УФ красками
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотоокно
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Металлизированные таблички
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <a href="#" class="menu-list__link">
+                                                                        Фотовставки
+                                                                    </a>
+                                                                </li>
+                                                                <li class="menu-list__item">
+                                                                    <label class="menu-toggle">
+                                                                        <input checked type="checkbox" class="menu-toggle__item">
+                                                                        <span class="text text--link text--link--small menu-toggle__text" data-close="Свернуть" data-open="Еще"></span>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="menu-block menu-block--mobile">
+                                            <div class="menu-block__wrapper">
+                                                <ul class="menu-links">
+                                                    <li class="menu-links__item">
+                                                        <a href="#" class="profile-link profile-link--black">
+                                                            <svg class="profile-link__icon">
+                                                                <use xlink:href="assets/images/sprite.svg#settings"></use>
+                                                            </svg>
+                                                            Для профессионалов
+                                                        </a>
+                                                    </li>
+                                                    <li class="menu-links__item">
+                                                        <a href="#" class="profile-link profile-link--black">
+                                                            <svg class="profile-link__icon">
+                                                                <use xlink:href="assets/images/sprite.svg#image"></use>
+                                                            </svg>
+                                                            Мои проекты
+                                                        </a>
+                                                    </li>
+                                                    <li class="menu-links__item">
+                                                        <a href="#" class="profile-link profile-link--black">
+                                                            <svg class="profile-link__icon">
+                                                                <use xlink:href="assets/images/sprite.svg#user"></use>
+                                                            </svg>
+                                                            Авторизация/Регистрация
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>
