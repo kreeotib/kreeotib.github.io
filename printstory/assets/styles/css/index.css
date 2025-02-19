@@ -1061,6 +1061,9 @@ body.no-scroll {
     padding: 0 16px;
   }
 }
+.menu-toggle:hover {
+  cursor: pointer;
+}
 .menu-toggle__text::before {
   content: attr(data-close);
 }
