@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row header__row--top">
+                    <p class="text text--date">
+                        Вторник, 4 февраля, 2025 года
+                    </p>
+                    <ul class="header-links">
+                        <li class="header-links__item">
+                            <a href="#" class="header-links__label">
+                                О проекте
+                            </a>
+                        </li>
+                        <li class="header-links__item">
+                            <a href="#" class="header-links__label">
+                                Сотрудничество
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header__row header__row--middle">
+                    <a href="#" class="header__logo logo">
+                        <img src="assets/images/logo.svg" alt="" class="logo__img">
+                    </a>
+                    <div class="header__burger">
+                        <a href="#" class="burger js-menu-burger">
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                        </a>
+                    </div>
+                    <div class="header-banner">
+                        <img src="assets/images/banner.jpg" alt="" class="header-banner__img">
+                    </div>
+                </div>
+                <div class="header__row header__row--bottom">
+                    <nav class="nav">
+                        <ul class="nav-list">
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    новости
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    события
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    интервью
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    исследования
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    видео
+                                </a>
+                            </li>
+                            <li class="nav-list__item">
+                                <a href="#" class="nav-list__link">
+                                    мероприятия
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="header__search search">
+                        <label class="search-input">
+                            <svg class="search-input__icon">
+                                <use xlink:href="assets/images/sprite.svg#loop"></use>
+                            </svg>
+                            <input type="text" placeholder="поиск" class="search-input__item">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content__wrapper ">
+           <div class="container">
+               <form action="thanks-page.html" class="form">
+                   <div class="form__wrapper">
+                       <div class="form__header">
+                           <p class="title title--middle title--black form__title">
+                               подписка <br> на рассылку infranews
+                           </p>
+                       </div>
+                       <div class="form__content">
+                           <div class="form__grid">
+                               <div class="form__column">
+                                   <div class="input">
+                                       <label for="name" class="input__label">
+                                           Имя*
+                                       </label>
+                                       <input id="name" type="text" class="input__item">
+                                   </div>
+                                   <div class="input">
+                                       <label for="email" class="input__label">
+                                           E-mail*
+                                       </label>
+                                       <input id="email" type="text" class="input__item">
+                                   </div>
+                                   <div class="input">
+                                       <label for="phone" class="input__label">
+                                           Телефон*
+                                       </label>
+                                       <input id="phone" type="text" class="input__item">
+                                   </div>
+                               </div>
+                               <div class="form__column">
+                                   <div class="input">
+                                       <label for="company" class="input__label">
+                                           Компания
+                                       </label>
+                                       <input id="company" type="text" class="input__item">
+                                   </div>
+                                   <div class="input">
+                                       <label for="position" class="input__label">
+                                           Должность
+                                       </label>
+                                       <input id="position" type="text" class="input__item">
+                                   </div>
+                                   <p class="form__text">
+
+                                   </p>
+                               </div>
+                           </div>
+                           <div class="form__grid">
+                               <div class="form__column">
+                                   <label class="form-checkbox">
+                                       <input type="checkbox"  class="form-checkbox__input">
+                                       <span class="form-checkbox__checkmark">
+                                       </span>
+                                       <span class="form-checkbox__text">
+                                           Да, я заинтересован в получении писем по указанной электронной почте от InfraNews.*
+                                       </span>
+                                   </label>
+                                   <label class="form-checkbox">
+                                       <input type="checkbox"  class="form-checkbox__input">
+                                       <span class="form-checkbox__checkmark">
+                                       </span>
+                                       <span class="form-checkbox__text">
+                                          Да, я доверяю свои персональные данные ООО «ИНФРА НЬЮС» (ООО «ИНФРА НЬЮС» не предоставляет никаких персональных данных третьим лицам).*
+                                       </span>
+                                   </label>
+                               </div>
+                               <div class="form__column">
+                                   <label class="form-checkbox">
+                                       <input type="checkbox"  class="form-checkbox__input">
+                                       <span class="form-checkbox__checkmark">
+                                       </span>
+                                       <span class="form-checkbox__text">
+                                          Хочу быть в курсе графика выпуска InfraNews <a href="#" target="_blank">готовых маркетинговых исследований</a>
+                                       </span>
+                                   </label>
+                                   <label class="form-checkbox">
+                                       <input type="checkbox"  class="form-checkbox__input">
+                                       <span class="form-checkbox__checkmark">
+                                       </span>
+                                       <span class="form-checkbox__text">
+                                           Мне важно знать о предстоящих <a href="#" target="_blank">конференциях и семинарах InfraNews</a>
+                                       </span>
+                                   </label>
+                                   <label class="form-checkbox">
+                                       <input type="checkbox"  class="form-checkbox__input">
+                                       <span class="form-checkbox__checkmark">
+                                       </span>
+                                       <span class="form-checkbox__text">
+                                          Мне интересно получать еженедельный дайджест <a href="#" target="_blank">новостей InfraNews</a> по субботам
+                                       </span>
+                                   </label>
+                                   <label class="form-checkbox">
+                                       <input type="checkbox"  class="form-checkbox__input">
+                                       <span class="form-checkbox__checkmark">
+                                       </span>
+                                       <span class="form-checkbox__text">
+                                            Я готов участвовать в социологических опросах в интересах исследовательских проектов InfraNews
+                                       </span>
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form__grid">
+                               <div class="form__button">
+                                   <button type="submit"
+                                           class="button button--base button--accent button--full">отправить</button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </form>
+           </div>
+        </div>
+    </main>
+</div>
+
+<div class="menu">
+    <div class="menu__wrapper">
+        <div class="menu__header">
+            <div class="menu__row">
+                <a href="#" class="menu__logo logo">
+                    <img src="assets/images/logo.svg" alt="" class="logo__img">
+                </a>
+                <a href="#" class="burger js-menu-burger">
+                    <span class="burger__item"></span>
+                    <span class="burger__item"></span>
+                    <span class="burger__item"></span>
+                </a>
+            </div>
+            <div class="menu-search search">
+                <div class="menu-search__wrapper">
+                    <div class="menu-search__date">
+                        <p class="text text--date">
+                            Вторник, 4 февраля, 2025 года
+                        </p>
+                    </div>
+                    <div class="menu-search__input">
+                        <label class="search-input search-input--big">
+                            <svg class="search-input__icon">
+                                <use xlink:href="assets/images/sprite.svg#loop"></use>
+                            </svg>
+                            <input type="text" placeholder="поиск" class="search-input__item">
+                        </label>
+                    </div>
+                    <div class="search-category">
+                        <div class="search-category__wrapper">
+                            <div class="search-category__header">
+                                <p class="title title--middle title--black">
+                                    Новости
+                                </p>
+                            </div>
+                            <ul class="search-category__list">
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Все новости
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        События
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Контейнеры
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Интервью
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Море
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Исследования
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Железная дорога
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Видео
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Автотранспорт
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Мероприятия
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text text--large">
+                                        Воздух
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="search-result__wrapper">
+                            <ul class="search-result__list">
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="news-small">
+                                    <a href="#" class="news-small__wrapper news-small__wrapper--search">
+                                        <p class="text text--base text--black">
+                                            В Великобритании принят закон, обессмысливающий забостовки
+                                        </p>
+                                        <p class="text text--date">
+                                            Июль 26, 2022, 16:14
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a href="#" class="button button--base button--accent search-result__button">
+                                Все результаты
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="menu-block">
+                <div class="menu-block__grid">
+                    <div class="menu-block__list">
+                        <p class="title title--middle title--black">
+                            Наши Telegram-каналы:
+                        </p>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                                INFRANEWS Официальный
+                            </span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                              Безбородов. Не только логистика
+                            </span>
+                        </a>
+                    </div>
+                    <div class="menu-block__list">
+                        <p class="title title--middle title--black">
+                            Наши Telegram-каналы:
+                        </p>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                               LogiStan. Экономика Центральной Азии
+                            </span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                            </svg>
+                            <span class="text text--large text--black">
+                             Стратегическая география
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-block">
+                <div class="menu-block__list">
+                    <a href="tel:+74959409061" class="title title--middle title--black">
+                        +7 (495) 940-90-61
+                    </a>
+                    <a href="mailto:info@infranews.ru" class="title title--middle title--black">info@infranews.ru</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/scripts/index.js"></script>
+</body>
+</html>

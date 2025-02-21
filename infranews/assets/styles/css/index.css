@@ -45,6 +45,9 @@ body.no-scroll {
   font-size: var(--title-size-middle);
   font-weight: 500;
 }
+.title--uppercase {
+  text-transform: uppercase;
+}
 .title--black {
   color: #000;
 }
@@ -433,6 +436,9 @@ body.no-scroll {
   flex-direction: column;
   gap: 10px;
 }
+.news-block--no--gap {
+  gap: 0;
+}
 .news-block__footer {
   display: flex;
   align-items: center;
@@ -531,6 +537,9 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.news-card__content--gap--small {
+  gap: 10px;
 }
 .news-card__info {
   display: flex;
@@ -686,7 +695,8 @@ body.no-scroll {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 385px;
+  max-width: 100%;
   height: 270px;
   position: relative;
 }
@@ -797,6 +807,186 @@ body.no-scroll {
   .home-block--hidden {
     display: none;
   }
+}
+
+.form__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+@media screen and (max-width: 1200px) {
+  .form__grid {
+    grid-template-columns: repeat(auto-fit, 385px);
+  }
+}
+@media screen and (max-width: 800px) {
+  .form__grid {
+    grid-template-columns: minmax(0, 385px);
+  }
+}
+@media screen and (min-width: 801px) {
+  .form__button {
+    grid-column-start: 2;
+  }
+}
+.form__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media screen and (max-width: 800px) and (min-width: 691px) {
+  .form__wrapper {
+    align-items: center;
+  }
+}
+.form__title {
+  text-transform: uppercase;
+}
+@media screen and (max-width: 800px) and (min-width: 691px) {
+  .form__title {
+    text-align: center;
+  }
+}
+.form__column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.form__content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+}
+.form-checkbox__input {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.form-checkbox__input:checked ~ .form-checkbox__checkmark {
+  background-color: var(--color-accent);
+}
+.form-checkbox__checkmark {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.form-checkbox__text {
+  font-family: var(--font-text);
+  font-size: 12px;
+  align-self: center;
+}
+.form-checkbox__text a {
+  color: var(--color-accent);
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.input__label {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.2;
+}
+.input__item {
+  width: 100%;
+  height: 30px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(116, 116, 116, 0.5);
+  color: #000;
+}
+.input__item::placeholder {
+  color: #747474;
+}
+
+.thanks__wrapper {
+  padding: 100px 0;
+}
+@media screen and (max-width: 1040px) {
+  .thanks__wrapper {
+    padding: 50px 0 100px 0;
+  }
+}
+@media screen and (max-width: 640px) {
+  .thanks__wrapper {
+    padding: 50px 0 72px 0;
+  }
+}
+.thanks__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 386px;
+  width: 100%;
+  margin: 0 auto;
+}
+.thanks__title {
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 21px;
+  font-weight: 600;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.also-grid__row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+@media screen and (max-width: 1120px) {
+  .also-grid__news {
+    grid-column: 1/-1;
+  }
+}
+.also-grid__banners {
+  grid-column-end: span 2;
+}
+@media screen and (max-width: 1040px) {
+  .also-grid__banners {
+    grid-column: 1/-1;
+  }
+}
+
+.banners-grid__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+@media screen and (max-width: 1040px) {
+  .banners-grid__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.block__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.block__header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #747474;
 }
 
 /*# sourceMappingURL=index.css.map */
