@@ -53,13 +53,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    const homeTabs = document.querySelector('.home-tabs');
+    homeTabsInit();
 
-    if(homeTabs){
-        homeTabs.addEventListener('change',(e)=>{
-            console.log(e.target.value)
-        })
+
+    // Удалить этот код, он отвечает за то, чтобы на телефоне было 20 новостей, а на десктопе 6
+
+    function updateNewsItems() {
+        const newsListHome = document.querySelector('.js-news-list');
+        if (newsListHome) {
+            const newsItems = newsListHome.querySelectorAll('.news-small');
+            const currentCount = newsItems.length;
+
+            if (window.innerWidth < 641) {
+                if (currentCount < 20) {
+                    const lastItem = newsItems[newsItems.length - 1];
+                    for (let i = currentCount; i < 20; i++) {
+                        const clonedItem = lastItem.cloneNode(true);
+                        newsListHome.appendChild(clonedItem);
+                    }
+                }
+            } else if (window.innerWidth > 641) {
+                newsItems.forEach((element, index) =>{
+                    index > 5 ? element.remove() : null;
+                })
+            }
+        }
     }
 
-    homeTabsInit();
+    updateNewsItems();
+
+    window.addEventListener('resize', updateNewsItems);
 })

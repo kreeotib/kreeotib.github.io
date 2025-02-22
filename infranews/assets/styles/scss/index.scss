@@ -517,7 +517,7 @@ body.no-scroll {
 
   &-small {
     &__wrapper {
-      padding: 20px 10px;
+      padding:8px 12px;
 
       display: flex;
       flex-direction: column;
@@ -762,8 +762,7 @@ body.no-scroll {
 
       font-family: var(--font-title);
       color: #191919;
-      font-weight: 700;
-      text-transform: uppercase;
+      font-weight: 500;
 
       font-size: var(--title-size-base);
 

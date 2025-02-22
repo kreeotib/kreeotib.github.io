@@ -407,7 +407,7 @@ body.no-scroll {
   border-bottom: 1px solid #AAAAAA;
 }
 .news-small__wrapper {
-  padding: 20px 10px;
+  padding: 8px 12px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -622,8 +622,7 @@ body.no-scroll {
   text-align: center;
   font-family: var(--font-title);
   color: #191919;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 500;
   font-size: var(--title-size-base);
   padding-bottom: 16px;
   border-bottom: 3px solid transparent;
