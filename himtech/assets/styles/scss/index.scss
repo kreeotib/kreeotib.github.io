@@ -1439,6 +1439,9 @@ body {
   &-title{
     &__wrapper{
       padding: 24px 0;
+      @media screen and (max-width: 767px) {
+        padding: 8px 0;
+      }
     }
   }
   &-banner{
