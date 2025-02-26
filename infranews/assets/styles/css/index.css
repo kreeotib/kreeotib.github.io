@@ -553,7 +553,7 @@ body.no-scroll {
 .home-grid {
   display: grid;
   grid-template-columns: 385px minmax(0, 1fr);
-  gap: 40px 20px;
+  gap: 30px 20px;
 }
 @media screen and (max-width: 1040px) {
   .home-grid {
