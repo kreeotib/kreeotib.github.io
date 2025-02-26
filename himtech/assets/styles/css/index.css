@@ -167,6 +167,9 @@ body {
   color: #fff;
 }
 
+.breadcrumbs--grey {
+  background-color: #F4F7FA;
+}
 .breadcrumbs__wrapper {
   padding: 30px 0;
 }
@@ -1293,6 +1296,9 @@ body {
   opacity: 0.4;
 }
 
+.page-title__wrapper {
+  padding: 24px 0;
+}
 @media screen and (max-width: 767px) {
   .page-banner__slider {
     display: none;
