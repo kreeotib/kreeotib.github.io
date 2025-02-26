@@ -49,7 +49,7 @@
                     </a>
                 </div>
                 <div class="header__block header__block--desktop">
-                    <a href="#" class="button button--big button--bordered">
+                    <a href="#" data-popup=".popup-request" class="button button--big button--bordered">
                         Оставить заявку
                     </a>
                 </div>
@@ -1608,6 +1608,68 @@
             </div>
         </div>
     </footer>
+</div>
+
+
+<div class="popup popup-request popup--active">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <a href="#" class="popup__close popup-close"></a>
+            <div class="popup-content">
+                <div class="popup-content__wrapper">
+                    <form action="#" class="form">
+                        <div class="form__wrapper">
+                            <p class="title title--middle title--mobile--large title--center title--black title--regular">
+                                Оставить заявку
+                            </p>
+                            <div class="form__grid">
+                                <div class="form__list">
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Ф.И.О.">
+                                    </label>
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Телефон*">
+                                    </label>
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Почта*">
+                                    </label>
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Организация*">
+                                    </label>
+                                    <label class="form-input form-input--grey form-input--textarea">
+                                        <textarea placeholder="Текст заявки"></textarea>
+                                    </label>
+                                </div>
+                                <div class="form__wrapper">
+
+                                    <label class="form-file form-file--desktop--center js-file-input">
+                                        <input type="file" class="form-file__input">
+                                        <span class="form-file__title">
+                                           Прикрепить карту предприятия:
+                                        </span>
+                                        <span class="form-file__label">
+                                            <span class="form-file__checkmark">
+                                                Прикрепить файл
+                                            </span>
+                                            <span class="form-file__text js-file-input-name">
+                                                Файл не выбран
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <div class="form__buttons">
+                                        <button type="submit"
+                                                class="form__button form__button--full form__button--uppercase button button--accent">
+                                            Зарегистрироваться
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>

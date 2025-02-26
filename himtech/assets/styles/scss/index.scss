@@ -238,6 +238,13 @@ body.no-scroll {
     }
   }
 
+  &--small{
+    font-size: 16px;
+    @media screen and (max-width: 767px) {
+      font-size: 14px;
+    }
+  }
+
   &--black {
     color: #000;
   }
@@ -260,6 +267,21 @@ body.no-scroll {
 
   &--accent {
     color: #006699;
+  }
+
+  &--line{
+    padding-left: 12px;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+
+      background-color: rgba(#747474,.3);
+    }
   }
 
   &--medium {
@@ -308,7 +330,7 @@ body.no-scroll {
     font-size: 18px;
     text-transform: uppercase;
 
-    padding: 15px 60px;
+    padding: 15px 50px;
 
     height: 50px;
   }
@@ -328,6 +350,7 @@ body.no-scroll {
     color: #000;
     background-color: transparent;
 
+    border-radius: 6px;
     border: 2px solid #79292C;
 
     transition: .3s color, .3s background-color;
@@ -340,6 +363,10 @@ body.no-scroll {
 
   &--center {
     margin: 0 auto;
+  }
+
+  &--full{
+    width: 100%;
   }
 }
 
@@ -982,6 +1009,12 @@ body.no-scroll {
       gap: 60px;
       @media screen and (max-width: 767px) {
         gap: 40px;
+
+        &--mobile{
+          &--small{
+            gap: 20px;
+          }
+        }
       }
     }
 
@@ -1030,6 +1063,10 @@ body.no-scroll {
 
     &--white {
       background-color: #fff;
+    }
+
+    &--accent{
+      background-color: #006699;
     }
 
     &__button {
@@ -3037,6 +3074,12 @@ body.no-scroll {
     gap: 20px;
   }
 
+  &__column{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   &__button {
     width: 210px;
     height: 50px;
@@ -3044,6 +3087,11 @@ body.no-scroll {
 
     font-size: 18px;
 
+    &--big{
+      height: 80px;
+      text-transform: uppercase;
+      font-size: 28px;
+    }
     &--full {
       width: 100%;
     }
@@ -3063,6 +3111,13 @@ body.no-scroll {
     flex-direction: column;
     gap: 20px;
 
+    &--desktop{
+      &--center{
+        @media screen and (min-width: 768px) {
+          margin:0 auto;
+        }
+      }
+    }
     &:hover {
       cursor: pointer;
     }
@@ -3352,8 +3407,220 @@ body.no-scroll {
   }
 }
 
+.numbers{
+  &__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    flex-wrap: wrap;
+    
+    @media screen and (max-width: 767px) {
+      flex-direction:column;
+    }
+  }
+  &-item{
+    &:nth-child(1){
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #f4f7fa 0%, rgba(255, 255, 255, 0) 100%);
+      }
+    }
+    &:nth-child(3){
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, #f4f7fa 0%, rgba(255, 255, 255, 0) 100%);
+      }
+    }
+    &__wrapper{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      color: #0D141B;
+      @media screen and (max-width: 767px) {
+        gap: 10px;
+      }
+    }
+    &__label{
+      font-size: 62px;
+      font-weight: 600;
+      @media screen and (max-width: 767px) {
+        font-size: 32px;
+      }
+    }
+    &__text{
+      font-size: 16px;
+      font-weight: 500;
+      @media screen and (max-width: 767px) {
+        font-size: 14px;
+      }
+    }
+    &__title{
+      font-size: 30px;
+      font-weight: 500;
+      @media screen and (max-width: 767px) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  background: rgba(#006699, 0.7);
+  z-index: 12;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: .3s visibility, .5s opacity;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__close {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+
+    border-radius: 6px;
+
+    &:hover {
+      cursor: pointer;
+
+      &::before, &::after {
+        background: #000;
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 30px;
+      height: 3px;
+      display: block;
+      background: #747474;
+      position: absolute;
+      left: calc(50% - 15px);
+      top: calc(50% - 1.5px);
+      transition: 0.3s background-color;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      content: "";
+      width: 30px;
+      height: 3px;
+      display: block;
+      background: #747474;
+      position: absolute;
+      left: calc(50% - 15px);
+      top: calc(50% - 1.5px);
+      transition: 0.3s background-color;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px; /* Width of the scrollbar */
+      height: 5px; /* Height of the scrollbar */
+
+      display: none;
+      @media screen and (max-width: 640px) {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent; /* Background of the scrollbar track */
+      border-radius: 10px; /* Rounded corners for the track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-accent); /* Color of the scrollbar thumb */
+      border-radius: 10px; /* Rounded corners for the thumb */
+    }
+  }
+
+  &__container {
+    max-width: 1000px;
+    width: calc(100% - 60px);
+    max-height: 90%;
+    height: -moz-max-content;
+    height: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  }
+
+  &-content{
+    &__wrapper{
+      background-color: #fff;
+      border-radius: 6px;
+
+      padding: 80px 70px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+      
+      @media screen and (max-width: 767px) {
+        padding: 40px 0;
+
+        gap: 60px;
+      }
+    }
+    &__grid{
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 20px;
+      @media screen and (max-width: 767px) {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  }
+}
+
 .header__nav__catalog-drop-down {
   width: 1170px;
+  max-width: calc(100vw - 100px);
   max-height: 654px;
   background-color: white;
   display: flex;

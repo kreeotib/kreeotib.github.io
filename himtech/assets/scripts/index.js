@@ -29,6 +29,41 @@ const initTabs = () => {
     }
 }
 
+const checkTargetOrKey = event => {
+    if (
+        event.target.classList.contains('popup__wrapper') ||
+        event.key === 'Escape' ||
+        event.target.closest('.popup-close')
+    ) {
+        event.preventDefault();
+        hideAllPopups();
+    }
+};
+const showPopup = popupId => {
+    const popup = document.querySelector(popupId);
+    if (!popup) return
+
+
+    hideAllPopups();
+
+    popup.classList.add('popup--active');
+    document.body.classList.add('no-scroll');
+
+    document.addEventListener('click', checkTargetOrKey);
+    document.addEventListener('keyup', checkTargetOrKey);
+};
+const hideAllPopups = () => {
+    const popups = document.querySelectorAll('.popup');
+
+    popups.forEach(popup => {
+        popup.classList.remove('popup--active');
+    });
+    document.body.classList.remove('no-scroll');
+
+    document.removeEventListener('click', checkTargetOrKey);
+    document.removeEventListener('keyup', checkTargetOrKey);
+};
+
 document.addEventListener('DOMContentLoaded',()=>{
     initTabs();
 
@@ -115,6 +150,22 @@ document.addEventListener('DOMContentLoaded',()=>{
             });
         });
     };
+
+
+    const popupButtons = document.querySelectorAll('[data-popup]');
+    const popups = document.querySelectorAll('.popup');
+
+    if (popups.length) {
+        popupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const popupId = button.dataset.popup
+                showPopup(popupId);
+            });
+        });
+    }
+
     const handleOpenDropDown = () => {
         const openItem = document.querySelector('.header__nav__list__item');
         const link = openItem.querySelector('.menu__link');
@@ -147,6 +198,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     handlerDropDownMenu();
     handleOpenDropDown();
+
+
 
 
     Fancybox.bind("[data-fancybox]", {

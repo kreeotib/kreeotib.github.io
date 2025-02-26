@@ -1116,10 +1116,10 @@
                                                 </p>
                                             </div>
                                             <div class="product__buttons">
-                                                <a href="#" class="product__button button button--bordered">
+                                                <a href="#" data-popup=".popup-price" class="product__button button button--bordered">
                                                     Узнать цену
                                                 </a>
-                                                <a href="#" class="product__button button button--accent">
+                                                <a href="#" data-popup=".popup-cart" class="product__button button button--accent">
                                                     В корзину
                                                 </a>
                                             </div>
@@ -1393,6 +1393,90 @@
     </footer>
 </div>
 
+<div class="popup popup-price">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <a href="#" class="popup__close popup-close"></a>
+            <div class="popup-content">
+                <div class="popup-content__wrapper">
+                    <form action="#" class="form">
+                        <div class="form__wrapper">
+
+                            <p class="title title--middle title--mobile--large title--center title--black title--regular">
+                                Узнать стоимость <br> “Медный порошок ПМУ”
+                            </p>
+                            <div class="form__grid">
+                                <div class="form__list">
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Объем покупки">
+                                    </label>
+                                    <p class="text text--small text--black">*объем розничной покупки составляет от 5 кг</p>
+
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Фракция">
+                                    </label>
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Ф.И.О.">
+                                    </label>
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Телефон*">
+                                    </label>
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Почта">
+                                    </label>
+                                    <label class="form-input form-input--grey">
+                                        <input type="text" placeholder="Организация">
+                                    </label>
+                                </div>
+                                <div class="form__wrapper">
+
+                                    <label class="form-file form-file--desktop--center js-file-input">
+                                        <input type="file" class="form-file__input">
+                                        <span class="form-file__title">
+                                          Прикрепить карту предприятия:
+                                        </span>
+                                        <span class="form-file__label">
+                                            <span class="form-file__checkmark">
+                                                Прикрепить файл
+                                            </span>
+                                            <span class="form-file__text js-file-input-name">
+                                                Файл не выбран
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <div class="form__buttons">
+                                        <button type="submit"
+                                                class="form__button form__button--full form__button--uppercase button button--accent">
+                                            Узнать стоимость
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup popup-cart">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <a href="#" class="popup__close popup-close"></a>
+            <div class="popup-content">
+                <div class="popup-content__wrapper">
+                    <p class="title title--middle title--mobile--large title--center title--black title--regular">
+                        Товар “Медный порошок ПМУ” добавлен в корзину
+                    </p>
+                    <div class="popup-content__grid">
+                        <a href="catalog-cart.html" class="button button--base button--accent button--full">Перейти в корзину</a>
+                        <a href="#" class="button button--base button--accent button--full popup-close">Продолжить покупки</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="assets/libs/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
