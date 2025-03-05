@@ -1,0 +1,134 @@
+.hero-logo__wrapper .hero-logo__item {
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: 100ms * $i;
+    }
+  }
+}
+.hero-logo__dots .hero-logo__item {
+  @for $i from 1 through 15 {
+    &:nth-child(#{$i}) {
+      animation-delay: 50ms * $i;
+    }
+  }
+}
+.hero-logo__code .hero-logo__item {
+  @for $i from 1 through 30 {
+    &:nth-child(#{$i}) {
+      animation-delay: 50ms * $i;
+    }
+  }
+}
+.hero-logo__arrows--right .hero-logo__arrow{
+  animation: arrowAnimation 1s forwards;
+  opacity: 0;
+}
+
+.hero-logo__arrows--left .hero-logo__arrow{
+  animation: arrowAnimationLeft 1s forwards;
+  opacity: 0;
+}
+
+.hero-logo__dot{
+  opacity:0;
+  animation:rotateAnimation 1s forwards;
+}
+
+.hero-logo__width{
+  opacity:0;
+  animation:widthAnimation 1s forwards;
+}
+
+.hero-logo__height{
+  opacity:0;
+  animation:heightAnimation 1s forwards;
+}
+
+.hero-logo__circle{
+  opacity: 0;
+  animation:circleAnimation 2s forwards;
+}
+
+@keyframes arrowAnimation {
+  0%{
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes arrowAnimationLeft {
+  0%{
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotateAnimation {
+  0%{
+    opacity: 0;
+    transform: scale(0) rotate(180deg);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1)  rotate(0);
+  }
+}
+
+@keyframes widthAnimation {
+  0%{
+    opacity: 0;
+    transform: scale(0,1);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heightAnimation {
+  0%{
+    opacity: 0;
+    transform: scale(1,0);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes circleAnimation {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
