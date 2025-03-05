@@ -49,6 +49,12 @@
   animation:circleAnimation 2s forwards;
 }
 
+.hero-logo__main{
+  opacity: 0;
+  animation:circleMainAnimation 2s forwards;
+}
+
+
 @keyframes arrowAnimation {
   0%{
     transform: translateX(100%);
@@ -130,5 +136,20 @@
   100%{
     opacity: 1;
     transform: rotate(360deg);
+  }
+}
+
+
+@keyframes circleMainAnimation {
+  0%{
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform:  rotate(0);
   }
 }
