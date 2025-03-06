@@ -166,6 +166,49 @@
   animation-delay: 1500ms;
 }
 
+.hero-logo__letter .hero-logo__item:nth-child(1) {
+  animation-delay: 3.1s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(2) {
+  animation-delay: 3.2s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(3) {
+  animation-delay: 3.3s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(4) {
+  animation-delay: 3.4s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(5) {
+  animation-delay: 3.5s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(6) {
+  animation-delay: 3.6s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(7) {
+  animation-delay: 3.7s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(8) {
+  animation-delay: 3.8s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(9) {
+  animation-delay: 3.9s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(10) {
+  animation-delay: 4s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(11) {
+  animation-delay: 4.1s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(12) {
+  animation-delay: 4.2s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(13) {
+  animation-delay: 4.3s;
+}
+.hero-logo__letter .hero-logo__item:nth-child(14) {
+  animation-delay: 4.4s;
+}
+
 .hero-logo__arrows--right .hero-logo__arrow {
   animation: arrowAnimation 1s forwards;
   opacity: 0;
@@ -193,12 +236,12 @@
 
 .hero-logo__circle {
   opacity: 0;
-  animation: circleAnimation 2s forwards;
+  animation: circleAnimation 2s 3s forwards;
 }
 
 .hero-logo__main {
   opacity: 0;
-  animation: circleMainAnimation 2s forwards;
+  animation: circleMainAnimation 2s 2s forwards;
 }
 
 @keyframes arrowAnimation {

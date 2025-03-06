@@ -19,6 +19,13 @@
     }
   }
 }
+.hero-logo__letter .hero-logo__item {
+  @for $i from 1 through 14 {
+    &:nth-child(#{$i}) {
+      animation-delay:3s + 100ms * $i;
+    }
+  }
+}
 .hero-logo__arrows--right .hero-logo__arrow{
   animation: arrowAnimation 1s forwards;
   opacity: 0;
@@ -46,12 +53,12 @@
 
 .hero-logo__circle{
   opacity: 0;
-  animation:circleAnimation 2s forwards;
+  animation:circleAnimation 2s 3s forwards;
 }
 
 .hero-logo__main{
   opacity: 0;
-  animation:circleMainAnimation 2s forwards;
+  animation:circleMainAnimation 2s 2s forwards;
 }
 
 
