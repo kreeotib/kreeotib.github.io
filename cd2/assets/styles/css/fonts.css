@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Random Grotesque Spacious Book';
+    src: url('../../fonts/RG-SpaciousBook.woff2') format('woff2'),
+    url('../../fonts/RG-SpaciousBook.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('../../fonts/Inter-Regular.woff2') format('woff2'),
+    url('../../fonts/Inter-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
