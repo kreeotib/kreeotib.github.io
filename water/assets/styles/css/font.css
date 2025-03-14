@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../../fonts/ProximaNova/ProximaNova-Bold.woff2') format('woff2'),
+    url('../../fonts/ProximaNova/ProximaNova-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../../fonts/ProximaNova/ProximaNova-Semibold.woff2') format('woff2'),
+    url('../../fonts/ProximaNova/ProximaNova-Semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../../fonts/ProximaNova/ProximaNova-Light.woff2') format('woff2'),
+    url('../../fonts/ProximaNova/ProximaNova-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('../../fonts/NunitoSans/NunitoSans-Regular.woff2') format('woff2'),
+    url('../../fonts/NunitoSans/NunitoSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('../../fonts/NunitoSans/NunitoSans-Bold.woff2') format('woff2'),
+    url('../../fonts/NunitoSans/NunitoSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('../../fonts/NunitoSans/NunitoSans-SemiBold.woff2') format('woff2'),
+    url('../../fonts/NunitoSans/NunitoSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('../../fonts/NunitoSans/NunitoSans-ExtraBold.woff2') format('woff2'),
+    url('../../fonts/NunitoSans/NunitoSans-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
