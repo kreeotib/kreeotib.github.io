@@ -1737,6 +1737,26 @@ body.no-scroll {
   }
 }
 
+.requirements-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.requirements-wrapper.observer .requirements--absolute {
+  opacity: 1;
+}
+@media screen and (min-width: 768px) {
+  .requirements--absolute {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #080808;
+    opacity: 0;
+    transition: 0.5s opacity;
+  }
+}
 @media screen and (max-width: 767px) {
   .requirements__button--desktop {
     display: none;
@@ -1767,6 +1787,8 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   gap: 1.6vw;
+  position: sticky;
+  top: 0;
 }
 @media screen and (max-width: 1240px) {
   .requirements-header__wrapper {
@@ -1807,11 +1829,6 @@ body.no-scroll {
 @media screen and (max-width: 767px) {
   .requirements-list__item {
     padding: 32px 0;
-  }
-}
-@media screen and (min-width: 768px) {
-  .requirements-list__item:first-child {
-    padding-top: 0;
   }
 }
 .requirements-list__item:last-child {

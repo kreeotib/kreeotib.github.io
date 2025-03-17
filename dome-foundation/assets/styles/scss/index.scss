@@ -1766,6 +1766,27 @@ body.no-scroll {
 }
 
 .requirements {
+  &-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+  &-wrapper.observer &--absolute{
+    opacity: 1;
+  }
+  &--absolute{
+    @media screen and (min-width: 768px) {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #080808;
+
+      opacity: 0;
+      transition:.5s opacity;
+    }
+  }
   &__button {
     &--desktop {
       @media screen and (max-width: 767px) {
@@ -1798,6 +1819,9 @@ body.no-scroll {
       display: flex;
       flex-direction: column;
       gap: 1.6vw;
+
+      position: sticky;
+      top: 0;
       @media screen and (max-width: 1240px) {
         gap: 32px;
       }
@@ -1837,7 +1861,7 @@ body.no-scroll {
 
       &:first-child {
         @media screen and (min-width: 768px) {
-          padding-top: 0;
+
         }
       }
 

@@ -204,5 +204,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     };
 
     const projectsObserver = new IntersectionObserver(projectObserverCallback, observerOptions);
-    projectsObserver.observe(projectInfo)
+    projectsObserver.observe(projectInfo);
+
+
+    const targetBlock = document.getElementById('scrolledBlock');
+    window.addEventListener('scroll', () => {
+        const rect = targetBlock.getBoundingClientRect();
+        if (rect.top <= 0 && rect.bottom >= 0) {
+            document.querySelector(".requirements-wrapper").classList.add('observer');
+
+        } else {
+            document.querySelector(".requirements-wrapper").classList.remove('observer');
+
+        }
+    });
 })
