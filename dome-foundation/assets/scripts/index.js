@@ -4,13 +4,13 @@ const checkTargetOrKey = event => {
         event.key === 'Escape' ||
         event.target.closest('.popup__close')
     ) {
+        event.preventDefault();
         hideAllPopups();
     }
 };
 const showPopup = popupId => {
     const popup = document.querySelector(popupId);
     if (!popup) return
-
 
     hideAllPopups();
 
@@ -118,13 +118,27 @@ document.addEventListener('DOMContentLoaded',()=>{
         disableOnInteraction: true
     });
 
-    const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 1.2, anchors: true}) : null;
+    const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 1.2, anchors: false}) : null;
     function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
+
+
+    const anchorsLinks =  document.querySelectorAll('a[href^="#"]');
+
+    if(anchorsLinks.length && lenis){
+        anchorsLinks.forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                lenis.scrollTo(this.getAttribute('href'))
+            });
+        })
+    }
+
+
 
 
     const languageArray = document.querySelectorAll('.language');
@@ -143,8 +157,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             languageCurrent.addEventListener('click',()=>{
                 language.classList.toggle('active');
             })
-
-
 
             language.addEventListener('change',(e)=>{
                 language.classList.remove('active');

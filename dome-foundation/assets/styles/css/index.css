@@ -324,6 +324,9 @@ body.no-scroll {
 .language-item:hover {
   cursor: pointer;
 }
+.language-item:has(:checked) {
+  display: none;
+}
 @media screen and (max-width: 1240px) {
   .language-item {
     font-size: 16px;
@@ -1211,13 +1214,14 @@ body.no-scroll {
   gap: 1.1vw;
   padding: 1.7vw;
   height: 4.87vw;
+  min-width: max-content;
   background-color: rgba(255, 255, 255, 0.04);
   border-radius: 2.2vw;
   width: 0;
   opacity: 0;
   transition: 0.3s opacity, 1s width;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   .projects-list__row .title {
     flex-shrink: 0;
   }
@@ -1703,6 +1707,13 @@ body.no-scroll {
     width: 16px;
     height: 16px;
   }
+}
+.events-card__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 .events-card__footer {
   display: flex;
@@ -2251,12 +2262,12 @@ body.no-scroll {
 }
 @media screen and (max-width: 1240px) {
   .footer__title {
-    font-size: 160px;
+    font-size: 15.625vw;
   }
 }
 @media screen and (max-width: 767px) {
   .footer__title {
-    font-size: 72px;
+    font-size: 18vw;
   }
 }
 .footer__row {
@@ -2329,9 +2340,25 @@ body.no-scroll {
 .footer-block__link {
   font-weight: 500;
   font-size: 2.5vw;
-  line-height: 100%;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: #fafafa;
+  position: relative;
+  overflow: hidden;
+  width: max-content;
+  max-width: 100%;
+}
+.footer-block__link:hover span {
+  transform: translateY(-100%);
+}
+.footer-block__link span {
+  transition: 0.3s transform;
+  display: block;
+}
+.footer-block__link span::before {
+  position: absolute;
+  content: attr(data-hover);
+  top: 100%;
 }
 @media screen and (max-width: 1240px) {
   .footer-block__link {
@@ -2592,7 +2619,7 @@ body.no-scroll {
     font-size: 80px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 850px) {
   .company-info__number {
     font-size: 60px;
   }
