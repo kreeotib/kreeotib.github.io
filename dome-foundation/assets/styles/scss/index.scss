@@ -1284,9 +1284,11 @@ body.no-scroll {
         padding: 12px 24px;
       }
 
-      @media screen and (max-width: 767px) {
-        width: 100%;
-        opacity: 1;
+      @media screen and (max-width: 900px) {
+        &.animated{
+          width: 100%;
+          opacity: 1;
+        }
       }
 
     }
@@ -2279,6 +2281,10 @@ body.no-scroll {
     letter-spacing: -0.02em;
     color: #791aff;
     mix-blend-mode: luminosity;
+
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
     @media screen and (max-width: 1240px) {
       font-size: 15.625vw;
     }
@@ -2414,6 +2420,10 @@ body.no-scroll {
     width: 100%;
     height: 100%;
     z-index: 1;
+
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
     &__main{
       content: "";
       position: absolute;
