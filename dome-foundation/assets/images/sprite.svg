@@ -24,4 +24,7 @@
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 747 448" id="arrow">
         <path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="89.6" stroke="currentColor" d="M672 74.667l-298.667 298.667-298.667-298.667"></path>
     </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 493 448" id="btn-arrow">
+        <path fill="currentColor" d="M271.25 433.869l-40.119-39.506 139.037-139.65h-349.737v-57.575h349.737l-139.037-139.037 40.119-40.119 207.33 207.944-207.33 207.944z"></path>
+    </symbol>
 </svg>

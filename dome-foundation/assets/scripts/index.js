@@ -105,6 +105,19 @@ document.addEventListener('DOMContentLoaded',()=>{
         disableOnInteraction: true
     });
 
+    const companyTags = new Swiper(".company-tags", {
+        centeredSlides: true,
+        speed: 500,
+        autoplay: {
+            delay: 2000,
+        },
+        loop: true,
+        slidesPerView:'auto',
+        direction:"vertical",
+        allowTouchMove: false,
+        disableOnInteraction: true
+    });
+
     const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 1.2, anchors: true}) : null;
     function raf(time) {
         lenis.raf(time);
