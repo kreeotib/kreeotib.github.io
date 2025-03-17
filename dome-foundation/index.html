@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=PT+Sans+Caption:wght@400;700&display=swap"
           rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/libs/lenis/lenis.css">
     <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
 
     <link rel="stylesheet" href="assets/styles/css/font.css">
@@ -30,12 +31,27 @@
                     </a>
                     <div class="header__language language">
                         <div class="language">
-                            <div class="language__current">
-                                Ru
+                            <div class="language__current language-item">
+                                <span class="language-item__text">
+                                    Ru
+                                </span>
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#arrow"></use>
+                                </svg>
+                            </div>
+                            <div class="language__list">
+                                <label class="language-item">
+                                    <input type="radio" name="language-header" value="En" class="language-item__input">
+                                    En
+                                </label>
+                                <label class="language-item">
+                                    <input type="radio" checked name="language-header" value="Ru" class="language-item__input">
+                                    Ru
+                                </label>
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button button--base button--grey">
+                    <a href="#contact"  class="button button--base button--grey header__button">
                         Предложить проект
                         <spanh>-></spanh>
                     </a>
@@ -64,8 +80,79 @@
                                     <p class="hero-form__title">
                                         Эксклюзивное сообщество для инвесторов с&nbsp;капиталом от&nbsp;$5&nbsp;млн
                                     </p>
-                                    <a href="#" class="button button--base button--full button--purple">Подать
+                                    <a href="#contact" class="button button--base button--full button--purple">Подать
                                         заявку</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="assets/images/logo.svg" alt="" class="hero__logo">
+        </div>
+        <div class="company">
+            <div class="company__decor">
+            </div>
+            <div class="company__wrapper">
+                <div class="container container--small">
+                    <div class="company__grid">
+                        <div class="company-tags">
+                            <div class="company-tags__list">
+                                <div class="company-tags__item">
+                                    экспертиза
+                                </div>
+                                <div class="company-tags__item">
+                                    индивидуальность
+                                </div>
+                                <div class="company-tags__item">
+                                    сообщество
+                                </div>
+                                <div class="company-tags__item">
+                                    прозрачность
+                                </div>
+                                <div class="company-tags__item">
+                                    синергия
+                                </div>
+                                <div class="company-tags__item">
+                                    конфиденциальность
+                                </div>
+                                <div class="company-tags__item">
+                                    доверие
+                                </div>
+                            </div>
+                        </div>
+                        <div class="company-info">
+                            <div class="company-info__wrapper">
+                                <div class="company-info__header">
+                                    <p class="company-info__title text text--caption">
+                                        Инвестиционный фонд нового типа
+                                    </p>
+                                    <p class="company-info__title title title--middle title--white">
+                                        Dome Foundation — это закрытое сообщество инвесторов, <span
+                                            class="title title--grey">
+                                        доступ к проверенным
+                                        инвестиционным возможностям и система персональных сервисов для создания
+                                        устойчивого наследия
+                                    </span>
+                                    </p>
+                                </div>
+                                <div class="company-info__row">
+                                    <div class="company-info__block">
+                                        <p class="company-info__number">
+                                            $ 21 841 911
+                                        </p>
+                                        <p class="text text--caption">
+                                            Инвестиций в 2024 году
+                                        </p>
+                                    </div>
+                                    <div class="company-info__block">
+                                        <p class="company-info__number">
+                                            57
+                                        </p>
+                                        <p class="text text--caption">
+                                            Резидентов фонда
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +172,7 @@
                         </div>
                         <div class="about__content">
                             <div class="about-block">
-                                <p class="about-block__text">
+                                <p class="text text--caption">
                                     Миссия фонда
                                 </p>
                             </div>
@@ -149,120 +236,212 @@
                                         </div>
                                     </div>
                                     <div class="info-content__main">
-                                        <div class="info-list">
-                                            <div id="info-showcase" class="info-block">
-                                                <div class="info-block__wrapper">
-                                                    <img src="assets/images/info/1.webp" alt="" class="info-block__img">
-                                                    <p class="title title--middle title--white--clear">
-                                                        Инвестиционный комитет
-                                                    </p>
-                                                    <p class="text text--middle text--grey--light">
-                                                        Регулярные встречи резидентов и аналитиков фонда каждые две
-                                                        недели, где
-                                                        проходит глубокий анализ каждого инвестиционного проекта. Вы
-                                                        получаете
-                                                        доступ к тщательно отобранным проектам и возможность напрямую
-                                                        влиять на
-                                                        инвестиционные решения фонда.
-                                                    </p>
+                                        <div class="info-list info-nav">
+                                            <div class="info-item" id="info-showcase">
+                                                <div class="info-item__wrapper">
+                                                    <div class="info-item__header">
+                                                        <div class="info-nav__item">
+                                                            <a href="#info-showcase"
+                                                               class="info-nav__link info-nav__link--current title title--small">
+                                                                Инвестиционная витрина
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-item__content">
+                                                        <div  class="info-block">
+                                                            <div class="info-block__wrapper">
+                                                                <img src="assets/images/info/1.webp" alt=""
+                                                                     class="info-block__img">
+                                                                <div class="info-block__header">
+                                                                    <p class="title title--middle title--white--clear">
+                                                                        Инвестиционный комитет
+                                                                    </p>
+                                                                    <p class="text text--middle text--grey--light">
+                                                                        Регулярные встречи резидентов и аналитиков фонда
+                                                                        каждые две
+                                                                        недели, где
+                                                                        проходит глубокий анализ каждого инвестиционного
+                                                                        проекта. Вы
+                                                                        получаете
+                                                                        доступ к тщательно отобранным проектам и
+                                                                        возможность
+                                                                        напрямую
+                                                                        влиять на
+                                                                        инвестиционные решения фонда.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-block">
+                                                            <div class="info-block__wrapper">
+                                                                <img src="assets/images/info/2.webp" alt=""
+                                                                     class="info-block__img">
+                                                                <div class="info-block__header">
+                                                                    <p class="title title--middle title--white--clear">
+                                                                        Отбор проектов
+                                                                    </p>
+                                                                    <p class="text text--middle text--grey--light">
+                                                                        Из тысяч рассмотренных проектов только 1%
+                                                                        проходит все этапы
+                                                                        аналитики и
+                                                                        достигает инвестиционной стадии. Устраняем
+                                                                        необходимость
+                                                                        самостоятельно
+                                                                        изучать рынок — получайте доступ только к
+                                                                        проверенным
+                                                                        инвестиционным
+                                                                        возможностям с высоким потенциалом доходности.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-block">
+                                                            <div class="info-block__wrapper">
+                                                                <img src="assets/images/info/3.webp" alt=""
+                                                                     class="info-block__img">
+                                                                <div class="info-block__header">
+                                                                    <p class="title title--middle title--white--clear">
+                                                                        Предлагайте проекты
+                                                                    </p>
+                                                                    <p class="text text--middle text--grey--light">
+                                                                        Ваш проект получит профессиональную оценку,
+                                                                        детальную
+                                                                        аналитику
+                                                                        и прямой
+                                                                        доступ к пулу инвесторов с высоким капиталом. Мы
+                                                                        обеспечиваем
+                                                                        прозрачный
+                                                                        процесс отбора с четкой обратной связью на
+                                                                        каждом этапе.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="info-block">
-                                                <div class="info-block__wrapper">
-                                                    <img src="assets/images/info/2.webp" alt="" class="info-block__img">
-                                                    <p class="title title--middle title--white--clear">
-                                                        Отбор проектов
-                                                    </p>
-                                                    <p class="text text--middle text--grey--light">
-                                                        Из тысяч рассмотренных проектов только 1% проходит все этапы
-                                                        аналитики и
-                                                        достигает инвестиционной стадии. Устраняем необходимость
-                                                        самостоятельно
-                                                        изучать рынок — получайте доступ только к проверенным
-                                                        инвестиционным
-                                                        возможностям с высоким потенциалом доходности.
-                                                    </p>
+                                            <div class="info-item" id="info-community">
+                                                <div class="info-item__wrapper">
+                                                    <div class="info-item__header">
+                                                        <div class="info-nav__item title title--small">
+                                                            <a href="#info-community"
+                                                               class="info-nav__link title title--small">
+                                                                Закрытое сообщество
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-item__content">
+                                                        <div class="info-block" >
+                                                            <div class="info-block__wrapper">
+                                                                <img src="assets/images/info/4.webp" alt=""
+                                                                     class="info-block__img">
+                                                                <div class="info-block__header">
+                                                                    <p class="title title--middle title--white--clear">
+                                                                        Синергия капитала
+                                                                    </p>
+                                                                    <p class="text text--middle text--grey--light">
+                                                                        Эксклюзивный круг успешных предпринимателей и
+                                                                        инвесторов с
+                                                                        капиталом от
+                                                                        $5 млн, объединённых ценностями долгосрочного
+                                                                        управления
+                                                                        капиталом.
+                                                                        Формируйте доверительные отношения в закрытой
+                                                                        среде
+                                                                        единомышленников для
+                                                                        создания устойчивого наследия.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-block">
+                                                            <div class="info-block__wrapper">
+                                                                <img src="assets/images/info/5.webp" alt=""
+                                                                     class="info-block__img">
+                                                                <div class="info-block__header">
+                                                                    <p class="title title--middle title--white--clear">
+                                                                        Мероприятия
+                                                                    </p>
+                                                                    <p class="text text--middle text--grey--light">
+                                                                        Регулярные закрытые встречи с ведущими
+                                                                        экспертами
+                                                                        финансового
+                                                                        рынка и
+                                                                        возможность прямого диалога с основателями
+                                                                        проектов. Каждое
+                                                                        мероприятие
+                                                                        ориентировано на практическую ценность и
+                                                                        стратегические
+                                                                        инсайты,
+                                                                        недоступные широкой публике.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="info-block">
-                                                <div class="info-block__wrapper">
-                                                    <img src="assets/images/info/3.webp" alt="" class="info-block__img">
-                                                    <p class="title title--middle title--white--clear">
-                                                        Предлагайте проекты
-                                                    </p>
-                                                    <p class="text text--middle text--grey--light">
-                                                        Ваш проект получит профессиональную оценку, детальную аналитику
-                                                        и прямой
-                                                        доступ к пулу инвесторов с высоким капиталом. Мы обеспечиваем
-                                                        прозрачный
-                                                        процесс отбора с четкой обратной связью на каждом этапе.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="info-block" id="info-community">
-                                                <div class="info-block__wrapper">
-                                                    <img src="assets/images/info/4.webp" alt="" class="info-block__img">
-                                                    <p class="title title--middle title--white--clear">
-                                                        Синергия капитала
-                                                    </p>
-                                                    <p class="text text--middle text--grey--light">
-                                                        Эксклюзивный круг успешных предпринимателей и инвесторов с
-                                                        капиталом от
-                                                        $5 млн, объединённых ценностями долгосрочного управления
-                                                        капиталом.
-                                                        Формируйте доверительные отношения в закрытой среде
-                                                        единомышленников для
-                                                        создания устойчивого наследия.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="info-block">
-                                                <div class="info-block__wrapper">
-                                                    <img src="assets/images/info/5.webp" alt="" class="info-block__img">
-                                                    <p class="title title--middle title--white--clear">
-                                                        Мероприятия
-                                                    </p>
-                                                    <p class="text text--middle text--grey--light">
-                                                        Регулярные закрытые встречи с ведущими экспертами финансового
-                                                        рынка и
-                                                        возможность прямого диалога с основателями проектов. Каждое
-                                                        мероприятие
-                                                        ориентировано на практическую ценность и стратегические инсайты,
-                                                        недоступные широкой публике.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="info-block" id="info-services">
-                                                <div class="info-block__wrapper">
-                                                    <img src="assets/images/info/6.webp" alt="" class="info-block__img">
-                                                    <p class="title title--middle title--white--clear">
-                                                        Инвестиционный трекер
-                                                    </p>
-                                                    <p class="text text--middle text--grey--light">
-                                                        Персонализированная аналитическая система, которая отслеживает
-                                                        эффективность ваших инвестиций и предоставляет конкретные
-                                                        рекомендации
-                                                        по оптимизации портфеля. Профессиональные аналитики регулярно
-                                                        обновляют
-                                                        данные и задают правильные вопросы для максимизации доходности.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="info-block">
-                                                <div class="info-block__wrapper">
-                                                    <img src="assets/images/info/7.webp" alt="" class="info-block__img">
-                                                    <p class="title title--middle title--white--clear">
-                                                        Коммьюнити менеджер
-                                                    </p>
-                                                    <p class="text text--middle text--grey--light">
-                                                        Персональное сопровождение на всех этапах взаимодействия с
-                                                        фондом.
-                                                        Обеспечивает доступ к нужным специалистам и проектам,
-                                                        синхронизирует
-                                                        ваши инвестиционные интересы с возможностями фонда и
-                                                        координирует
-                                                        коммуникацию между участниками сообщества.
-                                                    </p>
+                                            <div class="info-item" id="info-services">
+                                                <div class="info-item__wrapper">
+                                                    <div class="info-item__header">
+                                                        <div class="info-nav__item  title title--small">
+                                                            <a href="#info-services"
+                                                               class="info-nav__link title title--small">
+                                                                Персональные сервисы
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-item__content">
+                                                        <div class="info-block" >
+                                                            <div class="info-block__wrapper">
+                                                                <img src="assets/images/info/6.webp" alt=""
+                                                                     class="info-block__img">
+                                                                <div class="info-block__header">
+                                                                    <p class="title title--middle title--white--clear">
+                                                                        Инвестиционный трекер
+                                                                    </p>
+                                                                    <p class="text text--middle text--grey--light">
+                                                                        Персонализированная аналитическая система,
+                                                                        которая
+                                                                        отслеживает
+                                                                        эффективность ваших инвестиций и предоставляет
+                                                                        конкретные
+                                                                        рекомендации
+                                                                        по оптимизации портфеля. Профессиональные
+                                                                        аналитики
+                                                                        регулярно
+                                                                        обновляют
+                                                                        данные и задают правильные вопросы для
+                                                                        максимизации
+                                                                        доходности.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-block">
+                                                            <div class="info-block__wrapper">
+                                                                <img src="assets/images/info/7.webp" alt=""
+                                                                     class="info-block__img">
+                                                                <div class="info-block__header">
+                                                                    <p class="title title--middle title--white--clear">
+                                                                        Коммьюнити менеджер
+                                                                    </p>
+                                                                    <p class="text text--middle text--grey--light">
+                                                                        Персональное сопровождение на всех этапах
+                                                                        взаимодействия с
+                                                                        фондом.
+                                                                        Обеспечивает доступ к нужным специалистам и
+                                                                        проектам,
+                                                                        синхронизирует
+                                                                        ваши инвестиционные интересы с возможностями
+                                                                        фонда и
+                                                                        координирует
+                                                                        коммуникацию между участниками сообщества.
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -285,7 +464,7 @@
                                             <use xlink:href="assets/images/sprite.svg#slider-arrow"></use>
                                         </svg>
                                     </a>
-                                    <p class="title title--base title--grey">
+                                    <p class="title title--base title--grey title--center">
                                         Основа фонда <br>
                                         &mdash;&nbsp; <span class="title title--white">резиденты</span>
                                     </p>
@@ -582,20 +761,24 @@
                         </div>
                         <div class="projects-marquee">
                             <div class="projects-marquee__wrapper">
-                                <div class="projects-marquee__img">
-                                    <img src="assets/images/projects/clients/1.webp" alt="">
-                                </div>
-                                <div class="projects-marquee__img">
-                                    <img src="assets/images/projects/clients/2.webp" alt="">
-                                </div>
-                                <div class="projects-marquee__img">
-                                    <img src="assets/images/projects/clients/3.webp" alt="">
-                                </div>
-                                <div class="projects-marquee__img">
-                                    <img src="assets/images/projects/clients/4.webp" alt="">
-                                </div>
-                                <div class="projects-marquee__img">
-                                    <img src="assets/images/projects/clients/5.webp" alt="">
+                                <div class="swiper projects-marquee__slider">
+                                    <div class="swiper-wrapper">
+                                        <div class="projects-marquee__img swiper-slide">
+                                            <img src="assets/images/projects/clients/1.webp" alt="">
+                                        </div>
+                                        <div class="projects-marquee__img swiper-slide">
+                                            <img src="assets/images/projects/clients/2.webp" alt="">
+                                        </div>
+                                        <div class="projects-marquee__img swiper-slide">
+                                            <img src="assets/images/projects/clients/3.webp" alt="">
+                                        </div>
+                                        <div class="projects-marquee__img swiper-slide">
+                                            <img src="assets/images/projects/clients/4.webp" alt="">
+                                        </div>
+                                        <div class="projects-marquee__img swiper-slide">
+                                            <img src="assets/images/projects/clients/5.webp" alt="">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -666,7 +849,7 @@
                                                             like Aldus PageMaker including versions of Lorem Ipsum.
                                                         </p>
                                                     </div>
-                                                    <div class="projects-card__label">
+                                                    <div class="projects-card__label projects-card__label--desktop">
                                                         <p class="projects-card__number">
                                                             19%
                                                         </p>
@@ -679,6 +862,15 @@
                                                 <div class="projects-card__img">
                                                     <img src="assets/images/projects/1.webp" alt="">
                                                 </div>
+                                            </div>
+                                            <div class="projects-card__label projects-card__label--mobile">
+                                                <p class="projects-card__number">
+                                                    19%
+                                                </p>
+                                                <p class="text text--caption text--caption--white">
+                                                    в USD было выплачено <br>
+                                                    дивидендов в 2024
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="swiper-slide projects-card">
@@ -823,7 +1015,7 @@
                                         Посетите наши ближайшие закрытые события
                                         для резидентов, чтобы познакомиться с&nbsp;фондом
                                     </p>
-                                    <div class="slider-nav">
+                                    <div class="slider-nav events-header__nav">
                                         <div class="slider-nav__arrows">
                                             <a href="#"
                                                class="slider-arrow slider-arrow--prev events-slider-button-prev">
@@ -1062,7 +1254,8 @@
                                         члена фонда
                                     </span>
                                 </p>
-                                <a href="#" class="button button--base button--grey">
+                                <a href="#" data-popup=".popup-stages"
+                                   class="button button--base button--grey requirements__button requirements__button--desktop">
                                     Как проходит отбор
                                     <spanh>-></spanh>
                                 </a>
@@ -1112,6 +1305,11 @@
                                 </div>
                             </div>
                         </div>
+                        <a href="#" data-popup=".popup-stages"
+                           class="button button--base button--grey requirements__button requirements__button--mobile">
+                            Как проходит отбор
+                            <spanh>-></spanh>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1126,7 +1324,8 @@
                                         требования
                                     </span>
                                 </p>
-                                <a href="#" class="button button--base button--grey">
+                                <a href="#" data-popup=".popup-stages"
+                                   class="button button--base button--grey requirements__button requirements__button--desktop">
                                     Как проходит отбор
                                     <spanh>-></spanh>
                                 </a>
@@ -1160,10 +1359,15 @@
                                 </div>
                             </div>
                         </div>
+                        <a href="#" data-popup=".popup-stages"
+                           class="button button--base button--grey requirements__button requirements__button--mobile">
+                            Как проходит отбор
+                            <spanh>-></spanh>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="section contact">
+            <div id="contact" class="section contact">
                 <div class="container">
                     <div class="contact__grid">
                         <div class="contact-info">
@@ -1185,7 +1389,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="contact-info__footer">
+                                <div class="contact-info__footer contact-info__footer--desktop">
                                     <p class="text text--base text--white">
                                         Нам можно написать в мессенджер
                                     </p>
@@ -1274,6 +1478,29 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="contact-info contact-info--mobile">
+                            <div class="contact-info__footer">
+                                <p class="text text--base text--white">
+                                    Нам можно написать в мессенджер
+                                </p>
+                                <ul class="social-list">
+                                    <li class="social-list__item">
+                                        <a href="#" class="social-list__link">
+                                            <svg class="social-list__icon">
+                                                <use xlink:href="assets/images/sprite.svg#tg"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social-list__item">
+                                        <a href="#" class="social-list__link">
+                                            <svg class="social-list__icon">
+                                                <use xlink:href="assets/images/sprite.svg#wa"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1304,10 +1531,10 @@
                                         </div>
                                     </div>
                                     <div class="footer-block__row">
-                                        <a href="#" class="button button--base button--grey">
+                                        <a href="#contact" class="button button--base button--grey">
                                             Присоединиться
                                         </a>
-                                        <a href="#" class="button button--base button--grey">
+                                        <a href="#contact" class="button button--base button--grey">
                                             Предложить проект <span>-></span>
                                         </a>
                                     </div>
@@ -1365,6 +1592,90 @@
     </footer>
 </div>
 
+<div class="popup popup-stages" data-lenis-prevent>
+    <div class="popup__wrapper">
+
+        <div class="popup__container">
+            <a href="#" class="popup__close"></a>
+            <div class="stages">
+                <div class="stages__wrapper">
+                    <div class="stages__header">
+                        <p class="title title--base title--white">
+                            Этапы <br>
+                            <span class="title title--grey">
+                                вступления
+                            </span>
+                        </p>
+                    </div>
+                    <div class="stages__content">
+                        <div class="stages-list">
+                            <div class="stages-list__column">
+                                <div class="stages-list__item stages-item">
+                                    <div class="stages-item__content">
+                                        <p class="title title--small title--white">
+                                            Первый контакт
+                                        </p>
+                                        <p class="text text--big text--grey">
+                                            Оставьте заявку или свяжитесь с нами напрямую. Мы ценим ваше время и готовы
+                                            ответить на все вопросы.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="stages-list__item stages-item">
+                                    <div class="stages-item__content">
+                                        <p class="title title--small title--white">
+                                            Личное знакомство
+                                        </p>
+                                        <p class="text text--big text--grey">
+                                            Приглашаем вас на экскурсию в фонд или встречу для более детального знакомства с
+                                            нашими возможностями и командо
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="stages-list__item stages-item">
+                                    <div class="stages-item__content">
+                                        <p class="title title--small title--white">
+                                            Соответствие ценностям и проверка репутаци
+                                        </p>
+                                        <p class="text text--big text--grey">
+                                            Мы внимательно относимся к репутации и проводим комплексную проверку для
+                                            обеспечения безопасности всех членов сообщества.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stages-list__column">
+                                <div class="stages-list__item stages-item">
+                                    <div class="stages-item__content">
+                                        <p class="title title--small title--white">
+                                            Встреча с CEO
+                                        </p>
+                                        <p class="text text--big text--grey">
+                                            Персональное интервью с управляющим партнером фонда для обсуждения ваших инвестиционных целей и возможностей сотрудничества.
+
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="stages-list__item stages-item">
+                                    <div class="stages-item__content">
+                                        <p class="title title--small title--white">
+                                            Принятие решения
+                                        </p>
+                                        <p class="text text--big text--grey">
+                                            Совет директоров рассматривает вашу кандидатуру. Мы ценим взаимное доверие и заинтересованы в долгосрочных отношениях
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/libs/lenis/lenis.js"></script>
 <script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
 

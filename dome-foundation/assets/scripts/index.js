@@ -1,4 +1,55 @@
+const checkTargetOrKey = event => {
+    if (
+        event.target.classList.contains('popup__wrapper') ||
+        event.key === 'Escape' ||
+        event.target.closest('.popup__close')
+    ) {
+        hideAllPopups();
+    }
+};
+const showPopup = popupId => {
+    const popup = document.querySelector(popupId);
+    if (!popup) return
+
+
+    hideAllPopups();
+
+    popup.classList.add('popup--active');
+    document.body.classList.add('no-scroll');
+
+    document.addEventListener('click', checkTargetOrKey);
+    document.addEventListener('keyup', checkTargetOrKey);
+};
+const hideAllPopups = () => {
+    const popups = document.querySelectorAll('.popup');
+
+    popups.forEach(popup => {
+        popup.classList.remove('popup--active');
+    });
+    document.body.classList.remove('no-scroll');
+
+    document.removeEventListener('click', checkTargetOrKey);
+    document.removeEventListener('keyup', checkTargetOrKey);
+};
+
+
+
 document.addEventListener('DOMContentLoaded',()=>{
+    const popupButtons = document.querySelectorAll('[data-popup]');
+    const popups = document.querySelectorAll('.popup');
+
+    if (popups.length) {
+        popupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const popupId = button.dataset.popup
+                showPopup(popupId);
+            });
+        });
+    }
+
+
     const residentsSlider = new Swiper('.residents-slider',{
         slidesPerView:'auto',
         spaceBetween:20,
@@ -23,8 +74,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     const projectsNav = new Swiper(".projects-nav", {
         spaceBetween: 30,
         slidesPerView: 'auto',
-        freeMode: true,
         watchSlidesProgress: true,
+        breakpoints:{
+            767:{
+                slidesPerView:1,
+            }
+        }
     });
     const projectsSlider = new Swiper(".projects-slider__item", {
         spaceBetween: 10,
@@ -36,4 +91,93 @@ document.addEventListener('DOMContentLoaded',()=>{
             swiper: projectsNav,
         },
     });
+
+    const marquee = new Swiper(".projects-marquee__slider", {
+        spaceBetween: 0,
+        centeredSlides: true,
+        speed: 6000,
+        autoplay: {
+            delay: 1,
+        },
+        loop: true,
+        slidesPerView:'auto',
+        allowTouchMove: false,
+        disableOnInteraction: true
+    });
+
+    const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 1.2, anchors: true}) : null;
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+
+    const languageArray = document.querySelectorAll('.language');
+
+    if(languageArray.length){
+         document.addEventListener('click',(e)=>{
+            if(!e.target.closest('.language')){
+                languageArray.forEach(language=>{
+                    language.classList.remove('active')
+                })
+            }
+        })
+        languageArray.forEach(language=>{
+            const languageCurrent = language.querySelector('.language__current');
+
+            languageCurrent.addEventListener('click',()=>{
+                language.classList.toggle('active');
+            })
+
+
+
+            language.addEventListener('change',(e)=>{
+                language.classList.remove('active');
+                languageCurrent.querySelector('.language-item__text').textContent = e.target.value;
+            })
+        })
+    }
+
+
+    const links = document.querySelectorAll('.info-nav__link');
+    const sections = document.querySelectorAll('.info-item');
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0
+    };
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                links.forEach(link => link.classList.remove('info-nav__link--current'));
+                const id = entry.target.id;
+                const currentLink = document.querySelector(`a[href="#${id}"]`);
+                if (currentLink) {
+                    currentLink.classList.add('info-nav__link--current');
+                }
+            }
+        });
+    };
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    const projectInfo = document.querySelector('.projects-info'),
+        projectInfoRow = projectInfo.querySelectorAll('.projects-list__row');
+
+    const projectObserverCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                projectInfoRow.forEach(element=>{
+                    element.classList.add('animated');
+                })
+            }
+        });
+    };
+
+    const projectsObserver = new IntersectionObserver(projectObserverCallback, observerOptions);
+    projectsObserver.observe(projectInfo)
 })
