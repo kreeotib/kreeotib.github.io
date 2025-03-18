@@ -580,6 +580,31 @@ body.no-scroll {
     gap: 40px;
   }
 }
+.about__title {
+  max-width: 90vw;
+  width: 100%;
+}
+@media screen and (max-width: 1240px) {
+  .about__title {
+    max-width: 900px;
+  }
+}
+.about__title::before {
+  content: "";
+  display: inline-block;
+  height: 1px;
+  width: 11.7vw;
+}
+@media screen and (max-width: 1240px) {
+  .about__title::before {
+    width: 180px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .about__title::before {
+    display: none;
+  }
+}
 .about__content {
   border-top: 1px solid rgba(255, 255, 255, 0.16);
   padding-top: 1.6vw;
