@@ -206,16 +206,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     const projectsObserver = new IntersectionObserver(projectObserverCallback, observerOptions);
     projectsObserver.observe(projectInfo);
 
-
-    const targetBlock = document.getElementById('scrolledBlock');
+    const requirementsToggleItem = document.querySelector('.js-requirements'),
+        requirementsWrapper = document.querySelector('.requirements-wrapper');
     window.addEventListener('scroll', () => {
-        const rect = targetBlock.getBoundingClientRect();
-        if (rect.top <= 0 && rect.bottom >= 0) {
-            document.querySelector(".requirements-wrapper").classList.add('observer');
-
+        const rectItem = requirementsToggleItem.getBoundingClientRect(),
+            rectWrapper = requirementsWrapper.getBoundingClientRect();
+        requirementsWrapper.classList.toggle('observer', rectItem.top <= 0);
+        if (rectWrapper.top <= 0 && rectWrapper.bottom >= 0 && window.innerWidth > 767) {
+            lenis.options.duration = 2.4;
         } else {
-            document.querySelector(".requirements-wrapper").classList.remove('observer');
-
+            lenis.options.duration = 1.2;
         }
     });
 })

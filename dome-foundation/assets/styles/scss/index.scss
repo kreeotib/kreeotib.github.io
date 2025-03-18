@@ -1784,7 +1784,7 @@ body.no-scroll {
       background-color: #080808;
 
       opacity: 0;
-      transition:.5s opacity;
+      transition:.3s opacity;
     }
   }
   &__button {
@@ -1851,6 +1851,8 @@ body.no-scroll {
       justify-content: space-between;
       gap: 2.2vw;
       border-bottom: 1px solid rgba(#fff, .16);
+      overflow: hidden;
+
       @media screen and (max-width: 1240px) {
         padding: 40px 0;
         gap: 32px;
