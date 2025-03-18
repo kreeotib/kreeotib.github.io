@@ -141,26 +141,26 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
-    const languageArray = document.querySelectorAll('.language');
+    const selectArray = document.querySelectorAll('.js-select');
 
-    if(languageArray.length){
+    if(selectArray.length){
          document.addEventListener('click',(e)=>{
-            if(!e.target.closest('.language')){
-                languageArray.forEach(language=>{
-                    language.classList.remove('active')
+            if(!e.target.closest('.js-select')){
+                selectArray.forEach(select=>{
+                    select.classList.remove('active')
                 })
             }
         })
-        languageArray.forEach(language=>{
-            const languageCurrent = language.querySelector('.language__current');
+        selectArray.forEach(select=>{
+            const selectCurrent = select.querySelector('.js-select-current');
 
-            languageCurrent.addEventListener('click',()=>{
-                language.classList.toggle('active');
+            selectCurrent.addEventListener('click',()=>{
+                select.classList.toggle('active');
             })
 
-            language.addEventListener('change',(e)=>{
-                language.classList.remove('active');
-                languageCurrent.querySelector('.language-item__text').textContent = e.target.value;
+            select.addEventListener('change',(e)=>{
+                select.classList.remove('active');
+                selectCurrent.querySelector('.js-select-current-text').textContent = e.target.value;
             })
         })
     }

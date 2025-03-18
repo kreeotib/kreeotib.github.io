@@ -29,10 +29,10 @@
                     <a href="#" class="header__logo logo">
                         <img src="assets/images/logo.svg" alt="" class="logo__img">
                     </a>
-                    <div class="header__language language">
+                    <div class="header__language language js-select">
                         <div class="language">
-                            <div class="language__current language-item">
-                                <span class="language-item__text">
+                            <div class="language__current language-item js-select-current">
+                                <span class="js-select-current-text">
                                     Ru
                                 </span>
                                 <svg class="icon">
@@ -1433,7 +1433,7 @@
                             </div>
                         </div>
                         <div class="contact-form">
-                            <div class="contact-form__wrapper">
+                            <form action="#" class="contact-form__wrapper">
                                 <div class="contact-form__box">
                                     <div class="contact-form__header">
                                         <div class="choice">
@@ -1453,14 +1453,45 @@
                                     </div>
                                     <div class="contact-form__list">
                                         <label class="input">
-                                            <input type="text" class="input__item" placeholder="Имя и фамилия">
+                                            <input type="text" class="input__item" name="contact-form-name" placeholder="Имя и фамилия">
                                         </label>
                                         <label class="input">
-                                            <input type="text" class="input__item" placeholder="Ваш телефон">
+                                            <input type="text" class="input__item" name="contact-form-phone" placeholder="Ваш телефон">
                                         </label>
-                                        <label class="input">
-                                            <input type="text" class="input__item" placeholder="Ваш капитал ($)">
-                                        </label>
+                                        <div class="select js-select">
+                                            <div class="select__current js-select-current">
+                                                <span class="js-select-current-text">Ваш капитал ($)</span>
+                                                <svg class="icon">
+                                                    <use xlink:href="assets/images/sprite.svg#arrow"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="select__list">
+                                                <label class="select-item">
+                                                    <input type="radio" name="contact-form-capital"  class="select-item__input">
+                                                    < $200 тыс
+                                                </label>
+                                                <label class="select-item">
+                                                    <input type="radio" name="contact-form-capital"  class="select-item__input">
+                                                    < $1 млн
+                                                </label>
+                                                <label class="select-item">
+                                                    <input type="radio" name="contact-form-capital"  class="select-item__input">
+                                                    $1-5 млн
+                                                </label>
+                                                <label class="select-item">
+                                                    <input type="radio" name="contact-form-capital"  class="select-item__input">
+                                                    $5-10 млн
+                                                </label>
+                                                <label class="select-item">
+                                                    <input type="radio" name="contact-form-capital"  class="select-item__input">
+                                                    $10-50 млн
+                                                </label>
+                                                <label class="select-item">
+                                                    <input type="radio" name="contact-form-capital"  class="select-item__input">
+                                                    > $50 млн
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="contact-form__block">
                                             <p class="text text--base text--grey">
                                                 Предпочитаемый способ связи
@@ -1496,7 +1527,7 @@
                                 <button type="submit" class="button button--base button--purple">
                                     Подать заявку
                                 </button>
-                            </div>
+                            </form>
                         </div>
                         <div class="contact-info contact-info--mobile">
                             <div class="contact-info__footer">
