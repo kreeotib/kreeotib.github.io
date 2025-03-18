@@ -160,6 +160,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
             select.addEventListener('change',(e)=>{
                 select.classList.remove('active');
+                select.classList.add('filled');
                 selectCurrent.querySelector('.js-select-current-text').textContent = e.target.value;
             })
         })
