@@ -646,18 +646,22 @@ body.no-scroll {
   }
 
   &-map {
+
+    height: 400px;
     position: relative;
-    overflow: auto;
-
-    @include hide-scrollbar;
-
     &__item {
-      height: 400px;
-      display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 900px;
-      position: relative;
+
+      position: absolute;
+
+      left: 0;
+      width: 100%;
+      height: calc(100% + 140px);
+      top: -140px;
+      overflow: auto;
+
+      @include hide-scrollbar;
     }
 
     &__text {
@@ -674,8 +678,9 @@ body.no-scroll {
       justify-content: center;
 
       width: 100%;
-      height: calc(100% + 140px);
-      top: -140px;
+      min-width: 900px;
+      height: 100%;
+      top: 0;
 
       z-index: 1;
     }

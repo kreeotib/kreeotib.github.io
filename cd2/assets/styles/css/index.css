@@ -519,20 +519,22 @@ body.no-scroll {
   background-color: #D9D9D9;
 }
 .section-map {
+  height: 400px;
   position: relative;
+}
+.section-map__item {
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 140px);
+  top: -140px;
   overflow: auto;
   scrollbar-width: none;
 }
-.section-map::-webkit-scrollbar {
+.section-map__item::-webkit-scrollbar {
   display: none;
-}
-.section-map__item {
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 900px;
-  position: relative;
 }
 .section-map__text {
   position: relative;
@@ -545,8 +547,9 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100% + 140px);
-  top: -140px;
+  min-width: 900px;
+  height: 100%;
+  top: 0;
   z-index: 1;
 }
 .section__img {
