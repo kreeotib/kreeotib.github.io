@@ -1623,6 +1623,12 @@ body.no-scroll {
   }
 
   &-card {
+    &:hover &__header{
+      &::before{
+        opacity: 0;
+
+      }
+    }
     &__wrapper {
       display: flex;
       flex-direction: column;
@@ -1702,6 +1708,8 @@ body.no-scroll {
         height: 100%;
         left: 0;
         top: 0;
+
+        transition: 0.3s opacity;
         background: linear-gradient(180deg, rgba(51, 51, 51, 0.2) 0%, rgba(51, 51, 51, 0.2) 100%), linear-gradient(180deg, #080808 0%, rgba(8, 8, 8, 0) 100%), linear-gradient(180deg, #080808 0%, rgba(8, 8, 8, 0) 100%);
       }
 
@@ -1793,6 +1801,15 @@ body.no-scroll {
     display: flex;
     flex-direction: column;
     gap: 80px;
+
+    padding-bottom: 5.5vw;
+    @media screen and (max-width: 1240px) {
+      padding-bottom: 40px;
+    }
+    
+    @media screen and (max-width: 640px) {
+      padding-bottom: 0;
+    }
   }
   &-wrapper.observer &--absolute{
     opacity: 1;
@@ -2449,7 +2466,7 @@ body.no-scroll {
 
   &__title {
     font-weight: 600;
-    font-size: 12vw;
+    font-size: 12.22vw;
     line-height: 96%;
     letter-spacing: -0.02em;
     color: #791aff;
@@ -2458,8 +2475,13 @@ body.no-scroll {
     pointer-events: none;
     -webkit-user-select: none;
     user-select: none;
+
+    min-width: max-content;
+    transform:translateX(-.5vw);
     @media screen and (max-width: 1240px) {
       font-size: 15.625vw;
+      transform: translateX(0);
+      min-width: 100%;
     }
     @media screen and (max-width: 767px) {
       font-size: 18vw;
@@ -2993,5 +3015,81 @@ body.no-scroll {
         gap: 40px;
       }
     }
+  }
+}
+
+.preloader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #080808;
+
+  z-index: 20;
+
+  transition: .3s visibility,.5s opacity;
+  &.hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &__wrapper{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-logo{
+    &.loaded{
+      path{
+        &:nth-child(1),&:nth-child(2){
+          animation: none;
+          fill: #FAFAFA;
+        }
+      }
+    }
+    path{
+      &:nth-child(1){
+        animation: preloaderAnimationFirst 2s linear infinite;
+      }
+      &:nth-child(2){
+        animation: preloaderAnimationSecond 2s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes preloaderAnimationFirst {
+  0%{
+    fill: #252525;
+  }
+  10%{
+    fill: #FAFAFA;
+  }
+  90%{
+    fill: #FAFAFA;
+  }
+  100%{
+    fill: #252525;
+  }
+}
+
+@keyframes preloaderAnimationSecond {
+  0%{
+    fill: #252525;
+  }
+  80%{
+    fill: #FAFAFA;
+  }
+  90%{
+    fill: #FAFAFA;
+  }
+  100%{
+    fill: #252525;
   }
 }

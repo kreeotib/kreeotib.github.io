@@ -32,6 +32,33 @@ const hideAllPopups = () => {
     document.removeEventListener('keyup', checkTargetOrKey);
 };
 
+const preloader = document.querySelector('.preloader');
+
+if(preloader){
+    document.body.classList.add('no-scroll');
+    let currentHashValue = window.location.hash.substring(1);
+
+    if(currentHashValue){
+        setTimeout(()=>{
+            document.querySelector(`#${currentHashValue}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        },100)
+    }
+    window.onload = (event) => {
+        const preloaderLogo = document.querySelector('.preloader-logo');
+
+        preloaderLogo.addEventListener('animationiteration', () => {
+            preloaderLogo.classList.add('loaded');
+
+            document.querySelector('.preloader').classList.add('hidden');
+
+            document.body.classList.remove('no-scroll');
+
+
+        });
+
+
+    };
+}
 
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -109,7 +136,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         centeredSlides: true,
         speed: 500,
         autoplay: {
-            delay: 2000,
+            delay: 1500,
         },
         loop: true,
         slidesPerView:'auto',
