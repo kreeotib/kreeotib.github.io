@@ -31,18 +31,23 @@ const hideAllPopups = () => {
     document.removeEventListener('click', checkTargetOrKey);
     document.removeEventListener('keyup', checkTargetOrKey);
 };
-
 const preloader = document.querySelector('.preloader');
 
 if (preloader) {
     document.body.classList.add('no-scroll');
+    let iterationCount = 0;
+    const minIterations = 6;
     window.onload = (event) => {
         const preloaderLogo = document.querySelector('.preloader-logo');
 
         preloaderLogo.addEventListener('animationiteration', () => {
-            preloaderLogo.classList.add('loaded');
-            document.querySelector('.preloader').classList.add('hidden');
-            document.body.classList.remove('no-scroll');
+            iterationCount++; // Increment the counter on each iteration
+
+            if (iterationCount >= minIterations) {
+                preloaderLogo.classList.add('loaded');
+                preloader.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
+            }
         });
     };
 }
