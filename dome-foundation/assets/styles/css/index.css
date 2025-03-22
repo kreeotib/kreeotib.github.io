@@ -3030,10 +3030,10 @@ body.no-scroll {
   fill: #FAFAFA;
 }
 .preloader-logo path:nth-child(1) {
-  animation: preloaderAnimationFirst 2s linear infinite;
+  animation: preloaderAnimationFirst 1s linear infinite;
 }
 .preloader-logo path:nth-child(2) {
-  animation: preloaderAnimationSecond 2s linear infinite;
+  animation: preloaderAnimationSecond 1s linear infinite;
 }
 
 @keyframes preloaderAnimationFirst {
