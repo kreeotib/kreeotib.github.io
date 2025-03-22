@@ -34,34 +34,21 @@ const hideAllPopups = () => {
 
 const preloader = document.querySelector('.preloader');
 
-if(preloader){
+if (preloader) {
     document.body.classList.add('no-scroll');
-    let currentHashValue = window.location.hash.substring(1);
-
-    if(currentHashValue){
-        setTimeout(()=>{
-            document.querySelector(`#${currentHashValue}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        },100)
-    }
     window.onload = (event) => {
         const preloaderLogo = document.querySelector('.preloader-logo');
 
         preloaderLogo.addEventListener('animationiteration', () => {
             preloaderLogo.classList.add('loaded');
-
             document.querySelector('.preloader').classList.add('hidden');
-
             document.body.classList.remove('no-scroll');
-
-
         });
-
-
     };
 }
 
 
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
     const popupButtons = document.querySelectorAll('[data-popup]');
     const popups = document.querySelectorAll('.popup');
 
@@ -77,23 +64,41 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
 
-    const residentsSlider = new Swiper('.residents-slider',{
-        slidesPerView:'auto',
-        spaceBetween:20,
-        centeredSlides:true,
+    const residentsSlider = new Swiper('.residents-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        centeredSlides: true,
         initialSlide: 1,
-        navigation:{
-            nextEl:".residents-slider-button-next",
-            prevEl:'.residents-slider-button-prev'
+        navigation: {
+            nextEl: ".residents-slider-button-next",
+            prevEl: '.residents-slider-button-prev'
         }
-    })
+    });
 
-    const eventsSlider = new Swiper('.events-slider',{
-        slidesPerView:'auto',
-        spaceBetween:20,
-        navigation:{
-            nextEl:".events-slider-button-next",
-            prevEl:'.events-slider-button-prev'
+    if (residentsSlider) {
+        const observerResidentsOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0
+        };
+        const observerResidentsCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+
+                    residentsSlider.slideTo(residentsSlider.slides.length - 2, 2500);
+                }
+            });
+        };
+        const observer = new IntersectionObserver(observerResidentsCallback, observerResidentsOptions);
+        observer.observe(residentsSlider.el);
+    }
+
+    const eventsSlider = new Swiper('.events-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".events-slider-button-next",
+            prevEl: '.events-slider-button-prev'
         }
     });
 
@@ -102,9 +107,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         spaceBetween: 30,
         slidesPerView: 'auto',
         watchSlidesProgress: true,
-        breakpoints:{
-            767:{
-                slidesPerView:1,
+        breakpoints: {
+            767: {
+                slidesPerView: 1,
             }
         }
     });
@@ -127,7 +132,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             delay: 1,
         },
         loop: true,
-        slidesPerView:'auto',
+        slidesPerView: 'auto',
         allowTouchMove: false,
         disableOnInteraction: true
     });
@@ -139,13 +144,14 @@ document.addEventListener('DOMContentLoaded',()=>{
             delay: 1500,
         },
         loop: true,
-        slidesPerView:'auto',
-        direction:"vertical",
+        slidesPerView: 'auto',
+        direction: "vertical",
         allowTouchMove: false,
         disableOnInteraction: true
     });
 
     const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 1.2, anchors: false}) : null;
+
     function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
@@ -154,9 +160,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     requestAnimationFrame(raf);
 
 
-    const anchorsLinks =  document.querySelectorAll('a[href^="#"]');
+    const anchorsLinks = document.querySelectorAll('a[href^="#"]');
 
-    if(anchorsLinks.length && lenis){
+    if (anchorsLinks.length && lenis) {
         anchorsLinks.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -166,26 +172,24 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
 
-
-
     const selectArray = document.querySelectorAll('.js-select');
 
-    if(selectArray.length){
-         document.addEventListener('click',(e)=>{
-            if(!e.target.closest('.js-select')){
-                selectArray.forEach(select=>{
+    if (selectArray.length) {
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.js-select')) {
+                selectArray.forEach(select => {
                     select.classList.remove('active')
                 })
             }
         })
-        selectArray.forEach(select=>{
+        selectArray.forEach(select => {
             const selectCurrent = select.querySelector('.js-select-current');
 
-            selectCurrent.addEventListener('click',()=>{
+            selectCurrent.addEventListener('click', () => {
                 select.classList.toggle('active');
             })
 
-            select.addEventListener('change',(e)=>{
+            select.addEventListener('change', (e) => {
                 select.classList.remove('active');
                 select.classList.add('filled');
                 selectCurrent.querySelector('.js-select-current-text').textContent = e.target.value;
@@ -224,7 +228,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const projectObserverCallback = (entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                projectInfoRow.forEach(element=>{
+                projectInfoRow.forEach(element => {
                     element.classList.add('animated');
                 })
             }
