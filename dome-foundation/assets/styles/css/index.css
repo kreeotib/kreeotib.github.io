@@ -1771,17 +1771,6 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   gap: 80px;
-  padding-bottom: 5.5vw;
-}
-@media screen and (max-width: 1240px) {
-  .requirements-wrapper {
-    padding-bottom: 40px;
-  }
-}
-@media screen and (max-width: 640px) {
-  .requirements-wrapper {
-    padding-bottom: 0;
-  }
 }
 .requirements-wrapper.observer .requirements--absolute {
   opacity: 1;
@@ -1883,6 +1872,19 @@ body.no-scroll {
 
 .contact {
   overflow: hidden;
+}
+.contact__wrapper {
+  padding-top: 5.5vw;
+}
+@media screen and (max-width: 1240px) {
+  .contact__wrapper {
+    padding-top: 40px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .contact__wrapper {
+    padding-top: 0;
+  }
 }
 .contact__grid {
   display: grid;
@@ -3009,7 +3011,7 @@ body.no-scroll {
   height: 100%;
   background-color: #080808;
   z-index: 20;
-  transition: 0.3s visibility, 0.5s opacity;
+  transition: 0.3s 0.5s visibility, 0.5s 0.5s opacity;
 }
 .preloader.hidden {
   opacity: 0;
