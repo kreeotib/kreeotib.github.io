@@ -3077,7 +3077,6 @@ body.no-scroll {
   gap: 2.8vw;
   position: sticky;
   top: 0;
-  left: 0;
 }
 @media screen and (max-width: 1240px) {
   .criteria-header__wrapper {

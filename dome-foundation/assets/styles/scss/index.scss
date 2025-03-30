@@ -3162,6 +3162,9 @@
     }
     &-header{
 
+      &__box{
+
+      }
       &__wrapper{
         display: flex;
         flex-direction: column;
@@ -3169,7 +3172,6 @@
 
         position: sticky;
         top: 0;
-        left: 0;
         @media screen and (max-width: 1240px) {
           gap: 48px;
         }
