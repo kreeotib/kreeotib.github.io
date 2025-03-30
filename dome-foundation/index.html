@@ -1458,7 +1458,7 @@
                                                        placeholder="Имя и фамилия">
                                             </label>
                                             <label class="input">
-                                                <input type="text" class="input__item" name="contact-form-phone"
+                                                <input type="text" class="input__item js-phone" name="contact-form-phone " required minlength="18"
                                                        placeholder="Ваш телефон">
                                             </label>
                                             <div class="select js-select">
@@ -1609,7 +1609,7 @@
                                     <div class="footer-block__content">
                                         <div class="footer-block__item">
                                             <p class="text text--base text--grey--dark">
-                                                Поддержка
+                                                Мы в Telegram
                                             </p>
                                             <a href="#" target="_blank" class="footer-block__link"><span
                                                     data-hover="@domefoundation">@domefoundation</span></a>
@@ -1748,7 +1748,7 @@
 </div>
 
 
-<div class="preloader">
+<div class="preloader" data-lenis-prevent>
     <div class="preloader__wrapper">
         <svg class="preloader-logo" width="124" height="60" viewBox="0 0 124 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M38.0275 50.3311L28.4766 59.4911L35.5067 59.6955L42.5367 59.9338L45.1286 57.482L47.7205 55.0303L50.3124 57.482L52.8687 59.9338H60.1473H67.426L57.662 50.5695C52.3007 45.4276 47.827 41.2051 47.7205 41.2051C47.614 41.2051 43.2468 45.3254 38.0275 50.3311Z"
@@ -1761,6 +1761,7 @@
     </div>
 </div>
 
+<script src="assets/libs/imask/imask.js"></script>
 <script src="assets/libs/lenis/lenis.js"></script>
 <script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>

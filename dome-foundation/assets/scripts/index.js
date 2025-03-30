@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const residentsElement = document.querySelector('.residents-slider')
 
     const residentsSlider = new Swiper('.residents-slider', {
         slidesPerView: 'auto',
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    if (residentsSlider) {
+    if (residentsElement) {
         const observerResidentsOptions = {
             root: null,
             rootMargin: '0px',
@@ -126,6 +127,30 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         thumbs: {
             swiper: projectsNav,
+        },
+    });
+
+    const criteriaNav = new Swiper(".criteria-nav-slider", {
+        spaceBetween: 16,
+        slidesPerView: 'auto',
+        direction: "vertical",
+        watchSlidesProgress: true,
+        breakpoints: {
+            767: {
+                slidesPerView: 'auto',
+                direction: "horizontal",
+            }
+        }
+    });
+    const criteriaSlider = new Swiper(".criteria-slider", {
+        spaceBetween: 10,
+        slidesPerView: 1,
+        effect: "fade",
+        fadeEffect: {
+            crossFade: true
+        },
+        thumbs: {
+            swiper: criteriaNav,
         },
     });
 
@@ -245,14 +270,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const requirementsToggleItem = document.querySelector('.js-requirements'),
         requirementsWrapper = document.querySelector('.requirements-wrapper');
-    window.addEventListener('scroll', () => {
-        const rectItem = requirementsToggleItem.getBoundingClientRect(),
-            rectWrapper = requirementsWrapper.getBoundingClientRect();
-        requirementsWrapper.classList.toggle('observer', rectItem.top <= 0);
-        if (rectWrapper.top <= 0 && rectWrapper.bottom >= 0 && window.innerWidth > 767) {
-            lenis.options.duration = 2.4;
-        } else {
-            lenis.options.duration = 1.2;
-        }
-    });
+
+    if (requirementsToggleItem) {
+        window.addEventListener('scroll', () => {
+            const rectItem = requirementsToggleItem.getBoundingClientRect(),
+                rectWrapper = requirementsWrapper.getBoundingClientRect();
+            requirementsWrapper.classList.toggle('observer', rectItem.top <= 0);
+            if (rectWrapper.top <= 0 && rectWrapper.bottom >= 0 && window.innerWidth > 767) {
+                lenis.options.duration = 2.4;
+            } else {
+                lenis.options.duration = 1.2;
+            }
+        });
+    }
+
+    const phoneInputArray = document.querySelectorAll('.js-phone');
+    const maskOptions = {
+        mask: '+{7} (000) 000-00-00'
+    };
+    if (phoneInputArray.length) {
+        phoneInputArray.forEach(input => {
+            IMask(input, maskOptions);
+        })
+    }
 })
