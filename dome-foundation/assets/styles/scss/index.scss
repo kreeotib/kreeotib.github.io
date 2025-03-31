@@ -521,9 +521,13 @@
         line-height: 1.2;
         letter-spacing: -0.01em;
         text-align: center;
+
         @media screen and (max-width: 1240px) {
           max-width: 200px;
           font-size: 16px;
+        }
+        &--full{
+          max-width: 100%;
         }
       }
     }
@@ -3134,8 +3138,17 @@
       }
     }
     &-list{
+      &.swiper-slide-active &__item{
+        opacity: 1;
+        transform: translateY(0);
+      }
       &__item{
         padding:2.2vw 0;
+
+        opacity: 0;
+        transform: translateY(100px);
+
+        transition: .5s opacity, .5s transform;
         @media screen and (min-width: 768px) {
           &:first-child{
             padding-top: 0;

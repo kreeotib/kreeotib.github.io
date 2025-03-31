@@ -501,6 +501,9 @@ body.no-scroll {
     font-size: 16px;
   }
 }
+.hero-form__title--full {
+  max-width: 100%;
+}
 .hero-content__header {
   display: flex;
   flex-direction: column;
@@ -3047,8 +3050,15 @@ body.no-scroll {
     width: max-content;
   }
 }
+.criteria-list.swiper-slide-active .criteria-list__item {
+  opacity: 1;
+  transform: translateY(0);
+}
 .criteria-list__item {
   padding: 2.2vw 0;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: 0.5s opacity, 0.5s transform;
 }
 @media screen and (min-width: 768px) {
   .criteria-list__item:first-child {

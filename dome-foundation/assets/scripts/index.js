@@ -130,29 +130,53 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    const criteriaNav = new Swiper(".criteria-nav-slider", {
-        spaceBetween: 16,
-        slidesPerView: 'auto',
-        direction: "vertical",
-        watchSlidesProgress: true,
-        breakpoints: {
-            767: {
-                slidesPerView: 'auto',
-                direction: "horizontal",
+    const criteriaSliderElement = document.querySelector('.criteria-slider');
+
+    if(criteriaSliderElement){
+        const criteriaNav = new Swiper(".criteria-nav-slider", {
+            spaceBetween: 16,
+            slidesPerView: 'auto',
+            direction: "vertical",
+            watchSlidesProgress: true,
+            breakpoints: {
+                767: {
+                    slidesPerView: 'auto',
+                    direction: "horizontal",
+                }
             }
-        }
-    });
-    const criteriaSlider = new Swiper(".criteria-slider", {
-        spaceBetween: 10,
-        slidesPerView: 1,
-        effect: "fade",
-        fadeEffect: {
-            crossFade: true
-        },
-        thumbs: {
-            swiper: criteriaNav,
-        },
-    });
+        });
+        const criteriaSlider = new Swiper(".criteria-slider", {
+            spaceBetween: 10,
+            slidesPerView: 1,
+            effect: "fade",
+            fadeEffect: {
+                crossFade: true
+            },
+            init:false,
+            thumbs: {
+                swiper: criteriaNav,
+            },
+        });
+
+        criteriaSlider.on('init',()=>{
+            const criteriaListArray = criteriaSliderElement.querySelectorAll('.criteria-list');
+
+            if(criteriaListArray.length){
+                criteriaListArray.forEach(list=>{
+                    const listItemArray = list.querySelectorAll(".criteria-list__item");
+
+                    if(listItemArray.length){
+                        listItemArray.forEach((item,index)=>{
+                            item.style.transitionDelay = `${.5 + index * .2}s`;
+                        });
+                    }
+                })
+            }
+        });
+
+        criteriaSlider.init()
+    }
+
 
     const marquee = new Swiper(".projects-marquee__slider", {
         spaceBetween: 0,
