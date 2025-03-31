@@ -54,6 +54,16 @@ if (preloader) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 1.2, anchors: false}) : null;
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     const popupButtons = document.querySelectorAll('[data-popup]');
     const popups = document.querySelectorAll('.popup');
 
@@ -158,6 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
 
+        criteriaSlider.on("slideChange",()=>{
+            lenis.scrollTo(criteriaSliderElement)
+
+            console.log("2")
+        })
+
         criteriaSlider.on('init',()=>{
             const criteriaListArray = criteriaSliderElement.querySelectorAll('.criteria-list');
 
@@ -204,14 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
         disableOnInteraction: true
     });
 
-    const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 1.2, anchors: false}) : null;
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
 
 
     const anchorsLinks = document.querySelectorAll('a[href^="#"]');
