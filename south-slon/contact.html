@@ -13,6 +13,7 @@
           rel="stylesheet">
 
     <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+    <link rel="stylesheet" href="assets/libs/lenis/lenis.css">
 
     <link rel="stylesheet" href="assets/styles/css/reset.css">
     <link rel="stylesheet" href="assets/styles/css/index.css">
@@ -39,35 +40,83 @@
                 </div>
             </div>
         </div>
-        <div class="section section--white">
-            <div class="section__wrapper">
+        <div class="section section--white contact">
+            <div class="section__wrapper section__wrapper--small">
                 <div class="container">
-                    <ul style="display:flex; flex-direction: column;gap:20px;font-size: 18px;">
-                        <li>
-                            <a href="home.html">Главная</a>
-                        </li>
-                        <li>
-                            <a href="projects.html">Проекты</a>
-                        </li>
-                        <li>
-                            <a href="vacancy.html">Вакансии</a>
-                        </li>
-                        <li>
-                            <a href="invest.html">Инвесторам</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Контакты</a>
-                        </li>
-                        <li>
-                            <a href="news.html">Новости</a>
-                        </li>
-                        <li>
-                            <a href="news-item.html">Новости -> Новость</a>
-                        </li>
-                        <li>
-                            <a href="apartment-plan.html">Планировка</a>
-                        </li>
-                    </ul>
+                    <div class="section-grid">
+                        <div class="section-grid__wrapper">
+                            <div class="section-grid__aside section-aside">
+                                <div class="section-aside__wrapper">
+                                    <p class="title title--base title--dark section-aside__title">
+                                        Контакты
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="section-grid__block info">
+                                <div class="info-list__wrapper">
+                                    <p class="title title--base title--dark info-list__title">
+                                        Контакты
+                                    </p>
+                                    <div class="contact__wrapper">
+                                        <div class="contact__row">
+                                            <div class="contact-block">
+                                                <div class="contact-block__wrapper">
+                                                    <div class="contact-block__header">
+                                                        <p class="text text--base text--dark">
+                                                            Отдел продаж
+                                                        </p>
+                                                        <a href="tel:+7 (906) 456-06-06" class="title title--base title--dark">
+                                                            +7 (906) 456-09-09
+                                                        </a>
+                                                    </div>
+                                                    <div class="contact-block__content">
+                                                        <a href="#" class="text text--dark text--button text--button--small">
+                                                            <svg class="text__icon">
+                                                                <use xlink:href="assets/images/sprite.svg#phone"></use>
+                                                            </svg>
+                                                            <span class="text text--dark text--link">Заказать звонок</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="contact-block">
+                                                <div class="contact-block__wrapper">
+                                                    <div class="contact-block__header">
+                                                        <p class="text text--base text--dark">
+                                                            Главный офис компании
+                                                        </p>
+                                                        <a href="tel:+7 (906) 456-06-06" class="title title--base title--dark">
+                                                            +7 (906) 456-06-06
+                                                        </a>
+                                                    </div>
+                                                    <div class="contact-block__content">
+                                                        <a href="mailto:invest@yugslon.ru" class="text text--dark text--button text--button--small">
+                                                            <svg class="text__icon">
+                                                                <use xlink:href="assets/images/sprite.svg#email"></use>
+                                                            </svg>
+                                                            <span class="text text--dark text--link">
+                                                                  invest@yugslon.ru
+                                                        </span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="contact-block__footer">
+                                                        <p class="text text--base text--dark">
+                                                            Россия, г. Ессентуки, ул. Лазурная, д.89 <br>
+                                                            Пн-пт: 09:30-18:30
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contact-map">
+                                            <img src="assets/images/map.jpg" alt="" class="contact-map__item">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -400,6 +449,9 @@
     </div>
 </div>
 
+<script src="assets/libs/lenis/lenis.js"></script>
+<script src="assets/libs/gsap/gsap.js"></script>
+<script src="assets/libs/gsap/scrollTrigger.js"></script>
 <script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
 </body>

@@ -27,4 +27,13 @@
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 448" id="check">
         <path fill="currentColor" d="M203.637 427.637l-203.637-195.804 57.018-54.825 146.618 140.979 309.527-297.623 57.018 54.825-366.545 352.448z"></path>
     </symbol>
+    <symbol viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" id="email">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99967 6.35556C6.69935 6.35556 0 1.67036 0 1.67036V1.15556C0 0.517689 0.596563 0 1.33294 0H14.6664C15.4034 0 16 0.517689 16 1.15556L15.9893 1.73333C15.9893 1.73333 9.36257 6.35556 7.99967 6.35556ZM7.99967 7.94444C9.42516 7.94444 15.9893 3.46667 15.9893 3.46667L16 10.4C16 11.0379 15.4034 11.5556 14.6664 11.5556H1.33294C0.597228 11.5556 0 11.0379 0 10.4L0.0106529 3.46667C0.0099871 3.46667 6.69935 7.94444 7.99967 7.94444Z" fill="currentColor"></path>
+    </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 747 448" id="arrow">
+        <path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="89.6" stroke="currentColor" d="M672 74.667l-298.667 298.667-298.667-298.667"></path>
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" id="file">
+        <path fill="currentColor" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/>
+    </symbol>
 </svg>

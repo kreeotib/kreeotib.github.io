@@ -34,6 +34,40 @@ const hideAllPopups = () => {
 
 
 document.addEventListener('DOMContentLoaded',()=>{
+    const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 2, anchors: false}) : null;
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    const selectArray = document.querySelectorAll('.js-select');
+
+    if (selectArray.length) {
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.js-select')) {
+                selectArray.forEach(select => {
+                    select.classList.remove('active')
+                })
+            }
+        })
+        selectArray.forEach(select => {
+            const selectCurrent = select.querySelector('.js-select-current');
+
+            selectCurrent.addEventListener('click', () => {
+                select.classList.toggle('active');
+            })
+
+            select.addEventListener('change', (e) => {
+                select.classList.remove('active');
+                select.classList.add('filled');
+                selectCurrent.querySelector('.js-select-current-text').textContent = e.target.value;
+            })
+        })
+    }
+
     const rewardsSlider = new Swiper('.js-rewards-slider',{
         slidesPerView:'auto',
         spaceBetween:10,
@@ -80,8 +114,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
 
-
-    const burger = document.querySelector('.burger'),
+    const burger = document.querySelector('.menu-button'),
         menu = document.querySelector('.menu');
 
     if(burger){

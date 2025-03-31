@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
           rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/libs/lenis/lenis.css">
     <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
 
     <link rel="stylesheet" href="assets/styles/css/reset.css">
@@ -21,53 +22,113 @@
 
 <div class="page-wrapper">
     <main class="content">
-        <div class="hero">
-            <div class="hero-bg">
-                <div class="hero-bg__img">
-                    <img src="assets/images/vacancy.webp" alt="">
-                </div>
-            </div>
-            <div class="hero__wrapper">
+        <div class="section section--white plan">
+            <div class="section__wrapper">
                 <div class="container">
-                    <div class="hero__box hero__box--small">
-                        <div class="hero__row">
-                            <div class="hero__logo  hero__logo--small logo">
-                                <img src="assets/images/logo.webp" alt="" class="logo__img">
+                    <div class="plan__grid">
+                        <div class="plan-table">
+                            <div class="plan-table__wrapper">
+                                <div class="plan-table__row">
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                            КВ-3/156
+                                        </p>
+                                        <p class="plan-table__text">
+                                            № квартиры
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="plan-table__row">
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                            К1
+                                        </p>
+                                        <p class="plan-table__text">
+                                            Корпус
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="plan-table__row">
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                           9
+                                        </p>
+                                        <p class="plan-table__text">
+                                            этаж
+                                        </p>
+                                    </div>
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                           3
+                                        </p>
+                                        <p class="plan-table__text">
+                                           комнат
+                                        </p>
+                                    </div>
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                            102,4
+                                        </p>
+                                        <p class="plan-table__text">
+                                            Площадь, м2
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="plan-table__row">
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                            White box
+                                        </p>
+                                        <p class="plan-table__text">
+                                            Отделка
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="plan-table__row">
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                            12 980 000
+                                        </p>
+                                        <p class="plan-table__text">
+                                            Специальная стоимость, ₽
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="plan-table__row">
+                                    <div class="plan-table__column">
+                                        <p class="plan-table__title">
+                                            13 480 000
+                                        </p>
+                                        <p class="plan-table__text">
+                                            Стоимость, ₽
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plan-img">
+                            <img src="assets/images/plan.png" alt="" class="plan-img__item">
+                        </div>
+                        <div class="plan-contact">
+                            <div class="plan-contact__wrapper">
+                                <img src="assets/images/compass.png" alt="" class="plan-contact__compass">
+                                <div class="plan-contact__block">
+                                    <a href="#" class="button button--big button--black">
+                                        Оставить заявку
+                                    </a>
+                                    <a href="#" class="button button--big button--black">
+                                        О проекте
+                                    </a>
+                                </div>
+                                <a href="#" class="text text--black text--button text--button--center">
+                                    <svg class="text__icon">
+                                        <use xlink:href="assets/images/sprite.svg#file"></use>
+                                    </svg>
+                                    <span class="text">Скачать PDF</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="section section--white">
-            <div class="section__wrapper">
-                <div class="container">
-                    <ul style="display:flex; flex-direction: column;gap:20px;font-size: 18px;">
-                        <li>
-                            <a href="home.html">Главная</a>
-                        </li>
-                        <li>
-                            <a href="projects.html">Проекты</a>
-                        </li>
-                        <li>
-                            <a href="vacancy.html">Вакансии</a>
-                        </li>
-                        <li>
-                            <a href="invest.html">Инвесторам</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Контакты</a>
-                        </li>
-                        <li>
-                            <a href="news.html">Новости</a>
-                        </li>
-                        <li>
-                            <a href="news-item.html">Новости -> Новость</a>
-                        </li>
-                        <li>
-                            <a href="apartment-plan.html">Планировка</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -178,6 +239,15 @@
             </div>
         </div>
     </footer>
+</div>
+<div class="back-button">
+    <a href="#" class="burger">
+        <div class="burger__wrapper">
+            <svg class="icon">
+                <use xlink:href="assets/images/sprite.svg#arrow"></use>
+            </svg>
+        </div>
+    </a>
 </div>
 <div class="menu-button">
     <div class="menu-button__wrapper">
@@ -400,6 +470,8 @@
     </div>
 </div>
 
+
+<script src="assets/libs/lenis/lenis.js"></script>
 <script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
 </body>

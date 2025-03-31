@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
           rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/libs/lenis/lenis.css">
     <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
 
     <link rel="stylesheet" href="assets/styles/css/reset.css">
@@ -21,53 +22,68 @@
 
 <div class="page-wrapper">
     <main class="content">
-        <div class="hero">
-            <div class="hero-bg">
-                <div class="hero-bg__img">
-                    <img src="assets/images/vacancy.webp" alt="">
-                </div>
-            </div>
-            <div class="hero__wrapper">
-                <div class="container">
-                    <div class="hero__box hero__box--small">
-                        <div class="hero__row">
-                            <div class="hero__logo  hero__logo--small logo">
-                                <img src="assets/images/logo.webp" alt="" class="logo__img">
+        <div class="section section--white news">
+            <div class="news-content news-single">
+                <div class="news-content__wrapper">
+                    <div class="section-grid news-item">
+                        <div class="section-grid__wrapper">
+                            <div class="section-aside news-single__aside">
+                                <div class="news-item__content">
+                                    <div class="news-item__header">
+                                        <p class="text news-item__date text--grey--light">
+                                            25.02.2025
+                                        </p>
+                                        <p class="title title--base title--dark">
+                                            Заголовок статьи
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-grid__block news-item__content news-single__content">
+                                <div class="news-single__img">
+                                    <img src="assets/images/news/1.jpg" alt="">
+                                </div>
+                                <div class="news-single__text">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem
+                                        consequatur deleniti earum error ipsam maiores neque nisi praesentium quis!
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad
+                                        architecto assumenda blanditiis culpa doloremque earum, exercitationem,
+                                        explicabo ipsa ipsum iure laudantium numquam odio quisquam quod repellendus
+                                        repudiandae sunt totam ut velit. Accusantium dolorem eos harum magnam,
+                                        perspiciatis quidem quod repellendus temporibus. Ad in ipsa nulla porro
+                                        provident qui saepe?
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem
+                                        consequatur deleniti earum error ipsam maiores neque nisi praesentium quis!
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad
+                                        architecto assumenda blanditiis culpa doloremque earum, exercitationem,
+                                        explicabo ipsa ipsum iure laudantium numquam odio quisquam quod repellendus
+                                        repudiandae sunt totam ut velit. Accusantium dolorem eos harum magnam,
+                                        perspiciatis quidem quod repellendus temporibus. Ad in ipsa nulla porro
+                                        provident qui saepe?
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem
+                                        consequatur deleniti earum error ipsam maiores neque nisi praesentium quis!
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad
+                                        architecto assumenda blanditiis culpa doloremque earum, exercitationem,
+                                        explicabo ipsa ipsum iure laudantium numquam odio quisquam quod repellendus
+                                        repudiandae sunt totam ut velit. Accusantium dolorem eos harum magnam,
+                                        perspiciatis quidem quod repellendus temporibus. Ad in ipsa nulla porro
+                                        provident qui saepe?
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="section section--white">
-            <div class="section__wrapper">
-                <div class="container">
-                    <ul style="display:flex; flex-direction: column;gap:20px;font-size: 18px;">
-                        <li>
-                            <a href="home.html">Главная</a>
-                        </li>
-                        <li>
-                            <a href="projects.html">Проекты</a>
-                        </li>
-                        <li>
-                            <a href="vacancy.html">Вакансии</a>
-                        </li>
-                        <li>
-                            <a href="invest.html">Инвесторам</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Контакты</a>
-                        </li>
-                        <li>
-                            <a href="news.html">Новости</a>
-                        </li>
-                        <li>
-                            <a href="news-item.html">Новости -> Новость</a>
-                        </li>
-                        <li>
-                            <a href="apartment-plan.html">Планировка</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -178,6 +194,15 @@
             </div>
         </div>
     </footer>
+</div>
+<div class="back-button">
+    <a href="#" class="burger">
+        <div class="burger__wrapper">
+            <svg class="icon">
+                <use xlink:href="assets/images/sprite.svg#arrow"></use>
+            </svg>
+        </div>
+    </a>
 </div>
 <div class="menu-button">
     <div class="menu-button__wrapper">
@@ -400,6 +425,10 @@
     </div>
 </div>
 
+
+<script src="assets/libs/lenis/lenis.js"></script>
+<script src="assets/libs/gsap/gsap.js"></script>
+<script src="assets/libs/gsap/scrollTrigger.js"></script>
 <script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
 </body>
