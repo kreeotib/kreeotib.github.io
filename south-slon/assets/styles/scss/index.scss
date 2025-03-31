@@ -12,11 +12,13 @@
     height: 3px;
     background-color: transparent;
     border-radius: 20px;
+
+
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #CFD9EA;
-    border-radius: 20px;
+    background-color: #FDFDFD;
+    border-radius: 20px;    mix-blend-mode: difference;
   }
 
   &::-webkit-scrollbar-track {
@@ -63,6 +65,8 @@ body {
 
 
   background-color: #07090F;
+
+  @include custom-scrollbar;
 }
 
 .title {
@@ -281,13 +285,22 @@ a.text--white:hover {
 
 .page-wrapper {
   position: relative;
-
+  &--active{
+  }
+  &--active &__box{
+    @media screen and (min-width: 768px) {
+      transform: translateX(var(--menu-width));
+    }
+  }
   &--dark {
     background: #121317;
   }
 
   &--light {
     background: #EFEFEF;
+  }
+  &__box{
+    transition: .5s transform;
   }
 }
 
@@ -302,6 +315,28 @@ a.text--white:hover {
     @media screen and (max-width: 767px) {
       top: 18px;
       right: 16px;
+    }
+  }
+}
+
+.phone{
+  &-button{
+    position: fixed;
+    top: 6rem;
+    right: 16rem;
+    width: max-content;
+
+    z-index: 8;
+
+    color: var(--color-white);
+    &--mobile{
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      top: 18px;
+      right: 56px;
     }
   }
 }
@@ -541,7 +576,7 @@ a.text--white:hover {
   }
 
   &__wrapper {
-    padding: 12rem 0;
+    padding: 18rem 0;
 
     @media screen and (max-width: 767px) {
       padding: 60px 0;
@@ -863,7 +898,7 @@ a.text--white:hover {
       left: 0;
       top: 0;
       width: 100%;
-      height: 100%;
+      height: 125%;
 
       display: flex;
       align-items: center;
@@ -998,8 +1033,10 @@ a.text--white:hover {
   }
 
   &-row {
-    overflow: hidden;
     width: 100%;
+    @media screen and (max-width: 767px) {
+      overflow: hidden;
+    }
 
     &__wrapper {
       display: flex;
@@ -1058,7 +1095,12 @@ a.text--white:hover {
     }
 
     &__item {
-      width: 236px;
+      &--rewards{
+        width: calc(20% - 8px);
+      }
+      @media screen and (max-width: 767px) {
+        width: 230px;
+      }
     }
   }
 
@@ -1072,7 +1114,7 @@ a.text--white:hover {
 
       &--big {
         @media screen and (min-width: 768px) {
-          width: 250px;
+          width: calc(100% + 30px);
         }
       }
       @media screen and (max-width: 767px) {
@@ -1129,7 +1171,7 @@ a.text--white:hover {
       }
 
       &--management {
-        height: 275px;
+        padding-bottom: 120%;
 
         img {
           width: 100%;
@@ -1441,8 +1483,8 @@ a.text--white:hover {
 .menu {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  right: 0;
+  width: max-content;
   height: 100svh;
   z-index: 10;
   display: flex;
@@ -1457,6 +1499,11 @@ a.text--white:hover {
   &--active {
     opacity: 1;
     visibility: visible;
+  }
+
+  @media screen and (max-width: 767px) {
+    left: 0;
+    right: unset;
   }
 
   &--active &__wrapper {
@@ -1491,21 +1538,10 @@ a.text--white:hover {
     background: #070A10;
 
     transform: translateX(100%);
-    transition: .3s transform;
-
-    &::before {
-      content: "";
-      width: 100vw;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      background: #070A10;
-    }
+    transition: .5s transform;
 
     @media screen and (max-width: 767px) {
-      padding: 15px 16px 15px 0;
+      padding: 16px;
       margin-left: unset;
       transform: translateX(-100%);
       &::before {
@@ -1899,9 +1935,6 @@ a.text--white:hover {
     }
     &__item {
       &:first-child {
-        .info-item__header{
-          padding-top: 0;
-        }
       }
     }
   }
@@ -1916,14 +1949,10 @@ a.text--white:hover {
 
     &:has(:checked) &__header {
       border-bottom-color: #D8D8D8;
-      padding:3rem 0;
-      @media screen and (max-width: 767px) {
-        padding:20px 0;
-      }
     }
 
     &:has(:checked) &__content {
-      display: block;
+      height: var(--list-height);
     }
 
     &__header {
@@ -1952,7 +1981,10 @@ a.text--white:hover {
     }
 
     &__content{
-      display: none;
+      height: 0;
+      overflow: hidden;
+
+      transition: .3s height;
 
       .info-item__header:last-child{
         border-bottom-color: transparent;
@@ -2214,6 +2246,33 @@ a.text--white:hover {
 }
 
 .plan{
+  &-nav{
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+    &__item{
+      width: max-content;
+
+      font-size: var(--text-size-base);
+      color: rgba(92,93,93,.4);
+      border-bottom: 1px solid rgba(92,93,93,.4);
+      transition: color .2s,border-color .2s;
+
+      &:hover{
+        cursor: pointer;
+      }
+      &.swiper-slide-thumb-active{
+        border-color: transparent;
+        color: #000;
+      }
+    }
+  }
+  &__wrapper{
+    padding-bottom: 9rem;
+    @media screen and (max-width: 767px) {
+      padding-bottom: 60px;
+    }
+  }
   &__grid{
     display: grid;
     grid-template-columns: 40rem minmax(0,1fr) 40rem;
@@ -2221,6 +2280,39 @@ a.text--white:hover {
     @media screen and (max-width: 767px) {
       grid-template-columns: minmax(0,1fr);
       gap: 24px;
+    }
+  }
+
+  &__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding:6rem 10rem;
+    gap: 2.2rem;
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      padding:60px 0 24px 0;
+      gap: 24px;
+    }
+
+  }
+  &__phone{
+    font-size: 2.2rem;
+    @media screen and (max-width: 767px) {
+      order: 3;
+      font-size: 12px;
+
+      display: none;
+    }
+  }
+
+  &__logo{
+    max-width: 24rem;
+    @media screen and (max-width: 767px) {
+      max-width: 140px;
     }
   }
 
@@ -2267,7 +2359,7 @@ a.text--white:hover {
     }
   }
 
-  &-img{
+  &-slider{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2281,9 +2373,20 @@ a.text--white:hover {
     &__item{
       width: 100%;
       height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+    &__img{
+      width: 100%;
+      height: 100%;
       object-fit: contain;
 
+
       max-width: 42rem;
+      margin: 0 auto;
       @media screen and (max-width: 767px) {
         max-width: 280px;
       }
