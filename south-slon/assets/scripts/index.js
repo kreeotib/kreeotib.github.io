@@ -202,19 +202,53 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    const projectsSlider = new Swiper(".projects-list", {
-        spaceBetween: 0,
-        slidesPerView: 1,
-        direction:"vertical",
-        init:false,
-        edgeSwipeDetection: "prevent",
-        resistanceRatio: 0,
-    });
+    // const projectsSlider = new Swiper(".projects-list", {
+    //     spaceBetween: 0,
+    //     slidesPerView: 1,
+    //     direction:"vertical",
+    //     init:false,
+    //     edgeSwipeDetection: "prevent",
+    //     resistanceRatio: 0,
+    // });
+    //
+    // if(window.matchMedia('(max-width:767px)').matches){
+    //     projectsSlider.init()
+    //
+    //     const swiper = new Swiper('.swiper-container', {
+    //
+    //     });
+    // }
 
-    if(window.matchMedia('(max-width:767px)').matches){
-        projectsSlider.init()
 
-        const swiper = new Swiper('.swiper-container', {
+    const rangeArray = document.querySelectorAll('.js-range');
+
+    if (rangeArray.length > 0) {
+        rangeArray.forEach(range => {
+            const rangeElement = range.querySelector('.range-slider'),
+                rangeMax = rangeElement.dataset.max,
+                rangeMin = rangeElement.dataset.min,
+                rangeStep = rangeElement.dataset.step || 1;
+            const rangeSliderElement = rangeSlider(rangeElement, {
+                min: rangeMin,
+                max: rangeMax,
+                step: rangeStep,
+                value: [rangeMin, rangeMax],
+                disabled: false,
+                rangeSlideDisabled: false,
+                thumbsDisabled: [false, false],
+                orientation: 'horizontal',
+                onInput: function (valueSet) {
+                    console.log(rangeMin, rangeMax, valueSet)
+                    if(+rangeMin !== valueSet[0] || +rangeMax !== valueSet[1]){
+                        rangeElement.classList.add('active')
+                    }else{
+                        rangeElement.classList.remove('active')
+                    }
+                    if(+rangeMin !== valueSet[0] && +rangeMax !== valueSet[1]){
+
+                    }
+                },
+            });
 
         });
     }
