@@ -33,7 +33,7 @@ const hideAllPopups = () => {
 };
 
 
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
     const lenis = typeof Lenis !== 'undefined' ? new Lenis({smoothWheel: true, duration: 2, anchors: false}) : null;
     const gsapCheck = typeof gsap !== 'undefined';
 
@@ -58,16 +58,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const numbers = document.querySelector('.numbers');
 
-    if(numbers){
+    if (numbers) {
         const numbersItemArray = numbers.querySelectorAll('.numbers-card');
-        if(numbersItemArray.length){
-            numbersItemArray.forEach((item,index)=>{
+        if (numbersItemArray.length) {
+            numbersItemArray.forEach((item, index) => {
                 gsap.from(item, {
                     scrollTrigger: {
-                        trigger:numbers,
+                        trigger: numbers,
                         start: "top bottom",
                         end: "top top",
-                        scrub:true,
+                        scrub: true,
                     },
                     y: 100 * (index + 1),
                     ease: "none",
@@ -78,17 +78,17 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const parallaxBlockArray = document.querySelectorAll('.parallax-block');
 
-    if(parallaxBlockArray.length){
-        parallaxBlockArray.forEach(block=>{
+    if (parallaxBlockArray.length) {
+        parallaxBlockArray.forEach(block => {
             const parallaxBlockWrapper = block.querySelector('.parallax-block-wrapper')
-                gsap.from(parallaxBlockWrapper, {
+            gsap.from(parallaxBlockWrapper, {
                 scrollTrigger: {
-                    trigger:block,
+                    trigger: block,
                     start: "top bottom",
                     end: "top 50%",
-                    scrub:true,
+                    scrub: true,
                 },
-                x: 300, opacity:0,
+                x: 300, opacity: 0,
                 ease: "none",
             });
         })
@@ -96,12 +96,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const projectsCardImgArray = document.querySelectorAll('.projects-card__img');
 
-    if(projectsCardImgArray.length) {
+    if (projectsCardImgArray.length) {
         projectsCardImgArray.forEach(projectImg => {
             const sectionProjects = projectImg.closest('.section-projects');
             console.log(sectionProjects)
             const projectImgElement = projectImg.querySelector('img');
-            if(!sectionProjects && !projectImgElement) return false;
+            if (!sectionProjects && !projectImgElement) return false;
             gsap.to(projectImgElement, {
                 scrollTrigger: {
                     trigger: sectionProjects,
@@ -140,47 +140,47 @@ document.addEventListener('DOMContentLoaded',()=>{
         })
     }
 
-    const rewardsSlider = new Swiper('.js-rewards-slider',{
-        slidesPerView:'auto',
-        spaceBetween:10,
-        speed:1000,
-        navigation:{
-            nextEl:'.js-rewards-slider-button-next',
-            prevEl:'.js-rewards-slider-button-prev'
+    const rewardsSlider = new Swiper('.js-rewards-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        speed: 1000,
+        navigation: {
+            nextEl: '.js-rewards-slider-button-next',
+            prevEl: '.js-rewards-slider-button-prev'
         },
-        breakpoints:{
-            768:{
-                spaceBetween:0,
+        breakpoints: {
+            768: {
+                spaceBetween: 0,
             },
         }
     })
-    const ratingsSlider = new Swiper('.js-ratings-slider',{
-        slidesPerView:'auto',
-        spaceBetween:10,
-        speed:1000,
-        breakpoints:{
-            768:{
-                slidesPerView:5,
+    const ratingsSlider = new Swiper('.js-ratings-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        speed: 1000,
+        breakpoints: {
+            768: {
+                slidesPerView: 5,
             },
         },
-        navigation:{
-            nextEl:'.js-ratings-slider-button-next',
-            prevEl:'.js-ratings-slider-button-prev'
+        navigation: {
+            nextEl: '.js-ratings-slider-button-next',
+            prevEl: '.js-ratings-slider-button-prev'
         }
     })
 
-    const managementSlider = new Swiper('.js-management-slider',{
-        slidesPerView:'auto',
-        speed:1000,
-        spaceBetween:30,
-        breakpoints:{
-            768:{
-                slidesPerView:5,
+    const managementSlider = new Swiper('.js-management-slider', {
+        slidesPerView: 'auto',
+        speed: 1000,
+        spaceBetween: 30,
+        breakpoints: {
+            768: {
+                slidesPerView: 5,
             },
         },
-        navigation:{
-            nextEl:'.js-management-slider-button-next',
-            prevEl:'.js-management-slider-button-prev'
+        navigation: {
+            nextEl: '.js-management-slider-button-next',
+            prevEl: '.js-management-slider-button-prev'
         }
     })
 
@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
     const plansSlider = new Swiper(".plan-slider", {
         spaceBetween: 0,
-        slidesPerView:1,
-        effect:"fade",
+        slidesPerView: 1,
+        effect: "fade",
         fadeEffect: {
             crossFade: true
         },
@@ -202,6 +202,36 @@ document.addEventListener('DOMContentLoaded',()=>{
         },
     });
 
+    const projectsSlider = new Swiper(".projects-list", {
+        spaceBetween: 0,
+        slidesPerView: 1,
+        direction:"vertical",
+        init:false,
+        resistanceRatio: 0,
+        on: {
+            reachBeginning: function() {
+                // Lock at beginning
+                this.allowSlidePrev = false;
+            },
+            reachEnd: function() {
+                // Lock at end
+                this.allowSlideNext = false;
+            },
+            fromEdge: function() {
+                // Re-enable when not at edges
+                this.allowSlidePrev = true;
+                this.allowSlideNext = true;
+            }
+        }
+    });
+
+    if(window.matchMedia('(max-width:767px)').matches){
+        projectsSlider.init()
+
+        const swiper = new Swiper('.swiper-container', {
+
+        });
+    }
 
 
     const popupButtons = document.querySelectorAll('[data-popup]');
@@ -222,8 +252,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const burger = document.querySelector('.menu-button'),
         menu = document.querySelector('.menu');
 
-    if(burger && burger){
-        burger.addEventListener('click',e=>{
+    if (burger && burger) {
+        burger.addEventListener('click', e => {
             e.preventDefault();
             const menuWidth = menu.getBoundingClientRect().width,
                 pageWrapper = document.querySelector(".page-wrapper");
@@ -236,12 +266,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const infoItemArray = document.querySelectorAll('.info-item');
 
-    if(infoItemArray.length){
-        infoItemArray.forEach(item=>{
+    if (infoItemArray.length) {
+        infoItemArray.forEach(item => {
             const itemList = item.querySelector('.info-item__list');
-            if(itemList){
+            if (itemList) {
                 const itemListContent = itemList.closest('.info-item__content');
-                if(!itemListContent) return false;
+                if (!itemListContent) return false;
                 console.log(itemList.getBoundingClientRect().height)
                 itemListContent.style.setProperty('--list-height', `${itemList.getBoundingClientRect().height}px`)
             }

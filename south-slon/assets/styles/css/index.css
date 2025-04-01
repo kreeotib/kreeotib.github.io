@@ -622,17 +622,6 @@ a.text--white:hover {
 .projects-tabs__link.active {
   color: #d5d5d5;
 }
-.projects-list__row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 4.4rem;
-}
-@media screen and (max-width: 767px) {
-  .projects-list__row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
-  }
-}
 .projects-card {
   position: relative;
   padding-bottom: 100%;
@@ -642,6 +631,9 @@ a.text--white:hover {
     padding: 0;
     height: 100svh;
   }
+}
+.projects-card.swiper-slide-active .projects-card__img::before {
+  background-color: rgba(17, 17, 17, 0.3);
 }
 .projects-card__wrapper {
   position: absolute;
@@ -764,7 +756,7 @@ a.text--white:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 3;
 }
 @media screen and (max-width: 767px) {
   .projects-card__img {
@@ -780,6 +772,12 @@ a.text--white:hover {
   height: 100%;
   background-color: rgba(17, 17, 17, 0.3);
   z-index: 2;
+  transition: 1s background-color;
+}
+@media screen and (max-width: 767px) {
+  .projects-card__img::before {
+    background-color: rgba(17, 17, 17, 0.9);
+  }
 }
 .projects-card__img img {
   width: 100%;
@@ -789,6 +787,29 @@ a.text--white:hover {
   left: 0;
   top: 0;
   z-index: 1;
+  will-change: transform;
+}
+.projects-list {
+  position: relative;
+}
+@media screen and (max-width: 767px) {
+  .projects-list {
+    height: 100svh;
+  }
+}
+.projects-list__item {
+  background-color: #07090F;
+}
+.projects-list__row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4.4rem;
+}
+@media screen and (max-width: 767px) {
+  .projects-list__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
 }
 .projects__nav {
   margin: 0 0 4.4rem 0;
