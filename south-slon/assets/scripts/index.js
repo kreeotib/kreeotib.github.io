@@ -96,10 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const projectsCardImgArray = document.querySelectorAll('.projects-card__img');
 
-    if (projectsCardImgArray.length) {
+    if (projectsCardImgArray.length && window.innerWidth > 768) {
         projectsCardImgArray.forEach(projectImg => {
             const sectionProjects = projectImg.closest('.section-projects');
-            console.log(sectionProjects)
             const projectImgElement = projectImg.querySelector('img');
             if (!sectionProjects && !projectImgElement) return false;
             gsap.to(projectImgElement, {
@@ -112,6 +111,132 @@ document.addEventListener('DOMContentLoaded', () => {
                 y: -100,
                 ease: "none",
             })
+        });
+    }
+
+    const overlayWrapper = document.querySelector('.overlay-wrapper'),
+        overlayHero = document.querySelector('.overlay-hero'),
+        overlaySection = document.querySelector('.overlay-section');
+
+    if(overlayWrapper){
+        gsap.to(overlayHero, {
+            scrollTrigger: {
+                trigger: overlaySection,
+                start: "top bottom",
+                end: () => `top top`,
+                scrub: true,
+            },
+            y: overlayHero.offsetHeight,
+            ease: "none",
+        })
+    }
+
+
+    // const projectsList = document.querySelector('.projects-list__row');
+    // if(projectsList){
+    //     const projectsListItems = projectsList.querySelectorAll('.projects-list__item')
+    //     if(projectsListItems.length){
+    //         const itemHeight = projectsListItems[0].offsetHeight;
+    //         console.log(itemHeight)
+    //         projectsListItems.forEach((item, index)=>{
+    //             gsap.set(item, {y: itemHeight * index, scale: 1});
+    //             gsap.to(item, {
+    //                 y: -itemHeight * index,
+    //                 duration: 1,
+    //                 ease: "none",
+    //                 scrollTrigger: {
+    //                     trigger: projectsList,
+    //                     start: "top top",
+    //                     end: () => `+=${(projectsListItems.length * itemHeight)}`,
+    //                     scrub: true,
+    //                     markers:true,
+    //                     pin:true,
+    //                 },
+    //             })
+    //         })
+    //     }
+    // }
+
+    // const cards = document.querySelectorAll('.projects-list__item');
+    // const animation = gsap.timeline();
+    // let cardHeight;
+    //
+    // function initCards() {
+    //     animation.clear();
+    //     cardHeight = cards[0].offsetHeight;
+    //
+    //     cards.forEach((card, index) => {
+    //         if (index > 0) {
+    //             gsap.set(card, {y: index * (cardHeight + 30), scale: 1});
+    //             animation.to(card, {
+    //                 y: index ,
+    //                 duration: 1 * index,
+    //                 ease: "none",
+    //                 onEnter:(e)=>{
+    //                     console.log(e);
+    //                     card.classList.add('animated');
+    //                 }
+    //             }, 0);
+    //         } else {
+    //             gsap.set(card, {y: (index * cardHeight), scale: 1});
+    //             animation.to(card, {
+    //                 duration: 1,
+    //                 ease: "none",
+    //                 onEnter:()=>{
+    //                     card.classList.add('animated');
+    //                 }
+    //             }, 0);
+    //         }
+    //     });
+    // }
+    //
+    // initCards();
+    //
+    // ScrollTrigger.create({
+    //     trigger: ".projects-list__row",
+    //     start: "top top",
+    //     pin: true,
+    //     end: () => `+=${(cards.length * cardHeight)}`,
+    //     scrub: true,
+    //     animation: animation,
+    //     invalidateOnRefresh: true,
+    //
+    // });
+
+
+    const panels = gsap.utils.toArray(".projects-list__item");
+
+    if(panels.length && window.innerWidth < 767){
+        panels.forEach((panel, i) => {
+            ScrollTrigger.create({
+                trigger: panel,
+                start: "top top",
+                scrub: true,
+                pin: true,
+                pinSpacing: false,
+                onEnter:()=>{
+                    panel.classList.add('animated')
+                },
+                onLeave:()=>{
+                    panel.classList.remove('animated')
+                },
+                onEnterBack:()=>{
+                    panel.classList.add('animated')
+                },
+                onLeaveBack:()=>{
+                    panel.classList.remove('animated')
+                },
+            });
+        });
+
+        ScrollTrigger.create({
+            trigger: ".projects-list__row",
+            snap: {
+                snapTo: 1 / (panels.length - 1),
+                duration: 0.2
+            },
+            start: "top top",
+            end: "+=" + 100 * (panels.length - 1) + "%"
         });
     }
 
@@ -202,22 +327,15 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // const projectsSlider = new Swiper(".projects-list", {
-    //     spaceBetween: 0,
-    //     slidesPerView: 1,
-    //     direction:"vertical",
-    //     init:false,
-    //     edgeSwipeDetection: "prevent",
-    //     resistanceRatio: 0,
-    // });
-    //
-    // if(window.matchMedia('(max-width:767px)').matches){
-    //     projectsSlider.init()
-    //
-    //     const swiper = new Swiper('.swiper-container', {
-    //
-    //     });
-    // }
+    const pageSlider = new Swiper(".main-slider",{
+        spaceBetween:0,
+        slidesPerView:1,
+        freeMode:true,
+        direction:"vertical",
+        mousewheel:true,
+        releaseOnEdges:true,
+    });
+
 
 
     const rangeArray = document.querySelectorAll('.js-range');

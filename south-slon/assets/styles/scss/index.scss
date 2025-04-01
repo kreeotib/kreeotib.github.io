@@ -618,7 +618,10 @@ a.text--white:hover {
     &__wrapper {
       padding: 12rem 0;
       @media screen and (max-width: 767px) {
-        padding: 0;
+        padding: 24px 0;
+        &--home{
+          padding: 0;
+        }
       }
     }
 
@@ -1088,7 +1091,7 @@ a.text--white:hover {
       }
     }
 
-    &.swiper-slide-active &__img {
+    &.animated &__img {
       &::before {
         background-color: rgba(#111111, .3);
       }
@@ -1241,9 +1244,9 @@ a.text--white:hover {
         background-color: rgba(#111111, .3);
         z-index: 2;
 
-        transition: 1s background-color;
+        transition: .5s background-color;
         @media screen and (max-width: 767px) {
-
+          background-color: rgba(#111111, .9);
         }
       }
 
@@ -1267,12 +1270,16 @@ a.text--white:hover {
 
     &__item {
       background-color: #07090F;
+
     }
 
     &__row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 4.4rem;
+
+      position: relative;
+
       @media screen and (max-width: 767px) {
         grid-template-columns: minmax(0, 1fr);
         gap: 20px;
@@ -1323,7 +1330,8 @@ a.text--white:hover {
 
 .about {
   position: relative;
-
+  z-index: 6;
+  background-color: #07090F;
   &::before {
     content: "";
     position: absolute;
@@ -1729,6 +1737,9 @@ a.text--white:hover {
 }
 
 .footer {
+  background-color: #121317;
+  position: relative;
+  z-index: 5;
   &__logo {
     max-width: 28rem;
     margin: 0 0 13.5rem 0;
@@ -2585,9 +2596,11 @@ a.text--white:hover {
   &.active &__list {
     opacity: 1;
     visibility: visible;
+
   }
 
   &.active &__current {
+
     .icon {
       transform: rotate(180deg);
     }
@@ -2624,12 +2637,23 @@ a.text--white:hover {
 
   &--filter &__current{
     border:1px solid #494A4F;
+  }
 
+  &--filter:has(:checked) &__current{
+    border-color: var(--color-white);
+    color: var(--color-white);
   }
 
   &--filter.active &__current{
     border-bottom:none;
     border-radius: 16px 16px 0 0;
+
+    border-color: var(--color-white);
+    color: var(--color-white);
+  }
+
+  &--filter.active &__list{
+    border-color: var(--color-white);
   }
 
   &__current {
@@ -2865,6 +2889,24 @@ a.text--white:hover {
         gap: 12px;
       }
     }
+  }
+}
+
+
+.overlay{
+  &-wrapper{
+    position: relative;
+    padding-top: 100vh;
+  }
+  &-hero{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+  }
+  &-section{
+    position: relative;
+    z-index: 5;
   }
 }
 

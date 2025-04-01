@@ -496,6 +496,9 @@ a.text--white:hover {
 }
 @media screen and (max-width: 767px) {
   .section-projects__wrapper {
+    padding: 24px 0;
+  }
+  .section-projects__wrapper--home {
     padding: 0;
   }
 }
@@ -924,7 +927,7 @@ a.text--white:hover {
   position: relative;
   padding-bottom: 50%;
 }
-.projects-card.swiper-slide-active .projects-card__img::before {
+.projects-card.animated .projects-card__img::before {
   background-color: rgba(17, 17, 17, 0.3);
 }
 .projects-card__wrapper {
@@ -1064,7 +1067,12 @@ a.text--white:hover {
   height: 100%;
   background-color: rgba(17, 17, 17, 0.3);
   z-index: 2;
-  transition: 1s background-color;
+  transition: 0.5s background-color;
+}
+@media screen and (max-width: 767px) {
+  .projects-card__img::before {
+    background-color: rgba(17, 17, 17, 0.9);
+  }
 }
 .projects-card__img img {
   width: 100%;
@@ -1086,6 +1094,7 @@ a.text--white:hover {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4.4rem;
+  position: relative;
 }
 @media screen and (max-width: 767px) {
   .projects-list__row {
@@ -1131,6 +1140,8 @@ a.text--white:hover {
 
 .about {
   position: relative;
+  z-index: 6;
+  background-color: #07090F;
 }
 .about::before {
   content: "";
@@ -1500,6 +1511,11 @@ a.text--white:hover {
   height: 100%;
 }
 
+.footer {
+  background-color: #121317;
+  position: relative;
+  z-index: 5;
+}
 .footer__logo {
   max-width: 28rem;
   margin: 0 0 13.5rem 0;
@@ -2311,9 +2327,18 @@ a.text--white:hover {
 .select--filter .select__current {
   border: 1px solid #494A4F;
 }
+.select--filter:has(:checked) .select__current {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
 .select--filter.active .select__current {
   border-bottom: none;
   border-radius: 16px 16px 0 0;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.select--filter.active .select__list {
+  border-color: var(--color-white);
 }
 .select__current {
   display: flex;
@@ -2524,6 +2549,21 @@ a.text--white:hover {
   .plan-contact__block {
     gap: 12px;
   }
+}
+
+.overlay-wrapper {
+  position: relative;
+  padding-top: 100vh;
+}
+.overlay-hero {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+}
+.overlay-section {
+  position: relative;
+  z-index: 5;
 }
 
 /*# sourceMappingURL=index.css.map */
