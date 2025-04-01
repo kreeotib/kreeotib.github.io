@@ -207,22 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 1,
         direction:"vertical",
         init:false,
+        edgeSwipeDetection: "prevent",
         resistanceRatio: 0,
-        on: {
-            reachBeginning: function() {
-                // Lock at beginning
-                this.allowSlidePrev = false;
-            },
-            reachEnd: function() {
-                // Lock at end
-                this.allowSlideNext = false;
-            },
-            fromEdge: function() {
-                // Re-enable when not at edges
-                this.allowSlidePrev = true;
-                this.allowSlideNext = true;
-            }
-        }
     });
 
     if(window.matchMedia('(max-width:767px)').matches){
