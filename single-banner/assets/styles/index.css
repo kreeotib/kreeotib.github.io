@@ -141,6 +141,8 @@ body {
     max-width: max-content;
     width: 100%;
 
+    text-align: center;
+
     color: #343434;
     font-size: 12px;
     text-transform: uppercase;
