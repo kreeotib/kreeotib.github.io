@@ -41,71 +41,48 @@ class Quiz  {
         this.quizItemsPercent = this.container.querySelector('.quiz-percent');
         this.prevButton = this.container.querySelector('.quiz-prev-button');
         this.nextButton = this.container.querySelector('.quiz-next-button');
-        this.progressContainer = this.container.querySelector('.quiz-progress');
+        this.quizFooter = this.container.querySelector('.quiz__footer');
+        this.quizResultText = this.container.querySelector('.quiz-result-text')
         this.currentSlide = 0;
         if (this.quizItems.length === 0 || !this.prevButton || !this.nextButton) {
             console.error('Quiz items, buttons, or progress container are missing.');
             return;
         }
         this.initQuiz();
-        if(this.progressContainer){
-            this.createProgressItems();
-        }
         this.addEventListeners();
     }
     initQuiz() {
-        this.currentSlide = 0;
+        this.currentSlide = 4;
         this.updateActiveSlide();
         this.updateButtons();
     }
-    createProgressItems() {
-        this.quizItems.forEach((item, index) => {
-            const progressItem = document.createElement('div');
-            progressItem.classList.add('quiz-progress__item');
-
-            const progressNumber = document.createElement('div');
-            progressNumber.classList.add('quiz-progress__number');
-
-            const numberText = document.createElement('span');
-            numberText.textContent = String(index + 1).padStart(2, '0');
-
-            progressNumber.appendChild(numberText);
-            progressNumber.innerHTML += "<svg class=\"icon\"> <use xlink:href=\"assets/images/sprite.svg#check\"></use> </svg>"
-
-            progressItem.appendChild(progressNumber);
-            this.progressContainer.appendChild(progressItem);
-        });
-    }
     addEventListeners() {
-        this.container.addEventListener('click', (event) => {
-            if (event.target === this.prevButton) {
-                this.prevSlide();
-            } else if (event.target === this.nextButton) {
-                this.nextSlide();
-            }
-        });
+        this.prevButton.addEventListener('click',e=>{
+            this.prevSlide()
+        })
+        this.nextButton.addEventListener('click',e=>{
+            this.nextSlide()
+        })
+    }
+
+    createResultText(){
+        return `Подобраны ${this.container.querySelector('[name="quiz-plans"]:checked').value} с оплатой "${this.container.querySelector('[name="quiz-payment"]:checked').value}" . Скидка до 3,2 млн ₽`
     }
     updateActiveSlide() {
         this.quizItems.forEach((item, index) => {
             item.classList.toggle('active', index === this.currentSlide);
         });
         if (this.quizItemsPercent) {
-            this.quizItemsPercent.textContent = `${(this.currentSlide) / this.quizItems.length  * 100}%`;
+            this.quizItemsPercent.textContent = `${(this.currentSlide + 1) / this.quizItems.length  * 100}%`;
+            this.container.style.setProperty("--current-percent", `${(this.currentSlide + 1) / this.quizItems.length  * 100}%`)
         }
-        if(this.progressContainer){
-            this.updateProgress();
-        }
-    }
-    updateProgress() {
-        const progressItems = this.progressContainer.querySelectorAll('.quiz-progress__item');
-        progressItems.forEach((item, index) => {
-            item.classList.toggle('active', index === this.currentSlide);
-        });
-        this.progressContainer.classList.toggle('end', this.currentSlide === this.quizItems.length - 1);
     }
     updateButtons() {
-        this.prevButton.style.display = this.currentSlide === 0 ? 'none' : 'inline-block';
-        this.nextButton.style.display = this.currentSlide === this.quizItems.length - 1 ? 'none' : 'inline-block';
+        this.quizFooter.classList.toggle('hidden', this.currentSlide === this.quizItems.length - 1);
+
+        if(this.currentSlide === this.quizItems.length - 1){
+            this.quizResultText.textContent = this.createResultText();
+        }
     }
     validateInputs() {
         const currentItem = this.quizItems[this.currentSlide];
