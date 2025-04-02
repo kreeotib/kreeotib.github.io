@@ -11,6 +11,7 @@ const checkTargetOrKey = event => {
 };
 const showPopup = popupId => {
     const popup = document.querySelector(popupId);
+    console.log(popup)
     if (!popup) return
 
     hideAllPopups();
@@ -33,8 +34,7 @@ const hideAllPopups = () => {
     document.removeEventListener('keyup', checkTargetOrKey);
 };
 
-
-class Quiz  {
+class Quiz {
     constructor(container) {
         this.container = container;
         this.quizItems = this.container.querySelectorAll('.quiz-item');
@@ -51,39 +51,50 @@ class Quiz  {
         this.initQuiz();
         this.addEventListeners();
     }
+
     initQuiz() {
-        this.currentSlide = 4;
+        this.currentSlide = 0;
         this.updateActiveSlide();
         this.updateButtons();
     }
+
     addEventListeners() {
-        this.prevButton.addEventListener('click',e=>{
+        this.prevButton.addEventListener('click', e => {
             this.prevSlide()
         })
-        this.nextButton.addEventListener('click',e=>{
+        this.nextButton.addEventListener('click', e => {
             this.nextSlide()
+        })
+
+        this.container.addEventListener('change', e => {
+            if (e.target.type === "radio") {
+                this.nextSlide();
+            }
         })
     }
 
-    createResultText(){
+    createResultText() {
         return `Подобраны ${this.container.querySelector('[name="quiz-plans"]:checked').value} с оплатой "${this.container.querySelector('[name="quiz-payment"]:checked').value}" . Скидка до 3,2 млн ₽`
     }
+
     updateActiveSlide() {
         this.quizItems.forEach((item, index) => {
             item.classList.toggle('active', index === this.currentSlide);
         });
         if (this.quizItemsPercent) {
-            this.quizItemsPercent.textContent = `${(this.currentSlide + 1) / this.quizItems.length  * 100}%`;
-            this.container.style.setProperty("--current-percent", `${(this.currentSlide + 1) / this.quizItems.length  * 100}%`)
+            this.quizItemsPercent.textContent = `${(this.currentSlide + 1) / this.quizItems.length * 100}%`;
+            this.container.style.setProperty("--current-percent", `${(this.currentSlide + 1) / this.quizItems.length * 100}%`)
         }
     }
+
     updateButtons() {
         this.quizFooter.classList.toggle('hidden', this.currentSlide === this.quizItems.length - 1);
 
-        if(this.currentSlide === this.quizItems.length - 1){
+        if (this.currentSlide === this.quizItems.length - 1) {
             this.quizResultText.textContent = this.createResultText();
         }
     }
+
     validateInputs() {
         const currentItem = this.quizItems[this.currentSlide];
         const requiredInputs = currentItem.querySelectorAll('[required]');
@@ -101,6 +112,7 @@ class Quiz  {
             return input.checkValidity();
         });
     }
+
     nextSlide() {
         if (this.validateInputs()) {
             this.currentSlide++;
@@ -108,6 +120,7 @@ class Quiz  {
             this.updateButtons();
         }
     }
+
     prevSlide() {
         if (this.currentSlide > 0) {
             this.currentSlide--;
@@ -118,11 +131,11 @@ class Quiz  {
 }
 
 
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
     const quizArray = document.querySelectorAll('.quiz');
 
-    if(quizArray.length){
-        quizArray.forEach(quizBlock=>{
+    if (quizArray.length) {
+        quizArray.forEach(quizBlock => {
             const quiz = new Quiz(quizBlock);
             quiz.initQuiz();
 
@@ -133,13 +146,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     const popups = document.querySelectorAll('.popup');
 
     if (popups.length) {
+
         popupButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
+
 
                 const popupId = button.dataset.popup
                 showPopup(popupId);
             });
         });
+    }
+
+    const phoneInputArray = document.querySelectorAll('.js-phone');
+    const maskOptions = {
+        mask: '+{7} (000) 000-00-00'
+    };
+    if (phoneInputArray.length) {
+        phoneInputArray.forEach(input => {
+            IMask(input, maskOptions);
+        })
     }
 })

@@ -240,12 +240,12 @@ body {
 }
 
 .popup__close {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     display: block;
     position: absolute;
-    top: -20px;
-    right: -20px;
+    top: -30px;
+    right: -30px;
     background: var(--color-accent);
     border-radius: 6px;
 }
@@ -513,15 +513,42 @@ body {
     }
 }
 
+.input{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quiz-checkbox{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.quiz-checkbox__text{
+    font-size: 10px;
+}
+
+.quiz-checkbox__text a{
+    text-decoration: none;
+}
+
 .quiz-input{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 12px;
     padding:0 16px;
     height: 60px;
     width: 100%;
     background-color: rgb(237, 237, 237);
     border:1px solid rgb(204, 204, 204);
+}
+.quiz-input .icon{
+    width: 24px;
+    height: 24px;
+    fill: rgb(219, 219, 219);
+    flex-shrink: 0;
 }
 .quiz-input--small{
     background-color: transparent;
@@ -565,7 +592,45 @@ body {
     font-size: 16px;
 
     color: rgba(0, 0, 0, 0.5);
+
+    position: relative;
+    overflow: hidden;
 }
+
+.quiz-button--blue:after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    bottom: -50%;
+    background: -webkit-gradient(linear, left top, right top, from(hsla(0, 0%, 100%, .1)), to(hsla(0, 0%, 100%, .6)));
+    background: linear-gradient(90deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .6) 100%);
+    width: 2.8125rem;
+    -webkit-transform: skewX(-22deg);
+    transform: skewX(-22deg);
+    left: -65%;
+    -webkit-animation-name: blick;
+    animation-name: blick;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count:infinite
+}
+
+
+@keyframes blick {
+    60% {
+        left:100%
+    }
+
+    to {
+        left:130%
+    }
+}
+
+.icon--center{
+    margin:0 auto;
+}
+
 .quiz-button--big{
     height: 50px;
     border-radius: 48px;
@@ -645,6 +710,10 @@ body {
 }
 
 @media screen and (max-width: 1240px) {
+    .quiz-item__aside{
+        padding: 24px 0;
+        border:none;
+    }
     .quiz-item__content{
         padding: 0;
         justify-content: flex-start;

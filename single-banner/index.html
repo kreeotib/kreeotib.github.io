@@ -58,13 +58,13 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="single-content__button">
+                        <a href="#" data-popup=".popup-quiz" class="single-content__button">
                             ПОЛУЧИТЬ КАТАЛОГ + ПЛАНИРОВКИ
                         </a>
                     </div>
                 </div>
             </div>
-            <a href="#" class="single__img">
+            <a href="#" data-popup=".popup-quiz" class="single__img">
                 <img src="assets/images/book.png" alt="">
             </a>
         </div>
@@ -85,7 +85,7 @@
         <div class="popup__container">
             <a href="#" class="popup__close"></a>
             <div class="quiz-popup">
-                <div class="quiz">
+                <form action="#" class="quiz">
                     <div class="quiz-wrapper">
                         <div class="quiz__header">
                             <p class="quiz__title">
@@ -206,12 +206,38 @@
                                         </ul>
                                     </div>
                                     <div class="quiz-item__aside">
-                                        <label class="quiz-input quiz-input--small">
-                                            <input type="text" class="quiz-input__item js-phone">
-                                        </label>
-                                        <a href="#" class="quiz-button quiz-button--blue quiz-button--big quiz-next-button">
+                                        <svg class="icon icon--center" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                            <defs>
+                                                <style>
+                                                    .cls-1{fill:#d13980}.cls-2{fill:#fff}
+                                                </style>
+                                            </defs>
+                                            <g id="phone" transform="translate(-744 -534)">
+                                                <circle id="Ellipse_135" cx="16" cy="16" r="16" class="cls-1" data-name="Ellipse 135" transform="translate(744 534)"/>
+                                                <path id="phone-2" d="M5.929 9.3a12.215 12.215 0 0 0 5.332 5.332l1.78-1.78a.812.812 0 0 1 .825-.2 9.192 9.192 0 0 0 2.889.461.809.809 0 0 1 .809.809v2.832a.809.809 0 0 1-.809.809A13.755 13.755 0 0 1 3 3.809.809.809 0 0 1 3.809 3h2.832a.809.809 0 0 1 .809.809A9.192 9.192 0 0 0 7.911 6.7a.812.812 0 0 1-.2.825z" class="cls-2" data-name="phone" transform="translate(750 539.436)"/>
+                                            </g>
+                                        </svg>
+                                        <div class="input">
+                                            <p class="input__text">
+                                                Ваш номер телефона
+                                            </p>
+                                            <label class="quiz-input quiz-input--small">
+                                                <svg class="icon" viewBox="0 0 24 24">
+                                                    ><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" stroke-width="0" fill-rule="nonzero"></path>
+                                                </svg>
+                                                <input type="text" required class="quiz-input__item js-phone"  minlength="18" placeholder="+7 (000) 000-00-0">
+                                            </label>
+                                        </div>
+
+                                        <button type="submit" class="quiz-button quiz-button--blue quiz-button--big">
                                             Получить подборку
-                                        </a>
+                                        </button>
+                                        <label class="quiz-checkbox">
+                                            <input type="checkbox" name="" id="">
+                                            <span class="quiz-checkbox__text">
+                                                <span>Я соглашаюсь на <a href="#" target="_blank">обработку персональных данных</a> согласно <a href="#" target="_blank">политике конфиденциальности</a></span>
+                                            </span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -246,13 +272,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-
+<script src="assets/scripts/imask.js"></script>
 <script src="assets/scripts/index.js"></script>
 
 </body>
