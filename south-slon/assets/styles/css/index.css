@@ -724,7 +724,7 @@ a.text--white:hover {
 }
 .filter-cards__item {
   width: 30rem;
-  opacity: 0.5;
+  opacity: 0.7;
   transition: 0.3s opacity;
   position: relative;
 }
@@ -1271,6 +1271,24 @@ a.text--white:hover {
 .card-item {
   position: relative;
 }
+.card-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+@media screen and (min-width: 768px) {
+  .card-item__content {
+    display: none;
+  }
+}
+.card-item__text {
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 767px) {
+  .card-item__text {
+    font-size: 9px;
+  }
+}
 .card-item__wrapper {
   display: flex;
   flex-direction: column;
@@ -1325,6 +1343,11 @@ a.text--white:hover {
 }
 .card-item__img--management {
   padding-bottom: 120%;
+}
+@media screen and (max-width: 767px) {
+  .card-item__img--management {
+    border: none;
+  }
 }
 .card-item__img--management img {
   width: 100%;
