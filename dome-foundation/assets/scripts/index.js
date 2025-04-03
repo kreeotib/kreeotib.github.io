@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spaceBetween: 20,
         centeredSlides: true,
         initialSlide: 1,
+        init: false,
         navigation: {
             nextEl: ".residents-slider-button-next",
             prevEl: '.residents-slider-button-prev'
@@ -92,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (residentsElement) {
+        residentsSlider.on("init",e=>{
+            residentsSlider.slideTo(residentsSlider.slides.length - 2, 0)
+        })
+        residentsSlider.init()
         const observerResidentsOptions = {
             root: null,
             rootMargin: '0px',
@@ -101,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
 
-                    residentsSlider.slideTo(residentsSlider.slides.length - 2, 2500);
+                    residentsSlider.slideTo(1, 2500);
                 }
             });
         };
@@ -170,8 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         criteriaSlider.on("slideChange",()=>{
             lenis.scrollTo(criteriaSliderElement)
-
-            console.log("2")
         })
 
         criteriaSlider.on('init',()=>{
@@ -280,9 +283,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    if(sections.length){
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
 
     const projectInfo = document.querySelector('.projects-info'),
         projectInfoRow = projectInfo.querySelectorAll('.projects-list__row');
@@ -298,7 +303,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const projectsObserver = new IntersectionObserver(projectObserverCallback, observerOptions);
-    projectsObserver.observe(projectInfo);
+
+    if(projectInfo){
+        projectsObserver.observe(projectInfo);
+    }
 
     const requirementsToggleItem = document.querySelector('.js-requirements'),
         requirementsWrapper = document.querySelector('.requirements-wrapper');
@@ -323,6 +331,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (phoneInputArray.length) {
         phoneInputArray.forEach(input => {
             IMask(input, maskOptions);
+        })
+    }
+
+    const projectsListRow = document.querySelectorAll('.projects-list__row');
+
+    if(projectsListRow.length){
+        const numbers = [...projectsListRow].map(el=> +el.dataset.number);
+        const minNumber = Math.min(...numbers);
+        const maxNumber = Math.max(...numbers);
+        console.log(minNumber, maxNumber)
+        projectsListRow.forEach((item,index)=>{
+            item.style.setProperty("--transition-delay", `${index * .2}s`)
+            item.style.setProperty("--max-width", `${40 + 60 * (+item.dataset.number - minNumber) / (maxNumber - minNumber)}%`)
         })
     }
 })

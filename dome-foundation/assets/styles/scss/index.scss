@@ -1328,13 +1328,9 @@
             flex-shrink: 0;
           }
           &.animated {
-            @for $i from 0 through 5 {
-              &:nth-child(#{$i + 1}) {
-                transition-delay: $i * .2s;
-                width: 100% - ($i * 12%);
-                opacity: 1;
-              }
-            }
+            opacity: 1;
+            transition-delay: var(--transition-delay);
+            width: var(--max-width);
           }
         }
         @media screen and (max-width: 1240px) {
