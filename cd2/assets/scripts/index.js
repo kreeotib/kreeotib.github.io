@@ -1,6 +1,6 @@
-const countToTarget = (counterElement, target) => {
+const countToTarget = (counterElement, target, index = 0) => {
     let currentCount = 0;
-    const duration = 2000;
+    const duration = 2000 + (index * 1000);
     const increment = Math.ceil(target / (duration / 50));
     const interval = setInterval(() => {
         currentCount += increment;
@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.js-counter');
 
     const observerCountersCallback = (entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry,index) => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
                 const targetNumber = parseInt(entry.target.getAttribute('data-target'), 10);
-                countToTarget(entry.target, targetNumber);
+                countToTarget(entry.target, targetNumber, index);
                 countersObserver.unobserve(entry.target);
             }
         });
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const countersObserver = new IntersectionObserver(observerCountersCallback, observerCountersOptions);
 
     if(counters.length){
-        counters.forEach(counter => countersObserver.observe(counter));
+        counters.forEach((counter, index) => countersObserver.observe(counter));
     }
 
     const animateSvg = document.querySelectorAll('.animate-svg');
@@ -163,6 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             }
         })
+    }
+
+    const preloader = document.querySelector('.preloader')
+
+    if(preloader){
+
     }
 
     Fancybox.bind("[data-fancybox]", {
