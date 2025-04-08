@@ -129,6 +129,10 @@ body.no-scroll {
     text-decoration-skip-ink: none;
     color: var(--color-link);
   }
+  
+  &--italic{
+    font-style: italic;
+  }
 }
 
 .button {
@@ -535,7 +539,7 @@ body.no-scroll {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
       gap: 40px 20px;
-      @media screen and (max-width: 1120px) {
+      @media screen and (max-width: 1040px) {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -640,7 +644,7 @@ body.no-scroll {
       justify-content: center;
 
       @media screen and (max-width: 1120px) {
-        width: 225px;
+        width: 330px;
         &--tablet {
           &--big {
             width: 385px;
@@ -679,7 +683,7 @@ body.no-scroll {
 
       &--desktop {
         &--column {
-          @media screen and (min-width: 1121px) {
+          @media screen and (min-width: 1041px) {
             flex-direction: column;
             gap: 10px;
           }
@@ -719,7 +723,7 @@ body.no-scroll {
 .home {
   &-grid {
     display: grid;
-    grid-template-columns: 385px minmax(0, 1fr);
+    grid-template-columns: 3.4fr 6.6fr;
     gap: 30px 20px;
 
     @media screen and (max-width: 1040px) {
@@ -850,7 +854,7 @@ body.no-scroll {
   }
 
   &__banners {
-    @media screen and (max-width: 1120px) and (min-width: 641px) {
+    @media screen and (max-width: 1040px) and (min-width: 641px) {
       grid-row-start: 2;
     }
   }
@@ -863,7 +867,7 @@ body.no-scroll {
   }
 
   &__video {
-    @media screen and (max-width: 1120px) and (min-width: 1020px) {
+    @media screen and (max-width: 1040px) and (min-width: 1020px) {
       grid-row-start: 3;
     }
   }
