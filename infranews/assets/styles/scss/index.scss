@@ -558,6 +558,8 @@ body.no-scroll {
       align-items: center;
       justify-content: flex-end;
 
+      position: relative;
+      z-index: 2;
       &--mobile {
         &--hidden {
           @media screen and (max-width: 640px) {
@@ -598,13 +600,29 @@ body.no-scroll {
     &__main{
       padding:10px 0;
       transition:.3s background-color;
+      position: relative;
+      &::before{
+        content: "";
+        position: absolute;
+        width: calc(100% + 20px);
+        height: 100%;
+        left: -10px;
+        top: 0;
+        background-color: transparent;
+        z-index: 0;
+
+        transition:.3s background-color;
+      }
       &:hover{
-        background-color: #F1F1F1;
+        &::before{
+          background-color: #F1F1F1;
+        }
       }
     }
 
-    &__main &__wrapper{
-      padding: 0 10px 0 0;
+    &__main &__wrapper, &__main &__footer{
+      position: relative;
+      z-index: 2;
     }
 
     &__main &__footer{
