@@ -604,7 +604,7 @@ body.no-scroll {
     }
 
     &__main &__wrapper{
-      padding: 0 10px;
+      padding: 0 10px 0 0;
     }
 
     &__main &__footer{
@@ -872,6 +872,8 @@ body.no-scroll {
     max-width: 100%;
     height: 270px;
     position: relative;
+
+    margin: 0 auto;
 
     &__item {
       width: 100%;
