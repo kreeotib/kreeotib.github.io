@@ -755,7 +755,7 @@ body.no-scroll {
   visibility: visible;
 }
 .menu__wrapper {
-  padding: 20px 16px 16px 16px;
+  padding: 20px 10px 16px 10px;
   height: 100%;
   display: flex;
   flex-direction: column;
