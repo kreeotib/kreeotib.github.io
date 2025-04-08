@@ -635,25 +635,22 @@ body.no-scroll {
 
 
     &__img {
-      height: 235px;
-      width: 385px;
+      height: 210px;
+      width: 325px;
       max-width: 100%;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
 
-      @media screen and (max-width: 1120px) {
-        width: 330px;
-        &--tablet {
-          &--big {
-            width: 385px;
+      &--desktop{
+        &--full{
+          @media screen and (min-width: 1041px) {
+            width: 100%;
           }
         }
       }
-      @media screen and (max-width: 1040px) {
-        width: 280px;
-      }
+
       @media screen and (max-width: 640px) {
         width: 100%;
       }
@@ -689,6 +686,7 @@ body.no-scroll {
           }
         }
       }
+
 
       @media screen and (max-width: 640px) {
         flex-direction: column;
