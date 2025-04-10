@@ -12,6 +12,38 @@ const countToTarget = (counterElement, target, index = 0) => {
     }, 50);
 }
 
+const preloader = document.querySelector('.preloader');
+
+if(preloader){
+    document.body.classList.add('no-scroll');
+    window.onload = (event) => {
+        const preloaderLogo = document.querySelector('.preloader-logo');
+        const jsVideoArray = document.querySelectorAll('.js-video');
+
+
+        preloaderLogo.addEventListener('animationiteration', () => {
+            document.body.classList.remove('no-scroll');
+            preloader.classList.add('hidden');
+
+            let currentHashValue = window.location.hash.substring(1);
+
+            if (jsVideoArray.length) {
+                setTimeout(() => {
+                    jsVideoArray.forEach(video => {
+                        video.play();
+                        video.controls = false;
+                    })
+                }, 100)
+            }
+
+            if(currentHashValue){
+                setTimeout(()=>{
+                    document.querySelector(`#${currentHashValue}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                },100)
+            }
+        });
+    };
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
