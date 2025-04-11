@@ -62,6 +62,39 @@ const hideAllPopups = () => {
     document.removeEventListener('keyup', checkTargetOrKey);
 };
 
+const  fallbackCopyTextToClipboard = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+
+    // Avoid scrolling to bottom
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        const successful = document.execCommand('copy');
+        const msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+}
+function copyTextToClipboard(text) {
+    if (!navigator.clipboard) {
+        fallbackCopyTextToClipboard(text);
+        return;
+    }
+    navigator.clipboard.writeText(text).then(function() {
+    }, function(err) {
+    });
+}
+
 document.addEventListener('DOMContentLoaded',e=>{
     const popupButtons = document.querySelectorAll('[data-popup]');
     const popups = document.querySelectorAll('.popup');
@@ -139,6 +172,17 @@ document.addEventListener('DOMContentLoaded',e=>{
             burger.classList.toggle('active');
             document.body.classList.toggle('no-scroll');
             header.classList.toggle('active')
+        })
+    }
+
+    const copyArray = document.querySelectorAll('.js-copy');
+
+    if(copyArray.length){
+        copyArray.forEach(copy=>{
+            copy.addEventListener('click',e=>{
+                const textArea = copy.querySelector('.js-copy-text');
+                copyTextToClipboard(textArea.value);
+            })
         })
     }
 })

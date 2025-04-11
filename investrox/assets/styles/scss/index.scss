@@ -66,12 +66,18 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   min-height: 100svh;
+  @media screen and (min-width: 1024px) {
+    height: 100svh;
+  }
 }
 
 .content {
   flex-grow: 1;
 
-  padding: 45px 0;
+  padding: 0 0 45px 0;
+
+  overflow: auto;
+  @include custom-scrollbar;
 
   position: relative;
 
@@ -428,6 +434,10 @@ body.no-scroll {
   }
 }
 
+.js-copy:hover{
+  cursor: pointer;
+}
+
 .header {
   &.active &__info{
     @media screen and (max-width: 991px) {
@@ -436,9 +446,9 @@ body.no-scroll {
     }
   }
   &__wrapper {
-    padding: 45px 0 0 0;
+    padding: 45px 0;
     @media screen and (max-width: 1240px) {
-      padding:16px 0 0 0;
+      padding:16px 0;
     }
   }
 
@@ -1024,6 +1034,9 @@ body.no-scroll {
       z-index: 1;
 
       pointer-events: none;
+      @media screen and (max-width: 1024px) {
+        display: none;
+      }
     }
 
     &__wrapper {
@@ -1042,8 +1055,29 @@ body.no-scroll {
   }
 
   &-content {
+    @media screen and (max-width: 1024px) {
+      position: fixed;
+      width: 100svw;
+      bottom: 0;
+      left: 0;
+      z-index: 6;
+
+      background-color: #fff;
+    }
     &__wrapper {
       padding: 20px 0;
+      @media screen and (max-width: 1024px) {
+        padding: 0;
+      }
+    }
+  }
+  
+  &-list{
+    @media screen and (max-width: 1024px) {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit,minmax(0,1fr));
     }
   }
 
@@ -1058,6 +1092,11 @@ body.no-scroll {
 
     --icon-color: #8eaac5;
 
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+      padding:10px;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -1070,6 +1109,12 @@ body.no-scroll {
       background: #f6c93f;
 
       transition: .3s height;
+      @media screen and (max-width: 1024px) {
+        width: 0%;
+        height: 3px;
+        bottom: 0;
+        top: unset;
+      }
     }
 
     &:hover {
@@ -1084,6 +1129,10 @@ body.no-scroll {
 
       &::before {
         height: 100%;
+        @media screen and (max-width: 1024px) {
+          height: 1px;
+          width: 100%;
+        }
       }
     }
 
@@ -1097,6 +1146,10 @@ body.no-scroll {
       padding: 14px 0;
 
       border-bottom: 1px solid #ebf5ff;
+      @media screen and (max-width: 1024px) {
+        flex-direction: column;
+        padding: 0;
+      }
     }
 
     &__icon {
@@ -1105,12 +1158,18 @@ body.no-scroll {
       flex-shrink: 0;
 
       color: var(--icon-color);
+      @media screen and (max-width: 1024px) {
+      
+      }
     }
 
     &__text {
       font-size: 15px;
       font-weight: 700;
-
+      @media screen and (max-width: 1024px) {
+        font-size: 8px;
+        display: none;
+      }
     }
   }
 }
