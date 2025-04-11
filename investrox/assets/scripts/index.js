@@ -205,6 +205,8 @@ document.addEventListener('DOMContentLoaded',e=>{
             slidesPerView: 1,
             watchSlidesProgress: true,
             init:false,
+            mousewheel:false,
+            touches:false,
             breakpoints:{
                 1025:{
                     slidesPerView: 'auto',
@@ -218,12 +220,19 @@ document.addEventListener('DOMContentLoaded',e=>{
             fadeEffect: {
                 crossFade: true
             },
+            pagination: {
+                el: ".steps__pagination",
+                type: "progressbar",
+            },
             thumbs: {
                 swiper: stepsNav,
             },
         });
 
         if(stepsNavElement && stepsSliderElement){
+            stepsNav.on("activeIndexChange",e=>{
+                stepsSlider.slideTo(e.activeIndex)
+            })
             stepsNav.init()
             stepsSlider.init()
         }
@@ -252,12 +261,19 @@ document.addEventListener('DOMContentLoaded',e=>{
             fadeEffect: {
                 crossFade: true
             },
+            pagination: {
+                el: ".referral__pagination",
+                type: "progressbar",
+            },
             thumbs: {
                 swiper: referralNav,
             },
         });
 
         if(referralNavElement && referralSliderElement){
+            referralNav.on("activeIndexChange",e=>{
+                referralSlider.slideTo(e.activeIndex)
+            })
             referralNav.init()
             referralSlider.init()
         }
