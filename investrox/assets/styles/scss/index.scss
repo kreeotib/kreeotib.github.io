@@ -66,9 +66,6 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   min-height: 100svh;
-  @media screen and (min-width: 1024px) {
-    height: 100svh;
-  }
 }
 
 .content {
@@ -76,10 +73,12 @@ body.no-scroll {
 
   padding: 0 0 45px 0;
 
-  overflow: auto;
-  @include custom-scrollbar;
 
   position: relative;
+
+  @media screen and (max-width: 767px) {
+    padding:45px 0;
+  }
 
   &-grid {
     display: grid;
@@ -159,6 +158,9 @@ body.no-scroll {
 
     --icon-size: 15px;
 
+    border:1px solid transparent;
+
+    transition: .3s border-color,.3s background-color, .3s color;
     &--uppercase{
       text-transform: uppercase;
     }
@@ -174,6 +176,9 @@ body.no-scroll {
 
     text-transform: uppercase;
 
+    border:1px solid transparent;
+
+    transition: .3s border-color,.3s background-color, .3s color;
     @media screen and (max-width: 767px) {
       font-size: 16px;
       padding: 16px 12px;
@@ -185,11 +190,23 @@ body.no-scroll {
     background-color: #F6C93F;
     color: #fff;
 
+    &:hover{
+      background-color: #fff;
+      color: #F6C93F;
+      border-color:#F6C93F;
+    }
+
   }
 
   &--blue {
     color: #fff;
     background-color: #4986f8;
+
+    &:hover{
+      background-color: #fff;
+      color: #4986f8;
+      border-color:#4986f8;
+    }
   }
 
   &--full {

@@ -39,31 +39,16 @@ body.no-scroll {
   flex-direction: column;
   min-height: 100svh;
 }
-@media screen and (min-width: 1024px) {
-  .page-wrapper {
-    height: 100svh;
-  }
-}
 
 .content {
   flex-grow: 1;
   padding: 0 0 45px 0;
-  overflow: auto;
   position: relative;
 }
-.content::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-  background-color: transparent;
-  border-radius: 20px;
-}
-.content::-webkit-scrollbar-thumb {
-  background-color: #20222f;
-  border-radius: 20px;
-}
-.content::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 20px;
+@media screen and (max-width: 767px) {
+  .content {
+    padding: 45px 0;
+  }
 }
 .content-grid {
   display: grid;
@@ -128,6 +113,8 @@ body.no-scroll {
   padding: 16px 18px;
   border-radius: 24px;
   --icon-size: 15px;
+  border: 1px solid transparent;
+  transition: 0.3s border-color, 0.3s background-color, 0.3s color;
 }
 .button--base--uppercase {
   text-transform: uppercase;
@@ -138,6 +125,8 @@ body.no-scroll {
   padding: 24px 18px;
   border-radius: 24px;
   text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: 0.3s border-color, 0.3s background-color, 0.3s color;
 }
 @media screen and (max-width: 767px) {
   .button--big {
@@ -150,9 +139,19 @@ body.no-scroll {
   background-color: #F6C93F;
   color: #fff;
 }
+.button--orange:hover {
+  background-color: #fff;
+  color: #F6C93F;
+  border-color: #F6C93F;
+}
 .button--blue {
   color: #fff;
   background-color: #4986f8;
+}
+.button--blue:hover {
+  background-color: #fff;
+  color: #4986f8;
+  border-color: #4986f8;
 }
 .button--full {
   max-width: 100%;
