@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="/" class="logo header__logo">
+                        <img src="assets/images/logo.webp" alt="" class="logo__img">
+                    </a>
+                    <div class="header__info">
+                        <div class="header__nav">
+                            <div class="header-nav nav">
+                                <div class="nav__wrapper">
+                                    <ul class="nav-list">
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                <svg class="nav-list__icon">
+                                                    <use xlink:href="assets/images/sprite.svg#house"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav-list">
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link active">
+                                                О компании
+                                            </a>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                FAQ
+                                            </a>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                Контакты
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-profile">
+                            <div class="header-profile__wrapper">
+                                <div class="select select-language">
+                                    <div class="select-current select-item">
+                                        <span class="js-select-current ">
+                                            <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                        </span>
+                                    </div>
+                                    <div class="select-list">
+                                        <label class="select-item">
+                                            <input type="radio" name="language"  class="select-item__input">
+                                            <span class="select-item__text">
+                                                 <img src="assets/images/language/en.png" class="select-language__img" alt="">
+                                            </span>
+                                        </label>
+                                        <label class="select-item">
+                                            <input type="radio" name="language" checked class="select-item__input">
+                                            <span class="select-item__text">
+                                                 <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="header-profile__buttons">
+                                    <a href="account-main.html" class="button button--base button--blue">
+                                        <svg class="button__icon">
+                                            <use xlink:href="assets/images/sprite.svg#person"></use>
+                                        </svg>
+                                        Войти
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__burger">
+                        <a href="#" class="burger">
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content__wrapper">
+            <div class="form">
+                <div class="container">
+                    <form action="#" class="form__wrapper form">
+                        <div class="form__logo logo">
+                            <img class="logo__img" src="assets/images/logo-big.webp" alt="">
+                        </div>
+                        <div class="form__box form__box--login">
+                            <div class="form__header">
+                                <div class="form__nav form-nav">
+                                    <div class="form-nav__wrapper">
+                                        <a href="register.html" class="form-nav__link active">
+                                            Регистрация
+                                        </a>
+                                        <a href="login.html" class="form-nav__link ">
+                                            Авторизация
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form__content">
+                                <div class="input">
+                                    <div class="input__header">
+                                        <label for="login-name" class="input__label">
+                                            Введите имя
+                                        </label>
+                                    </div>
+                                    <div class="input__item">
+                                        <input id="login-name" name="login-name" type="text">
+                                    </div>
+                                </div>
+                                <div class="input">
+                                    <div class="input__header">
+                                        <label for="login-email" class="input__label">
+                                            Введите E-mail
+                                        </label>
+                                    </div>
+                                    <div class="input__item">
+                                        <input id="login-email" name="login-email" type="text" >
+                                    </div>
+                                </div>
+                                <div class="input">
+                                    <div class="input__header">
+                                        <label for="login-password" class="input__label">
+                                            Придумайте пароль
+                                        </label>
+                                    </div>
+                                    <div class="input__item">
+                                        <input id="login-password" name="login-password" type="password">
+                                    </div>
+                                </div>
+                                <div class="input">
+                                    <div class="input__header">
+                                        <label for="login-password-repeat" class="input__label">
+                                            Повторите пароль
+                                        </label>
+                                    </div>
+                                    <div class="input__item">
+                                        <input id="login-password-repeat" name="login-password-repeat" type="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form__info">
+                                <label class="checkbox input">
+                                    <input type="checkbox" class="checkbox__input">
+                                    <span class="checkbox__checkmark"></span>
+                                    <span class="checkbox__text input__label input__label--bold input__label--grey">
+                                    Согласен с условиями соглашения
+                                </span>
+                                </label>
+                            </div>
+                            <div class="form__button">
+                                <button type="submit" class="button button--big button--blue button--full">
+                                    Создать аккаунт
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="container">
+                <div class="footer__column">
+                    <div class="footer__row">
+                        <div class="footer-nav footer__nav">
+                            <ul class="footer-nav__list">
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        О компании
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        FAQ
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        Контакты
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        Правила и соглашение
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/" class="footer__logo logo">
+                            <img src="assets/images/logo-big.webp" alt="" class="logo__img">
+                        </a>
+                    </div>
+                    <div class="footer__row">
+                        <a href="#" target="_blank" class="telegram-link">
+                            <div class="telegram-link__icon">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                                </svg>
+                            </div>
+                            <div class="telegram-link__content">
+                                <p class="telegram-link__title">
+                                    Мы в Telegram
+                                </p>
+                                <p class="telegram-link__text">
+                                    Техническая поддержка
+                                </p>
+                            </div>
+                        </a>
+                        <p class="footer__text">
+                            2025 Investrox. Все права защищены
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="assets/scripts/index.js"></script>
+</body>
+</html>

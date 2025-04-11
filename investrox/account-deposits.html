@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="/" class="logo header__logo">
+                        <img src="assets/images/logo.webp" alt="" class="logo__img">
+                    </a>
+                    <div class="header__info">
+                        <div class="header__nav">
+                            <div class="header-nav nav">
+                                <div class="nav__wrapper">
+                                    <ul class="nav-list">
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                <svg class="nav-list__icon">
+                                                    <use xlink:href="assets/images/sprite.svg#house"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav-list">
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link active">
+                                                О компании
+                                            </a>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                FAQ
+                                            </a>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                Контакты
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-profile">
+                            <div class="header-profile__wrapper">
+                                <div class="select select-language">
+                                    <div class="select-current select-item">
+                                        <span class="js-select-current ">
+                                            <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                        </span>
+                                    </div>
+                                    <div class="select-list">
+                                        <label class="select-item">
+                                            <input type="radio" name="language"  class="select-item__input">
+                                            <span class="select-item__text">
+                                                 <img src="assets/images/language/en.png" class="select-language__img" alt="">
+                                            </span>
+                                        </label>
+                                        <label class="select-item">
+                                            <input type="radio" name="language" checked class="select-item__input">
+                                            <span class="select-item__text">
+                                                 <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="header-profile__buttons">
+                                    <a href="#" class="button button--base button--blue">
+                                        <svg class="button__icon">
+                                            <use xlink:href="assets/images/sprite.svg#plus"></use>
+                                        </svg>
+                                        Пополнить
+                                    </a>
+                                    <a href="#" class="button button--base button--orange">
+                                        <svg class="button__icon">
+                                            <use xlink:href="assets/images/sprite.svg#minus"></use>
+                                        </svg>
+                                        Вывести
+                                    </a>
+                                </div>
+                                <div class="header-profile__card profile-card">
+                                    <div class="profile-card__wrapper">
+                                        <div class="profile-card__img">
+                                            <img src="assets/images/profile.webp" alt="">
+                                        </div>
+                                        <div class="profile-card__content">
+                                            <div class="profile-card__info profile-card__info--header">
+                                                <p class="profile-card__name">
+                                                    Martin Jacobs Martin Jacobs
+                                                </p>
+                                                <p class="profile-card__text">
+                                                    ID: 547987014
+                                                </p>
+                                            </div>
+                                            <a href="#" class="profile-card__exit">
+                                                <svg class="icon">
+                                                    <use xlink:href="assets/images/sprite.svg#power-off"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__burger">
+                        <a href="#" class="burger">
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content__wrapper account">
+            <div class="container">
+                <div class="account__grid">
+                    <div class="account-aside aside">
+                        <div class="aside__wrapper">
+                            <div class="aside-header">
+                                <div class="aside-header__wrapper profile-card">
+                                    <div class="profile-card__wrapper">
+                                        <div class="profile-card__img profile-card__img--big">
+                                            <img src="assets/images/profile.webp" alt="">
+                                        </div>
+                                        <div class="profile-card__content">
+                                            <div class="profile-card__info">
+                                                <p class="profile-card__name">
+                                                    Martin Jacobs Martin Jacobs
+                                                </p>
+                                                <p class="profile-card__text">
+                                                    ID: 547987014
+                                                </p>
+                                            </div>
+                                            <div class="profile-card__info">
+                                                <p class="profile-card__balance">
+                                                    $2.180.372
+                                                </p>
+                                                <p class="profile-card__text">
+                                                    Balance
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aside-content">
+                                <div class="aside-content__wrapper">
+                                    <ul class="aside-list">
+                                        <li class="aside-list__item">
+                                            <a href="account-main.html" class="aside-link ">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#person"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Мой аккаунт
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-deposits.html" class="aside-link active">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#building-columns"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Вклады
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-balance.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#money-plus"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Пополнить баланс
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-withdrawal.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#money-minus"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Вывод средств
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-referrals.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#group"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Рефералы
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-stats.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#chart-bar"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Статистика
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-settings.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#gear"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Настройки
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="account-content">
+                        <div class="content-grid">
+                            <div class="content-grid__item content-grid__item--full section tabs">
+                                <div class="section-nav">
+                                    <div class="section-nav__list">
+                                        <a href="#" class="section-nav__link tabs__link active">
+                                            <span>Новый вклад</span>
+                                        </a>
+                                        <a href="#" class="section-nav__link tabs__link">
+                                            <span>Активные</span>
+                                        </a>
+                                        <a href="#" class="section-nav__link tabs__link">
+                                            <span>Закрытые</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="section__wrapper section__wrapper--small">
+                                        <div class="section-header">
+                                            <div class="section-header__row">
+                                                <svg class="section-header__icon">
+                                                    <use xlink:href="assets/images/sprite.svg#building-columns"></use>
+                                                </svg>
+                                                <p class="section-header__title section-header__title--small">
+                                                    Новый вклад
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <form action="#" class="content-grid form">
+                                            <div class="content-grid__item">
+                                                <div class="section__content">
+                                                    <div class="form__content">
+                                                        <div class="input">
+                                                            <div class="input__header">
+                                                                <p class="input__label">
+                                                                    Выбор тарифного плана
+                                                                </p>
+                                                            </div>
+                                                            <div class="select">
+                                                                <div class="select-current select-item">
+                                                                    <span class="js-select-current select-item__text">Gold plan</span>
+                                                                </div>
+                                                                <div class="select-list">
+                                                                    <label class="select-item">
+                                                                        <input type="radio" name="fiat" class="select-item__radio">
+                                                                        <span class="select-item__text">Gold plan</span>
+                                                                    </label>
+                                                                    <label class="select-item">
+                                                                        <input type="radio" name="fiat" class="select-item__radio">
+                                                                        <span class="select-item__text">Gold plan</span>
+                                                                    </label>
+                                                                    <label class="select-item">
+                                                                        <input type="radio" name="fiat" class="select-item__radio">
+                                                                        <span class="select-item__text">Gold plan</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input">
+                                                            <div class="input__header">
+                                                                <label for="login-password" class="input__label">
+                                                                    Сумма
+                                                                </label>
+                                                            </div>
+                                                            <div class="input__item input__item--small">
+                                                                <input id="login-password" name="login-password"
+                                                                       type="text">
+                                                                <span class="input__label">$</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content-grid__item">
+                                                <div class="deposits-info">
+                                                    <div class="deposits-info__wrapper">
+                                                        <div class="deposits-info__column">
+                                                            <div class="deposits-info__header">
+                                                                <div class="deposits-info__img">
+                                                                    <img src="assets/images/deposits-info.png" alt="">
+                                                                </div>
+                                                                <div class="deposits-info__title">
+                                                                    Start builder
+                                                                </div>
+                                                            </div>
+                                                            <div class="deposits-info__desc">
+                                                                <p class="deposits-info__text">
+                                                                    Ежедневные начисление:
+                                                                    <span class="deposits-info__text--percent">20%</span>
+                                                                </p>
+                                                                <p class="deposits-info__text">
+                                                                    Источник счёта:
+                                                                    <span class="deposits-info__text--number">Основной баланс</span>
+                                                                </p>
+                                                                <p class="deposits-info__text">
+                                                                    Возврат вклада:
+                                                                    <span class="deposits-info__text--percent">Да</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="deposits-info__cards">
+                                                            <div class="deposits-info__card">
+                                                                <p class="deposits-info__title deposits-info__title--accent">
+                                                                    50 дней
+                                                                </p>
+                                                                <p class="deposits-info__text">
+                                                                    Срок депозита
+                                                                </p>
+                                                            </div>
+                                                            <div class="deposits-info__card">
+                                                                <p class="deposits-info__title deposits-info__title--accent">
+                                                                    15-100$
+                                                                </p>
+                                                                <p class="deposits-info__text">
+                                                                    Сумма
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content-grid__divider"></div>
+                                            <div class="content-grid__item content-grid__item--full">
+                                                <div class="form__box">
+                                                    <div class="section-header">
+                                                        <div class="section-header__row">
+                                                            <svg class="section-header__icon section-header__icon--blue">
+                                                                <use xlink:href="assets/images/sprite.svg#calculator"></use>
+                                                            </svg>
+                                                            <p class="section-header__title section-header__title--small">
+                                                                Калькулятор прибыльности
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="range calculator-range">
+                                                        <div class="calculator-range__wrapper">
+                                                            <div class="calculator-range__info">
+                                                                <div class="calculator-range__block">
+                                                                    <p class="calculator-range__number">
+                                                                        3.900$
+                                                                    </p>
+                                                                    <p class="calculator-range__text">
+                                                                        Общая прибыль
+                                                                    </p>
+                                                                </div>
+                                                                <div class="calculator-range__block">
+                                                                    <p class="calculator-range__number">
+                                                                        50$
+                                                                    </p>
+                                                                    <p class="calculator-range__text">
+                                                                        Общая прибыль
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="range-input">
+                                                                <div class="range-input__wrapper">
+                                                                    <label class="range-input__item">
+                                                                        <input type="range" name="" id="" min="0" max="50000" step="100" value="2000">
+                                                                    </label>
+                                                                    <div class="range-input__info">
+                                                                        <p class="range-input__text">
+                                                                            0$
+                                                                        </p>
+                                                                        <p class="range-input__text">
+                                                                            50.000$
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="button button--base button--blue">
+                                                        Открыть депозит
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="section__wrapper section__wrapper--small">
+                                        <div class="section-header">
+                                            <div class="section-header__row">
+                                                <p class="section-header__title section-header__title--small">
+                                                    Активные вклады
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="section__content">
+                                            <div class="table">
+                                                <div class="table__row  table__row--title">
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            План
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Ставка
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Сумма вклада
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Дата открытия
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Активность вклада
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Доход
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="table__row ">
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            План
+                                                        </div>
+                                                        <p class="table__text">
+                                                            Start Builder
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Ставка
+                                                        </div>
+                                                        <p class="table__text">
+                                                            30% в день
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Сумма вклада
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Дата открытия
+                                                        </div>
+                                                        <p class="table__text">
+                                                            10.10.2009
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Активность вклада
+                                                        </div>
+                                                        <p class="table__text">
+                                                            40 дней
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Доход
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="table__row ">
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            План
+                                                        </div>
+                                                        <p class="table__text">
+                                                            Start Builder
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Ставка
+                                                        </div>
+                                                        <p class="table__text">
+                                                            30% в день
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Сумма вклада
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Дата открытия
+                                                        </div>
+                                                        <p class="table__text">
+                                                            10.10.2009
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Активность вклада
+                                                        </div>
+                                                        <p class="table__text">
+                                                            40 дней
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Доход
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="table__row ">
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            План
+                                                        </div>
+                                                        <p class="table__text">
+                                                            Start Builder
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Ставка
+                                                        </div>
+                                                        <p class="table__text">
+                                                            30% в день
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Сумма вклада
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Дата открытия
+                                                        </div>
+                                                        <p class="table__text">
+                                                            10.10.2009
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Активность вклада
+                                                        </div>
+                                                        <p class="table__text">
+                                                            40 дней
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Доход
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="section__wrapper section__wrapper--small">
+                                        <div class="section-header">
+                                            <div class="section-header__row">
+                                                <p class="section-header__title section-header__title--small">
+                                                    Закрытые вклады
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="section__content">
+                                            <div class="table">
+                                                <div class="table__row  table__row--title">
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            План
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Ставка
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Сумма вклада
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Дата открытия
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Активность вклада
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <p class="table__title">
+                                                            Доход
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="table__row ">
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            План
+                                                        </div>
+                                                        <p class="table__text">
+                                                            Start Builder
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Ставка
+                                                        </div>
+                                                        <p class="table__text">
+                                                            30% в день
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Сумма вклада
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Дата открытия
+                                                        </div>
+                                                        <p class="table__text">
+                                                            10.10.2009
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Активность вклада
+                                                        </div>
+                                                        <p class="table__text">
+                                                            40 дней
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Доход
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="table__row ">
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            План
+                                                        </div>
+                                                        <p class="table__text">
+                                                            Start Builder
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Ставка
+                                                        </div>
+                                                        <p class="table__text">
+                                                            30% в день
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Сумма вклада
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Дата открытия
+                                                        </div>
+                                                        <p class="table__text">
+                                                            10.10.2009
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Активность вклада
+                                                        </div>
+                                                        <p class="table__text">
+                                                            40 дней
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Доход
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="table__row ">
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            План
+                                                        </div>
+                                                        <p class="table__text">
+                                                            Start Builder
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Ставка
+                                                        </div>
+                                                        <p class="table__text">
+                                                            30% в день
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Сумма вклада
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Дата открытия
+                                                        </div>
+                                                        <p class="table__text">
+                                                            10.10.2009
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Активность вклада
+                                                        </div>
+                                                        <p class="table__text">
+                                                            40 дней
+                                                        </p>
+                                                    </div>
+                                                    <div class="table-block">
+                                                        <div class="table-block__title table__title">
+                                                            Доход
+                                                        </div>
+                                                        <p class="table__text table__text--accent">
+                                                            $1.000
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="container">
+                <div class="footer__column">
+                    <div class="footer__row">
+                        <div class="footer-nav footer__nav">
+                            <ul class="footer-nav__list">
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        О компании
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        FAQ
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        Контакты
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        Правила и соглашение
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/" class="footer__logo logo">
+                            <img src="assets/images/logo-big.webp" alt="" class="logo__img">
+                        </a>
+                    </div>
+                    <div class="footer__row">
+                        <a href="#" target="_blank" class="telegram-link">
+                            <div class="telegram-link__icon">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                                </svg>
+                            </div>
+                            <div class="telegram-link__content">
+                                <p class="telegram-link__title">
+                                    Мы в Telegram
+                                </p>
+                                <p class="telegram-link__text">
+                                    Техническая поддержка
+                                </p>
+                            </div>
+                        </a>
+                        <p class="footer__text">
+                            2025 Investrox. Все права защищены
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>

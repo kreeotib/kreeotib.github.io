@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <div class="header__main">
+                        <a href="/" class="logo header__logo">
+                            <img src="assets/images/logo.webp" alt="" class="logo__img">
+                        </a>
+                        <div class="header-nav nav">
+                            <div class="nav__wrapper">
+                                <ul class="nav-list">
+                                    <li class="nav-list__item">
+                                        <a href="#" class="nav-list__link">
+                                            <svg class="nav-list__icon">
+                                                <use xlink:href="assets/images/sprite.svg#house"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav-list">
+                                    <li class="nav-list__item">
+                                        <a href="#" class="nav-list__link active">
+                                            О компании
+                                        </a>
+                                    </li>
+                                    <li class="nav-list__item">
+                                        <a href="#" class="nav-list__link">
+                                            FAQ
+                                        </a>
+                                    </li>
+                                    <li class="nav-list__item">
+                                        <a href="#" class="nav-list__link">
+                                            Контакты
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__info">
+                        <div class="header-profile">
+                            <div class="header-profile__wrapper">
+                                <div class="header-profile__buttons">
+                                    <a href="#" class="button button--base button--blue">
+                                        <svg class="button__icon">
+                                            <use xlink:href="assets/images/sprite.svg#plus"></use>
+                                        </svg>
+                                        Пополнить
+                                    </a>
+                                    <a href="#" class="button button--base button--orange">
+                                        <svg class="button__icon">
+                                            <use xlink:href="assets/images/sprite.svg#minus"></use>
+                                        </svg>
+                                        Вывести
+                                    </a>
+                                </div>
+                                <div class="header-profile__card profile-card">
+                                    <div class="profile-card__wrapper">
+                                        <div class="profile-card__img">
+                                            <img src="assets/images/profile.webp" alt="">
+                                        </div>
+                                        <div class="profile-card__content">
+                                            <div class="profile-card__info">
+                                                <p class="profile-card__name">
+                                                    Martin Jacobs Martin Jacobs
+                                                </p>
+                                                <p class="profile-card__id">
+                                                    ID: 547987014
+                                                </p>
+                                            </div>
+                                            <a href="#" class="profile-card__exit">
+                                                <svg class="icon">
+                                                    <use xlink:href="assets/images/sprite.svg#power-off"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="login-form">
+            <div class="container">
+                <form action="#" class="login-form__wrapper form">
+                    <div class="login-form__logo logo">
+                        <img class="logo__img" src="assets/images/logo-big.webp" alt="">
+                    </div>
+                    <div class="login-form__box">
+                        <div class="login-form__header">
+                            <div class="login-form__nav form-nav">
+                                <div class="form-nav__wrapper">
+                                    <a href="register.html" class="form-nav__link">
+                                        Регистрация
+                                    </a>
+                                    <a href="login.html" class="form-nav__link active">
+                                        Авторизация
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-form__content">
+                            <div class="input">
+                                <div class="input__header">
+                                    <label for="login-email" class="input__label">
+                                        Введите E-mail
+                                    </label>
+                                </div>
+                                <input id="login-email" name="login-email" type="text" class="input__item">
+                            </div>
+                            <div class="input">
+                                <div class="input__header">
+                                    <label for="login-password" class="input__label">
+                                        Введите пароль
+                                    </label>
+                                </div>
+                                <input id="login-password" name="login-password" type="password" class="input__item">
+                            </div>
+                        </div>
+                        <div class="login-form__info">
+                            <a href="#" class="input">
+                                <span class="input__label input__label--forgot">Забыли пароль?</span>
+                            </a>
+                            <a href="#" class="input">
+                                <span class="input__label input__label--restore">Восстановить ›</span>
+                            </a>
+                        </div>
+                        <div class="login-form__button">
+                            <button type="submit" class="button button--big button--blue button--full">
+                                Войти
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

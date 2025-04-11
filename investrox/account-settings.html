@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="/" class="logo header__logo">
+                        <img src="assets/images/logo.webp" alt="" class="logo__img">
+                    </a>
+                    <div class="header__info">
+                        <div class="header__nav">
+                            <div class="header-nav nav">
+                                <div class="nav__wrapper">
+                                    <ul class="nav-list">
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                <svg class="nav-list__icon">
+                                                    <use xlink:href="assets/images/sprite.svg#house"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav-list">
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link active">
+                                                О компании
+                                            </a>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                FAQ
+                                            </a>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="#" class="nav-list__link">
+                                                Контакты
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-profile">
+                            <div class="header-profile__wrapper">
+                                <div class="select select-language">
+                                    <div class="select-current select-item">
+                                        <span class="js-select-current ">
+                                            <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                        </span>
+                                    </div>
+                                    <div class="select-list">
+                                        <label class="select-item">
+                                            <input type="radio" name="language"  class="select-item__input">
+                                            <span class="select-item__text">
+                                                 <img src="assets/images/language/en.png" class="select-language__img" alt="">
+                                            </span>
+                                        </label>
+                                        <label class="select-item">
+                                            <input type="radio" name="language" checked class="select-item__input">
+                                            <span class="select-item__text">
+                                                 <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="header-profile__buttons">
+                                    <a href="#" class="button button--base button--blue">
+                                        <svg class="button__icon">
+                                            <use xlink:href="assets/images/sprite.svg#plus"></use>
+                                        </svg>
+                                        Пополнить
+                                    </a>
+                                    <a href="#" class="button button--base button--orange">
+                                        <svg class="button__icon">
+                                            <use xlink:href="assets/images/sprite.svg#minus"></use>
+                                        </svg>
+                                        Вывести
+                                    </a>
+                                </div>
+                                <div class="header-profile__card profile-card">
+                                    <div class="profile-card__wrapper">
+                                        <div class="profile-card__img">
+                                            <img src="assets/images/profile.webp" alt="">
+                                        </div>
+                                        <div class="profile-card__content">
+                                            <div class="profile-card__info profile-card__info--header">
+                                                <p class="profile-card__name">
+                                                    Martin Jacobs Martin Jacobs
+                                                </p>
+                                                <p class="profile-card__text">
+                                                    ID: 547987014
+                                                </p>
+                                            </div>
+                                            <a href="#" class="profile-card__exit">
+                                                <svg class="icon">
+                                                    <use xlink:href="assets/images/sprite.svg#power-off"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__burger">
+                        <a href="#" class="burger">
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content__wrapper account">
+            <div class="container">
+                <div class="account__grid">
+                    <div class="account-aside aside">
+                        <div class="aside__wrapper">
+                            <div class="aside-header">
+                                <div class="aside-header__wrapper profile-card">
+                                    <div class="profile-card__wrapper">
+                                        <div class="profile-card__img profile-card__img--big">
+                                            <img src="assets/images/profile.webp" alt="">
+                                        </div>
+                                        <div class="profile-card__content">
+                                            <div class="profile-card__info">
+                                                <p class="profile-card__name">
+                                                    Martin Jacobs Martin Jacobs
+                                                </p>
+                                                <p class="profile-card__text">
+                                                    ID: 547987014
+                                                </p>
+                                            </div>
+                                            <div class="profile-card__info">
+                                                <p class="profile-card__balance">
+                                                    $2.180.372
+                                                </p>
+                                                <p class="profile-card__text">
+                                                    Balance
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aside-content">
+                                <div class="aside-content__wrapper">
+                                    <ul class="aside-list">
+                                        <li class="aside-list__item">
+                                            <a href="account-main.html" class="aside-link ">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#person"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Мой аккаунт
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-deposits.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#building-columns"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Вклады
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-balance.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#money-plus"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Пополнить баланс
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-withdrawal.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#money-minus"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Вывод средств
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-referrals.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#group"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Рефералы
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-stats.html" class="aside-link">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#chart-bar"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Статистика
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="aside-list__item">
+                                            <a href="account-settings.html" class="aside-link active">
+                                                <div class="aside-link__content">
+                                                    <svg class="aside-link__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#gear"></use>
+                                                    </svg>
+                                                    <span class="aside-link__text">
+                                                    Настройки
+                                                </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="account-content">
+                        <div class="content-grid">
+                            <div class="content-grid__item content-grid__item--full tabs">
+                                <div class="section-nav">
+                                    <div class="section-nav__list">
+                                        <a href="#" class="section-nav__link tabs__link active">
+                                            <span>Профиль</span>
+                                        </a>
+                                        <a href="#" class="section-nav__link tabs__link">
+                                            <span>Кошельки</span>
+                                        </a>
+                                        <a href="#" class="section-nav__link tabs__link">
+                                            <span>Безопасность</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="section">
+                                        <div class="section__wrapper section__wrapper--small">
+                                            <div class="section-header">
+                                                <div class="section-header__row">
+                                                    <svg class="section-header__icon">
+                                                        <use xlink:href="assets/images/sprite.svg#person"></use>
+                                                    </svg>
+                                                    <p class="section-header__title section-header__title--small">
+                                                        Общая информация
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <form action="#" class="content-grid form">
+                                                <div class="content-grid__item">
+                                                    <div class="form__box">
+                                                        <div class="form__content">
+                                                            <div class="input">
+                                                                <div class="input__header">
+                                                                    <label for="nickname" class="input__label">
+                                                                        Никнейм
+                                                                    </label>
+                                                                </div>
+                                                                <div class="input__item input__item--small">
+                                                                    <input id="nickname" name="login-password"
+                                                                           type="text" value="Joe Volfsgame">
+                                                                </div>
+                                                            </div>
+                                                            <div class="input">
+                                                                <div class="input__header">
+                                                                    <label for="email" class="input__label">
+                                                                        E-mail
+                                                                    </label>
+                                                                </div>
+                                                                <div class="input__item input__item--small">
+                                                                    <input id="email" name="login-password"
+                                                                           type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="input">
+                                                                <div class="input__header">
+                                                                    <label for="telegram" class="input__label">
+                                                                        Telegram
+                                                                    </label>
+                                                                </div>
+                                                                <div class="input__item input__item--small">
+                                                                    <input id="telegram" name="login-password"
+                                                                           type="text" value="Joe Volfsgame">
+                                                                </div>
+                                                            </div>
+                                                            <div class="input">
+                                                                <div class="input__header">
+                                                                    <label for="phone" class="input__label">
+                                                                        Телефон
+                                                                    </label>
+                                                                </div>
+                                                                <div class="input__item input__item--small">
+                                                                    <input id="phone" name="login-password"
+                                                                           type="text" value="Joe Volfsgame">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit"
+                                                                class="button button--base button--blue">
+                                                            Отправить
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="content-grid">
+                                        <div class="content-grid__item section">
+                                            <div class="section__wrapper section__wrapper--small">
+                                                <div class="section-header">
+                                                    <div class="section-header__row">
+                                                        <svg class="section-header__icon">
+                                                            <use xlink:href="assets/images/sprite.svg#square-plus"></use>
+                                                        </svg>
+                                                        <p class="section-header__title section-header__title--small">
+                                                            Добавление кошелька
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="section__content">
+                                                    <form action="#" class="form">
+                                                        <div class="form__box">
+                                                            <div class="form__content">
+                                                                <div class="input">
+                                                                    <div class="input__header">
+                                                                        <p class="input__label">
+                                                                            Выберите криптовалюту
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="select">
+                                                                        <div class="select-current select-item">
+                                                                            <span class="js-select-current select-item__text">
+                                                                                  <img src="assets/images/coin/1.png"
+                                                                                       alt=""
+                                                                                       class="icon">Dash coin</span>
+                                                                        </div>
+                                                                        <div class="select-list">
+                                                                            <label class="select-item">
+                                                                                <input type="radio" name="fiat"
+                                                                                       class="select-item__radio">
+                                                                                <span class="select-item__text">
+                                                                                    <img src="assets/images/coin/1.png"
+                                                                                         alt=""
+                                                                                         class="icon">Dash coin</span>
+                                                                            </label>
+                                                                            <label class="select-item">
+                                                                                <input type="radio" name="fiat"
+                                                                                       class="select-item__radio">
+                                                                                <span class="select-item__text">
+                                                                                      <img src="assets/images/coin/1.png"
+                                                                                           alt="" class="icon">Dash coin</span>
+                                                                            </label>
+                                                                            <label class="select-item">
+                                                                                <input type="radio" name="fiat"
+                                                                                       class="select-item__radio">
+                                                                                <span class="select-item__text">
+                                                                                      <img src="assets/images/coin/1.png"
+                                                                                           alt="" class="icon">Dash coin</span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input">
+                                                                    <div class="input__header">
+                                                                        <label for="cash-number" class="input__label">
+                                                                            Укажите номер кошелька
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="input__item input__item--small">
+                                                                        <input id="cash-number" name="login-password"
+                                                                               type="text"
+                                                                               value="s0s9f9e2ker2935kd9dj3945-">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit"
+                                                                    class="button button--base button--blue">
+                                                                Добавить
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-grid__item section">
+                                            <div class="section__wrapper section__wrapper--small">
+                                                <div class="section-header">
+                                                    <div class="section-header__row">
+                                                        <svg class="section-header__icon">
+                                                            <use xlink:href="assets/images/sprite.svg#wallet"></use>
+                                                        </svg>
+                                                        <p class="section-header__title section-header__title--small">
+                                                            Ваши кошельки
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="section__content">
+                                                    <div class="form">
+                                                        <div class="form__content">
+                                                            <div class="input">
+                                                                <div class="input__header">
+                                                                    <p class="input__label">
+                                                                        <img src="assets/images/coin/1.png" alt="" class="icon">
+                                                                        Dash coin
+                                                                    </p>
+                                                                </div>
+                                                                <div class="input__item input__item--small">
+                                                                    <p>s0s9f9e2ker2935kd9dj3945-</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="input">
+                                                                <div class="input__header">
+                                                                    <p class="input__label">
+                                                                        <img src="assets/images/coin/1.png" alt="" class="icon">
+                                                                        Dash coin
+                                                                    </p>
+                                                                </div>
+                                                                <div class="input__item input__item--small">
+                                                                    <p>s0s9f9e2ker2935kd9dj3945-</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="content-grid">
+                                        <div class="content-grid__item section">
+                                            <div class="section__wrapper section__wrapper--small">
+                                                <div class="section-header">
+                                                    <div class="section-header__row">
+                                                        <svg class="section-header__icon">
+                                                            <use xlink:href="assets/images/sprite.svg#lock"></use>
+                                                        </svg>
+                                                        <p class="section-header__title section-header__title--small">
+                                                            Смена пароля
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="section__content">
+                                                    <form action="#" class="form">
+                                                        <div class="form__box">
+                                                            <div class="form__content">
+                                                                <div class="input">
+                                                                    <div class="input__header">
+                                                                        <label for="cash-number" class="input__label">
+                                                                            Введите старый пароль
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="input__item input__item--small">
+                                                                        <input id="cash-number" name="login-password"
+                                                                               type="password"
+                                                                               value="s0s9f9e2ker2935kd9dj3945-">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input">
+                                                                    <div class="input__header">
+                                                                        <label for="cash-number" class="input__label">
+                                                                            Введите новый пароль
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="input__item input__item--small">
+                                                                        <input id="cash-number" name="login-password"
+                                                                               type="password"
+                                                                               value="s0s9f9e2ker2935kd9dj3945-">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input">
+                                                                    <div class="input__header">
+                                                                        <label for="cash-number" class="input__label">
+                                                                            Введите новый пароль
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="input__item input__item--small">
+                                                                        <input id="cash-number" name="login-password"
+                                                                               type="password"
+                                                                               value="s0s9f9e2ker2935kd9dj3945-">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit"
+                                                                    class="button button--base button--blue">
+                                                                Изменить пароль
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-grid__item section">
+                                            <div class="section__wrapper section__wrapper--small">
+                                                <div class="section-header">
+                                                    <div class="section-header__row">
+                                                        <svg class="section-header__icon">
+                                                            <use xlink:href="assets/images/sprite.svg#shield"></use>
+                                                        </svg>
+                                                        <p class="section-header__title section-header__title--small">
+                                                            2FA Активирован
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="section__content">
+                                                    <form action="#" class="form">
+                                                        <div class="form__box">
+                                                            <p class="form__note form__note--red">
+                                                                Мы настоятельно не рекомендуем отключать данную функцию, воизбежании взлома
+                                                                вашего аккаунта!
+                                                            </p>
+                                                            <div class="form__content">
+                                                                <div class="input">
+                                                                    <div class="input__wrapper">
+                                                                        <div class="input__qr">
+                                                                            <img src="assets/images/qr.png" alt="">
+                                                                        </div>
+                                                                        <div class="input__column">
+                                                                            <div class="input__header">
+                                                                                <label for="cash-number" class="input__label">
+                                                                                    QR
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="input__item input__item--small">
+                                                                                <p>
+                                                                                    SS0030KSK934FD
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="input">
+                                                                    <div class="input__header">
+                                                                        <label for="cash-number" class="input__label">
+                                                                            Введите код из приложения
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="input__item input__item--small">
+                                                                        <input id="cash-number" name="login-password"
+                                                                               type="text"
+                                                                               value="1234">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit"
+                                                                    class="button button--base button--blue">
+                                                                Деактивировать 2FA
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="container">
+                <div class="footer__column">
+                    <div class="footer__row">
+                        <div class="footer-nav footer__nav">
+                            <ul class="footer-nav__list">
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        О компании
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        FAQ
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        Контакты
+                                    </a>
+                                </li>
+                                <li class="footer-nav__item">
+                                    <a href="#" class="footer-nav__link">
+                                        Правила и соглашение
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/" class="footer__logo logo">
+                            <img src="assets/images/logo-big.webp" alt="" class="logo__img">
+                        </a>
+                    </div>
+                    <div class="footer__row">
+                        <a href="#" target="_blank" class="telegram-link">
+                            <div class="telegram-link__icon">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#telegram"></use>
+                                </svg>
+                            </div>
+                            <div class="telegram-link__content">
+                                <p class="telegram-link__title">
+                                    Мы в Telegram
+                                </p>
+                                <p class="telegram-link__text">
+                                    Техническая поддержка
+                                </p>
+                            </div>
+                        </a>
+                        <p class="footer__text">
+                            2025 Investrox. Все права защищены
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>
