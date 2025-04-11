@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="assets/styles/css/font.css">
 
+    <link rel="stylesheet" href="assets/swiper/swiper.css">
+
     <link rel="stylesheet" href="assets/styles/css/reset.css">
     <link rel="stylesheet" href="assets/styles/css/index.css">
 </head>
@@ -60,20 +62,23 @@
                                 <div class="select select-language">
                                     <div class="select-current select-item">
                                         <span class="js-select-current ">
-                                            <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                            <img src="assets/images/language/ru.png" class="select-language__img"
+                                                 alt="">
                                         </span>
                                     </div>
                                     <div class="select-list">
                                         <label class="select-item">
-                                            <input type="radio" name="language"  class="select-item__input">
+                                            <input type="radio" name="language" class="select-item__input">
                                             <span class="select-item__text">
-                                                 <img src="assets/images/language/en.png" class="select-language__img" alt="">
+                                                 <img src="assets/images/language/en.png" class="select-language__img"
+                                                      alt="">
                                             </span>
                                         </label>
                                         <label class="select-item">
                                             <input type="radio" name="language" checked class="select-item__input">
                                             <span class="select-item__text">
-                                                 <img src="assets/images/language/ru.png" class="select-language__img" alt="">
+                                                 <img src="assets/images/language/ru.png" class="select-language__img"
+                                                      alt="">
                                             </span>
                                         </label>
                                     </div>
@@ -101,13 +106,29 @@
             </div>
         </div>
     </header>
-    <div class="content">
+    <div class="content content--hero">
         <div class="content__wrapper">
             <div class="hero">
                 <div class="hero-main">
-                    <div class="hero-main__wrapper">
-                        <div class="container">
-
+                    <div class="container container--landing">
+                        <div class="hero-main__wrapper">
+                            <div class="hero-main__bg">
+                                <img src="assets/images/landing/hero-bg.png" alt="">
+                            </div>
+                            <div class="hero-main__content">
+                                <div class="hero-main__header">
+                                    <div class="hero-main__logo logo">
+                                        <img src="assets/images/logo-big.webp" alt="" class="logo__img">
+                                    </div>
+                                    <p class="hero-main__title">
+                                        Создай свой доход и <br>
+                                        зарабатывай на валюте
+                                    </p>
+                                </div>
+                                <a href="#" class="button button--base button--orange button--base--uppercase">
+                                    попробовать
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -125,7 +146,8 @@
                                         план целого ряда внеочередных мероприятий учётом комплекса стандартных подходов.
                                     </p>
                                     <p class="hero-about__text">
-                                        Не следует, однако, забывать, что разбавленное изрядной долей эмпатии, рациональное
+                                        Не следует, однако, забывать, что разбавленное изрядной долей эмпатии,
+                                        рациональное
                                         напрямую зависит от анализа существующих паттернов поведения. В своём стремлении
                                         функционально разнесены на независимые элементы.
                                     </p>
@@ -144,13 +166,595 @@
                     </div>
                 </div>
             </div>
+            <div class="landing-section">
+                <div class="landing-section__wrapper">
+                    <div class="container container--landing">
+                        <div class="landing-section__header">
+                            <p class="landing-section__title">
+                                Наши предложения
+                            </p>
+                            <p class="landing-section__text">
+                                4 выгодных инвестиционных плана
+                            </p>
+                        </div>
+                        <div class="swiper calculator-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide calculator-slider__item calculator-item">
+                                    <div class="calculator-item__wrapper">
+                                        <div class="calculator-item__header">
+                                            <div class="calculator-item__img">
+                                                <img src="assets/images/landing/calculator/1.png" alt="">
+                                            </div>
+                                            <p class="calculator-item__title">
+                                                start builder
+                                            </p>
+                                        </div>
+                                        <div class="calculator-item__info calculator-info">
+                                            <div class="calculator-info__wrapper">
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Сумма вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--blue">
+                                                        от $1000
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Начисления
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        Ежемесячно
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Возврат вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        В конце срока
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__stats calculator-stats">
+                                            <div class="calculator-stats__row">
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        5.8%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        В день
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        45
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Дней
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                       170%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Доход
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__footer">
+                                            <div class="input">
+                                                <div class="input__item input__item--small">
+                                                    <input type="text" disabled value="300">
+                                                    <span class="input__label">$</span>
+                                                </div>
+                                            </div>
+                                            <a href="#"
+                                               class="button button--full button--base button--blue button--base--uppercase calculator-item__button">депозит</a>
+                                        </div>
+                                        <a href="#" class="calculator-item__link">Калькулятор</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide calculator-slider__item calculator-item">
+                                    <div class="calculator-item__wrapper">
+                                        <div class="calculator-item__header">
+                                            <div class="calculator-item__img">
+                                                <img src="assets/images/landing/calculator/1.png" alt="">
+                                            </div>
+                                            <p class="calculator-item__title">
+                                                start builder
+                                            </p>
+                                        </div>
+                                        <div class="calculator-item__info calculator-info">
+                                            <div class="calculator-info__wrapper">
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Сумма вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--blue">
+                                                        от $1000
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Начисления
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        Ежемесячно
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Возврат вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        В конце срока
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__stats calculator-stats">
+                                            <div class="calculator-stats__row">
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        5.8%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        В день
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        45
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Дней
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        170%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Доход
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__footer">
+                                            <div class="input">
+                                                <div class="input__item input__item--small">
+                                                    <input type="text" disabled value="300">
+                                                    <span class="input__label">$</span>
+                                                </div>
+                                            </div>
+                                            <a href="#"
+                                               class="button button--full button--base button--blue button--base--uppercase calculator-item__button">депозит</a>
+                                        </div>
+                                        <a href="#" class="calculator-item__link">Калькулятор</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide calculator-slider__item calculator-item">
+                                    <div class="calculator-item__wrapper">
+                                        <div class="calculator-item__header">
+                                            <div class="calculator-item__img">
+                                                <img src="assets/images/landing/calculator/1.png" alt="">
+                                            </div>
+                                            <p class="calculator-item__title">
+                                                start builder
+                                            </p>
+                                        </div>
+                                        <div class="calculator-item__info calculator-info">
+                                            <div class="calculator-info__wrapper">
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Сумма вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--blue">
+                                                        от $1000
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Начисления
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        Ежемесячно
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Возврат вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        В конце срока
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__stats calculator-stats">
+                                            <div class="calculator-stats__row">
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        5.8%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        В день
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        45
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Дней
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        170%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Доход
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__footer">
+                                            <div class="input">
+                                                <div class="input__item input__item--small">
+                                                    <input type="text" disabled value="300">
+                                                    <span class="input__label">$</span>
+                                                </div>
+                                            </div>
+                                            <a href="#"
+                                               class="button button--full button--base button--blue button--base--uppercase calculator-item__button">депозит</a>
+                                        </div>
+                                        <a href="#" class="calculator-item__link">Калькулятор</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide calculator-slider__item calculator-item">
+                                    <div class="calculator-item__wrapper">
+                                        <div class="calculator-item__header">
+                                            <div class="calculator-item__img">
+                                                <img src="assets/images/landing/calculator/1.png" alt="">
+                                            </div>
+                                            <p class="calculator-item__title">
+                                                start builder
+                                            </p>
+                                        </div>
+                                        <div class="calculator-item__info calculator-info">
+                                            <div class="calculator-info__wrapper">
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Сумма вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--blue">
+                                                        от $1000
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Начисления
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        Ежемесячно
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-info__row">
+                                                    <p class="calculator-info__text">
+                                                        Возврат вклада
+                                                    </p>
+                                                    <p class="calculator-info__text calculator-info__text--black">
+                                                        В конце срока
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__stats calculator-stats">
+                                            <div class="calculator-stats__row">
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        5.8%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        В день
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        45
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Дней
+                                                    </p>
+                                                </div>
+                                                <div class="calculator-stats__icon"></div>
+                                                <div class="calculator-stats__block">
+                                                    <p class="calculator-stats__title">
+                                                        170%
+                                                    </p>
+                                                    <p class="calculator-stats__text">
+                                                        Доход
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="calculator-item__footer">
+                                            <div class="input">
+                                                <div class="input__item input__item--small">
+                                                    <input type="text" disabled value="300">
+                                                    <span class="input__label">$</span>
+                                                </div>
+                                            </div>
+                                            <a href="#"
+                                               class="button button--full button--base button--blue button--base--uppercase calculator-item__button">депозит</a>
+                                        </div>
+                                        <a href="#" class="calculator-item__link">Калькулятор</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="landing-section landing-section--white">
+                <div class="landing-section__wrapper">
+                    <div class="container container--landing">
+                        <div class="landing-section__header">
+                            <p class="landing-section__title">
+                                Как это работает ?
+                            </p>
+                            <p class="landing-section__text">
+                                Всего 4 шага до прибыли
+                            </p>
+                        </div>
+                        <div class="steps">
+                            <div class="steps__wrapper">
+                                <div class="steps__nav">
+                                    <div class="steps-nav swiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide steps-nav__item">
+                                                <div class="steps-nav__number">
+                                                    1
+                                                </div>
+                                                <div class="steps-nav__content">
+                                                    <p class="steps-nav__title">
+                                                        Регистрация
+                                                    </p>
+                                                    <p class="steps-nav__text">
+                                                        Пройдите простую регистрацию на нашем сайте
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide steps-nav__item">
+                                                <div class="steps-nav__number">
+                                                    2
+                                                </div>
+                                                <div class="steps-nav__content">
+                                                    <p class="steps-nav__title">
+                                                        ПОПОЛНЕНИЕ БАЛАНСА
+                                                    </p>
+                                                    <p class="steps-nav__text">
+                                                        Пополните свой баланс любым удобным способом
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide steps-nav__item">
+                                                <div class="steps-nav__number">
+                                                    3
+                                                </div>
+                                                <div class="steps-nav__content">
+                                                    <p class="steps-nav__title">
+                                                        Открытие депозита
+                                                    </p>
+                                                    <p class="steps-nav__text">
+                                                        Выберите оптимальный план и откройте депозит
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide steps-nav__item">
+                                                <div class="steps-nav__number">
+                                                    4
+                                                </div>
+                                                <div class="steps-nav__content">
+                                                    <p class="steps-nav__title">
+                                                        Получение профита
+                                                    </p>
+                                                    <p class="steps-nav__text">
+                                                        Выводите прибыль на свой счёт в автоматическом режиме
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="steps__main">
+                                    <div class="swiper steps-slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide steps-slider__item steps-item">
+                                                <div class="steps-item__wrapper">
+                                                    <img src="assets/images/landing/steps/1.png" alt="" class="steps-item__img">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide steps-slider__item steps-item">
+                                                <div class="steps-item__wrapper">
+                                                    <img src="assets/images/landing/steps/1.png" alt="" class="steps-item__img">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide steps-slider__item steps-item">
+                                                <div class="steps-item__wrapper">
+                                                    <img src="assets/images/landing/steps/1.png" alt="" class="steps-item__img">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide steps-slider__item steps-item">
+                                                <div class="steps-item__wrapper">
+                                                    <img src="assets/images/landing/steps/1.png" alt="" class="steps-item__img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="landing-section">
+                <div class="landing-section__wrapper">
+                    <div class="container container--landing">
+                        <div class="landing-section__header landing-section__header--white">
+                            <p class="landing-section__title">
+                                Реферальная программа
+                            </p>
+                            <p class="landing-section__text">
+                                Зарабатывайте на привличении новых партнёров
+                            </p>
+                        </div>
+                        <div class="referral">
+                            <div class="referral__wrapper">
+                                <div class="referral__nav">
+                                    <div class="referral-nav swiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide referral-nav__item">
+                                                <div class="referral-nav__number">
+                                                    01.
+                                                </div>
+                                                <div class="referral-nav__content">
+                                                    <p class="referral-nav__text">
+                                                        Привлекайте новых пользователей через
+                                                        реферальную программу и зарабатывайте
+                                                        дополнительные бонусы
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide referral-nav__item">
+                                                <div class="referral-nav__number">
+                                                    02.
+                                                </div>
+                                                <div class="referral-nav__content">
+                                                    <p class="referral-nav__text">
+                                                        Реферальные комиссии напрямую связаны с
+                                                        начальным депозитом привлечённого пользователя
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide referral-nav__item">
+                                                <div class="referral-nav__number">
+                                                    03.
+                                                </div>
+                                                <div class="referral-nav__content">
+                                                    <p class="referral-nav__text">
+                                                        Повышайте свой статус партнёра до новых уровней и
+                                                        получайте дополнительный доход и бонусные вознаграждения
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="button button--base button--base--uppercase button--blue referral__button referral__button--desktop">СТАТЬ ПАРТНЁРОМ</a>
+                                </div>
+                                <div class="referral__main">
+                                    <div class="swiper referral-slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide referral-slider__item referral-item">
+                                                <div class="referral-item__wrapper">
+                                                    <img src="assets/images/landing/referral/1.png" alt="" class="referral-item__img">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide referral-slider__item referral-item">
+                                                <div class="referral-item__wrapper">
+                                                    <img src="assets/images/landing/referral/1.png" alt="" class="referral-item__img">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide referral-slider__item referral-item">
+                                                <div class="referral-item__wrapper">
+                                                    <img src="assets/images/landing/referral/1.png" alt="" class="referral-item__img">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide referral-slider__item referral-item">
+                                                <div class="referral-item__wrapper">
+                                                    <img src="assets/images/landing/referral/1.png" alt="" class="referral-item__img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <a href="#" class="button button--base button--base--uppercase button--blue referral__button referral__button--mobile">СТАТЬ ПАРТНЁРОМ</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="levels">
                 <div class="levels__wrapper">
                     <div class="container container--landing">
                         <div class="levels__row">
                             <div class="levels-item">
                                 <div class="levels-item__wrapper">
-
+                                    <div class="levels-item__content">
+                                        <img src="assets/images/levels/1.png" alt="" class="levels-item__img">
+                                        <div class="levels-item__header">
+                                            <p class="levels-item__title">
+                                                уровень 1
+                                            </p>
+                                            <p class="levels-item__text">
+                                                Реферальный бонус <span>3%</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="levels-item__percent">
+                                        3%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="levels-item">
+                                <div class="levels-item__wrapper">
+                                    <div class="levels-item__content">
+                                        <img src="assets/images/levels/2.png" alt="" class="levels-item__img">
+                                        <div class="levels-item__header">
+                                            <p class="levels-item__title">
+                                                уровень 2
+                                            </p>
+                                            <p class="levels-item__text">
+                                                Реферальный бонус <span>5%</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="levels-item__percent">
+                                        5%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="levels-item">
+                                <div class="levels-item__wrapper">
+                                    <div class="levels-item__content">
+                                        <img src="assets/images/levels/3.png" alt="" class="levels-item__img">
+                                        <div class="levels-item__header">
+                                            <p class="levels-item__title">
+                                                уровень 3
+                                            </p>
+                                            <p class="levels-item__text">
+                                                Реферальный бонус <span>7%</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="levels-item__percent">
+                                        7%
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -218,6 +822,7 @@
     </div>
 </footer>
 
+<script src="assets/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
 </body>
 </html>

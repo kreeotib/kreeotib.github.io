@@ -185,4 +185,81 @@ document.addEventListener('DOMContentLoaded',e=>{
             })
         })
     }
+
+    const calculatorSliderElement = document.querySelector('.calculator-slider');
+    const calculatorSlider = new Swiper(".calculator-slider",{
+        slidesPerView:"auto",
+        spaceBetween:50,
+        init:false,
+    })
+    if(calculatorSliderElement){
+        calculatorSlider.init()
+    }
+
+    const steps = document.querySelector('.steps');
+
+    if(steps){
+        const stepsNavElement = steps.querySelector(".steps-nav"),
+            stepsSliderElement = steps.querySelector('.steps-slider');
+        const stepsNav = new Swiper(".steps-nav", {
+            slidesPerView: 1,
+            watchSlidesProgress: true,
+            init:false,
+            breakpoints:{
+                1025:{
+                    slidesPerView: 'auto',
+                    direction:"vertical"
+                }
+            }
+        });
+        const stepsSlider = new Swiper(".steps-slider", {
+            effect:"fade",
+            init: false,
+            fadeEffect: {
+                crossFade: true
+            },
+            thumbs: {
+                swiper: stepsNav,
+            },
+        });
+
+        if(stepsNavElement && stepsSliderElement){
+            stepsNav.init()
+            stepsSlider.init()
+        }
+    }
+
+    const referral = document.querySelector('.referral');
+
+    if(referral){
+        const referralNavElement = referral.querySelector(".referral-nav"),
+            referralSliderElement = referral.querySelector('.referral-slider');
+        const referralNav = new Swiper(".referral-nav", {
+            slidesPerView: 1,
+            watchSlidesProgress: true,
+            init:false,
+            breakpoints:{
+                1025:{
+                    spaceBetween: 20,
+                    slidesPerView: 'auto',
+                    direction:"vertical"
+                }
+            }
+        });
+        const referralSlider = new Swiper(".referral-slider", {
+            effect:"fade",
+            init: false,
+            fadeEffect: {
+                crossFade: true
+            },
+            thumbs: {
+                swiper: referralNav,
+            },
+        });
+
+        if(referralNavElement && referralSliderElement){
+            referralNav.init()
+            referralSlider.init()
+        }
+    }
 })
