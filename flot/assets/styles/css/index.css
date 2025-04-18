@@ -229,7 +229,6 @@ body.no-scroll {
   width: 60px;
   height: 30px;
   opacity: 0;
-  visibility: hidden;
 }
 .form-checkbox__input:checked ~ .form-checkbox__checkmark svg {
   opacity: 1;

@@ -263,7 +263,6 @@ body.no-scroll {
       height: 30px;
 
       opacity: 0;
-      visibility: hidden;
     }
 
     &__input:checked ~ &__checkmark {
@@ -500,7 +499,7 @@ body.no-scroll {
   padding: 15px;
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
-  background: rgba(#062D54, 0.7);
+  background: rgba(#435e7a, 0.5);
   z-index: 12;
   opacity: 0;
   visibility: hidden;

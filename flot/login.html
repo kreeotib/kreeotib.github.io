@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="#" class="header__logo logo">
+                        <img src="assets/images/logo.svg" alt="" class="logo__img">
+                    </a>
+                    <img src="assets/images/plane.webp" alt="" class="header__plane">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <form action="#" class="form form-login">
+            <div class="container">
+                <div class="form-login__wrapper form__wrapper form__wrapper--gap--small">
+                    <div class="form__text">
+                        Ваш код входа отправлен на указанный e-mail.
+                    </div>
+                    <div class="form__content">
+                        <div class="form-input">
+                            <label for="login-email" class="form-input__label">E-mail</label>
+                            <input required type="email" id="login-email" name="login-email" class="form-input__item">
+                        </div>
+                    </div>
+                    <label class="form-checkbox">
+                        <input required type="checkbox" class="form-checkbox__input">
+                        <span class="form-checkbox__checkmark">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="698" height="512"
+                                         viewBox="0 0 698 512">
+                                        <path fill="currentColor"
+                                              d="M673.667 78.158l-398.967 398.966c-7.253 7.252-14.508 10.882-25.388 10.882s-18.135-3.63-25.388-10.882l-181.347-181.348c-14.508-14.508-14.508-36.269 0-50.778s36.27-14.508 50.778 0l155.959 155.959 373.575-373.577c14.508-14.508 36.273-14.508 50.781 0s14.508 36.27 0 50.778z"></path>
+                                        </svg>
+                                </span>
+                        <a target="_blank" href="assets/documents/Согласие_на_обработку_персональных_данных_Сайт.docx" class="form-checkbox__text">
+                            СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ
+                        </a>
+                    </label>
+                    <label class="form-checkbox">
+                        <input required type="checkbox" class="form-checkbox__input">
+                        <span class="form-checkbox__checkmark">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="698" height="512"
+                                         viewBox="0 0 698 512">
+                                        <path fill="currentColor"
+                                              d="M673.667 78.158l-398.967 398.966c-7.253 7.252-14.508 10.882-25.388 10.882s-18.135-3.63-25.388-10.882l-181.347-181.348c-14.508-14.508-14.508-36.269 0-50.778s36.27-14.508 50.778 0l155.959 155.959 373.575-373.577c14.508-14.508 36.273-14.508 50.781 0s14.508 36.27 0 50.778z"></path>
+                                        </svg>
+                                </span>
+                        <a target="_blank" href="assets/documents/ПОЛИТИКА_В_ОТНОШЕНИИ_ОБРАБОТКИ_ПЕРСОНАЛЬНЫХ_ДАННЫХ_EDE.pdf" class="form-checkbox__text">
+                            ПОЛИТИКА ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ ЕДЕ
+                        </a>
+                    </label>
+                    <div class="form__footer">
+                        <button type="submit" class="button button--base button--accent form__button">
+                            ПОЛУЧИТЬ КОД
+                        </button>
+                        <a href="#" class="button button--base button--accent form__button">
+                            НЕТ e-mail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="#" class="form form--hidden form-code">
+            <div class="container">
+                <div class="form-login__wrapper form__wrapper form__wrapper--gap--small">
+                    <div class="form__text">
+                        Ваш код входа отправлен на указанный e-mail.
+                    </div>
+                    <div class="form__content">
+                        <div class="form-input">
+                            <label for="login-code" class="form-input__label">Код входа</label>
+                            <input type="email" id="login-code" name="login-code" class="form-input__item">
+                        </div>
+                    </div>
+                    <div class="form__footer">
+                        <button type="submit" class="button button--base button--accent form__button">
+                            ВОЙТИ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+
+
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>
