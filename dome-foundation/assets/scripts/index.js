@@ -335,15 +335,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const projectsListRow = document.querySelectorAll('.projects-list__row');
-
-    if(projectsListRow.length){
-        const numbers = [...projectsListRow].map(el=> +el.dataset.number);
-        const minNumber = Math.min(...numbers);
-        const maxNumber = Math.max(...numbers);
-        console.log(minNumber, maxNumber)
-        projectsListRow.forEach((item,index)=>{
-            item.style.setProperty("--transition-delay", `${index * .2}s`)
-            item.style.setProperty("--max-width", `${40 + 60 * (+item.dataset.number - minNumber) / (maxNumber - minNumber)}%`)
-        })
+    if (projectsListRow.length) {
+        const numbers = [...projectsListRow].map(el => {
+            const numberElement = el.querySelector('.projects-list__number');
+            if (numberElement) {
+                return parseFloat(numberElement.innerHTML.trim());
+            }
+            return 0;
+        });
+        const validNumbers = numbers.filter(num => !isNaN(num));
+        if (validNumbers.length) {
+            const minNumber = Math.min(...validNumbers);
+            const maxNumber = Math.max(...validNumbers);
+            projectsListRow.forEach((item, index) => {
+                item.style.setProperty("--transition-delay", `${index * 0.2}s`);
+                const numberElement = item.querySelector('.projects-list__number');
+                if (numberElement) {
+                    const currentNumber = parseFloat(numberElement.innerHTML.trim());
+                    item.style.setProperty("--max-width", `${40 + 60 * (currentNumber - minNumber) / (maxNumber - minNumber)}%`);
+                } else {
+                    item.style.setProperty("--max-width", '40%');
+                }
+            });
+        }
     }
 })

@@ -25,10 +25,10 @@
   }
 
   .container {
-    padding: 0 3.3vw;
+    padding: 0 48px;
 
     &--small {
-      padding: 0 15vw;
+      padding: 0 220px;
     }
 
     @media screen and (max-width: 1240px) {
@@ -44,7 +44,7 @@
 
   .title {
     &--base {
-      font-size: 4.1vw;
+      font-size: 60px;
 
       line-height: 100%;
       letter-spacing: -0.01em;
@@ -60,7 +60,7 @@
     }
 
     &--middle {
-      font-size: 2.7vw;
+      font-size:40px;
       font-weight: 600;
       @media screen and (max-width: 1240px) {
         font-size: 32px;
@@ -71,7 +71,7 @@
     }
 
     &--small {
-      font-size: 2.2vw;
+      font-size: 32px;
       line-height: 1.2;
       letter-spacing: -0.01em;
       font-weight: 600;
@@ -84,7 +84,7 @@
     }
 
     &--tiny {
-      font-size: 1.6vw;
+      font-size: 24px;
       font-weight: 600;
       line-height: 1.2;
       letter-spacing: -0.01em;
@@ -119,7 +119,7 @@
 
   .text {
     &--base {
-      font-size: 1.1vw;
+      font-size: 16px;
       letter-spacing: 0.01em;
       font-weight: 600;
       @media screen and (max-width: 1240px) {
@@ -131,7 +131,7 @@
     }
 
     &--middle {
-      font-size: 1.25vw;
+      font-size: 20px;
       letter-spacing: -0.01em;
       font-weight: 500;
       @media screen and (max-width: 1240px) {
@@ -143,7 +143,7 @@
     }
 
     &--big {
-      font-size: 1.4vw;
+      font-size: 20px;
       font-weight: 500;
       line-height: 1;
       @media screen and (max-width: 1240px) {
@@ -164,7 +164,7 @@
 
     &--caption {
       font-family: var(--font-accent);
-      font-size: 1.25vw;
+      font-size: 20px;
       line-height: 120%;
       letter-spacing: -0.01em;
       color: rgba(#FAFAFA, .5);
@@ -204,16 +204,16 @@
     }
 
     &--base {
-      padding: 1.1vw 1.4vw;
-      gap: .5vw;
-      height: 3.5vw;
-      border-radius: .8vw;
+      padding: 16px 20px;
+      gap: 8px;
+      height: 50px;
+      border-radius: 12px;
 
-      font-size: 1.1vw;
+      font-size: 16px;
       font-weight: 600;
       letter-spacing: -0.01em;
 
-      --icon-size: 1vw;
+      --icon-size: 16px;
       @media screen and (max-width: 1240px) {
         font-size: 16px;
         gap: 8px;
@@ -290,7 +290,7 @@
     }
 
     &__logo {
-      width: 2.8vw;
+      width: 40px;
       @media screen and (max-width: 1240px) {
         width: 40px;
         height: 20px;
@@ -304,8 +304,8 @@
     &__row {
       display: flex;
       align-items: center;
-      gap: 2.8vw;
-      height: 5.5vw;
+      gap: 40px;
+      height: 80px;
       @media screen and (max-width: 1240px) {
         height: 90px;
         gap: 40px;
@@ -333,7 +333,7 @@
     }
 
     &-item {
-      font-size: 1.1vw;
+      font-size: 16px;
       color: #fafafa;
 
       display: flex;
@@ -367,8 +367,8 @@
 
       display: flex;
       flex-direction: column;
-      gap: .4vw;
-      padding: .4vw 0;
+      gap: 8px;
+      padding: 8px 0;
 
       opacity: 0;
       visibility: hidden;
@@ -381,23 +381,15 @@
     }
 
     &__current {
-      gap: .8vw;
+      gap: 8px;
 
       .icon {
-        width: .8vw;
-        height: .8vw;
+        width: 8px;
+        height: 8px;
 
         transition: .3s transform;
       }
 
-      @media screen and (max-width: 1240px) {
-        gap: 8px;
-
-        .icon {
-          width: 8px;
-          height: 8px;
-        }
-      }
     }
   }
 
@@ -409,11 +401,11 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 9.8vw;
-      height: 5vw;
+      width:136px;
+      height: 66px;
 
       object-fit: contain;
-      bottom: 2.5vw;
+      bottom: 80px;
 
       opacity: .2;
 
@@ -440,10 +432,9 @@
       box-shadow: inset 0 0 40px 0 rgba(255, 255, 255, 0.5), inset 0 0 120px 0 rgba(121, 26, 255, 0.5);
       border-radius: 70vw;
 
-
       position: relative;
       z-index: 2;
-      padding: 6vw 0;
+      padding: 180px 0;
       @media screen and (max-width: 1240px) {
         min-height: calc(100svh - 90px);
         border-radius: 600px;
@@ -459,7 +450,7 @@
 
     &__subtitle {
       font-family: var(--font-accent);
-      font-size: 1.25vw;
+      font-size: 20px;
       line-height: 1.2;
       letter-spacing: -0.01em;
       color: #fafafa;
@@ -471,7 +462,7 @@
     }
 
     &__title {
-      font-size: 4.1vw;
+      font-size: 60px;
       line-height: .96;
 
       letter-spacing: -0.02em;
@@ -490,15 +481,15 @@
 
     &-form {
       &__wrapper {
-        border-radius: 1.1vw;
+        border-radius: 16px;
 
-        padding: 1.4vw .3vw .3vw .3vw;
+        padding: 20px 4px 4px 4px;
         backdrop-filter: blur(80px);
         background: #fafafa;
 
         display: flex;
         flex-direction: column;
-        gap: 2vw;
+        gap: 30px;
         @media screen and (max-width: 1240px) {
           padding: 16px 4px 4px 4px;
           gap: 20px;
@@ -510,14 +501,14 @@
       }
 
       &__title {
-        max-width: 15.5vw;
+        max-width: 250px;
         width: 100%;
 
         margin: 0 auto;
 
         font-family: var(--font-accent);
         color: #000;
-        font-size: 1.25vw;
+        font-size: 20px;
         line-height: 1.2;
         letter-spacing: -0.01em;
         text-align: center;
@@ -536,19 +527,19 @@
       &__header {
         display: flex;
         flex-direction: column;
-        gap: .8vw;
+        gap: 12px;
         @media screen and (max-width: 1240px) {
           gap: 8px;
         }
       }
 
       &__wrapper {
-        max-width: 70vw;
+        max-width: 1000px;
         width: 100%;
 
         display: flex;
         flex-direction: column;
-        gap: 4.1vw;
+        gap: 60px;
         @media screen and (max-width: 1240px) {
           max-width: 715px;
           gap: 80px;
@@ -557,7 +548,7 @@
       }
 
       &__footer {
-        max-width: 22vw;
+        max-width: 320px;
         width: 100%;
 
         margin: 0 auto;
@@ -573,11 +564,11 @@
 
   .content {
     &__wrapper {
-      padding: 9.7vw 0;
+      padding: 120px 0;
 
       display: flex;
       flex-direction: column;
-      gap: 9.7vw;
+      gap: 120px;
       @media screen and (max-width: 1240px) {
         gap: 80px;
         padding: 80px 0;
@@ -591,7 +582,7 @@
     }
 
     &__wrapper {
-      padding: 5.5vw 0;
+      padding: 80px 0;
       @media screen and (max-width: 1240px) {
         padding: 80px 0;
       }
@@ -617,7 +608,7 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
-      gap: 5.5vw;
+      gap: 100px;
 
       @media screen and (max-width: 1240px) {
         gap: 40px;
@@ -635,7 +626,7 @@
         content: "";
         display: inline-block;
         height: 1px;
-        width: 11.7vw;
+        width: 172px;
 
         @media screen and (max-width: 1240px) {
           width: 180px;
@@ -648,7 +639,7 @@
 
     &__content {
       border-top: 1px solid rgba(255, 255, 255, 0.16);
-      padding-top: 1.6vw;
+      padding-top: 24px;
 
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -663,8 +654,8 @@
 
     &-founder {
       &__img {
-        width: 5.5vw;
-        height: 5.5vw;
+        width: 80px;
+        height: 80px;
 
         border-radius: 50%;
         object-fit: cover;
@@ -678,7 +669,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 1.1vw;
+        gap: 16px;
         @media screen and (max-width: 1240px) {
           gap: 12px;
         }
@@ -695,7 +686,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 5.5vw;
+        gap: 80px;
         @media screen and (max-width: 1240px) {
           gap: 60px;
         }
@@ -710,14 +701,14 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
-      gap: 3.5vw;
+      gap: 50px;
       @media screen and (max-width: 1240px) {
         gap: 40px;
       }
     }
 
     &__header {
-      max-width: 60vw;
+      max-width: 900px;
       width: 100%;
       @media screen and (max-width: 1240px) {
         max-width: 700px;
@@ -728,7 +719,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 5.2vw;
+        gap: 74px;
         @media screen and (max-width: 1240px) {
           gap: 40px;
         }
@@ -743,7 +734,7 @@
       &__content {
         display: flex;
         flex-direction: column;
-        gap: 5.2vw;
+        gap: 74px;
         @media screen and (max-width: 1240px) {
           gap: 60px;
         }
@@ -753,7 +744,7 @@
     &-list {
       display: flex;
       flex-direction: column;
-      gap: 5.2vw;
+      gap: 74px;
       @media screen and (max-width: 1240px) {
         gap: 80px;
       }
@@ -768,11 +759,11 @@
       }
 
       &__link {
-        padding: 1.4vw 0;
+        padding: 20px 0;
 
         display: flex;
         flex-direction: column;
-        gap: .5vw;
+        gap: 8px;
 
         color: #FAFAFA;
 
@@ -795,7 +786,7 @@
 
         &::before {
           content: "0" counter(info-list) ".";
-          font-size: 1.4vw;
+          font-size: 20px;
           font-family: var(--font-accent);
           line-height: 96%;
           letter-spacing: -0.02em;
@@ -818,7 +809,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 2.4vw;
+        gap: 32px;
         @media screen and (max-width: 1240px) {
           gap: 32px;
         }
@@ -830,7 +821,7 @@
       &__header {
         display: flex;
         flex-direction: column;
-        gap: 2.4vw;
+        gap: 32px;
 
         @media screen and (max-width: 1240px) {
           gap: 16px;
@@ -842,7 +833,7 @@
 
       &__img {
         width: 100%;
-        height: 20vw;
+        height: 280px;
 
         object-fit: cover;
 
@@ -859,7 +850,7 @@
       &__grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 4.4vw;
+        gap: 70px;
         @media screen and (max-width: 767px) {
           grid-template-columns: minmax(0, 1fr);
           gap: 40px;
@@ -875,7 +866,7 @@
       }
 
       &__main {
-        padding-top: 4.4vw;
+        padding-top: 70px;
         @media screen and (max-width: 1240px) {
           padding-top: 0;
         }
@@ -887,7 +878,7 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
-      gap: 4.1vw;
+      gap: 60px;
       @media screen and (max-width: 1240px) {
         gap: 40px;
       }
@@ -944,7 +935,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 1.4vw;
+        gap: 20px;
         height: 100%;
         @media screen and (max-width: 1240px) {
           gap: 20px;
@@ -957,14 +948,14 @@
       &__header {
         display: flex;
         flex-direction: column;
-        gap: .5vw;
+        gap: 8px;
         @media screen and (max-width: 1240px) {
           gap: 8px;
         }
       }
 
       &__name {
-        font-size: 1.7vw;
+        font-size:24px;
         font-weight: 500;
         letter-spacing: -0.01em;
         color: #fafafa;
@@ -979,7 +970,7 @@
       &__content {
         display: flex;
         flex-direction: column;
-        gap: 1.4vw;
+        gap: 20px;
         @media screen and (max-width: 1240px) {
           gap: 20px;
         }
@@ -993,14 +984,14 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 1.4vw;
+        gap: 20px;
         @media screen and (max-width: 1240px) {
           gap: 20px;
         }
       }
 
       &__project {
-        height: 3.5vw;
+        height: 50px;
         opacity: .5;
 
         transition: .3s opacity;
@@ -1023,13 +1014,13 @@
 
       &__arrow {
         position: absolute;
-        top: 1.4vw;
-        right: 1.4vw;
+        top: 20px;
+        right: 20px;
 
         z-index: 3;
 
-        width: 2.8vw;
-        height: 2.8vw;
+        width: 40px;
+        height: 40px;
 
 
         color: #fafafa;
@@ -1054,7 +1045,7 @@
         align-items: center;
         justify-content: center;
 
-        border-radius: 1.7vw;
+        border-radius: 24px;
         overflow: hidden;
 
         background-color: #181818;
@@ -1091,8 +1082,8 @@
       -webkit-user-select: none;
       user-select: none;
 
-      width: 2.5vw;
-      height: 2.5vw;
+      width: 36px;
+      height: 36px;
       color: #FAFAFA;
 
       border-radius: 50%;
@@ -1104,8 +1095,8 @@
       }
 
       &--big {
-        height: 4.1vw;
-        width: 4.1vw;
+        height: 60px;
+        width: 60px;
 
         transition: .3s color;
 
@@ -1136,7 +1127,7 @@
       &__arrows {
         display: flex;
         align-items: center;
-        gap: .5vw;
+        gap: 12px;
         @media screen and (max-width: 1240px) {
           gap: 12px;
         }
@@ -1151,7 +1142,7 @@
     &__grid {
       display: grid;
       grid-template-columns: 4fr 6fr;
-      gap: 1.7vw;
+      gap: 20px;
       @media screen and (max-width: 1240px) {
         gap: 40px;
       }
@@ -1164,7 +1155,7 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
-      gap: 4.1vw;
+      gap: 60px;
       @media screen and (max-width: 1240px) {
         gap: 60px;
       }
@@ -1189,7 +1180,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        gap: 1.7vw;
+        gap: 24px;
         @media screen and (max-width: 1240px) {
           gap: 24px;
           box-shadow: inset 0 0 30px 0 rgba(255, 255, 255, 0.5), inset 0 0 80px 0 rgba(121, 26, 255, 0.5);
@@ -1212,7 +1203,7 @@
 
       &__title {
         font-weight: 500;
-        font-size: 8.3vw;
+        font-size: 80px;
         line-height: 90%;
         color: #fafafa;
         @media screen and (max-width: 1240px) {
@@ -1237,12 +1228,12 @@
       }
 
       &__wrapper {
-        padding: 1.4vw 0;
+        padding: 20px 0;
 
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 2.8vw;
+        gap: 40px;
 
         position: relative;
         @media screen and (max-width: 1240px) {
@@ -1275,8 +1266,8 @@
       }
 
       &__img {
-        height: 11vw;
-        width: 16vw;
+        height:160px;
+        width: 240px;
 
         display: flex;
         align-items: center;
@@ -1297,7 +1288,7 @@
     &-list {
       display: flex;
       flex-direction: column;
-      gap: .8vw;
+      gap: 12px;
       @media screen and (max-width: 1240px) {
         gap: 12px;
       }
@@ -1309,15 +1300,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1.1vw;
+        gap: 16px;
 
-        padding: 1.7vw;
-        height: 4.87vw;
+        padding: 20px 24px;
+        height: 70px;
 
         min-width: max-content;
 
         background-color: rgba(#fff, .04);
-        border-radius: 2.2vw;
+        border-radius: 32px;
 
         width: 0;
         opacity: 0;
@@ -1354,7 +1345,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 2.8vw;
+        gap: 40px;
         @media screen and (max-width: 1240px) {
           gap: 40px;
         }
@@ -1366,7 +1357,7 @@
       &__header {
         display: flex;
         flex-direction: column;
-        gap: .8vw;
+        gap: 12px;
         @media screen and (max-width: 1240px) {
           gap: 12px;
         }
@@ -1378,7 +1369,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1.1vw;
+        gap: 16px;
         @media screen and (max-width: 767px) {
           display: grid;
           grid-template-columns: 48px minmax(0, 1fr) 48px;
@@ -1389,7 +1380,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 4.1vw;
+        gap: 60px;
         @media screen and (max-width: 1240px) {
           gap: 60px;
         }
@@ -1412,7 +1403,7 @@
     &-nav {
       &__item {
         font-weight: 600;
-        font-size: 1.7vw;
+        font-size: 24px;
         line-height: 120%;
         letter-spacing: -0.01em;
         color: rgba(250, 250, 250, 0.4);
@@ -1449,7 +1440,7 @@
       &__grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.4vw;
+        gap: 20px;
 
         flex-grow: 1;
         @media screen and (max-width: 1240px) {
@@ -1466,7 +1457,7 @@
       &__content {
         display: flex;
         flex-direction: column;
-        gap: 1.4vw;
+        gap: 20px;
         @media screen and (max-width: 1240px) {
           gap: 20px;
         }
@@ -1475,7 +1466,7 @@
       &__header {
         display: flex;
         flex-direction: column;
-        gap: .8vw;
+        gap: 12px;
         @media screen and (max-width: 1240px) {
           gap: 8px;
         }
@@ -1487,14 +1478,14 @@
 
       &__info {
         flex-grow: 1;
-        border-radius: 2.2vw;
+        border-radius: 32px;
         background: #121212;
 
-        padding: 2.8vw;
+        padding: 40px;
 
         display: flex;
         flex-direction: column;
-        gap: 2vw;
+        gap: 30px;
         @media screen and (max-width: 1240px) {
           padding: 40px;
         }
@@ -1506,14 +1497,14 @@
       &__label {
         box-shadow: inset 0 0 100px 0 rgba(255, 255, 255, 0.3), inset 0 0 30px 0 rgba(255, 255, 255, 0.3);
         background: #080808;
-        padding: 2.8vw;
+        padding: 40px;
 
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1.25vw;
+        gap: 20px;
 
-        border-radius: 28vw;
+        border-radius:800px;
         @media screen and (max-width: 1240px) {
           padding: 40px;
           border-radius: 24px;
@@ -1540,7 +1531,7 @@
 
       &__number {
         font-weight: 600;
-        font-size: 5.5vw;
+        font-size: 80px;
         line-height: 112%;
         letter-spacing: -0.01em;
         color: #fafafa;
@@ -1550,7 +1541,7 @@
       }
 
       &__img {
-        border-radius: 2.2vw;
+        border-radius: 32px;
         overflow: hidden;
         position: relative;
         display: flex;
@@ -1616,7 +1607,7 @@
       }
 
       &__subtitle {
-        max-width: 24vw;
+        max-width: 450px;
         width: 100%;
         @media screen and (max-width: 1240px) {
           max-width: 360px;
@@ -1630,7 +1621,7 @@
       }
 
       &__title {
-        max-width: 26vw;
+        max-width: 400px;
         width: 100%;
         @media screen and (max-width: 1240px) {
           max-width: 375px;
@@ -1668,7 +1659,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        gap: 1.6vw;
+        gap: 24px;
         @media screen and (max-width: 1240px) {
           gap: 24px;
         }
@@ -1676,23 +1667,23 @@
 
       &__date {
         position: absolute;
-        left: 1.6vw;
-        top: 1.6vw;
+        left: 24px;
+        top: 24px;
         z-index: 3;
 
         display: flex;
         align-items: center;
-        gap: .5vw;
+        gap: 8px;
 
         font-weight: 600;
-        font-size: 1.1vw;
+        font-size: 16px;
         line-height: 120%;
         letter-spacing: -0.01em;
         color: #fafafa;
 
-        padding: .5vw 1.4vw;
+        padding: 8px 20px;
 
-        border-radius: 4.1vw;
+        border-radius: 60px;
 
         border-left: 1px solid #fff;
         border-right: 1px solid #fff;
@@ -1708,8 +1699,8 @@
         }
 
         .icon {
-          width: 1.1vw;
-          height: 1.1vw;
+          width: 16px;
+          height: 16px;
 
           flex-shrink: 0;
           @media screen and (max-width: 1240px) {
@@ -1721,11 +1712,11 @@
 
       &__header {
         position: relative;
-        height: 28vw;
+        height: 400px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 2.2vw;
+        border-radius: 32px;
         overflow: hidden;
         @media screen and (max-width: 1240px) {
           height: 480px;
@@ -1761,19 +1752,19 @@
       &__content {
         display: flex;
         flex-direction: column;
-        gap: .5vw;
+        gap: 8px;
         @media screen and (max-width: 1240px) {
           gap: 4px;
         }
       }
 
       &__box {
-        padding: 0 1.7vw;
+        padding: 0 24px;
 
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-        gap: 1.7vw;
+        gap: 24px;
         @media screen and (max-width: 1240px) {
           padding: 0;
           gap: 24px;
@@ -1783,15 +1774,15 @@
       &__tag {
         display: flex;
         align-items: center;
-        gap: .5vw;
+        gap: 8px;
         text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
         @media screen and (max-width: 1240px) {
           gap: 8px;
         }
 
         .icon {
-          width: 1.1vw;
-          height: 1.1vw;
+          width: 16px;
+          height: 16px;
 
           flex-shrink: 0;
           @media screen and (max-width: 1240px) {
@@ -1812,7 +1803,7 @@
       &__footer {
         display: flex;
         align-items: center;
-        gap: 1.1vw;
+        gap: 16px;
         flex-wrap: wrap;
         @media screen and (max-width: 1240px) {
           gap: 16px;
@@ -1823,7 +1814,7 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
-      gap: 3.3vw;
+      gap: 48px;
       @media screen and (max-width: 1240px) {
         gap: 40px;
       }
@@ -1874,7 +1865,7 @@
     &__grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4.4vw;
+      gap: 70px;
       @media screen and (max-width: 1240px) {
         gap: 0;
       }
@@ -1888,7 +1879,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 1.6vw;
+        gap: 24px;
 
         position: sticky;
         top: 0;
@@ -1898,7 +1889,7 @@
       }
 
       &__title {
-        max-width: 28vw;
+        max-width: 400px;
         width: 100%;
         @media screen and (max-width: 1240px) {
           max-width: 300px;
@@ -1915,11 +1906,11 @@
       }
 
       &__item {
-        padding: 3.3vw 0;
+        padding: 48px 0;
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-        gap: 2.2vw;
+        gap: 32px;
         border-bottom: 1px solid rgba(#fff, .16);
         overflow: hidden;
 
@@ -1952,7 +1943,7 @@
     overflow: hidden;
 
     &__wrapper {
-      padding-top: 5.5vw;
+      padding-top: 80px;
       @media screen and (max-width: 1240px) {
         padding-top: 40px;
       }
@@ -1965,7 +1956,7 @@
     &__grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4.4vw;
+      gap: 70px;
       @media screen and (max-width: 1240px) {
         gap: 30px;
         padding: 80px 0;
@@ -2007,11 +1998,11 @@
       }
 
       &__wrapper {
-        padding: 9.7vw 7.6vw 9.7vw 0;
+        padding: 120px 120px 120px 0;
 
         display: flex;
         flex-direction: column;
-        gap: 9.7vw;
+        gap: 120px;
 
         position: relative;
         z-index: 2;
@@ -2027,7 +2018,7 @@
       &__header {
         display: flex;
         flex-direction: column;
-        gap: 2.2vw;
+        gap: 32px;
         @media screen and (max-width: 1240px) {
           gap: 32px;
         }
@@ -2039,7 +2030,7 @@
       &__footer {
         display: flex;
         flex-direction: column;
-        gap: .8vw;
+        gap: 12px;
 
         @media screen and (max-width: 1240px) {
           gap: 12px;
@@ -2059,7 +2050,8 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 6.25vw;
+        gap: 90px;
+        width: 100%;
         @media screen and (max-width: 1240px) {
           gap: 60px;
         }
@@ -2068,7 +2060,7 @@
       &__row {
         display: flex;
         align-items: center;
-        gap: 1.7vw;
+        gap:24px;
         flex-wrap: wrap;
         @media screen and (max-width: 1240px) {
           gap: 24px;
@@ -2078,7 +2070,7 @@
       &__block {
         display: flex;
         flex-direction: column;
-        gap: 1.1vw;
+        gap: 16px;
         @media screen and (max-width: 1240px) {
           gap: 12px;
         }
@@ -2087,14 +2079,14 @@
       &__list {
         display: flex;
         flex-direction: column;
-        gap: 2.8vw;
+        gap: 40px;
         @media screen and (max-width: 1240px) {
           gap: 32px;
         }
       }
 
       &__text {
-        font-size: 1.1vw;
+        font-size: 16px;
 
         font-weight: 500;
         line-height: 120%;
@@ -2122,7 +2114,7 @@
       &__box {
         display: flex;
         flex-direction: column;
-        gap: 2.8vw;
+        gap: 40px;
         @media screen and (max-width: 1240px) {
           gap: 52px;
         }
@@ -2139,7 +2131,7 @@
     width: max-content;
     max-width: 100%;
 
-    gap: .4vw;
+    gap: 6px;
     @media screen and (max-width: 1240px) {
       gap: 6px;
     }
@@ -2165,7 +2157,7 @@
 
     &__text {
       font-weight: 500;
-      font-size: 1.25vw;
+      font-size: 20px;
       line-height: 120%;
       letter-spacing: -0.01em;
       color: #fafafa;
@@ -2178,8 +2170,8 @@
     }
 
     &__checkmark {
-      width: 1.1vw;
-      height: 1.1vw;
+      width: 16px;
+      height: 16px;
 
       display: flex;
       align-items: center;
@@ -2195,8 +2187,8 @@
 
       &::before {
         content: "";
-        width: .7vw;
-        height: .7vw;
+        width:8px;
+        height: 8px;
         background-color: #fafafa;
         border-radius: 50%;
 
@@ -2218,11 +2210,11 @@
 
     &__item {
       width: 100%;
-      padding: .8vw;
+      padding: 12px;
 
-      height: 3.2vw;
+      height: 46px;
       font-weight: 500;
-      font-size: 1.25vw;
+      font-size: 20px;
       line-height: 120%;
       letter-spacing: -0.01em;
       color: #FAFAFA;
@@ -2274,16 +2266,16 @@
 
     &__current {
       width: 100%;
-      padding: .8vw;
+      padding: 12px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.1vw;
+      gap: 16px;
 
-      height: 3.2vw;
+      height: 46px;
       font-weight: 500;
-      font-size: 1.25vw;
+      font-size: 20px;
       line-height: 120%;
       letter-spacing: -0.01em;
       color: rgba(250, 250, 250, 0.4);
@@ -2291,8 +2283,8 @@
       transition: .3s border-color;
 
       .icon {
-        width: .5vw;
-        height: .5vw;
+        width: 8px;
+        height: 8px;
 
         transition: .3s transform;
       }
@@ -2326,7 +2318,7 @@
 
       border: 1px solid rgba(#fafafa, .4);
       background-color: #080808;
-      padding: .8vw;
+      padding: 12px;
 
       opacity: 0;
       visibility: hidden;
@@ -2342,10 +2334,10 @@
       display: flex;
       align-items: center;
       position: relative;
-      padding: .8vw;
+      padding: 12px;
 
       font-weight: 500;
-      font-size: 1.25vw;
+      font-size: 20px;
       letter-spacing: -0.01rem;
 
       color: #FAFAFA;
@@ -2378,7 +2370,7 @@
   .social-list {
     display: flex;
     align-items: center;
-    gap: .5vw;
+    gap: 8px;
     @media screen and (max-width: 1240px) {
       gap: 8px;
     }
@@ -2390,8 +2382,8 @@
 
       color: rgba(#FAFAFA, .4);
 
-      width: 2.8vw;
-      height: 2.8vw;
+      width: 40px;
+      height: 40px;
 
       transition: .3s color;
 
@@ -2417,10 +2409,10 @@
     &__wrapper {
       display: flex;
       align-items: center;
-      gap: .25px;
+      gap: 4px;
       background: rgba(255, 255, 255, 0.04);
 
-      border-radius: 2.2vw;
+      border-radius: 32px;
 
       max-width: 100%;
 
@@ -2440,10 +2432,10 @@
       position: relative;
       align-items: center;
       justify-content: center;
-      border-radius: 2.2vw;
-      padding: 1.1vw 1.4vw;
-      height: 3.5vw;
-      font-size: 1.1vw;
+      border-radius: 32px;
+      padding: 16px 20px;
+      height: 50px;
+      font-size: 16px;
       font-weight: 500;
 
       letter-spacing: -0.01em;
@@ -2479,7 +2471,7 @@
     overflow: hidden;
 
     &__wrapper {
-      padding: 2.8vw 0;
+      padding: 40px 0;
       background: linear-gradient(0deg, #130429 0%, #080808 100%);
 
       @media screen and (max-width: 1240px) {
@@ -2490,7 +2482,7 @@
     &__box {
       display: flex;
       flex-direction: column;
-      gap: 1.4vw;
+      gap: 20px;
       @media screen and (max-width: 1240px) {
         gap: 20px;
       }
@@ -2499,7 +2491,7 @@
     &__grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4.4vw;
+      gap: 70px;
       @media screen and (max-width: 1240px) {
         gap: 40px;
       }
@@ -2512,7 +2504,7 @@
     &__content {
       display: flex;
       flex-direction: column;
-      gap: 1.7vw;
+      gap: 24px;
       @media screen and (max-width: 1240px) {
         gap: 24px;
       }
@@ -2557,7 +2549,7 @@
     }
 
     &__text {
-      font-size: 1vw;
+      font-size:15px;
       letter-spacing: -0.02em;
       color: #fafafa;
       font-weight: 500;
@@ -2576,7 +2568,7 @@
     &-list {
       display: flex;
       align-items: center;
-      gap: 1.4vw;
+      gap: 20px;
       @media screen and (max-width: 1240px) {
         gap: 20px;
       }
@@ -2589,7 +2581,7 @@
       &__row {
         display: flex;
         align-items: center;
-        gap: .8vw;
+        gap: 12px;
 
         flex-wrap: wrap;
         @media screen and (max-width: 1240px) {
@@ -2600,7 +2592,7 @@
       &__item {
         display: flex;
         flex-direction: column;
-        gap: .25vw;
+        gap: 4px;
         @media screen and (max-width: 1240px) {
           gap: 4px;
         }
@@ -2608,7 +2600,7 @@
 
       &__link {
         font-weight: 500;
-        font-size: 2.5vw;
+        font-size: 36px;
         line-height: 1.2;
         letter-spacing: -0.02em;
         color: #fafafa;
@@ -2649,7 +2641,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 4.1vw;
+        gap: 60px;
         @media screen and (max-width: 1240px) {
           gap: 40px;
         }
@@ -2658,7 +2650,7 @@
       &__content {
         display: flex;
         flex-direction: column;
-        gap: 2.8vw;
+        gap: 40px;
         @media screen and (max-width: 1240px) {
           gap: 40px;
         }
@@ -2769,7 +2761,7 @@
     }
 
     &__wrapper {
-      padding: 5.5vw 0;
+      padding: 80px 0;
       position: relative;
       z-index: 2;
       @media screen and (max-width: 1240px) {
@@ -2780,7 +2772,7 @@
     &__grid {
       display: flex;
       flex-direction: column;
-      gap: 17vw;
+      gap: 220px;
       @media screen and (max-width: 1240px) {
         gap: 250px;
       }
@@ -2790,7 +2782,7 @@
     }
 
     &-tags {
-      height: 20vw;
+      height: 150px;
       @media screen and (max-width: 1240px) {
         height: 150px;
       }
@@ -2800,14 +2792,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: .8vw;
+        gap: 12px;
         @media screen and (max-width: 1240px) {
           gap: 8px;
         }
       }
 
       &__item {
-        font-size: 2.2vw;
+        font-size: 32px;
         font-weight: 600;
         line-height: 100%;
         letter-spacing: -0.01em;
@@ -2818,7 +2810,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: .8vw 0;
+        padding: 12px 0;
         color: rgba(250, 250, 250, 0.04);
 
         transition: .3s color;
@@ -2841,7 +2833,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 5.5vw;
+        gap: 80px;
         @media screen and (max-width: 1240px) {
           gap: 100px;
         }
@@ -2851,7 +2843,7 @@
         &::before {
           content: "";
           display: inline-block;
-          width: 12.5vw;
+          width: 120px;
           height: 1px;
           @media screen and (max-width: 1240px) {
             width: 120px;
@@ -2876,7 +2868,7 @@
       &__block, &__header {
         display: flex;
         flex-direction: column;
-        gap: .8vw;
+        gap: 12px;
         @media screen and (max-width: 1240px) {
           gap: 8px;
         }
@@ -3019,13 +3011,13 @@
   .stages {
     &__wrapper {
       background: #000;
-      border-radius: 2.2vw;
+      border-radius: 32px;
 
-      padding: 5vw 2.8vw;
+      padding: 80px 40px;
 
       display: flex;
       flex-direction: column;
-      gap: 4.1vw;
+      gap: 60px;
 
       @media screen and (max-width: 1240px) {
         padding: 80px 60px;
@@ -3041,7 +3033,7 @@
       &__content {
         display: flex;
         flex-direction: column;
-        gap: 1.7vw;
+        gap: 24px;
         @media screen and (max-width: 1240px) {
           gap: 12px;
         }
@@ -3051,7 +3043,7 @@
     &-list {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2vw;
+      gap:40px;
       counter-reset: stages-item;
       @media screen and (max-width: 1240px) {
         gap: 40px;
@@ -3064,7 +3056,7 @@
         counter-increment: stages-item;
         display: flex;
         align-items: flex-start;
-        gap: 1.6vw;
+        gap: 24px;
         @media screen and (max-width: 1240px) {
           flex-direction: column;
           gap: 8px;
@@ -3076,7 +3068,7 @@
           font-family: var(--font-accent);
 
           font-weight: 400;
-          font-size: 1.25vw;
+          font-size: 20px;
           line-height: 120%;
           letter-spacing: -0.01em;
           color: rgba(250, 250, 250, 0.6);
@@ -3092,7 +3084,7 @@
       &__column {
         display: flex;
         flex-direction: column;
-        gap: 2vw;
+        gap: 40px;
         @media screen and (max-width: 1240px) {
           gap: 40px;
         }
@@ -3107,7 +3099,7 @@
     &__wrapper{
       display: grid;
       grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 2.2vw;
+      gap: 32px;
       @media screen and (max-width: 767px) {
         grid-template-columns: minmax(0,1fr);
         gap: 30px;
@@ -3139,7 +3131,7 @@
         transform: translateY(0);
       }
       &__item{
-        padding:2.2vw 0;
+        padding:32px 0;
 
         opacity: 0;
         transform: translateY(100px);
@@ -3163,7 +3155,7 @@
       &__wrapper{
         display: flex;
         flex-direction: column;
-        gap: 2.2vw;
+        gap: 32px;
 
         @media screen and (max-width: 1240px) {
           gap: 16px;
@@ -3175,7 +3167,7 @@
       &__wrapper{
         display: flex;
         flex-direction: column;
-        gap: 2.8vw;
+        gap: 40px;
 
         position: sticky;
         top: 0;
@@ -3188,7 +3180,7 @@
     &-nav{
       &__item{
         font-weight: 600;
-        font-size: 2.2vw;
+        font-size: 32px;
         line-height: 120%;
         letter-spacing: -0.01em;
         color: rgba(250, 250, 250, 0.4);
