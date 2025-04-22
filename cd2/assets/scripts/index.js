@@ -44,9 +44,142 @@ if(preloader){
         });
     };
 }
+class Parallax {
+    constructor(options = {}) {
+        // Настройки по умолчанию
+        this.defaults = {
+            element: '.parallax-element',
+            speedAttribute: 'data-speed',
+            directionAttribute: 'data-direction', // 'up' или 'down'
+            defaultSpeed: 0.2,
+            defaultDirection: 'down', // 'down' - вниз, 'up' - вверх
+            throttleTime: 16,
+            initOnLoad: true
+        };
 
+        this.settings = { ...this.defaults, ...options };
+        this.elements = [];
+        this.rafId = null;
+        this.lastScrollTime = 0;
+
+        if (this.settings.initOnLoad) {
+            document.addEventListener('DOMContentLoaded', () => this.init());
+        }
+    }
+
+    init() {
+        const elements = document.querySelectorAll(this.settings.element);
+        if (elements.length === 0) return;
+
+        elements.forEach(element => {
+            this.addElement(element);
+        });
+
+        this.startAnimation();
+        window.addEventListener('scroll', this.handleScroll.bind(this), { passive: true });
+    }
+
+    addElement(element) {
+        const speed = parseFloat(element.getAttribute(this.settings.speedAttribute)) ||
+            this.settings.defaultSpeed;
+
+        // Получаем направление из атрибута или используем по умолчанию
+        const direction = element.getAttribute(this.settings.directionAttribute) ||
+            this.settings.defaultDirection;
+
+        this.elements.push({
+            element,
+            speed,
+            direction,
+            container: this.findContainer(element)
+        });
+
+        this.applyOptimizations(element);
+    }
+
+    findContainer(element) {
+        let parent = element.parentElement;
+        while (parent !== document.body) {
+            const style = window.getComputedStyle(parent);
+            if (style.position === 'relative' || style.position === 'absolute' || style.position === 'fixed') {
+                return parent;
+            }
+            parent = parent.parentElement;
+        }
+        return document.documentElement;
+    }
+
+    applyOptimizations(element) {
+        element.style.willChange = 'transform';
+        element.style.backfaceVisibility = 'hidden';
+    }
+
+    handleScroll() {
+        const now = Date.now();
+        if (now - this.lastScrollTime > this.settings.throttleTime) {
+            this.lastScrollTime = now;
+            this.updateElements();
+        }
+    }
+
+    updateElements() {
+        this.elements.forEach(item => {
+            const { element, speed, direction, container } = item;
+            const containerRect = container.getBoundingClientRect();
+            const offsetY = (window.innerHeight - containerRect.height) / 2;
+            const scrollY = containerRect.top + offsetY;
+
+            // Определяем направление движения
+            let positionY;
+            if (direction === 'up') {
+                // Движение вверх - против скролла
+                positionY = scrollY * speed * -1;
+            } else {
+                // Движение вниз - по направлению скролла
+                positionY = scrollY * speed;
+            }
+
+            element.style.transform = `translate3d(0, ${positionY}px, 0)`;
+        });
+    }
+
+    startAnimation() {
+        if (this.rafId) return;
+
+        const animate = () => {
+            this.updateElements();
+            this.rafId = requestAnimationFrame(animate);
+        };
+
+        this.rafId = requestAnimationFrame(animate);
+    }
+
+    stopAnimation() {
+        if (this.rafId) {
+            cancelAnimationFrame(this.rafId);
+            this.rafId = null;
+        }
+    }
+
+    destroy() {
+        this.stopAnimation();
+        window.removeEventListener('scroll', this.handleScroll.bind(this));
+        this.elements.forEach(item => {
+            item.element.style.transform = '';
+            item.element.style.willChange = '';
+            item.element.style.backfaceVisibility = '';
+        });
+        this.elements = [];
+    }
+}
+
+// Пример использования:
+// const parallax = new Parallax();
+// parallax.init(); // Если initOnLoad: false
 
 document.addEventListener('DOMContentLoaded', () => {
+    const parallax = new Parallax();
+    parallax.init();
     const burger = document.querySelector('.burger'),
         header = document.querySelector('.header');
 
@@ -188,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if(groupItemArray.length){
                         groupItemArray.forEach((groupItem, groupItemIndex)=>{
-                            console.log(groupItem)
                             groupItem.style.animationDelay = `${groupItemIndex * groupDelayMultiplier}ms`
                         });
                     }
