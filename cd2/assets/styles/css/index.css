@@ -1760,9 +1760,8 @@ body.no-scroll {
 }
 .parallax-wrapper__item {
   position: absolute;
-  left: calc((100vw - 1060px) / 2 - 120px);
+  left: calc((100vw - 1060px) / 2 - 60px);
   bottom: 0;
-  max-width: calc((100vw - 1060px) / 2);
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -1775,7 +1774,7 @@ body.no-scroll {
   }
 }
 .parallax-wrapper__item--offset--left {
-  left: calc((100vw - 1060px) / 2 - 60px);
+  left: calc((100vw - 1060px) / 2 - 40px);
 }
 .parallax-wrapper__item--offset--bottom {
   bottom: -50%;

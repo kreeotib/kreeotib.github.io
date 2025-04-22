@@ -2149,10 +2149,9 @@ body.no-scroll {
 
   &__item {
     position: absolute;
-    left: calc((100vw - 1060px) / 2 - 120px);
+    left: calc((100vw - 1060px) / 2 - 60px);
     bottom: 0;
 
-    max-width: calc((100vw - 1060px) / 2);
 
     pointer-events: none;
 
@@ -2168,7 +2167,7 @@ body.no-scroll {
 
     &--offset {
       &--left {
-        left: calc((100vw - 1060px) / 2 - 60px);
+        left: calc((100vw - 1060px) / 2 - 40px);
       }
 
       &--bottom {
