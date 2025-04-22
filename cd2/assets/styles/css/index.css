@@ -1753,6 +1753,7 @@ body.no-scroll {
 }
 .parallax-wrapper {
   position: relative;
+  overflow: hidden;
 }
 .parallax-wrapper__content {
   position: relative;
@@ -1774,7 +1775,13 @@ body.no-scroll {
   }
 }
 .parallax-wrapper__item--offset--left {
-  left: calc((100vw - 1060px) / 2 - 40px);
+  left: calc((100vw - 1060px) / 2 - 20px);
+}
+.parallax-wrapper__item--offset--left--big {
+  left: calc((100vw - 1060px) / 2 - 120px);
+}
+.parallax-wrapper__item--offset--left--biggest {
+  left: calc((100vw - 1060px) / 2 - 200px);
 }
 .parallax-wrapper__item--offset--bottom {
   bottom: -50%;

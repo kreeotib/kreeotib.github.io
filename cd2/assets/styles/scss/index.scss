@@ -2141,7 +2141,7 @@ body.no-scroll {
 
 .parallax-wrapper {
   position: relative;
-
+  overflow: hidden;
   &__content {
     position: relative;
     z-index: 2;
@@ -2167,7 +2167,13 @@ body.no-scroll {
 
     &--offset {
       &--left {
-        left: calc((100vw - 1060px) / 2 - 40px);
+        left: calc((100vw - 1060px) / 2 - 20px);
+        &--big{
+          left: calc((100vw - 1060px) / 2 - 120px);
+        }
+        &--biggest{
+          left: calc((100vw - 1060px) / 2 - 200px);
+        }
       }
 
       &--bottom {
