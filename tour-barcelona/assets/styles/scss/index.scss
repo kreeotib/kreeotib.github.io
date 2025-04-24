@@ -4,7 +4,7 @@
 
   --color-blue: #00A0AD;
   --color-orange: #F9CB17;
-  --color-gradient:linear-gradient(90deg, #00a0ad 0%, #f4d700 96.32%);
+  --color-gradient: linear-gradient(90deg, #00a0ad 0%, #f4d700 96.32%);
 
   --header-height: 124px;
 
@@ -121,9 +121,9 @@ body {
     }
   }
 
-  &--small{
+  &--small {
     height: 36px;
-    padding:10px 20px;
+    padding: 10px 20px;
     border-radius: 14px 14px 14px 0;
 
     font-size: 14px;
@@ -136,19 +136,58 @@ body {
   &--blue {
     background: var(--color-blue);
     color: #Fff;
+
+    transition: .3s background-color, .3s color;
+    &:hover{
+      color: var(--color-blue);
+      background:#Fff;
+    }
   }
 
   &--orange {
     background: var(--color-orange);
     color: #000;
+    transition: .3s background-color, .3s color;
+    &:hover{
+      background: #000;
+      color: var(--color-orange);
+    }
   }
 
-  &--gradient{
-    background:var(--color-gradient);
+  &--gradient {
+    background: var(--color-gradient);
     color: #fff;
-    &--border{
+
+    position: relative;
+    overflow: hidden;
+
+    transition: .3s border-color;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      height: 100%;
+      width: 0;
+      opacity: 0;
+      background: linear-gradient(90deg, #184b50 29.5%, #eed21c 100%);
+
+      transition: .3s width, .1s opacity;
+    }
+
+    &:hover{
+
+      &::after{
+        width: 100%;
+        opacity: 1;
+      }
+    }
+
+    &--border {
       position: relative;
-      &::before{
+
+      &::before {
         content: "";
         position: absolute;
         left: 2px;
@@ -156,13 +195,13 @@ body {
 
         width: calc(100% - 4px);
         height: calc(100% - 4px);
-        background:#fff;
+        background: #fff;
         border-radius: 18px 18px 18px 0;
       }
     }
   }
 
-  &--gradient--border &__text{
+  &--gradient--border &__text {
     background: linear-gradient(90deg, #00a0ad 0%, #f4d700 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -174,24 +213,25 @@ body {
     cursor: pointer;
   }
 
-  &--full{
+  &--full {
     max-width: 100%;
   }
 
-  &__text{
+  &__text {
     position: relative;
     z-index: 3;
   }
 }
 
 .text {
-  &--big{
+  &--big {
     font-size: 20px;
     line-height: 1.56;
     @media screen and (max-width: 640px) {
       font-size: 18px;
     }
   }
+
   &--middle {
     font-size: 18px;
     line-height: 1.56;
@@ -200,39 +240,48 @@ body {
       font-size: 16px;
     }
   }
-  &--base{
+
+  &--base {
     font-size: 16px;
     line-height: 1.56;
     @media screen and (max-width: 640px) {
       font-size: 14px;
     }
   }
-  &--small{
+
+  &--small {
     font-size: 14px;
     line-height: 1.56;
     @media screen and (max-width: 640px) {
       font-size: 12px;
     }
   }
-  &--blue{
+
+  &--blue {
     color: var(--color-blue);
   }
-  &--white{
+
+  &--white {
     color: #fff;
   }
-  &--grey{
+
+  &--grey {
     color: #4A4949;
   }
-  &--line{
-    text-decoration:line-through;
+
+  &--line {
+    text-decoration: line-through;
   }
-  &--medium{
+
+  &--medium {
     font-weight: 500;
   }
-  &--semibold{
+
+  &--semibold {
     font-weight: 600;
   }
-  &--bold{
+
+  &--bold {
     font-weight: 700;
   }
 }
@@ -534,16 +583,16 @@ body {
   &__wrapper {
     padding: 96px 0;
     @media screen and (max-width: 640px) {
-      padding:48px 0;
+      padding: 48px 0;
     }
   }
 
-  &__grid{
+  &__grid {
     display: grid;
-    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     @media screen and (max-width: 991px) {
-      grid-template-columns: minmax(0,1fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 40px;
     }
   }
@@ -563,13 +612,14 @@ body {
     }
   }
 
-  &-block{
-    &__wrapper{
+  &-block {
+    &__wrapper {
       display: flex;
       flex-direction: column;
       gap: 28px;
     }
-    &__button{
+
+    &__button {
       max-width: 80%;
       @media screen and (max-width: 640px) {
         max-width: 100%;
@@ -579,7 +629,7 @@ body {
 }
 
 .tours {
-  &__wrapper{
+  &__wrapper {
     display: flex;
     flex-direction: column;
     gap: 96px;
@@ -587,6 +637,7 @@ body {
       gap: 48px;
     }
   }
+
   &-block {
     &__header {
       &:not(:last-child) {
@@ -601,10 +652,10 @@ body {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
       @media screen and (max-width: 991px) {
-        grid-template-columns: repeat(2,minmax(0,1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       @media screen and (max-width: 640px) {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   }
@@ -619,8 +670,8 @@ body {
       padding-bottom: 80%;
     }
 
-    &__content{
-      padding:24px;
+    &__content {
+      padding: 24px;
     }
 
     &__item {
@@ -639,14 +690,14 @@ body {
       display: flex;
       flex-direction: column;
       height: 100%;
-      background:#fff;
+      background: #fff;
       border-radius: 25px 25px 25px 0;
       box-shadow: 0 0 25px 0 rgba(87, 87, 87, 0.14);
 
       overflow: hidden;
     }
 
-    &__buttons{
+    &__buttons {
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -654,7 +705,7 @@ body {
       margin-top: auto;
     }
 
-    &__stock{
+    &__stock {
       margin-left: auto;
       text-align: right;
     }
@@ -663,7 +714,8 @@ body {
       display: flex;
       align-items: center;
       gap: 8px;
-      .icon{
+
+      .icon {
         width: 24px;
         height: 24px;
         flex-shrink: 0;
@@ -675,12 +727,13 @@ body {
 
     &__content {
       flex-grow: 1;
-      padding:24px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
-    &__info{
+
+    &__info {
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -688,16 +741,16 @@ body {
   }
 }
 
-.list{
+.list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 
-  &--check{
-    .icon{
+  &--check {
+    .icon {
       width: 24px;
       height: 24px;
-      background:var(--color-blue);
+      background: var(--color-blue);
       border-radius: 8px;
       color: #fff;
 
@@ -706,14 +759,15 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      svg{
+
+      svg {
         width: 20px;
         height: 20px;
       }
     }
   }
 
-  &__item{
+  &__item {
     display: flex;
     align-items: center;
     gap: 16px;

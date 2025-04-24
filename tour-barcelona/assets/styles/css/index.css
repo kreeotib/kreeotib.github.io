@@ -2,7 +2,7 @@
   --font-main: "Inter", sans-serif;
   --color-blue: #00A0AD;
   --color-orange: #F9CB17;
-  --color-gradient:linear-gradient(90deg, #00a0ad 0%, #f4d700 96.32%);
+  --color-gradient: linear-gradient(90deg, #00a0ad 0%, #f4d700 96.32%);
   --header-height: 124px;
 }
 @media screen and (max-width: 991px) {
@@ -118,14 +118,43 @@ body {
 .button--blue {
   background: var(--color-blue);
   color: #Fff;
+  transition: 0.3s background-color, 0.3s color;
+}
+.button--blue:hover {
+  color: var(--color-blue);
+  background: #Fff;
 }
 .button--orange {
   background: var(--color-orange);
   color: #000;
+  transition: 0.3s background-color, 0.3s color;
+}
+.button--orange:hover {
+  background: #000;
+  color: var(--color-orange);
 }
 .button--gradient {
   background: var(--color-gradient);
   color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s border-color;
+}
+.button--gradient::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 0;
+  opacity: 0;
+  background: linear-gradient(90deg, #184b50 29.5%, #eed21c 100%);
+  transition: 0.3s width, 0.1s opacity;
+}
+.button--gradient:hover::after {
+  width: 100%;
+  opacity: 1;
 }
 .button--gradient--border {
   position: relative;
