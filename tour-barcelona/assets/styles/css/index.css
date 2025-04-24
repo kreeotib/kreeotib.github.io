@@ -420,36 +420,41 @@ body {
 .hero__burger {
   flex-shrink: 0;
 }
-.hero-video__mute {
+
+.video-item {
+  position: relative;
+}
+.video-item__mute {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 14px;
   color: #fff;
+  z-index: 4;
 }
-.hero-video__mute span::before {
+.video-item__mute span::before {
   content: attr(data-high);
 }
-.hero-video__mute .icon {
+.video-item__mute .icon {
   width: 20px;
   height: 20px;
 }
-.hero-video__mute .icon .muted, .hero-video__mute .icon .high {
+.video-item__mute .icon .muted, .video-item__mute .icon .high {
   transition: 0.3s opacity;
 }
-.hero-video__mute .icon .muted {
+.video-item__mute .icon .muted {
   opacity: 0;
 }
-.hero-video__mute.unmuted span::before {
+.video-item__mute.unmuted span::before {
   content: attr(data-muted);
 }
-.hero-video__mute.unmuted .icon .high {
+.video-item__mute.unmuted .icon .high {
   opacity: 0;
 }
-.hero-video__mute.unmuted .icon .muted {
+.video-item__mute.unmuted .icon .muted {
   opacity: 1;
 }
-.hero-video__item {
+.video-item__element {
   position: absolute;
   left: 0;
   top: 0;
@@ -461,7 +466,7 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-.hero-video__item video {
+.video-item__element video {
   position: absolute;
   left: 0;
   top: 0;
@@ -469,7 +474,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.hero-video__footer {
+.video-item__footer {
   position: absolute;
   bottom: 16px;
   right: 0;
@@ -558,31 +563,24 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  padding-bottom: 95%;
 }
-@media screen and (min-width: 992px) {
-  .section-img--mobile {
-    display: none;
-  }
+.section-img--full {
+  height: 100%;
+  padding-bottom: 0;
 }
 @media screen and (max-width: 991px) {
-  .section-img {
-    display: none;
-  }
-  .section-img--mobile {
-    display: flex;
+  .section-img--full {
+    padding-bottom: 100%;
   }
 }
 .section-img__item {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-@media screen and (min-width: 992px) {
-  .section-img__item {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .section-img__item--top--left {
   border-radius: 320px 25px 0 25px;
@@ -605,6 +603,16 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+@media screen and (min-width: 992px) {
+  .section-block--mobile {
+    display: none;
+  }
+}
+@media screen and (max-width: 991px) {
+  .section-block--desktop {
+    display: none;
+  }
 }
 .section-block__wrapper {
   display: flex;
