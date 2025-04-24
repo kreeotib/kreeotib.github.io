@@ -46,6 +46,7 @@ body {
 
   &__img {
     height: 100%;
+    width: unset;
     object-fit: contain;
   }
 }
@@ -634,13 +635,30 @@ body {
     align-items: center;
     justify-content: center;
 
-    @media screen and (max-width: 991px) {
-      grid-row-start: 1;
+
+    position: relative;
+    &--mobile{
+      @media screen and (min-width: 992px) {
+        display: none;
+      }
     }
+    @media screen and (max-width: 991px) {
+      display: none;
+      &--mobile{
+        display: flex;
+      }
+    }
+
     &__item{
       width: 100%;
       height: 100%;
       object-fit: cover;
+      
+      @media screen and (min-width: 992px) {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
 
       &--top--left{
         border-radius: 320px 25px 0 25px;
@@ -655,6 +673,9 @@ body {
 
       @media screen and (max-width: 991px) {
         border-radius: 0;
+        &--frame{
+          height: 50vh;
+        }
       }
     }
   }
