@@ -529,7 +529,7 @@ body {
 }
 @media screen and (max-width: 640px) {
   .section__wrapper {
-    padding: 64px 0;
+    padding: 24px 0;
   }
 }
 .section__grid {
