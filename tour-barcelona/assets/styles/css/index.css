@@ -893,6 +893,7 @@ body {
 .social__list {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
