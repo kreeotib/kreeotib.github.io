@@ -712,9 +712,9 @@ body {
 }
 
 .tours {
-
-
   &-block {
+    display: flex;
+    flex-direction: column;
     &__header {
       &:not(:last-child) {
         margin: 0 0 24px 0;
@@ -975,6 +975,9 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    &--center{
+      justify-content: center;
+    }
     @media screen and (max-width: 991px) {
       flex-direction: column;
       gap: 40px;
@@ -1019,6 +1022,11 @@ body {
     gap: 16px;
 
     flex-wrap: wrap;
+    &--gap{
+      &--big{
+        gap: 48px;
+      }
+    }
   }
   &__item{
     flex-shrink: 0;
@@ -1036,6 +1044,7 @@ body {
     border:1px solid rgba(#000000,.1);
 
     transition:.3s border-color;
+
     &:hover{
       border-color: #000;
     }
@@ -1044,5 +1053,17 @@ body {
       height: 14px;
       color: #000;
     }
+    &__img{
+      height: 100%;
+      width: unset;
+      object-fit: contain;
+    }
+    &--big{
+      width: unset;
+      height: 60px;
+      border-radius: 0;
+      border:none;
+    }
+
   }
 }

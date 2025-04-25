@@ -628,6 +628,10 @@ body {
   }
 }
 
+.tours-block {
+  display: flex;
+  flex-direction: column;
+}
 .tours-block__header:not(:last-child) {
   margin: 0 0 24px 0;
 }
@@ -848,6 +852,9 @@ body {
   justify-content: space-between;
   gap: 24px;
 }
+.footer__row--center {
+  justify-content: center;
+}
 @media screen and (max-width: 991px) {
   .footer__row {
     flex-direction: column;
@@ -889,6 +896,9 @@ body {
   gap: 16px;
   flex-wrap: wrap;
 }
+.social__list--gap--big {
+  gap: 48px;
+}
 .social__item {
   flex-shrink: 0;
 }
@@ -910,6 +920,17 @@ body {
   width: 14px;
   height: 14px;
   color: #000;
+}
+.social-link__img {
+  height: 100%;
+  width: unset;
+  object-fit: contain;
+}
+.social-link--big {
+  width: unset;
+  height: 60px;
+  border-radius: 0;
+  border: none;
 }
 
 /*# sourceMappingURL=index.css.map */
