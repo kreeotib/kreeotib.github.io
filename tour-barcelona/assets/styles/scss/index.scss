@@ -976,7 +976,7 @@ body {
     justify-content: space-between;
     gap: 24px;
     &--center{
-      justify-content: center;
+      justify-content: flex-end;
     }
     @media screen and (max-width: 991px) {
       flex-direction: column;
@@ -984,7 +984,7 @@ body {
     }
   }
   &__logo{
-    height: 60px;
+    height: 80px;
   }
 
   &-nav{

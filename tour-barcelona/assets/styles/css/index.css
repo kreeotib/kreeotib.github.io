@@ -853,7 +853,7 @@ body {
   gap: 24px;
 }
 .footer__row--center {
-  justify-content: center;
+  justify-content: flex-end;
 }
 @media screen and (max-width: 991px) {
   .footer__row {
@@ -862,7 +862,7 @@ body {
   }
 }
 .footer__logo {
-  height: 60px;
+  height: 80px;
 }
 .footer-nav {
   flex-shrink: 0;
