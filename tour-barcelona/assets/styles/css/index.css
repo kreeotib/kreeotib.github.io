@@ -383,7 +383,7 @@ body {
   min-height: calc(100svh - 124px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 80px;
   padding: 50px 0;
 }
