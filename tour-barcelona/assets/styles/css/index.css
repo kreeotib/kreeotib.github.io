@@ -372,7 +372,7 @@ body {
   font-weight: 500;
   font-size: 78px;
   text-transform: uppercase;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.6);
 }
 @media screen and (max-width: 640px) {
   .hero__title {
