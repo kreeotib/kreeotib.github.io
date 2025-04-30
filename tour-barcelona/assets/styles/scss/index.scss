@@ -684,6 +684,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    &--start{
+      justify-content: flex-start;
+    }
     &--mobile{
       @media screen and (min-width: 992px) {
         display: none;
@@ -771,6 +774,24 @@ body {
       box-shadow: 0 0 25px 0 rgba(87, 87, 87, 0.14);
 
       overflow: hidden;
+    }
+
+    &__map{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      padding-bottom: 50%;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
     }
 
     &__buttons {
