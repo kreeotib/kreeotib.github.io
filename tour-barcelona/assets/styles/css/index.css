@@ -568,6 +568,9 @@ body {
   position: relative;
   padding-bottom: 95%;
 }
+.section-img--fluid {
+  flex-grow: 1;
+}
 .section-img--full {
   height: 100%;
   padding-bottom: 0;
@@ -623,6 +626,7 @@ body {
 .section-block__wrapper {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 28px;
 }
 .section-block__button {

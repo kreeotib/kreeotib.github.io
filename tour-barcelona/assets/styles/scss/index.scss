@@ -645,6 +645,9 @@ body {
 
     position: relative;
     padding-bottom: 95%;
+    &--fluid{
+      flex-grow: 1;
+    }
     &--full{
       height: 100%;
       padding-bottom: 0;
@@ -705,6 +708,7 @@ body {
       display: flex;
       flex-direction: column;
 
+      height: 100%;
       gap: 28px;
     }
 
@@ -743,6 +747,7 @@ body {
   }
 
   &-img {
+
     &__wrapper {
       display: flex;
       align-items: center;
