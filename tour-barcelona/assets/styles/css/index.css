@@ -527,6 +527,9 @@ body {
 .section__wrapper {
   padding: 96px 0;
 }
+.section__wrapper--tour {
+  padding-top: 48px;
+}
 @media screen and (max-width: 640px) {
   .section__wrapper {
     padding: 24px 0;
