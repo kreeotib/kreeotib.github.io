@@ -690,7 +690,7 @@ body {
   position: relative;
   padding-bottom: 50%;
 }
-.tours-card__map img {
+.tours-card__map img, .tours-card__map iframe {
   width: 100%;
   height: 100%;
   object-fit: cover;
