@@ -648,6 +648,11 @@ body {
     &--fluid{
       flex-grow: 1;
     }
+    &--desktop{
+      @media screen and (max-width: 991px) {
+        display: none;
+      }
+    }
     &--full{
       height: 100%;
       padding-bottom: 0;

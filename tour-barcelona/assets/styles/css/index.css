@@ -571,6 +571,11 @@ body {
 .section-img--fluid {
   flex-grow: 1;
 }
+@media screen and (max-width: 991px) {
+  .section-img--desktop {
+    display: none;
+  }
+}
 .section-img--full {
   height: 100%;
   padding-bottom: 0;
