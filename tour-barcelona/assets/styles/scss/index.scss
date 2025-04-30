@@ -778,6 +778,9 @@ body {
   }
 
   &-card {
+    &__desc{
+      text-align: justify;
+    }
     &__wrapper {
       display: flex;
       flex-direction: column;

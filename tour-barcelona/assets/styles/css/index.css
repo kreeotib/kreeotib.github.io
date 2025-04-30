@@ -683,6 +683,9 @@ body {
   left: 0;
   top: 0;
 }
+.tours-card__desc {
+  text-align: justify;
+}
 .tours-card__wrapper {
   display: flex;
   flex-direction: column;
