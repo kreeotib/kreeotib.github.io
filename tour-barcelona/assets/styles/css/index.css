@@ -101,6 +101,8 @@ body {
   text-align: center;
   max-width: max-content;
   width: 100%;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .button--base {
   height: 45px;
@@ -668,6 +670,8 @@ body {
   position: absolute;
   color: #fff;
   transition: 0.3s background-color;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .tours-slider-button:hover {
   cursor: pointer;
@@ -1231,6 +1235,38 @@ body {
 }
 .article__content p {
   font-size: 16px;
+}
+
+.price-table {
+  border: 1px solid #000;
+  overflow: auto;
+}
+.price-table__wrapper {
+  min-width: 600px;
+}
+.price-table__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+.price-table__row:not(:last-child) {
+  border-bottom: 1px solid #000;
+}
+.price-table__row--title .price-table__block {
+  justify-content: center;
+  text-align: center;
+}
+.price-table__block {
+  padding: 4px 16px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.price-table__block:not(:first-child) {
+  justify-content: center;
+  text-align: center;
+}
+.price-table__block:not(:last-child) {
+  border-right: 1px solid #000;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -120,6 +120,8 @@ body {
   max-width: max-content;
   width: 100%;
 
+  -webkit-user-select: none;
+  user-select: none;
   &--base {
     height: 45px;
     padding: 14px 28px;
@@ -754,6 +756,8 @@ body {
   &-slider{
     position: relative;
     height: 100%;
+
+
     &-button{
       display: flex;
 
@@ -770,6 +774,9 @@ body {
 
       color: #fff;
       transition: .3s background-color;
+
+      -webkit-user-select: none;
+      user-select: none;
       &:hover{
         cursor: pointer;
         background-color: var(--color-blue);
@@ -1476,4 +1483,39 @@ body {
   }
 
 
+}
+
+.price{
+  &-table{
+    border:1px solid #000;
+    overflow: auto;
+    &__wrapper{
+      min-width: 600px;
+      
+    }
+    &__row{
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(0,1fr));
+      &:not(:last-child){
+        border-bottom: 1px solid #000;
+      }
+    }
+    &__row--title &__block{
+      justify-content: center;
+      text-align: center;
+    }
+    &__block{
+      padding:4px 16px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      &:not(:first-child){
+        justify-content: center;
+        text-align: center;
+      }
+      &:not(:last-child){
+        border-right: 1px solid #000;
+      }
+    }
+  }
 }
