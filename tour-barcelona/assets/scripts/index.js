@@ -44,9 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (yachtSliderMainElement && yachtSliderNavElement) {
         const yachtSliderNav = new Swiper(".yacht-slider-nav", {
             spaceBetween: 10,
-            slidesPerView: 5,
+            slidesPerView: 3,
             freeMode: true,
+            autoplay:{
+                delay:15000,
+            },
             watchSlidesProgress: true,
+            breakpoints:{
+                767:{
+                    slidesPerView: 5,
+                }
+            }
         });
         const yachtSliderMain = new Swiper(".yacht-slider-main", {
             spaceBetween: 10,

@@ -16,6 +16,11 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top:calc(var(--header-height) + 30px);
+}
+
 body {
   font-family: 'Inter', sans-serif;
   color: #000;
@@ -748,7 +753,7 @@ body {
 .tours {
   &-slider{
     position: relative;
-    overflow: visible;
+    height: 100%;
     &-button{
       display: flex;
 
@@ -760,7 +765,8 @@ body {
       background:#000;
       border-radius: 50%;
       top: 50%;
-      position: fixed;
+      transform: translateY(-50%);
+      position: absolute;
 
       color: #fff;
       transition: .3s background-color;
@@ -770,7 +776,7 @@ body {
       }
       &-prev{
         left: 16px;
-        transform: scaleX(-1);
+        transform: scaleX(-1) translateY(-50%);
       }
       &-next{
         right:16px;
@@ -835,6 +841,11 @@ body {
   }
 
   &-card {
+    background: #fff;
+    border-radius: 25px 25px 25px 0;
+    box-shadow: 0 0 25px 0 rgba(87, 87, 87, 0.14);
+
+    overflow: hidden;
     &__desc {
       text-align: justify;
     }
@@ -843,11 +854,6 @@ body {
       display: flex;
       flex-direction: column;
       height: 100%;
-      background: #fff;
-      border-radius: 25px 25px 25px 0;
-      box-shadow: 0 0 25px 0 rgba(87, 87, 87, 0.14);
-
-      overflow: hidden;
     }
 
     &__map {
