@@ -712,7 +712,7 @@ body {
     &__wrapper {
       display: flex;
       flex-direction: column;
-
+      justify-content: center;
       height: 100%;
       gap: 28px;
     }
