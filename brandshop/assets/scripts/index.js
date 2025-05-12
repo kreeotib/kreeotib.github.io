@@ -1,26 +1,43 @@
-document.addEventListener("DOMContentLoaded", () => {
-    function isStickyActive(element) {
-        const styles = window.getComputedStyle(element);
-        if (styles.position !== 'sticky') return false;
-
-        const rect = element.getBoundingClientRect();
-        const stickyTop = parseInt(styles.top) || 0;
-
-        // Проверяем, достиг ли элемент точки прилипания
-        return rect.top <= stickyTop;
+class Animations {
+    constructor() {
+        this.animationWrapperArray = document.querySelectorAll('.animation-wrapper');
     }
 
-    const header = document.querySelector('.header');
-    document.body.style.setProperty("--header-height", `${header.getBoundingClientRect().height}px`)
-    window.addEventListener('scroll', () => {
-        const stickyElement = document.querySelector('.header');
-        if(window.scrollY > 100){
-            stickyElement.classList.add('sticky')
-            document.body.style.setProperty("--header-height", `${header.getBoundingClientRect().height}px`)
-        }else{
-            stickyElement.classList.remove('sticky')
-            document.body.style.setProperty("--header-height", `${header.getBoundingClientRect().height}px`)
-        }
+    toggleAnimation(animationWrapperElement) {
+        const animationItemArray = animationWrapperElement.querySelectorAll('.animation-item');
 
+        animationItemArray.forEach((animationItemElement, animationItemIndex) => {
+            animationItemElement.style.setProperty('--animation-delay', `${animationItemIndex * 0.2}s`);
+            animationItemElement.classList.add('animated');
+        });
+    }
+
+    handleIntersection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                this.toggleAnimation(entry.target);
+            }
+        });
+    }
+
+    init() {
+        if (!this.animationWrapperArray.length) return;
+
+        const observer = new IntersectionObserver(this.handleIntersection.bind(this), {
+            // rootMargin:''
+        });
+        this.animationWrapperArray.forEach(animationWrapper => {
+            observer.observe(animationWrapper);
+        });
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const animation = new Animations();
+    animation.init();
+
+    const lenis = new Lenis({
+        autoRaf: true,
     });
 })
