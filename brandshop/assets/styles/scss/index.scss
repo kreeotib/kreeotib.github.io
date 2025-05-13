@@ -17,6 +17,8 @@ $fluidSpacer: 0.052vw;
   --page-spaces-small: 7.5rem;
   --fluid-spacer: 0.052vw;
 
+  --header-height:12rem;
+
   --base-size: calc(16 * var(--fluid-spacer));
 
   --container-padding: 4.375rem;
@@ -39,6 +41,7 @@ $fluidSpacer: 0.052vw;
   //animation func
   --animation-func: cubic-bezier(0.42, 0, 0.58, 1);
   @media screen and (max-width: 767px) {
+    --header-height:13.5rem;
     --fluid-spacer: 0.25vw;
     --page-spacer: 7.5rem;
     --page-spacer-small: var(--page-spacer);
@@ -67,6 +70,7 @@ $fluidSpacer: 0.052vw;
 
 html {
   font-size: var(--base-size);
+  scroll-padding-top:var(--header-height);
 }
 
 body.body--black {
@@ -298,8 +302,6 @@ b {
   display: flex;
   flex-direction: column;
   min-height: 100svh;
-
-  padding-top: var(--header-height);
 }
 
 .body--black .header {
@@ -993,7 +995,7 @@ b {
     &__sticky {
       position: sticky;
       right: 0;
-      top: 0;
+      top: var(--header-height);
 
       margin-left: auto;
       display: flex;
@@ -1224,7 +1226,7 @@ b {
 
   &-header {
     position: sticky;
-    top: calc(var(--container-padding) + 4rem);
+    top: var(--header-height);
 
     @media screen and (max-width: 767px) {
       top: calc(var(--container-padding) + 12rem);
@@ -1477,8 +1479,10 @@ b {
   }
 
   &-img {
+
     &__item {
-      position: relative;
+      position: sticky;
+      top: var(--header-height);
       padding-bottom: 100%;
       background: #E3E3E3;
 
@@ -1760,8 +1764,9 @@ b {
   width: 100%;
   height: 100%;
   padding: 15px;
-  -webkit-backdrop-filter: blur(7px);
-  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(#000,.2);
 
   z-index: 12;
   opacity: 0;
@@ -1795,7 +1800,7 @@ b {
       width: 100%;
       height: 1px;
       display: block;
-      background: #1f2124;
+      background: var(--color-black);
       position: absolute;
       left: 0;
       top: calc(50% - .5px);
@@ -1808,7 +1813,7 @@ b {
       width: 100%;
       height: 1px;
       display: block;
-      background: #1f2124;
+      background: var(--color-black);
       position: absolute;
       left: 0;
       top: calc(50% - .5px);
@@ -1839,15 +1844,14 @@ b {
     left: 50%;
     transform: translate(-50%, -50%);
 
-
   }
 }
 
 .form {
   &-popup {
-    background: #f1f4fa;
-    color: #1f2124;
-    border-radius: 1.875rem;
+    background: var(--color-white);
+    color: var(--color-black);
+    border-radius: 0.625rem;
 
     padding: 2.5rem 5rem;
 
@@ -1882,7 +1886,7 @@ b {
       height: var(--checkmark-size);
 
       border-radius: 50%;
-      border: 1px solid #1f2124;
+      border: 1px solid var(--color-black);
 
       flex-shrink: 0;
 
@@ -1922,7 +1926,7 @@ b {
     }
 
     &__input:checked ~ &__checkmark {
-      color: #1f2124;
+      color: var(--color-black);
     }
   }
 
@@ -1940,8 +1944,8 @@ b {
       height: 3.75rem;
       border-radius: 3.125rem;
 
-      color: #1f2124;
-      border: 1px solid #1f2124;
+      color: var(--color-black);
+      border: 1px solid var(--color-black);
       background: transparent;
       font-size: 1.125rem;
 
@@ -2002,8 +2006,8 @@ b {
     height: 3.75rem;
     border-radius: 3.125rem;
 
-    color: #f1f4fa;
-    background: #0057ff;
+    color: var(--color-white);
+    background: var(--color-black);
     font-size: 1.125rem;
 
     border: 1px solid transparent;
