@@ -18,6 +18,130 @@
 </head>
 <body class="body--black">
 <div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="#" class="logo header__logo">
+                        <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo-small"></use>
+                        </svg>
+                        <svg class="logo__img--mobile">
+                            <use xlink:href="assets/images/sprite.svg#logo-small-mobile"></use>
+                        </svg>
+                    </a>
+                    <div class="header__box">
+                        <div class="header__block">
+                            <div class="header__social social">
+                                <ul class="social-list">
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#vk"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#tg"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#wa"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#" class="button button--base button--bordered">
+                                Записаться на стрижку
+                            </a>
+                        </div>
+                        <div class="header__menu">
+                            <a href="tel:+7 495 668 88 96"  class="button button--base button--bordered header__phone">
+                                +7 495 668 88 96
+                            </a>
+                            <div class="burger">
+                                <div class="burger__wrapper">
+                                    <p class="burger__text">
+                                        Меню
+                                    </p>
+                                    <span class="burger-lines">
+                                        <span class="burger-lines__item"></span>
+                                        <span class="burger-lines__item"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="menu" data-lenis-prevent>
+        <div class="menu__wrapper">
+            <div class="menu__content">
+                <ul class="menu-list">
+                    <li class="menu-list__item menu-list__item--home" >
+                        <a href="home.html" class="menu-list__link">
+                            BRAND
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="home.html#works" class="menu-list__link">
+                            Работы
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="#services" class="menu-list__link">
+                            Услуги
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="catalog.html" class="menu-list__link">
+                            Косметика
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="team.html" class="menu-list__link">
+                            Команда
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="#contact" class="menu-list__link">
+                            Контакты
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu__footer">
+                <div class="contact-footer">
+                    <div class="contact-footer__row">
+                        <p class="text text--tiny ">
+                            2024 BRAND BARBERSHOP. All rights reserved
+                        </p>
+                        <div class="contact-footer__buttons">
+                            <a href="#"
+                               class="button button--small button--small--big button--bordered ">
+                                Политика конфиденциальности
+                            </a>
+                            <a href="#"
+                               class="button button--small button--small--big button--bordered ">
+                                Пользовательское соглашение
+                            </a>
+                        </div>
+                        <p class="text text--tiny">
+                            2024 DONEL BAGROV. Brand designer
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <main class="content">
         <div class="content__wrapper">
             <div class="section person">
@@ -252,7 +376,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section">
+            <div class="section" id="services">
                 <div class="section__wrapper">
                     <div class="section__column">
                         <div class="section-header">
@@ -454,7 +578,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section contact">
+            <div class="section contact" id="contact">
                 <div class="section__wrapper section__wrapper--footer">
                     <div class="section__column">
                         <div class="section-header">

@@ -20,7 +20,130 @@
 
 
 <div class="page-wrapper">
-
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="container">
+                <div class="header__row">
+                    <a href="#" class="logo header__logo">
+                        <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo-small"></use>
+                        </svg>
+                        <svg class="logo__img--mobile">
+                            <use xlink:href="assets/images/sprite.svg#logo-small-mobile"></use>
+                        </svg>
+                    </a>
+                    <div class="header__box">
+                        <div class="header__block">
+                            <div class="header__social social">
+                                <ul class="social-list">
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#vk"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#tg"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#wa"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#" class="button button--base button--bordered">
+                                Записаться на стрижку
+                            </a>
+                        </div>
+                        <div class="header__menu">
+                            <a href="tel:+7 495 668 88 96" class="button button--base button--bordered header__phone">
+                                +7 495 668 88 96
+                            </a>
+                            <div class="burger">
+                                <div class="burger__wrapper">
+                                    <p class="burger__text">
+                                        Меню
+                                    </p>
+                                    <span class="burger-lines">
+                                        <span class="burger-lines__item"></span>
+                                        <span class="burger-lines__item"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="menu" data-lenis-prevent>
+        <div class="menu__wrapper">
+            <div class="menu__content">
+                <ul class="menu-list">
+                    <li class="menu-list__item menu-list__item--home">
+                        <a href="home.html" class="menu-list__link">
+                            BRAND
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="home.html#works" class="menu-list__link">
+                            Работы
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="#services" class="menu-list__link">
+                            Услуги
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="catalog.html" class="menu-list__link">
+                            Косметика
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="team.html" class="menu-list__link">
+                            Команда
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="#contact" class="menu-list__link">
+                            Контакты
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu__footer">
+                <div class="contact-footer">
+                    <div class="contact-footer__row">
+                        <p class="text text--tiny ">
+                            2024 BRAND BARBERSHOP. All rights reserved
+                        </p>
+                        <div class="contact-footer__buttons">
+                            <a href="#"
+                               class="button button--small button--small--big button--bordered ">
+                                Политика конфиденциальности
+                            </a>
+                            <a href="#"
+                               class="button button--small button--small--big button--bordered ">
+                                Пользовательское соглашение
+                            </a>
+                        </div>
+                        <p class="text text--tiny">
+                            2024 DONEL BAGROV. Brand designer
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <main class="content">
         <div class="content__wrapper">
             <div class="section">
@@ -57,7 +180,7 @@
                                                             </span>
                                                         </p>
                                                     </div>
-                                                    <a href="#" class="button button--base button--bordered">
+                                                    <a href="#" data-popup=".popup-cart" class="button button--base button--bordered">
                                                         Купить
                                                     </a>
                                                 </div>
@@ -84,10 +207,12 @@
                                                     компонентов для идеального очищения. Каолин - натуральная глина,
                                                     поглощает кожное сало и жир, питает кожу головы и волосы
                                                     микроэлементами. Каприлоил глицин (Capryloyl Glycine) -
-                                                    противодействует чрезмерной выработке кожного сала. Экстракт коры ивы
+                                                    противодействует чрезмерной выработке кожного сала. Экстракт коры
+                                                    ивы
                                                     - тонизирующий, успокаивающий, вяжущий. Эфирное масло мяты -
                                                     тонизирующее, освежающее, придает аромат. Масло семян мелиссы,
-                                                    смягчающее. Эфирное масло апельсина, придает аромат, кондиционирует кожу
+                                                    смягчающее. Эфирное масло апельсина, придает аромат, кондиционирует
+                                                    кожу
                                                     головы. Китайское эфирное масло корицы, придает аромат. Глицерин -
                                                     увлажнитель, поддерживает уровень увлажненности волос.
                                                 </p>
@@ -99,7 +224,8 @@
                                                 <p>
                                                     Нанести на влажные волосы, вспенить, сделать лёгкий массаж кожи
                                                     головы. Оставить на несколько минут до ощущения свежести и тщательно
-                                                    смыть. При необходимости повторить и продолжить уход с кондиционирующим
+                                                    смыть. При необходимости повторить и продолжить уход с
+                                                    кондиционирующим
                                                     продуктом для контроля и мягкости волос.
                                                 </p>
                                             </div>
@@ -312,7 +438,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section contact">
+            <div class="section contact" id="contact">
                 <div class="section__wrapper section__wrapper--footer">
                     <div class="section__column">
                         <div class="section-header">
@@ -395,13 +521,42 @@
     </main>
 </div>
 
-<div class="popup">
+<div class="popup popup-cart">
     <div class="popup__wrapper">
         <div class="popup__container">
             <span class="popup-close"></span>
             <div class="form-popup form">
                 <form action="" class="form__wrapper">
+                    <p class="form__title">
+                        Заказать товар
+                    </p>
+                    <div class="form__content">
+                        <label class="form-input">
+                            <input type="text" name="" id="" class="form-input__item" placeholder="Имя Фамилия">
+                        </label>
+                        <label class="form-input">
+                            <input type="text" name="" id="" class="form-input__item" placeholder="Телефон">
+                        </label>
+                        <label class="form-input">
+                            <input type="text" name="" id="" class="form-input__item" placeholder="Email">
+                        </label>
+                    </div>
+                    <label  class="form-checkbox">
+                        <input required type="checkbox" name="" id="" class="form-checkbox__input">
+                        <span class="form-checkbox__checkmark">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#check"></use>
+                            </svg>
+                        </span>
+                        <span class="form-checkbox__text">Ознакомлен с Положением <br> об обработке персональных данных</span>
+                    </label>
                     <div class="form__footer">
+                        <button type="submit" class="form__button">
+                            Оформить заказ
+                        </button>
+                        <p class="form__text">
+                            С вами свяжется наш менеджер для уточнения деталей заказа
+                        </p>
                     </div>
                 </form>
             </div>
