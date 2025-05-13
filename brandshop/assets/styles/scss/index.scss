@@ -333,7 +333,7 @@ b {
     }
 
     &--home &__logo {
-      height: 25rem;
+      height: 26rem;
       width: 100%;
       top: -30rem;
       transform: translate(-50%, 0);
@@ -1224,8 +1224,11 @@ b {
 
   &-header {
     position: sticky;
-    top: var(--container-padding);
+    top: calc(var(--container-padding) + 4rem);
 
+    @media screen and (max-width: 767px) {
+      top: calc(var(--container-padding) + 12rem);
+    }
     &__title {
       width: 100%;
       height: auto;
@@ -1571,7 +1574,7 @@ b {
 
   &-header {
     position: sticky;
-    top: 0;
+    top: 14rem;
     display: flex;
     align-items: center;
     justify-content: center;
