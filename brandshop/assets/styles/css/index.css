@@ -229,7 +229,7 @@ b {
 
 .body--black .header--active {
   --color-black: #141414;
-  --header-color:#141414;
+  --header-color: #141414;
 }
 
 .header {
@@ -237,8 +237,8 @@ b {
   top: -1px;
   z-index: 12;
   mix-blend-mode: difference;
-  --color-black:#ebebeb;
-  --color-white:#141414;
+  --color-black: #ebebeb;
+  --color-white: #141414;
   transition: 0.3s color;
 }
 @media screen and (min-width: 768px) {
@@ -263,12 +263,21 @@ b {
     transition: 1s top, 1s transform, 1s width, 1s height;
   }
 }
+@media screen and (max-width: 767px) {
+  .header.sticky .header__wrapper {
+    padding: 2rem 0;
+  }
+  .header.sticky .header__row {
+    gap: 2rem;
+  }
+}
 .header--active {
   mix-blend-mode: unset;
   --color-black: #141414;
 }
 .header__wrapper {
   padding: 4.375rem 0;
+  transition: 1s padding;
 }
 @media screen and (max-width: 767px) {
   .header__wrapper {
@@ -287,6 +296,7 @@ b {
   flex-direction: column;
   gap: 3.12rem;
   position: relative;
+  transition: 1s gap;
 }
 .header__logo {
   width: 16.5rem;
@@ -335,7 +345,7 @@ b {
   height: 100%;
   background-color: #0FA9E4;
   color: #141414;
-  --color-black:#141414;
+  --color-black: #141414;
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -434,7 +444,7 @@ b {
   }
 }
 .burger-lines {
-  --burger-color:var(--header-color);
+  --burger-color: var(--header-color);
   flex-shrink: 0;
   width: 6.25rem;
   height: 0.75rem;
@@ -1576,12 +1586,12 @@ b {
   align-items: center;
   gap: 1.875rem;
   position: relative;
-  --checkmark-size:1.875rem;
+  --checkmark-size: 1.875rem;
 }
 @media screen and (max-width: 767px) {
   .form-checkbox {
     gap: 1rem;
-    --checkmark-size:1.25rem;
+    --checkmark-size: 1.25rem;
   }
 }
 .form-checkbox:hover {

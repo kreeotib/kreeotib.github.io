@@ -306,7 +306,7 @@ b {
 
   &--active {
     --color-black: #141414;
-    --header-color:#141414;
+    --header-color: #141414;
   }
 }
 
@@ -315,35 +315,44 @@ b {
   top: -1px;
   z-index: 12;
 
- @media screen and (min-width: 768px) {
-   &--home{
-     padding-top: 30rem;
-     transition: 1s padding-top;
-     &.sticky{
-       padding-top: 0;
-     }
-   }
+  @media screen and (min-width: 768px) {
+    &--home {
+      padding-top: 30rem;
+      transition: 1s padding-top;
 
-   &--home.sticky &__logo{
-     width: 16.5rem;
-     top: 50%;
-     height: 3.125rem;
-     transform: translate(-50%, -50%);
-   }
+      &.sticky {
+        padding-top: 0;
+      }
+    }
 
-   &--home &__logo{
-     height: 25rem;
-     width: 100%;
-     top: -30rem;
-     transform: translate(-50%, 0);
+    &--home.sticky &__logo {
+      width: 16.5rem;
+      top: 50%;
+      height: 3.125rem;
+      transform: translate(-50%, -50%);
+    }
 
-     transition: 1s top, 1s transform, 1s width, 1s height;
-   }
- }
+    &--home &__logo {
+      height: 25rem;
+      width: 100%;
+      top: -30rem;
+      transform: translate(-50%, 0);
+
+      transition: 1s top, 1s transform, 1s width, 1s height;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    &.sticky &__wrapper{
+      padding:2rem 0;
+    }
+    &.sticky &__row{
+      gap: 2rem;
+    }
+  }
 
   mix-blend-mode: difference;
-  --color-black:#ebebeb;
-  --color-white:#141414;
+  --color-black: #ebebeb;
+  --color-white: #141414;
 
   transition: .3s color;
 
@@ -356,6 +365,7 @@ b {
   &__wrapper {
     padding: 4.375rem 0;
 
+    transition: 1s padding;
     @media screen and (max-width: 767px) {
       padding: 3.75rem 0;
     }
@@ -375,6 +385,8 @@ b {
     gap: 3.12rem;
 
     position: relative;
+
+    transition: 1s gap;
   }
 
   &__logo {
@@ -429,7 +441,7 @@ b {
   background-color: #0FA9E4;
   color: #141414;
 
-  --color-black:#141414;
+  --color-black: #141414;
 
   display: flex;
   flex-direction: column;
@@ -509,10 +521,11 @@ b {
 }
 
 .burger {
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
-  &--active &-lines__item{
+
+  &--active &-lines__item {
     &:nth-child(1) {
       transform: rotate(45deg);
       top: calc(50% - .5px);
@@ -543,7 +556,7 @@ b {
   }
 
   &-lines {
-    --burger-color:var(--header-color);
+    --burger-color: var(--header-color);
     flex-shrink: 0;
     width: 6.25rem;
     height: .75rem;
@@ -554,7 +567,7 @@ b {
       width: 5.25rem;
     }
 
-    &__item{
+    &__item {
       position: absolute;
       left: 0;
       width: 100%;
@@ -1770,9 +1783,10 @@ b {
       width: 1.25rem;
       height: 1.25rem;
 
-      top:.75rem;
+      top: .75rem;
       right: .75rem;
     }
+
     &::before {
       content: "";
       width: 100%;
@@ -1808,7 +1822,7 @@ b {
     top: 0;
 
     overflow: auto;
-    @include  hide-scrollbar();
+    @include hide-scrollbar();
   }
 
   &__container {
@@ -1826,45 +1840,46 @@ b {
   }
 }
 
-.form{
-  &-popup{
+.form {
+  &-popup {
     background: #f1f4fa;
     color: #1f2124;
     border-radius: 1.875rem;
 
-    padding:2.5rem 5rem;
+    padding: 2.5rem 5rem;
 
     backdrop-filter: blur(100px);
     -webkit-backdrop-filter: blur(100px);
-    
+
     @media screen and (max-width: 767px) {
-      padding:1rem 2rem;
-      border-radius:1rem;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
     }
   }
 
-  &-checkbox{
+  &-checkbox {
     display: flex;
     align-items: center;
     gap: 1.875rem;
 
     position: relative;
 
-    --checkmark-size:1.875rem;
+    --checkmark-size: 1.875rem;
     @media screen and (max-width: 767px) {
       gap: 1rem;
-      --checkmark-size:1.25rem;
+      --checkmark-size: 1.25rem;
     }
-    &:hover{
+
+    &:hover {
       cursor: pointer;
     }
 
-    &__checkmark{
+    &__checkmark {
       width: var(--checkmark-size);
       height: var(--checkmark-size);
 
       border-radius: 50%;
-      border:1px solid #1f2124;
+      border: 1px solid #1f2124;
 
       flex-shrink: 0;
 
@@ -1874,7 +1889,8 @@ b {
       color: transparent;
 
       transition: .3s color;
-      .icon{
+
+      .icon {
         width: 1rem;
         height: 1rem;
         @media screen and (max-width: 767px) {
@@ -1884,7 +1900,7 @@ b {
       }
     }
 
-    &__text{
+    &__text {
       font-size: .875rem;
       max-width: 18rem;
       width: 100%;
@@ -1893,25 +1909,26 @@ b {
       }
     }
 
-    &__input{
+    &__input {
       position: absolute;
       left: 0;
       top: 0;
       width: var(--checkmark-size);
-      height:var(--checkmark-size);
+      height: var(--checkmark-size);
       opacity: 0;
     }
 
-    &__input:checked ~ &__checkmark{
-        color: #1f2124;
+    &__input:checked ~ &__checkmark {
+      color: #1f2124;
     }
   }
 
-  &-input{
+  &-input {
     display: flex;
     align-items: center;
     width: 100%;
-    &__item{
+
+    &__item {
       width: 100%;
       display: flex;
       align-items: center;
@@ -1921,24 +1938,25 @@ b {
       border-radius: 3.125rem;
 
       color: #1f2124;
-      border:1px solid #1f2124;
+      border: 1px solid #1f2124;
       background: transparent;
       font-size: 1.125rem;
 
       text-align: center;
 
-      padding:1rem;
+      padding: 1rem;
       @media screen and (max-width: 767px) {
         height: 2.5rem;
         font-size: .875rem;
       }
-      &::placeholder{
+
+      &::placeholder {
         opacity: .3;
       }
     }
   }
 
-  &__wrapper{
+  &__wrapper {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -1947,7 +1965,7 @@ b {
     }
   }
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -1956,13 +1974,14 @@ b {
     }
   }
 
-  &__title{
+  &__title {
     font-size: 3rem;
     @media screen and (max-width: 767px) {
       font-size: 2rem;
     }
   }
-  &__footer{
+
+  &__footer {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -1970,7 +1989,8 @@ b {
       gap: 1rem;
     }
   }
-  &__button{
+
+  &__button {
     width: 100%;
     display: flex;
     align-items: center;
@@ -1983,13 +2003,14 @@ b {
     background: #0057ff;
     font-size: 1.125rem;
 
-    border:1px solid transparent;
+    border: 1px solid transparent;
     @media screen and (max-width: 767px) {
       height: 2.5rem;
       font-size: .875rem;
     }
   }
-  &__text{
+
+  &__text {
     font-size: .875rem;
     opacity: .3;
     @media screen and (max-width: 767px) {
