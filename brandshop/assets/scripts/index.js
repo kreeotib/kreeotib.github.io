@@ -7004,14 +7004,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         }));
         map.addChild(new YMapDefaultFeaturesLayer());
-
         const markerElement = document.createElement('div');
         markerElement.className = 'map-pin';
         const marker = new YMapMarker({
-                source: 'markerSource',
-                coordinates: [55.770041, 37.579412],
-                draggable: true,
-                mapFollowsOnDrag: true
+                coordinates: [37.579412,  55.770041],
             },
             markerElement
         );
