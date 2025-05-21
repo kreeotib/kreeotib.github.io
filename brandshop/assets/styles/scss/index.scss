@@ -370,6 +370,10 @@ b {
       transform: translate(-50%, 0);
 
       transition: 1s top, 1s transform, 1s width, 1s height, 1s opacity;
+
+      path{
+        transition: 1s opacity, 1s transform;
+      }
     }
 
     &--home .logo__img--fixed{
@@ -377,7 +381,13 @@ b {
     }
 
     &--home.sticky .logo__img{
-      opacity: 0;
+      path{
+        opacity: 0;
+      }
+      .logo__letter{
+        opacity: 1;
+        transform: scale(1.1);
+      }
     }
 
     &--home.sticky .logo__img--fixed{
