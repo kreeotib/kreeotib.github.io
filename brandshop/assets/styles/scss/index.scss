@@ -354,7 +354,7 @@ b {
       width: 16.5rem;
       top: 50%;
       height: 3.125rem;
-      transform: translate(-30%, -50%) scale(1.2);
+      transform: translate(-30%, -30%) scale(1.4);
     }
 
     &--home &__logo {
@@ -2179,5 +2179,15 @@ b {
     @media screen and (max-width: 767px) {
       font-size: .5rem;
     }
+  }
+}
+
+.map-pin{
+  width: 17.5rem;
+  height: 11.875rem;
+  background: url("../../images/icons/map-pin.svg") center center/contain no-repeat;
+  @media screen and (max-width: 767px) {
+    width: 12.5rem;
+    height: 8.75rem;
   }
 }

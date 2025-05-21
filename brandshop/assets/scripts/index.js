@@ -173,13 +173,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         const markerElement = document.createElement('div');
-        markerElement.className = 'marker-class';
+        markerElement.className = 'map-pin';
 
         const marker = new YMapMarker(
             {
                 coordinates: [55.769943, 37.579702],
-                draggable: true,
-                mapFollowsOnDrag: true
             },
             markerElement
         );
