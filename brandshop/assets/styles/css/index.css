@@ -534,7 +534,7 @@ b {
 .social-list {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 @media screen and (max-width: 767px) {
   .social-list {
@@ -545,8 +545,8 @@ b {
   flex-shrink: 0;
 }
 .social-link {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
