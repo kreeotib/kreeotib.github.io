@@ -164,10 +164,10 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 location: {
                     // Координаты центра карты
-                    center: [55.769943, 37.579702],
+                    center: [55.770041, 37.579412],
 
                     // Уровень масштабирования
-                    zoom: 10
+                    zoom: 3
                 }
             }
         );
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const marker = new YMapMarker(
             {
-                coordinates: [55.769943, 37.579702],
+                coordinates: [55.770041, 37.579412],
             },
             markerElement
         );
