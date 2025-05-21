@@ -2188,7 +2188,7 @@ b {
 .map-pin{
   width:200px;
   height: 200px;
-  background: url("../../images/icons/map-pin.svg") center center/contain no-repeat;
-  transform:translate(-100%,-100%);
+  background: url("../../images/icons/map-pin.svg") center bottom/contain no-repeat;
+  transform:translate(-50%, -100%);
 
 }
