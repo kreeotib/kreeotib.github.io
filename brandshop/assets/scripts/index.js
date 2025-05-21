@@ -148,44 +148,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     initMap();
-
     async function initMap() {
-        // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
         await ymaps3.ready;
-
-        const {YMap, YMapDefaultSchemeLayer, YMapMarker, YMapDefaultFeaturesLayer} = ymaps3;
-
-        // Иницилиазируем карту
+        const {
+            YMap,
+            YMapDefaultSchemeLayer,
+            YMapDefaultFeaturesLayer,
+            YMapMarker
+        } = ymaps3;
         const map = new YMap(
-            // Передаём ссылку на HTMLElement контейнера
-            document.querySelector('.test-map'),
-
-            // Передаём параметры инициализации карты
-            {
+            document.getElementById('map'), {
                 location: {
-                    // Координаты центра карты
-                    center: [51.522657, -0.177168],
+                    center: [37.589853, 55.733426],
 
-                    // Уровень масштабирования
                     zoom: 15
                 }
             }
         );
-
-        // const markerElement = document.createElement('div');
-        // markerElement.className = 'map-pin';
-        //
-        // const marker = new YMapMarker(
-        //     {
-        //         coordinates: [55.770041, 37.579412],
-        //     },
-        //     markerElement
-        // );
-        // map.addChild(new YMapDefaultFeaturesLayer());
-        // map.addChild(marker);
-
-        // Добавляем слой для отображения схематической карты
-        map.addChild(new YMapDefaultSchemeLayer({
-        }));
+        map.addChild(new YMapDefaultSchemeLayer());
+        map.addChild(new YMapDefaultFeaturesLayer());
+        const markerElement = document.createElement('div');
+        markerElement.className = 'marker-class';
+        markerElement.innerText = "I'm marker!";
+        const marker = new YMapMarker({
+                source: 'markerSource',
+                coordinates: [37.589853, 55.733426],
+                draggable: true,
+                mapFollowsOnDrag: true
+            },
+            markerElement
+        );
+        map.addChild(marker);
     }
 })
