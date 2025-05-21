@@ -335,6 +335,7 @@ b {
   }
 }
 
+
 .header {
   position: sticky;
   top: -1px;
@@ -354,7 +355,7 @@ b {
       width: 16.5rem;
       top: 50%;
       height: 3.125rem;
-      transform: translate(-30%, -30%) scale(1.4);
+      transform: translate(-50%, -20%) scale(1.4);
     }
 
     &--home &__logo {
@@ -364,9 +365,11 @@ b {
       transform: translate(-50%, 0);
 
       transition: 1s top, 1s transform, 1s width, 1s height, 1s opacity;
-
+      will-change: transform;
       path{
         transition: 1s opacity, 1s transform;
+
+        will-change: transform;
       }
     }
 
@@ -377,23 +380,24 @@ b {
     &--home.sticky .logo__img{
       path{
         opacity: 0;
+        will-change: transform;
       }
       .logo__letter{
         opacity: 1;
         &:nth-child(1){
-          transform: translateX(-10%);
+          transform: translateX(15%);
         }
         &:nth-child(2){
-          transform: translateX(-15%);
+          transform: translateX(8%);
         }
         &:nth-child(3){
-          transform: translateX(-30%);
+          transform: translateX(-10%);
         }
         &:nth-child(4){
-          transform: translateX(-25%);
+          transform: translateX(-5%);
         }
         &:nth-child(5){
-          transform: translateX(-20%);
+          transform: translateX(1%);
         }
       }
     }
