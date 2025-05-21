@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     center: [55.770041, 37.579412],
 
                     // Уровень масштабирования
-                    zoom: 100
+                    zoom: 10
                 }
             }
         );
