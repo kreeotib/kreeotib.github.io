@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const map = new YMap(
             document.getElementById('map'), {
                 location: {
-                    center: [55.770041, 37.579412],
+                    center: [ 37.579412, 55.770041],
                     zoom: 15
                 }
             }
