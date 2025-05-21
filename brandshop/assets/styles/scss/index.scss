@@ -373,6 +373,9 @@ b {
 
         will-change: transform;
       }
+      .logo__letter{
+        transition: .5s opacity,.5s transform;
+      }
     }
 
     &--home .logo__img--fixed{

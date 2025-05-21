@@ -290,6 +290,9 @@ b {
     transition: 1s opacity, 1s transform;
     will-change: transform;
   }
+  .header--home .header__logo .logo__letter {
+    transition: 0.5s opacity, 0.5s transform;
+  }
   .header--home .logo__img--fixed {
     opacity: 0;
   }
