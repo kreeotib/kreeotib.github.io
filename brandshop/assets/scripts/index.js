@@ -167,22 +167,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     center: [55.770041, 37.579412],
 
                     // Уровень масштабирования
-                    zoom: 3
+                    zoom: 1
                 }
             }
         );
 
-        const markerElement = document.createElement('div');
-        markerElement.className = 'map-pin';
-
-        const marker = new YMapMarker(
-            {
-                coordinates: [55.770041, 37.579412],
-            },
-            markerElement
-        );
-        map.addChild(new YMapDefaultFeaturesLayer());
-        map.addChild(marker);
+        // const markerElement = document.createElement('div');
+        // markerElement.className = 'map-pin';
+        //
+        // const marker = new YMapMarker(
+        //     {
+        //         coordinates: [55.770041, 37.579412],
+        //     },
+        //     markerElement
+        // );
+        // map.addChild(new YMapDefaultFeaturesLayer());
+        // map.addChild(marker);
 
         // Добавляем слой для отображения схематической карты
         map.addChild(new YMapDefaultSchemeLayer({
