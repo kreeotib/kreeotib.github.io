@@ -164,13 +164,28 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 location: {
                     // Координаты центра карты
-                    center: [37.588144, 55.733842],
+                    center: [55.769943, 37.579702],
 
                     // Уровень масштабирования
                     zoom: 10
                 }
             }
         );
+
+        const markerElement = document.createElement('div');
+        markerElement.className = 'marker-class';
+
+        const marker = new YMapMarker(
+            {
+                source: 'markerSource',
+                coordinates: [55.769943, 37.579702],
+                draggable: true,
+                mapFollowsOnDrag: true
+            },
+            markerElement
+        );
+
+        map.addChild(marker);
 
         // Добавляем слой для отображения схематической карты
         map.addChild(new YMapDefaultSchemeLayer({
