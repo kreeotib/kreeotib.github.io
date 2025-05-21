@@ -1893,15 +1893,10 @@ b {
 }
 
 .map-pin {
-  width: 280px;
-  height: 190px;
+  width: 200px;
+  height: 200px;
   background: url("../../images/icons/map-pin.svg") center center/contain no-repeat;
-}
-@media screen and (max-width: 767px) {
-  .map-pin {
-    width: 220px;
-    height: 150px;
-  }
+  transform: translate(-100%, -100%);
 }
 
 /*# sourceMappingURL=index.css.map */
