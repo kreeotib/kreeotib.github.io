@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
         await ymaps3.ready;
 
-        const {YMap, YMapDefaultSchemeLayer, YMapMarker} = ymaps3;
+        const {YMap, YMapDefaultSchemeLayer, YMapMarker, YMapDefaultFeaturesLayer} = ymaps3;
 
         // Иницилиазируем карту
         const map = new YMap(
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             markerElement
         );
-
+        map.addChild(new YMapDefaultFeaturesLayer());
         map.addChild(marker);
 
         // Добавляем слой для отображения схематической карты
