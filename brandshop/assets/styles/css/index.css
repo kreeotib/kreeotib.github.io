@@ -258,6 +258,7 @@ b {
   position: sticky;
   top: -1px;
   z-index: 12;
+  overflow: hidden;
   mix-blend-mode: difference;
   --color-black: #ebebeb;
   --color-white: #141414;
@@ -298,6 +299,7 @@ b {
   }
   .header--home.sticky .logo__img .logo__letter {
     opacity: 1;
+    transition: 0.5s opacity, 1s 0.5s transform;
   }
   .header--home.sticky .logo__img .logo__letter:nth-child(1) {
     transform: translateX(15%);

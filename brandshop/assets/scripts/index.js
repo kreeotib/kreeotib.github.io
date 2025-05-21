@@ -158,16 +158,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Иницилиазируем карту
         const map = new YMap(
             // Передаём ссылку на HTMLElement контейнера
-            document.querySelector('.contact-map'),
+            document.querySelector('.test-map'),
 
             // Передаём параметры инициализации карты
             {
                 location: {
                     // Координаты центра карты
-                    center: [55.770041, 37.579412],
+                    center: [51.522657, -0.177168],
 
                     // Уровень масштабирования
-                    zoom: 10
+                    zoom: 15
                 }
             }
         );
