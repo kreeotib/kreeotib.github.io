@@ -17,7 +17,7 @@ $fluidSpacer: 0.052vw;
   --page-spaces-small: 7.5rem;
   --fluid-spacer: 0.052vw;
 
-  --header-height:12rem;
+  --header-height: 12rem;
 
   --base-size: calc(16 * var(--fluid-spacer));
 
@@ -41,7 +41,8 @@ $fluidSpacer: 0.052vw;
   //animation func
   --animation-func: cubic-bezier(0.42, 0, 0.58, 1);
   @media screen and (max-width: 767px) {
-    --header-height:13.5rem;
+    --header-height: 13.5rem;
+    --header-active-height: 6.25rem;
     --fluid-spacer: 0.25vw;
     --page-spacer: 7.5rem;
     --page-spacer-small: var(--page-spacer);
@@ -70,7 +71,7 @@ $fluidSpacer: 0.052vw;
 
 html {
   font-size: var(--base-size);
-  scroll-padding-top:var(--header-height);
+  scroll-padding-top: var(--header-height);
 }
 
 body.body--black {
@@ -85,6 +86,11 @@ body {
   color: var(--color-black);
 
   background-color: var(--color-white);
+  @media screen and (max-width: 767px) {
+    &.header-active {
+      --header-height: var(--header-active-height);
+    }
+  }
 }
 
 
@@ -108,21 +114,29 @@ b {
   align-items: center;
   justify-content: center;
 
+
+  position: relative;
+  flex-shrink: 0;
   &__img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    transition: 1s opacity;
 
     &--mobile {
       @media screen and (min-width: 768px) {
-        display: none;
+        opacity: 0;
       }
     }
 
     @media screen and (max-width: 767px) {
-      display: none;
+      opacity: 0;
       &--mobile {
-        display: block;
+        opacity: 1;
       }
     }
   }
@@ -249,12 +263,21 @@ b {
 
     border: 1px solid transparent;
 
-    &--big {
-      width: 18.75rem;
-    }
 
     @media screen and (max-width: 767px) {
       font-size: .75rem;
+    }
+
+
+    &--big {
+      width: 18.75rem;
+      @media screen and (max-width: 767px) {
+        font-size: .5rem;
+        height: 1.875rem;
+        width: 11.25rem;
+
+        padding: .5rem;
+      }
     }
   }
 
@@ -342,15 +365,35 @@ b {
 
       transition: 1s top, 1s transform, 1s width, 1s height;
     }
+
+    &--home .logo__img--fixed{
+      opacity: 0;
+    }
+
+    &--home.sticky .logo__img{
+      opacity: 0;
+    }
+
+    &--home.sticky .logo__img--fixed{
+      opacity: 1;
+    }
   }
   @media screen and (max-width: 767px) {
-    &.sticky &__wrapper{
-      padding:2rem 0;
+    &.sticky &__wrapper {
+      padding: 2rem 0;
     }
-    &.sticky &__row{
+    &.sticky &__row {
       gap: 2rem;
     }
+    &.sticky &__logo {
+      height: 0;
+    }
+    &.sticky &__row {
+      gap: 0;
+    }
   }
+
+
 
   mix-blend-mode: difference;
   --color-black: #ebebeb;
@@ -362,6 +405,7 @@ b {
     mix-blend-mode: unset;
 
     --color-black: #141414;
+    --color-white: #ebebeb;
   }
 
   &__wrapper {
@@ -379,6 +423,9 @@ b {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    @media screen and (max-width: 767px) {
+
+    }
   }
 
   &__row {
@@ -397,6 +444,7 @@ b {
 
     color: var(--color-black);
 
+    transition: 1s all;
     @media screen and (min-width: 768px) {
       position: absolute;
       left: 50%;
@@ -444,6 +492,7 @@ b {
   color: #141414;
 
   --color-black: #141414;
+  --color-white: #ebebeb;
 
   display: flex;
   flex-direction: column;
@@ -779,6 +828,14 @@ b {
       justify-content: space-between;
       gap: 2rem;
       flex-wrap: wrap;
+
+      @media screen and (max-width: 767px) {
+        gap: 1.875rem 1rem;
+        .text {
+          font-size: .5rem;
+          order: 2;
+        }
+      }
     }
 
     &__buttons {
@@ -787,6 +844,12 @@ b {
       gap: 1.25rem;
 
       flex-wrap: wrap;
+      @media screen and (max-width: 767px) {
+        order: 1;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
   }
 
@@ -958,6 +1021,12 @@ b {
       @media screen and (max-width: 767px) {
         width: 2.5rem;
         height: .875rem;
+
+        flex: 1;
+
+        & + .text {
+          text-align: right;
+        }
       }
     }
 
@@ -975,6 +1044,12 @@ b {
       }
       @media screen and (max-width: 767px) {
         justify-content: space-between;
+
+        display: grid;
+        grid-template-columns: 1fr 2.5rem 1fr;
+        &:first-child {
+          grid-template-columns: minmax(0, 1fr);
+        }
       }
     }
   }
@@ -1216,21 +1291,35 @@ b {
   }
 }
 
+.about {
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 14.375rem;
+    @media screen and (max-width: 767px) {
+      gap: 11.25rem;
+    }
+
+  }
+}
+
 .work {
   &__wrapper {
-    padding: 14.375rem 0 13.125rem 0;
+    padding: 2rem 0 13.125rem 0;
     @media screen and (max-width: 767px) {
-      padding: 11.25rem 0 3.75rem 0;
+      padding: 2rem 0 3.75rem 0;
     }
   }
 
   &-header {
     position: sticky;
     top: var(--header-height);
+    z-index: 1;
 
     @media screen and (max-width: 767px) {
-      top: calc(var(--container-padding) + 12rem);
+      top: calc(var(--header-active-height));
     }
+
     &__title {
       width: 100%;
       height: auto;
@@ -1248,6 +1337,8 @@ b {
   }
 
   &__content {
+    position: relative;
+    z-index: 2;
     @media screen and (max-width: 767px) {
       display: flex;
       flex-direction: column;
@@ -1425,6 +1516,15 @@ b {
 
     &:hover {
       cursor: pointer;
+
+    }
+
+    &:hover &__label {
+
+      background: var(--color);
+      color: var(--color-hover);
+
+      opacity: .6;
     }
 
     &__label {
@@ -1441,7 +1541,7 @@ b {
       border: 1px solid var(--color);
       color: var(--color);
 
-      transition: .3s background-color, .3s color;
+      transition: .3s background-color, .3s color, .3s opacity;
       @media screen and (max-width: 767px) {
         font-size: .75rem;
       }
@@ -1576,14 +1676,24 @@ b {
     }
   }
 
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+
   &-header {
     position: sticky;
-    top: 14rem;
+    z-index: 1;
+    top: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: center;
 
     pointer-events: none;
+
+    @media screen and (max-width: 767px) {
+      top: var(--header-active-height);
+    }
 
     &__title {
       width: 100%;
@@ -1766,7 +1876,7 @@ b {
   padding: 15px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background-color: rgba(#000,.2);
+  background-color: rgba(#000, .2);
 
   z-index: 12;
   opacity: 0;
@@ -1913,6 +2023,11 @@ b {
       width: 100%;
       @media screen and (max-width: 767px) {
         font-size: .5rem;
+      }
+
+      a {
+        text-decoration: underline;
+        text-underline-position: under;
       }
     }
 

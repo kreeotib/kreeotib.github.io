@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const stickyElm = document.querySelector('.header')
 
     const observer = new IntersectionObserver(
-        ([e]) => e.target.classList.toggle('sticky', e.intersectionRatio < 1),
+        ([e]) => {e.target.classList.toggle('sticky', e.intersectionRatio < 1), document.body.classList.toggle('header-active')},
         {threshold: [1]}
     );
 
