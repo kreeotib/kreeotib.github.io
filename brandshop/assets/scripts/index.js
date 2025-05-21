@@ -183,5 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // );
         // map.addChild(new YMapDefaultFeaturesLayer());
         // map.addChild(marker);
+
+        // Добавляем слой для отображения схематической карты
+        map.addChild(new YMapDefaultSchemeLayer({
+        }));
     }
 })
