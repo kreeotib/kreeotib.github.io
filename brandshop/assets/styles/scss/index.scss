@@ -335,12 +335,6 @@ b {
   }
 }
 
-.logo__letter{
-  &:nth-child(1){
-    transform: translateX(-50%);
-  }
-}
-
 .header {
   position: sticky;
   top: -1px;
@@ -360,7 +354,7 @@ b {
       width: 16.5rem;
       top: 50%;
       height: 3.125rem;
-      transform: translate(-50%, -50%);
+      transform: translate(-30%, -50%) scale(1.2);
     }
 
     &--home &__logo {
@@ -386,7 +380,21 @@ b {
       }
       .logo__letter{
         opacity: 1;
-        transform: scale(1.1);
+        &:nth-child(1){
+          transform: translateX(-10%);
+        }
+        &:nth-child(2){
+          transform: translateX(-15%);
+        }
+        &:nth-child(3){
+          transform: translateX(-30%);
+        }
+        &:nth-child(4){
+          transform: translateX(-25%);
+        }
+        &:nth-child(5){
+          transform: translateX(-20%);
+        }
       }
     }
 
