@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const map = new YMap(
             document.getElementById('map'), {
                 location: {
-                    center: [ 37.579412, 55.770041],
+                    center: [ 37.579700,  55.769946],
                     zoom: 15
                 }
             }
@@ -7007,7 +7007,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const markerElement = document.createElement('div');
         markerElement.className = 'map-pin';
         const marker = new YMapMarker({
-                coordinates: [37.579412,  55.770041],
+                coordinates: [ 37.579700,  55.769946],
             },
             markerElement
         );
