@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Иницилиазируем карту
         const map = new YMap(
             // Передаём ссылку на HTMLElement контейнера
-            document.querySelector('.contact-map__item'),
+            document.querySelector('.contact-map'),
 
             // Передаём параметры инициализации карты
             {
