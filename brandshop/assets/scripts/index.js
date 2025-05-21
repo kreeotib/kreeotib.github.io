@@ -177,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const marker = new YMapMarker(
             {
-                source: 'markerSource',
                 coordinates: [55.769943, 37.579702],
                 draggable: true,
                 mapFollowsOnDrag: true
