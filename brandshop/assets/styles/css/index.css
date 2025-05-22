@@ -259,6 +259,7 @@ b {
   position: sticky;
   top: -1px;
   z-index: 12;
+  pointer-events: none;
   overflow: hidden;
   mix-blend-mode: difference;
   --color-black: #ebebeb;
@@ -376,6 +377,7 @@ b {
   display: flex;
   flex-direction: column;
   gap: 3.12rem;
+  pointer-events: auto;
   position: relative;
   transition: 1s gap;
 }
