@@ -86,13 +86,15 @@ body {
   color: var(--color-black);
 
   background-color: var(--color-white);
+
+  --header-home-height:44rem;
   @media screen and (max-width: 767px) {
     &.header-active {
       --header-height: var(--header-active-height);
+
     }
   }
 }
-
 
 b {
   font-weight: 600;
@@ -342,6 +344,7 @@ b {
   z-index: 12;
 
   overflow:hidden;
+  mix-blend-mode: difference;
 
   @media screen and (min-width: 768px) {
     &--home {
@@ -437,7 +440,7 @@ b {
     }
   }
 
-  mix-blend-mode: difference;
+
   --color-black: #ebebeb;
   --color-white: #141414;
 
@@ -448,6 +451,10 @@ b {
 
     --color-black: #141414;
     --color-white: #ebebeb;
+  }
+
+  &.sticky{
+
   }
 
 
@@ -722,6 +729,16 @@ b {
   }
 }
 
+
+.header-active .content{
+  &--hero{
+    &::before{
+      height: 100svh;
+      top: 12rem;
+    }
+  }
+}
+
 .content {
 
   flex-grow: 1;
@@ -733,16 +750,34 @@ b {
   &--hero {
     --content-gap: var(--page-spaces-small);
 
-    &::before {
-      content: "";
-      position: fixed;
-      width: 100svw;
-      height: calc(100svh - var(--header-height));
-      left: 0;
-      z-index: 1;
-      top: var(--header-height);
 
-      background: url("../../images/content-bg.webp") center center/cover no-repeat;
+  }
+
+  &-decor{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+
+    z-index: 1;
+    &__item {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100svw;
+      height: 100svh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
