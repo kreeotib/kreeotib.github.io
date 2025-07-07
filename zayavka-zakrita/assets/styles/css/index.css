@@ -219,6 +219,9 @@ body {
     font-size: 12px;
   }
 }
+.text--link {
+  transition: 0.3s color;
+}
 .text--link:hover {
   color: #4DAD33;
 }
@@ -779,11 +782,11 @@ body {
 }
 .card--grey {
   background: var(--color-grey);
-  --bg-color-hover: var(--color-grey);
+  --bg-color-hover: var(--color-dark);
   --icon-color: var(--color-white);
   --date-color: var(--color-grey-dark);
   --title-color: var(--color-white);
-  --title-color-hover: var(--color-white);
+  --title-color-hover: #4DAD33;
   --text-color: var(--color-white);
 }
 .card--bg {
