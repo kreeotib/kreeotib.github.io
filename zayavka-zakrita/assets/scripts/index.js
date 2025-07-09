@@ -8,11 +8,13 @@ document.addEventListener('DOMContentLoaded',e=>{
             e.preventDefault();
 
             menu.classList.toggle('active');
+            document.body.classList.toggle('no-scroll')
         })
         menuClose.addEventListener('click',e=>{
             e.preventDefault();
 
             menu.classList.toggle('active');
+            document.body.classList.toggle('no-scroll')
         })
     }
 })

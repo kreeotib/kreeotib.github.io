@@ -93,6 +93,11 @@ body {
   line-height: 1.1;
   font-size: var(--text-base);
 }
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+  -ms-touch-action: none;
+}
 
 .logo {
   display: flex;
