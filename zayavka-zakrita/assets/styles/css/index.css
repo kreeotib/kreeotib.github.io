@@ -1953,12 +1953,20 @@ body.no-scroll {
   font-size: 18px;
   font-weight: 600;
   color: var(--color-grey-light);
+  border: 1px solid transparent;
+  border-radius: 15px;
+  transition: 0.3s border-color, 0.3s background-color, 0.3s color;
+}
+.pagination-list__item:hover {
+  border-color: #4DAD33;
+  color: #4DAD33;
 }
 @media screen and (max-width: 767px) {
   .pagination-list__item {
     width: 35px;
     height: 35px;
     font-size: 14px;
+    border-radius: 12px;
   }
 }
 .pagination-list__link {

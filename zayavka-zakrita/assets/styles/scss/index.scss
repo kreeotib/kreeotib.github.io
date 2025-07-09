@@ -2163,10 +2163,18 @@ body.no-scroll {
       font-size: 18px;
       font-weight: 600;
       color: var(--color-grey-light);
+      border:1px solid transparent;
+      border-radius: 15px;
+      transition: .3s border-color, .3s background-color, .3s color;
+      &:hover{
+        border-color: #4DAD33;
+        color: #4DAD33;
+      }
       @media screen and (max-width: 767px) {
         width: 35px;
         height: 35px;
         font-size: 14px;
+        border-radius: 12px;
       }
 
     }
