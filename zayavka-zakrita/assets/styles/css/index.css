@@ -1696,14 +1696,13 @@ body.no-scroll {
   }
 }
 .news-tg__picture {
-  width: 120%;
-  height: 120%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: right center;
   position: absolute;
-  left: -10%;
+  left: 0%;
   top: 0;
-  transform: translateX(-10%);
 }
 .news-tg__picture img {
   width: 100%;
@@ -1711,15 +1710,6 @@ body.no-scroll {
   left: 0;
   top: 0;
   transform: translate(0);
-}
-@media screen and (max-width: 767px) {
-  .news-tg__picture {
-    width: 150%;
-    height: 150%;
-    left: 0;
-    transform: translate(-25%, 0%);
-    object-position: right bottom;
-  }
 }
 .news-tg__wrapper {
   display: flex;
