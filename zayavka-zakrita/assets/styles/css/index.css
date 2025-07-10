@@ -760,6 +760,11 @@ body.no-scroll {
 .grid__card--full {
   flex-grow: 1;
 }
+@media screen and (max-width: 1240px) and (min-width: 768px) {
+  .grid-list__fourth {
+    grid-row-start: 3;
+  }
+}
 .grid__column {
   display: flex;
   flex-direction: column;
@@ -822,6 +827,11 @@ body.no-scroll {
 }
 .card:hover .card-img__item, .card:hover .card-bg__item {
   transform: scale(1.05);
+}
+@media screen and (max-width: 1240px) {
+  .card--desktop {
+    display: none;
+  }
 }
 .card--rectangle {
   aspect-ratio: 0.8;

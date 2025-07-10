@@ -875,10 +875,21 @@ body.no-scroll {
     }
   }
 
+
+  &-list{
+    &__fourth{
+      @media screen and (max-width: 1240px) and (min-width: 768px){
+        grid-row-start: 3;
+      }
+    }
+  }
+
+
   &__column {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
 
     &--full {
       grid-column: 1/-1;
@@ -939,6 +950,12 @@ body.no-scroll {
 
   &:hover &-img__item, &:hover &-bg__item {
     transform: scale(1.05);
+  }
+
+  &--desktop{
+    @media screen and (max-width: 1240px) {
+      display: none;
+    }
   }
 
   &--rectangle {
