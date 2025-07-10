@@ -771,6 +771,11 @@ body.no-scroll {
 .grid__column--third {
   grid-column-end: span 4;
 }
+@media screen and (max-width: 1240px) {
+  .grid__column--third {
+    grid-column-end: span 6;
+  }
+}
 .grid__column--half {
   grid-column-end: span 6;
 }
@@ -1073,6 +1078,11 @@ body.no-scroll {
 .card-img--fit {
   height: 100%;
   width: 265px;
+}
+@media screen and (max-width: 1240px) {
+  .card-img--fit {
+    width: 160px;
+  }
 }
 @media screen and (max-width: 767px) {
   .card-img--fit {

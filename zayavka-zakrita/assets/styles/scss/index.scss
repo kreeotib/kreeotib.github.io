@@ -886,6 +886,9 @@ body.no-scroll {
 
     &--third {
       grid-column-end: span 4;
+      @media screen and (max-width: 1240px) {
+        grid-column-end: span 6;
+      }
     }
 
     &--half {
@@ -1238,6 +1241,9 @@ body.no-scroll {
     &--fit {
       height: 100%;
       width: 265px;
+      @media screen and (max-width: 1240px) {
+        width: 160px;
+      }
       @media screen and (max-width: 767px) {
         height: 130px;
         width: 100%;
