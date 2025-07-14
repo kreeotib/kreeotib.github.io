@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
     let lastScrollTop = 0;
     const headerTopHeight = headerTop.getBoundingClientRect().height;
+    document.body.style.setProperty(`--header-height`, `${headerTopHeight}px`)
     window.addEventListener("scroll", function () {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if(scrollTop > headerTopHeight){
@@ -30,8 +31,10 @@ document.addEventListener('DOMContentLoaded', e => {
             header.style.height  = `${headerTopHeight}px`
             if(scrollTop > lastScrollTop){
                 header.classList.remove('visible')
+                document.body.classList.remove('header-active')
             }else{
                 header.classList.add('visible')
+                document.body.classList.add('header-active')
             }
         }else{
             header.classList.remove('fixed');
