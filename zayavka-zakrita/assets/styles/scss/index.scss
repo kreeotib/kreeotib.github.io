@@ -124,7 +124,7 @@ body.no-scroll {
   -ms-touch-action: none;
 }
 
-body.no-scroll .header-top{
+body.no-scroll .header.visible .header-top{
   padding-right: var(--scrollbar-width);
 }
 
