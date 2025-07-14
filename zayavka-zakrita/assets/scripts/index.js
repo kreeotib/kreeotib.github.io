@@ -18,24 +18,24 @@ document.addEventListener('DOMContentLoaded', e => {
         })
     }
 
-    const stickyElm = document.querySelector('.header')
-
-    const observer = new IntersectionObserver(
-        ([e]) => {
-            e.target.classList.toggle('sticky', e.intersectionRatio < 1), document.body.classList.toggle('header-active', e.intersectionRatio < 1)
-        },
-        {threshold: [1]}
-    );
-
-    observer.observe(stickyElm);
+    const header = document.querySelector('.header'),
+        headerTop = document.querySelector('.header-top');
 
     let lastScrollTop = 0;
+    const headerTopHeight = headerTop.getBoundingClientRect().height;
     window.addEventListener("scroll", function () {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            stickyElm.classList.add('hidden')
-        } else {
-            stickyElm.classList.remove('hidden')
+        if(scrollTop > headerTopHeight){
+            header.classList.add('fixed');
+            header.style.height  = `${headerTopHeight}px`
+            if(scrollTop > lastScrollTop){
+                header.classList.remove('visible')
+            }else{
+                header.classList.add('visible')
+            }
+        }else{
+            header.classList.remove('fixed');
+            header.classList.remove('visible')
         }
         lastScrollTop = scrollTop;
     });

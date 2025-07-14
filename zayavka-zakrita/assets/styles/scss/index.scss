@@ -374,16 +374,24 @@ body.no-scroll {
 }
 
 .header {
-  position: sticky;
-  top: -1px;
+  width: 100%;
+  top: 0;
   z-index: 10;
   background: var(--color-white);
 
   transition: .3s transform;
-  &.hidden{
+  &.fixed &-top{
+    position: fixed;
+    top: 0;
+    width: 100%;
     transform: translateY(-100%);
+
   }
-  &.sticky &__logo {
+  &.visible &-top{
+    transform: translateY(0);
+  }
+
+  &.visible &__logo {
     @media screen and (max-width: 1240px) {
       display: none;
       &--fixed {
@@ -393,7 +401,9 @@ body.no-scroll {
     }
   }
 
-  &.sticky &-top{
+  &.visible &-top{
+    transition: .3s transform;
+
     &__info{
       display: none;
     }
@@ -504,6 +514,10 @@ body.no-scroll {
   }
 
   &-top {
+    position: relative;
+    z-index: 10;
+    background-color: var(--color-white);
+
     &__wrapper {
       padding: 35px 0;
       border-bottom: 1px solid var(--color-dark-light);
@@ -633,12 +647,17 @@ body.no-scroll {
 
   opacity: 0;
   visibility: hidden;
+  overflow:hidden;
 
   transition: .3s visibility, .5s opacity;
 
   &.active {
     opacity: 1;
     visibility: visible;
+  }
+
+  &.active &__wrapper{
+    transform: translateX(0);
   }
 
   @media screen and (max-width: 1240px) {
@@ -658,6 +677,8 @@ body.no-scroll {
     flex-direction: column;
     gap: 35px;
     overflow: auto;
+    transform: translateX(100%);
+    transition: .5s transform;
     @include hide-scrollbar;
     @media screen and (max-width: 1240px) {
       gap: 50px;
