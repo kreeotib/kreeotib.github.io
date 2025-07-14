@@ -2478,14 +2478,10 @@ body.no-scroll {
 @media screen and (max-width: 1240px) {
   .article-content__grid {
     gap: 40px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .article-content__grid {
     grid-template-columns: minmax(0, 1fr);
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1240px) {
   .article-content__aside {
     position: sticky;
     bottom: 10px;

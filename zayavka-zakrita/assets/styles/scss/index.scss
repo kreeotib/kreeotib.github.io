@@ -2714,13 +2714,14 @@ body.no-scroll {
 
       @media screen and (max-width: 1240px) {
         gap: 40px;
+        grid-template-columns: minmax(0,1fr);
+
       }
       @media screen and (max-width: 767px) {
-        grid-template-columns: minmax(0,1fr);
       }
     }
     &__aside{
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 1240px) {
         position: sticky;
         bottom: 10px;
       }
