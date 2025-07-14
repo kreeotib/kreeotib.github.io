@@ -115,6 +115,7 @@ body {
   font-family: var(--font-main);
   line-height: 1.1;
   font-size: var(--text-base);
+  scrollbar-gutter: stable;
 }
 
 body.no-scroll {
@@ -675,7 +676,7 @@ body.no-scroll {
 
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 28px;
     overflow: auto;
     transform: translateX(100%);
     transition: .5s transform;
@@ -757,7 +758,7 @@ body.no-scroll {
   &-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 
     &__title {
       font-size: 25px;

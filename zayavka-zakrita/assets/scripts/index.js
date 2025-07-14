@@ -6,15 +6,18 @@ document.addEventListener('DOMContentLoaded', e => {
     if (burger && menu && menuClose) {
         burger.addEventListener('click', e => {
             e.preventDefault();
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
             menu.classList.toggle('active');
             document.body.classList.toggle('no-scroll')
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
         })
         menuClose.addEventListener('click', e => {
             e.preventDefault();
 
             menu.classList.toggle('active');
             document.body.classList.toggle('no-scroll')
+            document.body.style.paddingRight = '';
         })
     }
 
