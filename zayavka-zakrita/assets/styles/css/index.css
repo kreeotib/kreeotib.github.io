@@ -79,6 +79,10 @@ body.no-scroll {
   -ms-touch-action: none;
 }
 
+body.no-scroll .header-top {
+  padding-right: var(--scrollbar-width);
+}
+
 .logo {
   display: flex;
   align-items: center;

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', e => {
             menu.classList.toggle('active');
             document.body.classList.toggle('no-scroll')
             document.body.style.paddingRight = `${scrollbarWidth}px`;
+            document.body.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`)
         })
         menuClose.addEventListener('click', e => {
             e.preventDefault();
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', e => {
             menu.classList.toggle('active');
             document.body.classList.toggle('no-scroll')
             document.body.style.paddingRight = '';
+            document.body.style.setProperty('--scrollbar-width', `0px`)
         })
     }
 
