@@ -2937,7 +2937,7 @@ a.card-tag:hover {
 }
 
 .header-active .article-menu__block .card {
-  top: calc(var(--header-height) + 120px);
+  top: calc(var(--header-height) + 100px);
 }
 
 .article-menus {
