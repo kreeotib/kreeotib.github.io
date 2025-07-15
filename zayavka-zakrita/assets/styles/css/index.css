@@ -2905,6 +2905,7 @@ a.card-tag:hover {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: 20px;
 }
 @media screen and (max-width: 1240px) {
   .article-menu__box {

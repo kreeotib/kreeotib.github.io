@@ -3227,6 +3227,7 @@ a.card-tag{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    gap: 20px;
 
     @media screen and (max-width: 1240px) {
       display: none;
