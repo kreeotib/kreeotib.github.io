@@ -969,9 +969,13 @@ body.no-scroll .header.visible .header-top {
 .card--rectangle {
   aspect-ratio: 0.8;
 }
+.card--rectangle--big {
+  min-height: 50svh;
+}
 @media screen and (max-width: 1240px) {
   .card--rectangle {
     aspect-ratio: unset;
+    min-height: auto;
   }
 }
 .card--advice {
@@ -1238,6 +1242,13 @@ body.no-scroll .header.visible .header-top {
     font-size: 18px;
   }
 }
+.card__title--clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 @media screen and (min-width: 768px) {
   .card__title--facts {
     display: -webkit-box;
@@ -1254,6 +1265,13 @@ body.no-scroll .header.visible .header-top {
   .card__text--desktop {
     display: none;
   }
+}
+.card__text--clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card__text--mobile--small {
   display: -webkit-box;
@@ -1941,7 +1959,6 @@ a.card-tag:hover {
   top: 20px;
   transition: 0.3s top;
 }
-
 .header-active .article-menu {
   top: var(--header-height);
 }
@@ -2441,6 +2458,11 @@ a.card-tag:hover {
   flex-direction: column;
   gap: 20px;
 }
+@media screen and (min-width: 1241px) {
+  .article-block--mobile {
+    display: none;
+  }
+}
 .article-block-input {
   opacity: 0;
   visibility: hidden;
@@ -2876,10 +2898,18 @@ a.card-tag:hover {
   }
 }
 
+.article-menu {
+  z-index: 4;
+}
 .article-menu__box {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+@media screen and (max-width: 1240px) {
+  .article-menu__box {
+    display: none;
+  }
 }
 .article-menu__block {
   flex-grow: 1;
@@ -2889,7 +2919,7 @@ a.card-tag:hover {
 }
 .article-menu__block .card {
   position: sticky;
-  bottom: 0;
+  bottom: 20px;
 }
 
 .article-menus {

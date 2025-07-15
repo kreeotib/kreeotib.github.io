@@ -1123,8 +1123,12 @@ body.no-scroll .header.visible .header-top{
 
   &--rectangle {
     aspect-ratio: .8;
+    &--big{
+      min-height: 50svh;
+    }
     @media screen and (max-width: 1240px) {
       aspect-ratio: unset;
+      min-height: auto;
     }
   }
 
@@ -1448,6 +1452,14 @@ body.no-scroll .header.visible .header-top{
       }
     }
 
+    &--clamp{
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     &--facts {
       @media screen and (min-width: 768px) {
         display: -webkit-box;
@@ -1466,6 +1478,15 @@ body.no-scroll .header.visible .header-top{
       @media screen and (max-width: 767px) {
         display: none;
       }
+    }
+
+
+    &--clamp{
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &--mobile {
@@ -2191,6 +2212,9 @@ a.card-tag{
   top: 20px;
 
   transition: .3s top;
+  &__box{
+
+  }
 }
 .header-active{
   .article-menu{
@@ -2719,6 +2743,12 @@ a.card-tag{
     flex-direction: column;
     gap: 20px;
 
+    &--mobile{
+      @media screen and (min-width: 1241px) {
+        display: none;
+      }
+    }
+
     &-input {
       opacity: 0;
       visibility: hidden;
@@ -3192,12 +3222,15 @@ a.card-tag{
 }
 
 .article-menu{
+  z-index: 4;
   &__box{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 
-
+    @media screen and (max-width: 1240px) {
+      display: none;
+    }
   }
   &__block{
     flex-grow: 1;
@@ -3206,7 +3239,7 @@ a.card-tag{
     justify-content: flex-end;
     .card{
       position: sticky;
-      bottom: 0;
+      bottom: 20px;
     }
   }
 }
