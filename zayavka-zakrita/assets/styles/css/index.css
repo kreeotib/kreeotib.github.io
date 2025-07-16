@@ -970,7 +970,7 @@ body.no-scroll .header.visible .header-top {
   aspect-ratio: 0.8;
 }
 .card--rectangle--big {
-  min-height: 50svh;
+  min-height: 535px;
 }
 @media screen and (max-width: 1240px) {
   .card--rectangle {

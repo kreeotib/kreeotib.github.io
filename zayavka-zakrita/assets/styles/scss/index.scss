@@ -1124,7 +1124,7 @@ body.no-scroll .header.visible .header-top{
   &--rectangle {
     aspect-ratio: .8;
     &--big{
-      min-height: 50svh;
+      min-height: 535px;
     }
     @media screen and (max-width: 1240px) {
       aspect-ratio: unset;
