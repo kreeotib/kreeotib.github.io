@@ -1202,6 +1202,14 @@ body.no-scroll .header.visible .header-top {
   position: relative;
   z-index: 2;
 }
+.card__content--gap--middle {
+  gap: 40px;
+}
+@media screen and (max-width: 767px) {
+  .card__content--gap--middle {
+    gap: 20px;
+  }
+}
 .card__content--gap--big {
   gap: 50px;
 }
@@ -1236,6 +1244,11 @@ body.no-scroll .header.visible .header-top {
 .card__title {
   color: var(--title-color);
   transition: 0.3s color;
+}
+@media screen and (max-width: 767px) {
+  .card__title--mobile--big {
+    font-size: 18px;
+  }
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
   .card__title--tablet--small {
@@ -1482,6 +1495,9 @@ body.no-scroll .header.visible .header-top {
   font-weight: 600;
   line-height: 1.1;
   color: var(--date-color);
+}
+.card-date--big {
+  font-size: 20px;
 }
 @media screen and (max-width: 767px) {
   .card-date {
@@ -1923,7 +1939,7 @@ a.card-tag:hover {
 .last-articles__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   padding: 0 30px;
 }
 @media screen and (max-width: 1240px) {

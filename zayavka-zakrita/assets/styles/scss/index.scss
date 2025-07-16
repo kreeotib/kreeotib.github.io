@@ -1407,6 +1407,12 @@ body.no-scroll .header.visible .header-top{
     z-index: 2;
 
     &--gap {
+      &--middle{
+        gap: 40px;
+        @media screen and (max-width: 767px) {
+          gap: 20px;
+        }
+      }
       &--big {
         gap: 50px;
         @media screen and (max-width: 767px) {
@@ -1444,6 +1450,14 @@ body.no-scroll .header.visible .header-top{
 
     transition: .3s color;
     
+
+    &--mobile{
+      &--big{
+        @media screen and (max-width: 767px) {
+          font-size: 18px;
+        }
+      }
+    }
     &--tablet{
       &--small{
         @media screen and (max-width: 991px) and (min-width: 768px) {
@@ -1714,6 +1728,9 @@ body.no-scroll .header.visible .header-top{
     font-weight: 600;
     line-height: 1.1;
     color: var(--date-color);
+    &--big{
+      font-size: 20px;
+    }
     @media screen and (max-width: 767px) {
       font-size: 12px;
     }
@@ -2180,7 +2197,7 @@ a.card-tag{
   &__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
 
     padding: 0 30px;
     @media screen and (max-width: 1240px) {
