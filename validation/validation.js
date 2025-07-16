@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', e => {
 
         const emailFields = form.querySelectorAll('.tfield-wrapper:has(.input-email:required)');
 
-        console.log(emailFields)
         emailFields.forEach((field) => {
             const fieldError = field.querySelector('.tfield-error');
             const fieldInput = field.querySelector("input");
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 },
                 {
                     rule: 'email',
-                    errorMessage: 'Некорректный формат e-mail',
+                    errorMessage: 'Поле ел.пошти повинне містити коректну електнонну адресу.',
                 },
             ], {
                 errorsContainer:fieldError,
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 },
                 {
                     rule: 'customRegexp',
-                    errorMessage: 'Некорректный формат номера',
+                    errorMessage: 'Телефон введено неправильно. Коректний формат: +38 (0ХХ) ХХХ ХХ ХХ',
                     value: /^(?:\+38\d{10}|(?:\D*\d){10}(?:\D|$))/,
                 },
             ], {
