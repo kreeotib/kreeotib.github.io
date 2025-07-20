@@ -184,6 +184,12 @@ body.no-scroll .header.visible .header-top{
       font-size: 14px;
       border-radius: 12px;
       height: 40px;
+      &--mobile{
+        &--big{
+          padding:15px;
+          font-size: 16px;
+        }
+      }
     }
   }
 
@@ -299,6 +305,13 @@ body.no-scroll .header.visible .header-top{
 .text {
   &--big {
     font-size: var(--text-big);
+    &--mobile{
+      &--small{
+        @media screen and (max-width: 767px) {
+          font-size: 14px;
+        }
+      }
+    }
   }
 
   &--middle {
@@ -1199,6 +1212,7 @@ body.no-scroll .header.visible .header-top{
     --title-color-hover: var(--color-white);
     --text-color: var(--color-white);
 
+
     &--mobile {
       @media screen and (max-width: 767px) {
         min-height: 330px;
@@ -1253,7 +1267,9 @@ body.no-scroll .header.visible .header-top{
     &--mobile{
       &--rectangle{
         @media screen and (max-width: 767px) {
-          min-height: 330px;
+          .card__text{
+            padding-bottom: 40%;
+          }
         }
       }
     }
@@ -1349,6 +1365,12 @@ body.no-scroll .header.visible .header-top{
       height: 100%;
       background: linear-gradient(180deg, rgba(26, 28, 28, 0.2) 0%, rgba(26, 28, 28, 0.8) 100%);
       z-index: 3;
+    }
+
+    &--light{
+      &::before{
+
+      }
     }
 
     &--clear {
@@ -1488,6 +1510,11 @@ body.no-scroll .header.visible .header-top{
         @media screen and (max-width: 1240px) {
           padding: 10px;
           padding-top: 0;
+        }
+      }
+      &--right{
+        @media screen and (min-width: 768px) {
+          padding-right: 20px;
         }
       }
     }
@@ -3437,6 +3464,8 @@ a.card-tag{
       align-items: flex-start;
       justify-content: space-between;
       gap: 20px;
+
+      position: relative;
       @media screen and (max-width: 767px) {
         flex-direction: column;
         gap: 15px;
@@ -3449,6 +3478,12 @@ a.card-tag{
 
       font-size: 16px;
       font-weight: 600;
+      flex-shrink: 0;
+      @media screen and (min-width: 768px) {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
       @media screen and (max-width: 1240px) {
         font-size: 18px;
       }

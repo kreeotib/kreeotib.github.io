@@ -137,6 +137,10 @@ body.no-scroll .header.visible .header-top {
     border-radius: 12px;
     height: 40px;
   }
+  .button--small--mobile--big {
+    padding: 15px;
+    font-size: 16px;
+  }
 }
 .button--bordered {
   color: var(--color-dark);
@@ -222,6 +226,11 @@ body.no-scroll .header.visible .header-top {
 
 .text--big {
   font-size: var(--text-big);
+}
+@media screen and (max-width: 767px) {
+  .text--big--mobile--small {
+    font-size: 14px;
+  }
 }
 .text--middle {
   font-size: var(--text-middle);
@@ -1088,8 +1097,8 @@ body.no-scroll .header.visible .header-top {
   flex-grow: 1;
 }
 @media screen and (max-width: 767px) {
-  .card__wrapper--mobile--rectangle {
-    min-height: 330px;
+  .card__wrapper--mobile--rectangle .card__text {
+    padding-bottom: 40%;
   }
 }
 .card__wrapper--gap--big {
@@ -1287,6 +1296,11 @@ body.no-scroll .header.visible .header-top {
   .card__content--padding--big {
     padding: 10px;
     padding-top: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card__content--padding--right {
+    padding-right: 20px;
   }
 }
 .card__title {
@@ -3132,6 +3146,7 @@ a.card-tag:hover {
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
+  position: relative;
 }
 @media screen and (max-width: 767px) {
   .author-info__header {
@@ -3145,6 +3160,14 @@ a.card-tag:hover {
   background-color: #fff;
   font-size: 16px;
   font-weight: 600;
+  flex-shrink: 0;
+}
+@media screen and (min-width: 768px) {
+  .author-info__count {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 @media screen and (max-width: 1240px) {
   .author-info__count {
