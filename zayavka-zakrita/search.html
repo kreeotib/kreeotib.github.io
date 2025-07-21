@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/font.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-top__wrapper">
+                        <a href="#" class="logo header__logo">
+                            <img loading="lazy" src="assets/images/logo.svg" alt="" class="logo__img">
+                        </a>
+                        <a href="#" class="logo header__logo header__logo--fixed">
+                            <img loading="lazy" src="assets/images/logo-small.svg" alt="" class="logo__img">
+                        </a>
+                        <div class="header-top__block">
+                            <div class="header-top__info">
+                                <ul class="header-list header-top__list">
+                                    <li class="header-list__item">
+                                        <a href="#" class="header-list__link">
+                                            Новости
+                                        </a>
+                                    </li>
+                                    <li class="header-list__item">
+                                        <a href="#" class="header-list__link">
+                                            Тесты
+                                        </a>
+                                    </li>
+                                    <li class="header-list__item">
+                                        <a href="#" class="header-list__link">
+                                            Курсы
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="social-list">
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link social-link--tg">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#tg"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link social-link--vk">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#vk"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="social-list__item">
+                                        <a href="#" target="_blank" class="social-link social-link--yt">
+                                            <svg class="social-link__icon">
+                                                <use xlink:href="assets/images/sprite.svg#yt"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header-top__category">
+                                <ul class="header-category header-category--gap--small">
+                                    <li class="header-category__item">
+                                        <a href="#" class="header-category__link header-category__link--small">
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#icon-people"></use>
+                                            </svg>
+                                            Люди
+                                        </a>
+                                    </li>
+                                    <li class="header-category__item">
+                                        <a href="#" class="header-category__link header-category__link--small">
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#icon-cases"></use>
+                                            </svg>
+                                            Кейсы
+                                        </a>
+                                    </li>
+                                    <li class="header-category__item">
+                                        <a href="#" class="header-category__link header-category__link--small">
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#icon-check"></use>
+                                            </svg>
+                                            Факты
+                                        </a>
+                                    </li>
+                                    <li class="header-category__item">
+                                        <a href="#" class="header-category__link header-category__link--small">
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#icon-advices"></use>
+                                            </svg>
+                                            Советы
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#" class="header-search">
+                                <svg class="header-search__icon">
+                                    <use xlink:href="assets/images/sprite.svg#icon-srch"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="header__burger">
+                            <a href="#" class="burger">
+                                <span class="burger__text">Меню</span>
+                                <span class="burger__wrapper">
+                               <span class="burger__item"></span>
+                                <span class="burger__item"></span>
+                                <span class="burger__item"></span>
+                           </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="header-bottom">
+        <div class="container">
+            <div class="header-bottom__wrapper">
+                <ul class="header-category">
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-people"></use>
+                            </svg>
+                            Люди
+                        </a>
+                    </li>
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-cases"></use>
+                            </svg>
+                            Кейсы
+                        </a>
+                    </li>
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-check"></use>
+                            </svg>
+                            Факты
+                        </a>
+                    </li>
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-advices"></use>
+                            </svg>
+                            Советы
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="menu__wrapper">
+            <div class="menu__header">
+                <a href="#" class="menu__logo logo">
+                    <img src="assets/images/logo.svg" alt="" class="logo__img">
+                </a>
+                <a href="#" class="menu__close"></a>
+            </div>
+            <label class="menu-search">
+                <input type="text" class="menu-search__input" placeholder="Поиск по статьям">
+                <svg class="menu-search__icon">
+                    <use xlink:href="assets/images/sprite.svg#icon-srch"></use>
+                </svg>
+            </label>
+            <div class="menu-info">
+                <p class="menu-info__title text text--big text--semibold">
+                    Медиа для тех, кто развивает сервисный бизнес
+                </p>
+                <p class="menu-info__text title title--tiny title--dark--light title--regular">
+                    Опыт действующих компаний, истории «с&nbsp;полей», исследования, новости и&nbsp;советы для&nbsp;роста бизнеса.
+                </p>
+            </div>
+            <div class="menu-content">
+                <ul class="header-category header-category--column">
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link header-category__link--menu ">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-people"></use>
+                            </svg>
+                            Люди
+                        </a>
+                    </li>
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link header-category__link--menu">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-cases"></use>
+                            </svg>
+                            Кейсы
+                        </a>
+                    </li>
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link header-category__link--menu">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-check"></use>
+                            </svg>
+                            Факты
+                        </a>
+                    </li>
+                    <li class="header-category__item">
+                        <a href="#" class="header-category__link header-category__link--menu">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-advices"></use>
+                            </svg>
+                            Советы
+                        </a>
+                    </li>
+                </ul>
+                <ul class="header-list header-list--column">
+                    <li class="header-list__item">
+                        <a href="#" class="header-list__link header-list__link--menu">
+                            Новости
+                        </a>
+                    </li>
+                    <li class="header-list__item">
+                        <a href="#" class="header-list__link header-list__link--menu">
+                            Тесты
+                        </a>
+                    </li>
+                    <li class="header-list__item">
+                        <a href="#" class="header-list__link header-list__link--menu">
+                            Курсы
+                        </a>
+                    </li>
+                    <li class="header-list__item">
+                        <a href="#" class="header-list__link header-list__link--menu">
+                            Сервисный пульс
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu__social">
+                <ul class="social-list">
+                    <li class="social-list__item">
+                        <a href="#" target="_blank" class="social-link social-link--menu social-link--tg">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#tg"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-list__item">
+                        <a href="#" target="_blank" class="social-link social-link--menu social-link--vk">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#vk"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social-list__item">
+                        <a href="#" target="_blank" class="social-link social-link--menu social-link--yt">
+                            <svg class="social-link__icon">
+                                <use xlink:href="assets/images/sprite.svg#yt"></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu__footer">
+                <ul class="menu-list">
+                    <li class="menu-list__item">
+                        <a href="#" class="menu-list__link">
+                            Написать в редакцию
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-arrow"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a href="#" class="menu-list__link">
+                            О проекте
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-arrow"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <p class="menu-list__link menu-list__link--copyright">
+                            ©2025
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <main class="content">
+        <div class="section search">
+            <div class="section__wrapper">
+                <div class="container">
+                    <div class="search__wrapper">
+                        <form action="#" class="search-form">
+                            <div class="search-form__row">
+                                <div class="search-form__input">
+                                    <label class="search-input ">
+                                        <svg class="search-input__icon">
+                                            <use xlink:href="assets/images/sprite.svg#icon-srch"></use>
+                                        </svg>
+                                        <input type="text" class="search-input__item" placeholder="Поиск по статьям">
+                                    </label>
+                                    <div class="search-fast">
+                                        <div class="search-fast__wrapper">
+                                            <div class="search-fast__column">
+                                                <p class="search-fast__title">
+                                                    Быстрые результаты
+                                                </p>
+                                                <div class="search-fast-animation">
+                                                    <div class="search-animation"></div>
+                                                </div>
+                                                <div class="search-fast-result">
+                                                    <div class="search-fast__column">
+                                                        <div class="search-fast__list">
+
+                                                            <div class="search-item">
+                                                                <a href="#" class="search-item__title">
+                                                                    Передвижные лаборатории и посты мониторинга: как измеряют качество воздуха  Передвижные лаборатории и посты мониторинга: как измеряют качество воздуха
+                                                                </a>
+                                                                <div class="search-item__tags">
+                                                                    <a href="#" class="search-item__tag search-item__category">
+                                                                        Люди
+                                                                    </a>
+                                                                    <p class="search-item__tag search-item__date">
+                                                                        25 апреля
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="search-item">
+                                                                <a href="#" class="search-item__title">
+                                                                    Передвижные лаборатории и посты мониторинга: как измеряют
+                                                                </a>
+                                                                <div class="search-item__tags">
+                                                                    <a href="#" class="search-item__tag search-item__category">
+                                                                        Люди
+                                                                    </a>
+                                                                    <p class="search-item__tag search-item__date">
+                                                                        25 апреля
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="search-item">
+                                                                <a href="#" class="search-item__title">
+                                                                    Передвижные лаборатории и посты мониторинга: как измеряют качество воздуха
+                                                                </a>
+                                                                <div class="search-item__tags">
+                                                                    <a href="#" class="search-item__tag search-item__category">
+                                                                        Люди
+                                                                    </a>
+                                                                    <p class="search-item__tag search-item__date">
+                                                                        25 апреля
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a href="#" class="search-fast__link">Еще 2 статьи</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="search-form__button">
+                                    <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#icon-arrow"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="search-content">
+                            <div class="section__header">
+                                <h2 class="title title--base">
+                                    Результаты поиска:
+                                </h2>
+                            </div>
+                            <div class="search-empty">
+                                <div class="search-empty__icon">
+                                    <img src="assets/images/icons/search-3d.webp" alt="">
+                                </div>
+                                <p class="search-empty__text">
+                                    Введите запрос в поле выше, результаты отобразятся тут
+                                </p>
+                            </div>
+                            <div class="search-result">
+                                <div class="grid grid--auto">
+                                    <div class="grid__column grid__column--third card">
+                                        <a href="#" class="card__wrapper card__wrapper--padding--small">
+                                            <div class="card-img card-img--rectangle card-img--rectangle--big">
+                                                <picture class="card-img__item">
+                                                    <source srcset="assets/images/cards/5@2x.webp 2x, assets/images/cards/5.webp 1x"
+                                                            type="image/jpeg">
+                                                    <img loading="lazy" class="card-img__item" src="assets/images/cards/5.webp"
+                                                         alt="Описание изображения">
+                                                </picture>
+                                            </div>
+                                            <div class="card__content card__content--padding--big card__content--full">
+                                                <p class="title title--tiny  card__title card__title--desktop--small">
+                                                    Автопилоты в полях: современное оборудование в сельском хозяйстве
+                                                </p>
+                                                <div class="card__footer">
+                                                    <div class="card-tags">
+                                                        <div class="card-tags__item card-tags__category">
+                                                            Люди
+                                                        </div>
+                                                        <div class="card-tags__item card-tags__date">
+                                                            20 апреля
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-icon">
+                                                        <svg class="icon">
+                                                            <use xlink:href="assets/images/sprite.svg#icon-arrow"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </a>
+                                    </div>
+                                    <div class="grid__column grid__column--third card">
+                                        <a href="#" class="card__wrapper card__wrapper--padding--small">
+                                            <div class="card-img card-img--rectangle card-img--rectangle--big">
+                                                <picture class="card-img__item">
+                                                    <source srcset="assets/images/cards/5@2x.webp 2x, assets/images/cards/5.webp 1x"
+                                                            type="image/jpeg">
+                                                    <img loading="lazy" class="card-img__item" src="assets/images/cards/5.webp"
+                                                         alt="Описание изображения">
+                                                </picture>
+                                            </div>
+                                            <div class="card__content card__content--padding--big card__content--full">
+                                                <p class="title title--tiny  card__title card__title--desktop--small">
+                                                    Автопилоты в полях: современное оборудование в сельском хозяйстве
+                                                </p>
+                                                <div class="card__footer">
+                                                    <div class="card-tags">
+                                                        <div class="card-tags__item card-tags__category">
+                                                            Люди
+                                                        </div>
+                                                        <div class="card-tags__item card-tags__date">
+                                                            20 апреля
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-icon">
+                                                        <svg class="icon">
+                                                            <use xlink:href="assets/images/sprite.svg#icon-arrow"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </a>
+                                    </div>
+                                    <div class="grid__column grid__column--third card">
+                                        <a href="#" class="card__wrapper card__wrapper--padding--small">
+                                            <div class="card-img card-img--rectangle card-img--rectangle--big">
+                                                <picture class="card-img__item">
+                                                    <source srcset="assets/images/cards/5@2x.webp 2x, assets/images/cards/5.webp 1x"
+                                                            type="image/jpeg">
+                                                    <img loading="lazy" class="card-img__item" src="assets/images/cards/5.webp"
+                                                         alt="Описание изображения">
+                                                </picture>
+                                            </div>
+                                            <div class="card__content card__content--padding--big card__content--full">
+                                                <p class="title title--tiny  card__title card__title--desktop--small">
+                                                    Региональный ТРЦ&nbsp;«Гудвин» использует передовые цифровые решения
+                                                    для&nbsp;взаимодействия с&nbsp;арендаторами
+                                                </p>
+                                                <div class="card__footer">
+                                                    <div class="card-tags">
+                                                        <div class="card-tags__item card-tags__category">
+                                                            Люди
+                                                        </div>
+                                                        <div class="card-tags__item card-tags__date">
+                                                            20 апреля
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-icon">
+                                                        <svg class="icon">
+                                                            <use xlink:href="assets/images/sprite.svg#icon-arrow"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section__wrapper">
+                <div class="container">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="mailing">
+        <div class="mailing__wrapper">
+            <div class="container">
+                <div class="mailing__grid">
+                    <div class="mailing__header">
+                        <p class="title title--middle">
+                            Присоединяйтесь к нашей рассылке
+                        </p>
+                        <p class="title title--tiny title--regular title--dark--light">
+                            Получайте первыми свежие обновления, статьи и релизы
+                        </p>
+                        <p class="mailing-subtext">
+                            <svg class="mailing-subtext__icon">
+                                <use xlink:href="assets/images/sprite.svg#icon-heart"></use>
+                            </svg>
+                            <span class="text text--middle text--grey--light">
+                                    Мы не спамим и не делимся вашей почтой
+                                </span>
+                        </p>
+                    </div>
+                    <div class="mailing-form">
+                        <div class="mailing-form__wrapper">
+                            <div class="mailing-form__content">
+                                <p class="title title--tiny title--medium">
+                                    Ваш Email
+                                </p>
+                                <form action="" class="form">
+                                    <div class="form__row">
+                                        <label class="input">
+                                            <svg class="input__icon">
+                                                <use xlink:href="assets/images/sprite.svg#icon-mail"></use>
+                                            </svg>
+                                            <input type="text" class="input__item" placeholder="example@mail.com">
+                                        </label>
+                                        <button type="submit"
+                                                class="button button--small button--small--form button--green">
+                                            Подписаться
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox__input">
+                                <span class="checkbox__checkmark">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#icon-check"></use>
+                                        </svg>
+                                    </span>
+                                <span class="text text--base text--grey--light">
+                                        Согласен на <a href="#"
+                                                       class="text text--underline text--dark--light text--link">обработку персональных данных</a>
+                                    </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="container">
+                <div class="footer__row">
+                    <div class="footer-block">
+                        <div class="footer-block__wrapper">
+                            <a href="#" class="logo footer__logo">
+                                <img loading="lazy" src="assets/images/logo.svg" alt="" class="logo__img">
+                            </a>
+                            <p class="text text--base text--grey--white text--footer footer__copyright--desktop">
+                                Копирование материалов <br>
+                                запрещено.
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="footer-block">
+                        <div class="footer-block__wrapper">
+                            <div class="footer-block__header">
+                                <p class="text text--big text--dark--light">
+                                    Наша почта для связи
+                                </p>
+                                <a href="mailto:zayavka@mail.com" class="title title--small text--link">
+                                    zayavka@mail.com
+                                </a>
+                            </div>
+                            <ul class="social-list">
+                                <li class="social-list__item">
+                                    <a href="#" target="_blank" class="social-link social-link--tg">
+                                        <svg class="social-link__icon">
+                                            <use xlink:href="assets/images/sprite.svg#tg"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-list__item">
+                                    <a href="#" target="_blank" class="social-link social-link--vk">
+                                        <svg class="social-link__icon">
+                                            <use xlink:href="assets/images/sprite.svg#vk"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-list__item">
+                                    <a href="#" target="_blank" class="social-link social-link--yt">
+                                        <svg class="social-link__icon">
+                                            <use xlink:href="assets/images/sprite.svg#yt"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-block footer-block--mobile">
+                        <div class="footer-block__wrapper">
+                            <div class="footer-block__header">
+                                <a href="#" class="text text--base text--grey--light text--underline">
+                                    Согласие на обработку персональных данных
+                                </a>
+                                <a href="#" class="text text--base text--grey--light text--underline">
+                                    Политика конфиденциальности
+                                </a>
+                            </div>
+                            <div class="footer-block__header">
+                                <p class="text text--base text--grey--white text--footer">
+                                    Копирование материалов
+                                    запрещено.
+                                </p>
+                                <p class="text text--base text--grey--light">
+                                    Разработка сайта:
+                                    <a href="#" target="_blank" class="text text--accent">akcent.agency</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="footer-block footer-block--desktop">
+                        <div class="footer-block__wrapper">
+                            <ul class="footer-list">
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Люди</a>
+                                </li>
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Новости</a>
+                                </li>
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Кейсы</a>
+                                </li>
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Курсы</a>
+                                </li>
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Факты</a>
+                                </li>
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Тесты</a>
+                                </li>
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Советы</a>
+                                </li>
+                                <li class="footer-list__item">
+                                    <a href="#" class="footer-list__link">Сервисный пульс</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-block footer-block--desktop">
+                        <div class="footer-block__header">
+                            <p class="text text--base text--grey--white text--footer footer__copyright--mobile">
+                                Копирование материалов
+                                запрещено.
+                            </p>
+                            <p class="text text--base text--grey--light">
+                                Разработка сайта:
+                                <a href="#" target="_blank" class="text text--accent">akcent.agency</a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="footer-block footer-block--desktop">
+                        <a href="#" class="text text--base text--grey--light text--underline text--link">
+                            Согласие на обработку персональных данных
+                        </a>
+                    </div>
+                    <div class="footer-block footer-block--desktop">
+                        <a href="#" class="text text--base text--grey--light text--underline text--link">
+                            Политика конфиденциальности
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>

@@ -47,4 +47,28 @@ document.addEventListener('DOMContentLoaded', e => {
         }
         lastScrollTop = scrollTop;
     });
+
+
+    const search = document.querySelector('.search');
+
+    if(search){
+        const searchForm = search.querySelector('.search-form');
+        const searchInput = search.querySelector('.search-input__item');
+        const searchFast = search.querySelector('.search-fast');
+
+        searchInput.addEventListener('focus',e=>{
+            search.classList.add('focus')
+        })
+        searchInput.addEventListener('blur',e=>{
+            search.classList.remove('focus')
+        })
+        searchInput.addEventListener('input',e=>{
+            searchFast.classList.add('active')
+        })
+        searchForm.addEventListener('submit',e=>{
+            e.preventDefault();
+            searchInput.blur();
+            search.classList.add('results')
+        })
+    }
 })
