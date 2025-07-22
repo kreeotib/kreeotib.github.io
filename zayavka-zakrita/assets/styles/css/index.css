@@ -744,6 +744,11 @@ body.no-scroll .header.visible .header-top {
   background: var(--color-grey-lighter);
   font-weight: 500;
   font-size: 18px;
+  border: 1px solid transparent;
+  transition: 0.3s border-color;
+}
+.menu-search:hover, .menu-search:has(:focus) {
+  border-color: #4DAD33;
 }
 @media screen and (max-width: 1240px) {
   .menu-search {
@@ -3246,7 +3251,13 @@ a.card-tag:hover {
   gap: 30px;
 }
 
-.search.results .search-empty {
+.search.empty .search-start {
+  display: none;
+}
+.search.empty .search-noresult {
+  display: block;
+}
+.search.results .search-start {
   display: none;
 }
 .search.results .search-result {
@@ -3257,6 +3268,9 @@ a.card-tag:hover {
   visibility: visible;
 }
 .search-result {
+  display: none;
+}
+.search-noresult {
   display: none;
 }
 .search__wrapper {
@@ -3546,6 +3560,14 @@ a.card-tag:hover {
     width: 14px;
     height: 14px;
     order: 2;
+  }
+  .search-input__icon--desktop {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .search-input__button {
+    display: none;
   }
 }
 .search-input__item {

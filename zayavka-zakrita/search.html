@@ -174,12 +174,16 @@
                 </a>
                 <a href="#" class="menu__close"></a>
             </div>
-            <label class="menu-search">
-                <input type="text" class="menu-search__input" placeholder="Поиск по статьям">
-                <svg class="menu-search__icon">
-                    <use xlink:href="assets/images/sprite.svg#icon-srch"></use>
-                </svg>
-            </label>
+            <form action="#" class="menu-form-search">
+                <label class="menu-search">
+                    <input type="text" class="menu-search__input" placeholder="Поиск по статьям">
+                    <button type="submit">
+                        <svg class="menu-search__icon">
+                            <use xlink:href="assets/images/sprite.svg#icon-srch"></use>
+                        </svg>
+                    </button>
+                </label>
+            </form>
             <div class="menu-info">
                 <p class="menu-info__title text text--big text--semibold">
                     Медиа для тех, кто развивает сервисный бизнес
@@ -307,10 +311,15 @@
                             <div class="search-form__row">
                                 <div class="search-form__input">
                                     <label class="search-input ">
-                                        <svg class="search-input__icon">
+                                        <svg class="search-input__icon search-input__icon--desktop">
                                             <use xlink:href="assets/images/sprite.svg#icon-srch"></use>
                                         </svg>
                                         <input type="text" class="search-input__item" placeholder="Поиск по статьям">
+                                        <button type="submit" class="search-input__button">
+                                            <svg class="search-input__icon">
+                                                <use xlink:href="assets/images/sprite.svg#icon-srch"></use>
+                                            </svg>
+                                        </button>
                                     </label>
                                     <div class="search-fast">
                                         <div class="search-fast__wrapper">
@@ -385,13 +394,26 @@
                                     Результаты поиска:
                                 </h2>
                             </div>
-                            <div class="search-empty">
-                                <div class="search-empty__icon">
-                                    <img src="assets/images/icons/search-3d.webp" alt="">
+                            <div class="search-start">
+                                <div class="search-empty">
+                                    <div class="search-empty__icon">
+                                        <img src="assets/images/icons/search-3d.webp" alt="">
+                                    </div>
+                                    <p class="search-empty__text">
+                                        Введите запрос в поле выше, результаты отобразятся тут
+                                    </p>
                                 </div>
-                                <p class="search-empty__text">
-                                    Введите запрос в поле выше, результаты отобразятся тут
-                                </p>
+                            </div>
+                            <div class="search-noresult">
+                                <div class="search-empty">
+                                    <div class="search-empty__icon">
+                                        <img src="assets/images/icons/cross-3d.webp" alt="">
+                                    </div>
+                                    <p class="search-empty__text">
+                                        По вашему запросу ничего не нашлось <br>
+                                        Проверьте правильность написания слов или попробуйте другой запрос
+                                    </p>
+                                </div>
                             </div>
                             <div class="search-result">
                                 <div class="grid grid--auto">

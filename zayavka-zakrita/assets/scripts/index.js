@@ -48,6 +48,14 @@ document.addEventListener('DOMContentLoaded', e => {
         lastScrollTop = scrollTop;
     });
 
+    const menuFormSearch = document.querySelector('.menu-form-search');
+    if(menuFormSearch){
+        menuFormSearch.addEventListener('submit',e=>{
+            e.preventDefault();
+            
+            window.location.href = "search.html";
+        })
+    }
 
     const search = document.querySelector('.search');
 
@@ -68,7 +76,13 @@ document.addEventListener('DOMContentLoaded', e => {
         searchForm.addEventListener('submit',e=>{
             e.preventDefault();
             searchInput.blur();
-            search.classList.add('results')
+            if(searchInput.value === '123'){
+                search.classList.add('results')
+                search.classList.remove('empty')
+            }else{
+                search.classList.add('empty')
+                search.classList.remove('results')
+            }
         })
     }
 })

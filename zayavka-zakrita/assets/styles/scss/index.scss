@@ -871,6 +871,11 @@ body.no-scroll .header.visible .header-top{
 
     font-weight: 500;
     font-size: 18px;
+    border:1px solid transparent;
+    transition: .3s border-color;
+    &:hover,&:has(:focus){
+      border-color:#4DAD33;
+    }
     @media screen and (max-width: 1240px) {
       height: 55px;
       font-size: 20px;
@@ -3556,9 +3561,16 @@ a.card-tag{
 }
 
 .search{
-  &.results &-empty{
+  &.empty &-start{
     display: none;
   }
+  &.empty &-noresult{
+    display: block;
+  }
+  &.results &-start{
+    display: none;
+  }
+
   &.results &-result{
     display: block;
   }
@@ -3567,6 +3579,9 @@ a.card-tag{
     visibility: visible;
   }
   &-result{
+    display: none;
+  }
+  &-noresult{
     display: none;
   }
   &__wrapper{
@@ -3730,7 +3745,9 @@ a.card-tag{
         height: 40px;
         padding: 6px;
         border-radius: 10px;
+
       }
+
     }
     &__text{
       font-size: 20px;
@@ -3841,6 +3858,14 @@ a.card-tag{
         width: 14px;
         height: 14px;
         order: 2;
+        &--desktop{
+          display: none;
+        }
+      }
+    }
+    &__button{
+      @media screen and (min-width: 768px) {
+        display: none;
       }
     }
     &__item{
