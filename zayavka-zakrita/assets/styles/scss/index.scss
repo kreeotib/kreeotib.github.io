@@ -899,6 +899,10 @@ body.no-scroll .header.visible .header-top{
       height: 22px;
       color: var(--color-grey-dark);
       flex-shrink: 0;
+      transition: .3s color;
+      &:hover{
+        color:#4DAD33;
+      }
       @media screen and (max-width: 767px) {
         width: 16px;
         height: 16px;
