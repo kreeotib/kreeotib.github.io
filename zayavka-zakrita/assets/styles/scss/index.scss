@@ -90,8 +90,8 @@
 }
 
 @mixin custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #4DAD33 #F0F2F3;
+
+
   &::-webkit-scrollbar {
     width: 2px;
     height: 2px;
@@ -1512,7 +1512,7 @@ body.no-scroll .header.visible .header-top{
 
     &--gap {
       &--small{
-        gap: 15px;
+        gap: 10px;
       }
       &--middle{
         gap: 40px;
@@ -2841,9 +2841,9 @@ a.card-tag{
 
 .article {
   &-table {
-    overflow-x: auto;
-    overflow-y: hidden;
     @include custom-scrollbar;
+    overflow:auto;
+
     padding-bottom: 15px;
 
     &__wrapper {
@@ -2926,11 +2926,13 @@ a.card-tag{
     }
 
     &:has(&-input) &__header {
+      color: var(--color-dark);
       .icon{
         color: #909697;
       }
       &:hover {
         cursor: pointer;
+        color: #4DAD33;
         .icon{
           color: #4DAD33;
         }
@@ -3368,13 +3370,12 @@ a.card-tag{
     justify-content: center;
     gap: 7px;
 
-    padding: 12px 10px;
-    height: 35px;
+    padding: 6px 10px;
+    height: 34px;
     border-radius: 10px;
     border: 1px solid #C8CECF;
     font-size: 16px;
     color: var(--color-dark);
-
     transition: .3s border-color;
     &:hover{
       border-color: #4DAD33;
@@ -3403,6 +3404,8 @@ a.card-tag{
       height: 10px;
       flex-shrink: 0;
       color: #C8CECF;
+
+      transform: translateY(10%);
       @media screen and (max-width: 767px) {
         width: 8px;
         height: 8px;
@@ -3641,6 +3644,7 @@ a.card-tag{
     display: flex;
     flex-direction: column;
     gap: 60px;
+    padding-bottom: 60px;
     @media screen and (max-width: 767px) {
       gap: 30px;
     }
