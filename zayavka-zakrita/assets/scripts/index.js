@@ -29,9 +29,11 @@ document.addEventListener('DOMContentLoaded', e => {
     let lastScrollTop = 0;
     const headerTopHeight = headerTop.getBoundingClientRect().height;
     document.body.style.setProperty(`--header-height`, `${headerTopHeight}px`)
+    header.style.height  = `${headerTopHeight}px`
     window.addEventListener("resize", e=>{
         const headerTopHeight = headerTop.getBoundingClientRect().height;
         document.body.style.setProperty(`--header-height`, `${headerTopHeight}px`)
+        header.style.height  = `${headerTopHeight}px`
     });
     window.addEventListener("scroll", function () {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
