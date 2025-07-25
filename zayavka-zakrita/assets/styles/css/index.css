@@ -1293,7 +1293,7 @@ body.no-scroll .header.visible .header-top {
   z-index: 2;
 }
 .card__content--gap--small {
-  gap: 10px;
+  gap: 15px;
 }
 .card__content--gap--middle {
   gap: 40px;
