@@ -90,6 +90,8 @@
 }
 
 @mixin custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #4DAD33 #F0F2F3;
   &::-webkit-scrollbar {
     width: 2px;
     height: 2px;
@@ -116,6 +118,7 @@ body {
   font-family: var(--font-main);
   line-height: 1.1;
   font-size: var(--text-base);
+  color: var(--color-dark);
   scrollbar-gutter: stable;
 }
 
@@ -303,6 +306,9 @@ body.no-scroll .header.visible .header-top{
 }
 
 .text {
+  &--base{
+    font-size: var(--text-base);
+  }
   &--big {
     font-size: var(--text-big);
     &--mobile{
@@ -795,6 +801,7 @@ body.no-scroll .header.visible .header-top{
 
     &__text {
       font-size: 22px;
+
       @media screen and (max-width: 1240px) {
         font-size: 24px;
       }
@@ -1212,6 +1219,10 @@ body.no-scroll .header.visible .header-top{
     --title-color: var(--color-white);
     --title-color-hover: #4DAD33;
     --text-color: var(--color-grey-lighter);
+
+    --card-tag-date:#B1B7B8;
+    --card-tag-circle:#909697;
+    --card-tag-category:#C8CECF;
   }
 
   &--bg {
@@ -1390,9 +1401,9 @@ body.no-scroll .header.visible .header-top{
       z-index: 3;
     }
 
-    &--light{
+    &--dark{
       &::before{
-
+        background: rgba(37, 41, 42, 0.6);
       }
     }
 
@@ -1500,6 +1511,9 @@ body.no-scroll .header.visible .header-top{
     z-index: 2;
 
     &--gap {
+      &--small{
+        gap: 15px;
+      }
       &--middle{
         gap: 40px;
         @media screen and (max-width: 767px) {
@@ -1547,8 +1561,11 @@ body.no-scroll .header.visible .header-top{
     color: var(--title-color);
 
     transition: .3s color;
-    
 
+    &--article{
+      max-width: 720px;
+      width: 100%;
+    }
     &--mobile{
       &--big{
         @media screen and (max-width: 767px) {
@@ -1577,6 +1594,9 @@ body.no-scroll .header.visible .header-top{
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+      &--small{
+        -webkit-line-clamp: 2;
+      }
     }
 
     &--facts {
@@ -1787,7 +1807,7 @@ body.no-scroll .header.visible .header-top{
   &__column {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 
     &--mobile {
       padding: 15px 0;
@@ -1848,6 +1868,9 @@ body.no-scroll .header.visible .header-top{
 
     color: var(--icon-color);
     font-size: var(--text-middle);
+    &--end{
+      align-self: flex-end;
+    }
     @media screen and (max-width: 767px) {
       font-size: 12px;
       &--desktop {
@@ -2319,10 +2342,8 @@ a.card-tag{
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    @media screen and (max-width: 1240px) {
-      gap: 25px;
-    }
+    gap: 25px;
+
     @media screen and (max-width: 767px) {
       gap: 20px;
     }
@@ -2371,7 +2392,7 @@ a.card-tag{
   &__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     @media screen and (max-width: 767px) {
       gap: 15px;
     }
@@ -2882,6 +2903,7 @@ a.card-tag{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    color: var(--color-dark-light);
 
     &--mobile{
       @media screen and (min-width: 1241px) {
@@ -2904,10 +2926,14 @@ a.card-tag{
     }
 
     &:has(&-input) &__header {
-      color: #909697;
+      .icon{
+        color: #909697;
+      }
       &:hover {
         cursor: pointer;
-        color: #4DAD33;
+        .icon{
+          color: #4DAD33;
+        }
       }
     }
 
@@ -2948,6 +2974,10 @@ a.card-tag{
 
       &--grey {
         background-color: #687173;
+
+        p{
+          color: var(--color-white);
+        }
       }
 
       @media screen and (max-width: 767px) {
@@ -2962,11 +2992,13 @@ a.card-tag{
     h3 {
       font-size: var(--title-small);
       font-weight: 700;
+      color: var(--color-dark);
     }
 
     h4 {
       font-size: var(--text-big);
       font-weight: 700;
+      color: var(--color-dark);
     }
 
     p {
@@ -2980,6 +3012,7 @@ a.card-tag{
       display: flex;
       flex-direction: column;
       gap: 5px;
+
       @media screen and (max-width: 767px) {
         gap: 10px;
       }
@@ -3174,6 +3207,10 @@ a.card-tag{
       height: 70px;
     }
 
+    &--small &__content{
+      gap: 5px;
+    }
+
     @media screen and (max-width: 767px) {
       gap: 16px;
     }
@@ -3332,6 +3369,7 @@ a.card-tag{
     gap: 7px;
 
     padding: 12px 10px;
+    height: 35px;
     border-radius: 10px;
     border: 1px solid #C8CECF;
     font-size: 16px;
@@ -3357,6 +3395,7 @@ a.card-tag{
 
     @media screen and (max-width: 767px) {
       font-size: 12px;
+      height: 30px;
     }
 
     .icon {
@@ -3374,6 +3413,11 @@ a.card-tag{
 
 .article-content__aside{
   position: relative;
+  @media screen and (max-width: 767px) {
+    position: sticky;
+    bottom: 10px;
+    z-index: 4;
+  }
 }
 
 .article-menu{
@@ -3471,6 +3515,7 @@ a.card-tag{
 
 .author{
   &-info{
+    flex-grow: 1;
     @media screen and (max-width: 767px) {
       order: 2;
     }
@@ -3511,6 +3556,10 @@ a.card-tag{
         flex-direction: column;
         gap: 15px;
       }
+    }
+    &__text{
+        max-width: 770px;
+        width: 100%;
     }
     &__count{
       padding: 16px;
@@ -3612,13 +3661,14 @@ a.card-tag{
     @media screen and (max-width: 767px) {
       flex-direction: column;
       align-items: flex-start;
-      gap: 15px;
+      gap: 10px;
     }
 
     &__title{
       white-space: nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
+
 
       max-width: 100%;
       font-size: 18px;
@@ -3784,6 +3834,8 @@ a.card-tag{
       font-size: 16px;
       font-weight: 600;
       color: #909697;
+      text-transform: uppercase;
+
       @media screen and (max-width: 767px) {
         font-size: 14px;
       }
