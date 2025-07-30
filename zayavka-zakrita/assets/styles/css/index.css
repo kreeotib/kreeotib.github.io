@@ -3066,12 +3066,14 @@ a.card-tag:hover {
     height: 30px;
   }
 }
+.hashtag-link .text {
+  transform: translateY(-10%);
+}
 .hashtag-link .icon {
   width: 10px;
   height: 10px;
   flex-shrink: 0;
   color: #C8CECF;
-  transform: translateY(10%);
 }
 @media screen and (max-width: 767px) {
   .hashtag-link .icon {
