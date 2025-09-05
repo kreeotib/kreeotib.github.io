@@ -1814,8 +1814,8 @@ body.no-scroll {
   top: 0;
   left: 0;
   z-index: 10;
-  width: 100svw;
-  height: 100svh;
+  width: 100vw;
+  height: 100vh;
   background: var(--color-white);
   padding-top: 4.375rem;
   opacity: 0;
