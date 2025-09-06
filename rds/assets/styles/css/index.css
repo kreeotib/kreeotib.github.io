@@ -1737,16 +1737,17 @@ body.no-scroll {
     align-items: flex-start;
   }
 }
+@media screen and (min-width: 1241px) {
+  .footer__copyright .footer__text:nth-child(1) {
+    order: 3;
+    margin-left: auto;
+  }
+}
 .footer__text {
   font-size: 0.875rem;
   line-height: 115%;
   letter-spacing: -0.03em;
   color: #42474B;
-}
-@media screen and (min-width: 641px) {
-  .footer__text:last-child {
-    margin: 0 auto;
-  }
 }
 .footer__text--link {
   color: #A7ACB1;

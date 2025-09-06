@@ -1870,16 +1870,20 @@ body.no-scroll {
     }
   }
 
+  &__copyright &__text{
+    @media screen and (min-width: 1241px) {
+      &:nth-child(1){
+        order: 3;
+        margin-left: auto;
+      }
+    }
+  }
+
   &__text {
     font-size: .875rem;
     line-height: 115%;
     letter-spacing: -0.03em;
     color: #42474B;
-    @media screen and (min-width: 641px) {
-      &:last-child {
-        margin: 0 auto;
-      }
-    }
 
     &--link {
       color: #A7ACB1;
