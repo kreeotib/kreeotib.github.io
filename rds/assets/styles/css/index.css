@@ -1085,6 +1085,9 @@ body.no-scroll {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+.grade-form {
+  position: relative;
+}
 .grade-img {
   display: flex;
   align-items: center;

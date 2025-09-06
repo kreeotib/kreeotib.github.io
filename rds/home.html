@@ -33,7 +33,7 @@
                                     +7 (999) 999-99-99
                                 </a>
                             </div>
-                            <a href="#"
+                            <a href="address.html"
                                class="button button--base button--base--mobile--icon button--accent header-top__button">
                                 <span class="button__text button__text--desktop">
                                     Адреса автосервисов
@@ -147,7 +147,7 @@
                     </li>
                 </ul>
             </div>
-            <a href="#" class="button button--base button--accent">
+            <a href="address.html" class="button button--base button--accent">
                                 <span class="button__text ">
                                     Адреса автосервисов
                                 </span>
@@ -409,7 +409,7 @@
                 <div class="container">
                     <div class="grade">
                         <div class="grade__grid">
-                            <div class="grade-content">
+                            <form action="#" class="grade-content grade-form">
                                 <div class="grade-content__wrapper">
                                     <div class="grade-content__header">
                                         <p class="title title--middle">
@@ -427,7 +427,7 @@
                                         </p>
                                         <div class="grade-photo__list">
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -436,7 +436,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -445,7 +445,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -454,7 +454,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -463,7 +463,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -472,7 +472,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -481,7 +481,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -490,7 +490,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -499,7 +499,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -508,7 +508,7 @@
                                                     </span>
                                             </label>
                                             <label class="photo-input">
-                                                <input type="file" class="photo-input__item">
+                                                <input type="file" name="images[]" accept="image/*" class="photo-input__item">
                                                 <img src="" alt="" class="photo-input__label">
                                                 <span class="photo-input__clear">
                                                         <svg class="icon">
@@ -527,25 +527,27 @@
                                                 <label for="brand" class="input__label">
                                                     Марка
                                                 </label>
-                                                <input id="brand" type="text" class="input__item"
-                                                       placeholder="Введите марку">
+                                                <input id="brand" name="brand" type="text" class="input__item"
+                                                       placeholder="Введите марку" required>
                                             </div>
                                             <div class="input">
                                                 <label for="model" class="input__label">
                                                     Модель
                                                 </label>
-                                                <input id="model" type="text" class="input__item"
-                                                       placeholder="Введите модель">
+                                                <input id="model" name="model" type="text" class="input__item"
+                                                       placeholder="Введите модель" required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div style="position: absolute; left: -9999px;">
+                                        <input type="text" name="honeypot" tabindex="-1">
                                     </div>
                                     <button type="submit"
                                             class="button button--base button--base--normal button--accent">
                                         Отправить на оценку
-
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                             <div class="grade-img">
                                 <img src="assets/images/form.webp" alt="" class="grade-img__item">
                             </div>
@@ -936,7 +938,7 @@
                                             </div>
                                         </div>
 
-                                        <a href="#" class="button button--base  button--accent">
+                                        <a href="address.html" class="button button--base  button--accent">
                                                     <span class="button__text ">
                                                         Адреса автосервисов
                                                     </span>

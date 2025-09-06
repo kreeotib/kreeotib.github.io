@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const photoInputs = document.querySelectorAll('.photo-input');
 
-    if(photoInputs.length){
+    if (photoInputs.length) {
         photoInputs.forEach(photoInput => {
             const fileInput = photoInput.querySelector('.photo-input__item');
             const imgLabel = photoInput.querySelector('.photo-input__label');
             const clearBtn = photoInput.querySelector('.photo-input__clear');
 
-            fileInput.addEventListener('change', function(e) {
+            fileInput.addEventListener('change', function (e) {
                 const file = e.target.files[0];
 
                 if (!file) return;
@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     imgLabel.src = e.target.result;
                     photoInput.classList.add('loaded');
                 };
                 reader.readAsDataURL(file);
             });
 
-            clearBtn.addEventListener('click', function(e) {
+            clearBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 fileInput.value = '';
@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.header');
     const mobileMenu = document.querySelector('.mobile-menu');
 
-    if(burger && header && mobileMenu){
-        burger.addEventListener('click',e=>{
+    if (burger && header && mobileMenu) {
+        burger.addEventListener('click', e => {
             e.preventDefault();
 
             burger.classList.toggle('active');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
 
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const link = event.target.closest('a[href*="#"]');
 
         if (link) {
@@ -79,4 +79,90 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+
+    const form = document.querySelector('.grade-form');
+
+
+    if (form) {
+        const submitBtn = form.querySelector('[type="submit"]');
+        let formSubmitted = false;
+
+        const startTime = Date.now();
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const timeDiff = Date.now() - startTime;
+            if (timeDiff < 3000) {
+                return;
+            }
+
+            if (formSubmitted) {
+                console.log('Ошибка: Форма уже отправляется');
+                return;
+            }
+
+            if (form.honeypot.value) {
+                console.log('Ошибка: Обнаружен бот');
+                return;
+            }
+
+            formSubmitted = true;
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            // Проверка количества и размера файлов
+            const files = formData.getAll('images[]');
+            let validFiles = 0;
+            let totalSize = 0;
+
+            files.forEach(file => {
+                if (file && file.size > 0) {
+                    if (file.size > 5 * 1024 * 1024) { // 5MB
+                        console.log('Ошибка: Файл ' + file.name + ' слишком большой');
+                        formSubmitted = false;
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Отправить';
+                        return;
+                    }
+                    validFiles++;
+                    totalSize += file.size;
+                }
+            });
+
+            if (totalSize > 25 * 1024 * 1024) { // 25MB общий размер
+                console.log('Ошибка: Общий размер файлов превышает 25MB');
+                formSubmitted = false;
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить';
+                return;
+            }
+
+            try {
+                const response = await fetch('send_email.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    console.log('Успех: Письмо отправлено!');
+                    form.reset();
+                } else {
+                    console.log('Ошибка: ' + (result.message || 'Неизвестная ошибка'));
+                }
+
+            } catch (error) {
+                console.log('Ошибка: Не удалось отправить письмо - ' + error.message);
+            } finally {
+                formSubmitted = false;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+
 });
