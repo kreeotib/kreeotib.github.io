@@ -58,4 +58,25 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.toggle('no-scroll');
         })
     }
+
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a[href*="#"]');
+
+        if (link) {
+            const href = link.getAttribute('href');
+
+            const hashIndex = href.indexOf('#');
+
+            if (hashIndex !== -1) {
+                const hash = href.substring(hashIndex + 1);
+
+                if (hash.length > 0) {
+                    burger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    header.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            }
+        }
+    });
 });
