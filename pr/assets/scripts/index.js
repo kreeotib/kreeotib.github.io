@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         })
     })
 
-    const preloaderSvg = document.querySelector('.preloader__svg .svg-elem-21');
+    const preloaderSvg = document.querySelector('.preloader__svg .svg-elem-20');
     const preloader = document.querySelector('.preloader')
 
     preloaderSvg.addEventListener('animationend', function() {
