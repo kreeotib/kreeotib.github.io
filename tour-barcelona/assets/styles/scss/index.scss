@@ -1542,6 +1542,11 @@ body {
     box-shadow: none !important;
     opacity: inherit !important;
   }
+  .button--gradient{
+    &::after{
+      display: none;
+    }
+  }
 }
 
 /* Дополнительно для старых iOS */
