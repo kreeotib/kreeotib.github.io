@@ -1541,3 +1541,18 @@ body {
     opacity: inherit !important;
   }
 }
+
+/* Убираем hover только на устройствах без поддержки hover */
+@media (hover: none) {
+  button:hover,
+  .button:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
+    /* Сбрасываем все hover-стили */
+    background-color: initial;
+    color: initial;
+    transform: none;
+    box-shadow: none;
+    border: initial;
+  }
+}

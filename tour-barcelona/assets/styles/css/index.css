@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --font-main: "Inter", sans-serif;
   --color-blue: #00A0AD;
@@ -1287,6 +1288,20 @@ body {
     box-shadow: none !important;
     border-color: inherit !important;
     opacity: inherit !important;
+  }
+}
+/* Убираем hover только на устройствах без поддержки hover */
+@media (hover: none) {
+  button:hover,
+  .button:hover,
+  input[type=button]:hover,
+  input[type=submit]:hover {
+    /* Сбрасываем все hover-стили */
+    background-color: initial;
+    color: initial;
+    transform: none;
+    box-shadow: none;
+    border: initial;
   }
 }
 
