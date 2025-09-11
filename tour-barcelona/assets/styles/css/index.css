@@ -1280,28 +1280,24 @@ body {
   border-right: 1px solid #000;
 }
 
-@media (hover: none) {
-  *:hover {
+/* Основной способ */
+@media (hover: none) and (pointer: coarse) {
+  button:hover,
+  .button:hover,
+  a:hover {
     background-color: inherit !important;
     color: inherit !important;
     transform: none !important;
     box-shadow: none !important;
-    border-color: inherit !important;
     opacity: inherit !important;
   }
 }
-/* Убираем hover только на устройствах без поддержки hover */
-@media (hover: none) {
-  button:hover,
-  .button:hover,
-  input[type=button]:hover,
-  input[type=submit]:hover {
-    /* Сбрасываем все hover-стили */
-    background-color: initial;
-    color: initial;
-    transform: none;
-    box-shadow: none;
-    border: initial;
+/* Дополнительно для старых iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 1) {
+  button:hover, .button:hover {
+    background-color: inherit !important;
+    color: inherit !important;
+    transform: none !important;
   }
 }
 
