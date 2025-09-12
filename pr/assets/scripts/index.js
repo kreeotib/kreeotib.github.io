@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         button.addEventListener('click',e=>{
             e.preventDefault();
 
-            form.classList.toggle('form--active')
+            form.classList.toggle('form--active');
+            document.body.classList.toggle('no-scroll');
         })
     })
 

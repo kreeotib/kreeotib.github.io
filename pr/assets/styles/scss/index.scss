@@ -52,6 +52,12 @@ body{
   font-size: 1rem;
 }
 
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
 .button{
   display: flex;
   align-items: center;
@@ -375,7 +381,7 @@ body{
   left: 0;
   top: 0;
   background-color: #0E0E0F;
-  overflow:hidden;
+  overflow:auto;
 
   opacity: 0;
   visibility: hidden;
@@ -425,7 +431,6 @@ body{
   }
   &__wrapper{
     padding: 1.25rem;
-    overflow:auto;
     height: 100%;
     @media screen and (max-width: 767px) {
       padding: .75rem;
@@ -438,6 +443,7 @@ body{
     background-color: #000000;
     border-radius: 1.875rem;
     position: relative;
+    overflow: auto;
     @media screen and (max-width: 767px) {
       display: flex;
       flex-direction: column;
@@ -537,6 +543,7 @@ body{
   &:has(:hover),&:has(:focus){
     border-color: #fff;
   }
+
   @media screen and (max-width: 767px) {
     height: 2.5rem;
     border-radius: 1.75rem;

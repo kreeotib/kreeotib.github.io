@@ -38,6 +38,12 @@ body {
   font-size: 1rem;
 }
 
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
 .button {
   display: flex;
   align-items: center;
@@ -345,7 +351,7 @@ body {
   left: 0;
   top: 0;
   background-color: #0E0E0F;
-  overflow: hidden;
+  overflow: auto;
   opacity: 0;
   visibility: hidden;
   transition: 0.3s visibility, 0.5s opacity;
@@ -395,7 +401,6 @@ body {
 }
 .form__wrapper {
   padding: 1.25rem;
-  overflow: auto;
   height: 100%;
 }
 @media screen and (max-width: 767px) {
@@ -410,6 +415,7 @@ body {
   background-color: #000000;
   border-radius: 1.875rem;
   position: relative;
+  overflow: auto;
 }
 @media screen and (max-width: 767px) {
   .form__grid {
