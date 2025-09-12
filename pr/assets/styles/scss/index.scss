@@ -300,7 +300,7 @@ body{
     @media screen and (max-width: 767px) {
       gap: 2.625rem;
       padding: 7.5rem 0;
-      min-height: calc(100vh - 16rem);
+      min-height: calc(100svh - 16rem);
     }
   }
   &__header{
