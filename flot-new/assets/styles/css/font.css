@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('../../fonts/MyriadPro-Bold.woff2') format('woff2'),
+    url('../../fonts/MyriadPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('../../fonts/MyriadPro-Semibold.woff2') format('woff2'),
+    url('../../fonts/MyriadPro-Semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('../../fonts/MyriadPro-Regular.woff2') format('woff2'),
+    url('../../fonts/MyriadPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Matahari';
+    src: url('../../fonts/Matahari-400Regular.woff2') format('woff2'),
+    url('../../fonts/Matahari-400Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Matahari';
+    src: url('../../fonts/Matahari-700Bold.woff2') format('woff2'),
+    url('../../fonts/Matahari-700Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Matahari Condensed';
+    src: url('../../fonts/MatahariCondensed-700CondBold.woff2') format('woff2'),
+    url('../../fonts/MatahariCondensed-700CondBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
