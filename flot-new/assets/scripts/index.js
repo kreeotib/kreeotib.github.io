@@ -1,3 +1,37 @@
+const checkTargetOrKey = event => {
+    if (
+        event.target.classList.contains('popup__wrapper') ||
+        event.key === 'Escape' ||
+        event.target.closest('.popup__close')
+    ) {
+        hideAllPopups();
+    }
+};
+const showPopup = popupId => {
+    const popup = document.querySelector(popupId);
+    if (!popup) return
+
+
+    hideAllPopups();
+
+    popup.classList.add('popup--active');
+    document.body.classList.add('no-scroll');
+
+    document.addEventListener('click', checkTargetOrKey);
+    document.addEventListener('keyup', checkTargetOrKey);
+};
+const hideAllPopups = () => {
+    const popups = document.querySelectorAll('.popup');
+
+    popups.forEach(popup => {
+        popup.classList.remove('popup--active');
+    });
+    document.body.classList.remove('no-scroll');
+
+    document.removeEventListener('click', checkTargetOrKey);
+    document.removeEventListener('keyup', checkTargetOrKey);
+};
+
 class FlipCountdown {
     constructor(container) {
         this.c = container;
@@ -101,40 +135,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.gallery');
-    const btn = document.querySelector('.gallery__button');
-    const items = container.querySelectorAll('.gallery-card');
-    let visibleCount = 3; // Изначально показываем 3 элемента
+    const popupButtons = document.querySelectorAll('[data-popup]');
+    const popups = document.querySelectorAll('.popup');
 
-    function updateDisplay() {
-        // Скрываем все элементы
-        items.forEach((item, index) => {
-            if (index < visibleCount) {
-                item.style.display = '';
-            } else {
-                item.style.display = 'none';
-            }
+    if (popups.length) {
+        popupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const popupId = button.dataset.popup
+                showPopup(popupId);
+            });
         });
-
-        // Проверяем нужна ли кнопка
-        if (visibleCount >= items.length) {
-            container.classList.add('no-hidden-items');
-        } else {
-            container.classList.remove('no-hidden-items');
-        }
     }
 
-    // Инициализация при загрузке
-    updateDisplay();
+    const container = document.querySelector('.gallery');
+    if(container){
+        const btn = document.querySelector('.gallery__button');
+        const items = container.querySelectorAll('.gallery-card');
+        let visibleCount = 3; // Изначально показываем 3 элемента
 
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        visibleCount += 3; // Показываем еще 3 элемента
+        function updateDisplay() {
+            items.forEach((item, index) => {
+                if (index < visibleCount) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (visibleCount >= items.length) {
+                container.classList.add('no-hidden-items');
+            } else {
+                container.classList.remove('no-hidden-items');
+            }
+        }
+
         updateDisplay();
-    });
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            visibleCount += 3;
+            updateDisplay();
+        });
+    }
 
 
-    console.clear();
+    const contactForm = document.querySelector('.contact-form');
+
+
+    contactForm.addEventListener('submit',e=>{
+        e.preventDefault();
+
+        showPopup('.popup-thanks')
+    })
 
 
 })

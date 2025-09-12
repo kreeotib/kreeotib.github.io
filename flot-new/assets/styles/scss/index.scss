@@ -862,3 +862,161 @@ $borderRadius: 0.15em;
   }
 }
 
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  background: rgba(#435e7a, 0.5);
+  z-index: 12;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: .3s visibility, .5s opacity;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__close {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+
+
+    background: var(--color-accent);
+    border-radius: 6px;
+
+    &:hover {
+      cursor: pointer;
+
+      &::before, &::after {
+        background: #fff;
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 30px;
+      height: 3px;
+      display: block;
+      background: #fff;
+      position: absolute;
+      left: calc(50% - 15px);
+      top: calc(50% - 1.5px);
+      transition: 0.3s background-color;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      content: "";
+      width: 30px;
+      height: 3px;
+      display: block;
+      background: #fff;
+      position: absolute;
+      left: calc(50% - 15px);
+      top: calc(50% - 1.5px);
+      transition: 0.3s background-color;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px; /* Width of the scrollbar */
+      height: 5px; /* Height of the scrollbar */
+
+      display: none;
+      @media screen and (max-width: 640px) {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent; /* Background of the scrollbar track */
+      border-radius: 10px; /* Rounded corners for the track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-accent); /* Color of the scrollbar thumb */
+      border-radius: 10px; /* Rounded corners for the thumb */
+    }
+  }
+
+  &__container {
+    max-width: 1300px;
+    width: calc(100% - 60px);
+    max-height: 90%;
+    height: -moz-max-content;
+    height: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &--thanks{
+      max-width: 840px;
+    }
+
+  }
+}
+
+.thanks-popup{
+  border-radius: 16px;
+  box-shadow: 0 4px 55px 0 rgba(0, 0, 0, 0.35);
+  background: #fff;
+  color: #000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 440px;
+
+  @media screen and (max-width: 767px) {
+    min-height: 60svh;
+  }
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding:32px 16px;
+
+  }
+  &__title,&__text{
+    font-size: 26px;
+    text-align: center;
+    color: #000;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+  &__title{
+    font-weight: 700;
+  }
+  &__text{
+    max-width: 580px;
+    width: 100%;
+  }
+}
