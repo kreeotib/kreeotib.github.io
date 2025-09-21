@@ -50,12 +50,12 @@
                         </div>
                     </div>
                     <div class="nav-buttons nav-buttons--header">
-                        <a href="#" class="nav-button  nav-buttons__item">
+                        <a href="#" class="nav-button nav-buttons__item">
                             <svg class="nav-button__icon">
                                 <use xlink:href="assets/images/sprite.svg#language"></use>
                             </svg>
                         </a>
-                        <a href="#" class="nav-button active nav-buttons__item">
+                        <a href="#" class="nav-button nav-buttons__item">
                             <svg class="nav-button__icon">
                                 <use xlink:href="assets/images/sprite.svg#profile"></use>
                             </svg>
@@ -201,7 +201,15 @@
                     <div class="container">
                         <div class="profile">
                             <div class="profile__grid">
-                                <div class="profile-aside">
+                                <a href="#" class="profile-back">
+                                    <svg class="profile-back__icon">
+                                        <use xlink:href="assets/images/sprite.svg#arrow-back"></use>
+                                    </svg>
+                                    <p class="text text--middle text--center text--semibold">
+                                        Personal Data
+                                    </p>
+                                </a>
+                                <div class="profile-aside profile-aside--desktop">
                                     <div class="profile-aside__wrapper">
                                         <div class="profile-aside__header">
                                             <div class="profile-card">
@@ -214,12 +222,12 @@
                                                     John Doe
                                                 </p>
                                             </div>
-                                            <a href="#" data-popup=".popup-notification" class="profile-notification">
+                                            <div class="profile-notification">
                                                 <svg class="profile-notification__icon">
                                                     <use xlink:href="assets/images/sprite.svg#bell"></use>
                                                 </svg>
                                                 <span class="profile-notification__count">13</span>
-                                            </a>
+                                            </div>
                                         </div>
                                         <ul class="profile-aside__list">
                                             <li>
@@ -233,7 +241,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="profile-link">
+                                                <a href="#" class="profile-link ">
                                                     <svg class="profile-link__icon">
                                                         <use xlink:href="assets/images/sprite.svg#payment"></use>
                                                     </svg>
@@ -243,7 +251,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#" class="profile-link">
+                                                <a href="#" class="profile-link active">
                                                     <svg class="profile-link__icon">
                                                         <use xlink:href="assets/images/sprite.svg#orders"></use>
                                                     </svg>
@@ -267,217 +275,225 @@
                                 </div>
                                 <div class="profile-content">
                                     <div class="profile-content__wrapper">
-                                        <p class="text text--middle text--semibold">Orders</p>
+                                        <p class="text text--middle text--semibold">Personal Data </p>
                                         <div class="profile-content__main">
-                                            <div class="profile-table">
-                                               <div class="profile-table__scroll">
-                                                   <div class="profile-table__wrapper">
-                                                       <div class="profile-table__row profile-table__row--title">
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__title">
-                                                                   Order Number
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__title">
-                                                                   Date
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__title">
-                                                                   Amount
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__title">
-                                                                   Status
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__title">
-                                                                   Details
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
+                                            <form action="" class="form">
+                                                <div class="form__wrapper">
+                                                    <div class="form__content form__content--gap--small">
+                                                        <div class="form-block">
+                                                            <div class="form-block__wrapper">
+                                                                <div class="form-block__grid">
+                                                                    <div class="form-block__data">
+                                                                        <p class="text text--tiny text--grey--second">
+                                                                            Fisrt Name:
+                                                                        </p>
+                                                                        <p class="text text--base">
+                                                                            Ivan
+                                                                        </p>
+                                                                    </div>
+                                                                    <fieldset class="fieldset">
+                                                                        <legend class="fieldset__legend">
+                                                                            Fisrt Name
+                                                                        </legend>
+                                                                        <div class="input">
+                                                                            <input type="text"
+                                                                                   class="input__item"
+                                                                                   placeholder="Ivan">
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="form-block__grid">
+                                                                    <div class="form-block__data">
+                                                                        <p class="text text--tiny text--grey--second">
+                                                                            Last Name:
+                                                                        </p>
+                                                                        <p class="text text--base">
+                                                                            Ivanov
+                                                                        </p>
+                                                                    </div>
+                                                                    <fieldset class="fieldset">
+                                                                        <legend class="fieldset__legend">
+                                                                            Last Name
+                                                                        </legend>
+                                                                        <div class="input">
+                                                                            <input type="text"
+                                                                                   class="input__item"
+                                                                                   placeholder="Ivanov">
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="form-block__grid">
+                                                                    <div class="form-block__data form-block__data--start">
+                                                                        <p class="text text--tiny text--grey--second">
+                                                                            Address:
+                                                                        </p>
+                                                                        <p class="text text--base">
+                                                                            United States <br>
+                                                                            13500 Lyndhurst Street <br>
+                                                                            2089 <br>
+                                                                            Austin 78717 <br>
+                                                                            Texas
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="fieldset-box">
+                                                                        <fieldset class="fieldset">
+                                                                            <legend class="fieldset__legend">
+                                                                                Shipping address
+                                                                            </legend>
+                                                                            <div class="input">
+                                                                                <input type="text"
+                                                                                       class="input__item"
+                                                                                       placeholder="Vladimir Nagornov">
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset class="fieldset">
+                                                                            <div class="input">
+                                                                                <select name="" id=""
+                                                                                        class="input__item">
+                                                                                    <option disabled value="">
+                                                                                        Choose 1
+                                                                                    </option>
+                                                                                    <option value="">Choose 1
+                                                                                    </option>
+                                                                                    <option value="">Choose 1
+                                                                                    </option>
+                                                                                    <option value="">Choose 1
+                                                                                    </option>
+                                                                                </select>
+                                                                                <svg class="icon icon--arrow">
+                                                                                    <use xlink:href="assets/images/sprite.svg#down-chevron"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset class="fieldset">
+                                                                            <div class="input">
+                                                                                <input type="text"
+                                                                                       class="input__item"
+                                                                                       placeholder="13500 Lyndhurst Street">
+                                                                                <a href="#"
+                                                                                   class="fieldset-clear"
+                                                                                   data-text="Clear">
+                                                                                </a>
+                                                                            </div>
 
-                                                           </div>
-                                                       </div>
-                                                       <div class="profile-table__row">
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   AMO25-123125
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   12/31/2025
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   $1,850.00
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text profile-table__text--bold">
-                                                                   Placed
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   *4560
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <a href="#" class="profile-table__icon">
-                                                                   <svg class="icon">
-                                                                       <use xlink:href="assets/images/sprite.svg#pdf"></use>
-                                                                   </svg>
-                                                               </a>
-                                                           </div>
-                                                       </div>
-                                                       <div class="profile-table__row">
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   AMO25-123125
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   12/31/2025
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   $1,850.00
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text profile-table__text--bold">
-                                                                   Placed
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   *4560
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <a href="#" class="profile-table__icon">
-                                                                   <svg class="icon">
-                                                                       <use xlink:href="assets/images/sprite.svg#pdf"></use>
-                                                                   </svg>
-                                                               </a>
-                                                           </div>
-                                                       </div>
-                                                       <div class="profile-table__row">
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   AMO25-123125
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   12/31/2025
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   $1,850.00
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text profile-table__text--bold">
-                                                                   Placed
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   *4560
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <a href="#" class="profile-table__icon">
-                                                                   <svg class="icon">
-                                                                       <use xlink:href="assets/images/sprite.svg#pdf"></use>
-                                                                   </svg>
-                                                               </a>
-                                                           </div>
-                                                       </div>
-                                                       <div class="profile-table__row">
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   AMO25-123125
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   12/31/2025
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   $1,850.00
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text profile-table__text--bold">
-                                                                   Placed
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   *4560
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <a href="#" class="profile-table__icon">
-                                                                   <svg class="icon">
-                                                                       <use xlink:href="assets/images/sprite.svg#pdf"></use>
-                                                                   </svg>
-                                                               </a>
-                                                           </div>
-                                                       </div>
-                                                       <div class="profile-table__row">
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   AMO25-123125
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   12/31/2025
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   $1,850.00
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text profile-table__text--bold">
-                                                                   Placed
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <p class="profile-table__text">
-                                                                   *4560
-                                                               </p>
-                                                           </div>
-                                                           <div class="profile-table__block">
-                                                               <a href="#" class="profile-table__icon">
-                                                                   <svg class="icon">
-                                                                       <use xlink:href="assets/images/sprite.svg#pdf"></use>
-                                                                   </svg>
-                                                               </a>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                            </div>
-                                            <p class="profile-content__notice">
-                                                Your last five orders are shown. For details, visit the Orders tab.
-                                            </p>
+                                                                        </fieldset>
+                                                                        <fieldset class="fieldset">
+                                                                            <div class="input">
+                                                                                <input type="text"
+                                                                                       class="input__item"
+                                                                                       placeholder="2089">
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <div class="fieldset-box__row">
+                                                                            <fieldset class="fieldset">
+                                                                                <div class="input">
+                                                                                    <input type="text"
+                                                                                           class="input__item"
+                                                                                           placeholder="Austin">
+                                                                                </div>
+
+                                                                            </fieldset>
+                                                                            <fieldset class="fieldset">
+                                                                                <div class="input">
+                                                                                    <input type="text"
+                                                                                           class="input__item"
+                                                                                           placeholder="78717">
+                                                                                </div>
+
+                                                                            </fieldset>
+                                                                        </div>
+                                                                        <fieldset class="fieldset">
+                                                                            <div class="input">
+                                                                                <input type="text"
+                                                                                       class="input__item"
+                                                                                       placeholder="(972) 922-5755">
+                                                                                <svg class="icon">
+                                                                                    <use xlink:href="assets/images/sprite.svg#info"></use>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-block__grid">
+                                                                    <div class="form-block__data">
+                                                                        <p class="text text--tiny text--grey--second">
+                                                                            Phone:
+                                                                        </p>
+                                                                        <p class="text text--base">
+                                                                            (512) 444-4444
+                                                                        </p>
+                                                                    </div>
+                                                                    <fieldset class="fieldset">
+                                                                        <div class="input">
+                                                                            <input type="text"
+                                                                                   class="input__item"
+                                                                                   placeholder="(972) 922-5755">
+                                                                            <svg class="icon">
+                                                                                <use xlink:href="assets/images/sprite.svg#info"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="form-block__grid">
+                                                                    <div class="form-block__data">
+                                                                        <p class="text text--tiny text--grey--second">
+                                                                            Password:
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="form-block__wrapper">
+                                                                        <fieldset class="fieldset">
+                                                                            <legend class="fieldset__legend">
+                                                                                Password Change
+                                                                            </legend>
+                                                                            <div class="input">
+                                                                                <input type="password"
+                                                                                       class="input__item"
+                                                                                       placeholder="**********">
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset class="fieldset">
+                                                                            <legend class="fieldset__legend">
+                                                                                Password Change Confirmation
+                                                                            </legend>
+                                                                            <div class="input">
+                                                                                <input type="password"
+                                                                                       class="input__item"
+                                                                                       placeholder="**********">
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                        <fieldset class="fieldset">
+                                                                            <legend class="fieldset__legend">
+                                                                                Current Password
+                                                                            </legend>
+                                                                            <div class="input">
+                                                                                <input type="password"
+                                                                                       class="input__item"
+                                                                                       placeholder="">
+
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-block__grid">
+                                                                    <div class="form-block__data">
+
+                                                                    </div>
+                                                                    <button type="submit"
+                                                                            class="button button--center button--text">
+                                                                        <span class="button__text">Confirm Changes</span>
+                                                                        <svg class="button__icon">
+                                                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
 
                                     </div>
@@ -670,7 +686,7 @@
     </footer>
 </div>
 
-<div class="popup popup-notification">
+<div class="popup popup--active popup-notification">
     <div class="popup__wrapper">
         <div class="popup__container">
             <a href="#" class="popup__close"></a>
@@ -698,3 +714,4 @@
 
 </body>
 </html>
+

@@ -1,3 +1,37 @@
+const checkTargetOrKey = event => {
+    if (
+        event.target.classList.contains('popup__wrapper') ||
+        event.key === 'Escape' ||
+        event.target.closest('.popup__close')
+    ) {
+        hideAllPopups();
+    }
+};
+const showPopup = popupId => {
+    const popup = document.querySelector(popupId);
+    if (!popup) return
+
+
+    hideAllPopups();
+
+    popup.classList.add('popup--active');
+    document.body.classList.add('no-scroll');
+
+    document.addEventListener('click', checkTargetOrKey);
+    document.addEventListener('keyup', checkTargetOrKey);
+};
+const hideAllPopups = () => {
+    const popups = document.querySelectorAll('.popup');
+
+    popups.forEach(popup => {
+        popup.classList.remove('popup--active');
+    });
+    document.body.classList.remove('no-scroll');
+
+    document.removeEventListener('click', checkTargetOrKey);
+    document.removeEventListener('keyup', checkTargetOrKey);
+};
+
 document.addEventListener('DOMContentLoaded', e => {
     const blockSlider = new Swiper('.block-slider', {
         loop:true,
@@ -91,9 +125,55 @@ document.addEventListener('DOMContentLoaded', e => {
             document.body.classList.toggle('no-scroll')
         })
     }
-    const ctx = document.getElementById('priceChart').getContext('2d');
 
-    if(ctx){
+    const fieldsetClear = document.querySelectorAll('.fieldset-clear');
+
+    if(fieldsetClear.length){
+        fieldsetClear.forEach(button=>{
+            button.addEventListener('click',e=>{
+                e.preventDefault();
+
+                const input = button.closest('fieldset').querySelector('input');
+                input.value = '';
+            })
+        })
+    }
+
+    const popupButtons = document.querySelectorAll('[data-popup]');
+    const popups = document.querySelectorAll('.popup');
+
+    if (popups.length) {
+        popupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const popupId = button.dataset.popup
+                showPopup(popupId);
+            });
+        });
+    }
+
+    const languageSwitcher = document.querySelectorAll('.language-switcher');
+
+    if(languageSwitcher.length){
+        document.body.addEventListener('click',e=>{
+            if(!e.target.closest('.language-switcher')){
+                languageSwitcher.forEach(language=>language.classList.remove('language-switcher--active'))
+            }
+        })
+        languageSwitcher.forEach(language=>{
+            language.addEventListener('click',e=>{
+                e.preventDefault();
+
+                language.classList.toggle('language-switcher--active');
+            })
+        })
+    }
+
+    const profileChart = document.querySelector('.profile-chart')
+
+    if(profileChart){
+        const ctx = document.getElementById('priceChart').getContext('2d');
         const gradient = ctx.createLinearGradient(0, 0, 0, 400);
         gradient.addColorStop(0, 'rgba(245, 130, 32, 0.5)');
         gradient.addColorStop(1, 'rgba(245, 130, 32, 0)');
@@ -224,4 +304,7 @@ document.addEventListener('DOMContentLoaded', e => {
             }
         });
     }
+
+
+
 })
