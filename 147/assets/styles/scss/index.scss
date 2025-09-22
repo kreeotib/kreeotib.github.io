@@ -1556,8 +1556,30 @@ body.no-scroll {
   gap: .75rem;
   padding: 0 1.875rem;
 
+  position: relative;
+
   @media screen and (max-width: 767px) {
     padding: 0 1.25rem;
+  }
+
+  select{
+
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 1.875rem;
+    @media screen and (max-width: 767px) {
+      padding: 0 1.25rem;
+    }
+
+    option{
+      background: var(--color-dark);
+      color: #fff;
+      width: 100%;
+    }
   }
 
   &-cards {
@@ -1645,6 +1667,11 @@ body.no-scroll {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    z-index: 2;
+    position: relative;
+
+    margin-left: auto;
 
     &--arrow {
       width: .5rem;
