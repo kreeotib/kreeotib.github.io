@@ -1,29 +1,58 @@
+const checkTargetOrKey = event => {
+    if (
+        event.target.classList.contains('popup__wrapper') ||
+        event.key === 'Escape' ||
+        event.target.closest('.popup-close')
+    ) {
+        hideAllPopups();
+    }
+};
+const showPopup = popupId => {
+    const popup = document.querySelector(popupId);
+    if (!popup) return
+
+
+    hideAllPopups();
+
+    popup.classList.add('popup--active');
+    document.body.classList.add('no-scroll');
+
+    document.addEventListener('click', checkTargetOrKey);
+    document.addEventListener('keyup', checkTargetOrKey);
+};
+const hideAllPopups = () => {
+    const popups = document.querySelectorAll('.popup');
+
+    popups.forEach(popup => {
+        popup.classList.remove('popup--active');
+    });
+    document.body.classList.remove('no-scroll');
+
+    document.removeEventListener('click', checkTargetOrKey);
+    document.removeEventListener('keyup', checkTargetOrKey);
+};
+
+
+
 document.addEventListener('DOMContentLoaded',()=>{
-    const reviewsSlider = new Swiper('.reviews-slider',{
-        slidesPerView:1,
+    const sliderAuto = new Swiper('.slider-auto',{
+        slidesPerView:'auto',
         spaceBetween:40,
-        breakpoints:{
-            767:{
-                slidesPerView: 2,
-            }
+
+        navigation:{
+            prevEl:'.slider-arrow-prev',
+            nextEl:'.slider-arrow-next'
+        },
+        pagination:{
+            el:'.slider-pagination'
         }
     });
 
-    const cardsSlider = new Swiper('.cards-slider',{
-        slidesPerView:'auto',
-        spaceBetween:20,
-        breakpoints:{
-            767:{
-                spaceBetween: 140,
-            }
-        }
-    });
 
     const eventsSlider = new Swiper('.events-slider',{
         slidesPerView:'auto',
         spaceBetween:40,
-        centeredSlides:true,
-        initialSlide:1,
+
     });
 
     const faqItemList = document.querySelectorAll('.faq-item');
@@ -40,5 +69,19 @@ document.addEventListener('DOMContentLoaded',()=>{
                 })
             }
         })
+    }
+
+    const popupButtons = document.querySelectorAll('[data-popup]');
+    const popups = document.querySelectorAll('.popup');
+
+    if (popups.length) {
+        popupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const popupId = button.dataset.popup
+                showPopup(popupId);
+            });
+        });
     }
 })
