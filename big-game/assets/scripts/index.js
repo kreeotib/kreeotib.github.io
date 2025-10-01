@@ -84,4 +84,21 @@ document.addEventListener('DOMContentLoaded',()=>{
             });
         });
     }
+
+
+    const burger = document.querySelector('.burger'),
+        mobileMenu = document.querySelector('.mobile-menu'),
+        header = document.querySelector('.header');
+
+
+    if(burger && mobileMenu && header){
+        burger.addEventListener('click',e=>{
+            e.preventDefault();
+
+            burger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            header.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        })
+    }
 })
