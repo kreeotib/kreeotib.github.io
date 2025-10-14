@@ -1,3 +1,38 @@
+const checkTargetOrKey = event => {
+    if (
+        event.target.classList.contains('popup__wrapper') ||
+        event.key === 'Escape' ||
+        event.target.closest('.popup__close')
+    ) {
+        hideAllPopups();
+    }
+};
+const showPopup = popupId => {
+    const popup = document.querySelector(popupId);
+    if (!popup) return
+
+
+    hideAllPopups();
+
+    popup.classList.add('popup--active');
+    document.body.classList.add('no-scroll');
+
+    document.addEventListener('click', checkTargetOrKey);
+    document.addEventListener('keyup', checkTargetOrKey);
+};
+const hideAllPopups = () => {
+    const popups = document.querySelectorAll('.popup');
+
+    popups.forEach(popup => {
+        popup.classList.remove('popup--active');
+    });
+    document.body.classList.remove('no-scroll');
+
+    document.removeEventListener('click', checkTargetOrKey);
+    document.removeEventListener('keyup', checkTargetOrKey);
+};
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const photoInputs = document.querySelectorAll('.photo-input');
 
@@ -80,89 +115,104 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    const popupButtons = document.querySelectorAll('[data-popup]');
+    const popups = document.querySelectorAll('.popup');
 
-    const form = document.querySelector('.grade-form');
+    if (popups.length) {
+        popupButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
 
-
-    if (form) {
-        const submitBtn = form.querySelector('[type="submit"]');
-        let formSubmitted = false;
-
-        const startTime = Date.now();
-
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const timeDiff = Date.now() - startTime;
-            if (timeDiff < 3000) {
-                return;
-            }
-
-            if (formSubmitted) {
-                console.log('Ошибка: Форма уже отправляется');
-                return;
-            }
-
-            if (form.honeypot.value) {
-                console.log('Ошибка: Обнаружен бот');
-                return;
-            }
-
-            formSubmitted = true;
-            submitBtn.disabled = true;
-
-            const formData = new FormData(form);
-
-            // Проверка количества и размера файлов
-            const files = formData.getAll('images[]');
-            let validFiles = 0;
-            let totalSize = 0;
-
-            files.forEach(file => {
-                if (file && file.size > 0) {
-                    if (file.size > 5 * 1024 * 1024) { // 5MB
-                        console.log('Ошибка: Файл ' + file.name + ' слишком большой');
-                        formSubmitted = false;
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Отправить';
-                        return;
-                    }
-                    validFiles++;
-                    totalSize += file.size;
-                }
+                const popupId = button.dataset.popup
+                showPopup(popupId);
             });
-
-            if (totalSize > 25 * 1024 * 1024) { // 25MB общий размер
-                console.log('Ошибка: Общий размер файлов превышает 25MB');
-                formSubmitted = false;
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Отправить';
-                return;
-            }
-
-            try {
-                const response = await fetch('send_email.php', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    console.log('Успех: Письмо отправлено!');
-                    form.reset();
-                } else {
-                    console.log('Ошибка: ' + (result.message || 'Неизвестная ошибка'));
-                }
-
-            } catch (error) {
-                console.log('Ошибка: Не удалось отправить письмо - ' + error.message);
-            } finally {
-                formSubmitted = false;
-                submitBtn.disabled = false;
-            }
         });
     }
 
 
+    const formArray = document.querySelectorAll('.form-simple');
+
+    if (formArray.length) {
+        formArray.forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const fd = new FormData(form);
+
+                try {
+                    const res = await fetch('/sendmail.php', {
+                        method: 'POST',
+                        body: fd,
+                    });
+
+                    const data = await res.json();
+                    if (data.ok) {
+                        showPopup('.popup-thanks')
+                        form.reset();
+                    } else {
+                    }
+                } catch (err) {
+                }
+
+            })
+        })
+    }
+
+    const phoneArray = document.querySelectorAll('.js-phone');
+
+    if (phoneArray.length) {
+        phoneArray.forEach(phone => {
+            IMask(
+                phone,
+                {
+                    mask: '+{7}(000)000-00-00'
+                }
+            )
+        })
+    }
+
+    const worksSliderElement = document.querySelector('.works-slider');
+
+
+    if (worksSliderElement) {
+        const worksSlider = new Swiper(worksSliderElement, {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                prevEl: '.slider-button--prev',
+                nextEl: '.slider-button--next',
+                disabledClass: 'slider-button--disabled'
+            },
+            pagination: {
+                el: '.slider-pagination',
+                bulletClass: 'slider-pagination__bullet',
+                bulletActiveClass: 'slider-pagination__bullet--active',
+                lockClass:'slider-pagination--lock'
+            },
+            breakpoints: {
+                641: {
+                    slidesPerView: 2
+                }
+            }
+        })
+    }
+
+    const teamSliderElement = document.querySelector('.team-slider');
+
+    if (teamSliderElement) {
+        const teamSlider = new Swiper(teamSliderElement, {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            navigation: {
+                prevEl: '.slider-button--prev',
+                nextEl: '.slider-button--next',
+                disabledClass: 'slider-button--disabled'
+            },
+            pagination: {
+                el: '.slider-pagination',
+                bulletClass: 'slider-pagination__bullet',
+                bulletActiveClass: 'slider-pagination__bullet--active',
+                lockClass:'slider-pagination--lock'
+            },
+        })
+    }
 });
