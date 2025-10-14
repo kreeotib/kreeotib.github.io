@@ -12,7 +12,7 @@ const smoothScroll = (targetId) => {
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 1200;
+    const duration = 800;
     let start = null;
 
     function animation(currentTime) {
@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenu = document.querySelector('.mobile-menu');
 
     if (burger && header && mobileMenu) {
-        document.documentElement.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`)
-        burger.addEventListener('click', e => {
+         window.innerWidth < 640 ? document.documentElement.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`) : document.documentElement.style.setProperty('--header-height', `${0}px`);
+            burger.addEventListener('click', e => {
             e.preventDefault();
 
             burger.classList.toggle('active');
