@@ -1,7 +1,33 @@
 const linear = (t) => {
     return t
 }
+function scrollToSmoothly(targetId, time = 500) {
 
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+
+    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'));
+    let targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+    let currentPos = window.pageYOffset;
+    let start = null;
+    targetPosition = +targetPosition, time = +time;
+    window.requestAnimationFrame(function step(currentTime) {
+        start = !start ? currentTime : start;
+        let progress = currentTime - start;
+        if (currentPos < targetPosition) {
+            window.scrollTo(0, ((targetPosition - currentPos) * progress / time) + currentPos);
+        } else {
+            window.scrollTo(0, currentPos - ((currentPos - targetPosition) * progress / time));
+        }
+        if (progress < time) {
+            window.requestAnimationFrame(step);
+        } else {
+            window.scrollTo(0, targetPosition);
+        }
+    });
+}
 const smoothScroll = (targetId) => {
     targetId = targetId.replace('#', '');
 
@@ -12,7 +38,7 @@ const smoothScroll = (targetId) => {
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 800; 
+    const duration = 800;
     let start = null;
     let rafId = null;
 
@@ -162,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     header.classList.remove('active');
                     document.body.classList.remove('no-scroll');
 
-                    smoothScroll(href);
+                    scrollToSmoothly(href);
                 }
             }
         }
