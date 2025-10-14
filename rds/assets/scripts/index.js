@@ -1,4 +1,4 @@
-const easeInOutCubic = (t) => {
+const linear = (t) => {
     return t
 }
 
@@ -12,25 +12,40 @@ const smoothScroll = (targetId) => {
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 800;
+    const duration = 800; 
     let start = null;
+    let rafId = null;
+
+    if (rafId) {
+        cancelAnimationFrame(rafId);
+    }
 
     function animation(currentTime) {
         if (start === null) start = currentTime;
         const timeElapsed = currentTime - start;
         const progress = Math.min(timeElapsed / duration, 1);
-        const ease = easeInOutCubic(progress);
+        const ease = linear(progress);
 
-        window.scrollTo(0, startPosition + distance * ease);
+        const scrollY = startPosition + distance * ease;
+        window.scrollTo({
+            top: scrollY,
+            left: 0,
+            behavior: 'auto'
+        });
 
         if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
+            rafId = requestAnimationFrame(animation);
         } else {
-            window.scrollTo(0, targetPosition);
+            window.scrollTo({
+                top: targetPosition,
+                left: 0,
+                behavior: 'auto'
+            });
+            rafId = null;
         }
     }
 
-    requestAnimationFrame(animation);
+    rafId = requestAnimationFrame(animation);
 }
 
 const checkTargetOrKey = event => {
