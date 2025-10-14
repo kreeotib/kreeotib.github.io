@@ -2482,6 +2482,12 @@ body.no-scroll {
   gap: 1.25rem;
   counter-reset: repairAdd;
 }
+.repair-additional--full {
+  grid-template-columns: minmax(0, 1fr);
+}
+.repair-additional--full .repair-additional__card::before {
+  display: block;
+}
 @media screen and (max-width: 640px) {
   .repair-additional {
     grid-template-columns: minmax(0, 1fr);
@@ -2491,6 +2497,9 @@ body.no-scroll {
 .repair-additional__card {
   counter-increment: repairAdd;
   position: relative;
+}
+.repair-additional__card:has(.card__wrapper--dark)::before {
+  opacity: 0.2;
 }
 .repair-additional__card::before {
   content: "0" counter(repairAdd);
@@ -2503,10 +2512,14 @@ body.no-scroll {
   position: absolute;
   right: 1.875rem;
   top: 1.875rem;
+  z-index: 3;
 }
 @media screen and (max-width: 640px) {
   .repair-additional__card::before {
     display: none;
+    font-size: 0.875rem;
+    right: 1.25rem;
+    top: 1.25rem;
   }
 }
 .repair-card {
@@ -2632,6 +2645,12 @@ body.no-scroll {
   }
 }
 
+.card-hover {
+  transition: 0.3s transform;
+}
+.card-hover:hover {
+  transform: translateY(-0.3125rem);
+}
 @media screen and (max-width: 1240px) and (min-width: 641px) {
   .card-repair .card__icon {
     position: absolute;
@@ -3021,7 +3040,7 @@ body.no-scroll {
 }
 @media screen and (max-width: 1240px) {
   .body-hero__aside::before {
-    background: url("../../images/body-aside-t.webp") bottom left/cover no-repeat;
+    background: url("../../images/body-aside-t.webp") top right/contain no-repeat;
     order: 2;
   }
 }

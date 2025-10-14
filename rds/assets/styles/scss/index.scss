@@ -2712,6 +2712,14 @@ body.no-scroll {
     gap: 1.25rem;
 
     counter-reset: repairAdd;
+    &--full{
+      grid-template-columns: minmax(0,1fr);
+    }
+    &--full &__card{
+      &::before{
+        display: block;
+      }
+    }
     @media screen and (max-width: 640px) {
       grid-template-columns: minmax(0, 1fr);
       gap: .625rem;
@@ -2722,6 +2730,12 @@ body.no-scroll {
 
       position: relative;
 
+      &:has(.card__wrapper--dark){
+        &::before{
+          opacity: .2;
+
+        }
+      }
       &::before {
         content: "0" counter(repairAdd);
         font-weight: 500;
@@ -2734,8 +2748,12 @@ body.no-scroll {
         position: absolute;
         right: 1.875rem;
         top: 1.875rem;
+        z-index: 3;
         @media screen and (max-width: 640px) {
           display: none;
+          font-size: .875rem;
+          right: 1.25rem;
+          top: 1.25rem;
         }
       }
     }
@@ -2876,12 +2894,21 @@ body.no-scroll {
 }
 
 .card {
+
+  &-hover{
+    transition: .3s transform;
+
+    &:hover {
+      transform: translateY(-0.3125rem);
+    }
+  }
   @media screen and (max-width: 1240px) and (min-width: 641px) {
     &-repair &__icon {
       position: absolute;
       left: 1rem;
       top: 1rem;
     }
+
     &-repair &__content {
       padding-left: 15rem;
     }
@@ -3292,7 +3319,7 @@ body.no-scroll {
         display: block;
         background: url("../../images/body-aside.webp") bottom center/cover no-repeat;
         @media screen and (max-width: 1240px) {
-          background: url("../../images/body-aside-t.webp") bottom left/cover no-repeat;
+          background: url("../../images/body-aside-t.webp") top right/contain no-repeat;
           order: 2;
         }
       }
