@@ -1,3 +1,38 @@
+const easeInOutCubic = (t) => {
+    return t
+}
+
+const smoothScroll = (targetId) => {
+    targetId = targetId.replace('#', '');
+
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'));
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1200;
+    let start = null;
+
+    function animation(currentTime) {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+
+        window.scrollTo(0, startPosition + distance * ease);
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        } else {
+            window.scrollTo(0, targetPosition);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
 const checkTargetOrKey = event => {
     if (
         event.target.classList.contains('popup__wrapper') ||
@@ -84,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenu = document.querySelector('.mobile-menu');
 
     if (burger && header && mobileMenu) {
+        document.documentElement.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`)
         burger.addEventListener('click', e => {
             e.preventDefault();
 
@@ -110,6 +146,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     mobileMenu.classList.remove('active');
                     header.classList.remove('active');
                     document.body.classList.remove('no-scroll');
+
+                    smoothScroll(href);
                 }
             }
         }
@@ -186,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 el: '.slider-pagination',
                 bulletClass: 'slider-pagination__bullet',
                 bulletActiveClass: 'slider-pagination__bullet--active',
-                lockClass:'slider-pagination--lock'
+                lockClass: 'slider-pagination--lock'
             },
             breakpoints: {
                 641: {
@@ -211,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 el: '.slider-pagination',
                 bulletClass: 'slider-pagination__bullet',
                 bulletActiveClass: 'slider-pagination__bullet--active',
-                lockClass:'slider-pagination--lock'
+                lockClass: 'slider-pagination--lock'
             },
         })
     }

@@ -72,7 +72,7 @@
     --text-size-tiny: .75rem;
     --text-size-big: .875rem;
 
-    --header-height: 4.375rem;
+    --header-height: 4.1875rem;
   }
 }
 
@@ -84,8 +84,10 @@
   }
 }
 
-* {
-  scroll-margin-top: var(--header-height);
+@media screen and (max-width: 640px) {
+  * {
+    scroll-margin-top: var(--header-height);
+  }
 }
 
 html {
