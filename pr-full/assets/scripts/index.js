@@ -1,87 +1,228 @@
+class CounterAnimator {
+    constructor(options = {}) {
+        this.options = {
+            threshold: 0.3,
+            rootMargin: '0px',
+            ...options
+        };
+
+        this.observer = new IntersectionObserver(this.handleIntersect.bind(this), this.options);
+    }
+
+    animateCounter(element, start, end, duration = 1000, delay = 0) {
+        setTimeout(() => {
+            const startTime = performance.now();
+            const difference = end - start;
+
+            const update = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                const easeProgress = progress < 0.5
+                    ? 2 * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+                const currentValue = Math.floor(start + difference * easeProgress);
+                element.setAttribute('data-count', currentValue.toLocaleString('ru-RU'));
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.setAttribute('data-count', end.toLocaleString('ru-RU'));
+                }
+            };
+
+            requestAnimationFrame(update);
+        }, delay);
+    }
+
+    handleIntersect(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const block = entry.target;
+                const counters = block.querySelectorAll('.counter[data-end]');
+
+                counters.forEach((counter, index) => {
+                    const endValue = parseInt(counter.getAttribute('data-end')) || 0;
+                    const delay = (index + 1) * 1000;
+                    this.animateCounter(counter, 0, endValue, delay, 0);
+                });
+
+                observer.unobserve(block);
+            }
+        });
+    }
+
+    observeCounters(selector = '.counters-block') {
+        const counterBlocks = document.querySelectorAll(selector);
+
+        if (counterBlocks.length) {
+            counterBlocks.forEach(block => {
+                const counters = block.querySelectorAll('.counter[data-end]');
+                if (counters.length) {
+                    counters.forEach(counter => counter.setAttribute('data-count', '0'));
+                    this.observer.observe(block);
+                }
+            });
+        }
+    }
+}
+class Animations {
+    constructor() {
+        this.animationWrapperArray = document.querySelectorAll('.animation-wrapper');
+    }
+
+    splitNode(node, delayStep, wordIndex = { value: 0 }) {
+        // Если это текстовый узел — разбиваем на слова
+        if (node.nodeType === Node.TEXT_NODE) {
+            const fragment = document.createDocumentFragment();
+            const parts = node.textContent.split(/(\s+)/); // сохраняем пробелы
+
+            parts.forEach(part => {
+                if (part === '') return;
+                if (/\s+/.test(part)) {
+                    fragment.appendChild(document.createTextNode(part)); // пробел
+                } else {
+                    const span = document.createElement('span');
+                    span.classList.add('word');
+                    span.style.setProperty('--animation-delay', `${wordIndex.value * delayStep}s`);
+                    span.textContent = part;
+                    fragment.appendChild(span);
+                    wordIndex.value++;
+                }
+            });
+            return fragment;
+        }
+
+        // Если это <br> — просто клонируем
+        if (node.nodeName === 'BR') {
+            return node.cloneNode();
+        }
+
+        // Если это элемент — сохраняем его и обрабатываем потомков
+        if (node.nodeType === Node.ELEMENT_NODE) {
+            const clone = node.cloneNode(false); // копируем сам тег и классы
+            node.childNodes.forEach(child => {
+                clone.appendChild(this.splitNode(child, delayStep, wordIndex));
+            });
+            return clone;
+        }
+
+        return document.createTextNode('');
+    }
+
+    splitTextIntoWords(element) {
+        // Сначала считаем количество слов, чтобы рассчитать delayStep
+        const text = element.textContent.trim();
+        const totalWords = text ? text.split(/\s+/).length : 0;
+        const maxDuration = 1; // общая длительность
+        const delayStep = totalWords ? maxDuration / totalWords : 0;
+
+        const newContent = document.createDocumentFragment();
+        const wordIndex = { value: 0 };
+
+        element.childNodes.forEach(node => {
+            newContent.appendChild(this.splitNode(node, delayStep, wordIndex));
+        });
+
+        element.innerHTML = '';
+        element.appendChild(newContent);
+    }
+
+    toggleAnimation(animationWrapperElement) {
+        const animationItemArray = animationWrapperElement.querySelectorAll('.animation-item');
+        const textItemArray = animationWrapperElement.querySelectorAll('.animation-item-text');
+
+        // Обычные элементы
+        animationItemArray.forEach((el, index) => {
+            el.style.setProperty('--animation-delay', `${(index + 1) * 0.2}s`);
+            el.classList.add('animated');
+        });
+
+        // Текстовые элементы
+        textItemArray.forEach(textElement => {
+            this.splitTextIntoWords(textElement);
+            textElement.classList.add('animated-text');
+        });
+    }
+
+    handleIntersection(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                this.toggleAnimation(entry.target);
+            }
+        });
+    }
+
+    init() {
+        if (!this.animationWrapperArray.length) return;
+
+        const observer = new IntersectionObserver(this.handleIntersection.bind(this));
+        this.animationWrapperArray.forEach(wrapper => observer.observe(wrapper));
+    }
+}
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
-// Находим все карточки с классом .services-card
     const serviceCards = document.querySelectorAll('.services-card');
 
-// Проверяем, есть ли карточки на странице
     if (serviceCards.length === 0) {
         console.warn('Не найдено элементов с классом .services-card');
     }
 
-// Обрабатываем каждую карточку
     serviceCards.forEach((card, index) => {
-        // Ищем видео внутри карточки
         const video = card.querySelector('video');
 
-        // Проверяем наличие видео
         if (!video) {
-            console.warn(`Видео не найдено в карточке #${index + 1}`);
             return;
         }
 
-        // Проверяем, загружено ли видео
-        video.addEventListener('error', (e) => {
-            console.error(`Ошибка загрузки видео в карточке #${index + 1}:`, e);
-        });
-
         let animationFrame = null;
 
-        // Функция для реверсивного воспроизведения
         const playReverse = () => {
             if (video.currentTime <= 0) {
                 cancelAnimationFrame(animationFrame);
 
-                // Загружаем видео заново, чтобы показать poster
                 video.load();
 
                 return;
             }
 
-            // Уменьшаем время на небольшой шаг
-            video.currentTime = Math.max(0, video.currentTime - 0.033); // ~30fps назад
-
+            video.currentTime = Math.max(0, video.currentTime - 0.033);
             animationFrame = requestAnimationFrame(playReverse);
         };
 
-        // Обработчик наведения курсора
         card.addEventListener('mouseenter', async () => {
             try {
-                // Останавливаем реверс, если он был запущен
                 if (animationFrame) {
                     cancelAnimationFrame(animationFrame);
                     animationFrame = null;
                 }
 
-                // Устанавливаем нормальную скорость
                 video.playbackRate = 1;
 
-                // Проигрываем видео вперед
                 await video.play();
             } catch (error) {
                 console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
             }
         });
 
-        // Обработчик ухода курсора
         card.addEventListener('mouseleave', () => {
             try {
-                // Останавливаем прямое воспроизведение
                 video.pause();
 
-                // Запускаем реверсивное воспроизведение
                 playReverse();
             } catch (error) {
                 console.error(`Ошибка реверса видео в карточке #${index + 1}:`, error);
             }
         });
 
-        // Опционально: предзагрузка видео
         video.preload = 'auto';
 
-        // Отключаем звук
         video.muted = true;
 
-        // Убираем loop, если он есть
-        video.loop = false;
+        video.loop = true;
     });
 
     const servicesSlider = new Swiper('.services-slider', {
@@ -115,8 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mobileMenu = document.querySelector('.mobile-menu');
 
-    if(burger && mobileMenu){
-        burger.addEventListener('click',e=>{
+    if (burger && mobileMenu) {
+        burger.addEventListener('click', e => {
             e.preventDefault();
 
             burger.classList.toggle('active');
@@ -124,60 +265,47 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll')
         })
     }
-})
 
-function animateCounter(element, start, end, duration = 1000) {
-    const startTime = performance.now();
-    const difference = end - start;
-
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        const easeProgress = progress < 0.5
-            ? 2 * progress * progress
-            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-
-        const currentValue = Math.floor(start + difference * easeProgress);
-        element.setAttribute('data-count', currentValue.toLocaleString('ru-RU'));
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        } else {
-            element.setAttribute('data-count', end.toLocaleString('ru-RU'));
-        }
-    }
-
-    requestAnimationFrame(update);
-}
-
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
-
-const counterObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counter = entry.target;
-            const endValue = parseInt(counter.getAttribute('data-end')) || 0;
-
-            animateCounter(counter, 0, endValue, 1000);
-
-            observer.unobserve(counter);
-        }
+    const animator = new CounterAnimator({
+        threshold: 0.3,
+        rootMargin: '0px'
     });
-}, observerOptions);
 
+    const preloader = document.querySelector('.preloader')
 
-document.addEventListener('DOMContentLoaded', () => {
-    const counters = document.querySelectorAll('.counter[data-end]');
+    if (preloader) {
+        const preloaderSvg = document.querySelector('.preloader__svg .svg-elem-20');
+        const videoBg = document.querySelector('video.hero__bg');
+        document.body.classList.add('no-scroll');
 
-    if (counters.length) {
-        counters.forEach(counter => {
-            counter.setAttribute('data-count', '0');
-
-            counterObserver.observe(counter);
+        preloaderSvg.addEventListener('animationend', function () {
+            preloader.classList.add('loaded');
+            document.body.classList.remove('no-scroll');
+            if (videoBg) {
+                videoBg.play();
+            }
+            animator.observeCounters('.counters-block');
+            const animation = new Animations();
+            animation.init();
         });
+    }else{
+        animator.observeCounters('.counters-block');
+        const animation = new Animations();
+        animation.init();
     }
-});
+
+
+
+    const header = document.querySelector('.header'),
+        fixedNav = document.querySelector('.fixed-nav');
+
+    if(header && fixedNav){
+        window.addEventListener('scroll',()=>{
+            if(pageYOffset > header.getBoundingClientRect().height){
+                fixedNav.classList.add('visible')
+            }else{
+                fixedNav.classList.remove('visible')
+            }
+        })
+    }
+})

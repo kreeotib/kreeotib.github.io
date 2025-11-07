@@ -202,6 +202,11 @@ body.no-scroll {
 .button--bordered {
   border-color: #fff;
   color: #fff;
+  transition: 0.3s border-color, 0.3s color;
+}
+.button--bordered:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 .button--bordered--accent {
   color: var(--color-accent);
@@ -287,11 +292,16 @@ body.no-scroll {
 }
 
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 5;
+}
+@media screen and (max-width: 767px) {
+  .header {
+    position: fixed;
+  }
 }
 .header__logo {
   max-width: 16.875rem;
@@ -683,6 +693,18 @@ body.no-scroll {
     display: none;
   }
 }
+.section-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.section-img img, .section-img video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .section-bg {
   position: relative;
   z-index: 1;
@@ -725,7 +747,7 @@ body.no-scroll {
 }
 .section-bg__gradient--small {
   top: unset;
-  bottom: -15%;
+  bottom: 0%;
   right: unset;
   left: 0;
   width: 118.75rem;
@@ -883,6 +905,9 @@ body.no-scroll {
   height: 100%;
   object-fit: cover;
 }
+.services-card:hover img.services-card__bg {
+  transform: scale(1.1);
+}
 .services-card--square {
   position: relative;
   padding-bottom: 100%;
@@ -920,6 +945,25 @@ body.no-scroll {
     margin-right: auto;
   }
 }
+@media screen and (min-width: 768px) {
+  .services-card:hover .services-card__button {
+    padding: 0.75rem 1.5rem;
+  }
+  .services-card:hover .services-card__button .button__text {
+    display: block;
+    opacity: 1;
+  }
+  .services-card__button {
+    min-width: unset;
+    padding: 0.75rem;
+    transition: 0.3s padding, 0.3s width;
+  }
+  .services-card__button .button__text {
+    display: none;
+    opacity: 0;
+    transition: 0.3s opacity;
+  }
+}
 .services-card__bg {
   position: absolute;
   left: 0;
@@ -929,6 +973,7 @@ body.no-scroll {
   pointer-events: none;
   z-index: 1;
   object-fit: cover;
+  transition: 0.3s transform;
 }
 .services-card__content {
   position: relative;
@@ -1056,7 +1101,12 @@ body.no-scroll {
   backdrop-filter: blur(35px);
   background: rgba(200, 200, 200, 0.06);
   border-radius: 0.75rem;
+  border: 1px solid transparent;
+  transition: 0.3s border-color;
   padding: 2.75rem;
+}
+.advantages-item__wrapper:hover {
+  border-color: #007934;
 }
 @media screen and (max-width: 767px) {
   .advantages-item__wrapper {
@@ -1082,7 +1132,7 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   transform-origin: right center;
-  transition: 0.3s transform;
+  transition: 0.6s transform;
 }
 @media screen and (max-width: 767px) {
   .map__item {
@@ -1091,7 +1141,7 @@ body.no-scroll {
 }
 @media screen and (min-width: 768px) {
   .map__item:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 .map__item img {
@@ -1133,6 +1183,7 @@ body.no-scroll {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 .contact-map__circle {
   position: absolute;
@@ -1331,6 +1382,9 @@ body.no-scroll {
   font-weight: 500;
   min-height: 6.25rem;
 }
+.document-item:hover .document-item__download {
+  opacity: 1;
+}
 .document-item__icon {
   width: 2.5rem;
   height: 2.5rem;
@@ -1342,6 +1396,9 @@ body.no-scroll {
   height: 1.5rem;
   flex-shrink: 0;
   color: #3C9752;
+  opacity: 0.8;
+  transition: 0.3s opacity;
+  will-change: opacity;
 }
 
 .input {
@@ -1949,6 +2006,564 @@ body.no-scroll {
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  overflow: hidden;
+  transition: 0.5s 0.5s visibility, 0.5s 0.5s opacity;
+}
+.preloader.loaded .preloader__svg {
+  opacity: 0;
+  transform: scale(0.8);
+}
+.preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+.preloader.loaded::before {
+  animation: loaderAnimation 0.2s 0.4s forwards;
+}
+.preloader.loaded::after {
+  animation: loaderAnimationButton 0.2s 0.4s forwards;
+}
+.preloader::before, .preloader::after {
+  content: "";
+  width: 100%;
+  height: 50%;
+  background-color: #000;
+  position: absolute;
+  left: 0;
+  z-index: 2;
+}
+.preloader::before {
+  top: 0;
+}
+.preloader::after {
+  bottom: 0;
+}
+.preloader__svg {
+  position: relative;
+  z-index: 4;
+  transition: 0.4s opacity, 0.4s transform;
+}
+
+.animation-wrapper {
+  overflow: hidden;
+}
+
+.animation-item-text {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.animation-item-text .word {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: var(--animation-delay);
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animation-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--animation-delay);
+}
+
+.animation-item.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fixed-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  padding: 1rem var(--container-padding);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s visibility, 0.5s opacity;
+}
+.fixed-nav.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.fixed-nav__wrapper {
+  backdrop-filter: blur(35px);
+  background: rgba(200, 200, 200, 0.06);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+}
+@media screen and (max-width: 767px) {
+  .fixed-nav {
+    display: none;
+  }
+}
+.fixed-nav .header-nav__wrapper {
+  justify-content: space-between;
+}
+
+@keyframes loaderAnimation {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -50%;
+  }
+}
+@keyframes loaderAnimationButton {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -50%;
+  }
+}
+/***************************************************
+ * Generated by SVG Artista on 9/11/2025, 11:36:00 AM
+ * MIT license (https://opensource.org/licenses/MIT)
+ * W. https://svgartista.net
+ **************************************************/
+@-webkit-keyframes animate-svg-fill-1 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-1 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-1 {
+  -webkit-animation: animate-svg-fill-1 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s both;
+  animation: animate-svg-fill-1 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s both;
+}
+
+@-webkit-keyframes animate-svg-fill-2 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-2 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-2 {
+  -webkit-animation: animate-svg-fill-2 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s both;
+  animation: animate-svg-fill-2 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s both;
+}
+
+@-webkit-keyframes animate-svg-fill-3 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-3 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-3 {
+  -webkit-animation: animate-svg-fill-3 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1s both;
+  animation: animate-svg-fill-3 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1s both;
+}
+
+@-webkit-keyframes animate-svg-fill-4 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-4 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-4 {
+  -webkit-animation: animate-svg-fill-4 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.1s both;
+  animation: animate-svg-fill-4 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.1s both;
+}
+
+@-webkit-keyframes animate-svg-fill-5 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-5 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-5 {
+  -webkit-animation: animate-svg-fill-5 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.2s both;
+  animation: animate-svg-fill-5 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.2s both;
+}
+
+@-webkit-keyframes animate-svg-fill-6 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-6 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-6 {
+  -webkit-animation: animate-svg-fill-6 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.3s both;
+  animation: animate-svg-fill-6 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.3s both;
+}
+
+@-webkit-keyframes animate-svg-fill-7 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-7 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-7 {
+  -webkit-animation: animate-svg-fill-7 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.4s both;
+  animation: animate-svg-fill-7 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.4s both;
+}
+
+@-webkit-keyframes animate-svg-fill-8 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-8 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-8 {
+  -webkit-animation: animate-svg-fill-8 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.5s both;
+  animation: animate-svg-fill-8 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.5s both;
+}
+
+@-webkit-keyframes animate-svg-fill-9 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-9 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-9 {
+  -webkit-animation: animate-svg-fill-9 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.6s both;
+  animation: animate-svg-fill-9 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.6s both;
+}
+
+@-webkit-keyframes animate-svg-fill-10 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+@keyframes animate-svg-fill-10 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(255, 255, 255);
+  }
+}
+.svg-elem-10 {
+  -webkit-animation: animate-svg-fill-10 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.7s both;
+  animation: animate-svg-fill-10 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.7s both;
+}
+
+@-webkit-keyframes animate-svg-fill-11 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(118, 188, 33);
+  }
+}
+@keyframes animate-svg-fill-11 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(118, 188, 33);
+  }
+}
+.svg-elem-11 {
+  -webkit-animation: animate-svg-fill-11 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.8s both;
+  animation: animate-svg-fill-11 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.8s both;
+}
+
+@-webkit-keyframes animate-svg-fill-12 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(118, 188, 33);
+  }
+}
+@keyframes animate-svg-fill-12 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(118, 188, 33);
+  }
+}
+.svg-elem-12 {
+  -webkit-animation: animate-svg-fill-12 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.9s both;
+  animation: animate-svg-fill-12 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.9s both;
+}
+
+@-webkit-keyframes animate-svg-fill-13 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+@keyframes animate-svg-fill-13 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+.svg-elem-13 {
+  -webkit-animation: animate-svg-fill-13 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2s both;
+  animation: animate-svg-fill-13 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2s both;
+}
+
+@-webkit-keyframes animate-svg-fill-14 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+@keyframes animate-svg-fill-14 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+.svg-elem-14 {
+  -webkit-animation: animate-svg-fill-14 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.1s both;
+  animation: animate-svg-fill-14 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.1s both;
+}
+
+@-webkit-keyframes animate-svg-fill-15 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+@keyframes animate-svg-fill-15 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+.svg-elem-15 {
+  -webkit-animation: animate-svg-fill-15 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.2s both;
+  animation: animate-svg-fill-15 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.2s both;
+}
+
+@-webkit-keyframes animate-svg-fill-16 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+@keyframes animate-svg-fill-16 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+.svg-elem-16 {
+  -webkit-animation: animate-svg-fill-16 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.3s both;
+  animation: animate-svg-fill-16 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.3s both;
+}
+
+@-webkit-keyframes animate-svg-fill-17 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+@keyframes animate-svg-fill-17 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(0, 121, 52);
+  }
+}
+.svg-elem-17 {
+  -webkit-animation: animate-svg-fill-17 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.4s both;
+  animation: animate-svg-fill-17 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.4s both;
+}
+
+@-webkit-keyframes animate-svg-fill-18 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(248, 175, 7);
+  }
+}
+@keyframes animate-svg-fill-18 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(248, 175, 7);
+  }
+}
+.svg-elem-18 {
+  -webkit-animation: animate-svg-fill-18 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.5s both;
+  animation: animate-svg-fill-18 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.5s both;
+}
+
+@-webkit-keyframes animate-svg-fill-19 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(248, 175, 7);
+  }
+}
+@keyframes animate-svg-fill-19 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(248, 175, 7);
+  }
+}
+.svg-elem-19 {
+  -webkit-animation: animate-svg-fill-19 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.6s both;
+  animation: animate-svg-fill-19 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.6s both;
+}
+
+@-webkit-keyframes animate-svg-fill-20 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(248, 175, 7);
+  }
+}
+@keyframes animate-svg-fill-20 {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgb(248, 175, 7);
+  }
+}
+.svg-elem-20 {
+  -webkit-animation: animate-svg-fill-20 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.7s both;
+  animation: animate-svg-fill-20 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 2.7s both;
 }
 
 /*# sourceMappingURL=index.css.map */
