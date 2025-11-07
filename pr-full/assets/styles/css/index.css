@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --main-font: "Montserrat", sans-serif;
   --fluid-spacer: 0.052vw;
@@ -1179,13 +1180,170 @@ body.no-scroll {
   gap: 0.5rem;
 }
 
-.contact-map {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
+.contact-circle {
+  mix-blend-mode: screen;
 }
-.contact-map__circle {
+.contact-circle circle {
+  transform: translate3d(0, 0, 0);
+}
+
+svg {
+  shape-rendering: geometricPrecision;
+  transform: translateZ(0);
+}
+
+.contact-circle {
+  overflow: visible;
+}
+
+circle {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Базовая прозрачность для всех анимированных кругов */
+circle.contact-circle-animation {
+  opacity: 0;
+  transform-origin: center;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Новый белый круг с анимацией */
+circle.contact-circle-animation[r="12"] {
+  animation: ripple1 4s ease-in-out infinite;
+}
+
+/* Второй круг */
+circle.contact-circle-animation[r="176.974"] {
+  animation: ripple2 4s ease-in-out infinite;
+}
+
+/* Третий круг */
+circle.contact-circle-animation[r="302.753"] {
+  animation: ripple3 4s ease-in-out infinite;
+}
+
+/* Четвертый круг */
+circle.contact-circle-animation[r="340.676"] {
+  animation: ripple4 4s ease-in-out infinite;
+}
+
+/* Пятый круг */
+circle.contact-circle-animation[r="410.201"] {
+  animation: ripple5 4s ease-in-out infinite;
+}
+
+/* Шестой круг */
+circle.contact-circle-animation[r="492.368"] {
+  animation: ripple6 4s ease-in-out infinite;
+}
+
+@keyframes ripple1 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  6.25% {
+    opacity: 1;
+  }
+  12.5% {
+    transform: scale(14.74);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes ripple2 {
+  0%, 12.5%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  18.75% {
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.71);
+    opacity: 0;
+  }
+  37.5% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes ripple3 {
+  0%, 25%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  31.25% {
+    opacity: 1;
+  }
+  37.5% {
+    transform: scale(1.125);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes ripple4 {
+  0%, 37.5%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  43.75% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.204);
+    opacity: 0;
+  }
+  62.5% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes ripple5 {
+  0%, 50%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  56.25% {
+    opacity: 0.2;
+  }
+  62.5% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  75% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes ripple6 {
+  0%, 62.5%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  68.75% {
+    opacity: 0.2;
+  }
+  75% {
+    transform: scale(1.117);
+    opacity: 0;
+  }
+  87.5% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.contact-circle {
   position: absolute;
   z-index: 2;
   width: 61.75rem;
@@ -1194,20 +1352,11 @@ body.no-scroll {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.contact-map__circle circle:nth-of-type(7) {
-  animation: ripple1 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-}
-.contact-map__circle circle:nth-of-type(8) {
-  animation: ripple2 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s infinite;
-}
-.contact-map__circle circle:nth-of-type(9) {
-  animation: ripple3 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s infinite;
-}
-.contact-map__circle circle:nth-of-type(10) {
-  animation: ripple4 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s infinite;
-}
-.contact-map__circle circle:nth-of-type(11) {
-  animation: ripple5 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.6s infinite;
+.contact-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 .contact-map__item {
   width: 34.375rem;
@@ -1287,86 +1436,6 @@ body.no-scroll {
   }
 }
 
-@keyframes ripple1 {
-  0% {
-    r: 273.678;
-    opacity: 1;
-    stroke-opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-    stroke-opacity: 0.6;
-  }
-  100% {
-    r: 350;
-    opacity: 0;
-    stroke-opacity: 0;
-  }
-}
-@keyframes ripple2 {
-  0% {
-    r: 302.753;
-    opacity: 1;
-    stroke-opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-    stroke-opacity: 0.5;
-  }
-  100% {
-    r: 380;
-    opacity: 0;
-    stroke-opacity: 0;
-  }
-}
-@keyframes ripple3 {
-  0% {
-    r: 340.676;
-    opacity: 0.5;
-    stroke-opacity: 0.5;
-  }
-  50% {
-    opacity: 0.3;
-    stroke-opacity: 0.3;
-  }
-  100% {
-    r: 420;
-    opacity: 0;
-    stroke-opacity: 0;
-  }
-}
-@keyframes ripple4 {
-  0% {
-    r: 410.201;
-    opacity: 0.2;
-    stroke-opacity: 0.2;
-  }
-  50% {
-    opacity: 0.15;
-    stroke-opacity: 0.15;
-  }
-  100% {
-    r: 490;
-    opacity: 0;
-    stroke-opacity: 0;
-  }
-}
-@keyframes ripple5 {
-  0% {
-    r: 492.368;
-    opacity: 0.2;
-    stroke-opacity: 0.2;
-  }
-  50% {
-    opacity: 0.1;
-    stroke-opacity: 0.1;
-  }
-  100% {
-    r: 560;
-    opacity: 0;
-    stroke-opacity: 0;
-  }
-}
 .document-slider {
   overflow: visible;
 }
