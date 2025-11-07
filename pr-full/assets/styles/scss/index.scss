@@ -2374,7 +2374,11 @@ body.no-scroll {
   overflow: hidden;
 }
 
-.animation-item-text .word {
+.animation-item-text .word{
+  opacity: 0;
+}
+
+.animation-item-text.animated-text .word {
   display: inline-block;
   transform: translateY(100%);
   opacity: 0;

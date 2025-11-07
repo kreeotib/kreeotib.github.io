@@ -67,21 +67,21 @@ class CounterAnimator {
         }
     }
 }
+
 class Animations {
     constructor() {
         this.animationWrapperArray = document.querySelectorAll('.animation-wrapper');
     }
 
-    splitNode(node, delayStep, wordIndex = { value: 0 }) {
-        // Если это текстовый узел — разбиваем на слова
+    splitNode(node, delayStep, wordIndex = {value: 0}) {
         if (node.nodeType === Node.TEXT_NODE) {
             const fragment = document.createDocumentFragment();
-            const parts = node.textContent.split(/(\s+)/); // сохраняем пробелы
+            const parts = node.textContent.split(/(\s+)/);
 
             parts.forEach(part => {
                 if (part === '') return;
                 if (/\s+/.test(part)) {
-                    fragment.appendChild(document.createTextNode(part)); // пробел
+                    fragment.appendChild(document.createTextNode(part));
                 } else {
                     const span = document.createElement('span');
                     span.classList.add('word');
@@ -94,14 +94,14 @@ class Animations {
             return fragment;
         }
 
-        // Если это <br> — просто клонируем
+
         if (node.nodeName === 'BR') {
             return node.cloneNode();
         }
 
-        // Если это элемент — сохраняем его и обрабатываем потомков
+
         if (node.nodeType === Node.ELEMENT_NODE) {
-            const clone = node.cloneNode(false); // копируем сам тег и классы
+            const clone = node.cloneNode(false);
             node.childNodes.forEach(child => {
                 clone.appendChild(this.splitNode(child, delayStep, wordIndex));
             });
@@ -112,14 +112,13 @@ class Animations {
     }
 
     splitTextIntoWords(element) {
-        // Сначала считаем количество слов, чтобы рассчитать delayStep
         const text = element.textContent.trim();
         const totalWords = text ? text.split(/\s+/).length : 0;
         const maxDuration = 1; // общая длительность
         const delayStep = totalWords ? maxDuration / totalWords : 0;
 
         const newContent = document.createDocumentFragment();
-        const wordIndex = { value: 0 };
+        const wordIndex = {value: 0};
 
         element.childNodes.forEach(node => {
             newContent.appendChild(this.splitNode(node, delayStep, wordIndex));
@@ -133,15 +132,12 @@ class Animations {
         const animationItemArray = animationWrapperElement.querySelectorAll('.animation-item');
         const textItemArray = animationWrapperElement.querySelectorAll('.animation-item-text');
 
-        // Обычные элементы
         animationItemArray.forEach((el, index) => {
             el.style.setProperty('--animation-delay', `${(index + 1) * 0.2}s`);
             el.classList.add('animated');
         });
 
-        // Текстовые элементы
         textItemArray.forEach(textElement => {
-            this.splitTextIntoWords(textElement);
             textElement.classList.add('animated-text');
         });
     }
@@ -157,19 +153,24 @@ class Animations {
     init() {
         if (!this.animationWrapperArray.length) return;
 
-        const observer = new IntersectionObserver(this.handleIntersection.bind(this));
+        const observer = new IntersectionObserver(this.handleIntersection.bind(this),{
+            threshold: 0.3,
+            rootMargin: '0px 0px -25% 0px',
+        });
         this.animationWrapperArray.forEach(wrapper => observer.observe(wrapper));
+        const textItemArray = document.querySelectorAll('.animation-item-text');
+        if(textItemArray.length){
+            textItemArray.forEach(item=>{
+                this.splitTextIntoWords(item);
+
+            })
+        }
     }
 }
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const serviceCards = document.querySelectorAll('.services-card');
-
-    if (serviceCards.length === 0) {
-        console.warn('Не найдено элементов с классом .services-card');
-    }
 
     serviceCards.forEach((card, index) => {
         const video = card.querySelector('video');
@@ -268,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const animator = new CounterAnimator({
         threshold: 0.3,
-        rootMargin: '0px'
+        rootMargin: '0px 0px -25% 0px',
     });
 
     const preloader = document.querySelector('.preloader')
@@ -288,22 +289,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const animation = new Animations();
             animation.init();
         });
-    }else{
+    } else {
         animator.observeCounters('.counters-block');
         const animation = new Animations();
         animation.init();
     }
 
 
-
     const header = document.querySelector('.header'),
         fixedNav = document.querySelector('.fixed-nav');
 
-    if(header && fixedNav){
-        window.addEventListener('scroll',()=>{
-            if(pageYOffset > header.getBoundingClientRect().height){
+    if (header && fixedNav) {
+        window.addEventListener('scroll', () => {
+            if (pageYOffset > header.getBoundingClientRect().height) {
                 fixedNav.classList.add('visible')
-            }else{
+            } else {
                 fixedNav.classList.remove('visible')
             }
         })
