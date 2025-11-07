@@ -923,7 +923,63 @@
         <path d="M110.628 16.8654H89.041L81.3185 24.6718H118.35L110.628 16.8654Z" fill="#F8AF07"
               class="svg-elem-20"></path>
     </svg>
+</div>
 
+<div class="popup popup-form">
+   <div class="popup__wrapper">
+       <div class="popup__container">
+           <div class="form">
+               <div class="form__wrapper  ">
+                   <div class="form__grid">
+                       <div class="popup__close popup-close"></div>
+                       <div class="form-img">
+                           <div class="form-img__wrapper">
+                               <img src="assets/images/form.webp" alt="" class="form-img__item">
+                               <img src="assets/images/logo-big.svg" alt="" class="form-img__logo">
+                           </div>
+                       </div>
+                       <form action="send_mail.php" method="POST" class="form-content contact-form">
+                           <div class="form-content__wrapper">
+                               <p class="form__title title title--base title--semibold title--mobile--big" >
+                                   Онлайн заявка
+                               </p>
+                               <div class="form-content__box">
+                                   <label class="input">
+                                       <input name="fio" type="text" class="input__item" placeholder="Фамилия Имя Отчество" required>
+                                   </label>
+                                   <label class="input">
+                                       <input name="company" type="text" class="input__item" placeholder="Компания" required>
+                                   </label>
+                                   <div class="form-content__row">
+                                       <label class="input">
+                                           <input name="phone" type="text" class="input__item js-phone-mask" placeholder="Телефон *" required>
+                                       </label>
+                                       <label class="input">
+                                           <input name="email" type="email" class="input__item" placeholder="Почта" required>
+                                       </label>
+                                   </div>
+                                   <label class="input input--textarea">
+                                       <textarea name="comment" placeholder="Запрос" cols="30" rows="10" class="input__item"></textarea>
+                                   </label>
+                                   <div style="position: absolute; left: -9999px;">
+                                       <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
+                                   </div>
+                                   <label class="checkbox">
+                                       <input type="checkbox" required class="checkbox__item">
+                                       <span class="checkbox__checkmark"></span>
+                                       <span class="text text--base">
+                                    Я принимаю условия <a href="assets/privacy.docx" class="text text--accent">политики конфиденциальности</a> и даю согласие на обработку персональных данных
+                                </span>
+                                   </label>
+                                   <button type="submit" class="button button--base button--accent button--full">Отправить</button>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
 </div>
 
 <script src="assets/libs/swiper/swiper.js"></script>

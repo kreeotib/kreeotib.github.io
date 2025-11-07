@@ -1404,7 +1404,6 @@ circle {
 }
 
 
-/* Базовая прозрачность для всех анимированных кругов */
 circle.contact-circle-animation {
   opacity: 0;
   transform-origin: center;
@@ -1414,32 +1413,32 @@ circle.contact-circle-animation {
   -webkit-backface-visibility: hidden;
 }
 
-/* Новый белый круг с анимацией */
+
 circle.contact-circle-animation[r="12"] {
   animation: ripple1 4s ease-in-out infinite;
 }
 
-/* Второй круг */
+
 circle.contact-circle-animation[r="176.974"] {
   animation: ripple2 4s ease-in-out infinite;
 }
 
-/* Третий круг */
+
 circle.contact-circle-animation[r="302.753"] {
   animation: ripple3 4s ease-in-out infinite;
 }
 
-/* Четвертый круг */
+
 circle.contact-circle-animation[r="340.676"] {
   animation: ripple4 4s ease-in-out infinite;
 }
 
-/* Пятый круг */
+
 circle.contact-circle-animation[r="410.201"] {
   animation: ripple5 4s ease-in-out infinite;
 }
 
-/* Шестой круг */
+
 circle.contact-circle-animation[r="492.368"] {
   animation: ripple6 4s ease-in-out infinite;
 }
@@ -1984,49 +1983,7 @@ circle.contact-circle-animation[r="492.368"] {
     }
   }
 
-  &__close {
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 3;
 
-    &:hover {
-      cursor: pointer;
-
-      &::before, &::after {
-        background-color: var(--color-accent);
-      }
-    }
-
-    &::before, &::after {
-      content: "";
-      width: 100%;
-      height: 2px;
-      background-color: #fff;
-      display: block;
-      top: calc(50% - 1px);
-      left: 0;
-      position: absolute;
-    }
-
-    &::before {
-      transform: rotate(45deg);
-    }
-
-    &::after {
-      transform: rotate(-45deg);
-    }
-  }
-
-  &__wrapper {
-    padding: 1.25rem;
-    height: 100%;
-    @media screen and (max-width: 767px) {
-      padding: .75rem;
-    }
-  }
 
   &__grid {
     display: grid;
@@ -2528,6 +2485,175 @@ circle.contact-circle-animation[r="492.368"] {
     justify-content: space-between;
   }
 }
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(#000000, 0.4);
+  z-index: 13;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: .3s visibility, .5s opacity;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__close {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+
+    &:hover {
+      cursor: pointer;
+
+      &::before, &::after {
+        background-color: var(--color-accent);
+      }
+    }
+
+    &::before, &::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      display: block;
+      top: calc(50% - 1px);
+      left: 0;
+      position: absolute;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__decor {
+    position: absolute;
+    pointer-events: none;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+
+    &--bottom {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+
+      &::before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 0 85px 90px 85px;
+        border-color: transparent transparent var(--color-accent) transparent;
+        transform: rotate(50deg);
+
+        position: absolute;
+        bottom: 0;
+        right: -8rem;
+      }
+    }
+
+    &--top {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      width: 0;
+      height: 0;
+
+      &::before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 0 7.25rem 7.5rem 7.25rem;
+        border-color: transparent transparent var(--color-accent) transparent;
+        transform: rotate(-150deg);
+
+        position: absolute;
+        left: -7.5rem;
+        top: 1rem;
+      }
+
+      &::after {
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 4.375rem 4.125rem 0 4.125rem;
+        border-color: var(--color-accent) transparent transparent transparent;
+        transform: rotate(58deg);
+
+        position: absolute;
+        top: -1rem;
+        left: 2rem;
+
+      }
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px; /* Width of the scrollbar */
+      height: 5px; /* Height of the scrollbar */
+
+      display: none;
+      @media screen and (max-width: 640px) {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent; /* Background of the scrollbar track */
+      border-radius: 10px; /* Rounded corners for the track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-accent); /* Color of the scrollbar thumb */
+      border-radius: 10px; /* Rounded corners for the thumb */
+    }
+  }
+
+  &__container {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 
 
 @keyframes loaderAnimation {
