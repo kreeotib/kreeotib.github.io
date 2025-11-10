@@ -75,74 +75,163 @@
             </div>
         </div>
     </header>
-    <main class="content">
-        <div class="section">
-            <div class="section__wrapper">
+    <main class="content page">
+        <div class="page__wrapper">
+            <div class="page-header">
                 <div class="container">
-                    <ul style="display:flex; flex-direction: column; gap: 1rem; font-size: 1.5rem;">
-                        <li>
-                            <a href="login.html">
-                                login
+                    <div class="page-header__wrapper">
+                        <div class="section-tag page-header__tag">
+                            Личный кабинет
+                        </div>
+                        <div class="page-header__back">
+                            <a href="#" class="back-link">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#chevron-left"></use>
+                                </svg>
                             </a>
-                        </li>
-                        <li>
-                            <a href="register.html">
-                                register
-                            </a>
-                        </li>
-                        <li>
-                            <a href="register-2.html">
-                                register 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="register-3.html">
-                                register 3
-                            </a>
-                        </li>
-                        <li>
-                            <a href="recover.html">
-                                recover
-                            </a>
-                        </li>
-                        <li>
-                            <a href="recover-2.html">
-                                recover 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="recover-3.html">
-                                recover 3
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cabinet.html">
-                                cabinet
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cabinet-edit.html">
-                                cabinet img
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cabinet-orders.html">
-                                cabinet orders
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cabinet-img-m.html">
-                                cabinet img mobile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cabinet-edit.html">
-                                recover 3
-                            </a>
-                        </li>
-                    </ul>
+                            <p class="text text--middle">
+                                Личный кабинет
+                            </p>
+                        </div>
+                        <div class="page-tabs">
+                            <div class="page-tabs__wrapper">
+                                <a href="#" class="page-tabs__link active">
+                                   <span class="page-tabs__icon">
+                                        <svg class="icon">
+                                           <use xlink:href="assets/images/sprite.svg#profile"></use>
+                                       </svg>
+                                   </span>
+                                    <span class="page-tabs__text">
+                                   Персональные данные
+                                   </span>
+                                </a>
+                                <a href="#" class="page-tabs__link">
+                                   <span class="page-tabs__icon">
+                                        <svg class="icon">
+                                           <use xlink:href="assets/images/sprite.svg#delivery"></use>
+                                       </svg>
+                                   </span>
+                                    <span class="page-tabs__text">
+                                       История заказов
+                                   </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <form action="#" class="cabinet form">
+                <div class="container">
+                    <div class="cabinet__wrapper">
+                        <div class="cabinet__row">
+
+                            <div class="cabinet-img">
+                                <div class="profile-img">
+                                    <div class="profile-img__item profile-img__item--current">
+                                        <img src="assets/images/profile/1.webp" alt="" >
+                                    </div>
+                                    <p class="profile-img__text title title--center title--tiny">
+                                        Изображение вашего профиля
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="cabinet__column">
+                                <div class="cabinet-block">
+                                    <div class="cabinet-block__wrapper">
+                                        <p class="title title--small cabinet-block__title">
+                                            Персональные данные
+                                        </p>
+                                        <div class="form__grid">
+                                            <div class="input">
+                                                <label for="fio" class="input__label">
+                                                    Ваше ФИО
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="fio" value="Фамилия Имя Отчество">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="phone" class="input__label">
+                                                    Ваш номер телефона
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="phone" value="+7 (456) 678 - 67 - 54">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="email" class="input__label">
+                                                    Ваша почта
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="email" id="email" value="TransAgro@gmail.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="pass" class="input__label">
+                                                    Ваш пароль
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="password" id="pass" value="TransAgro@gmail.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="address" class="input__label">
+                                                    Ваш адрес
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="address" value="Регион, ул....">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cabinet-block">
+                                    <div class="cabinet-block__wrapper">
+                                        <p class="title title--small cabinet-block__title">
+                                            Сведения об организации
+                                        </p>
+                                        <div class="form__grid">
+                                            <div class="input">
+                                                <label for="inn" class="input__label">
+                                                    ИНН Организации
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="inn" value="-">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="orgname" class="input__label">
+                                                    Наименование организации
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="orgname" value="-">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cabinet-footer">
+                                    <button type="submit" class="button button--mobile--full button--base button--base--equal button--accent">Редактировать профиль</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </main>
     <footer class="footer">
