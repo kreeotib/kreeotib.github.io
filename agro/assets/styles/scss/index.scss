@@ -2140,6 +2140,12 @@ body {
       gap: 1.5rem;
       padding: 1.5rem;
       border-radius: 1.5rem;
+
+      &--table{
+        box-shadow: none;
+        padding: 0;
+        background: transparent;
+      }
     }
   }
 
@@ -2175,12 +2181,21 @@ body {
   }
 
   &-block {
+
     &__wrapper {
       display: flex;
       flex-direction: column;
       gap: 2rem;
       @media screen and (max-width: 767px) {
         gap: 1.5rem;
+      }
+    }
+
+    &__header{
+      &--dekstop{
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
       }
     }
 
@@ -2194,6 +2209,9 @@ body {
         align-items: flex-start;
         justify-content: flex-start;
         gap: .75rem;
+        &--desktop{
+          display: none;
+        }
       }
     }
 
@@ -2520,6 +2538,12 @@ body {
 
   padding: .5rem 1rem;
   height: 2.5rem;
+  
+  @media screen and (max-width: 767px) {
+    font-size: .875rem;
+    height: 2rem;
+    min-width: 7rem;
+  }
   &::before{
     content: "";
     width: .5rem;
@@ -2527,6 +2551,10 @@ body {
     flex-shrink: 0;
     background: var(--text-color);
     border-radius: 50%;
+    @media screen and (max-width: 767px) {
+      width: .375rem;
+      height: .375rem;
+    }
   }
 
   &--onway{
@@ -2551,6 +2579,13 @@ body {
     border:none;
     font-size: .75rem;
   }
+  &__wrapper{
+    @media screen and (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
   a{
     text-decoration: underline;
   }
@@ -2560,7 +2595,9 @@ body {
     padding: 1.5rem;
     @media screen and (max-width: 767px) {
       grid-template-columns: minmax(0,1fr);
-      padding: 1rem 0;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      background: #fff;
     }
     &:not(:last-child){
       border-bottom: 1px solid rgba(33, 56, 80, 0.08);
@@ -2580,6 +2617,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    &--mobile{
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
     @media screen and (max-width: 767px) {
       flex-direction: row;
       gap: .5rem;
@@ -2612,6 +2654,7 @@ body {
         gap: .5rem;
       }
     }
+
     &__status{
       display: flex;
       flex-direction: column;
@@ -2630,6 +2673,7 @@ body {
         gap: 2rem;
         justify-content: space-between;
         max-width: 100%;
+        font-size: .75rem;
       }
     }
   }
