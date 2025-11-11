@@ -30,6 +30,13 @@
 
 }
 
+@media screen and (min-width: 1921px) {
+  :root{
+    --fluid-spacer: 1px;
+    --container-size: 1800px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   :root {
     --fluid-spacer: 0.25vw;
