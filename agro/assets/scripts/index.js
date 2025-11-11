@@ -73,6 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
+    const stepsSlider = new Swiper('.logistic-steps', {
+        spaceBetween: 8,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.logistic-info__button--next',
+            prevEl: '.logistic-info__button--prev',
+            disabledClass: 'logistic-info__button--disabled'
+        },
+        breakpoints: {
+            768: {
+                spaceBetween: 16,
+                slidesPerView: 3
+            }
+        }
+    })
+
+
     const popupButtons = document.querySelectorAll('[data-popup]');
     const popups = document.querySelectorAll('.popup');
 
