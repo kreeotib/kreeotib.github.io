@@ -189,4 +189,73 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    const singleProduct = document.querySelector('.single');
+
+    if(singleProduct){
+        const singleButton = singleProduct.querySelector('.single__button');
+
+        singleProduct.addEventListener('click',e=>{
+            e.preventDefault();
+
+            singleProduct.classList.toggle('active');
+        })
+    }
+
+    const fileInputWrappers = document.querySelectorAll('.file-input-wrapper');
+
+    if(fileInputWrappers.length){
+        fileInputWrappers.forEach(wrapper => {
+            const fileInput = wrapper.querySelector('.file-input__item');
+            const fileGrid = wrapper.querySelector('.file-input__grid');
+
+            if (!fileInput || !fileGrid) return;
+
+            fileInput.addEventListener('change', function(e) {
+                const files = Array.from(e.target.files);
+
+                files.forEach(file => {
+                    if (!file.type.match('image/(png|jpeg|jpg)')) {
+                        alert('Допустимы только PNG и JPG изображения');
+                        return;
+                    }
+
+                    const reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'file-input__img';
+
+                        const deleteBtn = document.createElement('span');
+                        deleteBtn.className = 'file-input__delete';
+
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.alt = file.name;
+
+                        // Обработчик удаления
+                        deleteBtn.addEventListener('click', function() {
+                            imgContainer.remove();
+                        });
+
+                        imgContainer.appendChild(deleteBtn);
+                        imgContainer.appendChild(img);
+                        fileGrid.appendChild(imgContainer);
+                    };
+
+                    reader.readAsDataURL(file);
+                });
+
+                fileInput.value = '';
+            });
+
+            const existingDeleteBtns = fileGrid.querySelectorAll('.file-input__delete');
+            existingDeleteBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.file-input__img').remove();
+                });
+            });
+        });
+    }
+
 })
