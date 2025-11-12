@@ -89,6 +89,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    const advantagesSlider = new Swiper('.advantages-slider', {
+        spaceBetween: 8,
+        slidesPerView: 'auto',
+        navigation: {
+            nextEl: '.advantages-slider-button-next',
+            prevEl: '.advantages-slider-button-prev',
+            disabledClass: 'slider-button--disabled'
+        },
+        breakpoints: {
+            768: {
+                spaceBetween: 24,
+                slidesPerView: 'auto'
+            }
+        }
+    })
+
 
     const popupButtons = document.querySelectorAll('[data-popup]');
     const popups = document.querySelectorAll('.popup');
