@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const passInputs = document.querySelectorAll('.input-item-pass');
-    if(passInputs.length){
+    if (passInputs.length) {
         passInputs.forEach(item => {
             const input = item.querySelector('input');
             const icon = item.querySelector('.pass-icon');
@@ -225,10 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const singleProduct = document.querySelector('.single');
 
-    if(singleProduct){
+    if (singleProduct) {
         const singleButton = singleProduct.querySelector('.single__button');
 
-        singleProduct.addEventListener('click',e=>{
+        singleProduct.addEventListener('click', e => {
             e.preventDefault();
 
             singleProduct.classList.toggle('active');
@@ -237,14 +237,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fileInputWrappers = document.querySelectorAll('.file-input-wrapper');
 
-    if(fileInputWrappers.length){
+    if (fileInputWrappers.length) {
         fileInputWrappers.forEach(wrapper => {
             const fileInput = wrapper.querySelector('.file-input__item');
             const fileGrid = wrapper.querySelector('.file-input__grid');
 
             if (!fileInput || !fileGrid) return;
 
-            fileInput.addEventListener('change', function(e) {
+            fileInput.addEventListener('change', function (e) {
                 const files = Array.from(e.target.files);
 
                 files.forEach(file => {
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const reader = new FileReader();
 
-                    reader.onload = function(event) {
+                    reader.onload = function (event) {
                         const imgContainer = document.createElement('div');
                         imgContainer.className = 'file-input__img';
 
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         img.alt = file.name;
 
                         // Обработчик удаления
-                        deleteBtn.addEventListener('click', function() {
+                        deleteBtn.addEventListener('click', function () {
                             imgContainer.remove();
                         });
 
@@ -284,11 +284,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const existingDeleteBtns = fileGrid.querySelectorAll('.file-input__delete');
             existingDeleteBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     this.closest('.file-input__img').remove();
                 });
             });
         });
     }
 
+
+    const phoneInput = document.querySelectorAll('.js-phone-mask');
+    const innInput = document.querySelectorAll('.js-inn-mask');
+    const codeInput = document.querySelectorAll('.js-code-mask');
+    const phoneMask = {
+        mask: '+{7} (000) 000 - 00 - 00'
+    };
+    const innMask = {
+        mask: '0000000000'
+    };
+    const codeMask = {
+        mask: '0-0-0-0'
+    };
+    if (phoneInput.length) {
+        phoneInput.forEach(phone => {
+            const mask = IMask(phone, phoneMask);
+        })
+    }
+    if (innInput.length) {
+        innInput.forEach(inn => {
+            const mask = IMask(inn, innMask);
+        })
+    }
+    if (codeInput.length) {
+        codeInput.forEach(code => {
+            const mask = IMask(code, codeMask);
+        })
+    }
+
+
+    const header = document.querySelector('.header');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const burger = document.querySelector(".burger");
+
+    if(mobileMenu && burger){
+        burger.addEventListener('click',e=>{
+            e.preventDefault();
+
+            header.classList.toggle('active');
+            mobileMenu.classList.toggle('active')
+            document.body.classList.toggle('no-scroll')
+        })
+    }
 })
