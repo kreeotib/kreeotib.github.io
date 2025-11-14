@@ -243,6 +243,7 @@ body.no-scroll {
     height: 100%;
     z-index: 1;
     object-fit: cover;
+    pointer-events: none;
   }
 
   &__wrapper {
@@ -734,6 +735,7 @@ body.no-scroll {
         left: 0;
         top: 0;
         object-fit: cover;
+        pointer-events: none;
       }
     }
   }
