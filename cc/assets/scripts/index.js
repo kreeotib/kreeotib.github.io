@@ -31,6 +31,94 @@ class PerfectMarquee {
     }
 }
 
+class ClientsSlider {
+    constructor(options = {}) {
+        this.itemsSelector = options.itemsSelector || '.clients-list__item';
+        this.imgSelector = options.imgSelector || '.clients-img__item';
+        this.colors = options.colors || ['#FF0048', '#002EC8', '#6ED678', '#FFAA00'];
+        this.interval = options.interval || 2000;
+
+        this.clientItems = document.querySelectorAll(this.itemsSelector);
+        this.clientImg = document.querySelector(this.imgSelector);
+
+        this.currentIndex = 0;
+        this.intervalId = null;
+        this.isHovering = false;
+
+        this.init();
+    }
+
+    updateClient(index) {
+        const item = this.clientItems[index];
+        const imageSrc = item.getAttribute('data-image');
+        const color = this.colors[index % this.colors.length];
+
+        this.clientImg.src = imageSrc;
+
+        item.style.color = color;
+
+        this.clientItems.forEach((el, idx) => {
+            if (idx !== index) {
+                el.style.color = '';
+            }
+        });
+    }
+
+    autoChange() {
+        if (!this.isHovering) {
+            this.updateClient(this.currentIndex);
+            this.currentIndex = (this.currentIndex + 1) % this.clientItems.length;
+        }
+    }
+
+    start() {
+        this.intervalId = setInterval(() => this.autoChange(), this.interval);
+    }
+
+    stop() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+        }
+    }
+
+    handleMouseEnter(index) {
+        this.isHovering = true;
+        this.updateClient(index);
+    }
+
+    handleMouseLeave(index) {
+        this.isHovering = false;
+        this.currentIndex = (index + 1) % this.clientItems.length;
+    }
+
+    setupEventListeners() {
+        this.clientItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => this.handleMouseEnter(index));
+            item.addEventListener('mouseleave', () => this.handleMouseLeave(index));
+        });
+    }
+
+    init() {
+        if (this.clientItems.length === 0 || !this.clientImg) {
+            return;
+        }
+
+        this.updateClient(0);
+        this.setupEventListeners();
+        this.start();
+    }
+
+    destroy() {
+        this.stop();
+        this.clientItems.forEach((item) => {
+            item.style.color = '';
+        });
+    }
+}
+
+const clientsSlider = new ClientsSlider();
+
 document.addEventListener('DOMContentLoaded', e => {
     const colors = ['#FF0048', '#002EC8', '#6ED678', '#FFAA00'];
     const logoColors = ['#FF0048', '#002EC8', '#6ED678', '#FFAA00', '#F2F2F2'];
@@ -185,13 +273,14 @@ if (preloader) {
     document.body.classList.add('no-scroll');
 
     window.addEventListener('load',()=>{
-        console.log(preloaderImg)
         preloaderImg.addEventListener('animationiteration', function () {
             preloaderImages.classList.add('finish');
             preloaderImages.addEventListener('animationend', function () {
                 preloader.classList.add('loaded');
-                document.body.classList.remove('no-scroll');
-                videoBg.play();
+                preloader.addEventListener('transitionend',()=>{
+                    document.body.classList.remove('no-scroll');
+                    videoBg.play();
+                })
             });
         });
     })

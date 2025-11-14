@@ -116,6 +116,10 @@ body.no-scroll {
     color: #444444;
   }
 
+  &--dark{
+    color:#282828;
+  }
+
   &--underline {
 
     text-decoration: underline;
@@ -867,7 +871,6 @@ body.no-scroll {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   z-index: 10;
 
   opacity: 0;
@@ -1238,5 +1241,57 @@ $fade-percentage: calc(100% / $images-count);
     width: 38.75rem;
     height: 38.75rem;
     opacity: 1;
+  }
+}
+
+
+.clients{
+  &__wrapper{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 2rem;
+    @media screen and (max-width:767px){
+      grid-template-columns: minmax(0,1fr);
+      gap: 0;
+    }
+  }
+  &__header{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &-content{
+    display: flex;
+    flex-direction: column;
+  }
+  &-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    &__item{
+      object-fit: contain;
+      width: 100%;
+      max-width: 40rem;
+      height: 100%;
+      margin-top: auto;
+    }
+  }
+  &-list{
+    &__item{
+      display: inline-block;
+      text-transform: uppercase;
+      font-family: var(--marque-font);
+      font-size: 2.75rem;
+      color: #282828;
+      transition: .3s color;
+      &:hover{
+        cursor: pointer;
+      }
+      @media screen and (max-width:767px) {
+        font-size: 1.125rem;
+      }
+    }
   }
 }
