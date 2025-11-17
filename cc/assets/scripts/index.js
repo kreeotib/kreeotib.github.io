@@ -117,7 +117,6 @@ class ClientsSlider {
     }
 }
 
-const clientsSlider = new ClientsSlider();
 
 document.addEventListener('DOMContentLoaded', e => {
     const colors = ['#FF0048', '#002EC8', '#6ED678', '#FFAA00'];
@@ -140,15 +139,15 @@ document.addEventListener('DOMContentLoaded', e => {
         });
     });
 
-    const marque =  new PerfectMarquee(document.getElementById('marque'), 70);
-
+    const marque = new PerfectMarquee(document.getElementById('marque'), 70);
+    const clientsSlider = new ClientsSlider();
 
     const slider = new Swiper(".slider", {
         effect: "fade",
         fadeEffect: {
             crossFade: true,
         },
-        loop:true,
+        loop: true,
         navigation: {
             nextEl: ".slider-button-next",
             prevEl: ".slider-button-prev",
@@ -158,11 +157,11 @@ document.addEventListener('DOMContentLoaded', e => {
     });
 
     const productSlider = new Swiper(".product-slider", {
-        slidesPerView:'auto',
+        slidesPerView: 'auto',
         spaceBetween:24,
-        breakpoints:{
-            767:{
-                spaceBetween:40,
+        breakpoints: {
+            768: {
+                spaceBetween: 40,
             }
         },
         navigation: {
@@ -175,74 +174,74 @@ document.addEventListener('DOMContentLoaded', e => {
 
     const heroBg = document.querySelector('.hero__bg');
 
-    if(heroBg){
-        if(window.innerWidth < 767){
+    if (heroBg) {
+        if (window.innerWidth < 767) {
             heroBg.src = heroBg.dataset.mobile;
-        }else{
+        } else {
             heroBg.src = heroBg.dataset.desktop;
         }
-        heroBg.play()
     }
 
 
     const productCards = document.querySelectorAll('.product-card');
 
-    productCards.forEach((card, index) => {
-        const video = card.querySelector('video');
+    if (productCards.length) {
+        productCards.forEach((card, index) => {
+            const video = card.querySelector('video');
 
-        if (!video) {
-            return;
-        }
-
-        let animationFrame = null;
-
-        const playReverse = () => {
-            if (video.currentTime <= 0) {
-                cancelAnimationFrame(animationFrame);
-                // Убрали video.load() - теперь видео просто остановится на первом кадре
+            if (!video) {
                 return;
             }
 
-            video.currentTime = Math.max(0, video.currentTime - 0.033);
-            animationFrame = requestAnimationFrame(playReverse);
-        };
+            let animationFrame = null;
 
-        card.addEventListener('mouseenter', async () => {
-            try {
-                if (animationFrame) {
+            const playReverse = () => {
+                if (video.currentTime <= 0) {
                     cancelAnimationFrame(animationFrame);
-                    animationFrame = null;
+                    return;
                 }
 
-                video.playbackRate = 1;
+                video.currentTime = Math.max(0, video.currentTime - 0.033);
+                animationFrame = requestAnimationFrame(playReverse);
+            };
 
-                await video.play();
-            } catch (error) {
-                console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
-            }
+            card.addEventListener('mouseenter', async () => {
+                try {
+                    if (animationFrame) {
+                        cancelAnimationFrame(animationFrame);
+                        animationFrame = null;
+                    }
+
+                    video.playbackRate = 1;
+
+                    await video.play();
+                } catch (error) {
+                    console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                try {
+                    video.pause();
+
+                    playReverse();
+                } catch (error) {
+                    console.error(`Ошибка реверса видео в карточке #${index + 1}:`, error);
+                }
+            });
+
+            video.muted = true;
+
+            video.loop = true;
         });
-
-        card.addEventListener('mouseleave', () => {
-            try {
-                video.pause();
-
-                playReverse();
-            } catch (error) {
-                console.error(`Ошибка реверса видео в карточке #${index + 1}:`, error);
-            }
-        });
-
-        video.muted = true;
-
-        video.loop = true;
-    });
+    }
 
 
     const nav = document.querySelector('.header-nav');
     const burger = document.querySelector('.burger');
 
-    if(nav && burger){
-        burger.addEventListener('click',e=>{
+    if (nav && burger) {
+        burger.addEventListener('click', e => {
             e.preventDefault();
 
             nav.classList.toggle('active');
@@ -262,6 +261,39 @@ document.addEventListener('DOMContentLoaded', e => {
             }
         })
     }
+
+    const hero = document.querySelector('.hero'),
+        mobileNav = document.querySelector('.mobile-nav');
+
+    if (hero && mobileNav) {
+        window.addEventListener('scroll', () => {
+            if (pageYOffset > hero.getBoundingClientRect().height) {
+                mobileNav.classList.add('visible')
+            } else {
+                mobileNav.classList.remove('visible')
+            }
+        })
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px'
+    });
+
+    const titleChangers = document.querySelectorAll('.title-changer');
+    if (titleChangers.length) {
+        titleChangers.forEach(element => {
+            observer.observe(element);
+        });
+    }
 });
 
 const preloader = document.querySelector('.preloader')
@@ -272,12 +304,12 @@ if (preloader) {
     const videoBg = document.querySelector('video.hero__bg');
     document.body.classList.add('no-scroll');
 
-    window.addEventListener('load',()=>{
+    window.addEventListener('load', () => {
         preloaderImg.addEventListener('animationiteration', function () {
             preloaderImages.classList.add('finish');
             preloaderImages.addEventListener('animationend', function () {
                 preloader.classList.add('loaded');
-                preloader.addEventListener('transitionend',()=>{
+                preloader.addEventListener('transitionend', () => {
                     document.body.classList.remove('no-scroll');
                     videoBg.play();
                 })

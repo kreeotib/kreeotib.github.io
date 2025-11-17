@@ -66,7 +66,6 @@ body.no-scroll {
 
 
 .page-wrapper {
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 100svh;
@@ -100,6 +99,12 @@ body.no-scroll {
     font-size: var(--title-size-base);
     line-height: 1.2;
     text-transform: uppercase;
+
+    --emoji-size:4rem;
+    
+    @media screen and (max-width: 767px) {
+      --emoji-size: 1.875rem;
+    }
   }
 
   &--middle {
@@ -124,6 +129,13 @@ body.no-scroll {
 
     text-decoration: underline;
     text-underline-position: under;
+  }
+
+  &__emoji{
+    display: inline-flex;
+    flex-shrink: 0;
+    width: var(--emoji-size);
+    height: var(--emoji-size);
   }
 }
 
@@ -158,7 +170,7 @@ body.no-scroll {
   &__wrapper {
     padding: var(--container-padding) 0;
     @media screen and (max-width: 767px) {
-      padding: 6.25rem 0;
+      padding: 1.5rem 0;
     }
   }
 
@@ -310,16 +322,25 @@ body.no-scroll {
 
 .title-changer {
   position: relative;
+  &.visible{
+    .title-changer-item{
+      animation: fadeInOut 23s infinite;
 
+      &:nth-child(6) {
+        animation-delay: 15s;
+        animation-name: fadeInOutLast;
+      }
+    }
+  }
   .title-changer-item {
     opacity: 0;
-    animation: fadeInOut 23s infinite;
     position: absolute;
     top: 0;
     left: 0;
 
 
-    &:last-child {
+
+    &:nth-child(3) {
       position: relative;
     }
 
@@ -329,11 +350,7 @@ body.no-scroll {
       }
     }
 
-    // Последний элемент: после 15с (5 × 3s)
-    &:nth-child(6) {
-      animation-delay: 15s;
-      animation-name: fadeInOutLast;
-    }
+
   }
 }
 
@@ -341,13 +358,13 @@ body.no-scroll {
   0% {
     opacity: 0;
   }
-  4.35% { // ~1s из 23s (появление)
+  4.35% {
     opacity: 1;
   }
-  8.7% { // ~2s из 23s (показ 1с)
+  8.7% {
     opacity: 1;
   }
-  13.04% { // ~3s из 23s (исчезновение)
+  13.04% {
     opacity: 0;
   }
   100% {
@@ -355,18 +372,18 @@ body.no-scroll {
   }
 }
 
-// Анимация для последнего элемента (показ 6 секунд + исчезновение)
+
 @keyframes fadeInOutLast {
   0% {
     opacity: 0;
   }
-  4.35% { // ~1s появление
+  4.35% {
     opacity: 1;
   }
-  30.43% { // ~7s показ (1s + 6s)
+  30.43% {
     opacity: 1;
   }
-  34.78% { // ~8s исчезновение
+  34.78% {
     opacity: 0;
   }
   100% {
@@ -558,8 +575,11 @@ body.no-scroll {
 
 .product {
   &-slider {
+    -webkit-user-select: none;
+    user-select: none;
+    max-width: 100%;
+    width: 100%;
     overflow: visible;
-
     .swiper-wrapper {
       align-items: stretch;
     }
@@ -581,7 +601,8 @@ body.no-scroll {
       border-radius: 50%;
       background: #000;
       transition: .3s background-color, .3s opacity;
-
+      -webkit-user-select: none;
+      user-select: none;
       &--disabled, &--lock {
         opacity: .2;
         pointer-events: none;
@@ -603,7 +624,7 @@ body.no-scroll {
       max-width: 31.5625rem;
       width: 100%;
       @media screen and (max-width: 767px) {
-        max-width: 19.375rem;
+        max-width: 19.5rem;
       }
     }
   }
@@ -620,6 +641,10 @@ body.no-scroll {
 
     &:hover &__decors {
       opacity: 1;
+    }
+
+    &:hover &__title{
+      color: var(--hover-color);
     }
 
     &__decors {
@@ -720,7 +745,7 @@ body.no-scroll {
     }
 
     &__img {
-      padding-bottom: 112%;
+      padding-bottom: 80%;
       position: relative;
       display: flex;
       align-items: center;
@@ -880,6 +905,8 @@ body.no-scroll {
 
   transition: .3s visibility, .5s opacity;
 
+  pointer-events: none;
+
   &.visible {
     opacity: 1;
     visibility: visible;
@@ -901,6 +928,7 @@ body.no-scroll {
     align-items: center;
     gap: 2.875rem;
     backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
     background: rgba(0, 0, 0, 0.1);
     border-radius: 1.5rem;
 
@@ -932,6 +960,7 @@ body.no-scroll {
 
     font-size: 1rem;
 
+    pointer-events:auto;
     .icon {
       width: 1.5rem;
       height: 1.5rem;
@@ -945,6 +974,14 @@ body.no-scroll {
   left: 0;
   width: 100%;
   z-index: 11;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s visibility, .5s opacity;
+  &.visible{
+    opacity: 1;
+    visibility: visible;
+  }
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -1131,10 +1168,10 @@ $fade-percentage: calc(100% / $images-count);
 
 
   &-images.finish {
-    animation: 1s preloadfinal forwards;
+    animation: 2s preloadfinal forwards;
 
     &::before {
-      animation: .25s forwards preloadfinalImg;
+      animation:2s forwards preloadfinalImg;
     }
   }
 
@@ -1155,10 +1192,9 @@ $fade-percentage: calc(100% / $images-count);
       top: 50%;
       transform: translate(-50%, -50%);
 
-      width: 9.75rem;
-      height: 9.75rem;
+      width: 4rem;
+      height: 4rem;
       background: url("../../images/preloader/final.webp") center center/contain no-repeat;
-
 
       opacity: 0;
 
@@ -1220,8 +1256,35 @@ $fade-percentage: calc(100% / $images-count);
 }
 
 @keyframes preloadfinal {
-  25% {
+  0% {
     background: #000;
+    width: 9.75rem;
+    height: 9.75rem;
+    border-radius:1.5rem;
+    
+    @media screen and (max-width: 767px) {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+  50%{
+    background: #000;
+    width: 9.75rem;
+    height: 9.75rem;
+    border-radius:1.5rem;
+    @media screen and (max-width: 767px) {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+  70%{
+    width: 37.5rem;
+    height: 37.5rem;
+    border-radius: 9.75rem;
+    @media screen and (max-width: 767px) {
+      width: 20rem;
+      height: 20rem;
+    }
   }
   100% {
     width: 100%;
@@ -1231,20 +1294,29 @@ $fade-percentage: calc(100% / $images-count);
   }
 }
 
+
 @keyframes preloadfinalImg {
   0% {
+    width: 4rem;
+    height: 4rem;
     opacity: 1;
   }
-  25% {
-    width: 38.75rem;
-    height: 38.75rem;
+  50%{
+    width: 4rem;
+    height: 4rem;
+  }
+  70%{
+    width: 14.375rem;
+    height: 14.375rem;
   }
   100% {
-    width: 38.75rem;
-    height: 38.75rem;
+    width: 14.375rem;
+    height: 14.375rem;
+
     opacity: 1;
   }
 }
+
 
 
 .clients{
@@ -1266,18 +1338,21 @@ $fade-percentage: calc(100% / $images-count);
   &-content{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   &-img{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: auto;
     &__item{
       object-fit: contain;
       width: 100%;
       max-width: 40rem;
-      height: 100%;
-      margin-top: auto;
+      height: 20rem;
+      @media screen and (max-width:767px) {
+        height: 11.875rem;
+      }
     }
   }
   &-list{

@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +14,11 @@
           rel="stylesheet">
 
     <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+
     <link rel="stylesheet" href="assets/styles/css/index.css">
 </head>
-<body>
+<body class="no-scroll">
 
 <div class="page-wrapper">
     <header class="header">
@@ -64,7 +65,7 @@
     </header>
     <main class="content">
         <div class="hero">
-            <video loop muted autoplay playsinline src="" class="hero__bg" data-mobile="assets/video/hero-bg-m.mp4"
+            <video loop muted src="" class="hero__bg" data-mobile="assets/video/hero-bg-m.mp4"
                    data-desktop="assets/video/hero-bg-desk.mp4"></video>
             <div class="hero__wrapper">
                 <div class="container">
@@ -108,7 +109,7 @@
                                         digital
                                     </div>
                                     <div class="title-changer-item">
-                                        content🤘🏽
+                                        content <img src="assets/images/emoji.webp" alt="" class="title__emoji">
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +268,7 @@
                     <div class="section__column">
                         <div class="product-slider swiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide product-slider__item product-card">
+                                <div class="swiper-slide product-slider__item product-card custom-hover">
                                     <div class="product-card__decors">
                                         <img src="assets/images/products/decor.png" alt="" class="product-card__decor">
                                     </div>
@@ -299,11 +300,11 @@
                                             </div>
                                         </div>
                                         <div class="product-card__img">
-                                            <video src="assets/video/hero-bg-m.mp4" loop muted></video>
+                                            <video src="assets/video/hero-bg-m.mp4" loop muted playsinline></video>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide product-slider__item product-card">
+                                <div class="swiper-slide product-slider__item product-card custom-hover">
                                     <div class="product-card__decors">
                                         <img src="assets/images/products/decor.png" alt="" class="product-card__decor">
                                     </div>
@@ -333,11 +334,11 @@
                                             </div>
                                         </div>
                                         <div class="product-card__img">
-                                            <video src="assets/video/hero-bg-m.mp4" loop muted></video>
+                                            <video src="assets/video/hero-bg-m.mp4" loop muted playsinline></video>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide product-slider__item product-card">
+                                <div class="swiper-slide product-slider__item product-card custom-hover">
                                     <div class="product-card__decors">
                                         <img src="assets/images/products/decor.png" alt="" class="product-card__decor">
                                     </div>
@@ -368,11 +369,11 @@
                                             </div>
                                         </div>
                                         <div class="product-card__img">
-                                            <video src="assets/video/hero-bg-m.mp4" loop muted></video>
+                                            <video src="assets/video/hero-bg-m.mp4" loop muted playsinline></video>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide product-slider__item product-card">
+                                <div class="swiper-slide product-slider__item product-card custom-hover">
                                     <div class="product-card__decors">
                                         <img src="assets/images/products/decor.png" alt="" class="product-card__decor">
                                     </div>
@@ -403,58 +404,129 @@
                                             </div>
                                         </div>
                                         <div class="product-card__img">
-                                            <video src="assets/video/hero-bg-m.mp4" loop muted></video>
+                                            <video src="assets/video/hero-bg-m.mp4" loop muted playsinline></video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide product-slider__item product-card custom-hover">
+                                    <div class="product-card__decors">
+                                        <img src="assets/images/products/decor.png" alt="" class="product-card__decor">
+                                    </div>
+                                    <div class="product-card__wrapper">
+                                        <div class="product-card__content">
+                                            <div class="product-card__header">
+                                                <p class="product-card__title">
+                                                    Контент
+                                                </p>
+                                            </div>
+                                            <span class="product-card__divider"></span>
+                                            <div class="product-card__box">
+                                                <p class="product-card__text">
+                                                    Свой продакшен.
+                                                </p>
+                                                <div class="product-card__grid">
+                                                    <p class="product-card__text product-card__text--grey">
+                                                        Сценарий <br>
+                                                        Продакшен <br>
+                                                        Фото/Видеосъемка
+                                                    </p>
+                                                    <p class="product-card__text product-card__text--grey">
+                                                        Постпродакшен <br>
+                                                        Инфографика <br>
+                                                        Иллюстрации
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-card__img">
+                                            <video src="assets/video/hero-bg-m.mp4" loop muted playsinline></video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide product-slider__item product-card custom-hover">
+                                    <div class="product-card__decors">
+                                        <img src="assets/images/products/decor.png" alt="" class="product-card__decor">
+                                    </div>
+                                    <div class="product-card__wrapper">
+                                        <div class="product-card__content">
+                                            <div class="product-card__header">
+                                                <p class="product-card__title">
+                                                    DIGITAL
+                                                </p>
+                                            </div>
+                                            <span class="product-card__divider"></span>
+                                            <div class="product-card__box">
+                                                <p class="product-card__text">
+                                                    Цифровая коммуникация с твоей ЦА.
+                                                </p>
+                                                <div class="product-card__grid">
+                                                    <p class="product-card__text product-card__text--grey">
+                                                        Ведение соц. сетей <br>
+                                                        SMM
+                                                    </p>
+                                                    <p class="product-card__text product-card__text--grey">
+                                                        Генерация контента <br>
+                                                        Разработка медиапланов
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-card__img">
+                                            <video src="assets/video/hero-bg-m.mp4" loop muted playsinline></video>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="clients">
-                            <div class="clients__wrapper">
-                                <div class="clients__header">
-                                    <p class="title title--base title--dark">
-                                        клиенты
-                                    </p>
-                                    <div class="clients-list">
-                                        <div class="clients-list__item"
-                                             data-image="assets/images/clients/ural-logistika.webp">
-                                            Урал логистика,
+                            <div class="clients__header">
+                                <p class="title title--base title--dark">
+                                    клиенты
+                                </p>
+                                <div class="clients__wrapper">
+                                   <div class="clients-content">
+                                       <div class="clients-list">
+                                           <div class="clients-list__item"
+                                                data-image="assets/images/clients/ural-logistika.webp">
+                                               Урал логистика,
+                                           </div>
+                                           <div class="clients-list__item" data-image="assets/images/clients/vossen.webp">
+                                               vossen,
+                                           </div>
+                                           <div class="clients-list__item" data-image="assets/images/clients/aimol.webp">
+                                               AIMOL,
+                                           </div>
+                                           <div class="clients-list__item" data-image="assets/images/clients/uline.webp">
+                                               ULINE,
+                                           </div>
+                                           <div class="clients-list__item"
+                                                data-image="assets/images/clients/yandex-drive.webp">
+                                               Yandex drive,
+                                           </div>
+                                           <div class="clients-list__item"
+                                                data-image="assets/images/clients/vk-video.webp">
+                                               VK Видео,
+                                           </div>
+                                           <div class="clients-list__item" data-image="assets/images/clients/rutube.webp">
+                                               RUTUBE,
+                                           </div>
+                                           <div class="clients-list__item" data-image="assets/images/clients/brfuel.webp">
+                                               BRFUEL,
+                                           </div>
+                                           <div class="clients-list__item"
+                                                data-image="assets/images/clients/stone-logistics.webp">
+                                               Stone logisticsm
+                                           </div>
+                                       </div>
+                                   </div>
+                                    <div class="clients-content">
+                                        <div class="clients-img">
+                                            <img src="assets/images/clients/brfuel.webp" class="clients-img__item" alt="">
                                         </div>
-                                        <div class="clients-list__item" data-image="assets/images/clients/vossen.webp">
-                                            vossen,
-                                        </div>
-                                        <div class="clients-list__item" data-image="assets/images/clients/aimol.webp">
-                                            AIMOL,
-                                        </div>
-                                        <div class="clients-list__item" data-image="assets/images/clients/uline.webp">
-                                            ULINE,
-                                        </div>
-                                        <div class="clients-list__item"
-                                             data-image="assets/images/clients/yandex-drive.webp">
-                                            Yandex drive,
-                                        </div>
-                                        <div class="clients-list__item"
-                                             data-image="assets/images/clients/vk-video.webp">
-                                            VK Видео,
-                                        </div>
-                                        <div class="clients-list__item" data-image="assets/images/clients/rutube.webp">
-                                            RUTUBE,
-                                        </div>
-                                        <div class="clients-list__item" data-image="assets/images/clients/brfuel.webp">
-                                            BRFUEL,
-                                        </div>
-                                        <div class="clients-list__item"
-                                             data-image="assets/images/clients/stone-logistics.webp">
-                                            Stone logisticsm,
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clients-content">
-                                    <div class="clients-img">
-                                        <img src="assets/images/clients/brfuel.webp" class="clients-img__item" alt="">
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -469,7 +541,7 @@
                         <div class="footer-block">
                             <p class="title title--middle title--grey">
                                 ПРИШЛО ВРЕМЯ СОЗДАТЬ КОНТЕНТ
-                                <span class="title title--accent">ВМЕСТЕ!</span>
+                                <a href="#" class="title title--accent custom-hover">ВМЕСТЕ!</a>
                             </p>
                         </div>
                         <div class="footer-block footer-block--contact">
@@ -480,7 +552,7 @@
                             </div>
                             <div class="footer__row footer__row--mobile">
                                 <p class="footer__text">
-                                    <a href="#" class="footer__text footer__text--link" target="_blank">WhatsApp</a>
+                                    <a href="#" class="footer__text footer__text--link custom-hover" target="_blank">WhatsApp</a>
                                     <br>
                                     Москва, Россия
                                 </p>
@@ -492,7 +564,7 @@
                             </div>
                         </div>
                         <div class="footer-block">
-                            <a href="#" target="_blank" class="title title--underline title--middle title--accent">
+                            <a href="#" target="_blank" class="title title--underline title--middle title--accent custom-hover">
                                 Написать в тг!
                             </a>
                         </div>
@@ -670,20 +742,21 @@
 
 <div class="preloader">
     <div class="preloader__wrapper">
+
+        <div class="preloader-images">
+            <img src="assets/images/preloader/1.webp" alt="Loading 1" class="preloader-image">
+            <img src="assets/images/preloader/2.webp" alt="Loading 2" class="preloader-image">
+            <img src="assets/images/preloader/3.webp" alt="Loading 3" class="preloader-image">
+            <img src="assets/images/preloader/4.webp" alt="Loading 4" class="preloader-image">
+            <img src="assets/images/preloader/5.webp" alt="Loading 5" class="preloader-image">
+            <img src="assets/images/preloader/6.webp" alt="Loading 6" class="preloader-image">
+            <img src="assets/images/preloader/7.webp" alt="Loading 7" class="preloader-image">
+            <img src="assets/images/preloader/8.webp" alt="Loading 8" class="preloader-image">
+        </div>
         <div class="preloader__content">
             <p class="title title--base">
                 create
             </p>
-            <div class="preloader-images">
-                <img src="assets/images/preloader/1.webp" alt="Loading 1" class="preloader-image">
-                <img src="assets/images/preloader/2.webp" alt="Loading 2" class="preloader-image">
-                <img src="assets/images/preloader/3.webp" alt="Loading 3" class="preloader-image">
-                <img src="assets/images/preloader/4.webp" alt="Loading 4" class="preloader-image">
-                <img src="assets/images/preloader/5.webp" alt="Loading 5" class="preloader-image">
-                <img src="assets/images/preloader/6.webp" alt="Loading 6" class="preloader-image">
-                <img src="assets/images/preloader/7.webp" alt="Loading 7" class="preloader-image">
-                <img src="assets/images/preloader/8.webp" alt="Loading 8" class="preloader-image">
-            </div>
             <p class="title title--base">
                 content
             </p>
