@@ -240,12 +240,41 @@ body.no-scroll {
   }
 }
 
+@keyframes herobutton {
+  0%,100%{
+    transform: translateY(0%);
+  }
+  50%{
+    transform: translateY(25%);
+  }
+
+}
+
 .hero {
   background: #000;
 
   position: relative;
   overflow: hidden;
 
+
+  &-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3.5rem;
+    height: 3.5rem;
+
+    margin: auto auto 0 auto;
+
+
+    animation: herobutton 1s linear infinite;
+    &__icon{
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
   &__bg {
     position: absolute;
     left: 0;
@@ -288,6 +317,12 @@ body.no-scroll {
     position: relative;
     width: 100%;
     background: #002EC8;
+
+    line-height: normal;
+
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
   }
 
   &-content {
@@ -324,10 +359,10 @@ body.no-scroll {
   position: relative;
   &.visible{
     .title-changer-item{
-      animation: fadeInOut 23s infinite;
+      animation: fadeInOut 8.5s infinite;
 
       &:nth-child(6) {
-        animation-delay: 15s;
+        animation-delay: 3.5s;
         animation-name: fadeInOutLast;
       }
     }
@@ -338,15 +373,13 @@ body.no-scroll {
     top: 0;
     left: 0;
 
-
-
     &:nth-child(3) {
       position: relative;
     }
 
     @for $i from 1 through 5 {
       &:nth-child(#{$i}) {
-        animation-delay: #{($i - 1) * 3}s;
+        animation-delay: #{($i - 1) * .7}s;
       }
     }
 
@@ -380,10 +413,13 @@ body.no-scroll {
   4.35% {
     opacity: 1;
   }
-  30.43% {
+  30.47% {
     opacity: 1;
   }
-  34.78% {
+  44% {
+    opacity: 1;
+  }
+  45% {
     opacity: 0;
   }
   100% {
@@ -465,6 +501,8 @@ body.no-scroll {
   }
 
   &-card {
+    border-radius: .625rem;
+    overflow: hidden;
     &:hover &__title {
       color: var(--hover-color);
       text-decoration-color: var(--hover-color);
@@ -498,7 +536,7 @@ body.no-scroll {
       height: 30rem;
       position: relative;
       overflow: hidden;
-
+      border-radius: .625rem;
       img {
         width: 100%;
         height: 100%;
@@ -634,6 +672,7 @@ body.no-scroll {
     position: relative;
     background: #FFFFFF;
     border-radius: .625rem;
+    overflow: hidden;
 
     &:hover &__decor {
       animation: pulse infinite 2s linear;
@@ -668,6 +707,8 @@ body.no-scroll {
       height: 100%;
       object-fit: contain;
       object-position: top center;
+
+      transform: scale(1.25);
     }
 
     &__content {
@@ -762,13 +803,26 @@ body.no-scroll {
         object-fit: cover;
         pointer-events: none;
       }
+
+      video{
+        z-index: 2;
+      }
+    }
+    &__img.hover &__preload{
+      opacity: 0;
+      visibility: hidden;
+    }
+    &__preload{
+      z-index: 4;
+
+      transition: .3s opacity, .5s visibility;
     }
   }
 }
 
 @keyframes pulse {
   0%, 100% {
-    transform: scale(1);
+    transform: scale(1.25);
     opacity: 1;
   }
   50% {
@@ -780,7 +834,7 @@ body.no-scroll {
 
 .footer {
   &__wrapper {
-    background: #000;
+    background: #111;
     padding-top: 6.25rem;
     @media screen and (max-width: 767px) {
       padding-top: 1.5rem;
@@ -832,6 +886,8 @@ body.no-scroll {
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 
     gap: 0;
+    border-radius: .625rem .626rem 0 0;
+    overflow: hidden;
     @media screen and (max-width: 767px) {
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
@@ -844,6 +900,15 @@ body.no-scroll {
 
       &--big {
         grid-column-end: span 2;
+        @media screen and (min-width: 768px) {
+          &--desktop{
+            grid-column-end: span 2;
+          }
+        }
+      }
+      &--biggest{
+        grid-column-end: span 2;
+        grid-row-end: span 2;
       }
     }
 
@@ -1103,7 +1168,7 @@ $fade-percentage: calc(100% / $images-count);
   z-index: 12;
   background: #fff;
 
-  transition: .5s .5s visibility, .5s .5s opacity;
+  transition: .3s  visibility, .1s opacity;
 
   &.loaded{
     opacity: 0;
@@ -1168,10 +1233,10 @@ $fade-percentage: calc(100% / $images-count);
 
 
   &-images.finish {
-    animation: 2s preloadfinal forwards;
+    animation: .5s preloadfinal forwards;
 
     &::before {
-      animation:2s forwards preloadfinalImg;
+      animation:.5s forwards preloadfinalImg;
     }
   }
 
@@ -1261,30 +1326,10 @@ $fade-percentage: calc(100% / $images-count);
     width: 9.75rem;
     height: 9.75rem;
     border-radius:1.5rem;
-    
-    @media screen and (max-width: 767px) {
-      width: 6rem;
-      height: 6rem;
-    }
   }
   50%{
-    background: #000;
-    width: 9.75rem;
-    height: 9.75rem;
-    border-radius:1.5rem;
-    @media screen and (max-width: 767px) {
-      width: 6rem;
-      height: 6rem;
-    }
-  }
-  70%{
-    width: 37.5rem;
-    height: 37.5rem;
+
     border-radius: 9.75rem;
-    @media screen and (max-width: 767px) {
-      width: 20rem;
-      height: 20rem;
-    }
   }
   100% {
     width: 100%;
@@ -1293,27 +1338,15 @@ $fade-percentage: calc(100% / $images-count);
     background: #000;
   }
 }
-
-
 @keyframes preloadfinalImg {
   0% {
     width: 4rem;
     height: 4rem;
     opacity: 1;
   }
-  50%{
-    width: 4rem;
-    height: 4rem;
-  }
-  70%{
-    width: 14.375rem;
-    height: 14.375rem;
-  }
   100% {
     width: 14.375rem;
     height: 14.375rem;
-
-    opacity: 1;
   }
 }
 

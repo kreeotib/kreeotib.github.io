@@ -1,35 +1,108 @@
 class PerfectMarquee {
-    constructor(container, speed = 50) {
+    constructor(container, baseSpeed = 50, scrollFactor = 0.5) {
         this.container = container;
         this.content = container.querySelector('.marquee-content');
-        this.speed = speed;
+
+        // базовая скорость в пикселях/сек
+        this.baseSpeed = baseSpeed;
+        this.scrollFactor = scrollFactor;
+
+        // текущая скорость (px/s), по умолчанию едем влево
+        this.velocity = -this.baseSpeed;
+
+        // позиция ленты
+        this.offset = 0;
+
+        this.lastScrollY = window.scrollY;
+        this.lastTime = null;
+        this.halfWidth = 0; // половина ширины контента (одна копия)
+
         this.init();
     }
 
     init() {
+        // Дублируем контент для бесшовного цикла
         const items = this.content.innerHTML;
         this.content.innerHTML = items + items;
 
+        // После рендера считаем ширину
         requestAnimationFrame(() => {
-            this.updateAnimation();
+            this.updateSizes();
+            this.startLoop();
         });
 
-        window.addEventListener('resize', () => this.updateAnimation());
+        window.addEventListener('resize', () => {
+            this.updateSizes();
+        });
+
+        window.addEventListener('scroll', () => this.handleScroll());
     }
 
-    updateAnimation() {
-        const contentWidth = this.content.scrollWidth / 2;
+    updateSizes() {
+        // половина всей ширины = ширина одной "ленты"
+        this.halfWidth = this.content.scrollWidth / 2;
+    }
 
-        const duration = contentWidth / this.speed;
+    startLoop() {
+        const loop = (time) => {
+            if (this.lastTime == null) {
+                this.lastTime = time;
+            }
 
-        this.content.style.animationDuration = `${duration}s`;
+            const dt = (time - this.lastTime) / 1000; // в секундах
+            this.lastTime = time;
+
+            // Немного тянем скорость обратно к базовой (влево) — инерция
+            const defaultVelocity = -this.baseSpeed;
+            const lerpFactor = 0.02; // чем больше, тем быстрее возвращается к базовой
+            this.velocity += (defaultVelocity - this.velocity) * lerpFactor;
+
+            // Обновляем позицию
+            this.offset += this.velocity * dt;
+
+            // Бесконечный цикл: когда ушли дальше, чем половина длины — возвращаем
+            if (this.offset <= -this.halfWidth) {
+                this.offset += this.halfWidth;
+            } else if (this.offset >= 0) {
+                this.offset -= this.halfWidth;
+            }
+
+            // Применяем transform
+            this.content.style.transform = `translateX(${this.offset}px)`;
+
+            requestAnimationFrame(loop);
+        };
+
+        requestAnimationFrame(loop);
+    }
+
+    handleScroll() {
+        const currentY = window.scrollY;
+        const delta = currentY - this.lastScrollY;
+
+        if (delta === 0) return;
+
+        const power = Math.abs(delta) * this.scrollFactor;
+
+        if (delta > 0) {
+            // скролл вниз → ускоряем влево (более отрицательная скорость)
+            this.velocity -= power;
+        } else {
+            // скролл вверх → ускоряем вправо (скорость становится больше / может стать положительной)
+            this.velocity += power;
+        }
+
+        this.lastScrollY = currentY;
     }
 
     setSpeed(newSpeed) {
-        this.speed = newSpeed;
-        this.updateAnimation();
+        this.baseSpeed = newSpeed;
+        // сдвигаем базовое направление (влево)
+        this.velocity = -this.baseSpeed;
     }
 }
+
+
 
 class ClientsSlider {
     constructor(options = {}) {
@@ -42,19 +115,22 @@ class ClientsSlider {
         this.clientImg = document.querySelector(this.imgSelector);
 
         this.currentIndex = 0;
+        this.currentHoverColorIndex = 0; // Отдельный индекс для цветов при наведении
         this.intervalId = null;
         this.isHovering = false;
 
         this.init();
     }
 
-    updateClient(index) {
+    updateClient(index, useHoverColor = false) {
         const item = this.clientItems[index];
         const imageSrc = item.getAttribute('data-image');
-        const color = this.colors[index % this.colors.length];
+
+        // Используем отдельный индекс цвета для наведения
+        const colorIndex = useHoverColor ? this.currentHoverColorIndex : index;
+        const color = this.colors[colorIndex % this.colors.length];
 
         this.clientImg.src = imageSrc;
-
         item.style.color = color;
 
         this.clientItems.forEach((el, idx) => {
@@ -84,7 +160,9 @@ class ClientsSlider {
 
     handleMouseEnter(index) {
         this.isHovering = true;
-        this.updateClient(index);
+        this.updateClient(index, true); // Используем цвет из очереди наведения
+        // Переключаем на следующий цвет в очереди для следующего наведения
+        this.currentHoverColorIndex = (this.currentHoverColorIndex + 1) % this.colors.length;
     }
 
     handleMouseLeave(index) {
@@ -116,7 +194,6 @@ class ClientsSlider {
         });
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', e => {
     const colors = ['#FF0048', '#002EC8', '#6ED678', '#FFAA00'];
@@ -188,16 +265,16 @@ document.addEventListener('DOMContentLoaded', e => {
     if (productCards.length) {
         productCards.forEach((card, index) => {
             const video = card.querySelector('video');
+            const imgWrapper = card.querySelector('.product-card__img');
 
-            if (!video) {
-                return;
-            }
+            if (!video || !imgWrapper) return;
 
             let animationFrame = null;
 
             const playReverse = () => {
                 if (video.currentTime <= 0) {
                     cancelAnimationFrame(animationFrame);
+                    imgWrapper.classList.remove('hover'); // Удаляем класс после реверса
                     return;
                 }
 
@@ -213,7 +290,7 @@ document.addEventListener('DOMContentLoaded', e => {
                     }
 
                     video.playbackRate = 1;
-
+                    imgWrapper.classList.add('hover'); // Добавляем класс при старте
                     await video.play();
                 } catch (error) {
                     console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
@@ -223,7 +300,6 @@ document.addEventListener('DOMContentLoaded', e => {
             card.addEventListener('mouseleave', () => {
                 try {
                     video.pause();
-
                     playReverse();
                 } catch (error) {
                     console.error(`Ошибка реверса видео в карточке #${index + 1}:`, error);
@@ -231,10 +307,10 @@ document.addEventListener('DOMContentLoaded', e => {
             });
 
             video.muted = true;
-
             video.loop = true;
         });
     }
+
 
 
     const nav = document.querySelector('.header-nav');
@@ -311,7 +387,9 @@ if (preloader) {
                 preloader.classList.add('loaded');
                 preloader.addEventListener('transitionend', () => {
                     document.body.classList.remove('no-scroll');
-                    videoBg.play();
+                    setTimeout(()=>{
+                        videoBg.play();
+                    }, 100)
                 })
             });
         });
