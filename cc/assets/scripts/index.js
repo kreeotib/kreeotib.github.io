@@ -103,7 +103,6 @@ class PerfectMarquee {
 }
 
 
-
 class ClientsSlider {
     constructor(options = {}) {
         this.itemsSelector = options.itemsSelector || '.clients-list__item';
@@ -235,7 +234,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
     const productSlider = new Swiper(".product-slider", {
         slidesPerView: 'auto',
-        spaceBetween:24,
+        spaceBetween: 24,
         breakpoints: {
             768: {
                 spaceBetween: 40,
@@ -270,11 +269,13 @@ document.addEventListener('DOMContentLoaded', e => {
             if (!video || !imgWrapper) return;
 
             let animationFrame = null;
+            let isPlaying = false;
 
             const playReverse = () => {
                 if (video.currentTime <= 0) {
                     cancelAnimationFrame(animationFrame);
-                    imgWrapper.classList.remove('hover'); // Удаляем класс после реверса
+                    imgWrapper.classList.remove('hover');
+                    isPlaying = false;
                     return;
                 }
 
@@ -282,7 +283,9 @@ document.addEventListener('DOMContentLoaded', e => {
                 animationFrame = requestAnimationFrame(playReverse);
             };
 
-            card.addEventListener('mouseenter', async () => {
+            const startVideo = async () => {
+                if (isPlaying) return;
+
                 try {
                     if (animationFrame) {
                         cancelAnimationFrame(animationFrame);
@@ -290,27 +293,40 @@ document.addEventListener('DOMContentLoaded', e => {
                     }
 
                     video.playbackRate = 1;
-                    imgWrapper.classList.add('hover'); // Добавляем класс при старте
+                    imgWrapper.classList.add('hover');
                     await video.play();
+                    isPlaying = true;
                 } catch (error) {
                     console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
                 }
-            });
+            };
 
-            card.addEventListener('mouseleave', () => {
+            const stopVideo = () => {
                 try {
                     video.pause();
                     playReverse();
                 } catch (error) {
                     console.error(`Ошибка реверса видео в карточке #${index + 1}:`, error);
                 }
-            });
+            };
+
+            // Для десктопа
+            card.addEventListener('mouseenter', startVideo);
+            card.addEventListener('mouseleave', stopVideo);
+
+            // Для мобильных устройств
+            card.addEventListener('touchstart', (e) => {
+                if (!isPlaying) {
+                    startVideo();
+                } else {
+                    stopVideo();
+                }
+            }, { passive: true });
 
             video.muted = true;
             video.loop = true;
         });
     }
-
 
 
     const nav = document.querySelector('.header-nav');
@@ -387,9 +403,7 @@ if (preloader) {
                 preloader.classList.add('loaded');
                 preloader.addEventListener('transitionend', () => {
                     document.body.classList.remove('no-scroll');
-                    setTimeout(()=>{
-                        videoBg.play();
-                    }, 100)
+                    videoBg.play();
                 })
             });
         });
