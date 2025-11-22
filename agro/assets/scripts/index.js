@@ -61,10 +61,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    const bannerSlider = new Swiper('.page-banner__slider', {
+        spaceBetween: 0,
+        loop:true,
+        effect: "fade",
+        speed:500,
+        fadeEffect: {
+            crossFade: true,
+        },
+        navigation:{
+            nextEl:'.page-banner__next'
+        }
+    })
+
+    const aboutHero = new Swiper('.hero-about__slider', {
+        spaceBetween: 0,
+        loop:true,
+        direction:"vertical",
+
+        speed:500,
+
+        slidesPerView:2,
+
+        breakpoints:{
+          768:{
+              slidesPerView:1,
+              direction: "horizontal",
+              effect:"fade",
+              fadeEffect:{
+                  crossFade:true
+              }
+          }
+        },
+        pagination:{
+            el:'.hero-about__pagination',
+             clickable: true
+        }
+    })
 
     var aboutSlider = new Swiper(".about-slider", {
         grabCursor: true,
         effect: "creative",
+        loop:true,
+        speed:500,
         slideActiveClass: 'about-card--active',
         slideNextClass: 'about-card--next',
         slidePrevClass: 'about-card--prev',
@@ -90,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get the real index (accounting for loop mode)
             const realIndex = this.getAttribute('data-swiper-slide-index');
             if (realIndex !== null) {
-                swiper4.slideToLoop(parseInt(realIndex));
+                aboutSlider.slideToLoop(parseInt(realIndex));
             }
         });
     });
@@ -275,11 +314,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (singleProduct) {
         const singleButton = singleProduct.querySelector('.single__button');
 
-        singleProduct.addEventListener('click', e => {
+        // Запоминаем начальную высоту при загрузке
+        let initialHeight = null;
+
+        singleButton.addEventListener('click', e => {
             e.preventDefault();
 
+            // Сохраняем начальную высоту только один раз
+            if (initialHeight === null) {
+                initialHeight = singleProduct.getBoundingClientRect().height;
+            }
+
+            // Получаем текущую высоту
+            const currentHeight = singleProduct.getBoundingClientRect().height;
+            singleProduct.style.height = `${currentHeight}px`;
+
+            // Переключаем класс
             singleProduct.classList.toggle('active');
-        })
+
+            // Анимируем к новой высоте
+            requestAnimationFrame(() => {
+                if (singleProduct.classList.contains('active')) {
+                    // Открываем - полная высота
+                    const fullHeight = singleProduct.scrollHeight;
+                    singleProduct.style.height = `${fullHeight}px`;
+                } else {
+                    // Закрываем - возвращаем начальную высоту
+                    singleProduct.style.height = `${initialHeight}px`;
+                }
+            });
+        });
     }
 
     const fileInputWrappers = document.querySelectorAll('.file-input-wrapper');

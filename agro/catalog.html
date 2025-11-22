@@ -172,19 +172,46 @@
             </div>
             <div class="page-banner">
                 <div class="container">
-                    <picture class="page-banner__img">
-                        <source
-                                media="(max-width: 767px)"
-                                srcset="assets/images/banners/1-m.webp">
+                    <div class="page-banner__slider swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <picture class="page-banner__img">
+                                    <source
+                                            media="(max-width: 767px)"
+                                            srcset="assets/images/banners/1-m.webp">
 
-                        <source
-                                media="(min-width: 768px)"
-                                srcset="assets/images/banners/1.webp">
+                                    <source
+                                            media="(min-width: 768px)"
+                                            srcset="assets/images/banners/1.webp">
 
-                        <img class="page-banner__img"
-                             src="assets/images/banners/1.webp"
-                             alt="Описание изображения">
-                    </picture>
+                                    <img class="page-banner__img"
+                                         src="assets/images/banners/1.webp"
+                                         alt="Описание изображения">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide">
+                                <picture class="page-banner__img">
+                                    <source
+                                            media="(max-width: 767px)"
+                                            srcset="assets/images/banners/1-m.webp">
+
+                                    <source
+                                            media="(min-width: 768px)"
+                                            srcset="assets/images/banners/2.webp">
+
+                                    <img class="page-banner__img"
+                                         src="assets/images/banners/2.webp"
+                                         alt="Описание изображения">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="page-banner__next button button--accent">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#chevron-right"></use>
+                            </svg>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="page-filter">

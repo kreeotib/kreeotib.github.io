@@ -95,58 +95,100 @@
             </div>
             <div class="hero-about">
                 <div class="hero-about__wrapper">
-                    <div class="about-hero">
-                        <div class="about-hero__grid">
-                            <div class="about-hero__content">
-                                <div class="section-tag section-tag--desktop">
-                                    О компании
-                                </div>
-                                <p class="about-hero__title title">
-                                    Наша компания — ведущий поставщик минеральных удобрений, работающий
-                                    на российском рынке <br>
-                                    <span class="title--accent title--bold">с 2014 года</span>
-                                </p>
-                                <div class="about-hero__footer about-footer">
-                                    <p class="text text--middle about-footer__text">
-                                        Мы специализируемся на производстве, хранении и доставке удобрений, предлагая
-                                        более
-                                        20 стандартных марок и 2 эксклюзивные формулы собственной разработки
-                                        с повышенной усвояемостью питательных
-                                    </p>
-                                    <img src="assets/images/about/footer-1.webp" alt="" class="about-footer__img">
-                                </div>
-                            </div>
-                            <div class="about-hero__img">
-                                <img src="assets/images/about/hero-1.webp" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-hero">
-                        <div class="about-hero__grid">
-                            <div class="about-hero__content">
-                                <div class="section-tag section-tag--desktop">
-                                    О компании
-                                </div>
-                                <p class="about-hero__title about-hero__title--small title">
-                                    Мы специализируемся на производстве, хранении и доставке удобрений, предлагая более
-                                    <span class="title title--accent">20 стандартных марок и 2 эксклюзивные формулы собственной разработки</span>
-                                    с повышенной
-                                    усвояемостью питательных
-                                </p>
-                                <div class="about-hero__footer about-footer">
-                                    <p class="text text--middle about-footer__text">
-                                        Наша компания — ведущий поставщик минеральных удобрений, работающий
-                                        на российском рынке с 2014 года
-                                    </p>
-                                    <img src="assets/images/about/footer-2.webp" alt="" class="about-footer__img">
-                                </div>
-                            </div>
-                            <div class="about-hero__img">
-                                <img src="assets/images/about/hero-2.webp" alt="">
+                    <div class="swiper hero-about__slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide ">
+                                <div class="about-hero">
+                                    <div class="about-hero__grid">
+                                        <div class="about-hero__content">
+                                            <div class="section-tag section-tag--desktop">
+                                                О компании
+                                            </div>
+                                            <p class="about-hero__title title">
+                                                Наша компания — ведущий поставщик минеральных удобрений, работающий
+                                                на российском рынке <br>
+                                                <span class="title--accent title--bold">с 2014 года</span>
+                                            </p>
+                                            <div class="about-hero__footer about-footer">
+                                                <p class="text text--middle about-footer__text">
+                                                    Мы специализируемся на производстве, хранении и доставке удобрений, предлагая
+                                                    более
+                                                    20 стандартных марок и 2 эксклюзивные формулы собственной разработки
+                                                    с повышенной усвояемостью питательных
+                                                </p>
+                                                <img src="assets/images/about/footer-1.webp" alt="" class="about-footer__img">
+                                            </div>
+                                        </div>
+                                        <div class="about-hero__img">
+                                            <picture>
+                                                <source
+                                                        media="(max-width: 767px)"
+                                                        srcset="assets/images/about/hero-1-m.webp">
 
+                                                <source
+                                                        media="(min-width: 768px)"
+                                                        srcset="assets/images/about/hero-1.webp">
+
+                                                <img class=""
+                                                     src="assets/images/about/hero-1.webp"
+                                                     alt="Описание изображения">
+                                            </picture>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide ">
+                               <div class="about-hero">
+                                   <div class="about-hero__grid">
+                                       <div class="about-hero__content">
+                                           <div class="section-tag section-tag--desktop">
+                                               О компании
+                                           </div>
+                                           <p class="about-hero__title about-hero__title--small title">
+                                               Мы специализируемся на производстве, хранении и доставке удобрений, предлагая более
+                                               <span class="title title--accent">20 стандартных марок и 2 эксклюзивные формулы собственной разработки</span>
+                                               с повышенной
+                                               усвояемостью питательных
+                                           </p>
+                                           <div class="about-hero__footer about-footer">
+                                               <p class="text text--middle about-footer__text">
+                                                   Наша компания — ведущий поставщик минеральных удобрений, работающий
+                                                   на российском рынке с 2014 года
+                                               </p>
+                                               <img src="assets/images/about/footer-2.webp" alt="" class="about-footer__img">
+                                           </div>
+                                       </div>
+                                       <div class="about-hero__img">
+                                           <picture>
+                                               <source
+                                                       media="(max-width: 767px)"
+                                                       srcset="assets/images/about/hero-2-m.webp">
+
+                                               <source
+                                                       media="(min-width: 768px)"
+                                                       srcset="assets/images/about/hero-2.webp">
+
+                                               <img class=""
+                                                    src="assets/images/about/hero-2.webp"
+                                                    alt="Описание изображения">
+                                           </picture>
+
+                                       </div>
+                                   </div>
+                               </div>
                             </div>
                         </div>
+                       <div class="hero-about__nav">
+                           <div class="hero-about__pagination"></div>
+                           <p class="hero-about__text">
+                               <svg class="icon">
+                                   <use xlink:href="assets/images/sprite.svg#chevron-left"></use>
+                               </svg>
+                               Нажмите, чтобы пролистнуть
+                           </p>
+                       </div>
                     </div>
+
                 </div>
             </div>
             <div class="section section-slider">
@@ -234,8 +276,8 @@
                                         <img src="assets/images/mission/1.webp" alt="">
                                     </div>
                                     <div class="mission-item__content">
-                                        <p class="text text--big">
-                                        <span class="text text--bold">
+                                        <p class="text text--big text--mobile--middle">
+                                        <span class="text text--bold ">
                                             Наша цель
                                         </span>
                                             - создавать ценность для клиентов, предлагая полный цикл решений: от
@@ -251,7 +293,7 @@
                                         <img src="assets/images/mission/2.webp" alt="">
                                     </div>
                                     <div class="mission-item__content">
-                                        <p class="text text--big">
+                                        <p class="text text--big text--mobile--middle">
                                             Мы стремимся быть надёжным партнёром для каждого сельхозпроизводителя,
                                             объединяя современные технологии, экспертизу
                                             и персональный подход ради
@@ -268,7 +310,7 @@
                                         <img src="assets/images/mission/3.webp" alt="">
                                     </div>
                                     <div class="mission-item__content">
-                                        <p class="text text--big">
+                                        <p class="text text--big text--mobile--middle">
                                             <span class="text text--bold">Наша деятельность основана</span>
                                             <br>
                                             на принципах надежности, инноваций и долгосрочного партнерства

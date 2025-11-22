@@ -18,7 +18,7 @@
 <body>
 
 <div class="page-wrapper">
-    <header class="header header--login">
+    <header class="header">
         <div class="header__wrapper">
             <div class="header__row">
                 <a href="#" class="header__logo logo">
@@ -75,58 +75,70 @@
             </div>
         </div>
     </header>
-    <main class="content">
-        <div class="login">
-            <div class="login__wrapper">
-                <div class="login-info">
-                    <div class="login-info__wrapper">
-                        <div class="login-info__item">
-                            <div class="section-tag">
-                                Восстановление пароля
+    <main class="content page">
+        <div class="page__wrapper">
+            <div class="page-header">
+                <div class="container">
+                    <div class="page-header__wrapper">
+                        <div class="section-tag page-header__tag">
+                            Личный кабинет
+                        </div>
+                        <div class="page-header__back">
+                            <a href="#" class="back-link">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#chevron-left"></use>
+                                </svg>
+                            </a>
+                            <p class="text text--middle">
+                                Личный кабинет
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="#" class="section form">
+                <div class="container">
+                    <div class="section__column">
+                        <div class="form-popup">
+                            <div class="form-popup__wrapper">
+                                <div class="popup-img popup-img--check">
+                                    <div class="popup-img__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#check-big"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="form-popup__header form-popup__header--small">
+                                    <p class="title title--base title--center">Ваш заказ успешно оформлен</p>
+                                    <p class="text text--big text--mobile--small">Через некоторое время с вами свяжется наш
+                                        региональный менеджер, информация об оформленных заказах хранится в личном кабинете</p>
+                                </div>
+                                <span class="form__divider"></span>
+                                <div class="form-buttons form-buttons--divider">
+                                    <a href="#"
+                                       class="button button--mobile--full button--text button--text--grey form-buttons__item--full popup-close">
+                                        Закрыть
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="login-info__item">
-                            <div class="section-tag">
-                                Шаг 1/3
+                        <div class="cabinet-block">
+                            <div class="cabinet-block__footer cabinet-block__footer--center">
+                                <p class="cabinet-block__subtext">
+                                    Возникла проблема с заказом? Есть вопросы? Номер телефона для
+                                    связи с подержкой:
+                                </p>
+                                <a href="tel:+7 (342) 214 33 01" class="cabinet-block__phone">+7
+                                    (342) 214 33 01
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="login-content">
-                    <form action="" class="login-form">
-                        <div class="login-form__wrapper">
-                            <div class="login-form__content form">
-                                <a href="#" class="back-link login-form__back">
-                                    <svg class="icon">
-                                        <use xlink:href="assets/images/sprite.svg#chevron-left"></use>
-                                    </svg>
-                                    <span>Вернуться назад</span>
-                                </a>
-                                <div class="form__wrapper">
-
-                                    <div class="form__content form__content--small">
-                                        <img src="assets/images/success.webp" alt="" class="form__img">
-
-                                        <div class="form__header">
-                                            <p class="title title--base title--center">Восстановление пароля</p>
-                                            <p class="text text--big text--center text--mobile--small">Ваш пароль успешно изменен!</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-footer">
-                                        <div class="form-footer__wrapper form-footer__wrapper--big">
-                                            <button class="button--base button--accent button--full">Продолжить авторизацию</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
     </main>
-    <footer class="footer footer--mobile">
+    <footer class="footer">
         <div class="footer__wrapper">
             <div class="footer__row">
                 <a href="#" class="button button--white button--base footer-button">
@@ -246,6 +258,7 @@
         </div>
     </footer>
 </div>
+
 
 
 <script src="assets/libs/swiper/swiper.js"></script>
