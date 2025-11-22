@@ -48,6 +48,53 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     })
 
+    const heroSlider = new Swiper('.hero-slider', {
+        spaceBetween: 0,
+        loop:true,
+        effect: "fade",
+        speed:500,
+        fadeEffect: {
+            crossFade: true,
+        },
+        autoplay:{
+            delay:3000,
+        }
+    })
+
+
+    var aboutSlider = new Swiper(".about-slider", {
+        grabCursor: true,
+        effect: "creative",
+        slideActiveClass: 'about-card--active',
+        slideNextClass: 'about-card--next',
+        slidePrevClass: 'about-card--prev',
+        pagination: {
+            el: '.about-slider__pagination',
+            clickable:true
+        },
+        creativeEffect: {
+            prev: {
+                translate: [0, -170, 0],
+                rotate: [0, 0, 0],
+            },
+            next: {
+                translate: [0, -170, 0],
+                rotate: [0, 0, 0],
+            },
+        },
+    });
+
+    // Add click event to all slides
+    document.querySelectorAll('.swiper-slide').forEach((slide, index) => {
+        slide.addEventListener('click', function () {
+            // Get the real index (accounting for loop mode)
+            const realIndex = this.getAttribute('data-swiper-slide-index');
+            if (realIndex !== null) {
+                swiper4.slideToLoop(parseInt(realIndex));
+            }
+        });
+    });
+
     const productImgSlider = new Swiper('.product-slider', {
 
         pagination: {
@@ -325,8 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.querySelector('.mobile-menu');
     const burger = document.querySelector(".burger");
 
-    if(mobileMenu && burger){
-        burger.addEventListener('click',e=>{
+    if (mobileMenu && burger) {
+        burger.addEventListener('click', e => {
             e.preventDefault();
 
             header.classList.toggle('active');
