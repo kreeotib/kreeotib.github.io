@@ -560,7 +560,7 @@
             left: 0;
             top: 0;
             background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
-            z-index: 2;
+            z-index: 1;
         }
 
         .feedback__video {
@@ -570,7 +570,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 1;
+            z-index: 0;
 
             display: flex;
 
@@ -582,7 +582,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 1;
+            z-index: 3;
         }
 
         .feedback__wrapper {
@@ -919,7 +919,7 @@
         </div>
     </header>
     <main class="page-wrapper__content content">
-        <div class="feedback">
+        <div class="feedback js-hero-video">
             <div class="feedback__video">
                 <video class=" js-hero-video-el" autoplay="" muted="" playsinline="" webkit-playsinline=""
                        loop="" poster="https://g-horses.com/wp-content/uploads/2025/11/WEB_Test_3.webp">
