@@ -1,0 +1,745 @@
+.franchise-section {
+  font-family: "Helvetica", sans-serif;
+}
+.franchise-section--grey {
+  background-color: #ECECEC;
+}
+.franchise-section-requirements {
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.franchise-section-hero {
+  overflow: hidden;
+  position: relative;
+  z-index: 4;
+}
+.franchise-section-map {
+  overflow: hidden;
+}
+.franchise-section--accent {
+  background-color: #C02535;
+}
+.franchise-section__wrapper {
+  padding: 50px 0;
+}
+@media screen and (max-width: 767px) {
+  .franchise-section__wrapper {
+    padding: 20px 0;
+  }
+}
+.franchise-section__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+.franchise-section__header {
+  margin: 0 0 30px 0;
+  position: relative;
+  z-index: 2;
+}
+.franchise-section__header--small {
+  max-width: 700px;
+  width: 100%;
+}
+.franchise-section__subtext {
+  margin: 24px 0 0 0;
+  font-size: 10px;
+  line-height: 1.3;
+  color: #939393;
+}
+.franchise-section__title {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2A2A2A;
+  margin: 0;
+  font-family: "RoadRadio", sans-serif;
+}
+.franchise-section__title--white {
+  color: #fff;
+}
+@media screen and (max-width: 767px) {
+  .franchise-section__title {
+    font-size: 28px;
+  }
+}
+.franchise-about {
+  background: #BF2535;
+}
+.franchise-about__content {
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-about__content {
+    padding: 36px 0 20px 0;
+  }
+}
+.franchise-about__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-about__list {
+    padding-left: 16px;
+  }
+}
+.franchise-about__list li {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-about__list li {
+    gap: 12px;
+  }
+}
+.franchise-about__list li::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  background: url("../../images/franchise/check-white.svg") center center/contain no-repeat;
+  display: block;
+}
+.franchise-about__list li p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #fff;
+}
+.franchise-invest__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+@media screen and (max-width: 1240px) {
+  .franchise-invest__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 767px) {
+  .franchise-invest__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
+  }
+}
+.franchise-invest__item {
+  padding: 24px;
+  background-color: #ECECEC;
+  border-radius: 16px;
+}
+.franchise-invest__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+}
+.franchise-invest__text {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+}
+.franchise-invest__text--auto {
+  margin-top: auto;
+}
+.franchise-invest__tag {
+  padding: 12px 16px;
+  border-radius: 16px;
+  background-color: #BF2535;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  width: max-content;
+  max-width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.franchise-invest__subtext {
+  font-size: 12px;
+  color: #939393;
+  line-height: 1.5;
+  margin: 0;
+}
+.franchise-invest__divider {
+  width: 114px;
+  height: 1px;
+  flex-shrink: 0;
+  background-color: #D1D1D1;
+  display: block;
+}
+@media screen and (max-width: 767px) {
+  .franchise-example {
+    padding: 20px 0;
+    background: #C02535;
+    position: relative;
+  }
+}
+@media screen and (max-width: 767px) and (max-width: 767px) {
+  .franchise-example::before {
+    content: "";
+    width: 150vw;
+    height: 100%;
+    background: #C02535;
+    position: absolute;
+    left: -25vw;
+    top: 0;
+    display: block;
+  }
+}
+.franchise-example__img {
+  height: 385px;
+  background: #C02535;
+  position: relative;
+  z-index: 3;
+}
+@media screen and (max-width: 767px) {
+  .franchise-example__img {
+    height: auto;
+  }
+}
+.franchise-example__img::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  background: #C02535;
+}
+@media screen and (max-width: 767px) {
+  .franchise-example__img::before {
+    display: none;
+  }
+}
+.franchise-example__img img {
+  width: 484px;
+  height: 425px;
+  position: absolute;
+  top: 10px;
+  left: -60px;
+  z-index: 0;
+}
+@media screen and (max-width: 767px) {
+  .franchise-example__img img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+.franchise-example__text {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #939393;
+  margin-top: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transform: translateX(75px);
+}
+@media screen and (max-width: 767px) {
+  .franchise-example__text {
+    margin-top: 10px;
+    color: #fff;
+    transform: translateX(0);
+  }
+}
+.franchise-requirements__grid {
+  display: grid;
+  grid-template-columns: 5.5fr 6.5fr;
+}
+@media screen and (max-width: 767px) {
+  .franchise-requirements__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.franchise-requirements__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-requirements__content {
+    padding: 36px 0 40px 0;
+  }
+}
+.franchise-requirements__list {
+  color: #2A2A2A;
+  font-size: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-requirements__list {
+    padding-left: 12px;
+    gap: 20px;
+  }
+}
+.franchise-requirements__list li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-requirements__list li {
+    gap: 12px;
+  }
+}
+.franchise-requirements__list li p {
+  margin: 0;
+  padding: 0;
+  max-width: 450px;
+  width: 100%;
+}
+.franchise-requirements__list li::before {
+  content: "";
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: url("../../images/franchise/check.svg") center center/contain no-repeat;
+}
+.franchise-future {
+  background-color: #BF2535;
+}
+.franchise-future__wrapper {
+  padding: 54px 0;
+}
+@media screen and (max-width: 767px) {
+  .franchise-future__wrapper {
+    padding: 36px 0 20px 0;
+  }
+}
+.franchise-future__text {
+  font-size: 16px;
+  color: #fff;
+  margin: 0;
+}
+.franchise-future__label {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 16px;
+  padding-left: 46px;
+  position: relative;
+  z-index: 3;
+}
+@media screen and (max-width: 767px) {
+  .franchise-future__label {
+    gap: 12px;
+    padding-left: 12px;
+  }
+}
+.franchise-future__content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 430px;
+  width: 100%;
+}
+.franchise-future__icon {
+  flex-shrink: 0;
+}
+.franchise-advantages__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.franchise-advantages__wrapper {
+  display: grid;
+  grid-auto-rows: 70px;
+  grid-template-columns: 100px 300px minmax(0, 1fr);
+  gap: 16px;
+}
+@media screen and (max-width: 1240px) {
+  .franchise-advantages__wrapper {
+    grid-auto-rows: 120px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .franchise-advantages__wrapper {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    padding-left: 46px;
+    position: relative;
+    grid-auto-rows: auto;
+  }
+}
+.franchise-advantages__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  border-radius: 16px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-advantages__icon {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+.franchise-advantages__icon svg {
+  width: 18px;
+  height: 12px;
+}
+.franchise-advantages__text {
+  font-family: "Helvetica", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin: 0;
+}
+@media screen and (max-width: 767px) {
+  .franchise-advantages__text {
+    padding: 10px 12px;
+  }
+}
+.franchise-advantages__text--bold {
+  font-weight: 700;
+}
+.franchise-hero__wrapper {
+  position: relative;
+}
+.franchise-hero__social {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.franchise-hero__img {
+  position: absolute;
+  height: 400px;
+  width: 50%;
+  right: -150px;
+  top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 767px) {
+  .franchise-hero__img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+  }
+}
+.franchise-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.franchise-hero__icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.franchise-hero__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.franchise-hero__wrapper {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+}
+@media screen and (max-width: 767px) {
+  .franchise-hero__wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.franchise-hero__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (max-width: 767px) {
+  .franchise-hero__footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+}
+.franchise-hero__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2A2A2A;
+  text-decoration: none;
+  text-transform: uppercase;
+  height: 50px;
+  width: 155px;
+  border-radius: 15px;
+  border: 1px solid #2A2A2A;
+  font-family: "RoadRadio", sans-serif;
+}
+@media screen and (max-width: 767px) {
+  .franchise-hero__button {
+    width: 100%;
+  }
+}
+.franchise-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 50px 0 24px 0;
+}
+@media screen and (max-width: 767px) {
+  .franchise-hero__content {
+    padding: 36px 0 20px 0;
+  }
+}
+.franchise-hero__text {
+  font-size: 16px;
+  line-height: 1.3;
+  color: #2A2A2A;
+  margin: 0;
+}
+.franchise-map {
+  height: 650px;
+  position: relative;
+}
+@media screen and (max-width: 767px) {
+  .franchise-map {
+    margin-bottom: 20px;
+    overflow: auto;
+  }
+}
+.franchise-map__item {
+  position: absolute;
+  top: -130px;
+  left: -25%;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150%;
+  height: 150%;
+}
+@media screen and (max-width: 767px) {
+  .franchise-map__item {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1400px;
+  }
+}
+.franchise-map__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.franchise-stages {
+  background-color: #ECECEC;
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  .franchise-stages__wrapper {
+    padding-bottom: 20px;
+  }
+}
+.franchise-stages__block {
+  padding: 50px 0 24px 0;
+}
+@media screen and (max-width: 767px) {
+  .franchise-stages__block {
+    padding: 36px 0 0 0;
+  }
+}
+.franchise-stages__grid {
+  display: grid;
+  position: relative;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+}
+@media screen and (max-width: 767px) {
+  .franchise-stages__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+.franchise-stages__block {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.franchise-stages__img {
+  position: absolute;
+  width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: -150px;
+  z-index: 0;
+}
+@media screen and (max-width: 1240px) {
+  .franchise-stages__img {
+    width: 500px;
+    right: -30px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .franchise-stages__img {
+    position: relative;
+    right: 0;
+    width: 100%;
+  }
+}
+.franchise-stages__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.franchise-stages__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: stages;
+  position: relative;
+}
+.franchise-stages__list::before {
+  content: "";
+  width: 1px;
+  height: calc(100% - 80px);
+  background-color: #fff;
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  z-index: 0;
+}
+.franchise-stages__list li {
+  counter-increment: stages;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 8px;
+}
+.franchise-stages__list li p {
+  margin: 0;
+  align-self: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #fff;
+  min-height: 46px;
+  font-size: 16px;
+  width: 100%;
+  color: #2A2A2A;
+  display: flex;
+  align-items: center;
+}
+.franchise-stages__list li::before {
+  content: counter(stages);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #fff;
+  color: #BF2535;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "RoadRadio", sans-serif;
+}
+.franchise-offer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-offer__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.franchise-offer__item {
+  padding: 32px 48px;
+  background-color: #FFFFFF;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 350px;
+}
+@media screen and (max-width: 767px) {
+  .franchise-offer__item {
+    padding: 35px;
+    height: auto;
+    min-height: unset;
+  }
+}
+.franchise-offer__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.franchise-offer__icon {
+  width: 100px;
+  height: 100px;
+  color: #999999;
+}
+.franchise-offer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.franchise-offer__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #BF2535;
+  font-family: "RoadRadio", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+}
+.franchise-offer__text {
+  font-size: 16px;
+  color: #2A2A2A;
+  line-height: 1.5;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+}
+
+/*# sourceMappingURL=index.css.map */
