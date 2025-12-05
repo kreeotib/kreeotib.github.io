@@ -571,7 +571,7 @@
 @font-face {
     font-family: "RoadRadio";
     src: url("RoadRadio.eot");
-    src: local("RoadRadio"), url("../fonts/RoadRadio.eot?#iefix") format("embedded-opentype"), url("../fonts/RoadRadio.woff2") format("woff2"), url("../fonts/RoadRadio.woff") format("woff"), url("../fonts/RoadRadio.ttf") format("truetype");
+    src: local("RoadRadio"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio.eot?#iefix") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio.woff2") format("woff2"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -579,7 +579,7 @@
 @font-face {
     font-family: "RoadRadio";
     src: url("RoadRadio-Light.eot");
-    src: local("RoadRadio Light"), local("RoadRadio-Light"), url("../fonts/RoadRadio-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/RoadRadio-Light.woff2") format("woff2"), url("../fonts/RoadRadio-Light.woff") format("woff"), url("../fonts/RoadRadio-Light.ttf") format("truetype");
+    src: local("RoadRadio Light"), local("RoadRadio-Light"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Light.eot?#iefix") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Light.woff2") format("woff2"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Light.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Light.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -587,7 +587,7 @@
 @font-face {
     font-family: "RoadRadio";
     src: url("RoadRadio-Thin.eot");
-    src: local("RoadRadio Thin"), local("RoadRadio-Thin"), url("../fonts/RoadRadio-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/RoadRadio-Thin.woff2") format("woff2"), url("../fonts/RoadRadio-Thin.woff") format("woff"), url("../fonts/RoadRadio-Thin.ttf") format("truetype");
+    src: local("RoadRadio Thin"), local("RoadRadio-Thin"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Thin.eot?#iefix") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Thin.woff2") format("woff2"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Thin.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Thin.ttf") format("truetype");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -595,7 +595,7 @@
 @font-face {
     font-family: "RoadRadio";
     src: url("RoadRadio-Black.eot");
-    src: local("RoadRadio Black"), local("RoadRadio-Black"), url("../fonts/RoadRadio-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/RoadRadio-Black.woff2") format("woff2"), url("../fonts/RoadRadio-Black.woff") format("woff"), url("../fonts/RoadRadio-Black.ttf") format("truetype");
+    src: local("RoadRadio Black"), local("RoadRadio-Black"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Black.eot?#iefix") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Black.woff2") format("woff2"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Black.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Black.ttf") format("truetype");
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -603,7 +603,7 @@
 @font-face {
     font-family: "RoadRadio";
     src: url("RoadRadio-Bold.eot");
-    src: local("RoadRadio Bold"), local("RoadRadio-Bold"), url("../fonts/RoadRadio-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/RoadRadio-Bold.woff2") format("woff2"), url("../fonts/RoadRadio-Bold.woff") format("woff"), url("../fonts/RoadRadio-Bold.ttf") format("truetype");
+    src: local("RoadRadio Bold"), local("RoadRadio-Bold"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Bold.eot?#iefix") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Bold.woff2") format("woff2"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Bold.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/RoadRadio-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -611,7 +611,7 @@
 @font-face {
     font-family: "Helvetica";
     src: url("Helvetica.eot");
-    src: local("HelveticaRegular"), url("../fonts/HelveticaRegular/HelveticaRegular.eot") format("embedded-opentype"), url("../fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"), url("../fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
+    src: local("HelveticaRegular"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaRegular/HelveticaRegular.eot") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -619,7 +619,7 @@
 @font-face {
     font-family: "Helvetica";
     src: url("HelveticaItalic.eot");
-    src: local("HelveticaItalic"), local("HelveticaItalic"), url("../fonts/HelveticaItalic/HelveticaItalic.eot") format("embedded-opentype"), url("../fonts/HelveticaItalic/HelveticaItalic.woff") format("woff"), url("../fonts/HelveticaItalic/HelveticaItalic.ttf") format("truetype");
+    src: local("HelveticaItalic"), local("HelveticaItalic"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaItalic/HelveticaItalic.eot") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaItalic/HelveticaItalic.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaItalic/HelveticaItalic.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -627,15 +627,15 @@
 @font-face {
     font-family: "Helvetica";
     src: url("HelveticaBoldItalic.eot");
-    src: local("HelveticaBoldItalic"), local("HelveticaBoldItalic"), url("../fonts/HelveticaBoldItalic/HelveticaBoldItalic.eot") format("embedded-opentype"), url("../fonts/HelveticaBoldItalic/HelveticaBoldItalic.woff") format("woff"), url("../fonts/HelveticaBoldItalic/HelveticaBoldItalic.ttf") format("truetype");
+    src: local("HelveticaBoldItalic"), local("HelveticaBoldItalic"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaBoldItalic/HelveticaBoldItalic.eot") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaBoldItalic/HelveticaBoldItalic.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaBoldItalic/HelveticaBoldItalic.ttf") format("truetype");
     font-weight: bold;
     font-style: italic;
     font-display: swap;
 }
 @font-face {
     font-family: "Helvetica";
-    src: url("../fonts/HelveticaLight/HelveticaLight.eot");
-    src: local("Helvetica Light"), local("HelveticaLight"), url("../fonts/HelveticaLight/HelveticaLight.eot") format("embedded-opentype"), url("../fonts/HelveticaLight/HelveticaLight.woff") format("woff"), url("../fonts/HelveticaLight/HelveticaLight.ttf") format("truetype");
+    src: url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaLight/HelveticaLight.eot");
+    src: local("Helvetica Light"), local("HelveticaLight"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaLight/HelveticaLight.eot") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaLight/HelveticaLight.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaLight/HelveticaLight.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -643,7 +643,7 @@
 @font-face {
     font-family: "Helvetica";
     src: url("HelveticaBold.eot");
-    src: local("Helvetica Bold"), local("HelveticaBold"), url("../fonts/HelveticaBold/HelveticaBold.eot") format("embedded-opentype"), url("../fonts/HelveticaBold/HelveticaBold.woff") format("woff"), url("../fonts/HelveticaBold/HelveticaBold.ttf") format("truetype");
+    src: local("Helvetica Bold"), local("HelveticaBold"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaBold/HelveticaBold.eot") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaBold/HelveticaBold.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaBold/HelveticaBold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -651,7 +651,7 @@
 @font-face {
     font-family: "Helvetica";
     src: url("HelveticaLightItalic.eot");
-    src: local("Helvetica Light Oblique"), local("HelveticaLightItalic"), url("../fonts/HelveticaLightItalic/HelveticaLightItalic.eot") format("embedded-opentype"), url("../fonts/HelveticaLightItalic/HelveticaLightItalic.woff") format("woff"), url("../fonts/HelveticaLightItalic/HelveticaLightItalic.ttf") format("truetype");
+    src: local("Helvetica Light Oblique"), local("HelveticaLightItalic"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaLightItalic/HelveticaLightItalic.eot") format("embedded-opentype"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaLightItalic/HelveticaLightItalic.woff") format("woff"), url("https://kamkabel.ru/local/templates/kamkabel/fonts/HelveticaLightItalic/HelveticaLightItalic.ttf") format("truetype");
     font-weight: 300;
     font-style: italic;
     font-display: swap;
