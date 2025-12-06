@@ -1899,7 +1899,7 @@ body.no-scroll {
   position: relative;
   width: 100%;
   background: #F9F9F9;
-  border-radius: 1.625rem;
+  border-radius: var(--border-radius-base);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5609,7 +5609,7 @@ body.no-scroll {
 @media screen and (max-width: 767px) {
   .logistic-card {
     width: 100%;
-    padding-top: 11.5rem;
+    padding-top: 18rem;
   }
 }
 @media screen and (min-width: 768px) {

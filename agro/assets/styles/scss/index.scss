@@ -2204,7 +2204,7 @@ body.no-scroll {
       position: relative;
       width: 100%;
       background: #F9F9F9;
-      border-radius: 1.625rem;
+      border-radius:var(--border-radius-base);
 
       display: flex;
       align-items: center;
@@ -6278,7 +6278,7 @@ body.no-scroll {
     will-change: width;
     @media screen and (max-width: 767px) {
       width: 100%;
-      padding-top: 11.5rem;
+      padding-top: 18rem;
     }
     @media screen and (min-width: 768px) {
       &:has(:checked) {
