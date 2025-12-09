@@ -1100,7 +1100,19 @@
                                     <input type="text" class="search__input" placeholder="Поиск">
                                 </label>
                             </div>
-                            <div class="map-tag map-tag--active">
+                            <div data-name="kazan" class="map-tag map-tag--active">
+                                <div class="map-tag__header">
+                                    <span class="map-tag__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#sunrise-alt"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="map-tag__footer">
+                                    <div class="map-tag__decor"></div>
+                                </div>
+                            </div>
+                            <div data-name="udumutriya" class="map-tag ">
                                 <div class="map-tag__header">
                                     <span class="map-tag__icon">
                                         <svg class="icon">
@@ -1113,7 +1125,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="map-info">
+                        <div data-name="kazan" class="map-info map-info--active">
                             <div class="map-info__wrapper">
                                 <div class="map-info__header">
                                     <p class="map-info__title">
@@ -1133,9 +1145,66 @@
                                             </svg>
                                         </div>
                                         <div class="custom-select__content">
-                                            <label class="custom-select__item">Все заказы
-                                                2113<input type="radio"></label>
-                                            <label class="custom-select__item">Все заказы<input
+                                            <label class="custom-select__item">Казань<input type="radio" name="kazan"></label>
+                                            <label class="custom-select__item" data-name="udumutriya">Удумутрия<input
+                                                    type="radio"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="map-info__content">
+                                    <div class="map-info__card map-person">
+                                        <div class="map-person__wrapper">
+                                            <div class="map-person__header">
+                                                <img src="assets/images/person/1.webp" alt="" class="map-person__img">
+                                                <div class="map-person__info">
+                                                    <p class="map-person__region">
+                                                        Республика Удмуртия
+                                                    </p>
+                                                    <p class="map-person__name">
+                                                        Наталья Скобкарева
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="map-contact">
+                                                <div class="map-contact__wrapper">
+                                                    <div class="map-contact__header">
+                                                        <p class="map-contact__title">
+                                                            Контактные данные
+                                                        </p>
+                                                    </div>
+                                                    <div class="map-contact__row">
+                                                        <a href="tel:+7 (902) 630-33-16" class="map-contact__text">+7 (902) 630-33-16</a>
+                                                        <a href="mailto:n.skobkareva@transagro.su" class="map-contact__text">n.skobkareva@transagro.su</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-name="udumutriya" class="map-info">
+                            <div class="map-info__wrapper">
+                                <div class="map-info__header">
+                                    <p class="map-info__title">
+                                        Представитель в вашем регионе
+                                    </p>
+                                    <p class="text text--midddle">
+                                        Выберите регион и мы определим представителя. Вы можете воспольтзоваться фильтрами
+                                        интерактивной карты и посмотреть представителей других регионов
+                                    </p>
+                                </div>
+                                <div class="map-info__select">
+                                    <div class="custom-select custom-select--fill">
+                                        <div class="custom-select__label">
+                                            <span class="custom-select__current">Выберите регион</span>
+                                            <svg class="custom-select__icon">
+                                                <use xlink:href="assets/images/sprite.svg#chevron-down"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="custom-select__content">
+                                            <label class="custom-select__item">Казань<input type="radio" name="kazan"></label>
+                                            <label class="custom-select__item" data-name="udumutriya">Удумутрия<input
                                                     type="radio"></label>
                                         </div>
                                     </div>

@@ -71,37 +71,54 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-    if(window.innerWidth > 767){
-        const aboutHero = new Swiper('.hero-about__slider', {
-            spaceBetween: 0,
-            loop:true,
-            direction:"vertical",
+    let aboutHero = null;
 
-            speed:500,
-
-            slidesPerView:2,
-            allowTouchMove: false,
-            simulateTouch: false,
-            mousewheel: false,
-            breakpoints:{
-                768:{
-
-                    simulateTouch: true,
-                    slidesPerView:1,
-                    direction: "horizontal",
-                    effect:"fade",
-                    fadeEffect:{
-                        crossFade:true
+    function initAboutSlider() {
+        if (window.innerWidth > 767) {
+            if (!aboutHero) {
+                aboutHero = new Swiper('.hero-about__slider', {
+                    spaceBetween: 0,
+                    loop: true,
+                    direction: "vertical",
+                    speed: 500,
+                    slidesPerView: 2,
+                    allowTouchMove: false,
+                    simulateTouch: false,
+                    mousewheel: false,
+                    breakpoints: {
+                        768: {
+                            simulateTouch: true,
+                            slidesPerView: 1,
+                            direction: "horizontal",
+                            effect: "fade",
+                            fadeEffect: {
+                                crossFade: true
+                            }
+                        }
+                    },
+                    pagination: {
+                        el: '.hero-about__pagination',
+                        clickable: true
                     }
-                }
-            },
-            pagination:{
-                el:'.hero-about__pagination',
-                clickable: true
+                });
             }
-        })
+        } else {
+            if (aboutHero) {
+                aboutHero.destroy(true, true);
+                aboutHero = null;
+            }
+        }
     }
 
+    initAboutSlider();
+
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            initAboutSlider();
+        }, 250);
+    });
 
 
     var aboutSlider = new Swiper(".about-slider", {
@@ -320,32 +337,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (singleProduct) {
         const singleButton = singleProduct.querySelector('.single__button');
 
-        // Запоминаем начальную высоту при загрузке
         let initialHeight = null;
 
         singleButton.addEventListener('click', e => {
             e.preventDefault();
 
-            // Сохраняем начальную высоту только один раз
             if (initialHeight === null) {
                 initialHeight = singleProduct.getBoundingClientRect().height;
             }
 
-            // Получаем текущую высоту
             const currentHeight = singleProduct.getBoundingClientRect().height;
             singleProduct.style.height = `${currentHeight}px`;
 
-            // Переключаем класс
             singleProduct.classList.toggle('active');
 
-            // Анимируем к новой высоте
             requestAnimationFrame(() => {
                 if (singleProduct.classList.contains('active')) {
-                    // Открываем - полная высота
                     const fullHeight = singleProduct.scrollHeight;
                     singleProduct.style.height = `${fullHeight}px`;
                 } else {
-                    // Закрываем - возвращаем начальную высоту
                     singleProduct.style.height = `${initialHeight}px`;
                 }
             });
@@ -452,3 +462,114 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 })
+
+
+
+// Интерактивная карта с переключением регионов
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Получаем все элементы
+    const mapTags = document.querySelectorAll('.map-tag');
+    const mapInfos = document.querySelectorAll('.map-info');
+    const searchInput = document.querySelector('.search__input');
+    const customSelects = document.querySelectorAll('.custom-select');
+
+    // Функция переключения активного региона
+    function switchRegion(regionName) {
+        // Убираем активный класс со всех тегов и инфо
+        mapTags.forEach(tag => tag.classList.remove('map-tag--active'));
+        mapInfos.forEach(info => info.classList.remove('map-info--active'));
+
+        // Добавляем активный класс к выбранному региону
+        const activeTag = document.querySelector(`.map-tag[data-name="${regionName}"]`);
+        const activeInfo = document.querySelector(`.map-info[data-name="${regionName}"]`);
+
+        if (activeTag) activeTag.classList.add('map-tag--active');
+        if (activeInfo) activeInfo.classList.add('map-info--active');
+    }
+
+    // Обработчик клика по тегам на карте
+    mapTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const regionName = this.getAttribute('data-name');
+            switchRegion(regionName);
+        });
+    });
+
+    // Обработчик для custom select
+    customSelects.forEach(select => {
+        const label = select.querySelector('.custom-select__label');
+        const content = select.querySelector('.custom-select__content');
+        const current = select.querySelector('.custom-select__current');
+        const items = select.querySelectorAll('.custom-select__item');
+
+        // Открытие/закрытие селекта
+        label.addEventListener('click', function(e) {
+            e.stopPropagation();
+            select.classList.toggle('custom-select--active');
+        });
+
+        // Выбор элемента
+        items.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const regionName = this.getAttribute('data-name') || 'kazan';
+                const regionText = this.textContent.trim();
+
+                // Обновляем текст в селекте
+                current.textContent = regionText;
+
+                // Закрываем селект
+                select.classList.remove('custom-select--active');
+
+                // Переключаем регион
+                switchRegion(regionName);
+
+                // Отмечаем radio
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) radio.checked = true;
+            });
+        });
+
+        // Закрытие при клике вне селекта
+        document.addEventListener('click', function() {
+            select.classList.remove('custom-select--active');
+        });
+    });
+
+    // Поиск по регионам
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+
+            mapInfos.forEach(info => {
+                const regionName = info.querySelector('.map-person__region');
+                const personName = info.querySelector('.map-person__name');
+
+                if (regionName || personName) {
+                    const regionText = regionName ? regionName.textContent.toLowerCase() : '';
+                    const personText = personName ? personName.textContent.toLowerCase() : '';
+
+                    if (regionText.includes(searchTerm) || personText.includes(searchTerm)) {
+                        info.style.display = 'block';
+                    } else {
+                        info.style.display = 'none';
+                    }
+                }
+            });
+
+            // Фильтруем теги на карте
+            mapTags.forEach(tag => {
+                const regionName = tag.getAttribute('data-name');
+                const matchingInfo = document.querySelector(`.map-info[data-name="${regionName}"]`);
+
+                if (matchingInfo && matchingInfo.style.display === 'none') {
+                    tag.style.display = 'none';
+                } else {
+                    tag.style.display = 'block';
+                }
+            });
+        });
+    }
+
+});

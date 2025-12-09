@@ -133,12 +133,63 @@
                                     <use xlink:href="assets/images/sprite.svg#profile"></use>
                                 </svg>
                             </a>
+                            <div class="header-control__burger">
+                                <div class="burger">
+                                    <svg class="burger__icon">
+                                        <use xlink:href="assets/images/sprite.svg#burger"></use>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    <div class="mobile-menu">
+        <div class="mobile-menu__wrapper">
+            <ul class="mobile-menu__list">
+                <li>
+                    <a href="#" class="mobile-menu__link active">
+                        О компании
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="mobile-menu__link">
+                        Продукция
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="mobile-menu__link">
+                        Логистика
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="mobile-menu__link">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <a href="#" class="support">
+                <span class="support__text">
+                    Поддержка 24/7
+                </span>
+                <span class="support__icon">
+                    <svg class="icon">
+                        <use xlink:href="assets/images/sprite.svg#wa"></use>
+                    </svg>
+                </span>
+            </a>
+            <div class="mobile-menu__footer">
+                <p class="mobile-menu__text">
+                    Возникла проблема с заказом? Есть вопросы? Номер телефона для связи с подержкой:
+                </p>
+                <a href="tel:+7 (342) 214 33 01" class="mobile-menu__phone">
+                    +7 (342) 214 33 01
+                </a>
+            </div>
+        </div>
+    </div>
     <main class="content page section-slider">
         <div class="page__wrapper">
             <div class="page-header page-header--mobile">
@@ -397,7 +448,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="cart-product">
+                                            <div class="cart-product cart-product--deleted">
                                                 <div class="cart-product__box">
                                                     <div class="cart-product__count cart-product__block">
                                                         <div class="cart-product__row">
@@ -424,8 +475,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-buttons">
-                                            <button class="button button--mobile--full button--text button--text--grey">
+                                        <div class="form-buttons form-buttons--mobile--grid">
+                                            <button class="button button--mobile--full button--desktop button--text button--text--grey">
                                                 Отчистить корзину
                                             </button>
                                             <span class="form-buttons__divider"></span>
@@ -433,7 +484,8 @@
                                                     class="button button--mobile--full button--text button--text--accent">
                                                 Добавить товары
                                             </button>
-
+                                            <a href="#" data-popup=".popup-card"
+                                               class="button button--mobile--full button--base button--base--equal button--mobile button--accent">Оформить заказ</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1310,6 +1362,7 @@
     </div>
 </div>
 
+<script src="assets/libs/imask/imask.js"></script>
 <script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
 

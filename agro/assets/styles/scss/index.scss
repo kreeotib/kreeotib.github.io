@@ -337,10 +337,21 @@ body.no-scroll {
     margin-left: auto;
   }
 
+  &--desktop{
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
   &--mobile {
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
     &--full {
       @media screen and (max-width: 767px) {
         width: 100%;
+        padding-left: 0;
+        padding-right:0;
       }
     }
   }
@@ -714,7 +725,7 @@ body.no-scroll {
 
   --search-background-color: #F1F5F9;
   --search-text-color: #94A3B8;
-
+  --header-divider-color: rgba(33, 56, 80, .5);
   z-index: 11;
 
   &--login {
@@ -727,6 +738,7 @@ body.no-scroll {
       --search-text-color: #fff;
       --header-main-color: #fff;
       --header-nav-color: #f9f9f9;
+
 
       color: var(--header-main-color);
 
@@ -745,7 +757,7 @@ body.no-scroll {
     --search-text-color: #fff;
     --header-main-color: #fff;
     --header-nav-color: #f9f9f9;
-
+    --header-divider-color: rgba(249, 249, 249, .5);
     color: var(--header-main-color);
   }
 
@@ -754,6 +766,7 @@ body.no-scroll {
     --search-text-color: #213850;
     --header-main-color: #213850;
     --header-nav-color: #213850;
+    --header-divider-color: rgba(33, 56, 80, .5);
 
     color: var(--header-main-color);
 
@@ -885,7 +898,8 @@ body.no-scroll {
 
     &__burger {
       padding-left: 1.5rem;
-      border-left: 1px solid rgba(#F9F9F9, .5);
+      border-left: 1px solid var(--header-divider-color);
+
       @media screen and (min-width: 768px) {
         display: none;
       }
@@ -3982,6 +3996,7 @@ body.no-scroll {
 
       top: .5rem;
       right: .5rem;
+      background: transparent;
     }
 
     &:hover {
@@ -3999,6 +4014,9 @@ body.no-scroll {
       top: calc(50% - 1px);
       left: calc(50% - .375rem);
       position: absolute;
+      @media screen and (max-width: 767px) {
+        background: #213850;
+      }
     }
 
     &::before {
@@ -4883,9 +4901,6 @@ body.no-scroll {
     }
   }
 
-  &__list &-product:not(:last-child) &-product__button {
-    display: none;
-  }
 
   &-link {
     position: relative;
@@ -7193,6 +7208,7 @@ body.no-scroll {
     max-width: 16.875rem;
 
     width: 100%;
+    z-index: 4;
     @media screen and (max-width: 767px) {
       position: absolute;
       padding: 1.5rem;
@@ -7235,7 +7251,12 @@ body.no-scroll {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-
+    &:hover{
+      cursor: pointer;
+    }
+    &--active{
+      pointer-events: none;
+    }
     &--active &__footer {
       width: 11.875rem;
       height: 8.125rem;
@@ -7440,6 +7461,12 @@ body.no-scroll {
     width: 100%;
     height: 100%;
     padding: 3rem;
+    pointer-events:none;
+    opacity: 0;
+    transition: .3s opacity;
+    &--active{
+      opacity: 1;
+    }
     @media screen and (max-width: 767px) {
       position: relative;
       padding: 0;
@@ -7447,6 +7474,7 @@ body.no-scroll {
 
     &__select {
       margin-top: auto;
+      pointer-events: auto;
       @media screen and (max-width: 767px) {
         position: absolute;
         left: 0;
