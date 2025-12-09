@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mapTags = document.querySelectorAll('.map-tag');
     const mapInfos = document.querySelectorAll('.map-info');
     const searchInput = document.querySelector('.search__input');
-    const customSelects = document.querySelectorAll('.custom-select');
+    const selectItems = document.querySelectorAll('.custom-select__item input[type="radio"]');
 
     // Функция переключения активного региона
     function switchRegion(regionName) {
@@ -496,44 +496,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Обработчик для custom select
-    customSelects.forEach(select => {
-        const label = select.querySelector('.custom-select__label');
-        const content = select.querySelector('.custom-select__content');
-        const current = select.querySelector('.custom-select__current');
-        const items = select.querySelectorAll('.custom-select__item');
-
-        // Открытие/закрытие селекта
-        label.addEventListener('click', function(e) {
-            e.stopPropagation();
-            select.classList.toggle('custom-select--active');
-        });
-
-        // Выбор элемента
-        items.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const regionName = this.getAttribute('data-name') || 'kazan';
-                const regionText = this.textContent.trim();
-
-                // Обновляем текст в селекте
-                current.textContent = regionText;
-
-                // Закрываем селект
-                select.classList.remove('custom-select--active');
-
-                // Переключаем регион
+    // Обработчик change для radio кнопок в селекте
+    selectItems.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                const item = this.closest('.custom-select__item');
+                const regionName = item.getAttribute('data-name') || 'kazan';
                 switchRegion(regionName);
-
-                // Отмечаем radio
-                const radio = this.querySelector('input[type="radio"]');
-                if (radio) radio.checked = true;
-            });
-        });
-
-        // Закрытие при клике вне селекта
-        document.addEventListener('click', function() {
-            select.classList.remove('custom-select--active');
+            }
         });
     });
 

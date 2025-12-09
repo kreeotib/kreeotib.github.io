@@ -4900,7 +4900,9 @@ body.no-scroll {
       }
     }
   }
-
+  &__list &-product:has(&-product__button):not(:has(~ &-product &-product__button)) &-product__button {
+    display: flex;
+  }
 
   &-link {
     position: relative;
@@ -4966,7 +4968,6 @@ body.no-scroll {
       border-top: 1px solid rgba(#94A3B8, .2);
     }
   }
-
   &-product {
     &__number {
       white-space: nowrap;
@@ -5028,6 +5029,7 @@ body.no-scroll {
 
     &__button {
       margin-left: auto;
+      display: none;
     }
 
     &__delete {

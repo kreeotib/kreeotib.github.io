@@ -4374,6 +4374,9 @@ body.no-scroll {
     display: none;
   }
 }
+.cart__list .cart-product:has(.cart-product__button):not(:has(~ .cart-product .cart-product__button)) .cart-product__button {
+  display: flex;
+}
 .cart-link {
   position: relative;
   z-index: 5;
@@ -4487,6 +4490,7 @@ body.no-scroll {
 }
 .cart-product__button {
   margin-left: auto;
+  display: none;
 }
 .cart-product__delete {
   width: 3.75rem;
