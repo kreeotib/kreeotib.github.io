@@ -5331,13 +5331,17 @@ body.no-scroll {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-
+      @media screen and (max-width: 767px) {
+        gap: .75rem;
+      }
 
       li {
         display: flex;
         align-items: center;
         gap: 1.5rem;
-
+        @media screen and (max-width: 767px) {
+          gap: .75rem;
+        }
         flex-shrink: 0;
         &:not(:last-child) {
           &::after {
