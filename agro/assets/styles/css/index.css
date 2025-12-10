@@ -4859,10 +4859,6 @@ body.no-scroll {
 .single:has:not(.active) .single-block {
   animation: showHide 1s linear forwards;
 }
-.single.active .single__wrapper {
-  background: transparent;
-  box-shadow: 0 0px 30px 0 rgba(33, 56, 80, 0.08);
-}
 .single.active .single__button {
   transform: rotate(180deg);
 }
@@ -5077,8 +5073,7 @@ body.no-scroll {
   gap: 4rem;
   position: relative;
   padding: 4rem;
-  box-shadow: 0 6px 20px 0 rgba(113, 184, 255, 0.09);
-  background: linear-gradient(137deg, rgba(167, 218, 255, 0.17) 0%, rgba(255, 255, 255, 0.17) 100%), #fff;
+  box-shadow: 0 0 30px 0 rgba(33, 56, 80, 0.08);
   border-radius: var(--border-radius-base);
 }
 @media screen and (max-width: 767px) {
@@ -7268,6 +7263,7 @@ body.no-scroll {
   padding: 1.5rem;
   color: #fff;
   font-size: 1.5rem;
+  margin-top: auto;
 }
 @media screen and (max-width: 767px) {
   .person-item__name {
