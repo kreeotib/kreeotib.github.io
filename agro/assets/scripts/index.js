@@ -461,85 +461,28 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll')
         })
     }
+
+    const map = document.querySelector('.map');
+
+    if(map){
+        const radioInputs = document.querySelectorAll('input[name="map"]');
+        const mapContents = document.querySelectorAll('.map-info__content');
+
+        radioInputs.forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedValue = radio.value;
+
+                // Показываем соответствующий контент
+                mapContents.forEach(content => {
+                    if (content.dataset.name === selectedValue) {
+                        content.classList.add('map-info__content--active');
+                    } else {
+                        content.classList.remove('map-info__content--active');
+                    }
+                });
+            });
+        });
+    }
 })
 
 
-
-// Интерактивная карта с переключением регионов
-document.addEventListener('DOMContentLoaded', function() {
-
-    // Получаем все элементы
-    const mapTags = document.querySelectorAll('.map-tag');
-    const mapInfos = document.querySelectorAll('.map-info');
-    const searchInput = document.querySelector('.search__input');
-    const selectItems = document.querySelectorAll('.custom-select__item input[type="radio"]');
-
-    // Функция переключения активного региона
-    function switchRegion(regionName) {
-        // Убираем активный класс со всех тегов и инфо
-        mapTags.forEach(tag => tag.classList.remove('map-tag--active'));
-        mapInfos.forEach(info => info.classList.remove('map-info--active'));
-
-        // Добавляем активный класс к выбранному региону
-        const activeTag = document.querySelector(`.map-tag[data-name="${regionName}"]`);
-        const activeInfo = document.querySelector(`.map-info[data-name="${regionName}"]`);
-
-        if (activeTag) activeTag.classList.add('map-tag--active');
-        if (activeInfo) activeInfo.classList.add('map-info--active');
-    }
-
-    // Обработчик клика по тегам на карте
-    mapTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-            const regionName = this.getAttribute('data-name');
-            switchRegion(regionName);
-        });
-    });
-
-    // Обработчик change для radio кнопок в селекте
-    selectItems.forEach(radio => {
-        radio.addEventListener('change', function() {
-            if (this.checked) {
-                const item = this.closest('.custom-select__item');
-                const regionName = item.getAttribute('data-name') || 'kazan';
-                switchRegion(regionName);
-            }
-        });
-    });
-
-    // Поиск по регионам
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-
-            mapInfos.forEach(info => {
-                const regionName = info.querySelector('.map-person__region');
-                const personName = info.querySelector('.map-person__name');
-
-                if (regionName || personName) {
-                    const regionText = regionName ? regionName.textContent.toLowerCase() : '';
-                    const personText = personName ? personName.textContent.toLowerCase() : '';
-
-                    if (regionText.includes(searchTerm) || personText.includes(searchTerm)) {
-                        info.style.display = 'block';
-                    } else {
-                        info.style.display = 'none';
-                    }
-                }
-            });
-
-            // Фильтруем теги на карте
-            mapTags.forEach(tag => {
-                const regionName = tag.getAttribute('data-name');
-                const matchingInfo = document.querySelector(`.map-info[data-name="${regionName}"]`);
-
-                if (matchingInfo && matchingInfo.style.display === 'none') {
-                    tag.style.display = 'none';
-                } else {
-                    tag.style.display = 'block';
-                }
-            });
-        });
-    }
-
-});
