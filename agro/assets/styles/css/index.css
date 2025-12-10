@@ -3034,14 +3034,6 @@ body.no-scroll {
     height: 5.75rem;
   }
 }
-.page-filter {
-  overflow: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.page-filter::-webkit-scrollbar {
-  display: none;
-}
 .page-filter__row {
   display: flex;
   align-items: center;
@@ -4744,6 +4736,16 @@ body.no-scroll {
   height: 100%;
   opacity: 0;
   visibility: hidden;
+}
+@media screen and (max-width: 767px) {
+  .catalog-filter {
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .catalog-filter::-webkit-scrollbar {
+    display: none;
+  }
 }
 .catalog-filter__list {
   display: flex;

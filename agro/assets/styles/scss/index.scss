@@ -3452,13 +3452,7 @@ body.no-scroll {
   }
 
   &-filter {
-    overflow: auto;
-
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+ 
     &__row {
       display: flex;
       align-items: center;
@@ -5324,6 +5318,15 @@ body.no-scroll {
 
   &-filter {
 
+    @media screen and (max-width: 767px) {
+      overflow: auto;
+
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
     &__list {
       display: flex;
       align-items: center;
