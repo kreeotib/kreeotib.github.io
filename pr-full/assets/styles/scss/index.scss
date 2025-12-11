@@ -1408,8 +1408,8 @@ body.no-scroll {
   }
 
   100% {
-    width: 150%;
-    height: 150%;
+    width: 125%;
+    height: 125%;
     opacity: 0;
   }
 }
@@ -3126,7 +3126,7 @@ body.no-scroll {
       display: none;
     }
     &:has(:checked) &__content{
-      display: block;
+      height: var(--faq-height);
     }
     &:has(:checked) &__header{
       color: var(--color-accent);
@@ -3134,19 +3134,26 @@ body.no-scroll {
         transform: rotate(90deg);
       }
     }
+    &:has(:checked) &__wrapper{
+      padding-bottom: 3.125rem;
+      @media screen and (max-width: 767px) {
+        padding-bottom: .75rem;
+      }
+    }
     &__wrapper{
       border-bottom: 1px solid #fff;
       padding: 1.5625rem 0 1.5625rem 0;
+
+      transition: .3s padding-bottom;
       @media screen and (max-width: 767px) {
         padding: .75rem 0;
       }
     }
     &__content{
-      display: none;
-      padding-bottom:  1.5625rem;
-      @media screen and (max-width: 767px) {
-        padding-bottom: .75rem;
-      }
+      height: 0;
+      overflow: hidden;
+
+      transition: .3s height;
     }
     &__header{
 

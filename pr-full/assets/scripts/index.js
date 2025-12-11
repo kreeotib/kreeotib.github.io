@@ -356,4 +356,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+    const faq = document.querySelector('.faq');
+
+    if(faq){
+        const faqItemList = faq.querySelectorAll('.faq-item');
+
+        if(faqItemList.length){
+            faqItemList.forEach(item=>{
+                const itemText = item.querySelector('.faq-item__text');
+                item.style.setProperty("--faq-height",`${itemText.getBoundingClientRect().height}px`)
+                item.addEventListener('change',()=>{
+                    const itemText = item.querySelector('.faq-item__text');
+
+
+                })
+            })
+        }
+    }
 })
