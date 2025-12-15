@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+
     <link rel="stylesheet" href="assets/styles/css/reset.css">
     <link rel="stylesheet" href="assets/styles/css/index.css">
 </head>
@@ -284,6 +286,43 @@
                 </div>
             </div>
         </div>
+        <div class="section fly">
+            <div class="section__wrapper section__wrapper--fly">
+                <div class="container">
+                    <div class="fly__wrapper">
+                        <p class="section__title">
+                            Перед полётом задумайтесь:
+                        </p>
+                        <div class="swiper fly-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide fly-item">
+                                    <p class="fly-item__title">
+                                        О чём вы мечтаете на самом деле - когда остаётесь с самим собой наедине?
+                                    </p>
+                                </div>
+                                <div class="swiper-slide fly-item">
+                                    <p class="fly-item__title">
+                                        О чём вы мечтаете на самом деле - когда остаётесь с самим собой наедине?
+                                    </p>
+                                </div>
+                                <div class="swiper-slide fly-item">
+                                    <p class="fly-item__title">
+                                        О чём вы мечтаете на самом деле - когда остаётесь с самим собой наедине?
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="fly-slider__footer">
+                                <p class="fly-slider__text">Ответы вы найдете на борту</p>
+                                <div class="fly-slider__pagination">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <div class="section">
             <div class="section__wrapper">
                 <div class="container">
@@ -368,28 +407,28 @@
                     <p class="section-form__title">
                         Оформить билет
                     </p>
-                    <div class="form">
+                    <form action="#" class="form">
                         <div class="form__wrapper">
-                            <label  class="form-input">
+                            <label class="form-input">
                                 <svg class="form-input__icon">
                                     <use xlink:href="assets/images/sprite.svg#location"></use>
                                 </svg>
                                 <input type="text" placeholder="ФИО" class="form-input__item">
                             </label>
-                            <label  class="form-input">
+                            <label class="form-input">
                                 <svg class="form-input__icon">
                                     <use xlink:href="assets/images/sprite.svg#mail"></use>
                                 </svg>
                                 <input type="text" placeholder="Почта" class="form-input__item">
                             </label>
-                            <label  class="form-input">
+                            <label class="form-input">
                                 <svg class="form-input__icon">
                                     <use xlink:href="assets/images/sprite.svg#phone"></use>
                                 </svg>
                                 <input type="text" placeholder="Телефон" class="form-input__item">
                             </label>
                             <div class="form__column">
-                                <label  class="checkbox">
+                                <label class="checkbox">
                                     <input type="checkbox" name="" id="" class="checkbox__input">
                                     <span class="checkbox__checkmark">
                                         <svg class="icon">
@@ -398,7 +437,7 @@
                                     </span>
                                     Подписывая ниже, я подтверждаю своё намерение на рейс в мечту.
                                 </label>
-                                <label  class="checkbox">
+                                <label class="checkbox">
                                     <input type="checkbox" name="" id="" class="checkbox__input">
                                     <span class="checkbox__checkmark">
                                         <svg class="icon">
@@ -417,7 +456,7 @@
                                 Оформить
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -460,13 +499,16 @@
                         </div>
                         <div class="footer-list">
                             <p class="footer-list__text">
-                                <span>ИНН:</span> 7707123456
+                                <span>ИНН:</span>
+                                7707123456
                             </p>
                             <p class="footer-list__text">
-                                <span>КПП:</span>  770701001
+                                <span>КПП:</span>
+                                770701001
                             </p>
                             <p class="footer-list__text">
-                                <span>ОГРН:</span>  1234567890123
+                                <span>ОГРН:</span>
+                                1234567890123
                             </p>
                         </div>
                     </div>
@@ -487,6 +529,12 @@
     </footer>
 </div>
 
+<div class="thanks-video">
+    <div class="thanks-video__wrapper">
+        <video src="assets/video/register.mp4" class="thanks-video__item"></video>
+    </div>
+</div>
+
 <a href="#" class="top-button">
     <svg class="top-button__icon">
         <use xlink:href="assets/images/sprite.svg#arrowup"></use>
@@ -494,6 +542,7 @@
 </a>
 
 
+<script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
 </body>
 </html>

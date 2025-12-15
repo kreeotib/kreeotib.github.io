@@ -1,7 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    const form = document.querySelectorAll('.form'),
+        videopopup = document.querySelector('.thanks-video');
+
+    if(form.length){
+        form.forEach(el=>{
+            el.addEventListener('submit',e=>{
+                e.preventDefault();
+
+                videopopup.classList.add('active');
+                videopopup.querySelector('video').play();
+            })
+        })
+    }
+    const fly = new Swiper('.fly-slider',{
+        effect:"fade",
+        fadeEffect: {
+            crossFade: true
+        },
+        pagination:{
+            el:'.fly-slider__pagination'
+        },
+        autoplay: {
+            delay: 5000,
+        },
+    })
+
     const videoArray = document.querySelectorAll('.video');
-
-
 
     if(videoArray.length){
         videoArray.forEach(video=>{
@@ -24,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         item.style.setProperty('--item-padding-y', '8px');
         item.style.setProperty('--item-padding-x', '16px');
 
-        // Применяем стили через CSS переменные
         item.style.fontSize = 'var(--item-font-size)';
         item.style.padding = 'var(--item-padding-y) var(--item-padding-x)';
         item.style.transition = 'all 0.3s ease';
@@ -35,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const MIN_FONT_SIZE = 16;
-    const MAX_FONT_SIZE = 24;
+    const MAX_FONT_SIZE = 32;
     const MIN_PADDING_Y = 8;
     const MAX_PADDING_Y = 12;
     const MIN_PADDING_X = 16;
@@ -56,26 +80,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             items.forEach((item, index) => {
-                const elementStart = index * SCROLL_THRESHOLD;
-                const elementEnd = (index + 1) * SCROLL_THRESHOLD;
+                const rect = item.getBoundingClientRect();
+                const itemMiddle = rect.top + rect.height / 2;
+                const screenMiddle = window.innerHeight / 2;
+                const distanceFromCenter = Math.abs(itemMiddle - screenMiddle);
+                const triggerZone = window.innerHeight / 3;
 
-                if (scrollProgress <= elementStart) {
-                    item.style.setProperty('--item-font-size', `${MIN_FONT_SIZE}px`);
-                    item.style.setProperty('--item-padding-y', `${MIN_PADDING_Y}px`);
-                    item.style.setProperty('--item-padding-x', `${MIN_PADDING_X}px`);
-                } else if (scrollProgress >= elementEnd) {
-                    item.style.setProperty('--item-font-size', `${MAX_FONT_SIZE}px`);
-                    item.style.setProperty('--item-padding-y', `${MAX_PADDING_Y}px`);
-                    item.style.setProperty('--item-padding-x', `${MAX_PADDING_X}px`);
-                } else {
-                    const elementProgress = (scrollProgress - elementStart) / SCROLL_THRESHOLD;
-                    const fontSize = lerp(MIN_FONT_SIZE, MAX_FONT_SIZE, elementProgress);
-                    const paddingY = lerp(MIN_PADDING_Y, MAX_PADDING_Y, elementProgress);
-                    const paddingX = lerp(MIN_PADDING_X, MAX_PADDING_X, elementProgress);
+                if (distanceFromCenter < triggerZone) {
+                    const elementStart = index * SCROLL_THRESHOLD;
+                    const elementEnd = (index + 1) * SCROLL_THRESHOLD;
 
-                    item.style.setProperty('--item-font-size', `${fontSize}px`);
-                    item.style.setProperty('--item-padding-y', `${paddingY}px`);
-                    item.style.setProperty('--item-padding-x', `${paddingX}px`);
+                    if (scrollProgress <= elementStart) {
+                        item.style.setProperty('--item-font-size', `${MIN_FONT_SIZE}px`);
+                        item.style.setProperty('--item-padding-y', `${MIN_PADDING_Y}px`);
+                        item.style.setProperty('--item-padding-x', `${MIN_PADDING_X}px`);
+                    } else if (scrollProgress >= elementEnd) {
+                        item.style.setProperty('--item-font-size', `${MAX_FONT_SIZE}px`);
+                        item.style.setProperty('--item-padding-y', `${MAX_PADDING_Y}px`);
+                        item.style.setProperty('--item-padding-x', `${MAX_PADDING_X}px`);
+                    } else {
+                        const elementProgress = (scrollProgress - elementStart) / SCROLL_THRESHOLD;
+                        const fontSize = lerp(MIN_FONT_SIZE, MAX_FONT_SIZE, elementProgress);
+                        const paddingY = lerp(MIN_PADDING_Y, MAX_PADDING_Y, elementProgress);
+                        const paddingX = lerp(MIN_PADDING_X, MAX_PADDING_X, elementProgress);
+
+                        item.style.setProperty('--item-font-size', `${fontSize}px`);
+                        item.style.setProperty('--item-padding-y', `${paddingY}px`);
+                        item.style.setProperty('--item-padding-x', `${paddingX}px`);
+                    }
                 }
             });
 
@@ -92,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const rect = item.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            // Элемент в видимой области (с учетом центра экрана)
             const isInView = rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
 
             if (isInView) {
@@ -105,10 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Проверка при загрузке
     checkScroll();
 
-    // Проверка при скролле с оптимизацией
     let ticking = false;
     window.addEventListener('scroll', function() {
         if (!ticking) {
