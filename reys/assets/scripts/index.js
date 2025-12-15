@@ -1,3 +1,44 @@
+const checkTargetOrKey = event => {
+    if (
+        event.target.classList.contains('popup__wrapper') ||
+        event.key === 'Escape' ||
+        event.target.closest('.popup-close')
+    ) {
+        hideAllPopups();
+    }
+};
+const showPopup = popupId => {
+    const popup = document.querySelector(popupId);
+    if (!popup) return
+
+
+    hideAllPopups();
+
+    popup.classList.add('popup--active');
+    document.body.classList.add('no-scroll');
+
+    document.addEventListener('click', checkTargetOrKey);
+    document.addEventListener('keyup', checkTargetOrKey);
+};
+const hideAllPopups = () => {
+    const popups = document.querySelectorAll('.popup');
+
+    popups.forEach(popup => {
+        popup.classList.remove('popup--active');
+        const videoel = popup.querySelector('video');
+
+        if(videoel){
+            videoel.pause();
+        }
+    });
+    document.body.classList.remove('no-scroll');
+
+    document.removeEventListener('click', checkTargetOrKey);
+    document.removeEventListener('keyup', checkTargetOrKey);
+};
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const form = document.querySelectorAll('.form'),
@@ -8,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('submit',e=>{
                 e.preventDefault();
 
-                videopopup.classList.add('active');
+                showPopup('.thanks-video')
                 videopopup.querySelector('video').play();
             })
         })
@@ -21,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pagination:{
             el:'.fly-slider__pagination'
         },
+        speed:500,
         autoplay: {
             delay: 5000,
         },
@@ -59,12 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const MIN_FONT_SIZE = 16;
-    const MAX_FONT_SIZE = 32;
+    let MAX_FONT_SIZE = 32;
     const MIN_PADDING_Y = 8;
     const MAX_PADDING_Y = 12;
-    const MIN_PADDING_X = 16;
-    const MAX_PADDING_X = 24;
+    let MIN_PADDING_X = 16;
+    let MAX_PADDING_X = 24;
     const SCROLL_THRESHOLD = 100;
+
+    if(window.innerWidth < 767){
+        MAX_FONT_SIZE = 20;
+        MAX_PADDING_X = 12;
+    }
 
     let scrollProgress = 0;
 
