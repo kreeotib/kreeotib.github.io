@@ -535,7 +535,7 @@ body.no-scroll {
 .services__list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 2rem;
 }
 .services__item {
   width: max-content;

@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return start + (end - start) * progress;
     }
 
-    const MIN_FONT_SIZE = 16;
+    let MIN_FONT_SIZE = 16;
     let MAX_FONT_SIZE = 32;
     const MIN_PADDING_Y = 8;
     const MAX_PADDING_Y = 12;
@@ -109,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const SCROLL_THRESHOLD = 100;
 
     if(window.innerWidth < 767){
-        MAX_FONT_SIZE = 20;
+        MIN_FONT_SIZE = 12;
+        MAX_FONT_SIZE = 16;
         MAX_PADDING_X = 12;
     }
 
