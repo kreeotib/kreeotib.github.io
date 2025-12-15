@@ -83,3 +83,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    const items = document.querySelectorAll('.preparation-item');
+
+    function checkScroll() {
+        items.forEach((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            // Элемент в видимой области (с учетом центра экрана)
+            const isInView = rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3;
+
+            if (isInView) {
+                item.style.transform = 'scale(1.15)';
+                item.style.transition = 'transform 0.4s ease-out';
+            } else {
+                item.style.transform = 'scale(1)';
+                item.style.transition = 'transform 0.4s ease-out';
+            }
+        });
+    }
+
+    // Проверка при загрузке
+    checkScroll();
+
+    // Проверка при скролле с оптимизацией
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                checkScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+});

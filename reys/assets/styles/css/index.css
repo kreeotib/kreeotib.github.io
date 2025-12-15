@@ -118,6 +118,22 @@ body.no-scroll {
   align-items: center;
   gap: 3rem;
 }
+.header-nav__item {
+  position: relative;
+}
+.header-nav__item:hover .header-nav__subtext {
+  opacity: 1;
+}
+.header-nav__subtext {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 10px);
+  transform: translateX(-50%);
+  width: max-content;
+  opacity: 0;
+  transition: 0.3s opacity;
+  pointer-events: none;
+}
 .header-nav__link {
   font-size: 1rem;
 }

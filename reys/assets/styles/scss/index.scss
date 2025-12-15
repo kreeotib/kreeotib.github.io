@@ -140,6 +140,23 @@ body.no-scroll {
       gap: 3rem;
     }
 
+    &__item{
+      position:relative;
+    }
+    &__item:hover &__subtext{
+      opacity: 1;
+    }
+    &__subtext{
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 10px);
+      transform: translateX(-50%);
+      width: max-content;
+      opacity: 0;
+
+      transition: .3s opacity;
+      pointer-events: none;
+    }
     &__link{
       font-size: 1rem;
     }
