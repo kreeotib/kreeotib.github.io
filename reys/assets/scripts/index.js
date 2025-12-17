@@ -108,11 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let MAX_PADDING_X = 24;
     const SCROLL_THRESHOLD = 100;
 
-    if(window.innerWidth < 767){
-        MIN_FONT_SIZE = 12;
-        MAX_FONT_SIZE = 16;
-        MAX_PADDING_X = 12;
-    }
+    window.addEventListener('resize',()=>{
+        if(window.innerWidth < 767){
+            MIN_FONT_SIZE = 12;
+            MAX_FONT_SIZE = 16;
+            MAX_PADDING_X = 12;
+        }
+    })
 
     let scrollProgress = 0;
 
