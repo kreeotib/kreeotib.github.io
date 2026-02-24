@@ -1870,6 +1870,9 @@ a.text--grey:hover {
   --glow-color: 32,47,78;
   --glow-opacity: 0;
 }
+.card--principles .card__bg{
+  
+}
 .card--principles::before {
   content: '';
   position: absolute;
@@ -1877,9 +1880,9 @@ a.text--grey:hover {
   z-index: 1;
   pointer-events: none;
   background: radial-gradient(
-                  400px circle at var(--x) var(--y),
-                  rgba(var(--glow-color), 0.5) 0%,
-                  rgba(var(--glow-color), 0.3) 40%,
+                  350px circle at var(--x) var(--y),
+                  rgba(var(--glow-color), 1) 0%,
+                  rgba(var(--glow-color), 0.6) 35%,
                   transparent 70%
   );
   opacity: var(--glow-opacity);
@@ -1894,9 +1897,10 @@ a.text--grey:hover {
   pointer-events: none;
   border-radius: inherit;
   background: radial-gradient(
-                  300px circle at var(--x) var(--y),
-                  rgba(var(--glow-color), 0.7) 0%,
-                  transparent 65%
+                  150px circle at var(--x) var(--y),
+                  rgba(var(--glow-color), 1) 0%,
+                  rgba(var(--glow-color), 0.7) 40%,
+                  transparent 70%
   );
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;

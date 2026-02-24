@@ -1658,7 +1658,7 @@ a.text--grey:hover {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(400px circle at var(--x) var(--y), rgba(var(--glow-color), 0.5) 0%, rgba(var(--glow-color), 0.3) 40%, transparent 70%);
+  background: radial-gradient(350px circle at var(--x) var(--y), rgba(var(--glow-color), 1) 0%, rgba(var(--glow-color), 0.6) 35%, transparent 70%);
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;
 }
@@ -1670,7 +1670,7 @@ a.text--grey:hover {
   z-index: 2;
   pointer-events: none;
   border-radius: inherit;
-  background: radial-gradient(300px circle at var(--x) var(--y), rgba(var(--glow-color), 0.7) 0%, transparent 65%);
+  background: radial-gradient(150px circle at var(--x) var(--y), rgba(var(--glow-color), 1) 0%, rgba(var(--glow-color), 0.7) 40%, transparent 70%);
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;
 }
