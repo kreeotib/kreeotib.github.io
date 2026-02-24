@@ -675,22 +675,6 @@ a.text--grey:hover {
   gap: 0.625rem;
   position: relative;
 }
-.levels-grid::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: url("../../images/section-gradients/levels-mask.webp") center center/contain no-repeat;
-  z-index: 3;
-  pointer-events: none;
-}
-@media screen and (max-width: 767px) {
-  .levels-grid::before {
-    display: none;
-  }
-}
 @media screen and (max-width: 767px) {
   .levels-grid {
     width: max-content;
