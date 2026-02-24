@@ -13,6 +13,7 @@
   --section-padding: 3.125rem;
   --section-spacer: 1.5rem;
   --section-spacer-big: 3rem;
+  --orange-300_-key: #fff;
 }
 
 @media screen and (max-width: 767px) {
@@ -1317,6 +1318,40 @@ a.text--grey:hover {
   width: 0.875rem;
   height: 0.875rem;
   transform: rotate(-90deg);
+}
+
+[title-reveal] .line-mask {
+  position: relative;
+  display: block;
+  overflow: clip;
+  width: max-content;
+  max-width: 100%;
+}
+
+[title-reveal] .line-mask .rectangle {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 100% 0 0);
+  z-index: 3;
+}
+
+[title-reveal] .line-mask .rectangle > div {
+  height: 100%;
+  width: 100%;
+  background: var(--orange-300_-key);
+  position: absolute;
+  inset: 0;
+}
+
+[title-reveal] .line {
+  z-index: 2;
+  clip-path: inset(0 100% 0 0);
+  padding: 0.1rem 0;
+  margin: -0.1rem 0;
+  position: relative;
+  display: block;
 }
 
 /*# sourceMappingURL=index.css.map */

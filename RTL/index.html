@@ -187,7 +187,7 @@
                     <div class="container">
                         <div class="section__block">
                             <div class="section__column">
-                                <h2 class="title title--base title--semibold">
+                                <h2 title-reveal class="title title--base title--semibold ">
                                     Логистика как искусство.
                                 </h2>
                                 <p class="text text--base">
@@ -293,7 +293,7 @@
                                         </div>
                                         <div class="section__column section__column--big">
                                             <div class="section__column">
-                                                <p class="title title--base title--semibold">
+                                                <p title-reveal class="title title--base title--semibold">
                                                     Наши проекты – будущее многих отраслей промышленности.
                                                 </p>
                                                 <p class="text text--base">
@@ -506,7 +506,7 @@
                         <div class="section__column section__column--big">
                             <div class="section__block">
                                 <div class="section__column">
-                                    <p class="title title--base title--semibold">
+                                    <p class="title title--base title--semibold" title-reveal>
                                         Четыре уровня тотального контроля над вашим проектом
                                     </p>
                                     <p class="text text--base">
@@ -663,7 +663,7 @@
                         <div class="section__column section__column--big">
                             <div class="section__block">
                                 <div class="section__column">
-                                    <p class="title title--base title--semibold">
+                                    <p class="title title--base title--semibold" title-reveal>
                                         Принципы работы и наши гарантии
                                     </p>
                                     <p class="text text--base">
@@ -764,7 +764,7 @@
                         <div class="container">
                             <div class="section__block">
                                 <div class="section__column">
-                                    <p class="title title--base title--semibold">
+                                    <p class="title title--base title--semibold" title-reveal>
                                         География присутствия и работ
                                     </p>
                                     <p class="text text--base">
@@ -1057,7 +1057,6 @@
 
 <script src="assets/libs/swiper/swiper.js"></script>
 <script src="assets/scripts/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
 <script>
     (function () {
         'use strict';
@@ -1118,6 +1117,121 @@
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onResize, { passive: true });
     })();
+</script>
+
+<script>
+    const SWEEP_DURATION = 680;
+    const EXIT_DURATION  = 400;
+    const LINE_STAGGER   = 80;
+
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+    }
+
+    function animateLine(lineEl, rectEl, delay) {
+        lineEl.style.clipPath = 'inset(0 100% 0 0)';
+        rectEl.style.clipPath = 'inset(0 100% 0 0)';
+
+        let t0 = null;
+
+        function sweepIn(ts) {
+            if (!t0) t0 = ts;
+            const elapsed = ts - t0 - delay;
+            if (elapsed < 0) { requestAnimationFrame(sweepIn); return; }
+
+            const p = Math.min(elapsed / SWEEP_DURATION, 1);
+            const e = easeInOutCubic(p);
+
+            rectEl.style.clipPath = `inset(0 ${(1 - e) * 100}% 0 0)`;
+            lineEl.style.clipPath  = `inset(0 ${(1 - e) * 100}% 0 0)`;
+
+            if (p < 1) {
+                requestAnimationFrame(sweepIn);
+            } else {
+                let t1 = null;
+                function sweepOut(ts2) {
+                    if (!t1) t1 = ts2;
+                    const p2 = Math.min((ts2 - t1) / EXIT_DURATION, 1);
+                    const e2 = easeInOutCubic(p2);
+                    rectEl.style.clipPath = `inset(0 0 0 ${e2 * 100}%)`;
+                    if (p2 < 1) requestAnimationFrame(sweepOut);
+                }
+                requestAnimationFrame(sweepOut);
+            }
+        }
+        requestAnimationFrame(sweepIn);
+    }
+
+    function buildTitle(el) {
+        const text = el.textContent.trim();
+        el.setAttribute('aria-label', text);
+        el.innerHTML = '';
+
+        const probe = document.createElement('span');
+        probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;';
+        el.appendChild(probe);
+
+        const words = text.split(' ');
+        const lines = [];
+        let current = '';
+
+        for (let i = 0; i < words.length; i++) {
+            const test = current ? current + ' ' + words[i] : words[i];
+            probe.textContent = test;
+            if (probe.offsetWidth > el.offsetWidth && current !== '') {
+                lines.push(current);
+                current = words[i];
+            } else {
+                current = test;
+            }
+        }
+        if (current) lines.push(current);
+        el.removeChild(probe);
+
+        lines.forEach(lineText => {
+            const mask = document.createElement('div');
+            mask.className = 'line-mask';
+            mask.setAttribute('aria-hidden', 'true');
+
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.setAttribute('aria-hidden', 'true');
+            line.textContent = lineText;
+
+            const rect = document.createElement('div');
+            rect.className = 'rectangle';
+            rect.appendChild(document.createElement('div'));
+
+            mask.appendChild(line);
+            mask.appendChild(rect);
+            el.appendChild(mask);
+        });
+    }
+
+    function runAnimation(el) {
+        const lines = el.querySelectorAll('.line');
+        const rects = el.querySelectorAll('.rectangle');
+        lines.forEach((line, i) => {
+            animateLine(line, rects[i], i * (SWEEP_DURATION * 0.55 + LINE_STAGGER));
+        });
+    }
+
+    window.addEventListener('load', () => {
+        const elements = document.querySelectorAll('[title-reveal]');
+
+        elements.forEach(el => buildTitle(el));
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runAnimation(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        elements.forEach(el => observer.observe(el));
+    });
 </script>
 
 </body>
