@@ -1471,7 +1471,39 @@
         window.addEventListener('resize', onResize, {passive: true});
     })();
 </script>
+<script>
+    document.querySelectorAll('.card--principles').forEach(card => {
+        const img = card.querySelector('.card__image');
 
+        card.addEventListener('mouseenter', () => {
+            card.style.setProperty('--glow-opacity', '1');
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--glow-opacity', '0');
+            card.style.setProperty('--x', '-999px');
+            card.style.setProperty('--y', '-999px');
+            if (img) img.style.setProperty('--local-x', '-999px');
+        });
+
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+
+            if (img) {
+                const imgRect = img.getBoundingClientRect();
+                const lx = e.clientX - imgRect.left;
+                const ly = e.clientY - imgRect.top;
+                img.style.setProperty('--local-x', `${lx}px`);
+                img.style.setProperty('--local-y', `${ly}px`);
+            }
+        });
+    });
+</script>
 <script>
     const SWEEP_DURATION = 680;
     const EXIT_DURATION = 400;

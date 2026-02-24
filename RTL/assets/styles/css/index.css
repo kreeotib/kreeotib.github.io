@@ -813,7 +813,7 @@ a.text--grey:hover {
   height: 100%;
   object-fit: cover;
   object-position: bottom center;
-  z-index: 2;
+  z-index: 3;
 }
 @media screen and (min-width: 768px) {
   .card__bg--mobile {
@@ -1643,6 +1643,36 @@ a.text--grey:hover {
   object-fit: contain;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+
+.card--principles {
+  --x: -999px;
+  --y: -999px;
+  --glow-color: 32,47,78;
+  --glow-opacity: 0;
+}
+
+.card--principles::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(400px circle at var(--x) var(--y), rgba(var(--glow-color), 0.5) 0%, rgba(var(--glow-color), 0.3) 40%, transparent 70%);
+  opacity: var(--glow-opacity);
+  transition: opacity 0.35s ease;
+}
+
+.card--principles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(300px circle at var(--x) var(--y), rgba(var(--glow-color), 0.7) 0%, transparent 65%);
+  opacity: var(--glow-opacity);
+  transition: opacity 0.35s ease;
 }
 
 /*# sourceMappingURL=index.css.map */
