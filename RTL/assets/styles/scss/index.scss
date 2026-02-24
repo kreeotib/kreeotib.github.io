@@ -546,6 +546,22 @@ a.text--grey:hover {
 .hero {
   position: relative;
 
+  &__text{
+
+    @media screen and (max-width: 767px) {
+      transform: scale(.3);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+  }
+  &__svg{
+
+
+
+  }
   &__bg {
     position: absolute;
     left: 0;
@@ -586,10 +602,11 @@ a.text--grey:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 1.5rem;
+    gap:var(--section-spacer-big);
     padding: 6.25rem 0;
     @media screen and (max-width: 767px) {
       min-height: 50rem;
+      padding-bottom: 25rem;
     }
   }
 }
@@ -910,6 +927,23 @@ a.text--grey:hover {
     }
   }
 
+  &__video{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    justify-content: center;
+    video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
   &__bg {
     position: absolute;
     left: 0;
@@ -918,7 +952,7 @@ a.text--grey:hover {
     height: 100%;
     object-fit: cover;
     object-position: bottom center;
-
+    z-index: 2;
     &--mobile {
       @media screen and (min-width: 768px) {
         display: none;

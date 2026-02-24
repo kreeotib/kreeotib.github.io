@@ -153,11 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
         projectSlider.init();
     }
 
-    const productCards = document.querySelectorAll('.project-item');
+    const productCards = document.querySelectorAll('.project-item, .card');
     if (productCards.length) {
         productCards.forEach((card, index) => {
             const video = card.querySelector('video');
-            const imgWrapper = card.querySelector('.product-card__img') || card.querySelector('.project-item__img');
+            const imgWrapper = card.querySelector('.card__video') || card.querySelector('.project-item__img');
 
             if (!video || !imgWrapper) return;
 
