@@ -232,25 +232,28 @@ document.addEventListener('DOMContentLoaded', () => {
     initPageAnimations();
 
 
-    const marquee = document.querySelector('.marquee');
-    const marqueeContent = marquee.querySelector('.marquee-content');
+    const marquees = document.querySelectorAll('.marquee');
 
-    const clone = marqueeContent.cloneNode(true);
-    marquee.appendChild(clone);
+    marquees.forEach(marquee => {
+        const marqueeContent = marquee.querySelector('.marquee-content');
 
-    let position = 0;
-    const speed = 1;
+        const clone = marqueeContent.cloneNode(true);
+        marquee.appendChild(clone);
 
-    function animate() {
-        position -= speed;
+        let position = 0;
+        const speed = 1;
 
-        if (Math.abs(position) >= marqueeContent.offsetWidth) {
-            position = 0;
+        function animate() {
+            position -= speed;
+
+            if (Math.abs(position) >= marqueeContent.offsetWidth) {
+                position = 0;
+            }
+
+            marquee.style.transform = `translate3d(${position}px, 0, 0)`;
+            requestAnimationFrame(animate);
         }
 
-        marquee.style.transform = `translate3d(${position}px, 0, 0)`;
-        requestAnimationFrame(animate);
-    }
-
-    animate();
+        animate();
+    });
 })

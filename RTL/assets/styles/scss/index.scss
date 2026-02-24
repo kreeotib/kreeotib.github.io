@@ -545,11 +545,12 @@ a.text--grey:hover {
 
 .hero {
   position: relative;
-
+  &__svg { display: flex; }
+  &__svg svg { display: block; flex-shrink: 0; }
   &__text{
 
     @media screen and (max-width: 767px) {
-      transform: scale(.3);
+      transform: scale(.5);
       position: absolute;
       bottom: 0;
       left: 0;
@@ -557,10 +558,7 @@ a.text--grey:hover {
       pointer-events: none;
     }
   }
-  &__svg{
-
-
-
+  &__text{
   }
   &__bg {
     position: absolute;
