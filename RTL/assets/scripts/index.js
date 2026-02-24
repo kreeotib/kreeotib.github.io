@@ -104,6 +104,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (geoSliderElement) {
         geoSlider.init();
     }
+    // const personSliderNavElement = document.querySelector('.person-navigation');
+    // const personSliderNav = new Swiper(personSliderNavElement, {
+    //     init: false,
+    //     slidesPerView:'auto',
+    //     spaceBetween: 0,
+    // });
+    //
+    //
+    // if (personSliderNavElement) {
+    //     personSliderNav.init();
+    // }
+    //
+    // const personSliderElement = document.querySelector('.person-slider');
+    // const personSlider = new Swiper(personSliderElement, {
+    //     init: false,
+    //     slidesPerView: 1,
+    //     spaceBetween: 0,
+    //     speed:500,
+    //     effect:'fade',
+    //     thumbs:{
+    //         swiper:personSliderNav,
+    //     },
+    //     fadeEffect: {
+    //         crossFade: true
+    //     }
+    // });
+    //
+    //
+    // if (personSliderElement) {
+    //     personSlider.init();
+    // }
 
     const projectSliderElement = document.querySelector('.project-slider');
     const projectSlider = new Swiper(projectSliderElement, {
@@ -199,4 +230,27 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initPageAnimations();
+
+
+    const marquee = document.querySelector('.marquee');
+    const marqueeContent = marquee.querySelector('.marquee-content');
+
+    const clone = marqueeContent.cloneNode(true);
+    marquee.appendChild(clone);
+
+    let position = 0;
+    const speed = 1;
+
+    function animate() {
+        position -= speed;
+
+        if (Math.abs(position) >= marqueeContent.offsetWidth) {
+            position = 0;
+        }
+
+        marquee.style.transform = `translate3d(${position}px, 0, 0)`;
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 })
