@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/fonts.css">
+
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <a href="/" class="logo header__logo">
+                <svg class="logo__img" width="61" height="25" viewBox="0 0 61 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4793 0L16.6462 3.1669H19.5705L6.32507 16.452V13.4792L15.0627 4.70183L13.5146 3.15367L3.16699 3.1669V9.46983L6.31625 6.31175H9.02003L3.16699 12.1648V21.8331H12.8529L18.7148 15.9668V18.675L15.57 21.8287L21.8376 21.8331V11.4723L20.2938 9.93296L11.5606 18.675H8.55249L21.8376 5.35462V8.35833L25.0045 11.5252V0H13.4793Z" fill="#9E9D9D"/>
+                    <path d="M23.421 13.0557V23.4165H1.58345V1.58345H11.9487L10.3652 0H0V25H23.421H25.0044V14.6392L23.421 13.0557Z" fill="#2A54A0"/>
+                    <path d="M60.246 23.421H26.5834V25H60.246V23.421Z" fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M52.6112 0.0220566H36.2122V4.11521H41.8535V17.3518H44.3455L45.9422 13.9203V4.11521H50.7014L52.6112 0.0220566Z" fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M35.7003 6.17502H30.6721H28.9166H28.4668L26.6848 10.0079L26.5834 10.2638V21.8375H30.6721V10.2638H35.7003V12.9323H33.5214L31.6204 17.021H35.7003H39.7935V10.2638V6.17502H35.7003Z" fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M60.2419 21.8375V6.3735V6.17502H51.4954L44.2045 21.8375H48.6946L54.058 10.2814H56.1531V21.8375H60.2419Z" fill="#2A54A0"/>
+                </svg>
+
+            </a>
+            <ul class="header-nav">
+                <li class="header-nav__item header-nav__item--visible">
+                    <a href="#" class="header-nav__link">
+                        Главная
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        О компании
+                    </a>
+                </li>
+                <li class="header-nav__item header-nav__item--visible">
+                    <a href="#" class="header-nav__link">
+                        Проекты
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        География
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <div class="header-language">
+                <div class="language-list">
+                    <label class="language-item">
+                        <input type="radio" checked name="language" value="ru">
+                        <span class="language-item__label">ru</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="en">
+                        <span class="language-item__label">en</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="ch">
+                        <span class="language-item__label">ch</span>
+                    </label>
+                </div>
+            </div>
+            <div class="header-burger">
+                <label class="burger">
+                    <input type="checkbox" name="burger" id="">
+                </label>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-menu">
+        <div class="mobile-menu__wrapper">
+            <ul class="mobile-menu__list">
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Главная
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        О компании
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Проекты
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        География
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <ul class="mobile-menu__list mobile-menu__list--contact">
+                <li class="mobile-menu__item">
+                    <a href="tel:8 (800) 770 - 02 - 91" class="mobile-menu__link">
+                        8 (800) 770 - 02 - 91
+
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="mailto:info@rtlltd.com" class="mobile-menu__link">
+                        info@rtlltd.com
+                    </a>
+                </li>
+            </ul>
+            <div class="mobile-menu__language">
+                <div class="language-list">
+                    <svg class="language-list__icon">
+                        <use xlink:href="assets/images/sprite.svg#language-icon"></use>
+                    </svg>
+                    <label class="language-item">
+                        <input type="radio" checked name="language" value="ru">
+                        <span class="language-item__label">ru</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="en">
+                        <span class="language-item__label">en</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="ch">
+                        <span class="language-item__label">ch</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="language-fixed">
+        <div class="language-list">
+            <svg class="language-list__icon">
+                <use xlink:href="assets/images/sprite.svg#language-icon"></use>
+            </svg>
+            <label class="language-item">
+                <input type="radio" checked name="language" value="ru">
+                <span class="language-item__label">ru</span>
+            </label>
+            <label class="language-item">
+                <input type="radio" name="language" value="en">
+                <span class="language-item__label">en</span>
+            </label>
+            <label class="language-item">
+                <input type="radio" name="language" value="ch">
+                <span class="language-item__label">ch</span>
+            </label>
+        </div>
+    </div>
+    <main class="content">
+        <div class="content-wrapper">
+            <div class="hero">
+                <div class="hero__bg">
+                    <video src="assets/video/promo.mp4" playsinline muted autoplay
+                           loop webkit-playsinline disablePictureInPicture
+                           controlslist="nodownload nofullscreen noremoteplayback"></video>
+                </div>
+                <div class="hero__content">
+                    <div class="container">
+                        <div class="section__block">
+                            <p class="title title--big title--semibold">
+                                Проектная логистика для промышленных гигантов. <br>Берем на себя риски по срокам и
+                                сохранности вашего груза.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <section class="section section--about">
+                <div class="section__wrapper section__wrapper--big">
+                    <div class="container">
+                        <div class="section__block">
+                            <div class="section__column">
+                                <h2 class="title title--base title--semibold">
+                                    Логистика как искусство.
+                                </h2>
+                                <p class="text text--base">
+                                    Компания «РТЛ» — это слаженная международная структура, объединяющая собственные
+                                    представительства в ключевых регионах СНГ, Азии и Европы. В нашей команде работают
+                                    более
+                                    100 высококвалифицированных специалистов: инженеры, логисты, таможенные брокеры,
+                                    специалисты по внешнеэкономической деятельности и проектные менеджеры. Более чем за
+                                    20
+                                    лет работы мы накопили уникальный опыт транспортировки не просто грузов, а
+                                    критически
+                                    важных элементов промышленности — от отдельных частей технологических линий до целых
+                                    заводов «под ключ».
+                                    <br> <br>
+                                    Специализация «РТЛ» — полный цикл транспортно-инженерного сопровождения
+                                    строительства и
+                                    модернизации промышленных предприятий. <br> Мы начинаем работу там, где
+                                    заканчиваются
+                                    стандартные маршруты и возможности обычных перевозчиков. <br> <br>Сегодня «РТЛ» —
+                                    это признанный
+                                    эксперт в области транспортно-экспедиционногообслуживания промышленных и проектных
+                                    грузов. Мы гордимся тем, что наше основноепреимущество — это способностьрешать
+                                    задачи,
+                                    которые другиесчитают невыполнимыми. Наша работа строитсяна глубокой интеграции в
+                                    логистическую цепочку клиента: мы не сторонний подрядчик, а партнер, который
+                                    разделяет
+                                    ответственность за успех всего проекта. Этот подход позволяет нам не просто
+                                    доставлять
+                                    оборудование, а создавать логистическую инфраструктуру, которая становится частью
+                                    вашего
+                                    будущего производства.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="numbers section">
+                <div class="container">
+                    <div class="numbers__wrapper">
+                        <div class="numbers-grid counters-block">
+                            <div class="numbers-grid__item numbers-item">
+                                <div class="numbers-item__wrapper">
+                                    <p class="numbers-item__label counter" data-end="20">
+                                        <span>20</span>
+                                    </p>
+                                    <p class="numbers-item__text">
+                                        ЛЕТ на <br>
+                                        РЫНКЕ
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="numbers-grid__divider">    </span>
+                            <div class="numbers-grid__item numbers-item">
+                                <div class="numbers-item__wrapper">
+                                    <p class="numbers-item__label counter" data-end="1034">
+                                       <span>1034</span>
+                                    </p>
+                                    <p class="numbers-item__text">
+                                        РЕАЛИЗОВАННЫХ <br>
+                                        ПРОЕКТОВ
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="numbers-grid__divider">    </span>
+                            <div class="numbers-grid__item numbers-item">
+                                <div class="numbers-item__wrapper">
+                                    <p class="numbers-item__label counter" data-end="100+">
+                                        <span>100</span>
+                                    </p>
+                                    <p class="numbers-item__text">
+                                        Специалистов <br>
+                                        в штате
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="section section--project">
+                <div class="section__wrapper">
+                    <div class="section__column section__column--big">
+                        <div class="count">
+                            <div class="container">
+                                <div class="section__block">
+                                    <div class="section__grid">
+                                        <div class="count-block">
+                                            <div class="count__wrapper">
+                                                <p class="count__text">
+                                                    Более
+                                                </p>
+                                                <p class="count__number">
+                                                    825 <br>
+                                                    000
+                                                </p>
+
+                                                <p class="count__text">
+                                                    фрахтовых тонн <br>
+                                                    доставлено
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="section__column section__column--big">
+                                            <div class="section__column">
+                                                <p class="title title--base title--semibold">
+                                                    Наши проекты – будущее многих отраслей промышленности.
+                                                </p>
+                                                <p class="text text--base">
+                                                    Для нас логистика&nbsp;&mdash; это стратегический инструмент
+                                                    реализации глобальных
+                                                    проектов. Компания &laquo;РТЛ&raquo; создает и&nbsp;воплощает в&nbsp;жизнь
+                                                    инженерные решения там,
+                                                    где другие видят непреодолимые препятствия. Мы&nbsp;выстраиваем не&nbsp;просто
+                                                    маршруты, а&nbsp;целые транспортные экосистемы для промышленных
+                                                    гигантов,
+                                                    обеспечивая надежность каждого звена.
+                                                    <br> <br>
+                                                    Компания &laquo;РТЛ&raquo;&nbsp;&mdash; ваш стратегический партнер в&nbsp;реализации
+                                                    масштабных
+                                                    промышленных проектов. Мы&nbsp;не&nbsp;просто перевозим оборудование&nbsp;&mdash;
+                                                    мы&nbsp;проектируем
+                                                    и&nbsp;воплощаем в&nbsp;жизнь логистику, где нет места
+                                                    неопределенности. Наша задача &mdash;
+                                                    превратить вашу самую сложную транспортную задачу в&nbsp;предсказуемый,
+                                                    контролируемый и&nbsp;безопасный процесс.
+                                                </p>
+                                            </div>
+                                            <a href="#" class="button button--bordered button--base">
+                                                Связаться
+                                                <svg class="button__icon button__icon--arrow">
+                                                    <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-wrapper">
+                            <div class="container">
+                                <div class="section__block">
+                                    <div class="swiper project-slider slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="project-slider__item swiper-slide project-item">
+                                                <div class="project-item__wrapper">
+                                                    <div class="project-item__blur">
+                                                    </div>
+                                                    <div class="project-item__content">
+                                                        <div class="project-item__header">
+                                                            <p class="text text--tiny">
+                                                                ‘23
+                                                            </p>
+                                                            <p class="text text--base">
+                                                                Название проекта
+                                                                написанное в 2 строчки
+                                                            </p>
+                                                        </div>
+                                                        <a href="#" class="button button--bordered button--base">
+                                                            Подробнее
+                                                            <svg class="button__icon button__icon--arrow">
+                                                                <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="project-item__img">
+
+                                                        <video src="assets/video/soc.mp4" playsinline muted
+                                                               loop webkit-playsinline disablePictureInPicture
+                                                               controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="project-slider__item swiper-slide project-item">
+                                                <div class="project-item__wrapper">
+                                                    <div class="project-item__blur">
+                                                    </div>
+                                                    <div class="project-item__content">
+                                                        <div class="project-item__header">
+                                                            <p class="text text--tiny">
+                                                                ‘23
+                                                            </p>
+                                                            <p class="text text--base">
+                                                                Название проекта
+                                                                написанное в 2 строчки
+                                                            </p>
+                                                        </div>
+                                                        <a href="#" class="button button--bordered button--base">
+                                                            Подробнее
+                                                            <svg class="button__icon button__icon--arrow">
+                                                                <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="project-item__img">
+
+                                                        <video src="assets/video/soc.mp4" playsinline muted
+                                                               loop webkit-playsinline disablePictureInPicture
+                                                               controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="project-slider__item swiper-slide project-item">
+                                                <div class="project-item__wrapper">
+                                                    <div class="project-item__blur">
+                                                    </div>
+                                                    <div class="project-item__content">
+                                                        <div class="project-item__header">
+                                                            <p class="text text--tiny">
+                                                                ‘23
+                                                            </p>
+                                                            <p class="text text--base">
+                                                                Название проекта
+                                                                написанное в 2 строчки
+                                                            </p>
+                                                        </div>
+                                                        <a href="#" class="button button--bordered button--base">
+                                                            Подробнее
+                                                            <svg class="button__icon button__icon--arrow">
+                                                                <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="project-item__img">
+
+                                                        <video src="assets/video/soc.mp4" playsinline muted
+                                                               loop webkit-playsinline disablePictureInPicture
+                                                               controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="project-slider__item swiper-slide project-item">
+                                                <div class="project-item__wrapper">
+                                                    <div class="project-item__blur">
+                                                    </div>
+                                                    <div class="project-item__content">
+                                                        <div class="project-item__header">
+                                                            <p class="text text--tiny">
+                                                                ‘23
+                                                            </p>
+                                                            <p class="text text--base">
+                                                                Название проекта
+                                                                написанное в 2 строчки
+                                                            </p>
+                                                        </div>
+                                                        <a href="#" class="button button--bordered button--base">
+                                                            Подробнее
+                                                            <svg class="button__icon button__icon--arrow">
+                                                                <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="project-item__img">
+
+                                                        <video src="assets/video/soc.mp4" playsinline muted
+                                                               loop webkit-playsinline disablePictureInPicture
+                                                               controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="project-slider__item swiper-slide project-item">
+                                                <div class="project-item__wrapper">
+                                                    <div class="project-item__blur">
+                                                    </div>
+                                                    <div class="project-item__content">
+                                                        <div class="project-item__header">
+                                                            <p class="text text--tiny">
+                                                                ‘23
+                                                            </p>
+                                                            <p class="text text--base">
+                                                                Название проекта
+                                                                написанное в 2 строчки
+                                                            </p>
+                                                        </div>
+                                                        <a href="#" class="button button--bordered button--base">
+                                                            Подробнее
+                                                            <svg class="button__icon button__icon--arrow">
+                                                                <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                    <div class="project-item__img">
+
+                                                        <video src="assets/video/soc.mp4" playsinline muted
+                                                               loop webkit-playsinline disablePictureInPicture
+                                                               controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="slider-navigation">
+                                            <div class="slider-button slider-button__prev project-slider-button-prev">
+                                                <svg class="icon">
+                                                    <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                                </svg>
+                                            </div>
+                                            <div class="slider-button slider-button__next project-slider-button-next">
+                                                <svg class="icon">
+                                                    <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section-levels ">
+                <div class="section__wrapper section-levels__wrapper ">
+                    <div class="container">
+                        <div class="section__column section__column--big">
+                            <div class="section__block">
+                                <div class="section__column">
+                                    <p class="title title--base title--semibold">
+                                        Четыре уровня тотального контроля над вашим проектом
+                                    </p>
+                                    <p class="text text--base">
+                                        Наша экспертиза — это синтез глубоких инженерных знаний, отлаженной
+                                        международной сети партнеров и собственных строительных мощностей. Каждое
+                                        направление — это этап создания надежной инфраструктуры для вашего успеха.
+                                        <br> <br>
+                                        Мы не делим проект на «логистику» и «строительство». Для нас это единый
+                                        организм, где инженерный расчёт определяет выбор маршрута, а собственное
+                                        строительное подразделение создает условия для прохождения груза там, где их не
+                                        существует в природе. Когда обычный перевозчик упирается в отсутствие подъездных
+                                        путей, мы проектируем и строим временные дороги. Когда габариты оборудования не
+                                        проходят под мостами, наши инженеры разрабатывают спецпроекты и альтернативные
+                                        схемы с использованием подъемной техники.
+                                        <br> <br>
+                                        Собственные строительные мощности - это опыт возведения причальных сооружений,
+                                        усиления мостовых конструкций, подготовки площадок под монтаж тяжёлого
+                                        оборудования. За последние годы мы реализовали более пятнадцати проектов, где
+                                        создание временной инфраструктуры стало единственным возможным решением: от
+                                        временного причала на необорудованном берегу до зимней переправы.
+                                        <br> <br>
+                                        Одновременно с этим работает наш глобальный партнёрский контур. Международная
+                                        сеть «РТЛ» — это не телефонная книга контактов, а система прямых
+                                        представительств в стратегических городах и странах.
+                                        <br> <br>
+                                        Наша экспертиза в действии — не сумма компетенций, а их взаимное усиление.
+                                        Инженеры понимают логистику, логисты говорят на языке строителей, партнёры
+                                        действуют как единая команда.
+                                        <br> <br>
+                                        Результатом этого синтеза становятся проекты, которые войдут в историю
+                                        промышленной логистики.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="levels">
+                                <div class="levels-grid">
+                                    <div class="levels-grid__item levels-grid__item--big card">
+                                        <img src="assets/images/levels/bg-2.webp" alt=""
+                                             class="card__bg card__bg--mobile" loading="lazy">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#level-project"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Проектная логистика: <br>
+                                                Управление сложностью
+                                            </p>
+                                            <p class="text text--tiny card__text">
+                                                Мы берем на себя полную ответственность за транспортировку вашего
+                                                промышленного объекта — от первой мили на заводе-изготовителе до
+                                                финального позиционирования на стройплощадке. Это единое окно и одно
+                                                юридическое лицо за весь процесс.
+                                                <br> <br>
+                                                Вы получаете предсказуемость. Фиксированные сроки, бюджет и один
+                                                выделенный координатор, который сводит на нет ваши операционные риски.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="levels-grid__item levels-grid__item--row--big card">
+                                        <img src="assets/images/levels/bg-3.webp" alt=""
+                                             class="card__bg card__bg--mobile" loading="lazy">
+
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#level-engineering"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Инженерные решения: <br>
+                                                Преодоление «невозможного»
+                                            </p>
+                                            <p class="text text--tiny card__text">
+                                                Наши инженеры проектируют логистику там, где заканчиваются стандартные
+                                                дороги. Обследование маршрутов, разработка спецпроектов, усиление
+                                                мостов, строительство временных причалов и подъездных путей.
+                                                <br> <br>
+                                                Ваш уникальный груз получает индивидуальный, математически просчитанный
+                                                и согласованный с надзорными органами маршрут. Никаких сюрпризов в пути.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="levels-grid__item levels-grid__item--row--big card">
+                                        <img src="assets/images/levels/bg-4.webp" alt=""
+                                             class="card__bg card__bg--mobile" loading="lazy">
+
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#level-customs"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Таможенное оформление: <br>
+                                                Юридический щит проекта
+                                            </p>
+                                            <p class="text text--tiny card__text card__text--small">
+                                                Мы обеспечиваем легальность и скорость всех таможенных процедур для
+                                                проектных и регулярных грузов. Наша гарантия — наличие ООО «РТЛ» в
+                                                реестре таможенных представителей с 2017 г. и два профильных отдела.
+                                                <br> <br>
+                                                Полная прозрачность платежей и сроков. Мы минимизируем таможенные риски,
+                                                исключаем простои и берем на себя взаимодействие с государственными
+                                                органами.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="levels-grid__item  card">
+                                        <img src="assets/images/levels/bg-1.webp" alt=""
+                                             class="card__bg card__bg--mobile" loading="lazy">
+                                        <div class="card__wrapper card__wrapper--center">
+
+                                            <p class="text text--center text--base text--mobile--big text--bold">
+                                                Полный цикл услуг: <br>
+                                                от чертежа до запуска производства
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="levels-grid__item levels-grid__item--big card">
+                                        <img src="assets/images/levels/bg-5.webp" alt=""
+                                             class="card__bg card__bg--mobile" loading="lazy">
+
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#level-exp"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Экспедирование: <br>
+                                                Бесшовная операционная деятельность
+                                            </p>
+                                            <p class="text text--tiny card__text">
+                                                Ваш личный менеджер выстраивает и контролирует всю операционную цепочку:
+                                                подбор и фрахт транспорта, оформление документов, получение
+                                                спецразрешений, погрузку, мониторинг и информирование 24/7.
+                                                <br> <br>
+                                                Вы экономите время своих сотрудников и внутренние ресурсы. Все
+                                                организационные вопросы решаются одной командой, а вы получаете единую
+                                                точку контакта и отчетности.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <picture class="section-levels__bg">
+                    <source media="(max-width: 767px)" srcset="assets/images/section-gradients/levels-bg-m.webp">
+                    <img src="assets/images/section-gradients/levels-bg.webp" alt="" loading="lazy">
+                </picture>
+                <picture class="section-levels__bg section-levels__bg--top">
+                    <img src="assets/images/section-gradients/levels-bg-top.webp" alt="" loading="lazy">
+                </picture>
+            </section>
+            <section class="section">
+                <div class="section__wrapper ">
+                    <div class="container">
+                        <div class="section__column section__column--big">
+                            <div class="section__block">
+                                <div class="section__column">
+                                    <p class="title title--base title--semibold">
+                                        Принципы работы и наши гарантии
+                                    </p>
+                                    <p class="text text--base">
+                                        Почему ключевые отрасли выбирают Компанию «РТЛ»?
+                                        <br>
+                                        Наши цифры — это результат четкой системы принципов. Мы строим работу не на
+                                        обещаниях, а на прозрачных механизмах, которые защищают ваши интересы и капитал.
+                                        Финансовая ответственность закреплена не только договором, но и реальным
+                                        страховым полисом. Мы включаем страхование профессиональной ответственности в
+                                        базовую стоимость услуг, не делая из этого дополнительную опцию.
+                                        <br> <br>
+                                        Пул наших проверенных партнёров формировался годами через систему аудитов и
+                                        реальных проектов. Это не просто список — это исполнители, которые знают наши
+                                        стандарты и принимают их как свои. Доверие ключевых отраслей — нефтегазовой,
+                                        химической, энергетической — строится на этой предсказуемости. Когда запуск
+                                        производства зависит от даты прибытия оборудования, а каждый день простоя
+                                        обходится в миллионы, право на ошибку отсутствует. «РТЛ» — это компания, которая
+                                        не использует это право. Наша система принципов превращает риски в управляемые
+                                        параметры, а логистику — в предсказуемую инженерную дисциплину.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="principles">
+                                <div class="principles-grid">
+                                    <div class="principles-grid__item card card--principles">
+                                        <img src="assets/images/principles/1.webp" alt="" class="card__bg">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-1"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Полная финансовая ответственность
+                                            </p>
+                                            <p class="text text--tiny card__text">
+                                                Мы застраховали свою профессиональную ответственность. Это ваша гарантия
+                                                на случай форс-мажора и наше обязательство действовать с максимальной
+                                                осмотрительностью.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="principles-grid__item card card--principles">
+                                        <img src="assets/images/principles/2.webp" alt="" class="card__bg">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-2"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Принцип «Единого окна» и личного менеджера
+                                            </p>
+                                            <p class="text text--tiny ">
+                                                Под каждый проект создается команда и вы получаете одного ответственного
+                                                координатора — вашего персонального логиста. Он управляет всеми
+                                                процессами: от инженеров и таможенных брокеров до перевозчиков, экономя
+                                                ваше время и нервы.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="principles-grid__item card card--principles">
+                                        <img src="assets/images/principles/3.webp" alt="" class="card__bg">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-3"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Собственная сеть надежных партнеров по всему миру
+                                            </p>
+                                            <p class="text text--tiny ">
+                                                За 20 лет мы не просто наработали контакты — мы сформировали пул
+                                                проверенных исполнителей (судовладельцы, владельцы спецтехники, местные
+                                                экспедиторы), которые разделяют наши стандарты качества.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="principles-grid__item card card--principles">
+                                        <img src="assets/images/principles/4.webp" alt="" class="card__bg">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-4"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Проектное управление рисками с первого дня
+                                            </p>
+                                            <p class="text text--tiny ">
+                                                Мы просчитываем риски до того, как они возникнут. Инженерный анализ,
+                                                резервные маршруты, предварительные согласования — всё это часть нашей
+                                                стандартной процедуры, а не дополнительная опция. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="section__wrapper ">
+                    <div class="section__column section__column--big">
+                        <div class="container">
+                            <div class="section__block">
+                                <div class="section__column">
+                                    <p class="title title--base title--semibold">
+                                        География присутствия и работ
+                                    </p>
+                                    <p class="text text--base">
+                                        Наша экспертиза не&nbsp;имеет границ: от&nbsp;Урала до&nbsp;Юго-Восточной
+                                        Азии.
+                                        <br> <br>
+                                        Мы&nbsp;строим логистические мосты между промышленными центрами мира и&nbsp;стройплощадками
+                                        наших клиентов. Наша география&nbsp;&mdash; это не&nbsp;просто список стран, а&nbsp;отработанные
+                                        коридоры для перевозки уникальных грузов.
+                                        <br> <br>
+                                        Полный цикл инженерно-транспортных решений для уникальных проектов: от&nbsp;анализа
+                                        маршрута и&nbsp;строительства инфраструктуры до&nbsp;таможенного оформления и&nbsp;финального
+                                        монтажа.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="geo">
+                            <div class="swiper geo-slider">
+                                <div class="swiper-wrapper">
+                                    <div class="geo-slider__item swiper-slide geo-item">
+                                        <picture class="geo-item__bg">
+                                            <source media="(max-width: 767px)" srcset="assets/images/geo/ru-m.webp">
+                                            <img src="assets/images/geo/ru.webp" alt="" loading="lazy">
+                                        </picture>
+                                        <div class="geo-item__wrapper">
+                                            <div class="geo-item__content">
+                                                <p class="title title--base title--semibold">
+                                                    РОССИЯ и СНГ
+                                                </p>
+                                                <div class="geo-item__text">
+                                                    <p class="text text--base">
+                                                        Основные направления: Промышленные узлы Урала, Поволжья,
+                                                        Пермского края, проекты в&nbsp;Ленинградской и&nbsp;Нижегородской
+                                                        областях, включая объекты в&nbsp;Арктической зоне. Работа в&nbsp;Беларуси
+                                                        и&nbsp;Казахстане.
+                                                        <br> <br>
+                                                        Примеры проектов: Логистическое обеспечение строительства НПЗ,
+                                                        крупных заводов, инфраструктурных объектов.
+                                                        <br> <br>
+                                                        Ключевые преимущества: Полное понимание нормативной базы,
+                                                        проверенные связи с&nbsp;подрядчиками и&nbsp;органами власти,
+                                                        уникальный опыт работы в&nbsp;сложных и&nbsp;удаленных регионах.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="geo-slider__item swiper-slide geo-item">
+                                        <picture class="geo-item__bg">
+                                            <source media="(max-width: 767px)" srcset="assets/images/geo/eu.webp">
+                                            <img src="assets/images/geo/eu.webp" alt="" loading="lazy">
+                                        </picture>
+                                        <div class="geo-item__wrapper">
+                                            <div class="geo-item__content">
+                                                <p class="title title--base title--semibold">
+                                                    ЕВРОПА
+                                                </p>
+                                                <div class="geo-item__text">
+                                                    <p class="text text--base">
+                                                        Основные направления: Страны Евросоюза, Турция.
+                                                        <br> <br>
+                                                        Ключевые преимущества: Отлаженное взаимодействие с&nbsp;европейскими
+                                                        производителями промышленного оборудования. Построение
+                                                        эффективных мультимодальных маршрутов (авто/железная дорога +
+                                                        море/паром) для оптимизации ваших затрат.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="geo-slider__item swiper-slide geo-item">
+                                        <picture class="geo-item__bg">
+                                            <source media="(max-width: 767px)" srcset="assets/images/geo/asia.webp">
+                                            <img src="assets/images/geo/asia.webp" alt="" loading="lazy">
+                                        </picture>
+                                        <div class="geo-item__wrapper">
+                                            <div class="geo-item__content">
+                                                <p class="title title--base title--semibold">
+                                                    АЗИЯ И БЛИЖНИЙ ВОСТОК
+                                                </p>
+                                                <div class="geo-item__text">
+                                                    <p class="text text--base">
+                                                        Основные направления: Китай, Индия, ОАЭ, Турция, страны
+                                                        Юго-Восточной Азии.
+                                                        <br> <br>
+                                                        Ключевые преимущества: Наличие собственных представителей в&nbsp;ключевых
+                                                        странах для контроля за&nbsp;производством и&nbsp;отгрузкой.
+                                                        Глубокая экспертиза в&nbsp;работе с&nbsp;азиатскими поставщиками
+                                                        и&nbsp;организации наиболее сложного этапа&nbsp;&mdash; морской
+                                                        перевозки крупногабаритного оборудования.
+                                                        <br> <br>
+                                                        Где&nbsp;бы ни&nbsp;производилось оборудование для вашего
+                                                        проекта&nbsp;&mdash; мы&nbsp;обеспечим его безопасную и&nbsp;своевременную
+                                                        доставку до&nbsp;самой стройплощадки, превращая международную
+                                                        логистику в&nbsp;надежный и&nbsp;понятный процесс.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="geo-slider__pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__label">
+                <p class="title title--big">
+                    «Совершенствуя логистику — совершенствовать мир»
+                </p>
+            </div>
+            <div class="footer__wrapper">
+                <a href="/" class="logo footer__logo">
+                    <img src="assets/images/logo-grey.svg" alt="" class="logo__img">
+                </a>
+                <div class="footer__row">
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Контакты</span>
+                            <input type="radio" checked name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <p class="footer-block__text">
+                                117342, Г. Москва, <br>
+                                вн. тер. г. муниципальный округ <br>
+                                Коньково, ул. Бутлерова, <br>
+                                д. 17, этаж 5, офис 518
+                            </p>
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="tel:7 (495) 790-02-91">7 (495) 790-02-91</a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="tel:8 (800) 770-02-91">8 (800) 770-02-91</a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="mailto:info@rtlltd.com">info@rtlltd.com</a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="mailto:www.rtlltd.com">www.rtlltd.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Меню</span>
+                            <input type="radio"  name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Главная
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        О компании
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Проекты
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        География
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Контакт
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Журнал компании</span>
+                            <input type="radio"  name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Социальные сети</span>
+                            <input type="radio"  name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        Телеграм
+
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        VK
+
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        ВК Видео
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="text text--grey text--tiny" >
+                    © 2025 ООО «РТЛ» Все права защищены.
+                </p>
+                <a href="#" class="text text--grey text--tiny">
+                    Политика обработки cookie
+                </a>
+                <a href="#" class="text text--grey text--tiny">
+                    Политика конфиденциальности
+                </a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/scripts/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+<script>
+    (function () {
+        'use strict';
+
+        var content = document.querySelector('.content');
+        var footer  = document.querySelector('.footer');
+
+        if (!content || !footer) return;
+
+        content.style.willChange      = 'transform, border-radius';
+        content.style.transformOrigin = 'top center';
+        footer.style.willChange       = 'transform';
+
+        var footerOffsetTop = 0;
+        var viewportH       = 0;
+        var triggerStart    = 0;
+        var triggerEnd      = 0;
+
+        function cacheGeometry() {
+            viewportH       = window.innerHeight;
+            footerOffsetTop = footer.getBoundingClientRect().top + window.scrollY;
+
+            triggerStart = footerOffsetTop - viewportH;
+            triggerEnd   = footerOffsetTop - viewportH * 0.35;
+        }
+
+        function applyScroll() {
+            var scrollY  = window.scrollY || window.pageYOffset;
+            var range    = triggerEnd - triggerStart;
+            var progress = range > 0 ? (scrollY - triggerStart) / range : 0;
+            progress = progress < 0 ? 0 : progress > 1 ? 1 : progress;
+
+            var scale  = 1    - progress * 0.06;
+            var radius = progress * 60;
+            var ty     = (1 - progress) * -20;
+
+            content.style.transform    = 'translate3d(0,0,0) scale(' + scale + ')';
+            content.style.borderRadius = `0 0 ${radius + 'px'} ${radius + 'px'}`;
+            footer.style.transform     = 'translate3d(0,' + ty + '%,0)';
+        }
+
+        function onScroll() {
+            applyScroll();
+        }
+
+        var resizeTimer;
+        function onResize() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                cacheGeometry();
+                applyScroll();
+            }, 100);
+        }
+
+        cacheGeometry();
+        applyScroll();
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onResize, { passive: true });
+    })();
+</script>
+
+</body>
+</html>
