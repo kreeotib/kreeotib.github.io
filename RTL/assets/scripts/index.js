@@ -74,35 +74,52 @@ document.addEventListener('DOMContentLoaded', () => {
         init: false,
         slidesPerView: 1,
         spaceBetween: 0,
-        speed:500,
-        effect:'fade',
+        speed: 500,
+        effect: 'fade',
         horizontalClass: 'slider',
         fadeEffect: {
-            crossFade: true
+            crossFade: true,
+            disableOnInteraction: false
         },
         pagination: {
             el: '.geo-slider__pagination',
             type: 'bullets',
-            horizontalClass:'slider__pagination',
+            horizontalClass: 'slider__pagination',
             bulletClass: 'geo-slider__bullet',
             bulletActiveClass: 'geo-slider__bullet--active',
         },
-
         autoplay: {
             delay: 6000,
+            disableOnInteraction: false,
         },
         on: {
             init: function () {
                 const delay = geoSlider.params.autoplay.delay,
                     speed = geoSlider.params.speed;
                 geoSliderElement.style.setProperty('--swiper-autoplay-delay', delay + speed + 'ms');
+
+                geoSlider.autoplay.stop();
             }
         }
     });
 
-
     if (geoSliderElement) {
         geoSlider.init();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    geoSlider.autoplay.start();
+                    const delay = geoSlider.params.autoplay.delay,
+                        speed = geoSlider.params.speed;
+                    geoSliderElement.style.setProperty('--swiper-autoplay-delay', delay + speed + 'ms');
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        observer.observe(geoSliderElement);
     }
     // const personSliderNavElement = document.querySelector('.person-navigation');
     // const personSliderNav = new Swiper(personSliderNavElement, {
@@ -256,4 +273,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         animate();
     });
+
+
+    const header = document.querySelector('.header');
+    if(pageYOffset> header.getBoundingClientRect().height){
+        header.classList.add('sticky')
+    }else{
+        header.classList.remove('sticky');
+    }
+    window.addEventListener('scroll',e=>{
+        if(pageYOffset> header.getBoundingClientRect().height){
+            header.classList.add('sticky')
+        }else{
+            header.classList.remove('sticky');
+        }
+    })
 })

@@ -95,7 +95,19 @@ body.no-scroll {
   position: relative;
   z-index: 3;
   overflow: hidden;
-background: #000;
+  background: #000;
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: url("../../images/section-gradients/body.webp") top right/cover no-repeat;
+    animation: pulse 5s linear infinite;
+  }
 }
 
 .text {
@@ -231,6 +243,8 @@ a.text--grey:hover {
   }
 
   &:has([name="burger"]:checked) &-nav {
+    margin: 0;
+
     &__item {
       opacity: 1;
       visibility: visible;
@@ -259,6 +273,20 @@ a.text--grey:hover {
     }
   }
 
+  &.sticky &-nav {
+    margin: 0 -1.25rem;
+
+    &__item {
+      &--visible {
+        opacity: 0;
+        visibility: hidden;
+        max-width: 0;
+        overflow: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, max-width 0.4s ease, margin .4s ease;
+      }
+    }
+  }
+
   &-language {
     opacity: 0;
     visibility: hidden;
@@ -270,6 +298,8 @@ a.text--grey:hover {
 
 
   &-nav {
+    transition: .3s margin ease;
+
     &__item {
       opacity: 0;
       visibility: hidden;
@@ -361,7 +391,7 @@ a.text--grey:hover {
 
 .language {
   &-fixed {
-    position: fixed;
+    position: absolute;
     top: var(--container-padding);
     right: calc(2 * (var(--container-padding)));
     z-index: 4;
@@ -545,9 +575,17 @@ a.text--grey:hover {
 
 .hero {
   position: relative;
-  &__svg { display: flex; }
-  &__svg svg { display: block; flex-shrink: 0; }
-  &__text{
+
+  &__svg {
+    display: flex;
+  }
+
+  &__svg svg {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  &__text {
 
     @media screen and (max-width: 767px) {
       transform: scale(.5);
@@ -558,8 +596,10 @@ a.text--grey:hover {
       pointer-events: none;
     }
   }
-  &__text{
+
+  &__text {
   }
+
   &__bg {
     position: absolute;
     left: 0;
@@ -593,14 +633,14 @@ a.text--grey:hover {
   }
 
   &__content {
-    min-height: 75rem;
+    min-height: 100svh;
 
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap:var(--section-spacer-big);
+    gap: var(--section-spacer-big);
     padding: 6.25rem 0;
     @media screen and (max-width: 767px) {
       min-height: 50rem;
@@ -645,10 +685,28 @@ a.text--grey:hover {
       gap: var(--section-spacer-big);
     }
   }
-  &--person{
-    @media screen and (max-width: 767px) {
-      background: url("../../images/section-gradients/person-m.webp") bottom right/contain no-repeat;
+
+  &--person {
+    position: relative;
+    .section__wrapper, .container{
+      position: relative;
+      z-index: 2;
     }
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      animation: pulse 5s linear infinite;
+      @media screen and (max-width: 767px) {
+        background: url("../../images/section-gradients/person-m.webp") bottom right/contain no-repeat;
+      }
+    }
+
   }
 
   &--project {
@@ -667,6 +725,7 @@ a.text--grey:hover {
       height: 100rem;
       display: block;
       background: url("../../images/projects/bg.webp") right center/contain no-repeat;
+      animation: pulse 5s linear infinite;
       @media screen and (max-width: 767px) {
         background: url("../../images/projects/bg-m.webp") right center/contain no-repeat;
         transform: translateY(25rem);
@@ -686,6 +745,7 @@ a.text--grey:hover {
         height: 100rem;
         display: block;
         background: url("../../images/projects/bg-m-second.webp") right center/contain no-repeat;
+        animation: pulse 5s linear infinite;
       }
     }
 
@@ -718,6 +778,7 @@ a.text--grey:hover {
         height: 100rem;
         display: block;
         background: url("../../images/section-gradients/about-m.webp") right center/contain no-repeat;
+        animation: pulse 5s linear infinite;
       }
     }
   }
@@ -743,12 +804,13 @@ a.text--grey:hover {
       object-position: bottom center;
       pointer-events: none;
       transform: translateY(50%);
-
+      animation: pulse 5s linear infinite;
       &--top {
         bottom: unset;
         top: 0;
         transform: none;
         object-position: top center;
+        animation: pulse 10s linear infinite;
         @media screen and (max-width: 767px) {
           display: none;
         }
@@ -899,7 +961,19 @@ a.text--grey:hover {
   }
 
   &--principles {
-    background: #07090A;
+    background: linear-gradient(
+                    180deg,
+                    rgba(78, 82, 89, 0.17) 0%,
+                    #07090A 50%,
+                    #07090A 100%
+    );
+    background-size: 100% 200%;
+    background-position: 0% 100%;
+    transition: background-position .3s ease;
+
+    &:hover {
+      background-position: 0% 0%;
+    }
 
     min-height: 31.25rem;
     @media screen and (min-width: 768px) {
@@ -925,7 +999,7 @@ a.text--grey:hover {
     }
   }
 
-  &__video{
+  &__video {
     position: absolute;
     left: 0;
     top: 0;
@@ -935,7 +1009,8 @@ a.text--grey:hover {
     align-items: center;
     pointer-events: none;
     justify-content: center;
-    video{
+
+    video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -951,6 +1026,7 @@ a.text--grey:hover {
     object-fit: cover;
     object-position: bottom center;
     z-index: 3;
+
     &--mobile {
       @media screen and (min-width: 768px) {
         display: none;
@@ -1561,15 +1637,16 @@ a.text--grey:hover {
 
 .person {
 
-  &-desc{
+  &-desc {
 
     @media screen and (min-width: 768px) {
-      padding:3.125rem var(--container-padding);
+      padding: 3.125rem var(--container-padding);
       border-radius: 1.25rem;
-      border:1px solid rgba(#FFFFFF,.2);
+      border: 1px solid rgba(#FFFFFF, .2);
       background: url("../../images/section-gradients/person.webp") center center/cover no-repeat;
     }
   }
+
   &-list {
     position: relative;
     width: 100%;
@@ -1579,7 +1656,8 @@ a.text--grey:hover {
     display: flex;
     align-items: stretch;
     position: relative;
-    &__cursor{
+
+    &__cursor {
       width: 5rem;
       height: 5rem;
       background: url("../../images/icons/play.svg") center center/cover no-repeat;
@@ -1591,7 +1669,8 @@ a.text--grey:hover {
       z-index: 4;
       pointer-events: none;
       will-change: left, top;
-      &.unmuted{
+
+      &.unmuted {
         background: url("../../images/icons/pause.svg") center center/cover no-repeat;
       }
     }
@@ -1701,13 +1780,13 @@ a.text--grey:hover {
     padding: 19.375rem var(--container-padding);
     border-radius: 1.25rem;
     overflow: hidden;
-    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: auto;
+    height: 64.6875rem;
     @media screen and (max-width: 767px) {
       padding: 6.875rem .625rem;
+      height: auto;
     }
 
     &__bg {
@@ -1818,9 +1897,10 @@ a.text--grey:hover {
   }
 }
 
-.partners{
+.partners {
   position: relative;
-  &::before,&::after{
+
+  &::before, &::after {
     content: "";
     width: 18.75rem;
     height: 100%;
@@ -1835,15 +1915,18 @@ a.text--grey:hover {
       width: 4.6875rem;
     }
   }
-  &::before{
+
+  &::before {
     left: 0;
 
   }
-  &::after{
+
+  &::after {
     background: linear-gradient(270deg, #01040b 0%, rgba(1, 4, 11, 0) 100%);
     right: 0;
   }
-  &-img{
+
+  &-img {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1854,7 +1937,8 @@ a.text--grey:hover {
       width: 7.5rem;
       height: 5.625rem;
     }
-    img{
+
+    img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -1864,15 +1948,17 @@ a.text--grey:hover {
   }
 }
 
-.card--principles{
+.card--principles {
   --x: -999px;
   --y: -999px;
-  --glow-color: 32,47,78;
+  --glow-color: 32, 47, 78;
   --glow-opacity: 0;
 }
-.card--principles .card__bg{
-  
+
+.card--principles .card__bg {
+
 }
+
 .card--principles::before {
   content: '';
   position: absolute;
@@ -1904,4 +1990,16 @@ a.text--grey:hover {
   );
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.6;
+  }
 }
