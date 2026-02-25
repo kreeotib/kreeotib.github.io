@@ -1818,4 +1818,36 @@ a.text--grey:hover {
   visibility: hidden;
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.marquee {
+  display: flex;
+  white-space: nowrap;
+}
+.marquee-content {
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
 /*# sourceMappingURL=index.css.map */
