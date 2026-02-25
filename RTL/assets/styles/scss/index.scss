@@ -96,7 +96,8 @@ body.no-scroll {
   z-index: 3;
   overflow: hidden;
   background: #000;
-  &::before{
+
+  &::before {
     content: "";
     position: absolute;
     left: 0;
@@ -105,7 +106,7 @@ body.no-scroll {
     height: 100%;
     pointer-events: none;
     z-index: 1;
-    background: url("../../images/section-gradients/body.webp") top right/cover no-repeat;
+    background: url("../../images/section-gradients/body.webp") bottom right/cover no-repeat;
     animation: pulse 5s linear infinite;
   }
 }
@@ -688,11 +689,13 @@ a.text--grey:hover {
 
   &--person {
     position: relative;
-    .section__wrapper, .container{
+
+    .section__wrapper, .container {
       position: relative;
       z-index: 2;
     }
-    &::before{
+
+    &::before {
       content: "";
       position: absolute;
       left: 0;
@@ -805,6 +808,7 @@ a.text--grey:hover {
       pointer-events: none;
       transform: translateY(50%);
       animation: pulse 5s linear infinite;
+
       &--top {
         bottom: unset;
         top: 0;
@@ -1657,6 +1661,59 @@ a.text--grey:hover {
     align-items: stretch;
     position: relative;
 
+    &.involved &__sound {
+      display: flex;
+    }
+
+    &.involved &__cursor {
+      opacity: 0;
+    }
+
+    &.unmuted &__sound {
+      &::before{
+        background: url("../../images/icons/unmute.svg") center center/contain no-repeat;
+      }
+    }
+
+    &__sound {
+      width: 4rem;
+      height: 4rem;
+      padding: 1rem;
+
+      border-radius: 50%;
+      position: absolute;
+      right: 3rem;
+      top: 3rem;
+      z-index: 4;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(#ffff, .3);
+
+      transition: .3s background;
+
+      @media screen and (max-width: 767px) {
+        top: 1rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        padding: .5rem;
+      }
+      &:hover {
+        background: rgba(#fff, .7);
+      }
+
+      &::before {
+        content: "";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: url("../../images/icons/mute.svg") center center/contain no-repeat;
+      }
+    }
+
     &__cursor {
       width: 5rem;
       height: 5rem;
@@ -1669,10 +1726,28 @@ a.text--grey:hover {
       z-index: 4;
       pointer-events: none;
       will-change: left, top;
+      transition: .3s opacity;
 
       &.unmuted {
         background: url("../../images/icons/pause.svg") center center/cover no-repeat;
       }
+    }
+  }
+
+  &-slider.involved + &-navigation{
+    .person-button.swiper-slide-thumb-active .person-button__content{
+      opacity: 1;
+      visibility: visible;
+      max-width: 20rem;
+      margin-left: 1.875rem;
+    }
+  }
+  &-slider + &-navigation{
+    .person-button.swiper-slide-thumb-active .person-button__content{
+      opacity: 0;
+      visibility: hidden;
+      max-width: 0;
+      margin: 0;
     }
   }
 
@@ -1729,7 +1804,7 @@ a.text--grey:hover {
       pointer-events: none;
     }
 
-    &:hover &__content {
+    &.swiper-slide-thumb-active &__content{
       opacity: 1;
       visibility: visible;
       max-width: 20rem;

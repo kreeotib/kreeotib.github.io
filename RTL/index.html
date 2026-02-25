@@ -991,6 +991,7 @@
                         <div class="container container--mobile--small">
                             <div class="person-list">
                                 <div class=" swiper person-slider">
+                                    <div class="person-slider__sound"></div>
                                     <span class="person-slider__cursor"></span>
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide person-item">
@@ -1640,9 +1641,9 @@
         const personSlider = new Swiper(personSliderElement, {
             slidesPerView: 1,
             effect: 'fade',
-            fadeEffect: {crossFade: true},
+            fadeEffect: { crossFade: true },
             allowTouchMove: false,
-            thumbs: {swiper: personSliderNav},
+            thumbs: { swiper: personSliderNav },
             on: {
                 slideChangeTransitionStart: onSlideChange,
             },
@@ -1650,7 +1651,18 @@
 
         const slides = Array.from(personSliderElement.querySelectorAll('.person-item'));
         const videos = slides.map(s => s.querySelector('video'));
+        const soundBtn = personSliderElement.querySelector('.person-slider__sound');
         let soundOn = false;
+        let involved = false;
+
+        function setSound(val) {
+            soundOn = val;
+            const video = videos[personSlider.realIndex];
+            video.muted = !soundOn;
+            personSliderElement.classList.toggle('unmuted', soundOn);
+            const cursor = personSliderElement.querySelector('.person-slider__cursor');
+            if (cursor) cursor.classList.toggle('unmuted', soundOn);
+        }
 
         function loadVideo(video) {
             if (!video.src && video.dataset.src) {
@@ -1659,15 +1671,13 @@
             }
         }
 
-        function activateVideo(index, withSound) {
+        function activateVideo(index, withSound, resetTime = false) {
             videos.forEach((v, i) => {
                 if (i === index) {
                     loadVideo(v);
-                    v.removeAttribute('muted');
                     v.muted = !withSound;
-                    v.currentTime = 0;
-                    v.play().catch(() => {
-                    });
+                    if (resetTime) v.currentTime = 0;
+                    v.play().catch(() => {});
                 } else {
                     v.pause();
                     v.muted = true;
@@ -1676,26 +1686,50 @@
         }
 
         function onSlideChange() {
-            activateVideo(personSlider.realIndex, soundOn);
+            activateVideo(personSlider.realIndex, soundOn, false);
+            const nextIdx = (personSlider.realIndex + 1) % videos.length;
+            loadVideo(videos[nextIdx]);
         }
 
         activateVideo(0, false);
 
-        personSliderElement.addEventListener('click', function () {
-            const video = videos[personSlider.realIndex];
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    videos[personSlider.realIndex].play().catch(() => {});
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(personSliderElement);
+
+        personSliderElement.addEventListener('click', function (e) {
+            if (!involved) {
+                involved = true;
+                personSliderElement.classList.add('involved');
+            }
+
+            if (soundBtn && soundBtn.contains(e.target)) return;
+
             if (!soundOn) {
-                soundOn = true;
-                cursorDot.classList.add('unmuted');
-                video.currentTime = 0;
-                video.muted = false;
-                video.play().catch(() => {
-                });
+                setSound(true);
+                videos[personSlider.realIndex].currentTime = 0;
+                videos[personSlider.realIndex].play().catch(() => {});
             } else {
-                soundOn = false;
-                cursorDot.classList.remove('unmuted');
-                video.muted = true;
+                setSound(false);
             }
         });
+
+        if (soundBtn) {
+            soundBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (!involved) {
+                    involved = true;
+                    personSliderElement.classList.add('involved');
+                }
+                setSound(!soundOn);
+            });
+        }
 
         videos.forEach((video, i) => {
             video.removeAttribute('loop');
@@ -1706,15 +1740,13 @@
             });
         });
 
-        let targetX = personSliderElement.offsetWidth / 2;
+        let targetX = personSliderElement.offsetWidth * 0.75;
         let targetY = personSliderElement.offsetHeight / 2;
         let currentX = targetX;
         let currentY = targetY;
         let rafId = null;
 
-        function lerp(a, b, t) {
-            return a + (b - a) * t;
-        }
+        function lerp(a, b, t) { return a + (b - a) * t; }
 
         const cursorDot = personSliderElement.querySelector('.person-slider__cursor');
 
@@ -1722,28 +1754,26 @@
             currentX = lerp(currentX, targetX, 0.08);
             currentY = lerp(currentY, targetY, 0.08);
             cursorDot.style.left = currentX + 'px';
-            cursorDot.style.top = currentY + 'px';
+            cursorDot.style.top  = currentY + 'px';
             rafId = requestAnimationFrame(animateCursor);
         }
 
         personSliderElement.addEventListener('mousemove', function (e) {
             const rect = personSliderElement.getBoundingClientRect();
-            targetX = e.clientX - rect.left;
-            targetY = e.clientY - rect.top;
+            const x = e.clientX - rect.left;
+            if (x >= rect.width / 2) {
+                targetX = x;
+                targetY = e.clientY - rect.top;
+            }
             if (!rafId) animateCursor();
         });
 
         personSliderElement.addEventListener('mouseleave', function () {
-            targetX = personSliderElement.offsetWidth / 2;
+            targetX = personSliderElement.offsetWidth * 0.75;
             targetY = personSliderElement.offsetHeight / 2;
         });
 
         animateCursor();
-
-        personSlider.on('slideChange', function () {
-            const nextIdx = (personSlider.realIndex + 1) % videos.length;
-            loadVideo(videos[nextIdx]);
-        });
     })();
 </script>
 

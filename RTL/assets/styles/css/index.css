@@ -85,7 +85,7 @@ body.no-scroll {
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  background: url("../../images/section-gradients/body.webp") top right/cover no-repeat;
+  background: url("../../images/section-gradients/body.webp") bottom right/cover no-repeat;
   animation: pulse 5s linear infinite;
 }
 
@@ -1424,6 +1424,51 @@ a.text--grey:hover {
   align-items: stretch;
   position: relative;
 }
+.person-slider.involved .person-slider__sound {
+  display: flex;
+}
+.person-slider.involved .person-slider__cursor {
+  opacity: 0;
+}
+.person-slider.unmuted .person-slider__sound::before {
+  background: url("../../images/icons/unmute.svg") center center/contain no-repeat;
+}
+.person-slider__sound {
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 50%;
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+  z-index: 4;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.3);
+  transition: 0.3s background;
+}
+@media screen and (max-width: 767px) {
+  .person-slider__sound {
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
+  }
+}
+.person-slider__sound:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.person-slider__sound::before {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: url("../../images/icons/mute.svg") center center/contain no-repeat;
+}
 .person-slider__cursor {
   width: 5rem;
   height: 5rem;
@@ -1436,9 +1481,22 @@ a.text--grey:hover {
   z-index: 4;
   pointer-events: none;
   will-change: left, top;
+  transition: 0.3s opacity;
 }
 .person-slider__cursor.unmuted {
   background: url("../../images/icons/pause.svg") center center/cover no-repeat;
+}
+.person-slider.involved + .person-navigation .person-button.swiper-slide-thumb-active .person-button__content {
+  opacity: 1;
+  visibility: visible;
+  max-width: 20rem;
+  margin-left: 1.875rem;
+}
+.person-slider + .person-navigation .person-button.swiper-slide-thumb-active .person-button__content {
+  opacity: 0;
+  visibility: hidden;
+  max-width: 0;
+  margin: 0;
 }
 .person-navigation {
   max-width: 100%;
@@ -1488,7 +1546,7 @@ a.text--grey:hover {
   opacity: 0;
   pointer-events: none;
 }
-.person-button:hover .person-button__content {
+.person-button.swiper-slide-thumb-active .person-button__content {
   opacity: 1;
   visibility: visible;
   max-width: 20rem;
