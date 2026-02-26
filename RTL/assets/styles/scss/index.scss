@@ -795,6 +795,10 @@ a.text--grey:hover {
   &--task {
     position: relative;
 
+    @media screen and (max-width: 767px) {
+      padding-bottom: calc(2 * var(--container-padding));
+    }
+
     .section__wrapper, .container, .section__column {
       position: relative;
       z-index: 2;
@@ -1010,6 +1014,9 @@ a.text--grey:hover {
 
     grid-template-columns: repeat(4,minmax(0,1fr));
     gap: 1.25rem;
+    &--project{
+      gap: 0;
+    }
     &__item{
 
     }
@@ -1056,12 +1063,53 @@ a.text--grey:hover {
       background-position: 0% 0%;
     }
 
+
+
     min-height: 31.25rem;
     @media screen and (min-width: 768px) {
       border: transparent;
     }
     @media screen and (max-width: 767px) {
       min-height: 23.125rem;
+    }
+  }
+
+
+  &--project{
+    @media screen and (min-width: 768px) {
+      text-align: center;
+      border-radius: 0;
+
+      &:hover {
+        background-position: 0% 100%;
+      }
+      &::before,&::after{
+        display: none;
+      }
+      &:nth-child(1){
+        height: calc(100% + 18.75rem);
+        transform: translateY(-18.75rem);
+      }
+      &:nth-child(2){
+        height: calc(100% + 12.5rem);
+        transform: translateY(-12.5rem);
+      }
+      &:nth-child(3){
+        height: calc(100% + 6.25rem);
+        transform: translateY(-6.25rem);
+      }
+    }
+  }
+
+  &--project &__icon{
+    @media screen and (min-width: 768px) {
+      margin: 0 auto;
+    }
+  }
+
+  &--project &__bg{
+    @media screen and (min-width: 768px) {
+      opacity: 0;
     }
   }
 
@@ -2525,6 +2573,11 @@ b {
     display: flex;
     align-items: center;
     padding: 9.375rem 0;
+    @media screen and (max-width: 767px) {
+      padding: 0 var(--container-padding);
+    }
+  }
+  &__slider{
     @media screen and (max-width: 767px) {
       padding: 0 var(--container-padding);
     }
