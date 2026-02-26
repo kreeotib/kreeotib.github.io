@@ -79,8 +79,44 @@ class CounterAnimator {
         });
     }
 }
+class HeroAccelerator {
+    constructor(selector = '.hero', speed = 0.5) {
+        this.hero = document.querySelector(selector);
+        this.speed = speed;
+
+        if (!this.hero) return;
+
+        this.init();
+    }
+
+    init() {
+        window.addEventListener('scroll', () => this.animate());
+    }
+
+    animate() {
+        const scrollY = window.scrollY;
+
+        if (scrollY > window.innerHeight * 1.5) return;
+
+        const movement = scrollY * this.speed;
+
+        this.hero.style.transform = `translate3d(0, ${-movement}px, 0)`;
+
+        const opacity = 1 - (scrollY / (window.innerHeight * 0.8));
+
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+    new HeroAccelerator('.hero', 0.4);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Lenis
+    const lenis = new Lenis({
+        autoRaf: true,
+    });
+
+
     const geoSliderElement = document.querySelector('.geo-slider');
     const geoSlider = new Swiper(geoSliderElement, {
         init: false,
@@ -286,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isHero) {
             window.addEventListener('scroll', () => {
                 const st = window.pageYOffset || document.documentElement.scrollTop;
-                scrollSpeed = Math.abs(st - lastScrollTop) * 0.2;
+                scrollSpeed = Math.abs(st - lastScrollTop) * 0.5;
                 lastScrollTop = st <= 0 ? 0 : st;
             }, { passive: true });
         }

@@ -593,7 +593,9 @@ a.text--grey:hover {
 
 .hero {
   position: relative;
-
+  will-change: transform;
+  z-index: 1;
+  overflow: hidden;
   &__svg {
     display: flex;
   }

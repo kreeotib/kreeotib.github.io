@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="assets/styles/css/fonts.css">
 
+    <link rel="stylesheet" href="assets/libs/lenis/lenis.css">
     <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
 
     <link rel="stylesheet" href="assets/styles/css/reset.css">
@@ -91,7 +92,7 @@
             </div>
         </div>
     </header>
-    <div class="mobile-menu">
+    <div class="mobile-menu" data-lenis-prevent>
         <div class="mobile-menu__wrapper">
             <ul class="mobile-menu__list">
                 <li class="mobile-menu__item">
@@ -1419,7 +1420,7 @@
     </footer>
 </div>
 
-<div class="preloader">
+<div data-lenis-prevent class="preloader">
     <svg width="260" height="108" viewBox="0 0 260 108" fill="none" xmlns="http://www.w3.org/2000/svg">
         <style>
             @keyframes draw-1 {
@@ -1518,6 +1519,7 @@
     </svg>
 </div>
 <script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/libs/lenis/lenis.js"></script>
 <script src="assets/scripts/index.js"></script>
 <script>
     (function () {
