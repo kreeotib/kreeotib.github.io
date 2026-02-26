@@ -437,7 +437,10 @@
                         <div class="principles swiper slider">
                             <div class="principles-grid principles-grid--project swiper-wrapper">
                                 <div class="swiper-slide principles-grid__item card card--principles card--project">
-                                    <img src="assets/images/principles/1.webp" alt="" class="card__bg">
+                                    <picture class="card__bg">
+                                        <source media="(max-width: 767px)" srcset="assets/images/principles/1.webp">
+                                        <img src="assets/images/principles/1-1.svg" alt="">
+                                    </picture>
                                     <div class="card__wrapper">
                                         <svg class="card__icon">
                                             <use xlink:href="assets/images/sprite.svg#prin-1"></use>
