@@ -1666,9 +1666,11 @@ a.text--grey:hover {
     flex-direction: column;
     gap: 1.5rem;
     flex-grow: 1;
+
     @media screen and (max-width: 767px) {
       width: 100%;
       padding: 1.5rem 0;
+      gap: 0;
       &:not(:last-child) {
         border-bottom: 1px solid #3f3f46;
       }
@@ -1676,8 +1678,14 @@ a.text--grey:hover {
 
     &:has(:checked) &__content {
       @media screen and (max-width: 767px) {
-        display: flex;
+        grid-template-rows: 1fr;
       }
+    }
+
+    &__inner{
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
     &__content {
@@ -1686,13 +1694,28 @@ a.text--grey:hover {
       gap: 1.5rem;
 
       @media screen and (max-width: 767px) {
-        display: none;
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows .35s ease;
+        gap: 0;
+        
+        & > * {
+          overflow: hidden;
+          min-height: 0;
+        }
       }
 
       ul {
         line-height: 1.75;
       }
+    }
 
+    // добавляем отступ сверху когда раскрыто
+    &:has(:checked) &__content {
+      @media screen and (max-width: 767px) {
+        grid-template-rows: 1fr;
+        padding-top: 1.5rem;
+      }
     }
 
     &__header {
@@ -1701,6 +1724,10 @@ a.text--grey:hover {
       gap: 1rem;
       width: 100%;
       justify-content: space-between;
+
+      @media screen and (max-width: 767px) {
+        padding: 0; // паддинг теперь на блоке
+      }
     }
 
     &__title, &__text {
@@ -1731,17 +1758,15 @@ a.text--grey:hover {
       justify-content: center;
       border: 1px solid #9e9d9d;
       color: #9e9d9d;
+
       @media screen and (min-width: 768px) {
         display: none;
       }
 
       .icon {
-
         transition: .3s transform;
-
         width: .875rem;
         height: .875rem;
-
         transform: rotate(-90deg);
       }
     }
