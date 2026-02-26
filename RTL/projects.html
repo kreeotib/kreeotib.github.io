@@ -1,0 +1,1496 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/fonts.css">
+
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <a href="/" class="logo header__logo">
+                <svg class="logo__img" width="61" height="25" viewBox="0 0 61 25" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4793 0L16.6462 3.1669H19.5705L6.32507 16.452V13.4792L15.0627 4.70183L13.5146 3.15367L3.16699 3.1669V9.46983L6.31625 6.31175H9.02003L3.16699 12.1648V21.8331H12.8529L18.7148 15.9668V18.675L15.57 21.8287L21.8376 21.8331V11.4723L20.2938 9.93296L11.5606 18.675H8.55249L21.8376 5.35462V8.35833L25.0045 11.5252V0H13.4793Z"
+                          fill="#9E9D9D"/>
+                    <path d="M23.421 13.0557V23.4165H1.58345V1.58345H11.9487L10.3652 0H0V25H23.421H25.0044V14.6392L23.421 13.0557Z"
+                          fill="#2A54A0"/>
+                    <path d="M60.246 23.421H26.5834V25H60.246V23.421Z" fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M52.6112 0.0220566H36.2122V4.11521H41.8535V17.3518H44.3455L45.9422 13.9203V4.11521H50.7014L52.6112 0.0220566Z"
+                          fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M35.7003 6.17502H30.6721H28.9166H28.4668L26.6848 10.0079L26.5834 10.2638V21.8375H30.6721V10.2638H35.7003V12.9323H33.5214L31.6204 17.021H35.7003H39.7935V10.2638V6.17502H35.7003Z"
+                          fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M60.2419 21.8375V6.3735V6.17502H51.4954L44.2045 21.8375H48.6946L54.058 10.2814H56.1531V21.8375H60.2419Z"
+                          fill="#2A54A0"/>
+                </svg>
+
+            </a>
+            <ul class="header-nav">
+                <li class="header-nav__item header-nav__item--visible">
+                    <a href="#" class="header-nav__link">
+                        Главная
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        О компании
+                    </a>
+                </li>
+                <li class="header-nav__item header-nav__item--visible">
+                    <a href="#" class="header-nav__link">
+                        Проекты
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        География
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <div class="header-language">
+                <div class="language-list">
+                    <label class="language-item">
+                        <input type="radio" checked name="language" value="ru">
+                        <span class="language-item__label">ru</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="en">
+                        <span class="language-item__label">en</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="ch">
+                        <span class="language-item__label">ch</span>
+                    </label>
+                </div>
+            </div>
+            <div class="header-burger">
+                <label class="burger">
+                    <span class="burger__item"></span>
+                    <span class="burger__item"></span>
+                    <input type="checkbox" name="burger" id="">
+                </label>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-menu">
+        <div class="mobile-menu__wrapper">
+            <ul class="mobile-menu__list">
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Главная
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        О компании
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Проекты
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        География
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <ul class="mobile-menu__list mobile-menu__list--contact">
+                <li class="mobile-menu__item">
+                    <a href="tel:8 (800) 770 - 02 - 91" class="mobile-menu__link">
+                        8 (800) 770 - 02 - 91
+
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="mailto:info@rtlltd.com" class="mobile-menu__link">
+                        info@rtlltd.com
+                    </a>
+                </li>
+            </ul>
+            <div class="mobile-menu__language">
+                <div class="language-list">
+                    <svg class="language-list__icon">
+                        <use xlink:href="assets/images/sprite.svg#language-icon"></use>
+                    </svg>
+                    <label class="language-item">
+                        <input type="radio" checked name="language" value="ru">
+                        <span class="language-item__label">ru</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="en">
+                        <span class="language-item__label">en</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="ch">
+                        <span class="language-item__label">ch</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="language-fixed">
+        <div class="language-list">
+            <svg class="language-list__icon">
+                <use xlink:href="assets/images/sprite.svg#language-icon"></use>
+            </svg>
+            <label class="language-item">
+                <input type="radio" checked name="language" value="ru">
+                <span class="language-item__label">ru</span>
+            </label>
+            <label class="language-item">
+                <input type="radio" name="language" value="en">
+                <span class="language-item__label">en</span>
+            </label>
+            <label class="language-item">
+                <input type="radio" name="language" value="ch">
+                <span class="language-item__label">ch</span>
+            </label>
+        </div>
+    </div>
+    <main class="content">
+        <div class="content-wrapper">
+            <div class="hero-project section hero">
+                <div class="hero__bg">
+                    <video src="assets/video/promo.mp4" playsinline muted autoplay
+                           loop webkit-playsinline disablePictureInPicture
+                           controlslist="nodownload nofullscreen noremoteplayback"></video>
+                </div>
+                <div class="container">
+                    <div class="section__block">
+                        <div class=" hero__content hero__content--project">
+                            <h2 class="title title--large title--semibold">
+                                ТРАНСПОРТИРОВКА РЕАКТОРОВ ГИДРОКРЕКИНГА
+                            </h2>
+                            <div class="hero-project__row">
+                                <div class="hero-project__text">
+                                    <p class="text text--base">
+                                        «Примечательно, что ранее по Москве-реке никогда не перевозились столь тяжелые
+                                        грузовые места, что послужило поводом для регистрации рекорда России: самый
+                                        тяжелый груз, перевезенный речным транспортом по Москве-реке»
+                                    </p>
+                                </div>
+                                <div class="hero-project__info">
+                                    <img src="assets/images/projects-page/info.webp" alt="">
+                                    <div class="hero-project__column">
+                                        <p class="title title--large title--semibold">
+                                            3 000+
+                                        </p>
+                                        <p class="text text--base">
+                                            ОБЩЕЕ <br>
+                                            КОЛИЧЕСТВО ГРУЗОВ
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section section--logistic">
+                <div class="section__wrapper section__wrapper--big">
+                    <div class="container">
+                        <div class="section__block">
+                            <div class="section__column section__column--big">
+                                <div class="section__column">
+                                    <h2 title-reveal class="title title--base title--semibold">
+                                        Логистика оборудования
+                                    </h2>
+                                    <div class="section__text">
+                                        <p>
+                                            В&nbsp;рамках реализации третьего этапа модернизации Московский НПЗ (АО
+                                            &quot;Газпромнефть-МНПЗ&laquo;) в&nbsp;2022 году компания &laquo;РТЛ&raquo;
+                                            оказала услуги транспортной
+                                            экспедиции, связанные с&nbsp;перевозкой грузов заказчика в&nbsp;международном
+                                            и
+                                            внутрироссийском сообщении различными видами транспорта.
+                                        </p>
+                                        <p>
+                                            Грузы доставлялись на&nbsp;территорию строительства установки гидрокрекинга
+                                            (УГК) в
+                                            г. Москве из&nbsp;стран&nbsp;ЕС, стран Азиатского региона, а&nbsp;также от&nbsp;российских
+                                            производителей. Сердцем новой установки гидрокрекинга станут два реактора
+                                            производства ПАО &laquo;Ижорские заводы&raquo;.
+                                            Реактор первой ступени имеет длину 52&nbsp;метра, высоту 7,4&nbsp;метра,
+                                            ширину 6,3 метра
+                                            и&nbsp;массу более 1&nbsp;241&nbsp;тонны.
+                                        </p>
+                                        <p>
+                                            Его перевозка зафиксирована в&nbsp;Книге рекордов России как перемещение
+                                            самого
+                                            тяжелого груза по&nbsp;Москве-реке. Строительство комплекса глубокой
+                                            переработки
+                                            нефти является завершающим проектом программы модернизации Московского НПЗ,
+                                            которую с&nbsp;2011 года проводит &laquo;Газпром нефть&raquo;.
+                                        </p>
+                                        <p>
+                                            Отправка оборудования стартовала в&nbsp;июне 2022 года от&nbsp;одного из&nbsp;цехов
+                                            ПАО
+                                            &laquo;Ижорские заводы&raquo; в&nbsp;Колпинском районе города
+                                            Санкт-Петербурга. Для
+                                            транспортировки от&nbsp;завода-изготовителя до&nbsp;причала перегрузки на&nbsp;речную
+                                            баржу
+                                            использовался самоходный модульный транспортер. Расстояние от
+                                            завода-изготовителя до&nbsp;причала перегрузки составляет 13&nbsp;километров,
+                                            которые были
+                                            преодолены за&nbsp;двое суток. Маршрут движения транспортера пересекал
+                                            магистральную
+                                            железнодорожную линию Октябрьской железной дороги. Для проезда через
+                                            железнодорожные пути было организовано технологическое окно с&nbsp;приостановкой
+                                            движения грузовых и&nbsp;пассажирских поездов, в&nbsp;том числе
+                                            высокоскоростных
+                                            электропоездов &laquo;Сапсан&raquo;. После прибытия на&nbsp;причал реактор
+                                            был перегружен на
+                                            сухогрузную баржу-площадку проекта 16801. Для погрузки на&nbsp;баржу
+                                            применили хорошо
+                                            зарекомендовавший себя в&nbsp;проектной логистике накатный метод, при
+                                            котором
+                                            транспортер с&nbsp;грузом через специальные аппарели медленно заезжает на&nbsp;палубу
+                                            баржи, где с&nbsp;помощью хода гидравлической подвески опускает груз на&nbsp;опорные
+                                            тумбы. Для стабилизации баржи во&nbsp;время заезда техники на&nbsp;ее&nbsp;борт
+                                            в&nbsp;балластные
+                                            танки попеременно закачивалась и&nbsp;откачивалась балластная вода. Весь
+                                            процесс
+                                            погрузки груза на&nbsp;баржу занял шесть часов, в&nbsp;течение которых через
+                                            балластные
+                                            танки было перекачано более трех миллионов литров воды, что сопоставимо с
+                                            объемом двух олимпийских бассейнов. Дальнейший маршрут следования от
+                                            Санкт-Петербурга до&nbsp;Москвы пролегал через Ладожское и&nbsp;Онежское
+                                            озера,
+                                            Волго-Балтийскую систему каналов, по&nbsp;рекам Волге и&nbsp;Москве, а&nbsp;также
+                                            каналу имени
+                                            Москвы.
+                                        </p>
+                                    </div>
+                                </div>
+                                <button class="toggle"
+                                        data-label-open="Читать далее"
+                                        data-label-close="Скрыть">
+                                </button>
+                                <div class="info">
+                                    <div class="info__row">
+                                        <div class="info-label">
+                                            <div class="info-label__content">
+                                                <p class="text text--base">
+                                                    Более
+                                                </p>
+                                                <p class="title title--large title--semibold">
+                                                    1 241 т
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="info-label">
+                                            <div class="info-label__content">
+                                                <p class="text text--base">
+                                                    Протяженность водного <br>
+                                                    маршрута
+                                                </p>
+                                                <p class="title title--large title--semibold">
+                                                    1 300 км
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="video">
+                    <svg class="video__icon">
+                        <use xlink:href="assets/images/sprite.svg#play"></use>
+                    </svg>
+                    <video src="assets/video/promo.mp4" playsinline
+                           loop webkit-playsinline disablePictureInPicture
+                           controlslist="nodownload nofullscreen noremoteplayback"></video>
+                </div>
+
+            </div>
+            <section class="section" data-expandable-block>
+                <div class="section__wrapper section__wrapper--big">
+                    <div class="container">
+                        <div class="section__block">
+                            <div class="section__column">
+                                <h2 class="title title--base title--semibold">
+                                    КНИГА РЕКОРДОВ РОССИИ:
+                                </h2>
+
+                                <div class="section__text">
+                                    <p>
+                                        <b>
+                                            «Примечательно, что ранее по Москве-реке никогда не перевозились столь
+                                            тяжелые
+                                            грузовые места, что послужило поводом для регистрации рекорда России: самый
+                                            тяжелый
+                                            груз, перевезенный речным транспортом по Москве-реке»
+                                        </b>
+                                    </p>
+
+                                    <p>
+                                        Протяженность водного маршрута составила 1300 километров, груз был доставлен
+                                        <b>за 14 дней.</b>
+                                    </p>
+
+                                    <p>
+                                        Для безопасного прохода барже-буксирного состава с крупногабаритным грузом на
+                                        борту
+                                        под низкорасположенными мостами у Кремлёвской набережной баржа специально
+                                        притапливалась на 30 сантиметров во избежание столкновения с мостовыми
+                                        конструкциями.
+                                    </p>
+
+                                    <p>
+                                        Проведение инженерно-геологических и гидрологических изысканий, а также
+                                        разработка
+                                        проектной документации на будущий погрузо-разгрузочный кластер на Москве-реке
+                                        начались за 18 месяцев до момента выгрузки негабаритного и тяжеловесного
+                                        оборудования в непосредственной близости от строительной площадки Московского
+                                        нефтеперерабатывающего завода. Этап строительства выполнялся силами
+                                        строительного
+                                        департамента компании «РТЛ» и длился 10 месяцев. Выгрузка тяжеловесного груза с
+                                        борта баржи на причал выполнялась методом выкатки. Все операции по выгрузке
+                                        заняли
+                                        не более пяти часов. На «последней миле» реактор был доставлен от причала на
+                                        Москве-реке до строительной площадки установки гидрокрекинга Московского НПЗ по
+                                        городской уличной сети. Во избежание повреждения подземных коммуникаций нагрузка
+                                        от
+                                        самоходного транспортера на дорожное полотно равномерно распределялась через
+                                        двести
+                                        пятьдесят шесть колес самоходных модулей. На этом этап транспортировки самой
+                                        тяжелой
+                                        из трех тысяч грузовых позиций был завершен.
+                                    </p>
+
+                                    <p>
+                                        Компания «РТЛ» в очередной раз продемонстрировала, что транспортировка новейшего
+                                        крупногабаритного технологического оборудования, предназначенного для
+                                        модернизации
+                                        современных предприятий России, является сложным, но исполняемым процессом.
+                                    </p>
+                                </div>
+                                <button class="toggle"
+                                        data-label-open="Читать далее"
+                                        data-label-close="Скрыть">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="assets/images/book/main.webp" alt="" class="section__img">
+            </section>
+            <section class="section section--task task">
+                <div class="section__column section__column--biggest">
+                    <div class="section__grid">
+                        <div class="section__img">
+                            <img src="assets/images/projects-page/task.webp" alt="">
+                        </div>
+                        <div class="task__text">
+                            <div class="section__column section__column--biggest">
+                                <div class="section__column section__column--big">
+                                    <h2 class="title title--large title--semibold">
+                                        “Правильно поставленная задача ведет к ее четкому исполнению”
+                                    </h2>
+                                    <p class="text text--base text--semibold">
+                                        САНКТ-ПЕТЕРБУРГ - МОСКВА <br>
+                                        Вес 1241 т
+                                        <br>
+                                        Габариты 5200 Х 740 Х 630 см
+                                    </p>
+                                </div>
+                                <a href="mailto:info@rtlltd.com" class="button button--bordered button--base">
+                                    Связаться
+                                    <svg class="button__icon button__icon--arrow">
+                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="gallery">
+                <div class="gallery__grid">
+                    <div class="gallery__img">
+                        <img src="assets/images/projects-page/gallery/1.webp" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="assets/images/projects-page/gallery/2.webp" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="assets/images/projects-page/gallery/3.webp" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="assets/images/projects-page/gallery/4.webp" alt="">
+                    </div>
+                    <div class="gallery__img">
+                        <img src="assets/images/projects-page/gallery/5.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section__wrapper section__wrapper--big">
+                  <div class="container">
+                      <div class="swiper project-slider slider">
+                          <div class="swiper-wrapper">
+                              <div class="project-slider__item swiper-slide project-item">
+                                  <div class="project-item__wrapper">
+                                      <div class="project-item__blur">
+                                      </div>
+                                      <div class="project-item__content">
+                                          <div class="project-item__header">
+                                              <p class="text text--tiny">
+                                                  ‘23
+                                              </p>
+                                              <p class="text text--base">
+                                                  Название проекта
+                                                  написанное в 2 строчки
+                                              </p>
+                                          </div>
+                                          <a href="#" class="button button--bordered button--base">
+                                              Подробнее
+                                              <svg class="button__icon button__icon--arrow">
+                                                  <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                              </svg>
+                                          </a>
+                                      </div>
+                                      <div class="project-item__img">
+                                          <img src="assets/video/projects/1.webp" alt="" class="project-item__preload">
+                                          <video src="assets/video/soc.mp4" poster="assets/video/projects/1.webp" playsinline muted
+                                                 loop webkit-playsinline disablePictureInPicture
+                                                 controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="project-slider__item swiper-slide project-item">
+                                  <div class="project-item__wrapper">
+                                      <div class="project-item__blur">
+                                      </div>
+                                      <div class="project-item__content">
+                                          <div class="project-item__header">
+                                              <p class="text text--tiny">
+                                                  ‘23
+                                              </p>
+                                              <p class="text text--base">
+                                                  Название проекта
+                                                  написанное в 2 строчки
+                                              </p>
+                                          </div>
+                                          <a href="#" class="button button--bordered button--base">
+                                              Подробнее
+                                              <svg class="button__icon button__icon--arrow">
+                                                  <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                              </svg>
+                                          </a>
+                                      </div>
+                                      <div class="project-item__img">
+                                          <img src="assets/video/projects/2.webp" alt="" class="project-item__preload">
+                                          <video src="assets/video/soc.mp4" poster="assets/video/projects/2.webp" playsinline muted
+                                                 loop webkit-playsinline disablePictureInPicture
+                                                 controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="project-slider__item swiper-slide project-item">
+                                  <div class="project-item__wrapper">
+                                      <div class="project-item__blur">
+                                      </div>
+                                      <div class="project-item__content">
+                                          <div class="project-item__header">
+                                              <p class="text text--tiny">
+                                                  ‘23
+                                              </p>
+                                              <p class="text text--base">
+                                                  Название проекта
+                                                  написанное в 2 строчки
+                                              </p>
+                                          </div>
+                                          <a href="#" class="button button--bordered button--base">
+                                              Подробнее
+                                              <svg class="button__icon button__icon--arrow">
+                                                  <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                              </svg>
+                                          </a>
+                                      </div>
+                                      <div class="project-item__img">
+                                          <img src="assets/video/projects/3.webp" alt="" class="project-item__preload">
+
+                                          <video src="assets/video/soc.mp4" poster="assets/video/projects/3.webp" playsinline muted
+                                                 loop webkit-playsinline disablePictureInPicture
+                                                 controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="project-slider__item swiper-slide project-item">
+                                  <div class="project-item__wrapper">
+                                      <div class="project-item__blur">
+                                      </div>
+                                      <div class="project-item__content">
+                                          <div class="project-item__header">
+                                              <p class="text text--tiny">
+                                                  ‘23
+                                              </p>
+                                              <p class="text text--base">
+                                                  Название проекта
+                                                  написанное в 2 строчки
+                                              </p>
+                                          </div>
+                                          <a href="#" class="button button--bordered button--base">
+                                              Подробнее
+                                              <svg class="button__icon button__icon--arrow">
+                                                  <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                              </svg>
+                                          </a>
+                                      </div>
+                                      <div class="project-item__img">
+                                          <img src="assets/video/projects/4.webp" alt="" class="project-item__preload">
+
+                                          <video src="assets/video/soc.mp4" poster="assets/video/projects/4.webp" playsinline muted
+                                                 loop webkit-playsinline disablePictureInPicture
+                                                 controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="project-slider__item swiper-slide project-item">
+                                  <div class="project-item__wrapper">
+                                      <div class="project-item__blur">
+                                      </div>
+                                      <div class="project-item__content">
+                                          <div class="project-item__header">
+                                              <p class="text text--tiny">
+                                                  ‘23
+                                              </p>
+                                              <p class="text text--base">
+                                                  Название проекта
+                                                  написанное в 2 строчки
+                                              </p>
+                                          </div>
+                                          <a href="#" class="button button--bordered button--base">
+                                              Подробнее
+                                              <svg class="button__icon button__icon--arrow">
+                                                  <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                              </svg>
+                                          </a>
+                                      </div>
+                                      <div class="project-item__img">
+                                          <img src="assets/video/projects/5.webp" alt="" class="project-item__preload">
+
+                                          <video src="assets/video/soc.mp4" poster="assets/video/projects/5.webp" playsinline muted
+                                                 loop webkit-playsinline disablePictureInPicture
+                                                 controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                      </div>
+                                  </div>
+                              </div>
+
+
+                          </div>
+                          <div class="slider-navigation">
+                              <div class="slider-button slider-button__prev project-slider-button-prev">
+                                  <svg class="icon">
+                                      <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                  </svg>
+                              </div>
+                              <div class="slider-button slider-button__next project-slider-button-next">
+                                  <svg class="icon">
+                                      <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                  </svg>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__label">
+                <p class="title title--big">
+                    «Совершенствуя логистику — совершенствовать мир»
+                </p>
+            </div>
+            <div class="footer__wrapper">
+                <a href="/" class="logo footer__logo">
+                    <img src="assets/images/logo-grey.svg" alt="" class="logo__img">
+                </a>
+                <div class="footer__row">
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Контакты</span>
+                            <input type="radio" checked name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <p class="footer-block__text">
+                                117342, Г. Москва, <br>
+                                вн. тер. г. муниципальный округ <br>
+                                Коньково, ул. Бутлерова, <br>
+                                д. 17, этаж 5, офис 518
+                            </p>
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="tel:7 (495) 790-02-91">7 (495) 790-02-91</a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="tel:8 (800) 770-02-91">8 (800) 770-02-91</a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="mailto:info@rtlltd.com">info@rtlltd.com</a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="mailto:www.rtlltd.com">www.rtlltd.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Меню</span>
+                            <input type="radio" name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Главная
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        О компании
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Проекты
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        География
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Контакт
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Журнал компании</span>
+                            <input type="radio" name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Социальные сети</span>
+                            <input type="radio" name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        Телеграм
+
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        VK
+
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        ВК Видео
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="text text--grey text--tiny">
+                    © 2025 ООО «РТЛ» Все права защищены.
+                </p>
+                <a href="#" class="text text--grey text--tiny">
+                    Политика обработки cookie
+                </a>
+                <a href="#" class="text text--grey text--tiny">
+                    Политика конфиденциальности
+                </a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!--<div class="preloader">-->
+<!--    <svg width="260" height="108" viewBox="0 0 260 108" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--        <style>-->
+<!--            @keyframes draw-1 {-->
+<!--                0% {-->
+<!--                    stroke-dashoffset: 835.806px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                30% {-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                60% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(158, 157, 157);-->
+<!--                }-->
+<!--                85% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(158, 157, 157);-->
+<!--                }-->
+<!--                95% {-->
+<!--                    stroke-dashoffset: 835.806px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                100% {-->
+<!--                    stroke-dashoffset: 835.806px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--            }-->
+
+<!--            @keyframes draw-2 {-->
+<!--                0% {-->
+<!--                    stroke-dashoffset: 593.176px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                30% {-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                60% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                85% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                95% {-->
+<!--                    stroke-dashoffset: 593.176px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                100% {-->
+<!--                    stroke-dashoffset: 593.176px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--            }-->
+
+<!--            @keyframes draw-3 {-->
+<!--                0% {-->
+<!--                    stroke-dashoffset: 323.888px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                30% {-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                60% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                85% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                95% {-->
+<!--                    stroke-dashoffset: 323.888px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                100% {-->
+<!--                    stroke-dashoffset: 323.888px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--            }-->
+
+<!--            @keyframes draw-4 {-->
+<!--                0% {-->
+<!--                    stroke-dashoffset: 273.210px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                30% {-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                60% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                85% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                95% {-->
+<!--                    stroke-dashoffset: 273.210px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                100% {-->
+<!--                    stroke-dashoffset: 273.210px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--            }-->
+
+<!--            @keyframes draw-5 {-->
+<!--                0% {-->
+<!--                    stroke-dashoffset: 324.406px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                30% {-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                60% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                85% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                95% {-->
+<!--                    stroke-dashoffset: 324.406px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                100% {-->
+<!--                    stroke-dashoffset: 324.406px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--            }-->
+
+<!--            @keyframes draw-6 {-->
+<!--                0% {-->
+<!--                    stroke-dashoffset: 298.182px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                30% {-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                60% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                85% {-->
+<!--                    stroke-dashoffset: 0;-->
+<!--                    fill: rgb(42, 84, 160);-->
+<!--                }-->
+<!--                95% {-->
+<!--                    stroke-dashoffset: 298.182px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--                100% {-->
+<!--                    stroke-dashoffset: 298.182px;-->
+<!--                    fill: transparent;-->
+<!--                }-->
+<!--            }-->
+
+<!--            .svg-elem-1 {-->
+<!--                stroke-dasharray: 835.806px;-->
+<!--                stroke-dashoffset: 835.806px;-->
+<!--                fill: transparent;-->
+<!--                animation: draw-1 4s cubic-bezier(0.47, 0, 0.745, 0.715) 0s infinite;-->
+<!--            }-->
+
+<!--            .svg-elem-2 {-->
+<!--                stroke-dasharray: 593.176px;-->
+<!--                stroke-dashoffset: 593.176px;-->
+<!--                fill: transparent;-->
+<!--                animation: draw-2 4s cubic-bezier(0.47, 0, 0.745, 0.715) 0.2s infinite;-->
+<!--            }-->
+
+<!--            .svg-elem-3 {-->
+<!--                stroke-dasharray: 323.888px;-->
+<!--                stroke-dashoffset: 323.888px;-->
+<!--                fill: transparent;-->
+<!--                animation: draw-3 4s cubic-bezier(0.47, 0, 0.745, 0.715) 0.4s infinite;-->
+<!--            }-->
+
+<!--            .svg-elem-4 {-->
+<!--                stroke-dasharray: 273.210px;-->
+<!--                stroke-dashoffset: 273.210px;-->
+<!--                fill: transparent;-->
+<!--                animation: draw-4 4s cubic-bezier(0.47, 0, 0.745, 0.715) 0.6s infinite;-->
+<!--            }-->
+
+<!--            .svg-elem-5 {-->
+<!--                stroke-dasharray: 324.406px;-->
+<!--                stroke-dashoffset: 324.406px;-->
+<!--                fill: transparent;-->
+<!--                animation: draw-5 4s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s infinite;-->
+<!--            }-->
+
+<!--            .svg-elem-6 {-->
+<!--                stroke-dasharray: 298.182px;-->
+<!--                stroke-dashoffset: 298.182px;-->
+<!--                fill: transparent;-->
+<!--                animation: draw-6 4s cubic-bezier(0.47, 0, 0.745, 0.715) 1s infinite;-->
+<!--            }-->
+<!--        </style>-->
+
+<!--        <path d="M106.911 1V47.3242L95.2428 35.6562V20.6895L93.5348 22.4023L36.2018 79.8887L34.4996 81.5947H50.3063L50.5992 81.3008L87.5817 44.2803L93.2428 49.9248V93.2227L69.6022 93.2051L81.4742 81.3008L81.7662 81.0078V66.4912L80.0592 68.2002L55.0543 93.2236H14.6676V52.9131L41.3414 26.2393H26.8434L26.5504 26.5332L14.6676 38.4492V14.665L57.9098 14.6104L63.5924 20.292L26.5885 57.4658L26.2965 57.7578V73.4199L28.0045 71.707L85.1676 14.373L86.8678 12.667H72.2526L60.5856 1H106.911Z"-->
+<!--              stroke="white" stroke-width="2" class="svg-elem-1"/>-->
+<!--        <path d="M44.3184 1L49.1523 5.83398H5.83398V102.058H102.076V58.7578L106.91 63.5918V106.891H1V1H44.3184Z"-->
+<!--              stroke="#2A54A0" stroke-width="2" class="svg-elem-2"/>-->
+<!--        <path d="M170.734 27.6491V72.4567H138.029L145.303 56.8112H155.07V43.2946H131.37V93.2429H115.724V44.485L116.079 43.5886L123.491 27.6491H170.734Z"-->
+<!--              stroke="#2A54A0" stroke-width="2" class="svg-elem-3"/>-->
+<!--        <path d="M225.481 1.09525L218.172 16.7593H197.27V59.854L190.741 73.8843H181.624V16.7593H157.279V1.09525H225.481Z"-->
+<!--              stroke="#2A54A0" stroke-width="2" class="svg-elem-4"/>-->
+<!--        <path d="M258.982 27.6491V93.2429H243.337V43.3708H232.656L232.388 43.9499L209.51 93.2429H192.339L222.873 27.6491H258.982Z"-->
+<!--              stroke="#2A54A0" stroke-width="2" class="svg-elem-5"/>-->
+<!--        <path d="M259 102.076V106.891H115.724V102.076H259Z" stroke="#2A54A0" stroke-width="2" class="svg-elem-6"/>-->
+<!--    </svg>-->
+<!--</div>-->
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/scripts/index.js"></script>
+<script>
+    (function () {
+        'use strict';
+        const initExpandableSections = () => {
+            if (window.innerWidth >= 767) return;
+            const toggles = document.querySelectorAll('.toggle');
+            toggles.forEach(btn => {
+                const container = btn.closest('.section--logistic, [data-expandable-block]');
+                if (!container) return;
+                const content = container.querySelector('.section__text');
+                const img = container.querySelector('.section__img');
+                btn.textContent = btn.getAttribute('data-label-open');
+                btn.addEventListener('click', function () {
+                    const isOpen = container.classList.contains('is-opened');
+                    if (!isOpen) {
+                        const startHeight = content.offsetHeight;
+                        container.classList.add('is-opened');
+                        if (img) img.style.display = 'block';
+                        const fullHeight = content.scrollHeight;
+                        content.style.height = startHeight + 'px';
+                        content.offsetHeight;
+                        content.style.height = fullHeight + 'px';
+                        btn.textContent = btn.getAttribute('data-label-close');
+                    } else {
+                        const fullHeight = content.scrollHeight;
+                        content.style.height = fullHeight + 'px';
+                        content.offsetHeight;
+                        container.classList.remove('is-opened');
+                        content.style.height = '';
+                        if (img) img.style.display = 'none';
+                        btn.textContent = btn.getAttribute('data-label-open');
+                        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+                content.addEventListener('transitionend', () => {
+                    if (container.classList.contains('is-opened')) {
+                        content.style.height = 'auto';
+                    }
+                });
+            });
+        };
+        document.addEventListener('DOMContentLoaded', initExpandableSections);
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initExpandableSections, 250);
+        });
+    })();
+</script>
+<script>
+    (function () {
+        document.querySelectorAll('.video').forEach(wrapper => {
+            const video = wrapper.querySelector('video');
+
+            wrapper.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    wrapper.classList.add('video--play');
+                } else {
+                    video.pause();
+                    wrapper.classList.remove('video--play');
+                }
+            });
+
+            video.addEventListener('ended', () => {
+                wrapper.classList.remove('video--play');
+            });
+        });
+    })();
+</script>
+<script>
+    (function () {
+        window.history.scrollRestoration = 'manual';
+
+        const preloader = document.querySelector('.preloader');
+        const last = preloader.querySelector('.svg-elem-6');
+        document.body.classList.add('no-scroll')
+
+        window.addEventListener('load', () => {
+            last.addEventListener('animationiteration', () => {
+                preloader.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
+            });
+        })
+    })();
+</script>
+<script>
+    (function () {
+        'use strict';
+
+        const content = document.querySelector('.content');
+        const footer = document.querySelector('.footer');
+        if (!content || !footer) return;
+
+        const sentinel = document.createElement('div');
+        sentinel.style.height = '1px';
+        sentinel.style.marginBottom = '-1px';
+        footer.parentNode.insertBefore(sentinel, footer);
+
+        let footerHeight, viewportH, triggerStart, triggerEnd;
+        let isIntersecting = false;
+
+        const MAX_OFFSET_PX = 150;
+        const SCALE_REDUCTION = 0.1;
+
+        function cacheGeometry() {
+            viewportH = window.innerHeight;
+            footerHeight = footer.offsetHeight;
+
+            const sentinelRect = sentinel.getBoundingClientRect();
+            const sentinelTop = sentinelRect.top + window.scrollY;
+
+            triggerStart = sentinelTop - viewportH;
+            triggerEnd = sentinelTop;
+        }
+
+        function applyScroll() {
+            if (!isIntersecting) return;
+
+            const scrollY = window.scrollY || window.pageYOffset;
+            const range = triggerEnd - triggerStart;
+
+            let progress = range > 0 ? (scrollY - triggerStart) / range : 0;
+            progress = Math.max(0, Math.min(1, progress));
+
+            const scale = 1 - (progress * SCALE_REDUCTION);
+            const radius = progress * 40;
+
+            const currentOffset = Math.min(footerHeight * 0.3, MAX_OFFSET_PX);
+            const ty = (1 - progress) * -currentOffset;
+
+            content.style.transform = `scale(${scale})`;
+            content.style.borderRadius = `0 0 ${radius}px ${radius}px`;
+            footer.style.transform = `translate3d(0, ${ty}px, 0)`;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isIntersecting = entry.isIntersecting;
+                if (isIntersecting) {
+                    cacheGeometry();
+                    applyScroll();
+                }
+            });
+        }, {
+            rootMargin: '500px 0px'
+        });
+
+        observer.observe(sentinel);
+
+        window.addEventListener('scroll', applyScroll, {passive: true});
+        window.addEventListener('resize', () => {
+            cacheGeometry();
+            applyScroll();
+        }, {passive: true});
+
+        footer.style.transform = `translate3d(0, -${MAX_OFFSET_PX}px, 0)`;
+    })();
+</script>
+<script>
+    document.querySelectorAll('.card--principles').forEach(card => {
+        const img = card.querySelector('.card__image');
+
+        card.addEventListener('mouseenter', () => {
+            card.style.setProperty('--glow-opacity', '1');
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--glow-opacity', '0');
+            card.style.setProperty('--x', '-999px');
+            card.style.setProperty('--y', '-999px');
+            if (img) img.style.setProperty('--local-x', '-999px');
+        });
+
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+
+            if (img) {
+                const imgRect = img.getBoundingClientRect();
+                const lx = e.clientX - imgRect.left;
+                const ly = e.clientY - imgRect.top;
+                img.style.setProperty('--local-x', `${lx}px`);
+                img.style.setProperty('--local-y', `${ly}px`);
+            }
+        });
+    });
+</script>
+<script>
+    const SWEEP_DURATION = 680;
+    const EXIT_DURATION = 400;
+    const LINE_STAGGER = 80;
+
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function animateLine(lineEl, rectEl, delay) {
+        lineEl.style.clipPath = 'inset(0 100% 0 0)';
+        rectEl.style.clipPath = 'inset(0 100% 0 0)';
+
+        let t0 = null;
+
+        function sweepIn(ts) {
+            if (!t0) t0 = ts;
+            const elapsed = ts - t0 - delay;
+            if (elapsed < 0) {
+                requestAnimationFrame(sweepIn);
+                return;
+            }
+
+            const p = Math.min(elapsed / SWEEP_DURATION, 1);
+            const e = easeInOutCubic(p);
+
+            rectEl.style.clipPath = `inset(0 ${(1 - e) * 100}% 0 0)`;
+            lineEl.style.clipPath = `inset(0 ${(1 - e) * 100}% 0 0)`;
+
+            if (p < 1) {
+                requestAnimationFrame(sweepIn);
+            } else {
+                let t1 = null;
+
+                function sweepOut(ts2) {
+                    if (!t1) t1 = ts2;
+                    const p2 = Math.min((ts2 - t1) / EXIT_DURATION, 1);
+                    const e2 = easeInOutCubic(p2);
+                    rectEl.style.clipPath = `inset(0 0 0 ${e2 * 100}%)`;
+                    if (p2 < 1) requestAnimationFrame(sweepOut);
+                }
+
+                requestAnimationFrame(sweepOut);
+            }
+        }
+
+        requestAnimationFrame(sweepIn);
+    }
+
+    function buildTitle(el) {
+        const text = el.textContent.trim();
+        el.setAttribute('aria-label', text);
+        el.innerHTML = '';
+
+        const probe = document.createElement('span');
+        probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;';
+        el.appendChild(probe);
+
+        const words = text.split(' ');
+        const lines = [];
+        let current = '';
+
+        for (let i = 0; i < words.length; i++) {
+            const test = current ? current + ' ' + words[i] : words[i];
+            probe.textContent = test;
+            if (probe.offsetWidth > el.offsetWidth && current !== '') {
+                lines.push(current);
+                current = words[i];
+            } else {
+                current = test;
+            }
+        }
+        if (current) lines.push(current);
+        el.removeChild(probe);
+
+        lines.forEach(lineText => {
+            const mask = document.createElement('div');
+            mask.className = 'line-mask';
+            mask.setAttribute('aria-hidden', 'true');
+
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.setAttribute('aria-hidden', 'true');
+            line.textContent = lineText;
+
+            const rect = document.createElement('div');
+            rect.className = 'rectangle';
+            rect.appendChild(document.createElement('div'));
+
+            mask.appendChild(line);
+            mask.appendChild(rect);
+            el.appendChild(mask);
+        });
+    }
+
+    function runAnimation(el) {
+        const lines = el.querySelectorAll('.line');
+        const rects = el.querySelectorAll('.rectangle');
+        lines.forEach((line, i) => {
+            animateLine(line, rects[i], i * (SWEEP_DURATION * 0.55 + LINE_STAGGER));
+        });
+    }
+
+    window.addEventListener('load', () => {
+        const elements = document.querySelectorAll('[title-reveal]');
+
+        elements.forEach(el => buildTitle(el));
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runAnimation(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold: 0.2});
+
+        elements.forEach(el => observer.observe(el));
+    });
+</script>
+
+
+<script>
+    (function () {
+        const personSliderNavElement = document.querySelector('.person-navigation');
+        const personSliderNav = new Swiper(personSliderNavElement, {
+            slidesPerView: 'auto',
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+
+        const personSliderElement = document.querySelector('.person-slider');
+        const personSlider = new Swiper(personSliderElement, {
+            slidesPerView: 1,
+            effect: 'fade',
+            fadeEffect: {crossFade: true},
+            allowTouchMove: false,
+            thumbs: {swiper: personSliderNav},
+            on: {
+                slideChangeTransitionStart: onSlideChange,
+            },
+        });
+
+        const slides = Array.from(personSliderElement.querySelectorAll('.person-item'));
+        const videos = slides.map(s => s.querySelector('video'));
+        const soundBtn = personSliderElement.querySelector('.person-slider__sound');
+        let soundOn = false;
+        let involved = false;
+
+        function setSound(val) {
+            soundOn = val;
+            const video = videos[personSlider.realIndex];
+            video.muted = !soundOn;
+            personSliderElement.classList.toggle('unmuted', soundOn);
+            const cursor = personSliderElement.querySelector('.person-slider__cursor');
+            if (cursor) cursor.classList.toggle('unmuted', soundOn);
+        }
+
+        function loadVideo(video) {
+            if (!video.src && video.dataset.src) {
+                video.src = video.dataset.src;
+                video.load();
+            }
+        }
+
+        function activateVideo(index, withSound, resetTime = false) {
+            videos.forEach((v, i) => {
+                if (i === index) {
+                    loadVideo(v);
+                    v.muted = !withSound;
+                    if (resetTime) v.currentTime = 0;
+                    v.play().catch(() => {
+                    });
+                } else {
+                    v.pause();
+                    v.muted = true;
+                }
+            });
+        }
+
+        function onSlideChange() {
+            activateVideo(personSlider.realIndex, soundOn, false);
+            const nextIdx = (personSlider.realIndex + 1) % videos.length;
+            loadVideo(videos[nextIdx]);
+        }
+
+        activateVideo(0, false);
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    videos[personSlider.realIndex].play().catch(() => {
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, {threshold: 0.3});
+        observer.observe(personSliderElement);
+
+        personSliderElement.addEventListener('click', function (e) {
+            if (!involved) {
+                involved = true;
+                personSliderElement.classList.add('involved');
+            }
+
+            if (soundBtn && soundBtn.contains(e.target)) return;
+
+            if (!soundOn) {
+                setSound(true);
+                videos[personSlider.realIndex].currentTime = 0;
+                videos[personSlider.realIndex].play().catch(() => {
+                });
+            } else {
+                setSound(false);
+            }
+        });
+
+        if (soundBtn) {
+            soundBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (!involved) {
+                    involved = true;
+                    personSliderElement.classList.add('involved');
+                }
+                setSound(!soundOn);
+            });
+        }
+
+        videos.forEach((video, i) => {
+            video.removeAttribute('loop');
+            video.addEventListener('ended', function () {
+                const nextIndex = (i + 1) % videos.length;
+                loadVideo(videos[nextIndex]);
+                personSlider.slideTo(nextIndex);
+            });
+        });
+
+        let targetX = personSliderElement.offsetWidth * 0.75;
+        let targetY = personSliderElement.offsetHeight / 2;
+        let currentX = targetX;
+        let currentY = targetY;
+        let rafId = null;
+
+        function lerp(a, b, t) {
+            return a + (b - a) * t;
+        }
+
+        const cursorDot = personSliderElement.querySelector('.person-slider__cursor');
+
+        function animateCursor() {
+            currentX = lerp(currentX, targetX, 0.08);
+            currentY = lerp(currentY, targetY, 0.08);
+            cursorDot.style.left = currentX + 'px';
+            cursorDot.style.top = currentY + 'px';
+            rafId = requestAnimationFrame(animateCursor);
+        }
+
+        personSliderElement.addEventListener('mousemove', function (e) {
+            const rect = personSliderElement.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            if (x >= rect.width / 2) {
+                targetX = x;
+                targetY = e.clientY - rect.top;
+            }
+            if (!rafId) animateCursor();
+        });
+
+        personSliderElement.addEventListener('mouseleave', function () {
+            targetX = personSliderElement.offsetWidth * 0.75;
+            targetY = personSliderElement.offsetHeight / 2;
+        });
+
+        animateCursor();
+    })();
+</script>
+
+</body>
+</html>

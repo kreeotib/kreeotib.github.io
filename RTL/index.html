@@ -84,6 +84,8 @@
             </div>
             <div class="header-burger">
                 <label class="burger">
+                    <span class="burger__item"></span>
+                    <span class="burger__item"></span>
                     <input type="checkbox" name="burger" id="">
                 </label>
             </div>
@@ -190,7 +192,7 @@
                         </div>
                     </div>
                     <div class="hero__text">
-                        <div class="marquee">
+                        <div class="marquee marquee--hero">
                             <div class="marquee-content">
                                 <div class="hero__svg">
                                     <svg width="5189.5" height="393" viewBox="0.0 0 5189.5 393" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -253,9 +255,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
             <section class="section section--about">
                 <div class="section__wrapper section__wrapper--big">
@@ -331,7 +331,7 @@
                             <div class="numbers-grid__item numbers-item">
                                 <div class="numbers-item__wrapper">
                                     <p class="numbers-item__label counter" data-end="100+">
-                                        <span>100</span>
+                                        <span>100 +</span>
                                     </p>
                                     <p class="numbers-item__text">
                                         Специалистов <br>
@@ -619,9 +619,9 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="levels">
-                                <div class="levels-grid">
-                                    <div class="levels-grid__item levels-grid__item--big card">
+                            <div class="levels swiper">
+                                <div class="levels-grid swiper-wrapper">
+                                    <div class="swiper-slide levels-grid__item levels-grid__item--big card">
                                         <img src="assets/images/levels/bg-2.webp" alt=""
                                              class="card__bg card__bg--mobile" loading="lazy">
                                         <div class="card__wrapper">
@@ -643,7 +643,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="levels-grid__item levels-grid__item--row--big card">
+                                    <div class="swiper-slide levels-grid__item levels-grid__item--row--big card">
                                         <img src="assets/images/levels/bg-3.webp" alt=""
                                              class="card__bg card__bg--mobile" loading="lazy">
                                         <div class="card__wrapper">
@@ -664,7 +664,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="levels-grid__item levels-grid__item--row--big card">
+                                    <div class="swiper-slide levels-grid__item levels-grid__item--row--big card">
                                         <img src="assets/images/levels/bg-4.webp" alt=""
                                              class="card__bg card__bg--mobile" loading="lazy">
                                         <div class="card__video">
@@ -691,7 +691,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="levels-grid__item  card">
+                                    <div class="swiper-slide levels-grid__item  card">
                                         <img src="assets/images/levels/bg-1.webp" alt=""
                                              class="card__bg card__bg--mobile" loading="lazy">
                                         <div class="card__wrapper card__wrapper--center">
@@ -702,7 +702,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="levels-grid__item levels-grid__item--big card">
+                                    <div class="swiper-slide levels-grid__item levels-grid__item--big card">
                                         <img src="assets/images/levels/bg-5.webp" alt=""
                                              class="card__bg card__bg--mobile" loading="lazy">
 
@@ -726,6 +726,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="slider-pagination levels-pagination"></div>
                             </div>
                         </div>
                     </div>
@@ -767,9 +768,9 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="principles">
-                                <div class="principles-grid">
-                                    <div class="principles-grid__item card card--principles">
+                            <div class="principles swiper slider">
+                                <div class="principles-grid swiper-wrapper">
+                                    <div class="swiper-slide principles-grid__item card card--principles">
                                         <img src="assets/images/principles/1.webp" alt="" class="card__bg">
                                         <div class="card__wrapper">
                                             <svg class="card__icon">
@@ -785,7 +786,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="principles-grid__item card card--principles">
+                                    <div class="swiper-slide principles-grid__item card card--principles">
                                         <img src="assets/images/principles/2.webp" alt="" class="card__bg">
                                         <div class="card__wrapper">
                                             <svg class="card__icon">
@@ -802,7 +803,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="principles-grid__item card card--principles">
+                                    <div class="swiper-slide principles-grid__item card card--principles">
                                         <img src="assets/images/principles/3.webp" alt="" class="card__bg">
                                         <div class="card__wrapper">
                                             <svg class="card__icon">
@@ -818,7 +819,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="principles-grid__item card card--principles">
+                                    <div class="swiper-slide principles-grid__item card card--principles">
                                         <img src="assets/images/principles/4.webp" alt="" class="card__bg">
                                         <div class="card__wrapper">
                                             <svg class="card__icon">
@@ -833,6 +834,9 @@
                                                 стандартной процедуры, а не дополнительная опция. </p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="slider-pagination principles-pagination">
+
                                 </div>
                             </div>
                         </div>
@@ -991,7 +995,10 @@
                         <div class="container container--mobile--small">
                             <div class="person-list">
                                 <div class=" swiper person-slider">
-                                    <div class="person-slider__sound"></div>
+                                    <div class="person-slider__sound">
+                                        <img class="mute" src="assets/images/icons/mute.svg" alt="">
+                                        <img class="unmute" src="assets/images/icons/unmute.svg" alt="">
+                                    </div>
                                     <span class="person-slider__cursor"></span>
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide person-item">
@@ -1512,13 +1519,83 @@
 <script src="assets/scripts/index.js"></script>
 <script>
     (function () {
+        'use strict';
+        const initExpandableSections = () => {
+            if (window.innerWidth >= 767) return;
+            const toggles = document.querySelectorAll('.toggle');
+            toggles.forEach(btn => {
+                const container = btn.closest('.section--logistic, [data-expandable-block]');
+                if (!container) return;
+                const content = container.querySelector('.section__text');
+                const img = container.querySelector('.section__img');
+                btn.textContent = btn.getAttribute('data-label-open');
+                btn.addEventListener('click', function () {
+                    const isOpen = container.classList.contains('is-opened');
+                    if (!isOpen) {
+                        const startHeight = content.offsetHeight;
+                        container.classList.add('is-opened');
+                        if (img) img.style.display = 'block';
+                        const fullHeight = content.scrollHeight;
+                        content.style.height = startHeight + 'px';
+                        content.offsetHeight;
+                        content.style.height = fullHeight + 'px';
+                        btn.textContent = btn.getAttribute('data-label-close');
+                    } else {
+                        const fullHeight = content.scrollHeight;
+                        content.style.height = fullHeight + 'px';
+                        content.offsetHeight;
+                        container.classList.remove('is-opened');
+                        content.style.height = '';
+                        if (img) img.style.display = 'none';
+                        btn.textContent = btn.getAttribute('data-label-open');
+                        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+                content.addEventListener('transitionend', () => {
+                    if (container.classList.contains('is-opened')) {
+                        content.style.height = 'auto';
+                    }
+                });
+            });
+        };
+        document.addEventListener('DOMContentLoaded', initExpandableSections);
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initExpandableSections, 250);
+        });
+    })();
+</script>
+<script>
+    (function () {
+        document.querySelectorAll('.video').forEach(wrapper => {
+            const video = wrapper.querySelector('video');
+
+            wrapper.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    wrapper.classList.add('video--play');
+                } else {
+                    video.pause();
+                    wrapper.classList.remove('video--play');
+                }
+            });
+
+            video.addEventListener('ended', () => {
+                wrapper.classList.remove('video--play');
+            });
+        });
+    })();
+</script>
+<script>
+    (function () {
         window.history.scrollRestoration = 'manual';
 
         const preloader = document.querySelector('.preloader');
         const last = preloader.querySelector('.svg-elem-6');
         document.body.classList.add('no-scroll')
 
-        window.addEventListener('load',()=>{
+        window.addEventListener('load', () => {
             last.addEventListener('animationiteration', () => {
                 preloader.classList.add('hidden');
                 document.body.classList.remove('no-scroll');
@@ -1530,62 +1607,73 @@
     (function () {
         'use strict';
 
-        var content = document.querySelector('.content');
-        var footer = document.querySelector('.footer');
-
+        const content = document.querySelector('.content');
+        const footer = document.querySelector('.footer');
         if (!content || !footer) return;
 
-        content.style.willChange = 'transform, border-radius';
-        content.style.transformOrigin = 'top center';
-        footer.style.willChange = 'transform';
+        const sentinel = document.createElement('div');
+        sentinel.style.height = '1px';
+        sentinel.style.marginBottom = '-1px';
+        footer.parentNode.insertBefore(sentinel, footer);
 
-        var footerOffsetTop = 0;
-        var viewportH = 0;
-        var triggerStart = 0;
-        var triggerEnd = 0;
+        let footerHeight, viewportH, triggerStart, triggerEnd;
+        let isIntersecting = false;
+
+        const MAX_OFFSET_PX = 150;
+        const SCALE_REDUCTION = 0.1;
 
         function cacheGeometry() {
             viewportH = window.innerHeight;
-            footerOffsetTop = footer.getBoundingClientRect().top + window.scrollY;
+            footerHeight = footer.offsetHeight;
 
-            triggerStart = footerOffsetTop - viewportH;
-            triggerEnd = footerOffsetTop - viewportH * 0.35;
+            const sentinelRect = sentinel.getBoundingClientRect();
+            const sentinelTop = sentinelRect.top + window.scrollY;
+
+            triggerStart = sentinelTop - viewportH;
+            triggerEnd = sentinelTop;
         }
 
         function applyScroll() {
-            var scrollY = window.scrollY || window.pageYOffset;
-            var range = triggerEnd - triggerStart;
-            var progress = range > 0 ? (scrollY - triggerStart) / range : 0;
-            progress = progress < 0 ? 0 : progress > 1 ? 1 : progress;
+            if (!isIntersecting) return;
 
-            var scale = 1 - progress * 0.06;
-            var radius = progress * 60;
-            var ty = (1 - progress) * -20;
+            const scrollY = window.scrollY || window.pageYOffset;
+            const range = triggerEnd - triggerStart;
 
-            content.style.transform = 'translate3d(0,0,0) scale(' + scale + ')';
-            content.style.borderRadius = `0 0 ${radius + 'px'} ${radius + 'px'}`;
-            footer.style.transform = 'translate3d(0,' + ty + '%,0)';
+            let progress = range > 0 ? (scrollY - triggerStart) / range : 0;
+            progress = Math.max(0, Math.min(1, progress));
+
+            const scale = 1 - (progress * SCALE_REDUCTION);
+            const radius = progress * 40;
+
+            const currentOffset = Math.min(footerHeight * 0.3, MAX_OFFSET_PX);
+            const ty = (1 - progress) * -currentOffset;
+
+            content.style.transform = `scale(${scale})`;
+            content.style.borderRadius = `0 0 ${radius}px ${radius}px`;
+            footer.style.transform = `translate3d(0, ${ty}px, 0)`;
         }
 
-        function onScroll() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isIntersecting = entry.isIntersecting;
+                if (isIntersecting) {
+                    cacheGeometry();
+                    applyScroll();
+                }
+            });
+        }, {
+            rootMargin: '500px 0px'
+        });
+
+        observer.observe(sentinel);
+
+        window.addEventListener('scroll', applyScroll, {passive: true});
+        window.addEventListener('resize', () => {
+            cacheGeometry();
             applyScroll();
-        }
+        }, {passive: true});
 
-        var resizeTimer;
-
-        function onResize() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function () {
-                cacheGeometry();
-                applyScroll();
-            }, 100);
-        }
-
-        cacheGeometry();
-        applyScroll();
-
-        window.addEventListener('scroll', onScroll, {passive: true});
-        window.addEventListener('resize', onResize, {passive: true});
+        footer.style.transform = `translate3d(0, -${MAX_OFFSET_PX}px, 0)`;
     })();
 </script>
 <script>
@@ -1742,6 +1830,7 @@
     });
 </script>
 
+
 <script>
     (function () {
         const personSliderNavElement = document.querySelector('.person-navigation');
@@ -1755,9 +1844,9 @@
         const personSlider = new Swiper(personSliderElement, {
             slidesPerView: 1,
             effect: 'fade',
-            fadeEffect: { crossFade: true },
+            fadeEffect: {crossFade: true},
             allowTouchMove: false,
-            thumbs: { swiper: personSliderNav },
+            thumbs: {swiper: personSliderNav},
             on: {
                 slideChangeTransitionStart: onSlideChange,
             },
@@ -1791,7 +1880,8 @@
                     loadVideo(v);
                     v.muted = !withSound;
                     if (resetTime) v.currentTime = 0;
-                    v.play().catch(() => {});
+                    v.play().catch(() => {
+                    });
                 } else {
                     v.pause();
                     v.muted = true;
@@ -1810,11 +1900,12 @@
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
-                    videos[personSlider.realIndex].play().catch(() => {});
+                    videos[personSlider.realIndex].play().catch(() => {
+                    });
                     observer.disconnect();
                 }
             });
-        }, { threshold: 0.3 });
+        }, {threshold: 0.3});
         observer.observe(personSliderElement);
 
         personSliderElement.addEventListener('click', function (e) {
@@ -1828,7 +1919,8 @@
             if (!soundOn) {
                 setSound(true);
                 videos[personSlider.realIndex].currentTime = 0;
-                videos[personSlider.realIndex].play().catch(() => {});
+                videos[personSlider.realIndex].play().catch(() => {
+                });
             } else {
                 setSound(false);
             }
@@ -1860,7 +1952,9 @@
         let currentY = targetY;
         let rafId = null;
 
-        function lerp(a, b, t) { return a + (b - a) * t; }
+        function lerp(a, b, t) {
+            return a + (b - a) * t;
+        }
 
         const cursorDot = personSliderElement.querySelector('.person-slider__cursor');
 
@@ -1868,7 +1962,7 @@
             currentX = lerp(currentX, targetX, 0.08);
             currentY = lerp(currentY, targetY, 0.08);
             cursorDot.style.left = currentX + 'px';
-            cursorDot.style.top  = currentY + 'px';
+            cursorDot.style.top = currentY + 'px';
             rafId = requestAnimationFrame(animateCursor);
         }
 

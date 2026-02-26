@@ -9,10 +9,18 @@ class CounterAnimator {
         this.observer = new IntersectionObserver(this.handleIntersect.bind(this), this.options);
     }
 
-    animateCounter(element, start, end, duration = 1000, delay = 0) {
+    animateCounter(element, start, rawEnd, duration = 1500, delay = 0) {
+        const match = rawEnd.toString().match(/([^0-9]*)([0-9]+)([^0-9]*)/);
+
+        if (!match) return;
+
+        const prefix = match[1] || '';
+        const endValue = parseInt(match[2], 10);
+        const suffix = match[3] || '';
+
         setTimeout(() => {
             const startTime = performance.now();
-            const difference = end - start;
+            const difference = endValue - start;
 
             const update = (currentTime) => {
                 const elapsed = currentTime - startTime;
@@ -23,12 +31,14 @@ class CounterAnimator {
                     : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
                 const currentValue = Math.floor(start + difference * easeProgress);
-                element.setAttribute('data-count', currentValue.toLocaleString('ru-RU'));
+                const formattedNumber = currentValue.toLocaleString('ru-RU');
+
+                element.setAttribute('data-count', `${prefix}${formattedNumber}${suffix}`);
 
                 if (progress < 1) {
                     requestAnimationFrame(update);
                 } else {
-                    element.setAttribute('data-count', end.toLocaleString('ru-RU'));
+                    element.setAttribute('data-count', `${prefix}${endValue.toLocaleString('ru-RU')}${suffix}`);
                 }
             };
 
@@ -43,9 +53,9 @@ class CounterAnimator {
                 const counters = block.querySelectorAll('.counter[data-end]');
 
                 counters.forEach((counter, index) => {
-                    const endValue = parseInt(counter.getAttribute('data-end')) || 0;
-                    const delay = (index + 1) * 1000;
-                    this.animateCounter(counter, 0, endValue, delay, 0);
+                    const rawValue = counter.getAttribute('data-end') || '0';
+                    const delay = index * 200;
+                    this.animateCounter(counter, 0, rawValue, 1500, delay);
                 });
 
                 observer.unobserve(block);
@@ -56,15 +66,17 @@ class CounterAnimator {
     observeCounters(selector = '.counters-block') {
         const counterBlocks = document.querySelectorAll(selector);
 
-        if (counterBlocks.length) {
-            counterBlocks.forEach(block => {
-                const counters = block.querySelectorAll('.counter[data-end]');
-                if (counters.length) {
-                    counters.forEach(counter => counter.setAttribute('data-count', '0'));
-                    this.observer.observe(block);
-                }
+        counterBlocks.forEach(block => {
+            const counters = block.querySelectorAll('.counter[data-end]');
+            counters.forEach(counter => {
+                const rawValue = counter.getAttribute('data-end') || '0';
+                const parts = rawValue.match(/([^0-9]*)([0-9]+)([^0-9]*)/);
+                const initial = parts ? `${parts[1]}0${parts[3]}` : '0';
+
+                counter.setAttribute('data-count', initial);
+                this.observer.observe(block);
             });
-        }
+        });
     }
 }
 
@@ -109,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    geoSliderElement.classList.add('involved')
                     geoSlider.autoplay.start();
                     const delay = geoSlider.params.autoplay.delay,
                         speed = geoSlider.params.speed;
@@ -121,37 +134,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(geoSliderElement);
     }
-    // const personSliderNavElement = document.querySelector('.person-navigation');
-    // const personSliderNav = new Swiper(personSliderNavElement, {
-    //     init: false,
-    //     slidesPerView:'auto',
-    //     spaceBetween: 0,
-    // });
-    //
-    //
-    // if (personSliderNavElement) {
-    //     personSliderNav.init();
-    // }
-    //
-    // const personSliderElement = document.querySelector('.person-slider');
-    // const personSlider = new Swiper(personSliderElement, {
-    //     init: false,
-    //     slidesPerView: 1,
-    //     spaceBetween: 0,
-    //     speed:500,
-    //     effect:'fade',
-    //     thumbs:{
-    //         swiper:personSliderNav,
-    //     },
-    //     fadeEffect: {
-    //         crossFade: true
-    //     }
-    // });
-    //
-    //
-    // if (personSliderElement) {
-    //     personSlider.init();
-    // }
+
+
+    const principlesSliderElement = document.querySelector('.principles');
+    const principlesSlider = new Swiper(principlesSliderElement, {
+        init: false,
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        speed: 500,
+        pagination: {
+            el: '.principles-pagination',
+            type: 'bullets',
+            horizontalClass: 'slider__pagination',
+            bulletClass: 'slider-pagination__bullet',
+            bulletActiveClass: 'slider-pagination__bullet--active',
+        },
+    });
+
+    if (principlesSliderElement) {
+            principlesSlider.init();
+    }
+
+    const levelsSliderElement = document.querySelector('.levels');
+    const levelsSlider = new Swiper(levelsSliderElement, {
+        init: false,
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        speed: 500,
+        pagination: {
+            el: '.levels-pagination',
+            type: 'bullets',
+            horizontalClass: 'slider__pagination',
+            bulletClass: 'slider-pagination__bullet',
+            bulletActiveClass: 'slider-pagination__bullet--active',
+        },
+    });
+
+    if (levelsSliderElement) {
+        levelsSlider.init();
+    }
 
     const projectSliderElement = document.querySelector('.project-slider');
     const projectSlider = new Swiper(projectSliderElement, {
@@ -248,26 +269,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initPageAnimations();
 
-
     const marquees = document.querySelectorAll('.marquee');
 
     marquees.forEach(marquee => {
         const marqueeContent = marquee.querySelector('.marquee-content');
+        const isHero = marquee.classList.contains('marquee--hero');
 
         const clone = marqueeContent.cloneNode(true);
         marquee.appendChild(clone);
 
         let position = 0;
-        const speed = 1;
+        const baseSpeed = 1;
+        let scrollSpeed = 0;
+        let lastScrollTop = 0;
+
+        if (isHero) {
+            window.addEventListener('scroll', () => {
+                const st = window.pageYOffset || document.documentElement.scrollTop;
+                scrollSpeed = Math.abs(st - lastScrollTop) * 0.2;
+                lastScrollTop = st <= 0 ? 0 : st;
+            }, { passive: true });
+        }
 
         function animate() {
-            position -= speed;
+            let currentSpeed = baseSpeed + scrollSpeed;
+
+            position -= currentSpeed;
 
             if (Math.abs(position) >= marqueeContent.offsetWidth) {
                 position = 0;
             }
 
             marquee.style.transform = `translate3d(${position}px, 0, 0)`;
+
+            if (isHero && scrollSpeed > 0) {
+                scrollSpeed *= 0.95;
+                if (scrollSpeed < 0.01) scrollSpeed = 0;
+            }
+
             requestAnimationFrame(animate);
         }
 
@@ -288,4 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('sticky');
         }
     })
+
+
 })
