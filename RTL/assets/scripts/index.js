@@ -80,35 +80,56 @@ class CounterAnimator {
     }
 }
 class HeroAccelerator {
-    constructor(selector = '.hero', speed = 0.5) {
+    constructor(selector = '.hero', ease = 0.08) {
         this.hero = document.querySelector(selector);
-        this.speed = speed;
-
         if (!this.hero) return;
+
+        this.content = this.hero.querySelector('.hero-content');
+        this.targetY = 0;
+        this.currentY = 0;
+        this.ease = ease;
 
         this.init();
     }
 
     init() {
-        window.addEventListener('scroll', () => this.animate());
+        window.addEventListener('scroll', () => {
+            this.targetY = window.scrollY;
+        });
+        this.animate();
     }
 
     animate() {
-        const scrollY = window.scrollY;
+        this.currentY += (this.targetY - this.currentY) * this.ease;
+        const vh = window.innerHeight;
+        const progress = Math.min(this.currentY / vh, 1);
 
-        if (scrollY > window.innerHeight * 1.5) return;
+        if (this.currentY < vh * 2) {
+            // Передаем текущий скролл и прогресс
+            this.hero.style.setProperty('--sy', this.currentY);
+            this.hero.style.setProperty('--p', progress);
 
-        const movement = scrollY * this.speed;
+            // Параллакс самой секции (оставляем как было)
+            const movement = this.currentY * 0.35;
+            const scale = 1 + (progress * 0.15);
+            this.hero.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
 
-        this.hero.style.transform = `translate3d(0, ${-movement}px, 0)`;
-
-        const opacity = 1 - (scrollY / (window.innerHeight * 0.8));
-
+            if (this.content) {
+                this.content.style.opacity = Math.max(0, 1 - progress * 3);
+                this.content.style.transform = `translate3d(0, ${-this.currentY * 0.2}px, 0)`;
+                this.content.style.filter = `blur(${progress * 20}px)`;
+            }
+        }
+        requestAnimationFrame(() => this.animate());
     }
 }
 
+
+
+// Инициализация
+
 document.addEventListener('DOMContentLoaded', () => {
-    new HeroAccelerator('.hero', 0.4);
+    new HeroAccelerator('.hero');
 });
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lenis
