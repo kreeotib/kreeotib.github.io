@@ -526,6 +526,15 @@ a.text--grey:hover {
   z-index: 1;
   transform: translateZ(0);
 }
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.25);
+  will-change: background, opacity;
+  pointer-events: none;
+}
 .hero__bg::before {
   content: "";
   position: absolute;

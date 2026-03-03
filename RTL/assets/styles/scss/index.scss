@@ -631,6 +631,16 @@ a.text--grey:hover {
 
     transform: translateZ(0);
 
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: rgba(#000,.25);
+      will-change: background, opacity;
+      pointer-events: none;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -642,8 +652,8 @@ a.text--grey:hover {
                       transparent calc(65% * (1 - var(--p, 0) * 1.5)),
                       rgba(0, 0, 0, 0.8) calc(85% * (1 - var(--p, 0) * 1.5)),
                       #000 calc(105% * (1 - var(--p, 0) * 1.5)),
-                      #000 100%
-      );
+                      #000 100%);
+      
       will-change: background, opacity;
       pointer-events: none;
     }
