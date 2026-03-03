@@ -620,6 +620,9 @@ a.text--grey:hover {
 .section__wrapper--big {
   padding: var(--section-padding--big) 0;
 }
+.section__wrapper--big--top {
+  padding-top: 25rem;
+}
 @media screen and (min-width: 768px) {
   .section__block {
     padding: 0 var(--container-padding);
@@ -1016,6 +1019,9 @@ a.text--grey:hover {
   gap: 1.5rem;
   position: relative;
   z-index: 3;
+}
+.card__wrapper--small {
+  padding: 1.25rem 2.5rem;
 }
 @media screen and (max-width: 767px) {
   .card__wrapper {

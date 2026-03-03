@@ -726,6 +726,9 @@ white-space: nowrap;
 
     &--big {
       padding: var(--section-padding--big) 0;
+      &--top{
+        padding-top:25rem;
+      }
 
     }
 
@@ -1188,6 +1191,9 @@ white-space: nowrap;
     gap: 1.5rem;
     position: relative;
     z-index: 3;
+    &--small{
+      padding: 1.25rem 2.5rem;
+    }
     @media screen and (max-width: 767px) {
       padding: 1.5rem .625rem;
       gap: 1rem;
