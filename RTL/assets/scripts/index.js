@@ -80,53 +80,46 @@ class CounterAnimator {
     }
 }
 class HeroAccelerator {
-    constructor(selector = '.hero', ease = 0.08) {
+    constructor(selector = '.hero') {
         this.hero = document.querySelector(selector);
         if (!this.hero) return;
 
         this.content = this.hero.querySelector('.hero__content');
         this.bg = this.hero.querySelector('.hero__bg');
-        this.targetY = 0;
-        this.currentY = 0;
-        this.ease = ease;
 
         this.init();
     }
 
     init() {
-        window.addEventListener('scroll', () => {
-            this.targetY = window.scrollY;
-        });
-        this.animate();
+        // Используем пассивный слушатель для лучшей производительности
+        window.addEventListener('scroll', () => this.update(), { passive: true });
+        // Вызываем один раз при загрузке, чтобы зафиксировать начальное состояние
+        this.update();
     }
 
-    animate() {
-        this.currentY += (this.targetY - this.currentY) * this.ease;
+    update() {
+        const scrollY = window.scrollY;
         const vh = window.innerHeight;
 
-        // Ограничиваем прогресс от 0 до 1 для плавности эффектов
-        const progress = Math.max(0, Math.min(this.currentY / vh, 1));
+        // Прогресс от 0 до 1
+        const progress = Math.max(0, Math.min(scrollY / vh, 1));
 
-        if (this.currentY < vh * 2) {
-            // Передаем переменные в CSS
-            this.hero.style.setProperty('--sy', this.currentY.toFixed(2) + 'px');
+        // Ограничиваем выполнение, чтобы не нагружать DOM, когда герой вне зоны видимости
+        if (scrollY < vh * 2) {
+            this.hero.style.setProperty('--sy', scrollY.toFixed(0) + 'px');
             this.hero.style.setProperty('--p', progress.toFixed(3));
 
             if (this.bg) {
-                /** * 1. Эффект FIXED:
-                 * Сдвигаем bg вниз на величину скролла.
-                 * Так он визуально "залипает" вверху экрана.
-                 */
-                this.bg.style.transform = `translate3d(0, ${this.currentY}px, 0)`;
+                // Мгновенное смещение без инерции
+                this.bg.style.transform = `translate3d(0, ${scrollY}px, 0)`;
             }
 
             if (this.content) {
-                // Контент уходит чуть медленнее или быстрее для параллакса
-                this.content.style.transform = `translate3d(0, ${-this.currentY * 0.4}px, 0)`;
+                // Прямое соответствие позиции скролла
+                this.content.style.transform = `translate3d(0, ${-scrollY * 0.4}px, 0)`;
                 this.content.style.opacity = `${1 - progress * 1.5}`;
             }
         }
-        requestAnimationFrame(() => this.animate());
     }
 }
 
