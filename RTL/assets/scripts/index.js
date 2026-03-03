@@ -85,6 +85,7 @@ class HeroAccelerator {
         if (!this.hero) return;
 
         this.content = this.hero.querySelector('.hero__content');
+        this.bg = this.hero.querySelector('.hero__bg');
         this.targetY = 0;
         this.currentY = 0;
         this.ease = ease;
@@ -102,22 +103,27 @@ class HeroAccelerator {
     animate() {
         this.currentY += (this.targetY - this.currentY) * this.ease;
         const vh = window.innerHeight;
-        const progress = Math.min(this.currentY / vh, 1);
+
+        // Ограничиваем прогресс от 0 до 1 для плавности эффектов
+        const progress = Math.max(0, Math.min(this.currentY / vh, 1));
 
         if (this.currentY < vh * 2) {
-            // Передаем текущий скролл и прогресс
-            this.hero.style.setProperty('--sy', this.currentY);
-            this.hero.style.setProperty('--p', progress);
+            // Передаем переменные в CSS
+            this.hero.style.setProperty('--sy', this.currentY.toFixed(2) + 'px');
+            this.hero.style.setProperty('--p', progress.toFixed(3));
 
-            // Параллакс самой секции (оставляем как было)
-            const movement = this.currentY * 0.5;
-            const scale = 1 - (progress * 0.05);
-            const opacity = 1 - (progress * 1);
-            // this.hero.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
-            this.hero.style.opacity = `${opacity}`;
+            if (this.bg) {
+                /** * 1. Эффект FIXED:
+                 * Сдвигаем bg вниз на величину скролла.
+                 * Так он визуально "залипает" вверху экрана.
+                 */
+                this.bg.style.transform = `translate3d(0, ${this.currentY}px, 0)`;
+            }
+
             if (this.content) {
-
-                this.content.style.transform = `translate3d(0, ${-this.currentY * 1}px, 0)`;
+                // Контент уходит чуть медленнее или быстрее для параллакса
+                this.content.style.transform = `translate3d(0, ${-this.currentY * 0.4}px, 0)`;
+                this.content.style.opacity = `${1 - progress * 1.5}`;
             }
         }
         requestAnimationFrame(() => this.animate());
