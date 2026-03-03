@@ -596,17 +596,7 @@ white-space: nowrap;
   z-index: 1;
   overflow: hidden;
   background-color: #000;
-  will-change: transform, clip-path;
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 
-    z-index: 4;
-  }
   &__svg {
     display: flex;
   }
@@ -629,14 +619,17 @@ white-space: nowrap;
   }
 
   &__bg {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     pointer-events: none;
     z-index: 1;
-    will-change: transform;
+
+
+    transform: translateZ(0);
+
     &::before {
       content: "";
       position: absolute;
@@ -653,7 +646,6 @@ white-space: nowrap;
       will-change: background, opacity;
       pointer-events: none;
     }
-
     video {
       position: relative;
       z-index: 1;

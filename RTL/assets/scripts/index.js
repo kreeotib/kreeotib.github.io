@@ -91,9 +91,7 @@ class HeroAccelerator {
     }
 
     init() {
-        // Используем пассивный слушатель для лучшей производительности
         window.addEventListener('scroll', () => this.update(), { passive: true });
-        // Вызываем один раз при загрузке, чтобы зафиксировать начальное состояние
         this.update();
     }
 
@@ -101,23 +99,19 @@ class HeroAccelerator {
         const scrollY = window.scrollY;
         const vh = window.innerHeight;
 
-        // Прогресс от 0 до 1
         const progress = Math.max(0, Math.min(scrollY / vh, 1));
 
-        // Ограничиваем выполнение, чтобы не нагружать DOM, когда герой вне зоны видимости
         if (scrollY < vh * 2) {
             this.hero.style.setProperty('--sy', scrollY.toFixed(0) + 'px');
             this.hero.style.setProperty('--p', progress.toFixed(3));
 
             if (this.bg) {
-                // Мгновенное смещение без инерции
-                this.bg.style.transform = `translate3d(0, ${scrollY}px, 0)`;
+                this.bg.style.opacity = `${1 - progress * 1.5}`;
             }
 
             if (this.content) {
-                // Прямое соответствие позиции скролла
                 this.content.style.transform = `translate3d(0, ${-scrollY * 0.4}px, 0)`;
-                this.content.style.opacity = `${1 - progress * 1.5}`;
+
             }
         }
     }
