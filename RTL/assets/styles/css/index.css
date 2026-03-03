@@ -88,7 +88,6 @@ body.no-scroll {
   pointer-events: none;
   z-index: 1;
   background: url("../../images/section-gradients/body.webp") bottom right/cover no-repeat;
-  animation: pulse 5s linear infinite;
 }
 
 .text {
@@ -2014,7 +2013,7 @@ a.text--grey:hover {
 .card--principles {
   --x: -999px;
   --y: -999px;
-  --glow-color: 78, 82, 89;
+  --glow-color: 64, 71, 79;
   --glow-opacity: 0;
 }
 
