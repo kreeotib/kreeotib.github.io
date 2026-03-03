@@ -112,7 +112,7 @@ class HeroAccelerator {
             // Параллакс самой секции (оставляем как было)
             const movement = this.currentY * 0.5;
             const scale = 1 - (progress * 0.05);
-            const opacity = 1 - (progress * 0.9);
+            const opacity = 1 - (progress * 1);
             this.hero.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
             this.hero.style.opacity = `${opacity}`;
             if (this.content) {
