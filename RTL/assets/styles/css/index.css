@@ -743,6 +743,7 @@ a.text--grey:hover {
 }
 .section--about {
   position: relative;
+  background-color: #000;
 }
 .section--about .section__wrapper {
   position: relative;
