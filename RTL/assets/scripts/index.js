@@ -111,9 +111,10 @@ class HeroAccelerator {
 
             // Параллакс самой секции (оставляем как было)
             const movement = this.currentY * 0.35;
-            const scale = 1 + (progress * 0.15);
+            const scale = 1 - (progress * 0.05);
+            const opacity = 1 - (progress * 0.8);
             this.hero.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
-
+            this.hero.style.opacity = `${opacity}`;
             if (this.content) {
                 this.content.style.opacity = Math.max(0, 1 - progress * 3);
                 this.content.style.transform = `translate3d(0, ${-this.currentY * 0.2}px, 0)`;
@@ -125,8 +126,6 @@ class HeroAccelerator {
 }
 
 
-
-// Инициализация
 
 document.addEventListener('DOMContentLoaded', () => {
     new HeroAccelerator('.hero');
@@ -256,63 +255,119 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!video || !imgWrapper) return;
 
-            let animationFrame = null;
-            let isPlaying = false;
+            video.muted = true;
+            video.loop = false;
 
-            const playReverse = () => {
-                if (video.currentTime <= 0) {
-                    cancelAnimationFrame(animationFrame);
-                    imgWrapper.classList.remove('hover');
-                    isPlaying = false;
-                    return;
-                }
+            const isLevelCard = card.classList.contains('card--level');
 
-                video.currentTime = Math.max(0, video.currentTime - 0.033);
-                animationFrame = requestAnimationFrame(playReverse);
-            };
+            if (isLevelCard) {
+                // card--level: фото → ховер запускает видео до конца → уход курсора → плавно показывает постер
+                let fadeTimeout = null;
 
-            const startVideo = async () => {
-                if (isPlaying) return;
-
-                try {
-                    if (animationFrame) {
-                        cancelAnimationFrame(animationFrame);
-                        animationFrame = null;
+                const startVideo = async () => {
+                    if (fadeTimeout) {
+                        clearTimeout(fadeTimeout);
+                        fadeTimeout = null;
                     }
 
-                    video.playbackRate = 1;
+                    // Сброс видео в начало
+                    video.currentTime = 0;
+
+                    // Убираем класс fade-out если был
+                    imgWrapper.classList.remove('fade-to-poster');
                     imgWrapper.classList.add('hover');
-                    await video.play();
-                    isPlaying = true;
-                } catch (error) {
-                    console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
-                }
-            };
 
-            const stopVideo = () => {
-                try {
+                    try {
+                        await video.play();
+                    } catch (error) {
+                        console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
+                    }
+                };
+
+                const stopVideo = () => {
                     video.pause();
-                    playReverse();
-                } catch (error) {
-                    console.error(`Ошибка реверса видео в карточке #${index + 1}:`, error);
-                }
-            };
 
-            // Для десктопа
-            card.addEventListener('mouseenter', startVideo);
-            card.addEventListener('mouseleave', stopVideo);
+                    // Через 200мс плавно показываем постер
+                    fadeTimeout = setTimeout(() => {
+                        imgWrapper.classList.add('fade-to-poster');
 
-            // Для мобильных устройств
-            card.addEventListener('touchstart', (e) => {
-                if (!isPlaying) {
-                    startVideo();
-                } else {
-                    stopVideo();
-                }
-            }, { passive: true });
+                        // После завершения анимации убираем hover
+                        const onTransitionEnd = () => {
+                            imgWrapper.classList.remove('hover', 'fade-to-poster');
+                            imgWrapper.removeEventListener('transitionend', onTransitionEnd);
+                        };
+                        imgWrapper.addEventListener('transitionend', onTransitionEnd);
+                    }, 200);
+                };
 
-            video.muted = true;
-            video.loop = true;
+                card.addEventListener('mouseenter', startVideo);
+                card.addEventListener('mouseleave', stopVideo);
+
+                card.addEventListener('touchstart', () => {
+                    if (!video.paused) {
+                        stopVideo();
+                    } else {
+                        startVideo();
+                    }
+                }, { passive: true });
+
+            } else {
+                // Стандартная логика для остальных карточек
+                let animationFrame = null;
+                let isPlaying = false;
+
+                video.loop = true;
+
+                const playReverse = () => {
+                    if (video.currentTime <= 0) {
+                        cancelAnimationFrame(animationFrame);
+                        imgWrapper.classList.remove('hover');
+                        isPlaying = false;
+                        return;
+                    }
+
+                    video.currentTime = Math.max(0, video.currentTime - 0.033);
+                    animationFrame = requestAnimationFrame(playReverse);
+                };
+
+                const startVideo = async () => {
+                    if (isPlaying) return;
+
+                    try {
+                        if (animationFrame) {
+                            cancelAnimationFrame(animationFrame);
+                            animationFrame = null;
+                        }
+
+                        video.playbackRate = 1;
+                        imgWrapper.classList.add('hover');
+                        await video.play();
+                        isPlaying = true;
+                    } catch (error) {
+                        console.error(`Ошибка воспроизведения видео в карточке #${index + 1}:`, error);
+                    }
+                };
+
+                const stopVideo = () => {
+                    try {
+                        video.pause();
+                        playReverse();
+                    } catch (error) {
+                        console.error(`Ошибка реверса видео в карточке #${index + 1}:`, error);
+                    }
+                };
+
+                card.addEventListener('mouseenter', startVideo);
+                card.addEventListener('mouseleave', stopVideo);
+
+                card.addEventListener('touchstart', () => {
+                    if (!isPlaying) {
+                        startVideo();
+                    } else {
+                        stopVideo();
+                    }
+                }, { passive: true });
+            }
         });
     }
     const animator = new CounterAnimator({

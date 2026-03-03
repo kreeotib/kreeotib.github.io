@@ -41,7 +41,7 @@ body {
   font-family: var(--main-font);
   font-size: var(--text-size-base);
   color: white;
-  background: #000;
+  background: #01040B;
   line-height: 1.3;
   letter-spacing: 0.03em;
 }
@@ -226,7 +226,7 @@ a.text--grey:hover {
 .header:has([name=burger]:checked) .header-nav__item:nth-child(5) {
   transition-delay: 0.28s;
 }
-.header:has([name=burger]:checked) .header-language {
+.header.sticky:has([name=burger]:checked) .header-language {
   opacity: 1;
   visibility: visible;
   margin: 0 1.875rem;
@@ -521,9 +521,6 @@ a.text--grey:hover {
 }
 @media screen and (max-width: 767px) {
   .hero__text {
-    transform: scale(0.5);
-    position: absolute;
-    bottom: 0;
     left: 0;
     width: 100%;
     pointer-events: none;
@@ -917,14 +914,12 @@ a.text--grey:hover {
   }
 }
 .card--principles {
-  background: linear-gradient(180deg, rgba(78, 82, 89, 0.17) 0%, #07090A 50%, #07090A 100%);
-  background-size: 100% 200%;
-  background-position: 0% 100%;
-  transition: background-position 0.3s ease;
+  background: #07090A;
+  transition: background-color 0.3s ease;
   min-height: 31.25rem;
 }
 .card--principles:hover {
-  background-position: 0% 0%;
+  background: #4E5259;
 }
 @media screen and (min-width: 768px) {
   .card--principles {
@@ -1104,10 +1099,26 @@ a.text--grey:hover {
   position: relative;
   height: auto;
 }
+.geo-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(292deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 58.29%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+@media screen and (max-width: 767px) {
+  .geo-item::before {
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 44.06%, rgba(0, 0, 0, 0) 100%);
+  }
+}
 .geo-item__wrapper {
   position: relative;
   height: 100%;
-  z-index: 2;
+  z-index: 3;
   padding: calc(var(--container-padding) * 2);
 }
 @media screen and (max-width: 767px) {
@@ -1134,6 +1145,22 @@ a.text--grey:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-mask-image: linear-gradient(292deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 58.29%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(292deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 58.29%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+@media screen and (max-width: 767px) {
+  .geo-item__bg {
+    -webkit-mask-image: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 44.06%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 44.06%, rgba(0, 0, 0, 0) 100%);
+  }
 }
 .geo-item__bg img {
   width: 100%;
@@ -1396,6 +1423,7 @@ a.text--grey:hover {
   padding: 1.25rem 1rem;
   border-radius: 1.5rem;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .project-item__blur {
   position: absolute;
@@ -1422,6 +1450,8 @@ a.text--grey:hover {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  border-radius: 1.5rem;
+  overflow: hidden;
 }
 .project-item__content {
   display: flex;
@@ -1445,6 +1475,11 @@ a.text--grey:hover {
 .footer__logo {
   max-width: 17.5rem;
   width: 100%;
+  color: #9E9D9D;
+  transition: 0.3s color;
+}
+.footer__logo:hover {
+  color: #2A54A0;
 }
 @media screen and (max-width: 767px) {
   .footer__logo {
@@ -1498,6 +1533,12 @@ a.text--grey:hover {
   flex-direction: column;
   gap: 1.5rem;
   flex-grow: 1;
+}
+.footer-block__text a {
+  transition: 0.3s color;
+}
+.footer-block__text a:hover {
+  color: #fff;
 }
 @media screen and (max-width: 767px) {
   .footer-block {
@@ -1685,18 +1726,6 @@ a.text--grey:hover {
 .person-slider__cursor.unmuted {
   background: url("../../images/icons/pause.svg") center center/cover no-repeat;
 }
-.person-slider.involved + .person-navigation .person-button.swiper-slide-thumb-active .person-button__content {
-  opacity: 1;
-  visibility: visible;
-  max-width: 20rem;
-  margin-left: 1.875rem;
-}
-.person-slider + .person-navigation .person-button.swiper-slide-thumb-active .person-button__content {
-  opacity: 0;
-  visibility: hidden;
-  max-width: 0;
-  margin: 0;
-}
 .person-navigation {
   max-width: 100%;
   width: max-content;
@@ -1745,7 +1774,7 @@ a.text--grey:hover {
   opacity: 0;
   pointer-events: none;
 }
-.person-button.swiper-slide-thumb-active .person-button__content {
+.person-button:hover .person-button__content {
   opacity: 1;
   visibility: visible;
   max-width: 20rem;
@@ -1818,16 +1847,6 @@ a.text--grey:hover {
   pointer-events: none;
   z-index: 1;
 }
-.person-item__bg::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(78, 82, 89, 0.5);
-  z-index: 3;
-}
 .person-item__bg video {
   width: 100%;
   height: 100%;
@@ -1877,8 +1896,7 @@ a.text--grey:hover {
 }
 
 [title-reveal] .line {
-  z-index: 2;
-  clip-path: inset(0 100% 0 0);
+  z-index: 4;
   padding: 0.1rem 0;
   margin: -0.1rem 0;
   position: relative;
