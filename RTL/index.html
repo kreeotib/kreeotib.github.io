@@ -763,7 +763,8 @@
                                         <img src="assets/images/levels/bg-4.webp" alt=""
                                              class="card__bg card__bg--mobile" loading="lazy">
                                         <div class="card__video">
-                                            <video src="assets/video/levels/customs.mp4" playsinline muted
+                                            <img src="assets/video/levels/customs.webp" alt="">
+                                            <video src="assets/video/levels/customs.mp4" poster="assets/video/levels/customs.webp" playsinline muted
                                                    loop webkit-playsinline disablePictureInPicture
                                                    controlslist="nodownload nofullscreen noremoteplayback"></video>
                                         </div>
@@ -1865,6 +1866,9 @@
     }
 
     function buildTitle(el) {
+        if (el.dataset.built) return;
+        el.dataset.built = 'true';
+
         const text = el.textContent.trim();
         el.setAttribute('aria-label', text);
         el.innerHTML = '';
@@ -1913,6 +1917,9 @@
     function runAnimation(el) {
         const lines = el.querySelectorAll('.line');
         const rects = el.querySelectorAll('.rectangle');
+        rects.forEach(el=>{
+            el.classList.add('animate')
+        })
         lines.forEach((line, i) => {
             animateLine(line, rects[i], i * (SWEEP_DURATION * 0.55 + LINE_STAGGER));
         });
@@ -1925,12 +1932,13 @@
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
                     runAnimation(entry.target);
                     observer.unobserve(entry.target);
                 }
             });
-        }, {threshold: 0.4});
+        }, { rootMargin: '0px 0px -35% 0px' });
 
         elements.forEach(el => observer.observe(el));
     });
@@ -2015,13 +2023,15 @@
         observer.observe(personSliderElement);
 
         personSliderElement.addEventListener('click', function (e) {
+
+
+            if (soundBtn && soundBtn.contains(e.target)) return;
+
+            if(involved) return;
             if (!involved) {
                 involved = true;
                 personSliderElement.classList.add('involved');
             }
-
-            if (soundBtn && soundBtn.contains(e.target)) return;
-
             if (!soundOn) {
                 setSound(true);
                 videos[personSlider.realIndex].currentTime = 0;

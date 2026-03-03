@@ -76,7 +76,7 @@ body.no-scroll {
   position: relative;
   z-index: 3;
   overflow: hidden;
-  background: #000;
+  background: #01040B;
 }
 .content::before {
   content: "";
@@ -712,12 +712,12 @@ a.text--grey:hover {
   width: 100%;
   height: 100rem;
   display: block;
-  background: url("../../images/projects/bg.webp") right center/contain no-repeat;
+  background: url("../../images/projects/bg.webp") right center/cover no-repeat;
   animation: pulse 5s linear infinite;
 }
 @media screen and (max-width: 767px) {
   .section--project::before {
-    background: url("../../images/projects/bg-m.webp") right center/contain no-repeat;
+    background: url("../../images/projects/bg-m.webp") right center/cover no-repeat;
     transform: translateY(25rem);
   }
 }
@@ -900,12 +900,14 @@ a.text--grey:hover {
   }
 }
 .card--principles {
-  background: #07090A;
-  transition: background-color 0.3s ease;
+  background: linear-gradient(180deg, rgba(78, 82, 89, 0.17) 0%, #07090A 50%, #07090A 100%);
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  transition: background-position 0.3s ease;
   min-height: 31.25rem;
 }
 .card--principles:hover {
-  background: #4E5259;
+  background-position: 0% 0%;
 }
 @media screen and (min-width: 768px) {
   .card--principles {
@@ -965,10 +967,27 @@ a.text--grey:hover {
   pointer-events: none;
   justify-content: center;
 }
+.card__video.hover img {
+  opacity: 0;
+}
+.card__video.fade-to-poster img {
+  opacity: 1;
+}
 .card__video video {
   width: 100%;
   height: 100%;
+  z-index: 1;
   object-fit: cover;
+}
+.card__video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 0.3s opacity;
 }
 .card__bg {
   position: absolute;
@@ -1423,6 +1442,8 @@ a.text--grey:hover {
   z-index: 5;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 100%);
@@ -1836,6 +1857,16 @@ a.text--grey:hover {
   pointer-events: none;
   z-index: 1;
 }
+.person-item__bg::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}
 .person-item__bg video {
   width: 100%;
   height: 100%;
@@ -1874,6 +1905,11 @@ a.text--grey:hover {
   position: absolute;
   inset: 0;
   z-index: 3;
+  opacity: 0;
+}
+
+[title-reveal] .line-mask .rectangle.animate {
+  opacity: 1;
 }
 
 [title-reveal] .line-mask .rectangle > div {
@@ -1968,7 +2004,7 @@ a.text--grey:hover {
 .card--principles {
   --x: -999px;
   --y: -999px;
-  --glow-color: 32, 47, 78;
+  --glow-color: 78, 82, 89;
   --glow-opacity: 0;
 }
 

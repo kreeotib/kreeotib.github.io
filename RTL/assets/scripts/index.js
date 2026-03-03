@@ -177,7 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.3
+            threshold: 0.7,
+            rootMargin: '0px 0px -35% 0px'
         });
 
         observer.observe(geoSliderElement);
@@ -253,8 +254,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const isLevelCard = card.classList.contains('card--level');
 
             if (isLevelCard) {
-                // card--level: фото → ховер запускает видео до конца → уход курсора → плавно показывает постер
                 let fadeTimeout = null;
+                let isVideoEnded = false;
+
+                const showPoster = (instant = false) => {
+                    if (fadeTimeout) {
+                        clearTimeout(fadeTimeout);
+                        fadeTimeout = null;
+                    }
+
+                    if (instant) {
+                        imgWrapper.classList.remove('hover', 'fade-to-poster');
+                        return;
+                    }
+
+                    fadeTimeout = setTimeout(() => {
+                        imgWrapper.classList.add('fade-to-poster');
+
+                        const onTransitionEnd = () => {
+                            imgWrapper.classList.remove('hover', 'fade-to-poster');
+                            imgWrapper.removeEventListener('transitionend', onTransitionEnd);
+                        };
+                        imgWrapper.addEventListener('transitionend', onTransitionEnd);
+                    }, 200);
+                };
 
                 const startVideo = async () => {
                     if (fadeTimeout) {
@@ -262,10 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         fadeTimeout = null;
                     }
 
-                    // Сброс видео в начало
                     video.currentTime = 0;
+                    isVideoEnded = false;
 
-                    // Убираем класс fade-out если был
                     imgWrapper.classList.remove('fade-to-poster');
                     imgWrapper.classList.add('hover');
 
@@ -277,34 +299,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 const stopVideo = () => {
+                    if (isVideoEnded) {
+                        showPoster();
+                        return;
+                    }
+
                     video.pause();
-
-                    // Через 200мс плавно показываем постер
-                    fadeTimeout = setTimeout(() => {
-                        imgWrapper.classList.add('fade-to-poster');
-
-                        // После завершения анимации убираем hover
-                        const onTransitionEnd = () => {
-                            imgWrapper.classList.remove('hover', 'fade-to-poster');
-                            imgWrapper.removeEventListener('transitionend', onTransitionEnd);
-                        };
-                        imgWrapper.addEventListener('transitionend', onTransitionEnd);
-                    }, 200);
+                    showPoster();
                 };
+
+                video.addEventListener('ended', () => {
+                    isVideoEnded = true;
+                });
 
                 card.addEventListener('mouseenter', startVideo);
                 card.addEventListener('mouseleave', stopVideo);
 
                 card.addEventListener('touchstart', () => {
-                    if (!video.paused) {
+                    if (!video.paused || isVideoEnded) {
                         stopVideo();
                     } else {
                         startVideo();
                     }
                 }, { passive: true });
-
             } else {
-                // Стандартная логика для остальных карточек
                 let animationFrame = null;
                 let isPlaying = false;
 
