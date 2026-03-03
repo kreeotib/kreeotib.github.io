@@ -118,7 +118,6 @@ class HeroAccelerator {
             if (this.content) {
                 this.content.style.opacity = Math.max(0, 1 - progress * 3);
                 this.content.style.transform = `translate3d(0, ${-this.currentY * 1}px, 0)`;
-                this.content.style.filter = `blur(${progress * 20}px)`;
             }
         }
         requestAnimationFrame(() => this.animate());
