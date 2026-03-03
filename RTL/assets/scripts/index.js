@@ -84,7 +84,7 @@ class HeroAccelerator {
         this.hero = document.querySelector(selector);
         if (!this.hero) return;
 
-        this.content = this.hero.querySelector('.hero-content');
+        this.content = this.hero.querySelector('.hero__content');
         this.targetY = 0;
         this.currentY = 0;
         this.ease = ease;
@@ -113,11 +113,11 @@ class HeroAccelerator {
             const movement = this.currentY * 0.5;
             const scale = 1 - (progress * 0.05);
             const opacity = 1 - (progress * 1);
-            this.hero.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
+            // this.hero.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
             this.hero.style.opacity = `${opacity}`;
             if (this.content) {
                 this.content.style.opacity = Math.max(0, 1 - progress * 3);
-                this.content.style.transform = `translate3d(0, ${-this.currentY * 0.2}px, 0)`;
+                this.content.style.transform = `translate3d(0, ${-this.currentY * 1}px, 0)`;
                 this.content.style.filter = `blur(${progress * 20}px)`;
             }
         }
