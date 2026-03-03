@@ -116,7 +116,7 @@ class HeroAccelerator {
             // this.hero.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
             this.hero.style.opacity = `${opacity}`;
             if (this.content) {
-                
+
                 this.content.style.transform = `translate3d(0, ${-this.currentY * 1}px, 0)`;
             }
         }

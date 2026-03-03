@@ -621,7 +621,7 @@ a.text--grey:hover {
   padding: var(--section-padding--big) 0;
 }
 .section__wrapper--big--top {
-  padding-top: 55rem;
+  padding-top: 15rem;
 }
 @media screen and (min-width: 768px) {
   .section__block {

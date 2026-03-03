@@ -727,7 +727,7 @@ white-space: nowrap;
     &--big {
       padding: var(--section-padding--big) 0;
       &--top{
-        padding-top:55rem;
+        padding-top:15rem;
       }
 
     }
@@ -2566,6 +2566,7 @@ b {
 .toggle {
   display: none;
 }
+
 
 @media screen and (max-width: 766px) {
   .section__text {
