@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bulletActiveClass: 'geo-slider__bullet--active',
         },
         autoplay: {
-            delay: 6000,
+            delay: 8000,
             disableOnInteraction: false,
         },
         on: {
