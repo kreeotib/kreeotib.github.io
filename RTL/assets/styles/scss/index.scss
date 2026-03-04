@@ -2330,7 +2330,7 @@ a.text--grey:hover {
 .card--principles {
   --x: -999px;
   --y: -999px;
-  --glow-color: 64, 71, 79;
+  --glow-color: 43, 49, 53;
   --glow-opacity: 0;
 }
 
@@ -2348,7 +2348,7 @@ a.text--grey:hover {
                   350px circle at var(--x) var(--y),
                   rgba(var(--glow-color), 1) 0%,
                   rgba(var(--glow-color), 0.6) 35%,
-                  transparent 70%
+                  transparent 60%
   );
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;
@@ -2365,7 +2365,7 @@ a.text--grey:hover {
                   150px circle at var(--x) var(--y),
                   rgba(var(--glow-color), 1) 0%,
                   rgba(var(--glow-color), 0.7) 40%,
-                  transparent 70%
+                  transparent 60%
   );
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;

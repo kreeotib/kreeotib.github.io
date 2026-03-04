@@ -2013,7 +2013,7 @@ a.text--grey:hover {
 .card--principles {
   --x: -999px;
   --y: -999px;
-  --glow-color: 64, 71, 79;
+  --glow-color: 43, 49, 53;
   --glow-opacity: 0;
 }
 
@@ -2023,7 +2023,7 @@ a.text--grey:hover {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(350px circle at var(--x) var(--y), rgba(var(--glow-color), 1) 0%, rgba(var(--glow-color), 0.6) 35%, transparent 70%);
+  background: radial-gradient(350px circle at var(--x) var(--y), rgba(var(--glow-color), 1) 0%, rgba(var(--glow-color), 0.6) 35%, transparent 60%);
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;
 }
@@ -2035,7 +2035,7 @@ a.text--grey:hover {
   z-index: 2;
   pointer-events: none;
   border-radius: inherit;
-  background: radial-gradient(150px circle at var(--x) var(--y), rgba(var(--glow-color), 1) 0%, rgba(var(--glow-color), 0.7) 40%, transparent 70%);
+  background: radial-gradient(150px circle at var(--x) var(--y), rgba(var(--glow-color), 1) 0%, rgba(var(--glow-color), 0.7) 40%, transparent 60%);
   opacity: var(--glow-opacity);
   transition: opacity 0.35s ease;
 }
