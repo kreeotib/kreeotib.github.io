@@ -196,11 +196,13 @@
                                         тяжелый груз, перевезенный речным транспортом по Москве-реке»
                                     </p>
                                 </div>
-                                <div class="hero-project__info">
+                                <div class="hero-project__info counters-block">
                                     <img src="assets/images/projects-page/info.webp" alt="">
-                                    <div class="hero-project__column">
-                                        <p class="title title--large title--semibold">
-                                            3 000+
+                                    <div class="hero-project__column ">
+                                        <p class="title title--large title--semibold counter" data-end="3000+">
+                                            <span>
+                                            3 000 +
+                                            </span>
                                         </p>
                                         <p class="text text--base">
                                             ОБЩЕЕ <br>
@@ -219,7 +221,7 @@
                         <div class="section__block">
                             <div class="section__column section__column--big">
                                 <div class="section__column">
-                                    <h2 title-reveal class="title title--base title--semibold">
+                                    <h2 data-reveal class="title title--base title--semibold">
                                         Логистика оборудования
                                     </h2>
                                     <div class="section__text">
@@ -293,16 +295,17 @@
                                         data-label-open="Читать далее"
                                         data-label-close="Скрыть">
                                 </button>
-                                <div class="info">
+                                <div class="info counters-block">
                                     <div class="info__row">
-                                        <div class="info-label">
+                                        <div class="info-label ">
                                             <div class="info-label__content">
                                                 <p class="text text--base">
                                                     Более
                                                 </p>
-                                                <p class="title title--large title--semibold">
-                                                    1 241 т
+                                                <p class="title title--large title--semibold counter" data-end="1241 т">
+                                                   <span>1 241 т</span>
                                                 </p>
+
                                             </div>
                                         </div>
                                         <div class="info-label">
@@ -311,8 +314,8 @@
                                                     Протяженность водного <br>
                                                     маршрута
                                                 </p>
-                                                <p class="title title--large title--semibold">
-                                                    1 300 км
+                                                <p class="title title--large title--semibold counter" data-end="1300 км">
+                                                   <span> 1 300 км</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -408,7 +411,7 @@
             </section>
             <section class="section section--task task">
                 <div class="section__column section__column--biggest">
-                    <div class="section__grid">
+                    <div class="section__grid section__grid--no--gap">
                         <div class="section__img">
                             <img src="assets/images/projects-page/task.webp" alt="">
                         </div>
@@ -437,7 +440,7 @@
                     <div class="task__slider">
                         <div class="principles swiper slider">
                             <div class="principles-grid principles-grid--project swiper-wrapper">
-                                <div class="swiper-slide principles-grid__item card card--principles card--project">
+                                <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
                                     <picture class="card__bg">
                                         <source media="(max-width: 767px)" srcset="assets/images/principles/1.webp">
                                         <img src="assets/images/principles/1-1.svg" alt="">
@@ -456,7 +459,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="swiper-slide principles-grid__item card card--principles card--project">
+                                <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
                                     <img src="assets/images/principles/2.webp" alt="" class="card__bg">
                                     <div class="card__wrapper">
                                         <svg class="card__icon">
@@ -473,7 +476,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="swiper-slide principles-grid__item card card--principles card--project">
+                                <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
                                     <img src="assets/images/principles/3.webp" alt="" class="card__bg">
                                     <div class="card__wrapper">
                                         <svg class="card__icon">
@@ -489,7 +492,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="swiper-slide principles-grid__item card card--principles card--project">
+                                <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
                                     <img src="assets/images/principles/4.webp" alt="" class="card__bg">
                                     <div class="card__wrapper">
                                         <svg class="card__icon">
@@ -1220,6 +1223,16 @@
             last.addEventListener('animationiteration', () => {
                 preloader.classList.add('hidden');
                 document.body.classList.remove('no-scroll');
+                const animator = new CounterAnimator({
+                    threshold: 0.3,
+                    rootMargin: '0px 0px 0px 0px',
+                });
+
+                const initPageAnimations = () => {
+                    animator.observeCounters('.counters-block');
+                };
+
+                initPageAnimations();
             });
         })
     })();
@@ -1331,124 +1344,198 @@
     });
 </script>
 <script>
-    const SWEEP_DURATION = 680;
-    const EXIT_DURATION = 400;
-    const LINE_STAGGER = 80;
+    const TitleReveal = (() => {
 
-    function easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
 
-    function animateLine(lineEl, rectEl, delay) {
-        rectEl.style.clipPath = 'inset(0 100% 0 0)';
+        const CFG = {
+            sweepIn:   520,
+            sweepOut:  320,
+            stagger:   110,
+            rootMargin: '0px 0px -25% 0px',
+        };
 
-        let t0 = null;
-
-        function sweepIn(ts) {
-            if (!t0) t0 = ts;
-            const elapsed = ts - t0 - delay;
-            if (elapsed < 0) {
-                requestAnimationFrame(sweepIn);
-                return;
-            }
-
-            const p = Math.min(elapsed / SWEEP_DURATION, 1);
-            const e = easeInOutCubic(p);
-
-            rectEl.style.clipPath = `inset(0 ${(1 - e) * 100}% 0 0)`;
-
-            if (p < 1) {
-                requestAnimationFrame(sweepIn);
-            } else {
-                let t1 = null;
-
-                function sweepOut(ts2) {
-                    if (!t1) t1 = ts2;
-                    const p2 = Math.min((ts2 - t1) / EXIT_DURATION, 1);
-                    const e2 = easeInOutCubic(p2);
-                    rectEl.style.clipPath = `inset(0 0 0 ${e2 * 100}%)`;
-                    if (p2 < 1) requestAnimationFrame(sweepOut);
-                }
-
-                requestAnimationFrame(sweepOut);
-            }
+        function eio(t) {
+            return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
         }
 
-        requestAnimationFrame(sweepIn);
-    }
+        function animateBar(bar, delay) {
+            return new Promise(resolve => {
+                let t0 = null;
 
-    function buildTitle(el) {
-        const text = el.textContent.trim();
-        el.setAttribute('aria-label', text);
-        el.innerHTML = '';
+                function sweepIn(ts) {
+                    if (!t0) t0 = ts;
+                    const elapsed = ts - t0 - delay;
+                    if (elapsed < 0) { requestAnimationFrame(sweepIn); return; }
 
-        const probe = document.createElement('span');
-        probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;';
-        el.appendChild(probe);
+                    const p = Math.min(elapsed / CFG.sweepIn, 1);
+                    bar.style.transform = `scaleX(${eio(p)})`;
+                    bar.style.transformOrigin = 'left center';
 
-        const words = text.split(' ');
-        const lines = [];
-        let current = '';
+                    if (p < 1) { requestAnimationFrame(sweepIn); return; }
 
-        for (let i = 0; i < words.length; i++) {
-            const test = current ? current + ' ' + words[i] : words[i];
-            probe.textContent = test;
-            if (probe.offsetWidth > el.offsetWidth && current !== '') {
-                lines.push(current);
-                current = words[i];
-            } else {
-                current = test;
-            }
-        }
-        if (current) lines.push(current);
-        el.removeChild(probe);
+                    let t1 = null;
 
-        lines.forEach(lineText => {
-            const mask = document.createElement('div');
-            mask.className = 'line-mask';
-            mask.setAttribute('aria-hidden', 'true');
-
-            const line = document.createElement('div');
-            line.className = 'line';
-            line.setAttribute('aria-hidden', 'true');
-            line.textContent = lineText;
-
-            const rect = document.createElement('div');
-            rect.className = 'rectangle';
-            rect.appendChild(document.createElement('div'));
-
-            mask.appendChild(line);
-            mask.appendChild(rect);
-            el.appendChild(mask);
-        });
-    }
-
-    function runAnimation(el) {
-        const lines = el.querySelectorAll('.line');
-        const rects = el.querySelectorAll('.rectangle');
-        lines.forEach((line, i) => {
-            animateLine(line, rects[i], i * (SWEEP_DURATION * 0.55 + LINE_STAGGER));
-        });
-    }
-
-    window.addEventListener('load', () => {
-        const elements = document.querySelectorAll('[title-reveal]');
-
-        elements.forEach(el => buildTitle(el));
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    runAnimation(entry.target);
-                    observer.unobserve(entry.target);
+                    function sweepOut(ts2) {
+                        if (!t1) t1 = ts2;
+                        const p2 = Math.min((ts2 - t1) / CFG.sweepOut, 1);
+                        bar.style.transformOrigin = 'right center';
+                        bar.style.transform = `scaleX(${1 - eio(p2)})`;
+                        if (p2 < 1) { requestAnimationFrame(sweepOut); return; }
+                        resolve();
+                    }
+                    requestAnimationFrame(sweepOut);
                 }
+
+                requestAnimationFrame(sweepIn);
             });
-        }, {threshold: 0.4});
+        }
 
-        elements.forEach(el => observer.observe(el));
-    });
+
+        function build(el) {
+            if (el.dataset.rvBuilt) return;
+            el.dataset.rvBuilt = 'true';
+
+            const text = el.textContent.trim();
+            el.setAttribute('aria-label', text);
+            el.innerHTML = '';
+
+            const probe = document.createElement('span');
+            probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;';
+            el.appendChild(probe);
+
+            const words = text.split(/\s+/);
+            const lines = [];
+            let cur = '';
+
+            for (const word of words) {
+                const test = cur ? cur + ' ' + word : word;
+                probe.textContent = test;
+                if (cur && probe.offsetWidth > el.offsetWidth) {
+                    lines.push(cur);
+                    cur = word;
+                } else {
+                    cur = test;
+                }
+            }
+            if (cur) lines.push(cur);
+            el.removeChild(probe);
+
+            lines.forEach(lineText => {
+                const wrap = document.createElement('span');
+                wrap.className = 'rv-line-wrap';
+                wrap.setAttribute('aria-hidden', 'true');
+
+                const line = document.createElement('span');
+                line.className = 'rv-line';
+                line.textContent = lineText;
+
+                const bar = document.createElement('span');
+                bar.className = 'rv-bar';
+                bar.style.transform = 'scaleX(0)';
+
+                wrap.appendChild(line);
+                wrap.appendChild(bar);
+                el.appendChild(wrap);
+            });
+        }
+
+        function play(el) {
+            build(el);
+
+            const bars = el.querySelectorAll('.rv-bar');
+            bars.forEach(b => {
+                b.style.transform = 'scaleX(0)';
+                b.style.transformOrigin = 'left center';
+            });
+
+            bars.forEach((bar, i) => {
+                animateBar(bar, i * CFG.stagger);
+            });
+        }
+
+        function reset(el) {
+            delete el.dataset.animated;
+            el.querySelectorAll('.rv-bar').forEach(b => {
+                b.style.transform = 'scaleX(0)';
+                b.style.transformOrigin = 'left center';
+            });
+        }
+
+        function init() {
+            const els = document.querySelectorAll('[data-reveal]');
+            els.forEach(build);
+
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        entry.target.dataset.animated = 'true';
+                        play(entry.target);
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: CFG.rootMargin });
+
+            els.forEach(el => io.observe(el));
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        return { init, play, reset, build };
+    })();
 </script>
 
+<script>
+    (function() {
+        const initCardAnimations = () => {
+            const cards = document.querySelectorAll('.card-animate');
+
+            if (!cards.length) return;
+
+            const options = {
+                root: null,
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        const wrapper = card.querySelector('.card__wrapper');
+
+                        if (wrapper) {
+                            const children = wrapper.children;
+                            const delayStep = 0.15;
+
+
+                            Array.from(children).forEach((child, index) => {
+                                child.style.transitionDelay = `${index * delayStep}s`;
+                            });
+
+
+                            card.classList.add('is-visible');
+                        }
+
+
+                        observer.unobserve(card);
+                    }
+                });
+            }, options);
+
+            cards.forEach(card => observer.observe(card));
+        };
+
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCardAnimations);
+        } else {
+            initCardAnimations();
+        }
+    })();
+</script>
 
 <script>
     (function () {

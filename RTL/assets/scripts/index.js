@@ -156,9 +156,17 @@ document.addEventListener('DOMContentLoaded', () => {
             init: function () {
                 const delay = geoSlider.params.autoplay.delay,
                     speed = geoSlider.params.speed;
-                geoSliderElement.style.setProperty('--swiper-autoplay-delay', delay + speed + 'ms');
 
+                geoSliderElement.style.setProperty('--swiper-autoplay-delay', delay + speed + 'ms');
                 geoSlider.autoplay.stop();
+            },
+            slideChangeTransitionStart() {
+                const activeSlide = geoSlider.slides[geoSlider.activeIndex];
+                const revealEl = activeSlide.querySelector('[data-reveal]');
+                if (revealEl) {
+                    TitleReveal.reset(revealEl);
+                    TitleReveal.play(revealEl);
+                }
             }
         }
     });
@@ -177,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.7,
+            threshold: 0.3,
             rootMargin: '0px 0px -35% 0px'
         });
 
@@ -380,16 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    const animator = new CounterAnimator({
-        threshold: 0.3,
-        rootMargin: '0px 0px -25% 0px',
-    });
 
-    const initPageAnimations = () => {
-        animator.observeCounters('.counters-block');
-    };
-
-    initPageAnimations();
 
     const marquees = document.querySelectorAll('.marquee');
 

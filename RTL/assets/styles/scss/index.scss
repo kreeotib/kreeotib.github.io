@@ -537,7 +537,7 @@ a.text--grey:hover {
   }
 
   &--semibold {
-    font-weight: 600;
+    font-weight: 532;
   }
 }
 
@@ -596,6 +596,7 @@ a.text--grey:hover {
   z-index: 1;
   overflow: hidden;
   background-color: #000;
+  transform: scale(1);
 
   &__svg {
     display: flex;
@@ -716,6 +717,13 @@ a.text--grey:hover {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3.125rem;
+    &--no{
+      &--gap{
+        @media screen and (min-width: 768px){
+          gap: 0;
+        }
+      }
+    }
     @media screen and (max-width: 767px) {
       grid-template-columns: minmax(0, 1fr);
     }
@@ -1022,6 +1030,7 @@ a.text--grey:hover {
   top: 0;
   width: 100%;
   height: 100%;
+  white-space: nowrap;
 }
 
 
@@ -1041,6 +1050,18 @@ a.text--grey:hover {
 
     &--project {
       gap: 0;
+      @media screen and (min-width: 768px) {
+        &::before{
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: url("../../images/section-gradients/project-card.webp") bottom right/contain no-repeat;
+          pointer-events: none;
+        }
+      }
     }
 
     &__item {
@@ -1105,6 +1126,21 @@ a.text--grey:hover {
     @media screen and (min-width: 768px) {
       text-align: center;
       border-radius: 0;
+      &::before,&::after{
+        display: none;
+      }
+
+      &::before{
+        content: "";
+        position: absolute;
+        left: -.5px !important;
+        display: flex;
+        top: 3.125rem !important;
+        width: 1px !important;
+        height: calc(100% - 6.25rem) !important;
+        opacity: 1 !important;
+      background: #23282D !important;
+      }
 
       &:hover {
         background-position: 0% 100%;
@@ -1131,6 +1167,9 @@ a.text--grey:hover {
   }
 
   &--project &__bg {
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
   }
 
   &__icon {
@@ -2213,43 +2252,29 @@ a.text--grey:hover {
   }
 }
 
-[title-reveal] .line-mask {
+[data-reveal] {
   position: relative;
-  display: block;
-  overflow: clip;
-  width: max-content;
-  max-width: 100%;
 }
 
-[title-reveal] .line-mask .rectangle {
-  height: 100%;
-  width: 100%;
+[data-reveal] .rv-line-wrap {
+  display: table;
+  position: relative;
+}
+
+[data-reveal] .rv-line {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+[data-reveal] .rv-bar {
   position: absolute;
   inset: 0;
-
-  z-index: 3;
-  opacity: 0;
-}
-
-[title-reveal] .line-mask .rectangle.animate{
-  opacity: 1;
-}
-
-
-[title-reveal] .line-mask .rectangle > div {
-  height: 100%;
-  width: 100%;
   background: var(--orange-300_-key);
-  position: absolute;
-  inset: 0;
-}
-
-[title-reveal] .line {
-  z-index: 4;
-  padding: 0.1rem 0;
-  margin: -0.1rem 0;
-  position: relative;
-  display: block;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+  z-index: 0;
 }
 
 
@@ -2259,6 +2284,10 @@ a.text--grey:hover {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   will-change: transform;
+}
+
+.marquee--hero .marquee-content{
+  gap: 3rem;
 }
 
 .marquee-content {
@@ -2341,17 +2370,20 @@ a.text--grey:hover {
 .card--principles::before {
   content: '';
   position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
   z-index: 1;
   pointer-events: none;
   background: radial-gradient(
-                  350px circle at var(--x) var(--y),
+                  450px circle at var(--x) var(--y),
                   rgba(var(--glow-color), 1) 0%,
                   rgba(var(--glow-color), 0.6) 35%,
                   transparent 60%
   );
   opacity: var(--glow-opacity);
-  transition: opacity 0.35s ease;
+  transition: opacity 1s ease;
 }
 
 .card--principles::after {
@@ -2362,13 +2394,13 @@ a.text--grey:hover {
   pointer-events: none;
   border-radius: inherit;
   background: radial-gradient(
-                  150px circle at var(--x) var(--y),
+                  250px circle at var(--x) var(--y),
                   rgba(var(--glow-color), 1) 0%,
                   rgba(var(--glow-color), 0.7) 40%,
                   transparent 60%
   );
   opacity: var(--glow-opacity);
-  transition: opacity 0.35s ease;
+  transition: opacity 1s ease;
 }
 
 
@@ -2679,7 +2711,7 @@ b {
   &__text {
     display: flex;
     align-items: center;
-    padding: 9.375rem 0;
+    padding: 9.375rem 0 9.375rem 3.125rem;
     @media screen and (max-width: 767px) {
       padding: 0 var(--container-padding);
     }
@@ -2693,6 +2725,8 @@ b {
 }
 
 .gallery {
+  position: relative;
+  z-index: 4;
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2721,4 +2755,16 @@ b {
       top: 0;
     }
   }
+}
+
+.card-animate .card__wrapper > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: transform, opacity;
+}
+
+.card-animate.is-visible .card__wrapper > * {
+  opacity: 1;
+  transform: translateY(0);
 }
