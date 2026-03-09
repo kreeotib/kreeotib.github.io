@@ -84,6 +84,9 @@ class HeroAccelerator {
         this.hero = document.querySelector(selector);
         if (!this.hero) return;
 
+        // Ищем родительский трек, либо создаём обёртку сами
+        this.track = this.hero.closest('.hero-track') ?? this.hero.parentElement;
+
         this.content = this.hero.querySelector('.hero__content');
         this.bg = this.hero.querySelector('.hero__bg');
 
@@ -97,12 +100,17 @@ class HeroAccelerator {
 
     update() {
         const scrollY = window.scrollY;
+        const trackTop = this.track.offsetTop;
+        const trackHeight = this.track.offsetHeight;
         const vh = window.innerHeight;
 
-        const progress = Math.max(0, Math.min(scrollY / vh, 1));
+        // Прогресс относительно трека (0 → 1 за все 15vh)
+        const localScroll = scrollY - trackTop;
+        const scrollable = trackHeight - vh;
+        const progress = Math.max(0, Math.min(localScroll / scrollable, 1));
 
-        if (scrollY < vh * 2) {
-            this.hero.style.setProperty('--sy', scrollY.toFixed(0) + 'px');
+        if (progress >= 0 && localScroll < trackHeight) {
+            this.hero.style.setProperty('--sy', localScroll.toFixed(0) + 'px');
             this.hero.style.setProperty('--p', progress.toFixed(3));
 
             if (this.bg) {
@@ -110,8 +118,7 @@ class HeroAccelerator {
             }
 
             if (this.content) {
-                this.content.style.transform = `translate3d(0, ${-scrollY * 0.4}px, 0)`;
-
+                this.content.style.transform = `translate3d(0, ${-localScroll * 0.2}px, 0)`;
             }
         }
     }
@@ -120,14 +127,16 @@ class HeroAccelerator {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    new HeroAccelerator('.hero');
+
 });
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lenis
     const lenis = new Lenis({
         autoRaf: true,
+        lerp: 0.1,
     });
 
+    new HeroAccelerator('.hero');
 
     const geoSliderElement = document.querySelector('.geo-slider');
     const geoSlider = new Swiper(geoSliderElement, {
