@@ -1217,22 +1217,26 @@
 
         const preloader = document.querySelector('.preloader');
         const last = preloader.querySelector('.svg-elem-6');
-        document.body.classList.add('no-scroll')
+        document.body.classList.add('no-scroll');
+
+
+        let loaded = false;
 
         window.addEventListener('load', () => {
             last.addEventListener('animationiteration', () => {
-                preloader.classList.add('hidden');
-                document.body.classList.remove('no-scroll');
-                const animator = new CounterAnimator({
-                    threshold: 0.3,
-                    rootMargin: '0px 0px 0px 0px',
-                });
-
-                const initPageAnimations = () => {
-                    animator.observeCounters('.counters-block');
-                };
-
-                initPageAnimations();
+                if(!loaded){
+                    loaded = true;
+                    preloader.classList.add('hidden');
+                    document.body.classList.remove('no-scroll');
+                    const animator = new CounterAnimator({
+                        threshold: 0.3,
+                        rootMargin: '0px 0px 0px 0px',
+                    });
+                    const initPageAnimations = () => {
+                        animator.observeCounters('.counters-block');
+                    };
+                    initPageAnimations();
+                }
             });
         })
     })();
