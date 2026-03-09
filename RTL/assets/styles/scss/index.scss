@@ -2294,8 +2294,12 @@ a.text--grey:hover {
   will-change: transform;
 }
 
-.marquee--hero .marquee-content{
+
+.marquee--hero{
   gap: 3rem;
+}
+.marquee--hero .marquee-content{
+  gap: 5rem;
 }
 
 .marquee-content {
