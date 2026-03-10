@@ -66,7 +66,7 @@ body.no-scroll {
 
 .page-wrapper {
   position: relative;
-  min-height: 100dvh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -503,11 +503,11 @@ a.text--grey:hover {
   overflow: hidden;
   background-color: #000;
   transform: scale(1);
-  height: 100svh;
+  height: 100vh;
 }
 .hero-track {
   --hero-speed: 1.5;
-  height: calc(100svh + 100svh * var(--hero-speed));
+  height: calc(100vh + 100vh * var(--hero-speed));
 }
 .hero__svg {
   display: flex;
@@ -560,7 +560,7 @@ a.text--grey:hover {
   height: 100%;
 }
 .hero__content {
-  min-height: 100svh;
+  min-height: 100vh;
   position: relative;
   z-index: 2;
   display: flex;
@@ -828,6 +828,7 @@ a.text--grey:hover {
 
 .levels {
   width: 100%;
+  overflow: visible;
 }
 .levels-grid {
   display: grid;
@@ -1400,6 +1401,7 @@ a.text--grey:hover {
   top: 0 !important;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.325rem;
   margin-top: 1.5rem;
 }
@@ -1917,7 +1919,7 @@ a.text--grey:hover {
 @media screen and (max-width: 767px) {
   .person-item {
     padding: 6.875rem 0.625rem;
-    height: 100svh;
+    height: 100vh;
   }
 }
 .person-item__bg {

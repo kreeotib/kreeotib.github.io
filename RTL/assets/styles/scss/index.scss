@@ -87,7 +87,7 @@ body.no-scroll {
 
 .page-wrapper {
   position: relative;
-  min-height: 100dvh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -599,11 +599,11 @@ a.text--grey:hover {
   overflow: hidden;
   background-color: #000;
   transform: scale(1);
-  height: 100svh;
+  height: 100vh;
 
   &-track {
     --hero-speed: 1.5;
-    height: calc(100svh + 100svh * var(--hero-speed));
+    height: calc(100vh + 100vh * var(--hero-speed));
   }
 
   &__svg {
@@ -678,7 +678,7 @@ a.text--grey:hover {
   }
 
   &__content {
-    min-height: 100svh;
+    min-height: 100vh;
 
     position: relative;
     z-index: 2;
@@ -984,6 +984,7 @@ a.text--grey:hover {
 .levels {
   width: 100%;
 
+  overflow:visible;
   &-grid {
     display: grid;
     gap: .625rem;
@@ -1635,9 +1636,11 @@ a.text--grey:hover {
     top: 0 !important;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: .325rem;
 
     margin-top: 1.5rem;
+
     @media screen and (min-width: 768px) {
       display: none;
     }
@@ -2237,7 +2240,7 @@ a.text--grey:hover {
 
     @media screen and (max-width: 767px) {
       padding: 6.875rem .625rem;
-      height: 100svh;
+      height: 100vh;
     }
 
     &__bg {
