@@ -687,8 +687,8 @@ a.text--grey:hover {
     gap: var(--section-spacer-big);
     padding: 6.25rem 0;
     @media screen and (max-width: 767px) {
-      min-height: 50rem;
-      padding-bottom: 25rem;
+ 
+      padding-bottom: 5rem;
     }
 
     &--project {

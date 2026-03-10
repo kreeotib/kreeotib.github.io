@@ -571,8 +571,7 @@ a.text--grey:hover {
 }
 @media screen and (max-width: 767px) {
   .hero__content {
-    min-height: 50rem;
-    padding-bottom: 25rem;
+    padding-bottom: 5rem;
   }
 }
 .hero__content--project {
