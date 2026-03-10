@@ -84,7 +84,7 @@ class HeroAccelerator {
         this.hero = document.querySelector(selector);
         if (!this.hero) return;
 
-        this.track = this.hero.closest('.hero-track') ?? this.hero.parentElement;
+        this.track   = this.hero.closest('.hero-track') ?? this.hero.parentElement;
         this.content = this.hero.querySelector('.hero__content');
 
         this.init();
@@ -101,44 +101,34 @@ class HeroAccelerator {
 
     update() {
         const scrollY     = window.scrollY;
-        const trackTop    = this.track.offsetTop;
+        const vh          = window.innerHeight / 2;
+
+
+        const trackTop    = this.track.getBoundingClientRect().top + scrollY;
         const trackHeight = this.track.offsetHeight;
-        const vh          = window.innerHeight;
 
         const localScroll = scrollY - trackTop;
         const scrollable  = trackHeight - vh;
+
         const progress    = Math.max(0, Math.min(localScroll / scrollable, 1));
 
-        // 0%  → невидим
-        // 15% → текст начинает подниматься
-        // 30% → градиент начинает появляться
-        // 60% → текст начинает исчезать
-        // 75% → текст полностью скрыт за градиентом
-        // 100% → градиент полностью чёрный
-
-        // Текст: подъём 15%→75%, fade-out 60%→75%
-        const textRise    = HeroAccelerator.norm(progress, 0.15, 0.75);
-        const textOpacity = 1 - HeroAccelerator.norm(progress, 0.60, 0.75);
-
-        // Градиент: opacity 0→1 между 0%→30% (чтобы в нуле был невидим)
-        const gradOpacity = HeroAccelerator.norm(progress, 0.0, 0.30);
-
-        // --p для CSS-формулы: активен 30%→100%, пик = 1/1.5 ≈ 0.667
-        const gradFill = HeroAccelerator.norm(progress, 0.30, 1.0);
-        const p        = gradFill / 1.5;
+        const textRise    = HeroAccelerator.norm(progress / 1.25, 0.15, 1.0);
+        const textOpacity = 1 - HeroAccelerator.norm(progress / 1.5, 0.80, 1.0);
+        const gradOpacity = HeroAccelerator.norm(progress , 0.0, 0.30);
+        const gradFill    = HeroAccelerator.norm(progress / 1.5, 0.3, 0.8);
+        const p           = gradFill / 1.5;
 
         this.hero.style.setProperty('--p',            p.toFixed(4));
         this.hero.style.setProperty('--grad-opacity', gradOpacity.toFixed(4));
         this.hero.style.setProperty('--sy',           localScroll.toFixed(0) + 'px');
 
         if (this.content) {
-            const maxRise = vh * 0.55;
+            const maxRise = vh * 3;
             this.content.style.transform = `translate3d(0, ${-(textRise * maxRise).toFixed(1)}px, 0)`;
             this.content.style.opacity   = textOpacity.toFixed(4);
         }
     }
 }
-
 
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -602,7 +602,8 @@ a.text--grey:hover {
   height: 100svh;
 
   &-track {
-    height: 200svh;
+    --hero-speed: 1.5;
+    height: calc(100svh + 100svh * var(--hero-speed));
   }
 
   &__svg {
@@ -653,7 +654,7 @@ a.text--grey:hover {
       position: absolute;
       inset: 0;
       z-index: 2;
-      opacity: var(--grad-opacity, 0); /* ← ключевое исправление */
+      opacity: var(--grad-opacity, 0);
       background: radial-gradient(
                       ellipse 220% 180% at 50% -60%,
                       transparent 0%,
