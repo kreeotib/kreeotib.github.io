@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --main-font: "Bounded", sans-serif;
   --fluid-spacer: 0.052vw;
@@ -506,7 +507,7 @@ a.text--grey:hover {
   height: 100svh;
 }
 .hero-track {
-  height: 1000svh;
+  height: 200svh;
 }
 .hero__svg {
   display: flex;
@@ -546,8 +547,9 @@ a.text--grey:hover {
   position: absolute;
   inset: 0;
   z-index: 2;
+  opacity: var(--grad-opacity, 0); /* ← ключевое исправление */
   background: radial-gradient(ellipse 220% 180% at 50% -60%, transparent 0%, transparent calc(65% * (1 - var(--p, 0) * 1.5)), rgba(0, 0, 0, 0.8) calc(85% * (1 - var(--p, 0) * 1.5)), #000 calc(105% * (1 - var(--p, 0) * 1.5)), #000 100%);
-  will-change: background, opacity;
+  will-change: opacity, background;
   pointer-events: none;
 }
 .hero__bg video {
@@ -1042,6 +1044,16 @@ a.text--grey:hover {
   top: 0;
   transition: 0.3s opacity;
 }
+@media screen and (max-width: 767px) {
+  .card__video--desktop {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card__video--mobile {
+    display: none;
+  }
+}
 .card__bg {
   position: absolute;
   left: 0;
@@ -1185,6 +1197,7 @@ a.text--grey:hover {
 @media screen and (max-width: 767px) {
   .geo-item__wrapper {
     padding: 1.857rem var(--container-padding);
+    padding-bottom: 17.5rem;
   }
 }
 .geo-item__content {
@@ -1217,10 +1230,20 @@ a.text--grey:hover {
   -webkit-mask-mode: alpha;
   mask-mode: alpha;
 }
+@media screen and (min-width: 768px) {
+  .geo-item__bg--m {
+    display: none;
+  }
+}
 @media screen and (max-width: 767px) {
   .geo-item__bg {
     -webkit-mask-image: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 44.06%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 44.06%, rgba(0, 0, 0, 0) 100%);
+    display: none;
+    object-position: bottom center;
+  }
+  .geo-item__bg--m {
+    display: flex;
   }
 }
 .geo-item__bg img {

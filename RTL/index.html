@@ -719,11 +719,15 @@
                             <div class="levels swiper">
                                 <div class="levels-grid swiper-wrapper">
                                     <div class="swiper-slide levels-grid__item card--level levels-grid__item--big card">
-                                        <img src="assets/images/levels/bg-2.webp" alt=""
-                                             class="card__bg card__bg--mobile" loading="lazy">
-                                        <div class="card__video">
+                                        <div class="card__video card__video--desktop">
                                             <img src="assets/video/levels/log.webp" alt="">
-                                            <video src="assets/video/levels/log.mp4" poster="assets/video/levels/customs.webp" playsinline muted
+                                            <video src="assets/video/levels/log.mp4" poster="assets/video/levels/log.webp" playsinline muted
+                                                   loop webkit-playsinline disablePictureInPicture
+                                                   controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                        </div>
+                                        <div class="card__video card__video--mobile">
+                                            <img src="assets/video/levels/log-m.webp" alt="">
+                                            <video src="assets/video/levels/log-m.mp4" poster="assets/video/levels/log-m.webp" playsinline muted
                                                    loop webkit-playsinline disablePictureInPicture
                                                    controlslist="nodownload nofullscreen noremoteplayback"></video>
                                         </div>
@@ -747,14 +751,14 @@
                                         </div>
                                     </div>
                                     <div class="swiper-slide levels-grid__item card--level levels-grid__item--row--big card">
-                                        <img src="assets/images/levels/bg-3.webp" alt=""
-                                             class="card__bg card__bg--mobile" loading="lazy">
+
                                         <div class="card__video">
                                             <img src="assets/video/levels/ing.webp" alt="">
-                                            <video src="assets/video/levels/ing.mp4" poster="assets/video/levels/customs.webp" playsinline muted
+                                            <video src="assets/video/levels/ing.mp4" poster="assets/video/levels/ing.webp" playsinline muted
                                                    loop webkit-playsinline disablePictureInPicture
                                                    controlslist="nodownload nofullscreen noremoteplayback"></video>
                                         </div>
+
                                         <div class="card__wrapper">
                                             <svg class="card__icon">
                                                 <use xlink:href="assets/images/sprite.svg#level-engineering"></use>
@@ -774,8 +778,6 @@
                                         </div>
                                     </div>
                                     <div class="swiper-slide levels-grid__item card--level levels-grid__item--row--big card">
-                                        <img src="assets/images/levels/bg-4.webp" alt=""
-                                             class="card__bg card__bg--mobile" loading="lazy">
                                         <div class="card__video">
                                             <img src="assets/video/levels/customs.webp" alt="">
                                             <video src="assets/video/levels/customs.mp4" poster="assets/video/levels/customs.webp" playsinline muted
@@ -815,9 +817,18 @@
                                         </div>
                                     </div>
                                     <div class="swiper-slide levels-grid__item card--level levels-grid__item--big card">
-                                        <img src="assets/images/levels/bg-5.webp" alt=""
-                                             class="card__bg card__bg--mobile" loading="lazy">
-
+                                        <div class="card__video card__video--desktop">
+                                            <img src="assets/video/levels/exp.webp" alt="">
+                                            <video src="assets/video/levels/exp.mp4" poster="assets/video/levels/exp.webp" playsinline muted
+                                                   loop webkit-playsinline disablePictureInPicture
+                                                   controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                        </div>
+                                        <div class="card__video card__video--mobile">
+                                            <img src="assets/video/levels/exp-m.webp" alt="">
+                                            <video src="assets/video/levels/exp-m.mp4" poster="assets/video/levels/exp-m.webp" playsinline muted
+                                                   loop webkit-playsinline disablePictureInPicture
+                                                   controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                        </div>
                                         <div class="card__wrapper">
                                             <svg class="card__icon">
                                                 <use xlink:href="assets/images/sprite.svg#level-exp"></use>
@@ -1017,6 +1028,7 @@
                                         <video class="geo-item__bg" src="assets/video/geo/ru.mp4" poster="assets/video/geo/ru.webp" playsinline muted autoplay
                                                loop webkit-playsinline disablePictureInPicture
                                                controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                        <img class=" geo-item__bg geo-item__bg--m" src="assets/video/geo/ru-m.webp" alt="">
                                         <div class="geo-item__wrapper">
                                             <div class="geo-item__content">
                                                 <p data-reveal class="title title--base title--semibold">
@@ -1044,6 +1056,7 @@
                                         <video class="geo-item__bg" src="assets/video/geo/eu.mp4" poster="assets/video/geo/eu.webp" playsinline muted autoplay
                                                loop webkit-playsinline disablePictureInPicture
                                                controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                        <img class="geo-item__bg geo-item__bg--m" src="assets/video/geo/eu-m.webp" alt="">
                                         <div class="geo-item__wrapper">
                                             <div class="geo-item__content">
                                                 <p  data-reveal class="title title--base title--semibold">
@@ -1066,6 +1079,7 @@
                                         <video class="geo-item__bg" src="assets/video/geo/asia.mp4" poster="assets/video/geo/asia.webp" playsinline muted autoplay
                                                loop webkit-playsinline disablePictureInPicture
                                                controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                        <img class="geo-item__bg geo-item__bg--m" src="assets/video/geo/asia-m.webp" alt="">
                                         <div class="geo-item__wrapper">
                                             <div class="geo-item__content">
                                                 <p data-reveal class="title title--base title--semibold">
@@ -1112,7 +1126,7 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide person-item">
                                             <div class="person-item__bg">
-                                                <video src="assets/video/promo.mp4" playsinline muted autoplay
+                                                <video src="assets/video/interview/video_inter_prew.mp4" playsinline muted autoplay
                                                        loop webkit-playsinline disablePictureInPicture
                                                        controlslist="nodownload nofullscreen noremoteplayback"></video>
 
@@ -1144,7 +1158,7 @@
                                         </div>
                                         <div class="swiper-slide person-item">
                                             <div class="person-item__bg">
-                                                <video src="assets/video/promo.mp4" playsinline muted autoplay
+                                                <video src="assets/video/interview/video_inter_prew.mp4" playsinline muted autoplay
                                                        loop webkit-playsinline disablePictureInPicture
                                                        controlslist="nodownload nofullscreen noremoteplayback"></video>
 
@@ -1176,7 +1190,7 @@
                                         </div>
                                         <div class="swiper-slide person-item">
                                             <div class="person-item__bg">
-                                                <video src="assets/video/promo.mp4" playsinline muted autoplay
+                                                <video src="assets/video/interview/video_inter_prew.mp4" playsinline muted autoplay
                                                        loop webkit-playsinline disablePictureInPicture
                                                        controlslist="nodownload nofullscreen noremoteplayback"></video>
 
@@ -1208,7 +1222,7 @@
                                         </div>
                                         <div class="swiper-slide person-item">
                                             <div class="person-item__bg">
-                                                <video src="assets/video/promo.mp4" playsinline muted autoplay
+                                                <video src="assets/video/interview/video_inter_prew.mp4" playsinline muted autoplay
                                                        loop webkit-playsinline disablePictureInPicture
                                                        controlslist="nodownload nofullscreen noremoteplayback"></video>
 
