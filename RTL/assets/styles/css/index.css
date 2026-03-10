@@ -521,7 +521,6 @@ a.text--grey:hover {
     left: 0;
     width: 100%;
     pointer-events: none;
-    transform: scale(0.3);
   }
 }
 .hero__bg {
