@@ -112,18 +112,18 @@ class HeroAccelerator {
 
         const progress    = Math.max(0, Math.min(localScroll / scrollable, 1));
 
-        const textRise    = HeroAccelerator.norm(progress / 1.25, 0.15, 1.0);
+        const textRise    = HeroAccelerator.norm(progress / 1.75, 0, 1.0);
         const textOpacity = 1 - HeroAccelerator.norm(progress / 1.5, 0.80, 1.0);
         const gradOpacity = HeroAccelerator.norm(progress , 0.0, 0.30);
-        const gradFill    = HeroAccelerator.norm(progress / 1.5, 0.3, 0.8);
-        const p           = gradFill / 1.5;
+        const gradFill    = HeroAccelerator.norm(progress / 1.25, 0.15, 0.8);
+        const p           = gradFill / 2.25;
 
         this.hero.style.setProperty('--p',            p.toFixed(4));
         this.hero.style.setProperty('--grad-opacity', gradOpacity.toFixed(4));
         this.hero.style.setProperty('--sy',           localScroll.toFixed(0) + 'px');
 
         if (this.content) {
-            const maxRise = vh * 3;
+            const maxRise = vh * 3.1;
             this.content.style.transform = `translate3d(0, ${-(textRise * maxRise).toFixed(1)}px, 0)`;
             this.content.style.opacity   = textOpacity.toFixed(4);
         }
