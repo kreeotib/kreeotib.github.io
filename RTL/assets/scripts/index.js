@@ -212,8 +212,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const principlesSlider = new Swiper(principlesSliderElement, {
         init: false,
         slidesPerView: 'auto',
-        spaceBetween: 0,
+        spaceBetween: 24,
         speed: 500,
+        breakpoints:{
+            768:{
+                spaceBetween:0,
+            }
+        },
         pagination: {
             el: '.principles-pagination',
             type: 'bullets',
@@ -231,8 +236,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const levelsSlider = new Swiper(levelsSliderElement, {
         init: false,
         slidesPerView: 'auto',
-        spaceBetween: 0,
+        spaceBetween: 24,
         speed: 500,
+
+        breakpoints:{
+          768:{
+              spaceBetween:0,
+          }
+        },
         pagination: {
             el: '.levels-pagination',
             type: 'bullets',
