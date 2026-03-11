@@ -69,7 +69,7 @@
         <div class="hero__wrapper">
             <div class="hero-bg">
                 <video src="assets/images/hero.mp4" playsinline muted autoplay
-                       loop webkit-playsinline disablePictureInPicture
+                       loop webkit-playsinline disablePictureInPicture preload="metadata"
                        controlslist="nodownload nofullscreen noremoteplayback" class="hero-bg__item"></video>
             </div>
             <div class="hero__content">
@@ -280,22 +280,40 @@
                 <div class="banks">
                     <div class="banks__grid">
                         <div class="banks-item">
-                            <img class="banks-item__img" src="assets/images/banks/sberbank.webp" alt="">
+                            <picture class="banks-item__img">
+                                <source srcset="assets/images/banks/sberbank.svg" media="(max-width: 640px)">
+                                <img src="assets/images/banks/sberbank.webp" alt="Description">
+                            </picture>
                         </div>
                         <div class="banks-item">
-                            <img class="banks-item__img" src="assets/images/banks/alfabank.webp" alt="">
+                            <picture class="banks-item__img">
+                                <source srcset="assets/images/banks/alfabank.svg" media="(max-width: 640px)">
+                                <img src="assets/images/banks/alfabank.webp" alt="Description">
+                            </picture>
                         </div>
                         <div class="banks-item">
-                            <img class="banks-item__img" src="assets/images/banks/gazprombank.webp" alt="">
+                            <picture class="banks-item__img">
+                                <source srcset="assets/images/banks/gazprombank.svg" media="(max-width: 640px)">
+                                <img src="assets/images/banks/gazprombank.webp" alt="Description">
+                            </picture>
                         </div>
                         <div class="banks-item">
-                            <img class="banks-item__img" src="assets/images/banks/domrfbank.webp" alt="">
+                            <picture class="banks-item__img">
+                                <source srcset="assets/images/banks/domrfbank.svg" media="(max-width: 640px)">
+                                <img src="assets/images/banks/domrfbank.webp" alt="Description">
+                            </picture>
                         </div>
                         <div class="banks-item">
-                            <img class="banks-item__img" src="assets/images/banks/vtb.webp" alt="">
+                            <picture class="banks-item__img">
+                                <source srcset="assets/images/banks/vtb.svg" media="(max-width: 640px)">
+                                <img src="assets/images/banks/vtb.webp" alt="Description">
+                            </picture>
                         </div>
                         <div class="banks-item">
-                            <img class="banks-item__img" src="assets/images/banks/rshb.webp" alt="">
+                            <picture class="banks-item__img">
+                                <source srcset="assets/images/banks/rshb.svg" media="(max-width: 640px)">
+                                <img src="assets/images/banks/rshb.webp" alt="Description">
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -683,7 +701,7 @@
     </div>
     <div class="section">
         <div class="marquee-list">
-            <div class="marquee" data-speed="1.25">
+            <div class="marquee" data-speed="2.5">
                 <div class="marquee-content">
                     <img src="assets/images/gallery/1/01.webp" alt="" class="gallery__img gallery__img--small">
                     <img src="assets/images/gallery/1/02.webp" alt="" class="gallery__img gallery__img--small">

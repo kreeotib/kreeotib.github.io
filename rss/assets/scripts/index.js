@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             marquee.appendChild(clone);
 
             let position = 0;
-            const baseSpeed = marquee.dataset.speed || 1;
+            const baseSpeed = marquee.dataset.speed || 2;
             let scrollSpeed = 0;
             function animate() {
                 let currentSpeed = baseSpeed + scrollSpeed;
