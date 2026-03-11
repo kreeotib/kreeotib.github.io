@@ -2480,6 +2480,19 @@ b {
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 767px) {
+  .page-404__bg {
+    display: none;
+  }
+}
+.page-404__bg--mobile {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .page-404__bg--mobile {
+    display: block;
+  }
+}
 .page-404__bg::before {
   content: "";
   position: absolute;

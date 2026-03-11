@@ -178,7 +178,14 @@
         <div class="content-wrapper">
             <div class="section page-404">
                 <div class="page-404__bg">
-                    <img src="assets/images/404.webp" alt="">
+                    <video src="assets/video/404/404.mp4" poster="assets/video/404/404.webp" playsinline muted autoplay
+                            webkit-playsinline disablePictureInPicture
+                           controlslist="nodownload nofullscreen noremoteplayback"></video>
+                </div>
+                <div class="page-404__bg page-404__bg--mobile">
+                    <video src="assets/video/404/404m.mp4" poster="assets/video/404/404m.webp" playsinline muted autoplay
+                           webkit-playsinline disablePictureInPicture
+                           controlslist="nodownload nofullscreen noremoteplayback"></video>
                 </div>
                 <div class="container">
                     <div class="section__wrapper page-404__wrapper">
@@ -694,13 +701,22 @@
         const preloader = document.querySelector('.preloader');
         const last = preloader.querySelector('.svg-elem-6');
         document.body.classList.add('no-scroll');
-
+        const page404bg = document.querySelectorAll('.page-404__bg');
 
         let loaded = false;
 
         window.addEventListener('load', () => {
             last.addEventListener('animationiteration', () => {
                 if (!loaded) {
+                    if(page404bg.length){
+                        page404bg.forEach(bg=>{
+                            const video = bg.querySelector('video');
+                            video.addEventListener('loadedmetadata', function() {
+                                video.currentTime = 0;
+                            });
+                            video.play()
+                        })
+                    }
                     loaded = true;
                     preloader.classList.add('hidden');
                     document.body.classList.remove('no-scroll');

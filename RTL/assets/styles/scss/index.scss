@@ -2866,6 +2866,17 @@ b {
     align-items: center;
     justify-content: center;
 
+    @media screen and (max-width: 767px) {
+
+      display: none;
+    }
+    &--mobile{
+      display: none;
+      @media screen and (max-width: 767px) {
+        display: block;
+      }
+    }
+
     &::before{
       content: "";
       position: absolute;
