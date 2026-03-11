@@ -2837,6 +2837,12 @@ b {
   height: 100%;
 
   min-height: 100vh;
+  &__text{
+    @media screen and (max-width: 767px) {
+      max-width: 20rem;
+      width: 100%;
+    }
+  }
   &__wrapper{
     position: relative;
     z-index: 3;

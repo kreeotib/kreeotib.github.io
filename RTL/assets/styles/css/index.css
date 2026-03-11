@@ -2452,6 +2452,12 @@ b {
   height: 100%;
   min-height: 100vh;
 }
+@media screen and (max-width: 767px) {
+  .page-404__text {
+    max-width: 20rem;
+    width: 100%;
+  }
+}
 .page-404__wrapper {
   position: relative;
   z-index: 3;

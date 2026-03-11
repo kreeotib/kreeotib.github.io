@@ -178,21 +178,21 @@
         <div class="content-wrapper">
             <div class="section page-404">
                 <div class="page-404__bg">
-                    <video src="assets/video/404/404.mp4" poster="assets/video/404/404.webp" playsinline muted autoplay
+                    <video src="assets/video/404/404.mp4" poster="assets/video/404/404.webp" playsinline muted
                             webkit-playsinline disablePictureInPicture
                            controlslist="nodownload nofullscreen noremoteplayback"></video>
                 </div>
                 <div class="page-404__bg page-404__bg--mobile">
-                    <video src="assets/video/404/404m.mp4" poster="assets/video/404/404m.webp" playsinline muted autoplay
+                    <video src="assets/video/404/404m.mp4" poster="assets/video/404/404m.webp" playsinline muted 
                            webkit-playsinline disablePictureInPicture
                            controlslist="nodownload nofullscreen noremoteplayback"></video>
                 </div>
                 <div class="container">
                     <div class="section__wrapper page-404__wrapper">
                         <p class="title title--base title--semibold">
-                            Ой, кажется, эта страницы нет.
+                            Ой, кажется, этой страницы&nbsp;нет.
                         </p>
-                        <p class="text text--base">
+                        <p class="text text--base page-404__text">
                             Мы не смогли найти то, что вы искали. Возможно,<br> адрес был введен неверно или
                             страница переехала.
                         </p>
@@ -710,6 +710,7 @@
                 if (!loaded) {
                     if(page404bg.length){
                         page404bg.forEach(bg=>{
+                            console.log(bg);
                             const video = bg.querySelector('video');
                             video.addEventListener('loadedmetadata', function() {
                                 video.currentTime = 0;
