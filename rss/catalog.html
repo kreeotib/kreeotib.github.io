@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+
+    <link rel="stylesheet" href="assets/styles/css/catalog.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header__row">
+                <a href="/" class="header__logo">
+                    <svg class="logo__img">
+                        <use xlink:href="assets/images/sprite.svg#logo"></use>
+                    </svg>
+                </a>
+                <nav class="header-nav">
+                    <ul class="header-nav__list">
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Каталог проектов
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Построено
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Услуги
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                О компании
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__burger">
+                    <button class="burger">
+                        <span class="burger__item"></span>
+                        <span class="burger__item"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="hero animation-wrapper">
+            <div class="hero__wrapper">
+                <div class="hero-bg">
+                    <video src="assets/images/hero.mp4" playsinline muted autoplay
+                           loop webkit-playsinline disablePictureInPicture preload="metadata"
+                           controlslist="nodownload nofullscreen noremoteplayback" class="hero-bg__item"></video>
+                </div>
+                <div class="hero__content">
+                    <div class="container">
+                        <a href="/" class="logo hero__logo" data-animation>
+                            <svg class="logo__img">
+                                <use xlink:href="assets/images/sprite.svg#logo"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero__footer">
+                    <div class="container">
+                        <a href="#" class="title title--grey title--small" data-animation>
+                            Строительная компания
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section catalog">
+            <div class="section__wrapper section__wrapper--big">
+                <div class="catalog__wrapper">
+                    <div class="catalog__header">
+                        <div class="container">
+                            <div class="section__header">
+                                <p class="title title--headline title--bold" data-animation>
+                                    Типовые проекты домов
+                                </p>
+                                <p class="text text--base" data-animation>
+                                    Все дома разные. Не навязываем архитектурный стиль, конкретную технологию
+                                    или материалы. Стремимся воссоздать вашу мечту с максимальной точностью.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="catalog-filter">
+                                <ul class="catalog-filter__list">
+                                    <li class="catalog-filter__item">
+                                        <label class="catalog-label">
+                                            <input type="radio" name="catalog-filter" checked value="all"
+                                                   class="catalog-label__input">
+                                            <span class="catalog-label__text">Все проекты</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filter__item">
+                                        <label class="catalog-label">
+                                            <input type="radio" name="catalog-filter" value="karkas"
+                                                   class="catalog-label__input">
+                                            <span class="catalog-label__text">Каркас</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filter__item">
+                                        <label class="catalog-label">
+                                            <input type="radio" name="catalog-filter" value="gazobeton"
+                                                   class="catalog-label__input">
+                                            <span class="catalog-label__text">Газобетон</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filter__item">
+                                        <label class="catalog-label">
+                                            <input type="radio" name="catalog-filter" value="kleenyj-brus"
+                                                   class="catalog-label__input">
+                                            <span class="catalog-label__text">Клееный брус</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filter__item">
+                                        <label class="catalog-label">
+                                            <input type="radio" name="catalog-filter" value="monolit"
+                                                   class="catalog-label__input">
+                                            <span class="catalog-label__text">Монолит</span>
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filter__item">
+                                        <label class="catalog-label">
+                                            <input type="radio" name="catalog-filter" value="modul-monolit"
+                                                   class="catalog-label__input">
+                                            <span class="catalog-label__text">Модуль-монолит</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-grid">
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="karkas">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Дехака
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/1.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                    <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="modul-monolit">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Артанис
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/2.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="monolit">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Загара
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/3.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="kleenyj-brus">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Каракс
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/4.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="karkas">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Стетманн
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/5.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="gazobeton">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Свонн
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/6.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="karkas">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Никара
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/7.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="gazobeton">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Нова
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/8.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="karkas">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Стуков
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/9.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-grid__item catalog-card" data-animation data-category="monolit">
+                            <div class="catalog-card__wrapper">
+                                <div class="catalog-card__header">
+                                    <p class="catalog-card__title">
+                                        Абатур
+                                    </p>
+                                    <picture class="catalog-card__img">
+                                        <img src="assets/images/catalog/10.webp" alt="">
+                                    </picture>
+                                </div>
+                                <div class="catalog-card__content">
+                                    <div class="catalog-card__row">
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#square"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Площадь:</span>
+                                            <span class="catalog-info__count">419 м<sup>2</sup></span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#rooms"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Комнат:</span>
+                                            <span class="catalog-info__count">6</span>
+                                        </div>
+                                        <div class="catalog-info">
+                                            <svg class="catalog-info__icon">
+                                                <use xlink:href="assets/images/sprite.svg#stages"></use>
+                                            </svg>
+                                            <span class="catalog-info__label">Этажей:</span>
+                                            <span class="catalog-info__count">2</span>
+                                        </div>
+                                    </div>
+                                   <button data-popup="#popup-application" class="button button--small button--grey">
+                                        Подробнее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="container">
+                <div class="footer__column">
+                    <a href="/" class="logo footer__logo">
+                        <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo"></use>
+                        </svg>
+                    </a>
+                    <div class="footer__row">
+                        <ul class="footer-list">
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">Главная</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">Каталог проектов</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">Построено</a>
+                            </li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">Услуги</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">О компании</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">Контакты</a>
+                            </li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li class="footer-list__item">
+                                <a href="tel:+7 (812) 409-41-03"
+                                   class="footer-list__link footer-list__link--semibold footer-list__link--right">+7
+                                    (812) 409-41-03
+                                </a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="mailto:info@rss.group"
+                                   class="footer-list__link footer-list__link--semibold footer-list__link--right">
+                                    info@rss.group
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-info">
+                        <div class="footer-info__wrapper">
+                            <p class="text text--subtitle text--white">
+                                Цены, указанные на&nbsp;сайте имеют ознакомительный характер и&nbsp;не&nbsp;являются
+                                публичной
+                                офертой.Цена зависит от&nbsp;удалённости объекта и&nbsp;ваших пожеланий. Актуальную
+                                информацию
+                                уточняйте у&nbsp;менеджера.
+                            </p>
+                            <span class="footer-info__divider"></span>
+                            <div class="footer-info__row">
+                                <p class="footer-info__item text text--subtitle text--white">
+                                    &copy;&nbsp;Все права защищены
+                                </p>
+                                <p class="footer-info__item text text--subtitle text--white">
+                                    ИНН: 7807128989
+                                </p>
+                                <p class="footer-info__item text text--subtitle text--white">
+                                    ОГРН: 1167847275485
+                                </p>
+                                <a href="#" class="footer-info__item text text--subtitle text--white text--medium">
+                                    Политика конфиденциальности
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__decor">
+            <img src="assets/images/footer-decorsvg.svg" alt="">
+        </div>
+    </footer>
+</div>
+
+<div class="popup" id="popup-application">
+    <div class="popup__wrapper">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+            <button class="popup-close popup__close">
+                <svg class="icon">
+                    <use xlink:href="assets/images/sprite.svg#xmark"></use>
+                </svg>
+            </button>
+            <form action="#" class="application-popup form">
+                <div class="application-popup__header">
+                    <img src="assets/images/application-popup.webp" alt="">
+                </div>
+                <div class="application-popup__content">
+                    <p class="title title--bold title--middle">
+                        Запросить смету <br> на проект Адун Торидас
+                    </p>
+                    <div class="form__content">
+                        <div class="form-input">
+                            <label class="form-input__label" for="application-popup-tel">Телефон</label>
+                            <div class="phone-input">
+                                <input type="text" name="application-popup-tel" id="application-popup-tel" placeholder="(999) 999-99-99" class="form-input__item phone-input__item">
+                            </div>
+                        </div>
+                        <div class="form-input">
+                            <label class="form-input__label" for="application-popup-msg">Сообщение</label>
+                            <textarea name="application-popup-tel" id="application-popup-msg" class="form-input__item form-input__item--textarea">Здравствуйте! Хочу получить смету на этот проект: Шале РСС (rss.group/product/122/shale-rss).</textarea>
+                        </div>
+                    </div>
+                    <div class="application-popup__footer">
+                        <p class="form__subtext">
+                            Отправляя заявку, Вы подтверждаете, что ознакомлены с <br>
+                            <a href="#">Политикой конфиденциальности</a>
+                        </p>
+                        <button type="submit" class="button button--base button--base--small button--full button--gradient">
+                            <span class="button__text">
+                             Отправить заявку
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/imask"></script>
+<script>
+    IMask(document.getElementById('application-popup-tel'), {
+        mask: '(000) 000-00-00',
+    });
+</script>
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/scripts/index.js"></script>
+</body>
+</html>
