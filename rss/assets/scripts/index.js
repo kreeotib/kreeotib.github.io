@@ -304,10 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!window.__CF_MANUAL_INIT__) CatalogFilter.init();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init();
-});
-
 const Popup = (() => {
     const CLOSE_DURATION = 210;
 
@@ -409,8 +405,224 @@ const Popup = (() => {
 
 window.Popup = Popup;
 
+const CopyText = (() => {
+    const DEFAULTS = {
+        wrapperSelector: '.copy',
+        textSelector: '.copy__text',
+        buttonSelector: '.copy__button',
+        activeClass: 'is-copied',
+        resetDelay: 2000,
+    };
+
+    let config = { ...DEFAULTS };
+
+    function copyToClipboard(text) {
+        if (navigator.clipboard?.writeText) {
+            return navigator.clipboard.writeText(text);
+        }
+
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        return Promise.resolve();
+    }
+
+    function handleCopy(wrapper) {
+        const textEl = wrapper.querySelector(config.textSelector);
+        if (!textEl) {
+            console.warn('[CopyText] No text element found in wrapper:', wrapper);
+            return;
+        }
+
+        const text = textEl.textContent.trim();
+
+        copyToClipboard(text)
+            .then(() => {
+                wrapper.classList.add(config.activeClass);
+                setTimeout(() => wrapper.classList.remove(config.activeClass), config.resetDelay);
+                wrapper.dispatchEvent(new CustomEvent('copy:success', { bubbles: true, detail: { text } }));
+            })
+            .catch(err => {
+                console.warn('[CopyText] Copy failed:', err);
+                wrapper.dispatchEvent(new CustomEvent('copy:error', { bubbles: true, detail: { err } }));
+            });
+    }
+
+    function init(options = {}) {
+        config = { ...DEFAULTS, ...options };
+
+        const wrappers = document.querySelectorAll(config.wrapperSelector);
+
+        if (!wrappers.length) {
+            console.warn('[CopyText] No .copy elements found on page.');
+            return;
+        }
+
+        document.addEventListener('click', (e) => {
+            const button = e.target.closest(config.buttonSelector);
+            if (!button) return;
+
+            const wrapper = button.closest(config.wrapperSelector);
+            if (!wrapper) return;
+
+            handleCopy(wrapper);
+        });
+    }
+
+    function copy(selector) {
+        const wrapper = typeof selector === 'string'
+            ? document.querySelector(selector)
+            : selector;
+
+        if (!wrapper) {
+            console.warn('[CopyText] copy() — element not found:', selector);
+            return;
+        }
+
+        handleCopy(wrapper);
+    }
+
+    return { init, copy };
+})();
+
+window.CopyText = CopyText;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__CT_MANUAL_INIT__) CopyText.init();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     Popup.init();
+});
+const Lightbox = (() => {
+    const DEFAULTS = {
+        itemSelector: '.gallery-item',
+        gallerySelector: '.gallery',
+        imageSelector: 'img',
+        popupId: '#popup-lightbox',
+        imgSelector: '.lightbox-popup__img',
+        prevSelector: '.lightbox-popup-prev',
+        nextSelector: '.lightbox-popup-next',
+    };
+
+    let config = { ...DEFAULTS };
+    let currentItem = null;
+    let currentGalleryItems = [];
+
+    function getImageSrc(item) {
+        const bigAttr = item.getAttribute('data-big');
+        if (bigAttr) return bigAttr;
+        const img = item.querySelector(config.imageSelector);
+        return img ? img.getAttribute('src') : null;
+    }
+
+    function getImg() {
+        return document.querySelector(config.imgSelector);
+    }
+
+    function updateNav() {
+        const index = currentGalleryItems.indexOf(currentItem);
+        const prev = document.querySelector(config.prevSelector);
+        const next = document.querySelector(config.nextSelector);
+        if (!prev || !next) return;
+
+        const single = currentGalleryItems.length <= 1;
+        prev.style.display = single ? 'none' : '';
+        next.style.display = single ? 'none' : '';
+        prev.classList.toggle('is-disabled', index <= 0);
+        next.classList.toggle('is-disabled', index >= currentGalleryItems.length - 1);
+    }
+
+    function setImage(item) {
+        currentItem = item;
+        const img = getImg();
+        if (!img) return;
+
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = getImageSrc(item);
+            img.onload = () => { img.style.opacity = '1'; };
+        }, 150);
+
+        updateNav();
+    }
+
+    function navigate(dir) {
+        const index = currentGalleryItems.indexOf(currentItem);
+        const next = currentGalleryItems[index + dir];
+        if (next) setImage(next);
+    }
+
+    function open(item) {
+        if (!item) {
+            console.warn('[Lightbox] open() — item not found.');
+            return;
+        }
+
+        const gallery = item.closest(config.gallerySelector);
+        currentGalleryItems = gallery
+            ? Array.from(gallery.querySelectorAll(config.itemSelector))
+            : [item];
+
+        setImage(item);
+        window.Popup?.open(config.popupId);
+    }
+
+    function bindEvents() {
+        document.addEventListener('click', (e) => {
+            const item = e.target.closest(config.itemSelector);
+            if (item && item.hasAttribute('data-big')) {
+                open(item);
+                return;
+            }
+
+            if (e.target.closest(config.prevSelector)) { navigate(-1); return; }
+            if (e.target.closest(config.nextSelector)) { navigate(1); return; }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const popup = document.querySelector(config.popupId);
+            if (!popup?.classList.contains('is-active')) return;
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+        });
+
+        document.querySelector(config.popupId)?.addEventListener('popup:closed', () => {
+            const img = getImg();
+            if (img) img.src = '';
+            currentItem = null;
+            currentGalleryItems = [];
+        });
+    }
+
+    function init(options = {}) {
+        config = { ...DEFAULTS, ...options };
+
+        const items = document.querySelectorAll(config.itemSelector);
+        if (!items.length) {
+            console.warn('[Lightbox] No gallery items found on page.');
+            return;
+        }
+
+        if (!document.querySelector(config.popupId)) {
+            console.warn(`[Lightbox] Popup "${config.popupId}" not found on page.`);
+            return;
+        }
+
+        bindEvents();
+    }
+
+    return { init, open };
+})();
+
+window.Lightbox = Lightbox;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__LB_MANUAL_INIT__) Lightbox.init();
 });
 document.addEventListener('DOMContentLoaded',()=>{
     const stepsSliderElement = document.querySelector('.steps-slider');

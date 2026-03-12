@@ -1,0 +1,61 @@
+@media screen and (min-width: 1241px) {
+  .contact__header {
+    gap: var(--section-spacer-big);
+  }
+}
+@media screen and (min-width: 1241px) {
+  .contact__wrapper {
+    padding-bottom: 9.25rem;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .contact__wrapper {
+    padding-top: 2rem;
+  }
+}
+@media screen and (min-width: 1241px) {
+  .contact-list {
+    border-radius: 1.5rem;
+    background: var(--color-white-dark);
+    padding: 2rem;
+  }
+}
+.contact-list__item {
+  border-bottom: 1px solid #E4E4ED;
+  padding: 1.5rem 0;
+}
+.contact-list__item:first-child {
+  padding-top: 0;
+}
+.contact-list__item:last-child {
+  padding-bottom: 0;
+  border-bottom: transparent;
+}
+.contact-item__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.contact-item__title {
+  font-size: var(--title-size-tiny);
+  max-width: 40%;
+}
+.contact-item__title--semibold {
+  font-weight: 600;
+}
+.contact-item__title--right {
+  text-align: right;
+  flex-shrink: 1;
+  max-width: 34rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 1240px) {
+  .contact-item__title--right {
+    max-width: 12.5rem;
+  }
+}
+
+/*# sourceMappingURL=contact.css.map */
