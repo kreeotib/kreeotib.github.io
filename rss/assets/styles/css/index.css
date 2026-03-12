@@ -64,6 +64,7 @@ html {
 body {
   font-family: var(--main-font);
   font-size: var(--text-size-base);
+  font-weight: 400;
 }
 
 body.no-scroll {
@@ -127,12 +128,15 @@ body.no-scroll {
   font-size: var(--text-size-base);
   font-weight: 700;
   width: 25rem;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 4rem;
   overflow: hidden;
 }
 .button--base--small {
   height: 3.375rem;
+}
+.button--base--maxcontent {
+  width: max-content;
 }
 @media screen and (max-width: 1240px) {
   .button--base {
@@ -211,6 +215,9 @@ body.no-scroll {
 .title--big {
   font-size: var(--title-size-big);
 }
+.title--subheadline {
+  font-size: var(--title-size-subheadline);
+}
 .title--headline {
   font-size: var(--title-size-headline);
 }
@@ -235,8 +242,14 @@ body.no-scroll {
   color: #EBEDF5;
   opacity: 0.5;
 }
+.title--accent {
+  color: var(--color-accent);
+}
 .title--accent--light {
   color: var(--color-accent-light);
+}
+.title--number {
+  white-space: nowrap;
 }
 .title--white {
   color: var(--color-white);
@@ -409,16 +422,18 @@ body.no-scroll {
   justify-content: center;
   z-index: 1;
 }
-.hero-bg::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  opacity: 0.5;
-  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 51%, rgba(0, 0, 0, 0.12) 71%, rgba(0, 0, 0, 0) 100%);
+@media screen and (min-width: 1241px) {
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0.5;
+    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 51%, rgba(0, 0, 0, 0.12) 71%, rgba(0, 0, 0, 0) 100%);
+  }
 }
 .hero-bg__item {
   width: 100%;
@@ -445,6 +460,9 @@ body.no-scroll {
   height: 36.25rem;
   display: flex;
   flex-direction: column;
+}
+.hero__wrapper--product {
+  height: 54.25rem;
 }
 @media screen and (max-width: 1240px) {
   .hero__wrapper {
@@ -586,6 +604,11 @@ body.no-scroll {
 }
 @media screen and (min-width: 1241px) {
   .section__wrapper--top--big--desktop {
+    padding-top: calc(var(--section-padding) * 2);
+  }
+}
+@media screen and (max-width: 1240px) {
+  .section__wrapper--top--big--mobile {
     padding-top: calc(var(--section-padding) * 2);
   }
 }

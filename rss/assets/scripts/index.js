@@ -11,7 +11,7 @@ const ScrollReveal = (() => {
 
     let observer = null;
     let initialized = false;
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
 
     function hideItem(item) {
         item.style.opacity = '0';
@@ -32,7 +32,7 @@ const ScrollReveal = (() => {
                     item.setAttribute('data-animation-final', '');
                     item.style.transition = '';
                 }
-            }, { once: true });
+            }, {once: true});
         }, delay);
     }
 
@@ -54,11 +54,11 @@ const ScrollReveal = (() => {
             item => !item.closest('.animation-wrapper')
         );
 
-        return { wrappers, standaloneItems };
+        return {wrappers, standaloneItems};
     }
 
     function prepareItems() {
-        const { wrappers, standaloneItems } = getTargets();
+        const {wrappers, standaloneItems} = getTargets();
         wrappers.forEach(wrapper => wrapper.querySelectorAll('[data-animation]').forEach(hideItem));
         standaloneItems.forEach(hideItem);
     }
@@ -92,14 +92,14 @@ const ScrollReveal = (() => {
     }
 
     function observeTargets() {
-        const { wrappers, standaloneItems } = getTargets();
+        const {wrappers, standaloneItems} = getTargets();
         wrappers.forEach(wrapper => observer.observe(wrapper));
         standaloneItems.forEach(item => observer.observe(item));
     }
 
     function init(options = {}) {
-        config = { ...DEFAULTS, ...options };
-        const { wrappers, standaloneItems } = getTargets();
+        config = {...DEFAULTS, ...options};
+        const {wrappers, standaloneItems} = getTargets();
 
         if (!wrappers.length && !standaloneItems.length) {
             console.warn('[ScrollReveal] No targets found.');
@@ -157,7 +157,7 @@ const ScrollReveal = (() => {
         initialized = false;
     }
 
-    return { init, reveal, refresh, skipAll, reset, destroy };
+    return {init, reveal, refresh, skipAll, reset, destroy};
 })();
 
 window.ScrollReveal = ScrollReveal;
@@ -178,7 +178,7 @@ const CatalogFilter = (() => {
         offsetY: '40px',
     };
 
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
     let animationTimers = [];
 
     function getItems() {
@@ -213,7 +213,7 @@ const CatalogFilter = (() => {
                 item.removeAttribute('data-animation');
                 item.setAttribute('data-animation-final', '');
             }
-        }, { once: true });
+        }, {once: true});
     }
 
     function filterItems(category) {
@@ -272,7 +272,7 @@ const CatalogFilter = (() => {
     }
 
     function init(options = {}) {
-        config = { ...DEFAULTS, ...options };
+        config = {...DEFAULTS, ...options};
 
         if (!document.querySelector(config.filterSelector)) {
             console.warn('[CatalogFilter] No filter found on page.');
@@ -295,7 +295,7 @@ const CatalogFilter = (() => {
         filterItems(value);
     }
 
-    return { init, setCategory };
+    return {init, setCategory};
 })();
 
 window.CatalogFilter = CatalogFilter;
@@ -352,7 +352,7 @@ const Popup = (() => {
 
         setTimeout(() => {
             popup.classList.remove('is-active', 'is-closing');
-            popup.dispatchEvent(new CustomEvent('popup:closed', { bubbles: true }));
+            popup.dispatchEvent(new CustomEvent('popup:closed', {bubbles: true}));
         }, CLOSE_DURATION);
     }
 
@@ -366,7 +366,7 @@ const Popup = (() => {
         popup.classList.add('is-active');
         lockScroll();
         popup.scrollTop = 0;
-        popup.dispatchEvent(new CustomEvent('popup:opened', { bubbles: true }));
+        popup.dispatchEvent(new CustomEvent('popup:opened', {bubbles: true}));
     }
 
     function bindTriggers() {
@@ -400,7 +400,7 @@ const Popup = (() => {
         bindKeyboard();
     }
 
-    return { init, open, close };
+    return {init, open, close};
 })();
 
 window.Popup = Popup;
@@ -414,7 +414,7 @@ const CopyText = (() => {
         resetDelay: 2000,
     };
 
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
 
     function copyToClipboard(text) {
         if (navigator.clipboard?.writeText) {
@@ -444,16 +444,16 @@ const CopyText = (() => {
             .then(() => {
                 wrapper.classList.add(config.activeClass);
                 setTimeout(() => wrapper.classList.remove(config.activeClass), config.resetDelay);
-                wrapper.dispatchEvent(new CustomEvent('copy:success', { bubbles: true, detail: { text } }));
+                wrapper.dispatchEvent(new CustomEvent('copy:success', {bubbles: true, detail: {text}}));
             })
             .catch(err => {
                 console.warn('[CopyText] Copy failed:', err);
-                wrapper.dispatchEvent(new CustomEvent('copy:error', { bubbles: true, detail: { err } }));
+                wrapper.dispatchEvent(new CustomEvent('copy:error', {bubbles: true, detail: {err}}));
             });
     }
 
     function init(options = {}) {
-        config = { ...DEFAULTS, ...options };
+        config = {...DEFAULTS, ...options};
 
         const wrappers = document.querySelectorAll(config.wrapperSelector);
 
@@ -486,7 +486,7 @@ const CopyText = (() => {
         handleCopy(wrapper);
     }
 
-    return { init, copy };
+    return {init, copy};
 })();
 
 window.CopyText = CopyText;
@@ -509,7 +509,7 @@ const Lightbox = (() => {
         nextSelector: '.lightbox-popup-next',
     };
 
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
     let currentItem = null;
     let currentGalleryItems = [];
 
@@ -545,7 +545,9 @@ const Lightbox = (() => {
         img.style.opacity = '0';
         setTimeout(() => {
             img.src = getImageSrc(item);
-            img.onload = () => { img.style.opacity = '1'; };
+            img.onload = () => {
+                img.style.opacity = '1';
+            };
         }, 150);
 
         updateNav();
@@ -580,8 +582,14 @@ const Lightbox = (() => {
                 return;
             }
 
-            if (e.target.closest(config.prevSelector)) { navigate(-1); return; }
-            if (e.target.closest(config.nextSelector)) { navigate(1); return; }
+            if (e.target.closest(config.prevSelector)) {
+                navigate(-1);
+                return;
+            }
+            if (e.target.closest(config.nextSelector)) {
+                navigate(1);
+                return;
+            }
         });
 
         document.addEventListener('keydown', (e) => {
@@ -600,7 +608,7 @@ const Lightbox = (() => {
     }
 
     function init(options = {}) {
-        config = { ...DEFAULTS, ...options };
+        config = {...DEFAULTS, ...options};
 
         const items = document.querySelectorAll(config.itemSelector);
         if (!items.length) {
@@ -616,7 +624,7 @@ const Lightbox = (() => {
         bindEvents();
     }
 
-    return { init, open };
+    return {init, open};
 })();
 
 window.Lightbox = Lightbox;
@@ -624,21 +632,21 @@ window.Lightbox = Lightbox;
 document.addEventListener('DOMContentLoaded', () => {
     if (!window.__LB_MANUAL_INIT__) Lightbox.init();
 });
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
     const stepsSliderElement = document.querySelector('.steps-slider');
     const stepsSlider = new Swiper(stepsSliderElement, {
         init: false,
         slidesPerView: 'auto',
         spaceBetween: 16,
         speed: 500,
-        breakpoints:{
-            1025:{
-                spaceBetween:24,
+        breakpoints: {
+            1025: {
+                spaceBetween: 24,
             }
         },
         navigation: {
-            prevEl:'.steps-slider-button-prev',
-            nextEl:'.steps-slider-button-next'
+            prevEl: '.steps-slider-button-prev',
+            nextEl: '.steps-slider-button-next'
         },
     });
 
@@ -647,10 +655,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
 
-
     const marquees = document.querySelectorAll('.marquee');
 
-    if(marquees.length){
+    if (marquees.length) {
         marquees.forEach(marquee => {
             const marqueeContent = marquee.querySelector('.marquee-content');
 
@@ -660,6 +667,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             let position = 0;
             const baseSpeed = marquee.dataset.speed || 2;
             let scrollSpeed = 0;
+
             function animate() {
                 let currentSpeed = baseSpeed + scrollSpeed;
                 position -= currentSpeed;
@@ -674,4 +682,32 @@ document.addEventListener('DOMContentLoaded',()=>{
             animate();
         });
     }
-})
+
+
+    const productSliderImagesElement = document.querySelector('.product-images-slider');
+    const productSliderImagesNavElement = document.querySelector('.product-images-slider-nav');
+    if (!productSliderImagesElement || !productSliderImagesNavElement) return;
+
+    const productSliderImagesNav = new Swiper(productSliderImagesNavElement, {
+        slidesPerView: 'auto',
+        freeMode: true,
+        spaceBetween:4,
+        watchSlidesProgress: true,
+    });
+
+    const productSliderImages = new Swiper(productSliderImagesElement, {
+        slidesPerView: 1,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        thumbs: { swiper: productSliderImagesNav },
+    });
+});
+
+
+(function () {
+    document.querySelectorAll('.js-phone-mask').forEach(function (el) {
+        IMask(el, {
+            mask: '(000) 000-00-00',
+        });
+    });
+})();
