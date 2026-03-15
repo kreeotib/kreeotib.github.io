@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <div class="app">
+        <div class="app__wrapper">
+            <div class="app-header">
+                <a href="/" class="app-logo">
+                    <img src="assets/images/logo.webp" class="app-logo__img" alt="">
+                </a>
+            </div>
+            <div class="app-content">
+                <p class="app-content__title">
+                    мы вас слышим
+                </p>
+                <div class="app-result">
+                    <p class="app-result__title">
+                        Ваш персональный ответ на вопрос <span class="app-result__num">N-024</span>
+                    </p>
+                    <div class="video">
+                        <video src=""></video>
+                    </div>
+                </div>
+                <div class="app-empty">
+                    <img src="assets/images/404.webp" alt="" class="app-empty__img">
+                    <div class="app-empty__header">
+                        <p class="app-empty__title">
+                            Проверьте номер.
+                            Такого номера нет.
+                        </p>
+                        <p class="app-empty__text">
+                            Возможно, видео ещё готовится или вы неверно ввели номер.
+                        </p>
+                    </div>
+                </div>
+                <form action="#" method="POST" id="videoForm" class="video-search">
+                    <div class="video-search__wrapper">
+                        <label class="video-search__label">
+                            <svg class="video-search__icon" width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 20L15.514 15.506M18 9.5C18 11.7543 17.1045 13.9163 15.5104 15.5104C13.9163 17.1045 11.7543 18 9.5 18C7.24566 18 5.08365 17.1045 3.48959 15.5104C1.89553 13.9163 1 11.7543 1 9.5C1 7.24566 1.89553 5.08365 3.48959 3.48959C5.08365 1.89553 7.24566 1 9.5 1C11.7543 1 13.9163 1.89553 15.5104 3.48959C17.1045 5.08365 18 7.24566 18 9.5V9.5Z"
+                                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <input type="text" class="video-search__input" id="videoInput"
+                                   placeholder="Введите номер, полученный на стенде">
+                        </label>
+                        <button type="submit" class="video-search__button">
+                            Получить ответ
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="app-footer">
+                <p class="app-footer__text">
+                    *Сайт не&nbsp;является публичной оффертой. Вся информация, указанная на&nbsp;сайте носит
+                    информационный характер.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    (function () {
+        const TEST_VIDEO_NUM = '123';
+        const TEST_VIDEO_URL = 'assets/video/result/123.mp4';
+
+        const app = document.querySelector('.app');
+        const form = document.getElementById('videoForm');
+        const input = document.getElementById('videoInput');
+        const videoWrap = document.querySelector('.video');
+        const videoEl = videoWrap.querySelector('video');
+        const numLabel = document.querySelector('.app-result__num');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const num = input.value.trim();
+            if (!num) {
+                input.focus();
+                return;
+            }
+
+            app.classList.remove('result', 'empty');
+            videoEl.pause();
+            videoEl.src = '';
+
+            if (num === TEST_VIDEO_NUM) {
+                numLabel.textContent = 'N-' + num;
+
+                videoEl.src = TEST_VIDEO_URL;
+                videoEl.load();
+                videoEl.play().then(() => {
+                    videoWrap.classList.remove('paused');
+                }).catch(() => {
+                    videoWrap.classList.add('paused');
+                });
+
+                app.classList.add('result');
+            } else {
+                app.classList.add('empty');
+            }
+        });
+
+        videoWrap.addEventListener('click', function () {
+            if (videoEl.paused) {
+                videoEl.play();
+            } else {
+                videoEl.pause();
+            }
+        });
+
+        videoEl.addEventListener('pause', () => videoWrap.classList.add('paused'));
+        videoEl.addEventListener('play', () => videoWrap.classList.remove('paused'));
+    })();
+</script>
+
+</body>
+</html>
