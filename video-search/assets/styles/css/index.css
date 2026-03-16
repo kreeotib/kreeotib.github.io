@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-.app.result, .app.empty .app-content {
+.app.result .app-content, .app.empty .app-content {
   gap: 2.5rem;
 }
 .app__wrapper {

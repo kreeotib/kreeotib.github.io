@@ -39,7 +39,7 @@ body {
   color: #fff;
   display: flex;
   flex-direction: column;
-  &.result,&.empty &-content{
+  &.result &-content,&.empty &-content{
     gap: 2.5rem;
   }
   &__wrapper {
