@@ -1613,4 +1613,14 @@ body.no-scroll {
   opacity: 0.5;
 }
 
+[data-animation] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-animation-final],
+.scroll-reveal-initialized [data-animation] {
+  visibility: visible;
+}
+
 /*# sourceMappingURL=index.css.map */

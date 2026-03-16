@@ -79,13 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const ScrollReveal = (() => {
     const DEFAULTS = {
-        staggerDelay:150,
+        staggerDelay: 150,
         duration: 1000,
         easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
         offsetY: '40px',
         offsetX: '40px',
-        threshold: 0.3,
-        rootMargin: '0px 0px 0 0px',
+        threshold: 0.2,
+        rootMargin: '0px',
         once: true,
     };
 
@@ -101,34 +101,31 @@ const ScrollReveal = (() => {
     }
 
     function hideItem(item) {
+        item.style.visibility = 'visible';
         item.style.opacity = '0';
         item.style.transform = getTransform(item);
         item.style.transition = `opacity ${config.duration}ms ${config.easing}, transform ${config.duration}ms ${config.easing}`;
-        item.style.willChange = 'opacity, transform';
     }
 
     function revealItem(item, delay = 0) {
         setTimeout(() => {
-            item.style.opacity = '';
-            item.style.transform = '';
-            item.style.willChange = '';
+            item.style.opacity = '1';
+            item.style.transform = 'translate(0, 0)';
 
-            item.addEventListener('transitionend', () => {
-                if (item.hasAttribute('data-animation')) {
-                    item.removeAttribute('data-animation');
-                    item.setAttribute('data-animation-final', '');
-                    item.style.transition = '';
-                }
-            }, { once: true });
+            const finalize = () => {
+                item.removeAttribute('data-animation');
+                item.setAttribute('data-animation-final', '');
+                item.style.transition = '';
+                item.style.transform = '';
+                item.style.opacity = '';
+            };
+
+            item.addEventListener('transitionend', finalize, { once: true });
         }, delay);
     }
 
     function getTargets() {
         return Array.from(document.querySelectorAll('[data-animation]'));
-    }
-
-    function prepareItems() {
-        getTargets().forEach(hideItem);
     }
 
     function buildObserver() {
@@ -140,7 +137,7 @@ const ScrollReveal = (() => {
                 .map(e => e.target);
 
             intersecting.sort((a, b) =>
-                a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
+                a.getBoundingClientRect().top - b.getBoundingClientRect().top
             );
 
             intersecting.forEach((item, i) => {
@@ -149,9 +146,7 @@ const ScrollReveal = (() => {
             });
 
             if (!config.once) {
-                entries
-                    .filter(e => !e.isIntersecting)
-                    .forEach(e => hideItem(e.target));
+                entries.filter(e => !e.isIntersecting).forEach(e => hideItem(e.target));
             }
         }, {
             threshold: config.threshold,
@@ -159,75 +154,39 @@ const ScrollReveal = (() => {
         });
     }
 
-    function observeTargets() {
-        getTargets().forEach(item => observer.observe(item));
-    }
-
     function init(options = {}) {
         config = { ...DEFAULTS, ...options };
         const targets = getTargets();
 
-        if (!targets.length) {
-            console.warn('[ScrollReveal] No targets found.');
-            return;
-        }
+        if (!targets.length) return;
 
-        prepareItems();
-        buildObserver();
+        targets.forEach(hideItem);
 
         requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                observeTargets();
-                initialized = true;
-            });
+            buildObserver();
+            targets.forEach(item => observer.observe(item));
+            initialized = true;
         });
-    }
-
-    function reveal(target) {
-        const el = typeof target === 'string' ? document.querySelector(target) : target;
-        if (!el) return;
-        revealItem(el);
     }
 
     function refresh() {
         if (!initialized) return;
-        prepareItems();
-        observeTargets();
-    }
-
-    function skipAll() {
-        document.querySelectorAll('[data-animation]').forEach(item => {
-            item.style.opacity = '';
-            item.style.transform = '';
-            item.style.transition = '';
-            item.style.willChange = '';
-            item.removeAttribute('data-animation');
-            item.setAttribute('data-animation-final', '');
+        getTargets().forEach(item => {
+            hideItem(item);
+            observer.observe(item);
         });
-    }
-
-    function reset() {
-        document.querySelectorAll('[data-animation-final]').forEach(item => {
-            item.removeAttribute('data-animation-final');
-            item.setAttribute('data-animation', '');
-        });
-        prepareItems();
-        if (observer) observeTargets();
     }
 
     function destroy() {
-        if (observer) {
-            observer.disconnect();
-            observer = null;
-        }
+        if (observer) observer.disconnect();
         initialized = false;
     }
 
-    return { init, reveal, refresh, skipAll, reset, destroy };
+    return { init, refresh, destroy };
 })();
 
-window.ScrollReveal = ScrollReveal;
-
+// Запуск
 document.addEventListener('DOMContentLoaded', () => {
-    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init();
+    ScrollReveal.init();
 });
+

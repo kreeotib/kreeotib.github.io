@@ -1795,3 +1795,14 @@ body.no-scroll {
     }
   }
 }
+
+[data-animation] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+[data-animation-final],
+.scroll-reveal-initialized [data-animation] {
+  visibility: visible;
+}
