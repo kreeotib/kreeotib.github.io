@@ -66,6 +66,13 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="header__burger">
+                        <button class="burger">
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                            <span class="burger__item"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,17 +132,14 @@
                                     <img src="assets/images/about/bg.webp" alt="">
                                 </div>
                                 <div class="about-main__content">
-                                    <div class="about-main__text">
-                                        <p class="text text--middle text--medium text--white">
-                                            Как одно зёрнышко способно вырасти в большое <br> растение, так и каждая
-                                            творческая
-                                            идея <br> способна стать <br>
-                                            большого проекта, <br>
-                                            способствующего развитию культуры <br>
-                                            и экономики Ставропольского края.
-                                        </p>
-
-                                    </div>
+                                    <p class="text text--middle text--medium about-main__text">
+                                        Как одно зёрнышко способно вырасти в большое <br> растение, так и каждая
+                                        творческая
+                                        идея <br> способна стать <br>
+                                        большого проекта, <br>
+                                        способствующего развитию культуры <br>
+                                        и экономики Ставропольского края.
+                                    </p>
                                     <div class="about-main__logo logo">
                                         <svg class="logo__img">
                                             <use xlink:href="assets/images/sprite.svg#zerno"></use>
@@ -174,7 +178,7 @@
                             <p class="title title--base section__title" data-number="02">
                                 номинации
                             </p>
-                            <div class="slider-navigation">
+                            <div class="slider-navigation slider-navigation--desktop">
                                 <div class="slider-button slider-button--bordered slider-button--prev nominations-slider-button-prev">
                                     <svg class="icon">
                                         <use xlink:href="assets/images/sprite.svg#arrow-left-long"></use>
@@ -310,6 +314,19 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="slider-navigation slider-navigation--mobile">
+                            <div class="slider-button slider-button--bordered slider-button--prev nominations-slider-button-prev">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#arrow-left-long"></use>
+                                </svg>
+                            </div>
+                            <div class="slider-button slider-button--bordered slider-button--next nominations-slider-button-next">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#arrow-right-long"></use>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -319,10 +336,15 @@
                 <div class="container">
                     <div class="section__column">
                         <div class="section__header">
-                            <div class="section__title section__title--row" data-number="03">
-                                <p class="title title--base">
+                            <div class="section__title section__title--desktop section__title--row" data-number="03">
+                                <p class="title title--base section__title section__title--mobile" data-number="03">
                                     итоги
                                 </p>
+                                <div class="section__logo section__logo--mobile logo">
+                                    <svg class="logo__img">
+                                        <use xlink:href="assets/images/sprite.svg#zerno"></use>
+                                    </svg>
+                                </div>
                                 <ul class="year-list">
                                     <li class="year-list__item">
                                         <a href="#" class="year-item year-list__link active">
@@ -350,7 +372,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="section__logo logo">
+                            <div class="section__logo section__logo--desktop logo">
                                 <svg class="logo__img">
                                     <use xlink:href="assets/images/sprite.svg#zerno"></use>
                                 </svg>
@@ -365,7 +387,12 @@
                                                 Продюсер года в модной индустрии
                                             </p>
                                             <div class="results-item__arrow">
-                                                <img src="assets/images/company/arrows/1.svg" alt="">
+                                                <picture class="arrow">
+                                                    <source srcset="assets/images/company/arrows/1.svg"
+                                                            media="(max-width: 767px)">
+                                                    <img src="assets/images/company/arrows/1.svg"
+                                                         alt="Описание изображения">
+                                                </picture>
                                             </div>
                                             <div class="results-company results-item__company">
                                                 <img src="assets/images/company/1.svg" alt=""
@@ -387,7 +414,12 @@
                                                 Продюсер года в модной индустрии
                                             </p>
                                             <div class="results-item__arrow">
-                                                <img src="assets/images/company/arrows/2.svg" alt="">
+                                                <picture class="arrow">
+                                                    <source srcset="assets/images/company/arrows/2.svg"
+                                                            media="(max-width: 767px)">
+                                                    <img src="assets/images/company/arrows/2.svg"
+                                                         alt="Описание изображения">
+                                                </picture>
                                             </div>
                                             <div class="results-company results-item__company">
                                                 <img src="assets/images/company/2.svg" alt=""
@@ -409,7 +441,12 @@
                                                 Продюсер года в модной индустрии
                                             </p>
                                             <div class="results-item__arrow">
-                                                <img src="assets/images/company/arrows/3.svg" alt="">
+                                                <picture class="arrow">
+                                                    <source srcset="assets/images/company/arrows/3.svg"
+                                                            media="(max-width: 767px)">
+                                                    <img src="assets/images/company/arrows/3.svg"
+                                                         alt="Описание изображения">
+                                                </picture>
                                             </div>
                                             <div class="results-company results-item__company">
                                                 <img src="assets/images/company/1.svg" alt=""
@@ -431,7 +468,12 @@
                                                 Продюсер года в модной индустрии
                                             </p>
                                             <div class="results-item__arrow">
-                                                <img src="assets/images/company/arrows/4.svg" alt="">
+                                                <picture class="arrow">
+                                                    <source srcset="assets/images/company/arrows/4.svg"
+                                                            media="(max-width: 767px)">
+                                                    <img src="assets/images/company/arrows/4.svg"
+                                                         alt="Описание изображения">
+                                                </picture>
                                             </div>
                                             <div class="results-company results-item__company">
                                                 <img src="assets/images/company/1.svg" alt=""
@@ -453,7 +495,12 @@
                                                 Продюсер года в модной индустрии
                                             </p>
                                             <div class="results-item__arrow">
-                                                <img src="assets/images/company/arrows/5.svg" alt="">
+                                                <picture class="arrow">
+                                                    <source srcset="assets/images/company/arrows/5.svg"
+                                                            media="(max-width: 767px)">
+                                                    <img src="assets/images/company/arrows/5.svg"
+                                                         alt="Описание изображения">
+                                                </picture>
                                             </div>
                                             <div class="results-company results-item__company">
                                                 <img src="assets/images/company/1.svg" alt=""
@@ -479,11 +526,12 @@
                 <div class="container">
                     <div class="gallery__grid">
                         <div class="section__column">
-                            <p class="title title--base section__title">
-                                <span class="section__title" data-number="04">как</span>
+                            <p class="title title--base section__title section__title--mobile" data-number="04">
+                                <span class="section__title section__title--desktop" data-number="04">как</span>
                                 это было
                             </p>
-                            <a href="#" target="_blank" class="button button--base button--underline button--arrow">
+                            <a href="#" target="_blank"
+                               class="button button--desktop button--base button--underline button--arrow">
                                 больше фото
                                 <svg class="button__icon">
                                     <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
@@ -518,7 +566,13 @@
                                 </div>
                             </div>
                         </div>
-
+                        <a href="#" target="_blank"
+                           class="button button--mobile button--base button--underline button--arrow">
+                            больше фото
+                            <svg class="button__icon">
+                                <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -593,7 +647,8 @@
                                             </span>
                                         </label>
 
-                                        <button type="submit" class="button button--middle button--accent button--accent--light form__button">
+                                        <button type="submit"
+                                                class="button button--middle button--accent--light button--accent form__button">
                                             Отправить
                                         </button>
                                     </div>

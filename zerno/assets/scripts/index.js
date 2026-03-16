@@ -42,3 +42,36 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 });
+
+
+(function () {
+    'use strict';
+
+    function initBurgerMenu() {
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.header-nav');
+
+        if (!burger || !nav) return;
+
+        let scrollY = 0;
+
+        function lockScroll() {
+            document.body.classList.add('no-scroll')
+        }
+
+        function unlockScroll() {
+            document.body.classList.remove('no-scroll')
+        }
+
+        function handleBurgerClick() {
+            const isActive = burger.classList.toggle('active');
+            nav.classList.toggle('active', isActive);
+
+            isActive ? lockScroll() : unlockScroll();
+        }
+
+        burger.addEventListener('click', handleBurgerClick);
+    }
+
+    document.addEventListener('DOMContentLoaded', initBurgerMenu);
+})();
