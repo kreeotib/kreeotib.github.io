@@ -154,6 +154,14 @@ body.no-scroll {
     font-weight: 500;
   }
 
+  &--semibold{
+    font-weight: 600;
+  }
+
+  &--main{
+    font-family: var(--main-font);
+  }
+
   &--white {
     color: #fff;
   }
@@ -1213,119 +1221,64 @@ body.no-scroll {
 .about {
   position: relative;
 
+  &__grid{
+    display: flex;
+    align-items: flex-end;
+    gap: 2.5rem;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 
-  &__wrapper {
-    position: relative;
-    z-index: 2;
+  &__content{
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-
-    &::before {
-      content: "";
+    gap: 2rem;
+    flex-shrink: 0;
+  }
+  &-img{
+    position: relative;
+    flex-grow: 1;
+    &__year{
       position: absolute;
-      width: 7.5rem;
-      height: 7.5rem;
-      background: url("../../images/about-decor.svg") center center/contain no-repeat;
-      top: -2rem;
-      right: 15rem;
-      pointer-events: none;
-      z-index: 1;
+      right: 0;
+      top: 0;
+    }
+    &__logo{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 14rem;
+      height: 4rem;
+      object-fit: contain;
       @media screen and (max-width: 767px) {
-        width: 5rem;
-        height: 5rem;
-        right: 0;
-        top: 0;
+        height: 3rem;
+        width: 10.25rem;
       }
     }
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 2.1875rem;
-  }
-
-  &__title {
-    font-family: var(--accent-font);
-    font-size: 2.1875rem;
-    font-weight: 500;
-    text-transform: uppercase;
-  }
-
-  &-main {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    @media screen and (max-width: 767px) {
-      border-radius: 0;
-      overflow: visible;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    &__bg {
-      z-index: 1;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
+    &__item{
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
-
-      @media screen and (max-width: 767px) {
-        position: relative;
-        order: 2;
-        padding-bottom: 33%;
-        border-radius: 1rem;
-        overflow: hidden;
-      }
-
-      img, video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-        pointer-events: none;
-        transform: translateZ(0);
-        @media screen and (max-width: 767px) {
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-      }
+      padding-right: 2.5rem;
     }
-
-    &__content {
+    &__main{
       width: 100%;
       height: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      padding: 4.375rem 3rem;
-      flex-direction: column;
-      gap: 3rem;
-      z-index: 2;
-      position: relative;
-      @media screen and (max-width: 767px) {
-        padding: 0;
-        gap: 1rem;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
+      object-fit: contain;
     }
-
-    &__text {
+  }
+  &-text{
+    max-width: 30.625rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    &__decor {
       position: relative;
-      color: #ffff;
       @media screen and (max-width: 767px) {
-        color: #000;
         font-size: 1rem;
       }
 
@@ -1344,37 +1297,12 @@ body.no-scroll {
         background: url("../../images/about/text.svg") center right/contain no-repeat;
       }
     }
-
-    &__logo {
-      height: 4.375rem;
-      width: 21rem;
-      color: #ffff;
-      @media screen and (max-width: 767px) {
-        color: #000;
-        width: 12.5rem;
-        height: 2.5rem;
-      }
-    }
   }
 
-  &-footer {
-    &__info {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    &__row {
-      display: flex;
-      align-items: center;
-      gap: 3.375rem;
-      @media screen and (max-width: 767px) {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: flex-start;
-      }
-    }
+  &-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

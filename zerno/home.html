@@ -85,7 +85,7 @@
                             <p class="hero__title" data-animation>
                                 Премия креативных предпринимателей
                                 Ставропольского края
-                                <span class="year-item active hero__year" data-animation>
+                                <span class="year-item active hero__year">
                                 <span>2026</span>
                                 <svg class="year-item__bg">
                                     <use xlink:href="assets/images/sprite.svg#year-bg"></use>
@@ -98,7 +98,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="hero__footer" >
+                        <div class="hero__footer">
                             <a href="#" class="button button--middle button--accent" data-animation="left">
                                 Регистрация
                             </a>
@@ -113,55 +113,46 @@
         <div class="section about">
             <div class="section__wrapper">
                 <div class="container">
-                    <div class="about__wrapper">
-                        <div class="section__header section__header--bottom">
-                            <p class="section__title title--base" data-number="01" data-animation="leftt">
+                    <div class="about__grid">
+                        <div class="about__content">
+                            <p class="section__title title--base" data-number="01" data-animation="left">
                                 О премии
                             </p>
-                            <p class="text text--base" data-animation="right">
-                                2026
-                            </p>
-                        </div>
-                        <div class="about__content">
-                            <div class="about-main">
-                                <div class="about-main__bg">
-                                    <img src="assets/images/about/bg.webp" alt="">
-                                </div>
-                                <div class="about-main__content">
-                                    <p class="text text--middle text--medium about-main__text" data-animation>
-                                        Как одно зёрнышко способно вырасти в большое <br> растение, так и каждая
-                                        творческая
-                                        идея <br> способна стать <br>
-                                        большого проекта, <br>
-                                        способствующего развитию культуры <br>
-                                        и экономики Ставропольского края.
-                                    </p>
-                                    <div class="about-main__logo logo" data-animation>
-                                        <svg class="logo__img">
-                                            <use xlink:href="assets/images/sprite.svg#zerno"></use>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="about-footer">
-                                <div class="about-footer__row">
-                                    <div class="about-footer__info">
-                                        <p class="about__title" data-animation="left">
-                                            Премия «Зерно»
-                                        </p>
-                                        <a href="#" target="_blank" class="button button--middle button--accent" data-animation="left">
-                                            положение премии
-                                        </a>
-                                    </div>
-                                    <p class="text text--middle" data-animation="right">
-                                        Главная награда для тех, кто вносит значительный вклад в укрепление креативной
-                                        экономики региона, стимулируя развитие и продвижение креативного бизнеса,
-                                        привлечение инвестиций и улучшение предпринимательской среды.
-                                    </p>
-                                </div>
-
+                            <div class="about-text">
+                                <p class="text text--main text--middle text--medium about-text__decor" data-animation>
+                                    Как одно зёрнышко способно вырасти в большое <br> растение, так и каждая
+                                    творческая
+                                    идея <br> способна стать <br>
+                                    большого проекта, <br>
+                                    способствующего развитию культуры <br>
+                                    и экономики Ставропольского края.
+                                </p>
+                                <p class="text text--main text--middle" data-animation>
+                                    <span class="text text--semibold">Премия &laquo;ЗЕРНО&raquo;&nbsp;&mdash; </span>
+                                    главная награда для тех, кто&nbsp;вносит
+                                    значительный вклад в&nbsp;укрепление креативной экономики региона, стимулируя
+                                    развитие и&nbsp;продвижение креативного бизнеса, привлечение инвестиций и&nbsp;улучшение
+                                    предпринимательской среды.
+                                </p>
+                                <a href="#" target="_blank" class="button button--desktop button--middle button--accent"
+                                   data-animation="left">
+                                    положение премии
+                                </a>
                             </div>
                         </div>
+                        <div class="about-img">
+                            <div class="about-img__item" data-animation="right">
+                                <p class="text text--base about-img__year" data-animation="right">
+                                    2026
+                                </p>
+                                <img src="assets/images/about/logo.webp" alt="" class="about-img__logo">
+                                <img src="assets/images/about/bg.webp" alt="" class="about-img__main">
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="button button--mobile button--middle button--accent"
+                           data-animation="left">
+                            положение премии
+                        </a>
                     </div>
                 </div>
             </div>
@@ -175,12 +166,14 @@
                                 номинации
                             </p>
                             <div class="slider-navigation slider-navigation--desktop">
-                                <div class="slider-button slider-button--bordered slider-button--prev nominations-slider-button-prev" data-animation="right">
+                                <div class="slider-button slider-button--bordered slider-button--prev nominations-slider-button-prev"
+                                     data-animation="right">
                                     <svg class="icon">
                                         <use xlink:href="assets/images/sprite.svg#arrow-left-long"></use>
                                     </svg>
                                 </div>
-                                <div class="slider-button slider-button--bordered slider-button--next nominations-slider-button-next" data-animation="right">
+                                <div class="slider-button slider-button--bordered slider-button--next nominations-slider-button-next"
+                                     data-animation="right">
                                     <svg class="icon">
                                         <use xlink:href="assets/images/sprite.svg#arrow-right-long"></use>
                                     </svg>
@@ -317,7 +310,8 @@
                                     <use xlink:href="assets/images/sprite.svg#arrow-left-long"></use>
                                 </svg>
                             </div>
-                            <div class="slider-button slider-button--bordered slider-button--next nominations-slider-button-next" data-animation>
+                            <div class="slider-button slider-button--bordered slider-button--next nominations-slider-button-next"
+                                 data-animation>
                                 <svg class="icon">
                                     <use xlink:href="assets/images/sprite.svg#arrow-right-long"></use>
                                 </svg>
@@ -333,7 +327,8 @@
                     <div class="section__column">
                         <div class="section__header">
                             <div class="section__title section__title--desktop section__title--row" data-number="03">
-                                <p class="title title--base section__title section__title--mobile" data-number="03" data-animation="left">
+                                <p class="title title--base section__title section__title--mobile" data-number="03"
+                                   data-animation="left">
                                     итоги
                                 </p>
                                 <div class="section__logo section__logo--mobile logo" data-animation>
@@ -522,12 +517,14 @@
                 <div class="container">
                     <div class="gallery__grid">
                         <div class="section__column">
-                            <p class="title title--base section__title section__title--mobile" data-number="04" data-animation="left">
+                            <p class="title title--base section__title section__title--mobile" data-number="04"
+                               data-animation="left">
                                 <span class="section__title section__title--desktop" data-number="04">как</span>
                                 это было
                             </p>
                             <a href="#" target="_blank"
-                               class="button button--desktop button--base button--underline button--arrow" data-animation="left">
+                               class="button button--desktop button--base button--underline button--arrow"
+                               data-animation="left">
                                 больше фото
                                 <svg class="button__icon">
                                     <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
@@ -585,10 +582,12 @@
                         <div class="partners">
                             <div class="partners__grid">
                                 <div class="partners-item">
-                                    <img src="assets/images/partners/1.webp" alt="" class="partners-item__img" data-animation>
+                                    <img src="assets/images/partners/1.webp" alt="" class="partners-item__img"
+                                         data-animation>
                                 </div>
                                 <div class="partners-item">
-                                    <img src="assets/images/partners/2.webp" alt="" class="partners-item__img" data-animation>
+                                    <img src="assets/images/partners/2.webp" alt="" class="partners-item__img"
+                                         data-animation>
                                 </div>
                                 <div class="partners-item">
                                     <img src="assets/images/partners/1.webp" alt=""
@@ -626,7 +625,7 @@
                                         </label>
                                     </div>
                                     <div class="form-grid__item" data-animation>
-                                        <label class="input input--textarea input--white" >
+                                        <label class="input input--textarea input--white">
                                             <textarea class="input__item" placeholder="Сообщение"></textarea>
                                         </label>
                                     </div>
@@ -717,7 +716,9 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="mailto:razvitie.stav@mail.ru" class="footer-info__text" data-animation>razvitie.stav@mail.ru</a>
+                            <a href="mailto:razvitie.stav@mail.ru" class="footer-info__text" data-animation>
+                                razvitie.stav@mail.ru
+                            </a>
                             <p class="footer-info__text" data-animation>
                                 2026
                             </p>
