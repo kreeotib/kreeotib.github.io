@@ -84,8 +84,6 @@ body.no-scroll {
   z-index: 3;
 
   overflow: hidden;
-
-
   &::before {
     content: "";
     position: absolute;
@@ -969,6 +967,7 @@ body.no-scroll {
       @media screen and (max-width: 767px) {
         flex-direction: column;
         align-items: flex-start;
+        gap: .5rem;
       }
 
       &::before {
@@ -998,8 +997,8 @@ body.no-scroll {
       @media screen and (max-width: 767px) {
         height: 3rem;
         transform: rotate(90deg);
-        width: 6rem;
-        margin: 0 auto;
+        width: 3rem;
+        margin-left: auto;
       }
 
       .arrow {
@@ -1673,7 +1672,7 @@ body.no-scroll {
 
 .footer {
   background: #000;
-
+  overflow: hidden;
   &-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

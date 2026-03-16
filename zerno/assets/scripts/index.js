@@ -79,10 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const ScrollReveal = (() => {
     const DEFAULTS = {
-        staggerDelay: 50,
+        staggerDelay:150,
         duration: 1000,
         easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
         offsetY: '40px',
+        offsetX: '40px',
         threshold: 0.3,
         rootMargin: '0px 0px 0 0px',
         once: true,
@@ -92,9 +93,16 @@ const ScrollReveal = (() => {
     let initialized = false;
     let config = { ...DEFAULTS };
 
+    function getTransform(item) {
+        const dir = item.getAttribute('data-animation');
+        if (dir === 'left') return `translateX(-${config.offsetX})`;
+        if (dir === 'right') return `translateX(${config.offsetX})`;
+        return `translateY(${config.offsetY})`;
+    }
+
     function hideItem(item) {
         item.style.opacity = '0';
-        item.style.transform = `translateY(${config.offsetY})`;
+        item.style.transform = getTransform(item);
         item.style.transition = `opacity ${config.duration}ms ${config.easing}, transform ${config.duration}ms ${config.easing}`;
         item.style.willChange = 'opacity, transform';
     }
@@ -127,12 +135,10 @@ const ScrollReveal = (() => {
         if (observer) observer.disconnect();
 
         observer = new IntersectionObserver((entries) => {
-            // Собираем элементы, вошедшие во вьюпорт в этой «волне»
             const intersecting = entries
                 .filter(e => e.isIntersecting)
                 .map(e => e.target);
 
-            // Сортируем по порядку в DOM — это и есть очередность
             intersecting.sort((a, b) =>
                 a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
             );
