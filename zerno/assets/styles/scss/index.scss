@@ -967,7 +967,7 @@ body.no-scroll {
       @media screen and (max-width: 767px) {
         flex-direction: column;
         align-items: flex-start;
-        gap: .5rem;
+       gap: 0;
       }
 
       &::before {
@@ -996,7 +996,7 @@ body.no-scroll {
       transform: rotate(17deg);
       @media screen and (max-width: 767px) {
         height: 3rem;
-        transform: rotate(90deg);
+        transform: rotate(0deg) scale(1.2);
         width: 3rem;
         margin-left: auto;
       }
