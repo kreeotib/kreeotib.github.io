@@ -4,8 +4,8 @@ const ScrollReveal = (() => {
         duration: 1000,
         easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
         offsetY: '40px',
-        threshold: 0.15,
-        rootMargin: '0px 0px 0 0px',
+        threshold: 0,
+        rootMargin: '0px 0px -40px 0px',
         once: true,
     };
 
