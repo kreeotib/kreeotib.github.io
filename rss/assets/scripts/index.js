@@ -5,7 +5,7 @@ const ScrollReveal = (() => {
         easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
         offsetY: '40px',
         threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px',
+        rootMargin: '0px 0px 0 0px',
         once: true,
     };
 
@@ -500,8 +500,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 const Lightbox = (() => {
     const DEFAULTS = {
-        itemSelector: '.gallery-item',
-        gallerySelector: '.gallery',
+        itemSelector: '.js-gallery-item',
+        gallerySelector: '.js-gallery',
         imageSelector: 'img',
         popupId: '#popup-lightbox',
         imgSelector: '.lightbox-popup__img',
@@ -577,7 +577,8 @@ const Lightbox = (() => {
     function bindEvents() {
         document.addEventListener('click', (e) => {
             const item = e.target.closest(config.itemSelector);
-            if (item && item.hasAttribute('data-big')) {
+            if (item) {
+                e.preventDefault();
                 open(item);
                 return;
             }
@@ -591,6 +592,7 @@ const Lightbox = (() => {
                 return;
             }
         });
+
 
         document.addEventListener('keydown', (e) => {
             const popup = document.querySelector(config.popupId);
@@ -632,6 +634,178 @@ window.Lightbox = Lightbox;
 document.addEventListener('DOMContentLoaded', () => {
     if (!window.__LB_MANUAL_INIT__) Lightbox.init();
 });
+
+const ParallaxEffect = (() => {
+    const DEFAULTS = {
+        containerSelector: '.parallax-container',
+        imageSelector: '.parallax-img',
+        speed: 0.3,
+        scale: 1.3,
+        smooth: true,
+    };
+
+    let config = { ...DEFAULTS };
+    let items = [];
+
+
+    function render() {
+        const screenHeight = window.innerHeight;
+
+        items.forEach(item => {
+            const rect = item.container.getBoundingClientRect();
+
+            if (rect.top < screenHeight && rect.bottom > 0) {
+                const containerCenter = rect.top + rect.height / 2;
+                const screenCenter = screenHeight / 2;
+                const distanceFromCenter = (containerCenter - screenCenter) / (screenHeight / 2);
+
+                const move = distanceFromCenter * (config.speed * 100);
+
+                item.img.style.transform = `scale(${config.scale}) translateY(${move}px)`;
+            }
+        });
+    }
+
+
+    function init(options = {}) {
+        config = { ...DEFAULTS, ...options };
+
+        const containers = document.querySelectorAll(config.containerSelector);
+
+        if (!containers.length) {
+            console.warn('[Parallax] No elements found for selector:', config.containerSelector);
+            return;
+        }
+
+        items = Array.from(containers).map(container => {
+            const img = container.querySelector(config.imageSelector);
+
+            if (!img) {
+                console.warn('[Parallax] Image not found in container:', container);
+                return null;
+            }
+
+            container.style.overflow = 'hidden';
+            if (!container.style.position || container.style.position === 'static') {
+                container.style.position = 'relative';
+            }
+
+            img.style.position = 'absolute';
+            img.style.top = '0';
+            img.style.left = '0';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            img.style.willChange = 'transform';
+
+            if (config.smooth) {
+                img.style.transition = 'transform 0.1s ease-out';
+            }
+
+            return { container, img };
+        }).filter(item => item !== null);
+
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(render);
+        }, { passive: true });
+
+        render();
+    }
+
+
+    function refresh() {
+        init(config);
+    }
+
+    return { init, refresh };
+})();
+
+window.ParallaxEffect = ParallaxEffect;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__LB_MANUAL_INIT__) ParallaxEffect.init();
+});
+
+const Marquee = (() => {
+    const DEFAULTS = {
+        selector: '.marquee',
+        contentSelector: '.marquee-content',
+        speed: 2,
+        hoverSlowdown: 0.1,
+        direction: 'left',
+    };
+
+    let config = { ...DEFAULTS };
+    let instances = [];
+
+    function animate() {
+        instances.forEach(item => {
+            const currentSpeed = item.isHovered
+                ? item.speed * config.hoverSlowdown
+                : item.speed;
+
+            item.position -= currentSpeed;
+
+            if (Math.abs(item.position) >= item.contentWidth) {
+                item.position = 0;
+            }
+
+            item.wrapper.style.transform = `translate3d(${item.position}px, 0, 0)`;
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    function init(options = {}) {
+        config = { ...DEFAULTS, ...options };
+        const elements = document.querySelectorAll(config.selector);
+
+        if (!elements.length) {
+            return;
+        }
+
+        elements.forEach(el => {
+            const content = el.querySelector(config.contentSelector);
+            if (!content) return;
+
+            const clone = content.cloneNode(true);
+            el.appendChild(clone);
+
+            const instance = {
+                wrapper: el,
+                content: content,
+                contentWidth: content.offsetWidth,
+                speed: parseFloat(el.dataset.speed) || config.speed,
+                position: 0,
+                isHovered: false
+            };
+
+            el.addEventListener('mouseenter', () => instance.isHovered = true);
+            el.addEventListener('mouseleave', () => instance.isHovered = false);
+
+            instances.push(instance);
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    function refresh() {
+        instances.forEach(item => {
+            item.contentWidth = item.content.offsetWidth;
+        });
+    }
+
+    window.addEventListener('resize', refresh);
+
+    return { init, refresh };
+})();
+
+window.Marquee = Marquee;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__LB_MANUAL_INIT__) Marquee.init();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const stepsSliderElement = document.querySelector('.steps-slider');
     const stepsSlider = new Swiper(stepsSliderElement, {
@@ -652,35 +826,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (stepsSliderElement) {
         stepsSlider.init();
-    }
-
-
-    const marquees = document.querySelectorAll('.marquee');
-
-    if (marquees.length) {
-        marquees.forEach(marquee => {
-            const marqueeContent = marquee.querySelector('.marquee-content');
-
-            const clone = marqueeContent.cloneNode(true);
-            marquee.appendChild(clone);
-
-            let position = 0;
-            const baseSpeed = marquee.dataset.speed || 2;
-            let scrollSpeed = 0;
-
-            function animate() {
-                let currentSpeed = baseSpeed + scrollSpeed;
-                position -= currentSpeed;
-                if (Math.abs(position) >= marqueeContent.offsetWidth) {
-                    position = 0;
-                }
-                marquee.style.transform = `translate3d(${position}px, 0, 0)`;
-
-                requestAnimationFrame(animate);
-            }
-
-            animate();
-        });
     }
 
 

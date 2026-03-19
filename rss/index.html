@@ -30,28 +30,28 @@
                 <nav class="header-nav">
                     <ul class="header-nav__list">
                         <li class="header-nav__item">
-                            <a href="catalog.html" class="header-nav__link">
-                                Каталог проектов
+                            <a href="catalog.html" class="header-nav__link" data-text="Каталог проектов">
+                                <span>Каталог проектов</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="postroeno.html" class="header-nav__link">
-                                Построено
+                            <a href="postroeno.html" class="header-nav__link" data-text="Построено">
+                                <span>Построено</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="#" class="header-nav__link">
-                                Услуги
+                            <a href="#" class="header-nav__link" data-text="Услуги">
+                                <span>Услуги</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="#" class="header-nav__link">
-                                О компании
+                            <a href="#" class="header-nav__link" data-text="О компании">
+                                <span>О компании</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="contacts.html" class="header-nav__link">
-                                Контакты
+                            <a href="contacts.html" class="header-nav__link" data-text="Контакты">
+                                <span>Контакты</span>
                             </a>
                         </li>
                     </ul>
@@ -107,7 +107,7 @@
                             </p>
                         </div>
                         <div class="section__footer section__footer--tablet">
-                            <a href="#" class="button button--link button--link--dark ">
+                            <a href="#" class="button button--link ">
                                 Проекты домов
                                 <svg class="button__icon">
                                     <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
@@ -165,7 +165,7 @@
                             <span class="category-card__number">
                                 27
                             </span>
-                                Газобетон
+                                Клееный брус
                             </p>
                             <svg class="category-card__icon">
                                 <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
@@ -191,8 +191,8 @@
                     </div>
                     <div class="category-card" data-animation>
                         <picture class="category-card__img">
-                            <source srcset="assets/images/catregory/1-m.webp" media="(max-width: 640px)">
-                            <img src="assets/images/catregory/1.webp" alt="Description">
+                            <source srcset="assets/images/catregory/5-m.webp" media="(max-width: 640px)">
+                            <img src="assets/images/catregory/5.webp" alt="Description">
                         </picture>
                         <a href="#" class="category-card__wrapper">
                             <p class="category-card__title">
@@ -231,16 +231,20 @@
                                 <div class="mortgage__cards" data-animation>
                                     <div class="mortgage-cards">
                                         <div class="mortgage-card">
-                                            <img class="mortgage-card__img" src="assets/images/certificates/4.webp" alt="">
+                                            <img class="mortgage-card__img" src="assets/images/certificates/4.webp"
+                                                 alt="">
                                         </div>
                                         <div class="mortgage-card">
-                                            <img class="mortgage-card__img" src="assets/images/certificates/3.webp" alt="">
+                                            <img class="mortgage-card__img" src="assets/images/certificates/3.webp"
+                                                 alt="">
                                         </div>
                                         <div class="mortgage-card">
-                                            <img class="mortgage-card__img" src="assets/images/certificates/2.webp" alt="">
+                                            <img class="mortgage-card__img" src="assets/images/certificates/2.webp"
+                                                 alt="">
                                         </div>
                                         <div class="mortgage-card">
-                                            <img class="mortgage-card__img" src="assets/images/certificates/1.webp" alt="">
+                                            <img class="mortgage-card__img" src="assets/images/certificates/1.webp"
+                                                 alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -333,9 +337,9 @@
                 </div>
             </div>
         </div>
-        <div class="section animation-wrapper">
-            <div class="section-img">
-                <img src="assets/images/main-img.webp" class="section-img__item" alt="" data-animation>
+        <div class="section">
+            <div class="section-img parallax-container">
+                <img src="assets/images/main-img.webp" class="section-img__item parallax-img" alt="">
             </div>
         </div>
         <div class="section section-slider section--dark ">
@@ -344,10 +348,10 @@
                     <div class="section__content">
                         <div class="section__header animation-wrapper">
                             <p class="title title--headline title--bold" data-animation>
-                                Бесплатное сопровождение
+                                От участка до переезда
                             </p>
                             <p class="text text--base" data-animation>
-                                От одобрения ипотеки до подписания договора
+                                Пройдём с вами весь путь от идеи до регистрации дома и новоселья.
                             </p>
 
                         </div>
@@ -502,7 +506,7 @@
             <div class="section__wrapper section__wrapper--map">
                 <div class="section__content">
                     <div class="container">
-                        <div class="section__header section__header--desktop--big animation-wrapper" >
+                        <div class="section__header section__header--desktop--big animation-wrapper">
                             <p class="title title--big title--bold title--light" data-animation>
                                 Свобода выбора
                             </p>
@@ -513,26 +517,30 @@
                             </p>
                         </div>
                     </div>
-                    <img src="assets/images/map.webp" class="map-img" alt="" data-animation>
+                    <div class="map-img parallax-container">
+                        <img src="assets/images/map.webp" class="map-img__item parallax-img" alt="">
+                    </div>
+
                 </div>
             </div>
         </div>
         <div class="section section--dark section--dark--tablet">
             <div class="section__wrapper section__wrapper--top--big--desktop">
                 <div class="container">
-                    <div class="section__header animation-wrapper" >
+                    <div class="section__header animation-wrapper">
                         <p data-animation class="title title--headline title--bold">
                             Живите там, где вам комфортно
                         </p>
-                        <p class="text text--base" >
-                            Мы не привязаны к одному посёлку. <br>
-                            Строим там, где у вас участок. В любой точке Ленобласти.
-
-                        </p>
-                        <p class="text text--base" data-animation>
-                            Нет участка?
-                            <a href="#" class="text text--semibold text--accent" data-animation>Поможем найти.</a>
-                        </p>
+                        <div class="section__text" data-animation>
+                            <p class="text text--base">
+                                Мы не привязаны к одному посёлку. <br>
+                                Строим там, где у вас участок. В любой точке Ленобласти.
+                            </p>
+                            <p class="text text--base">
+                                Нет участка?
+                                <a href="#" class="text text--semibold text--accent" data-animation>Поможем найти.</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -549,8 +557,6 @@
                                 <p class="text text--base">
                                     Все дома разные. Не навязываем архитектурный стиль, <br>
                                     конкретную технологию или материалы.
-
-
                                 </p>
                                 <p>
                                     Стремимся воссоздать вашу мечту
@@ -566,18 +572,18 @@
             </div>
         </div>
         <div class="section">
-            <div class="section__wrapper section__wrapper--top--none--mobile section__wrapper--top--small">
+            <div class="section__wrapper section__wrapper--bottom--big--desktop section__wrapper--top--none--mobile section__wrapper--top--small">
                 <div class="container">
                     <div class="section__header animation-wrapper">
                         <p class="title title--headline title--bold" data-animation>
                             Любой проект дома
                         </p>
-                        <div class="section__text">
-                            <p class="text text--base" data-animation>
+                        <div class="section__text" data-animation>
+                            <p class="text text--base">
                                 Можем построить дом по вашему или нашему проекту.
 
                             </p>
-                            <p class="text text--base" data-animation>
+                            <p class="text text--base">
                                 <span class="text text--semibold">Спроектировать с нуля</span>
                                 или адаптировать типовой проект под ваш стиль жизни.
 
@@ -613,12 +619,12 @@
                             <p class="title title--headline title--bold" data-animation>
                                 Жить, а не обслуживать
                             </p>
-                            <div class="section__text">
-                                <p class="text text--base" data-animation>
+                            <div class="section__text" data-animation>
+                                <p class="text text--base">
                                     В наших домах тепло и комфортно круглый год.
 
                                 </p>
-                                <p class="text text--base" data-animation>
+                                <p class="text text--base">
                                     Высокая энергоэффективность снижает ежемесячные расходы.
                                 </p>
                             </div>
@@ -641,11 +647,11 @@
                                 <br class="br-desktop">
                                 подписания договора.
                             </p>
-                            <div class="section__text">
-                                <p class="text text--base text--white" data-animation>
+                            <div class="section__text" data-animation>
+                                <p class="text text--base text--white">
                                     Материалы подорожали? Это больше не ваша проблема.
                                 </p>
-                                <p class="text text--base text--white" data-animation>
+                                <p class="text text--base text--white">
                                     Цена дома и его комплектация - константа на время строительства.
                                     Смета до розетки - наш стандарт.
                                 </p>
@@ -668,7 +674,7 @@
                         </div>
                         <a href="#" class="button button--base button--gradient" data-animation>
                         <span class="button__text">
-                            Узнать больше
+                            Записаться на экскурсию
                         </span>
                         </a>
                     </div>
@@ -678,27 +684,42 @@
         </div>
         <div class="section">
             <div class="marquee-list ">
-                <div class="marquee animation-wrapper" data-speed="2.5">
+                <div class="marquee animation-wrapper" data-speed="1.25">
                     <div class="marquee-content">
-                        <img data-animation src="assets/images/marquee/1/01.webp" alt="" class="marquee__img marquee__img--small">
-                        <img data-animation src="assets/images/marquee/1/02.webp" alt="" class="marquee__img marquee__img--small">
-                        <img data-animation src="assets/images/marquee/1/03.webp" alt="" class="marquee__img marquee__img--small">
-                        <img data-animation src="assets/images/marquee/1/04.webp" alt="" class="marquee__img marquee__img--small">
-                        <img data-animation src="assets/images/marquee/1/05.webp" alt="" class="marquee__img marquee__img--small">
-                        <img data-animation src="assets/images/marquee/1/06.webp" alt="" class="marquee__img marquee__img--small">
-                        <img data-animation src="assets/images/marquee/1/07.webp" alt="" class="marquee__img marquee__img--small">
-                        <img data-animation src="assets/images/marquee/1/08.webp" alt="" class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/01.webp" alt=""
+                             class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/02.webp" alt=""
+                             class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/03.webp" alt=""
+                             class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/04.webp" alt=""
+                             class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/05.webp" alt=""
+                             class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/06.webp" alt=""
+                             class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/07.webp" alt=""
+                             class="marquee__img marquee__img--small">
+                        <img data-animation src="assets/images/marquee/1/08.webp" alt=""
+                             class="marquee__img marquee__img--small">
                     </div>
                 </div>
-                <div class="marquee animation-wrapper">
+                <div class="marquee animation-wrapper" data-speed=".5">
                     <div class="marquee-content">
-                        <img data-animation src="assets/images/marquee/2/01.webp" alt="" loading="lazy" class="marquee__img">
-                        <img data-animation src="assets/images/marquee/2/02.webp" alt="" loading="lazy" class="marquee__img">
-                        <img data-animation src="assets/images/marquee/2/03.webp" alt="" loading="lazy" class="marquee__img">
-                        <img data-animation src="assets/images/marquee/2/04.webp" alt="" loading="lazy" class="marquee__img">
-                        <img data-animation src="assets/images/marquee/2/05.webp" alt="" loading="lazy" class="marquee__img">
-                        <img data-animation src="assets/images/marquee/2/06.webp" alt="" loading="lazy" class="marquee__img">
-                        <img data-animation src="assets/images/marquee/2/07.webp" alt="" loading="lazy" class="marquee__img">
+                        <img data-animation src="assets/images/marquee/2/01.webp" alt="" loading="lazy"
+                             class="marquee__img">
+                        <img data-animation src="assets/images/marquee/2/02.webp" alt="" loading="lazy"
+                             class="marquee__img">
+                        <img data-animation src="assets/images/marquee/2/03.webp" alt="" loading="lazy"
+                             class="marquee__img">
+                        <img data-animation src="assets/images/marquee/2/04.webp" alt="" loading="lazy"
+                             class="marquee__img">
+                        <img data-animation src="assets/images/marquee/2/05.webp" alt="" loading="lazy"
+                             class="marquee__img">
+                        <img data-animation src="assets/images/marquee/2/06.webp" alt="" loading="lazy"
+                             class="marquee__img">
+                        <img data-animation src="assets/images/marquee/2/07.webp" alt="" loading="lazy"
+                             class="marquee__img">
                     </div>
                 </div>
             </div>

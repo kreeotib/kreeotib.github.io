@@ -32,28 +32,28 @@
                 <nav class="header-nav">
                     <ul class="header-nav__list">
                         <li class="header-nav__item">
-                            <a href="catalog.html" class="header-nav__link">
-                                Каталог проектов
+                            <a href="catalog.html" class="header-nav__link" data-text="Каталог проектов">
+                                <span>Каталог проектов</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="postroeno.html" class="header-nav__link">
-                                Построено
+                            <a href="postroeno.html" class="header-nav__link" data-text="Построено">
+                                <span>Построено</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="#" class="header-nav__link">
-                                Услуги
+                            <a href="#" class="header-nav__link" data-text="Услуги">
+                                <span>Услуги</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="#" class="header-nav__link">
-                                О компании
+                            <a href="#" class="header-nav__link" data-text="О компании">
+                                <span>О компании</span>
                             </a>
                         </li>
                         <li class="header-nav__item">
-                            <a href="contacts.html" class="header-nav__link">
-                                Контакты
+                            <a href="contacts.html" class="header-nav__link" data-text="Контакты">
+                                <span>Контакты</span>
                             </a>
                         </li>
                     </ul>
@@ -68,8 +68,8 @@
         </div>
     </header>
     <main class="content">
-        <div class="hero product-hero">
-            <div class="hero__wrapper hero__wrapper--product">
+        <div class="hero product-hero ">
+            <div class="hero__wrapper hero__wrapper--product js-gallery-item">
                 <div class="hero-bg product-hero__bg">
                     <picture class="hero-bg__item">
                         <img src="assets/images/product/1/1.webp" alt="">
@@ -78,22 +78,22 @@
                 <div class="product-hero__slider product-images">
                     <div class="swiper  product-images-slider">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide product-images__item">
+                            <div class="swiper-slide product-images__item js-gallery-item">
                                 <img src="assets/images/product/1/1.webp" alt="" loading="lazy">
                             </div>
-                            <div class="swiper-slide product-images__item">
+                            <div class="swiper-slide product-images__item js-gallery-item">
                                 <img src="assets/images/product/1/gallery/1.webp" alt="" loading="lazy">
                             </div>
-                            <div class="swiper-slide product-images__item">
+                            <div class="swiper-slide product-images__item js-gallery-item">
                                 <img src="assets/images/product/1/gallery/2.webp" alt="" loading="lazy">
                             </div>
-                            <div class="swiper-slide product-images__item">
+                            <div class="swiper-slide product-images__item js-gallery-item">
                                 <img src="assets/images/product/1/gallery/3.webp" alt="" loading="lazy">
                             </div>
-                            <div class="swiper-slide product-images__item">
+                            <div class="swiper-slide product-images__item js-gallery-item">
                                 <img src="assets/images/product/1/gallery/4.webp" alt="" loading="lazy">
                             </div>
-                            <div class="swiper-slide product-images__item">
+                            <div class="swiper-slide product-images__item js-gallery-item">
                                 <img src="assets/images/product/1/gallery/5.webp" alt="" loading="lazy">
                             </div>
                         </div>
@@ -103,22 +103,22 @@
             <div class="product-hero__slider product-hero__slider--nav product-images">
                 <div class="swiper  product-images-slider-nav">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide product-images__item product-images__item--nav">
+                        <div class="swiper-slide product-images__item product-images__item--nav js-gallery-item">
                             <img src="assets/images/product/1/1.webp" alt="" loading="lazy">
                         </div>
-                        <div class="swiper-slide product-images__item product-images__item--nav">
+                        <div class="swiper-slide product-images__item product-images__item--nav js-gallery-item">
                             <img src="assets/images/product/1/gallery/1.webp" alt="" loading="lazy">
                         </div>
-                        <div class="swiper-slide product-images__item product-images__item--nav">
+                        <div class="swiper-slide product-images__item product-images__item--nav js-gallery-item">
                             <img src="assets/images/product/1/gallery/2.webp" alt="" loading="lazy">
                         </div>
-                        <div class="swiper-slide product-images__item product-images__item--nav">
+                        <div class="swiper-slide product-images__item product-images__item--nav js-gallery-item">
                             <img src="assets/images/product/1/gallery/3.webp" alt="" loading="lazy">
                         </div>
-                        <div class="swiper-slide product-images__item product-images__item--nav">
+                        <div class="swiper-slide product-images__item product-images__item--nav js-gallery-item">
                             <img src="assets/images/product/1/gallery/4.webp" alt="" loading="lazy">
                         </div>
-                        <div class="swiper-slide product-images__item product-images__item--nav">
+                        <div class="swiper-slide product-images__item product-images__item--nav js-gallery-item">
                             <img src="assets/images/product/1/gallery/5.webp" alt="" loading="lazy">
                         </div>
                     </div>
@@ -255,10 +255,10 @@
                             </div>
                         </div>
                         <div class="product-plan">
-                            <div class="product-plan__img">
+                            <div class="product-plan__img js-gallery-item" >
                                 <img src="assets/images/product/1/plan-1.webp" alt="">
                             </div>
-                            <div class="product-plan__img">
+                            <div class="product-plan__img js-gallery-item">
                                 <img src="assets/images/product/1/plan-2.webp" alt="">
                             </div>
                         </div>
@@ -291,20 +291,20 @@
                 </div>
             </div>
         </div>
-        <div class="product-gallery section">
-            <div data-animation class="product-gallery__img">
+        <div class="product-gallery section ">
+            <div data-animation class="product-gallery__img js-gallery-item">
                 <img loading="lazy" src="assets/images/product/1/gallery/1.webp" alt="">
             </div>
-            <div data-animation class="product-gallery__img">
+            <div data-animation class="product-gallery__img js-gallery-item">
                 <img loading="lazy" src="assets/images/product/1/gallery/2.webp" alt="">
             </div>
-            <div data-animation class="product-gallery__img">
+            <div data-animation class="product-gallery__img js-gallery-item">
                 <img loading="lazy" src="assets/images/product/1/gallery/3.webp" alt="">
             </div>
-            <div data-animation class="product-gallery__img">
+            <div data-animation class="product-gallery__img js-gallery-item">
                 <img loading="lazy" src="assets/images/product/1/gallery/4.webp" alt="">
             </div>
-            <div data-animation class="product-gallery__img">
+            <div data-animation class="product-gallery__img js-gallery-item">
                 <img loading="lazy" src="assets/images/product/1/gallery/5.webp" alt="">
             </div>
         </div>
@@ -833,13 +833,42 @@
         </div>
     </div>
 </div>
+<div class="popup popup--lightbox" id="popup-lightbox">
+    <div class="popup__wrapper">
+        <div class="popup__overlay"></div>
+        <div class="popup__content ">
+            <button class="popup-close popup__close">
+                <svg class="icon">
+                    <use xlink:href="assets/images/sprite.svg#xmark"></use>
+                </svg>
+            </button>
+            <div class="lightbox-popup">
+                <div class="lightbox-popup-prev lightbox-popup__button lightbox-popup__button--prev">
+                    <svg class="icon">
+                        <use xlink:href="assets/images/sprite.svg#short-arrow-left"></use>
+                    </svg>
+                </div>
+                <div class="lightbox-popup__item">
+                    <img loading="lazy" src="assets/images/gallery/01.webp" alt="" class="lightbox-popup__img">
+                </div>
+                <div class="lightbox-popup-next lightbox-popup__button lightbox-popup__button--next">
+                    <svg class="icon">
+                        <use xlink:href="assets/images/sprite.svg#short-arrow-right"></use>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/libs/imask/imask.js"></script>
+<script src="assets/scripts/index.js"></script>
 <script>
     IMask(document.getElementById('application-popup-tel'), {
         mask: '(000) 000-00-00',
     });
 </script>
-<script src="assets/libs/swiper/swiper.js"></script>
-<script src="assets/libs/imask/imask.js"></script>
-<script src="assets/scripts/index.js"></script>
 </body>
 </html>
