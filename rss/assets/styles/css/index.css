@@ -652,7 +652,7 @@ a.text--white:hover {
   padding-bottom: calc(var(--section-padding) * 2);
 }
 @media screen and (min-width: 1241px) {
-  .section__wrapper--bottom--big {
+  .section__wrapper--bottom--big--desktop {
     padding-bottom: calc(var(--section-padding) * 2);
   }
 }
@@ -1098,12 +1098,14 @@ a.text--white:hover {
   flex-shrink: 0;
   border-radius: 50%;
   background: #E4E4ED;
-  transition: 0.3s background-color;
+  transition: 0.3s opacity;
+}
+.slider-button.is-disabled {
+  pointer-events: none;
+  opacity: 0.4;
 }
 .slider-button:hover {
   background: #D3D3DB;
-}
-.slider-button:hover {
   cursor: pointer;
 }
 @media screen and (max-width: 1240px) {
@@ -1605,6 +1607,10 @@ a.text--white:hover {
   backdrop-filter: blur(4px);
   transition: 0.3s opacity;
 }
+.lightbox-popup__button.is-disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
 .lightbox-popup__button:hover {
   cursor: pointer;
   opacity: 0.8;
@@ -1634,6 +1640,10 @@ a.text--white:hover {
     width: 0.75rem;
     height: 0.75rem;
   }
+}
+
+.js-gallery-item:hover {
+  cursor: pointer;
 }
 
 .popup.is-closing .popup__overlay {

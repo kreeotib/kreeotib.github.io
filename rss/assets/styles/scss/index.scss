@@ -770,8 +770,10 @@ a.text--white:hover {
     &--bottom {
       &--big {
         padding-bottom: calc(var(--section-padding) * 2);
-        @media screen and (min-width: 1241px) {
-          padding-bottom: calc(var(--section-padding) * 2);
+        &--desktop{
+          @media screen and (min-width: 1241px) {
+            padding-bottom: calc(var(--section-padding) * 2);
+          }
         }
       }
     }
@@ -1233,14 +1235,18 @@ a.text--white:hover {
     border-radius: 50%;
     background: #E4E4ED;
 
-    transition: .3s background-color;
-
+    transition: .3s opacity;
+    &.is-disabled{
+      pointer-events: none;
+      opacity: .4;
+    }
     &:hover {
       background: #D3D3DB;
+      cursor: pointer;
     }
 
     &:hover {
-      cursor: pointer;
+
     }
 
     @media screen and (max-width: 1240px) {
@@ -1768,6 +1774,10 @@ a.text--white:hover {
     backdrop-filter: blur(4px);
 
     transition: .3s opacity;
+    &.is-disabled{
+      pointer-events: none;
+      opacity: .4;
+    }
     &:hover {
       cursor: pointer;
       opacity: .8;
@@ -1800,7 +1810,11 @@ a.text--white:hover {
     }
   }
 }
-
+.js-gallery-item{
+  &:hover{
+    cursor: pointer;
+  }
+}
 .popup.is-closing .popup__overlay {
   animation: popup-overlay-out 200ms ease forwards;
 }
