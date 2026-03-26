@@ -403,6 +403,43 @@ function initCards() {
     } catch (e) {}
 }
 
+const initCardAnimations = () => {
+    const cards = document.querySelectorAll('.card-animate');
+
+    if (!cards.length) return;
+
+    const options = {
+        root: null,
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const card = entry.target;
+                const wrapper = card.querySelector('.card__wrapper');
+
+                if (wrapper) {
+                    const children = wrapper.children;
+                    const delayStep = 0.15;
+
+
+                    Array.from(children).forEach((child, index) => {
+                        child.style.transitionDelay = `${index * delayStep}s`;
+                    });
+
+
+                    card.classList.add('is-visible');
+                }
+
+                observer.unobserve(card);
+            }
+        });
+    }, options);
+
+    cards.forEach(card => observer.observe(card));
+};
+
 
 function initMarquees() {
     try {
@@ -863,95 +900,206 @@ const initPreloader = () => {
     } catch (e) { console.error('initPreloader error:'); }
 };
 
-
-function initBarbaTransitions() {
-    if (typeof barba === 'undefined') return;
-
-    try {
-        barba.init({
-            sync: true,
-            transitions: [{
-                name: 'ese-advanced-transition',
-
-                async leave(data) {
-                    const done = this.async();
-                    const clickedElement = data.trigger;
-
-                    const card = clickedElement && typeof clickedElement.closest === 'function'
-                        ? clickedElement.closest('.project-item')
-                        : null;
-
-                    const preloader = document.querySelector('.preloader');
-
-                    if (preloader && !preloader.classList.contains('hidden')) {
-                        done();
-                        return;
-                    }
-
-                    document.body.classList.add('is-transitioning');
-
-                    if (card) {
-                        card.classList.add('is-active');
-                    }
-
-                    await new Promise(resolve => setTimeout(resolve, 600));
-                    done();
-                },
-
-                async enter(data) {
-                    const clickedElement = data.trigger;
-                    const card = clickedElement && typeof clickedElement.closest === 'function'
-                        ? clickedElement.closest('.project-item')
-                        : null;
-                    const nextContainer = data.next.container;
-
-                    nextContainer.classList.add('container-entering');
-
-                    if (card) {
-                        card.classList.add('is-exiting');
-                    }
-
-                    setTimeout(() => {
-                        document.body.classList.remove('is-transitioning');
-                        nextContainer.classList.remove('container-entering');
-                        nextContainer.classList.add('is-loaded');
-
-                        window.scrollTo(0, 0);
-                    }, 400);
-
-                    await new Promise(resolve => setTimeout(resolve, 800));
-
-                    initSliders();
-                    initCards();
-                    initMarquees();
-                    initVideoToggles();
-                    initPrinciplesCards();
-                    initExpandable();
-                }
-            }]
-        });
-    } catch (e) {
-        console.error('Barba init error:', e);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    try { new Lenis({ autoRaf: true, lerp: 0.1 }); } catch (e) { console.error('Lenis error:', e); }
-    try { new HeroAccelerator('.hero'); } catch (e) { console.error('HeroAccelerator error:', e); }
+function refreshPageScripts() {
 
     initSliders();
     initCards();
     initMarquees();
     initHeader();
+    initCardAnimations();
     initVideoToggles();
     initRunoverEffects();
     initPrinciplesCards();
     initPersonSlider();
-    initBarbaTransitions();
+    initExpandable();
+
+    new HeroAccelerator('.hero');
+
+    TitleReveal.init();
+
+    new CounterAnimator({ threshold: 0.3, rootMargin: '0px' }).observeCounters('.counters-block');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        window.lenis = new Lenis({ autoRaf: true, lerp: 0.1 });
+    } catch (e) {
+        console.error('Lenis error:', e);
+    }
+
+    refreshPageScripts();
 });
 
 let resizeTimer;
-window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(initExpandable, 250); });
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initExpandable, 250);
+});
 document.addEventListener('DOMContentLoaded', initExpandable);
 
 initPreloader();
+
+
+(function initBarbaTransition() {
+
+
+    if (typeof barba === 'undefined') return;
+
+
+    let isTransitioning = false;
+    let cardClone       = null;
+
+
+    function lockScroll() {
+        if (window.lenis) {
+            window.lenis.stop();
+        } else {
+            document.documentElement.style.overflow = 'hidden';
+        }
+    }
+
+    function unlockScroll() {
+        if (window.lenis) {
+            window.lenis.start();
+        } else {
+            document.documentElement.style.overflow = '';
+        }
+    }
+
+
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+
+    barba.hooks.before(() => {
+        isTransitioning = true;
+        lockScroll();
+    });
+
+    barba.hooks.after(() => {
+        isTransitioning = false;
+        unlockScroll();
+    });
+
+
+    try {
+        barba.init({
+            prevent: () => isTransitioning,
+
+            transitions: [{
+                name: 'project-reveal',
+
+
+                beforeLeave({ current }) {
+                    try {
+                        const section = current.container.querySelector('.projects-section');
+                        if (section) {
+                            section.style.height   = `${section.getBoundingClientRect().height}px`;
+                            section.style.overflow = 'hidden';
+                        }
+                    } catch (e) { console.error('barba beforeLeave error:', e); }
+                },
+
+
+                async leave({ current, trigger }) {
+                    try {
+                        const overlay     = document.querySelector('.transition-overlay');
+                        const clickedItem = trigger?.closest?.('.project-item') ?? trigger;
+
+                        if (clickedItem && overlay) {
+                            const rect        = clickedItem.getBoundingClientRect();
+                            const overlayRect = overlay.getBoundingClientRect();
+
+
+                            const videoTimes = [...clickedItem.querySelectorAll('video')]
+                                .map(v => v.currentTime);
+
+                            cardClone = clickedItem.cloneNode(true);
+
+
+                            [...cardClone.querySelectorAll('video')].forEach((v, i) => {
+                                v.currentTime = videoTimes[i] ?? 0;
+                                v.pause();
+                                v.removeAttribute('autoplay');
+                                v.removeAttribute('loop');
+                            });
+
+                            Object.assign(cardClone.style, {
+                                position:      'absolute',
+                                top:           `${rect.top  - overlayRect.top}px`,
+                                left:          `${rect.left - overlayRect.left}px`,
+                                width:         `${rect.width}px`,
+                                height:        `${rect.height}px`,
+                                margin:        '0',
+                                pointerEvents: 'none',
+                            });
+
+                            overlay.appendChild(cardClone);
+                        }
+
+                        if (overlay) overlay.classList.add('is-visible');
+
+                        await delay(2000);
+
+                    } catch (e) { console.error('barba leave error:', e); }
+                },
+
+
+                beforeEnter({ next }) {
+                    try {
+                        window.scrollTo(0, 0);
+
+                        gsap.set(next.container, {
+                            opacity:  1,
+                            position: 'fixed',
+                            top:      '100%',
+                            left:     0,
+                            width:    '100%',
+                            zIndex:   150,
+                        });
+                    } catch (e) { console.error('barba beforeEnter error:', e); }
+                },
+
+                async enter({ current, next }) {
+                    try {
+                        const overlay = document.querySelector('.transition-overlay');
+                        const section = current.container.querySelector('.projects-section');
+
+                        await Promise.all([
+                            section
+                                ? gsap.to(section,        { height: 0, duration: 2, ease: 'power2.inOut' })
+                                : Promise.resolve(),
+                            gsap.to(next.container,       { top: '0%', duration: 2, ease: 'power2.inOut' }),
+                        ]);
+                        gsap.set(current.container, { visibility: 'hidden' });
+                        if (overlay) overlay.classList.remove('is-visible');
+                        gsap.set(next.container, { clearProps: 'all' });
+
+                    } catch (e) { console.error('barba enter error:', e); }
+                },
+
+
+                after() {
+                    try {
+                        refreshPageScripts();
+                    } catch (e) { console.error('barba refreshPageScripts error:', e); }
+
+                    if (cardClone) {
+                        cardClone.remove();
+                        cardClone = null;
+                    }
+
+                    const overlay = document.querySelector('.transition-overlay');
+                    if (overlay) overlay.classList.remove('is-visible');
+
+                    window.scrollTo(0, 0);
+                },
+            }],
+        });
+
+    } catch (e) {
+        console.error('barba.init error:', e);
+    }
+
+})();
