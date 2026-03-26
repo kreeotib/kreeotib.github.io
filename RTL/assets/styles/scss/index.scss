@@ -99,7 +99,15 @@ body.no-scroll {
   z-index: 3;
   background: #01040B;
   min-height: 100vh;
-  overflow: hidden;
+  transform-style: preserve-3d;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+
+  &-wrapper {
+    overflow: hidden;
+  }
 
   &::before {
     content: "";
@@ -112,6 +120,11 @@ body.no-scroll {
     z-index: 1;
     background: url("../../images/section-gradients/body.webp") bottom right/cover no-repeat;
   }
+}
+
+.section-last {
+  position: relative;
+
 }
 
 .text {
@@ -604,7 +617,7 @@ a.text--grey:hover {
   height: 100vh;
 
   &-track {
-    --hero-speed: 1.2;
+    --hero-speed: 1.5;
     height: calc(100vh + 100vh * var(--hero-speed));
   }
 
@@ -658,16 +671,10 @@ a.text--grey:hover {
       inset: 0;
       z-index: 2;
       opacity: var(--grad-opacity, 0);
-      background: radial-gradient(
-                      ellipse 220% 180% at 50% -60%,
-                      transparent 0%,
-                      transparent calc(65% * (1 - var(--p, 0) * 1.5)),
-                      rgba(0, 0, 0, 0.8) calc(85% * (1 - var(--p, 0) * 1.5)),
-                      #000 calc(105% * (1 - var(--p, 0) * 1.5)),
-                      #000 100%
-      );
+      background: radial-gradient(ellipse 220% 180% at 50% -60%, transparent 0%, transparent calc(65% * (1 - var(--p, 0) * 1.5)), rgba(0, 0, 0, 0.8) calc(85% * (1 - var(--p, 0) * 1.5)), #000 calc(105% * (1 - var(--p, 0) * 1.5)), #000 100%);
       will-change: opacity, background;
       pointer-events: none;
+
     }
 
     video {
@@ -690,12 +697,11 @@ a.text--grey:hover {
     gap: var(--section-spacer-big);
     padding: 6.25rem 0;
     @media screen and (max-width: 767px) {
-
       padding-bottom: 5rem;
     }
 
     &--project {
-      padding: 18.75rem 0 6.25rem 0;
+      //padding: 18.75rem 0 6.25rem 0;
       justify-content: space-between;
       @media screen and (max-width: 767px) {
         gap: 5rem;
@@ -710,6 +716,11 @@ a.text--grey:hover {
   position: relative;
   z-index: 4;
   transform: scale(1) translateZ(0);
+
+  &-about, &-level {
+
+    will-change: transform, border-radius;
+  }
 
   &__img {
     display: flex;
@@ -952,6 +963,7 @@ a.text--grey:hover {
   &-levels {
     position: relative;
     z-index: 5;
+
     &__wrapper {
       position: relative;
       z-index: 4;
@@ -1131,6 +1143,7 @@ a.text--grey:hover {
     background-position: 0% 100%;
     transition: background-position .3s ease;
     border: 1px solid rgba(255, 255, 255, 0.2);
+
     &:hover {
       background-position: 0% 0%;
     }
@@ -1150,7 +1163,7 @@ a.text--grey:hover {
     @media screen and (min-width: 768px) {
       text-align: center;
       border-radius: 0;
-      border:none;
+      border: none;
       &::before, &::after {
         display: none;
       }
@@ -1629,9 +1642,10 @@ a.text--grey:hover {
     font-weight: 600;
     font-size: 9.375rem;
 
-    .counter{
+    .counter {
       display: block;
     }
+
     @media screen and (max-width: 767px) {
       font-size: 4.5rem;
     }
@@ -1842,10 +1856,22 @@ a.text--grey:hover {
   }
 }
 
+.video-wrapper,
+[class*="video"],
+.levels__video, .person-item__bg, .geo-slider__item {
+  contain: layout style paint;
+}
+
 
 .footer {
-
+  position: relative;
+  isolation: isolate;
   z-index: 2;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 
   &__label {
     padding: 3.125rem var(--container-padding);
@@ -2448,19 +2474,21 @@ a.text--grey:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  img{
+
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: relative;
     z-index: 2;
   }
-  &::before{
+
+  &::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg,rgba(43, 49, 53, 0.2) 0%, rgba(43, 49, 53, 0) 100%);
+    background: linear-gradient(135deg, rgba(43, 49, 53, 0.2) 0%, rgba(43, 49, 53, 0) 100%);
 
 
     left: 0;
@@ -2470,14 +2498,14 @@ a.text--grey:hover {
 
     opacity: 0;
     z-index: 0;
-    transition:.3s opacity;
+    transition: .3s opacity;
 
   }
 }
 
 
-.card--principles:hover .card__bg{
-  &::before{
+.card--principles:hover .card__bg {
+  &::before {
     opacity: 1;
     animation: pulse 5s infinite;
   }
@@ -2511,7 +2539,7 @@ a.text--grey:hover {
   border-radius: inherit;
   background: radial-gradient(
                   250px circle at var(--x) var(--y),
-                  rgba(var(--glow-color),.7) 0%,
+                  rgba(var(--glow-color), .7) 0%,
                   rgba(var(--glow-color), 0.4) 40%,
                   transparent 60%
   );
@@ -2567,10 +2595,11 @@ a.text--grey:hover {
   display: flex;
   white-space: nowrap;
 
-  &--dynamic{
+  &--dynamic {
     user-select: none;
     -webkit-user-select: none;
   }
+
   &-content {
     flex-shrink: 0;
     will-change: transform;
@@ -2706,6 +2735,11 @@ b {
 
     }
   }
+}
+
+video {
+  transform: scale(1) translateZ(0);
+  will-change: transform;
 }
 
 .video {
@@ -2894,13 +2928,15 @@ b {
   height: 100%;
 
   min-height: 100vh;
-  &__text{
+
+  &__text {
     @media screen and (max-width: 767px) {
       max-width: 20rem;
       width: 100%;
     }
   }
-  &__wrapper{
+
+  &__wrapper {
     position: relative;
     z-index: 3;
     height: 100%;
@@ -2912,11 +2948,13 @@ b {
     justify-content: center;
     padding: 11.25rem 0;
     text-align: center;
-    .container{
+
+    .container {
       height: 100%;
     }
   }
-  &__bg{
+
+  &__bg {
     position: absolute;
     left: 0;
     top: 0;
@@ -2933,14 +2971,15 @@ b {
 
       display: none;
     }
-    &--mobile{
+
+    &--mobile {
       display: none;
       @media screen and (max-width: 767px) {
         display: block;
       }
     }
 
-    &::before{
+    &::before {
       content: "";
       position: absolute;
       left: 0;
@@ -2949,9 +2988,10 @@ b {
       height: 100%;
       z-index: 2;
       display: block;
-      background: rgba(#000,.25);
+      background: rgba(#000, .25);
     }
-    video,img{
+
+    video, img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -2960,36 +3000,38 @@ b {
       position: relative;
     }
   }
+
   &__column {
     text-align: center;
     justify-content: center;
     align-items: center;
     height: 100%;
   }
-  &__button{
+
+  &__button {
     margin-top: auto;
   }
 }
 
 
 .transition-overlay {
-  position:       fixed;
-  inset:          0;
-  z-index:        90;
-  background:     rgba(0, 0, 0, 0);
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0);
   pointer-events: none;
-  overflow:       hidden;
-  transition:     background 0.6s ease;
+  overflow: hidden;
+  transition: background 0.6s ease;
 }
 
 .transition-overlay.is-visible {
-  background:     rgba(0, 0, 0, 1);
+  background: rgba(0, 0, 0, 1);
   pointer-events: auto;
 }
 
 .project-item {
   position: relative;
-  z-index:  1;
+  z-index: 1;
 }
 
 .projects-section {
