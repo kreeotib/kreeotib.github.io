@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/styles/css/fonts.css">
+
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+    <link rel="stylesheet" href="assets/libs/lenis/lenis.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body data-barba="wrapper" class="project-page">
+<div class="transition-overlay"></div>
+<div class="page-wrapper" data-barba="container" >
+    <header class="header">
+        <div class="header__wrapper">
+            <a href="/" class="logo header__logo">
+                <svg class="logo__img" width="61" height="25" viewBox="0 0 61 25" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4793 0L16.6462 3.1669H19.5705L6.32507 16.452V13.4792L15.0627 4.70183L13.5146 3.15367L3.16699 3.1669V9.46983L6.31625 6.31175H9.02003L3.16699 12.1648V21.8331H12.8529L18.7148 15.9668V18.675L15.57 21.8287L21.8376 21.8331V11.4723L20.2938 9.93296L11.5606 18.675H8.55249L21.8376 5.35462V8.35833L25.0045 11.5252V0H13.4793Z"
+                          fill="#9E9D9D"/>
+                    <path d="M23.421 13.0557V23.4165H1.58345V1.58345H11.9487L10.3652 0H0V25H23.421H25.0044V14.6392L23.421 13.0557Z"
+                          fill="#2A54A0"/>
+                    <path d="M60.246 23.421H26.5834V25H60.246V23.421Z" fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M52.6112 0.0220566H36.2122V4.11521H41.8535V17.3518H44.3455L45.9422 13.9203V4.11521H50.7014L52.6112 0.0220566Z"
+                          fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M35.7003 6.17502H30.6721H28.9166H28.4668L26.6848 10.0079L26.5834 10.2638V21.8375H30.6721V10.2638H35.7003V12.9323H33.5214L31.6204 17.021H35.7003H39.7935V10.2638V6.17502H35.7003Z"
+                          fill="#2A54A0"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M60.2419 21.8375V6.3735V6.17502H51.4954L44.2045 21.8375H48.6946L54.058 10.2814H56.1531V21.8375H60.2419Z"
+                          fill="#2A54A0"/>
+                </svg>
+
+            </a>
+            <ul class="header-nav">
+                <li class="header-nav__item header-nav__item--visible">
+                    <a href="#" class="header-nav__link">
+                        Главная
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        О компании
+                    </a>
+                </li>
+                <li class="header-nav__item header-nav__item--visible">
+                    <a href="#" class="header-nav__link">
+                        Проекты
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        География
+                    </a>
+                </li>
+                <li class="header-nav__item">
+                    <a href="#" class="header-nav__link">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <div class="header-language">
+                <div class="language-list">
+                    <label class="language-item">
+                        <input type="radio"  name="language" checked value="ru">
+                        <span class="language-item__label">ru</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="en">
+                        <span class="language-item__label">en</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language" value="ch">
+                        <span class="language-item__label">ch</span>
+                    </label>
+                </div>
+            </div>
+            <div class="header-burger">
+                <label class="burger">
+                    <span class="burger__item"></span>
+                    <span class="burger__item"></span>
+                    <input type="checkbox" name="burger" id="">
+                </label>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-menu" data-lenis-prevent>
+        <div class="mobile-menu__wrapper">
+            <ul class="mobile-menu__list">
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Главная
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        О компании
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Проекты
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        География
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="#" class="mobile-menu__link">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <ul class="mobile-menu__list mobile-menu__list--contact">
+                <li class="mobile-menu__item">
+                    <a href="tel:8 (800) 770 - 02 - 91" class="mobile-menu__link">
+                        8 (800) 770 - 02 - 91
+
+                    </a>
+                </li>
+                <li class="mobile-menu__item">
+                    <a href="mailto:info@rtlltd.com" class="mobile-menu__link">
+                        info@rtlltd.com
+                    </a>
+                </li>
+            </ul>
+            <div class="mobile-menu__language">
+                <div class="language-list">
+                    <svg class="language-list__icon">
+                        <use xlink:href="assets/images/sprite.svg#language-icon"></use>
+                    </svg>
+                    <label class="language-item">
+                        <input type="radio" checked name="language-menu" value="ru">
+                        <span class="language-item__label">ru</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language-menu" value="en">
+                        <span class="language-item__label">en</span>
+                    </label>
+                    <label class="language-item">
+                        <input type="radio" name="language-menu" value="ch">
+                        <span class="language-item__label">ch</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="language-fixed">
+        <div class="language-list">
+            <svg class="language-list__icon">
+                <use xlink:href="assets/images/sprite.svg#language-icon"></use>
+            </svg>
+            <label class="language-item">
+                <input type="radio" checked name="language-fixed" value="ru">
+                <span class="language-item__label">ru</span>
+            </label>
+            <label class="language-item">
+                <input type="radio" name="language-fixed" value="en">
+                <span class="language-item__label">en</span>
+            </label>
+            <label class="language-item">
+                <input type="radio" name="language-fixed" value="ch">
+                <span class="language-item__label">ch</span>
+            </label>
+        </div>
+    </div>
+    <div data-barba="container" data-barba-namespace="project">
+        <div  class="hero-track">
+            <div class="hero-project section hero">
+                <div class="hero__bg">
+                    <video src="assets/video/promo.mp4" playsinline muted autoplay
+                           loop webkit-playsinline disablePictureInPicture
+                           controlslist="nodownload nofullscreen noremoteplayback"></video>
+                </div>
+                <div class="container">
+                    <div class="section__block">
+                        <div class=" hero__content hero__content--project">
+                            <h2 class="title title--large title--semibold">
+                                ТРАНСПОРТИРОВКА РЕАКТОРОВ ГИДРОКРЕКИНГА
+                            </h2>
+                            <div class="hero-project__row">
+                                <div class="hero-project__text">
+                                    <p class="text text--base">
+                                        «Примечательно, что ранее по Москве-реке никогда не перевозились столь тяжелые
+                                        грузовые места, что послужило поводом для регистрации рекорда России: самый
+                                        тяжелый груз, перевезенный речным транспортом по Москве-реке»
+                                    </p>
+                                </div>
+                                <div class="hero-project__info counters-block">
+                                    <img src="assets/images/projects-page/info.webp" alt="">
+                                    <div class="hero-project__column ">
+                                        <p class="title title--large title--semibold counter" data-end="3000+">
+                                            <span>
+                                            3 000 +
+                                            </span>
+                                        </p>
+                                        <p class="text text--base">
+                                            ОБЩЕЕ <br>
+                                            КОЛИЧЕСТВО <br>ГРУЗОВ
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main class="content">
+            <div class="content-wrapper">
+                <div class="section section--logistic section--logistic--black">
+                    <div class="section__wrapper section__wrapper--big">
+                        <div class="container">
+                            <div class="section__block">
+                                <div class="section__column section__column--big">
+                                    <div class="section__column">
+                                        <h2 data-reveal class="title title--base title--semibold">
+                                            Логистика оборудования
+                                        </h2>
+                                        <div class="section__text">
+                                            <p>
+                                                В&nbsp;рамках реализации третьего этапа модернизации Московский НПЗ (АО
+                                                &quot;Газпромнефть-МНПЗ&laquo;) в&nbsp;2022 году компания &laquo;РТЛ&raquo;
+                                                оказала услуги транспортной
+                                                экспедиции, связанные с&nbsp;перевозкой грузов заказчика в&nbsp;международном
+                                                и
+                                                внутрироссийском сообщении различными видами транспорта.
+                                            </p>
+                                            <p>
+                                                Грузы доставлялись на&nbsp;территорию строительства установки гидрокрекинга
+                                                (УГК) в
+                                                г. Москве из&nbsp;стран&nbsp;ЕС, стран Азиатского региона, а&nbsp;также от&nbsp;российских
+                                                производителей. Сердцем новой установки гидрокрекинга станут два реактора
+                                                производства ПАО &laquo;Ижорские заводы&raquo;.
+                                                Реактор первой ступени имеет длину 52&nbsp;метра, высоту 7,4&nbsp;метра,
+                                                ширину 6,3 метра
+                                                и&nbsp;массу более 1&nbsp;241&nbsp;тонны.
+                                            </p>
+                                            <p>
+                                                Его перевозка зафиксирована в&nbsp;Книге рекордов России как перемещение
+                                                самого
+                                                тяжелого груза по&nbsp;Москве-реке. Строительство комплекса глубокой
+                                                переработки
+                                                нефти является завершающим проектом программы модернизации Московского НПЗ,
+                                                которую с&nbsp;2011 года проводит &laquo;Газпром нефть&raquo;.
+                                            </p>
+                                            <p>
+                                                Отправка оборудования стартовала в&nbsp;июне 2022 года от&nbsp;одного из&nbsp;цехов
+                                                ПАО
+                                                &laquo;Ижорские заводы&raquo; в&nbsp;Колпинском районе города
+                                                Санкт-Петербурга. Для
+                                                транспортировки от&nbsp;завода-изготовителя до&nbsp;причала перегрузки на&nbsp;речную
+                                                баржу
+                                                использовался самоходный модульный транспортер. Расстояние от
+                                                завода-изготовителя до&nbsp;причала перегрузки составляет 13&nbsp;километров,
+                                                которые были
+                                                преодолены за&nbsp;двое суток. Маршрут движения транспортера пересекал
+                                                магистральную
+                                                железнодорожную линию Октябрьской железной дороги. Для проезда через
+                                                железнодорожные пути было организовано технологическое окно с&nbsp;приостановкой
+                                                движения грузовых и&nbsp;пассажирских поездов, в&nbsp;том числе
+                                                высокоскоростных
+                                                электропоездов &laquo;Сапсан&raquo;. После прибытия на&nbsp;причал реактор
+                                                был перегружен на
+                                                сухогрузную баржу-площадку проекта 16801. Для погрузки на&nbsp;баржу
+                                                применили хорошо
+                                                зарекомендовавший себя в&nbsp;проектной логистике накатный метод, при
+                                                котором
+                                                транспортер с&nbsp;грузом через специальные аппарели медленно заезжает на&nbsp;палубу
+                                                баржи, где с&nbsp;помощью хода гидравлической подвески опускает груз на&nbsp;опорные
+                                                тумбы. Для стабилизации баржи во&nbsp;время заезда техники на&nbsp;ее&nbsp;борт
+                                                в&nbsp;балластные
+                                                танки попеременно закачивалась и&nbsp;откачивалась балластная вода. Весь
+                                                процесс
+                                                погрузки груза на&nbsp;баржу занял шесть часов, в&nbsp;течение которых через
+                                                балластные
+                                                танки было перекачано более трех миллионов литров воды, что сопоставимо с
+                                                объемом двух олимпийских бассейнов. Дальнейший маршрут следования от
+                                                Санкт-Петербурга до&nbsp;Москвы пролегал через Ладожское и&nbsp;Онежское
+                                                озера,
+                                                Волго-Балтийскую систему каналов, по&nbsp;рекам Волге и&nbsp;Москве, а&nbsp;также
+                                                каналу имени
+                                                Москвы.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button class="toggle"
+                                            data-label-open="Читать далее"
+                                            data-label-close="Скрыть">
+                                    </button>
+                                    <div class="info counters-block">
+                                        <div class="info__row">
+                                            <div class="info-label ">
+                                                <div class="info-label__content">
+                                                    <p class="text text--base">
+                                                        Более
+                                                    </p>
+                                                    <p class="title title--large title--semibold counter" data-end="1241 т">
+                                                        <span>1 241 т</span>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                            <div class="info-label">
+                                                <div class="info-label__content">
+                                                    <p class="text text--base">
+                                                        Протяженность водного <br>
+                                                        маршрута
+                                                    </p>
+                                                    <p class="title title--large title--semibold counter" data-end="1300 км">
+                                                        <span> 1 300 км</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="video">
+                        <svg class="video__icon">
+                            <use xlink:href="assets/images/sprite.svg#play"></use>
+                        </svg>
+                        <video src="assets/video/promo.mp4" playsinline
+                               loop webkit-playsinline disablePictureInPicture
+                               controlslist="nodownload nofullscreen noremoteplayback"></video>
+                    </div>
+
+                </div>
+                <section class="section" data-expandable-block>
+                    <div class="section__wrapper section__wrapper--big">
+                        <div class="container">
+                            <div class="section__block">
+                                <div class="section__column">
+                                    <h2 class="title title--base title--semibold">
+                                        КНИГА РЕКОРДОВ РОССИИ:
+                                    </h2>
+
+                                    <div class="section__text">
+                                        <p>
+                                            <b>
+                                                «Примечательно, что ранее по Москве-реке никогда не перевозились столь
+                                                тяжелые
+                                                грузовые места, что послужило поводом для регистрации рекорда России: самый
+                                                тяжелый
+                                                груз, перевезенный речным транспортом по Москве-реке»
+                                            </b>
+                                        </p>
+
+                                        <p>
+                                            Протяженность водного маршрута составила 1300 километров, груз был доставлен
+                                            <b>за 14 дней.</b>
+                                        </p>
+
+                                        <p>
+                                            Для безопасного прохода барже-буксирного состава с крупногабаритным грузом на
+                                            борту
+                                            под низкорасположенными мостами у Кремлёвской набережной баржа специально
+                                            притапливалась на 30 сантиметров во избежание столкновения с мостовыми
+                                            конструкциями.
+                                        </p>
+
+                                        <p>
+                                            Проведение инженерно-геологических и гидрологических изысканий, а также
+                                            разработка
+                                            проектной документации на будущий погрузо-разгрузочный кластер на Москве-реке
+                                            начались за 18 месяцев до момента выгрузки негабаритного и тяжеловесного
+                                            оборудования в непосредственной близости от строительной площадки Московского
+                                            нефтеперерабатывающего завода. Этап строительства выполнялся силами
+                                            строительного
+                                            департамента компании «РТЛ» и длился 10 месяцев. Выгрузка тяжеловесного груза с
+                                            борта баржи на причал выполнялась методом выкатки. Все операции по выгрузке
+                                            заняли
+                                            не более пяти часов. На «последней миле» реактор был доставлен от причала на
+                                            Москве-реке до строительной площадки установки гидрокрекинга Московского НПЗ по
+                                            городской уличной сети. Во избежание повреждения подземных коммуникаций нагрузка
+                                            от
+                                            самоходного транспортера на дорожное полотно равномерно распределялась через
+                                            двести
+                                            пятьдесят шесть колес самоходных модулей. На этом этап транспортировки самой
+                                            тяжелой
+                                            из трех тысяч грузовых позиций был завершен.
+                                        </p>
+
+                                        <p>
+                                            Компания «РТЛ» в очередной раз продемонстрировала, что транспортировка новейшего
+                                            крупногабаритного технологического оборудования, предназначенного для
+                                            модернизации
+                                            современных предприятий России, является сложным, но исполняемым процессом.
+                                        </p>
+                                    </div>
+                                    <button class="toggle"
+                                            data-label-open="Читать далее"
+                                            data-label-close="Скрыть">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="assets/images/book/main.webp" alt="" class="section__img">
+                </section>
+                <section class="section section--task task">
+                    <div class="section__column section__column--biggest">
+                        <div class="section__grid section__grid--no--gap">
+                            <div class="section__img">
+                                <img src="assets/images/projects-page/task.webp" alt="">
+                            </div>
+                            <div class="task__text">
+                                <div class="section__column section__column--biggest">
+                                    <div class="section__column section__column--big">
+                                        <h2 class="title title--large title--semibold">
+                                            “Правильно поставленная задача ведет к ее четкому исполнению”
+                                        </h2>
+                                        <p class="text text--base text--semibold">
+                                            САНКТ-ПЕТЕРБУРГ - МОСКВА <br>
+                                            Вес 1241 т
+                                            <br>
+                                            Габариты 5200 Х 740 Х 630 см
+                                        </p>
+                                    </div>
+                                    <a href="mailto:info@rtlltd.com" class="button button--bordered button--base">
+                                        Связаться
+                                        <svg class="button__icon button__icon--arrow">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task__slider">
+                            <div class="principles swiper slider">
+                                <div class="principles-grid principles-grid--project swiper-wrapper">
+                                    <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
+                                        <picture class="card__bg">
+                                            <source media="(max-width: 767px)" srcset="assets/images/principles/1.webp">
+                                            <img src="assets/images/principles/1-1.svg" alt="">
+                                        </picture>
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-1"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Полная финансовая ответственность
+                                            </p>
+                                            <p class="text text--tiny card__text">
+                                                Мы застраховали свою профессиональную ответственность. Это ваша гарантия
+                                                на случай форс-мажора и наше обязательство действовать с максимальной
+                                                осмотрительностью.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
+                                        <img src="assets/images/principles/2.webp" alt="" class="card__bg">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-2"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Принцип «Единого окна» и личного менеджера
+                                            </p>
+                                            <p class="text text--tiny ">
+                                                Под каждый проект создается команда и вы получаете одного ответственного
+                                                координатора — вашего персонального логиста. Он управляет всеми
+                                                процессами: от инженеров и таможенных брокеров до перевозчиков, экономя
+                                                ваше время и нервы.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
+                                        <img src="assets/images/principles/3.webp" alt="" class="card__bg">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-3"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Собственная сеть надежных партнеров по всему миру
+                                            </p>
+                                            <p class="text text--tiny ">
+                                                За 20 лет мы не просто наработали контакты — мы сформировали пул
+                                                проверенных исполнителей (судовладельцы, владельцы спецтехники, местные
+                                                экспедиторы), которые разделяют наши стандарты качества.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide principles-grid__item card card--principles card--project card-animate">
+                                        <img src="assets/images/principles/4.webp" alt="" class="card__bg">
+                                        <div class="card__wrapper">
+                                            <svg class="card__icon">
+                                                <use xlink:href="assets/images/sprite.svg#prin-4"></use>
+                                            </svg>
+                                            <p class="title title--tiny title--semibold">
+                                                Проектное управление рисками с первого дня
+                                            </p>
+                                            <p class="text text--tiny ">
+                                                Мы просчитываем риски до того, как они возникнут. Инженерный анализ,
+                                                резервные маршруты, предварительные согласования — всё это часть нашей
+                                                стандартной процедуры, а не дополнительная опция. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-pagination principles-pagination">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="gallery">
+                    <div class="gallery__grid">
+                        <div class="gallery__img">
+                            <img src="assets/images/projects-page/gallery/1.webp" alt="">
+                        </div>
+                        <div class="gallery__img">
+                            <img src="assets/images/projects-page/gallery/2.webp" alt="">
+                        </div>
+                        <div class="gallery__img">
+                            <img src="assets/images/projects-page/gallery/3.webp" alt="">
+                        </div>
+                        <div class="gallery__img">
+                            <img src="assets/images/projects-page/gallery/4.webp" alt="">
+                        </div>
+                        <div class="gallery__img">
+                            <img src="assets/images/projects-page/gallery/5.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section project-section">
+                    <div class="section__wrapper section__wrapper--big">
+                        <div class="container">
+                            <div class="swiper project-slider slider">
+                                <div class="swiper-wrapper">
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Доставка доменной печи Нижегородская область
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/1.webp" alt="" class="project-item__preload">
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/1.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Оборудование металлургзаводу Нижегородская область доставка
+
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/2.webp" alt="" class="project-item__preload">
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/2.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Оборудование заводу аммиака Кингисепп доставка
+
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/3.webp" alt="" class="project-item__preload">
+
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/3.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Три тысячи мест МНПЗ доставка
+
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/4.webp" alt="" class="project-item__preload">
+
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/4.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Оборудование металлургпредприятию Нижегородская область доставка
+
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/5.webp" alt="" class="project-item__preload">
+
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/5.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Экологическая акция выпуск малька стерляди
+
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/1.webp" alt="" class="project-item__preload">
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/1.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Программа Сфера доставка оборудования РТЛ
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/2.webp" alt="" class="project-item__preload">
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/2.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Перекись водорода Новочебоксарск доставка оборудования
+
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/3.webp" alt="" class="project-item__preload">
+
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/3.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Реактор синтеза малеинового ангидрида Татнефть
+
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/4.webp" alt="" class="project-item__preload">
+
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/4.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-slider__item swiper-slide project-item">
+                                        <div class="project-item__wrapper">
+                                            <div class="project-item__blur">
+                                            </div>
+                                            <div class="project-item__content">
+                                                <div class="project-item__header">
+                                                    <p class="text text--tiny">
+                                                        ‘23
+                                                    </p>
+                                                    <p class="text text--base">
+                                                        Ротор газовой турбины Сименс доставка
+                                                    </p>
+                                                </div>
+                                                <a href="projects.html" class="button button--bordered button--base">
+                                                    Подробнее
+                                                    <svg class="button__icon button__icon--arrow">
+                                                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="project-item__img">
+                                                <img src="assets/video/projects/5.webp" alt="" class="project-item__preload">
+
+                                                <video src="assets/video/soc.mp4" poster="assets/video/projects/5.webp" playsinline muted
+                                                       loop webkit-playsinline disablePictureInPicture
+                                                       controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="slider-navigation">
+                                    <div class="slider-button slider-button__prev project-slider-button-prev">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="slider-button slider-button__next project-slider-button-next">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__label">
+                <p class="title title--big">
+                    «Совершенствуя логистику — совершенствовать мир»
+                </p>
+            </div>
+            <div class="footer__wrapper">
+                <a href="/" class="logo footer__logo">
+                    <svg class="logo__img" width="277" height="115" viewBox="0 0 277 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M61.9754 0L76.5362 14.5608H89.9817L29.0818 75.6432V61.9747L69.2558 21.6181L62.1377 14.5L14.5615 14.5608V43.5405L29.0412 29.0202H41.4727L14.5615 55.9313V100.384H59.0957L86.0474 73.4124V85.8641L71.588 100.364L100.405 100.384V52.7474L93.3075 45.6698L53.1538 85.8641H39.323L100.405 24.6195V38.43L114.966 52.9908V0H61.9754Z" fill="#9E9D9D"/>
+                        <path d="M107.685 60.0278V107.665H7.28041V7.2804H54.9377L47.6573 0H0V114.945H107.685H114.966V67.3082L107.685 60.0278Z" fill="currentColor"/>
+                        <path d="M277 107.684H122.226V114.944H277V107.684Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M241.896 0.101562H166.496V18.9211H192.434V79.7804H203.892L211.233 64.0028V18.9211H233.115L241.896 0.101562Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M164.144 28.3906H141.025H132.954H130.885L122.692 46.0137L122.226 47.1899V100.404H141.025V47.1899H164.144V59.4591H154.126L145.385 78.2583H164.144H182.963V47.1899V28.3906H164.144Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M276.981 100.404V29.3032V28.3906H236.766L203.244 100.404H223.889L248.549 47.271H258.182V100.404H276.981Z" fill="currentColor"/>
+                    </svg>
+                </a>
+                <div class="footer__row">
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Контакты</span>
+                            <input type="radio" checked name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <div class="footer-block__inner">
+                                <p class="footer-block__text">
+                                    117342, Г. Москва, <br>
+                                    вн. тер. г. муниципальный округ <br>
+                                    Коньково, ул. Бутлерова, <br>
+                                    д. 17, этаж 5, офис 518
+                                </p>
+                                <ul>
+                                    <li class="footer-block__text">
+                                        <a href="tel:7 (495) 790-02-91">7 (495) 790-02-91</a>
+                                    </li>
+                                    <li class="footer-block__text">
+                                        <a href="tel:8 (800) 770-02-91">8 (800) 770-02-91</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="footer-block__text">
+                                        <a href="mailto:info@rtlltd.com">info@rtlltd.com</a>
+                                    </li>
+                                    <li class="footer-block__text">
+                                        <a href="mailto:www.rtlltd.com">www.rtlltd.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Меню</span>
+                            <input type="radio" name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Главная
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        О компании
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Проекты
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        География
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Контакт
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Журнал компании</span>
+                            <input type="radio" name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#">
+                                        Выпуск 1
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="footer-block">
+                        <label class="footer-block__header">
+                            <span class="footer-block__title">Социальные сети</span>
+                            <input type="radio" name="footer-block">
+                            <span class="footer-block__icon">
+                                        <svg class="icon">
+                                            <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                        </svg>
+                                    </span>
+                        </label>
+                        <div class="footer-block__content">
+                            <ul>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        Телеграм
+
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        VK
+
+                                    </a>
+                                </li>
+                                <li class="footer-block__text">
+                                    <a href="#" target="_blank">
+                                        ВК Видео
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="text text--grey text--tiny">
+                    © 2025 ООО «РТЛ» Все права защищены.
+                </p>
+                <a href="#" class="text text--grey text--tiny">
+                    Политика обработки cookie
+                </a>
+                <a href="#" class="text text--grey text--tiny">
+                    Политика конфиденциальности
+                </a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/libs/lenis/lenis.js"></script>
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>
