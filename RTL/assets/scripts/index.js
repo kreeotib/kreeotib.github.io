@@ -63,49 +63,60 @@ class HeroAccelerator {
         this.hero = document.querySelector(selector);
         if (!this.hero) return;
 
-        this.track   = this.hero.closest('.hero-track') ?? this.hero.parentElement;
+        this.track = this.hero.closest('.hero-track') ?? this.hero.parentElement;
         this.content = this.hero.querySelector('.hero__content');
 
         this.init();
     }
 
     init() {
-        window.addEventListener('scroll', () => this.update(), { passive: true });
-        this.update();
+        const vh = window.innerHeight / 2.1;
+        const trackHeight = this.track.offsetHeight;
+        const scrollable = trackHeight - vh;
+
+        // Main ScrollTrigger for hero effects
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: this.track,
+                start: 'top top',
+                end: `+=${scrollable * 1.1}`,
+                scrub: true,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                    const progress = self.progress;
+                    const localScroll = self.scroll() - self.start;
+
+                    // Calculate all progress values using the same logic
+                    const textRise = this.norm(progress, 0, 1.0);
+                    const textOpacity = 1 - this.norm(progress / 1.5, 0.80, 1.0);
+                    const gradOpacity = this.norm(progress, 0.0, 0.30);
+                    const gradFill = this.norm(progress, 0.15, 1);
+                    const p = gradFill / 2.2;
+
+                    // Apply CSS variables
+                    this.hero.style.setProperty('--p', p.toFixed(4));
+                    this.hero.style.setProperty('--grad-opacity', gradOpacity.toFixed(4));
+                    this.hero.style.setProperty('--sy', localScroll.toFixed(0) + 'px');
+
+                    // Content animation
+                    if (this.content) {
+                        const maxRise = vh * 4.4;
+                        gsap.set(this.content, {
+                            y: -((textRise / 2.2) * maxRise),
+                            opacity: textOpacity
+                        });
+                    }
+                }
+            }
+        });
     }
 
     static norm(value, inMin, inMax) {
         return Math.max(0, Math.min((value - inMin) / (inMax - inMin), 1));
     }
 
-    update() {
-        const scrollY     = window.scrollY;
-        const vh          = window.innerHeight / 2.1;
-
-
-        const trackTop    = this.track.getBoundingClientRect().top + scrollY;
-        const trackHeight = this.track.offsetHeight;
-
-        const localScroll = scrollY - trackTop;
-        const scrollable  = trackHeight - vh;
-
-        const progress    = Math.max(0, Math.min(localScroll / (scrollable * 1.1) , 1));
-
-        const textRise    = HeroAccelerator.norm(progress / 1.5, 0, 1.0);
-        const textOpacity = 1 - HeroAccelerator.norm(progress / 1.5, 0.80, 1.0);
-        const gradOpacity = HeroAccelerator.norm(progress , 0.0, 0.30);
-        const gradFill    = HeroAccelerator.norm(progress / 1.25, 0.15, 0.8);
-        const p           = gradFill / 2.25;
-
-        this.hero.style.setProperty('--p',            p.toFixed(4));
-        this.hero.style.setProperty('--grad-opacity', gradOpacity.toFixed(4));
-        this.hero.style.setProperty('--sy',           localScroll.toFixed(0) + 'px');
-
-        if (this.content) {
-            const maxRise = vh * 3.3;
-            this.content.style.transform = `translate3d(0, ${-(textRise * maxRise).toFixed(1)}px, 0)`;
-            this.content.style.opacity   = textOpacity.toFixed(4);
-        }
+    norm(value, inMin, inMax) {
+        return HeroAccelerator.norm(value, inMin, inMax);
     }
 }
 
@@ -625,7 +636,6 @@ function initRunoverEffects() {
     const runners = document.querySelectorAll('[data-runover]');
     if (!runners.length) return;
 
-    const effects = [];
     const SCALE_REDUCTION = 0.1;
     const BORDER_RADIUS = 40;
 
@@ -638,87 +648,54 @@ function initRunoverEffects() {
             const shouldScale = footer.getAttribute('data-runoverscale') !== 'false';
             const maxOffset = parseInt(footer.getAttribute('data-runoveroffset')) || 150;
 
+            // Create sentinel element
             const sentinel = document.createElement('div');
             sentinel.style.cssText = 'height:1px; margin-bottom:-1px; pointer-events:none;';
             footer.parentNode.insertBefore(sentinel, footer);
 
-            const effectState = {
-                footer,
-                content,
-                sentinel,
-                shouldScale,
-                maxOffset,
-                isIntersecting: false,
-                geo: { triggerStart: 0, triggerEnd: 0, footerH: 0 }
-            };
+            // Set initial transform
+            gsap.set(footer, {
+                y: -maxOffset,
+                willChange: 'transform'
+            });
 
-            const cacheGeo = () => {
-                const vh = window.innerHeight;
-                const rect = sentinel.getBoundingClientRect();
-                const scrollTop = window.scrollY;
-                const sentinelTop = rect.top + scrollTop;
+            // Create ScrollTrigger
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: sentinel,
+                    start: 'top bottom',
+                    end: 'top top',
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
 
-                effectState.geo.triggerStart = sentinelTop - vh;
-                effectState.geo.triggerEnd = sentinelTop;
-                effectState.geo.footerH = footer.offsetHeight;
-            };
+                        // Footer offset animation
+                        const footerH = footer.offsetHeight;
+                        const offset = (1 - progress) * -Math.min(footerH * 0.3, maxOffset);
 
-            footer.style.transform = `translate3d(0, -${maxOffset.toFixed(4)}px, 0)`;
-            footer.style.willChange = 'transform';
+                        gsap.set(footer, {
+                            y: offset
+                        });
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    effectState.isIntersecting = entry.isIntersecting;
-                    if (entry.isIntersecting) {
-                        cacheGeo();
-                        applySingleScroll(effectState);
+                        // Content scale and border-radius animation
+                        if (shouldScale) {
+                            const scale = 1 - (progress * SCALE_REDUCTION);
+                            const radius = progress * BORDER_RADIUS;
+
+                            gsap.set(content, {
+                                scale: scale,
+                                borderRadius: `0 0 ${radius}px ${radius}px`
+                            });
+                        }
                     }
-                });
-            }, { rootMargin: '500px 0px' });
+                }
+            });
 
-            observer.observe(sentinel);
-            effects.push(effectState);
-            cacheGeo();
-
-        } catch (e) {}
-    });
-
-    function applySingleScroll(state) {
-        const { content, footer, shouldScale, maxOffset, geo } = state;
-        const scroll = window.scrollY;
-        const progress = Math.max(0, Math.min((scroll - geo.triggerStart) / (geo.triggerEnd - geo.triggerStart || 1), 1));
-
-        const offset = (1 - progress) * -Math.min(geo.footerH * 0.3, maxOffset);
-        footer.style.transform = `translate3d(0, ${offset.toFixed(4)}px, 0)`;
-
-        if (shouldScale) {
-            const scale = 1 - (progress * SCALE_REDUCTION);
-            const radius = progress * BORDER_RADIUS;
-            content.style.transform = `scale(${scale.toFixed(4)})`;
-            content.style.borderRadius = `0 0 ${radius.toFixed(4)}px ${radius.toFixed(4)}px`;
+        } catch (e) {
+            console.error('initRunoverEffects error:', e);
         }
-    }
-
-    const onScroll = () => {
-        effects.forEach(state => {
-            if (state.isIntersecting) applySingleScroll(state);
-        });
-    };
-
-    const onResize = () => {
-        effects.forEach(state => {
-            const vh = window.innerHeight;
-            const scrollTop = window.scrollY;
-            const sentinelTop = state.sentinel.getBoundingClientRect().top + scrollTop;
-            state.geo.triggerStart = sentinelTop - vh;
-            state.geo.triggerEnd = sentinelTop;
-            state.geo.footerH = state.footer.offsetHeight;
-            if (state.isIntersecting) applySingleScroll(state);
-        });
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize, { passive: true });
+    });
 }
 
 
@@ -800,83 +777,45 @@ function initPersonSlider() {
         }
 
         function onSlideChange() {
-            activateVideo(personSlider.realIndex, soundOn, false);
-            loadVideo(videos[(personSlider.realIndex + 1) % videos.length]);
+            if (!involved) return;
+            activateVideo(personSlider.realIndex, soundOn, true);
+            personSliderElement.classList.remove('unmuted');
+            soundOn = false;
+            if (soundBtn) soundBtn.querySelector('span:last-of-type').textContent = soundBtn.getAttribute('data-muted');
         }
-
-        activateVideo(0, false);
 
         new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
+                involved = true;
+                loadVideo(videos[personSlider.realIndex]);
+                videos[personSlider.realIndex].muted = true;
                 videos[personSlider.realIndex].play().catch(() => {});
             });
         }, { threshold: 0.3 }).observe(personSliderElement);
 
-        personSliderElement.addEventListener('click', (e) => {
-            if (soundBtn && soundBtn.contains(e.target)) return;
-            if (!involved) { involved = true; personSliderElement.classList.add('involved'); }
-            if (!soundOn) {
-                setSound(true);
-                videos[personSlider.realIndex].currentTime = 0;
-                videos[personSlider.realIndex].play().catch(() => {});
-            } else {
-                setSound(false);
-            }
+        personSliderElement.addEventListener('click', () => {
+            if (!involved) return;
+            if (soundBtn) soundBtn.click();
         });
 
         if (soundBtn) {
             soundBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (!involved) { involved = true; personSliderElement.classList.add('involved'); }
                 setSound(!soundOn);
+                soundBtn.querySelector('span:last-of-type').textContent = soundOn ? soundBtn.getAttribute('data-unmuted') : soundBtn.getAttribute('data-muted');
             });
         }
 
-        videos.forEach((video, i) => {
-            video.removeAttribute('loop');
-            video.addEventListener('ended', () => {
-                const nextIndex = (i + 1) % videos.length;
-                loadVideo(videos[nextIndex]);
-                personSlider.slideTo(nextIndex);
-            });
-        });
-
-        const cursorDot = personSliderElement.querySelector('.person-slider__cursor');
-        let targetX = personSliderElement.offsetWidth * 0.75;
-        let targetY = personSliderElement.offsetHeight / 2;
-        let currentX = targetX;
-        let currentY = targetY;
-
-        (function animateCursor() {
-            currentX += (targetX - currentX) * 0.08;
-            currentY += (targetY - currentY) * 0.08;
-            cursorDot.style.left = currentX + 'px';
-            cursorDot.style.top = currentY + 'px';
-            requestAnimationFrame(animateCursor);
-        })();
-
-        personSliderElement.addEventListener('mousemove', (e) => {
-            const rect = personSliderElement.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            if (x >= rect.width / 2) { targetX = x; targetY = e.clientY - rect.top; }
-        });
-
-        personSliderElement.addEventListener('mouseleave', () => {
-            targetX = personSliderElement.offsetWidth * 0.75;
-            targetY = personSliderElement.offsetHeight / 2;
-        });
     } catch (e) { console.error('initPersonSlider error:', e); }
 }
 
-
 const initPreloader = () => {
     try {
-        window.history.scrollRestoration = 'manual';
-        const preloader = document.querySelector('.preloader');
-        const last = preloader.querySelector('.svg-elem-6');
-        const page404bg = document.querySelectorAll('.page-404__bg');
-        document.body.classList.add('no-scroll');
+        const preloader  = document.querySelector('.preloader');
+        const page404bg  = document.querySelectorAll('.page404__video-wrapper');
+        const last       = document.querySelector('.svg-elem-5');
+
         let loaded = false;
 
         if(preloader){
