@@ -717,7 +717,7 @@ a.text--grey:hover {
   z-index: 4;
   transform: scale(1) translateZ(0);
 
-  &-about, &-level {
+  &-about, &-levels {
 
     will-change: transform, border-radius;
   }
@@ -964,6 +964,8 @@ a.text--grey:hover {
     position: relative;
     z-index: 5;
 
+    overflow: hidden;
+
     &__wrapper {
       position: relative;
       z-index: 4;
@@ -975,7 +977,7 @@ a.text--grey:hover {
       justify-content: center;
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: -50%;
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -1151,7 +1153,6 @@ a.text--grey:hover {
 
     min-height: 31.25rem;
     @media screen and (min-width: 768px) {
-      border: transparent;
     }
     @media screen and (max-width: 767px) {
       min-height: 23.125rem;
@@ -2488,7 +2489,7 @@ a.text--grey:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(43, 49, 53, 0.2) 0%, rgba(43, 49, 53, 0) 100%);
+    background: linear-gradient(135deg, rgba(43, 49, 53, 0.7) 0%, rgba(43, 49, 53, 0) 100%);
 
 
     left: 0;

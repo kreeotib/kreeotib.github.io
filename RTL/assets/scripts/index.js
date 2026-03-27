@@ -80,7 +80,7 @@ class HeroAccelerator {
 
     update() {
         const scrollY     = window.scrollY;
-        const vh          = window.innerHeight / 2;
+        const vh          = window.innerHeight / 2.1;
 
 
         const trackTop    = this.track.getBoundingClientRect().top + scrollY;
@@ -91,7 +91,7 @@ class HeroAccelerator {
 
         const progress    = Math.max(0, Math.min(localScroll / (scrollable * 1.1) , 1));
 
-        const textRise    = HeroAccelerator.norm(progress / 1.75, 0, 1.0);
+        const textRise    = HeroAccelerator.norm(progress / 1.5, 0, 1.0);
         const textOpacity = 1 - HeroAccelerator.norm(progress / 1.5, 0.80, 1.0);
         const gradOpacity = HeroAccelerator.norm(progress , 0.0, 0.30);
         const gradFill    = HeroAccelerator.norm(progress / 1.25, 0.15, 0.8);
@@ -462,6 +462,8 @@ function initMarquees() {
     try {
         document.querySelectorAll('.marquee').forEach(marquee => {
             const marqueeContent = marquee.querySelector('.marquee-content');
+            if (!marqueeContent) return;
+
             const isHero = marquee.classList.contains('marquee--hero');
             const isDynamic = marquee.classList.contains('marquee--dynamic');
 
@@ -472,16 +474,41 @@ function initMarquees() {
             let lastScrollTop = 0;
 
             let isDragging = false;
-            let startX = 0;
             let dragVelocity = 0;
             let lastMouseX = 0;
-            let targetAutoSpeed = 1;
-            let currentAutoSpeed = targetAutoSpeed;
+            const targetAutoSpeed = 1;
 
             if (isDynamic) {
                 marquee.style.cursor = 'grab';
                 marquee.style.userSelect = 'none';
                 marquee.style.touchAction = 'none';
+
+                marquee.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    marquee.style.cursor = 'grabbing';
+                    lastMouseX = e.clientX;
+                    dragVelocity = 0;
+                });
+
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    const mouseX = e.clientX;
+                    const deltaX = mouseX - lastMouseX;
+                    position += deltaX;
+                    dragVelocity = deltaX; // Запоминаем скорость последнего движения
+                    lastMouseX = mouseX;
+                });
+
+                const endDrag = () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    marquee.style.cursor = 'grab';
+                    // ОБНУЛЯЕМ инерцию сразу, чтобы не было пауз
+                    dragVelocity = 0;
+                };
+
+                window.addEventListener('mouseup', endDrag);
+                window.addEventListener('mouseleave', endDrag);
             }
 
             if (isHero) {
@@ -492,58 +519,20 @@ function initMarquees() {
                 }, { passive: true });
             }
 
-            if (isDynamic) {
-                marquee.addEventListener('mousedown', (e) => {
-                    isDragging = true;
-                    marquee.style.cursor = 'grabbing';
-                    startX = e.clientX;
-                    lastMouseX = e.clientX;
-                    dragVelocity = 0;
-                    currentAutoSpeed = 0;
-                });
-
-                window.addEventListener('mousemove', (e) => {
-                    if (!isDragging) return;
-                    const mouseX = e.clientX;
-                    const deltaX = mouseX - lastMouseX;
-                    position += deltaX;
-                    dragVelocity = deltaX;
-                    lastMouseX = mouseX;
-                });
-
-                window.addEventListener('mouseup', () => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    marquee.style.cursor = 'grab';
-                });
-
-                window.addEventListener('mouseleave', () => {
-                    if (isDragging) {
-                        isDragging = false;
-                        marquee.style.cursor = 'grab';
-                    }
-                });
-            }
-
             (function animate() {
                 const contentWidth = marqueeContent.offsetWidth;
 
                 if (!isDragging) {
-                    if (isDynamic && Math.abs(dragVelocity) > 0.1) {
-                        position += dragVelocity;
-                        dragVelocity *= 0.95;
-                    }
-                    else if (isDynamic) {
-                        if (currentAutoSpeed < targetAutoSpeed) {
-                            currentAutoSpeed += 0.02;
-                        }
-                        position -= currentAutoSpeed;
-                    }
-                    else {
-                        position -= 1 + scrollSpeed;
+                    if (isDynamic) {
+                        // Если мы не тянем, просто едем с заданной скоростью
+                        // Игнорируем затухающую dragVelocity для исключения пауз
+                        position -= targetAutoSpeed;
+                    } else {
+                        position -= (1 + scrollSpeed);
                     }
                 }
 
+                // Зацикливание
                 if (position <= -contentWidth) {
                     position += contentWidth;
                 } else if (position > 0) {
@@ -552,6 +541,7 @@ function initMarquees() {
 
                 marquee.style.transform = `translate3d(${position}px, 0, 0)`;
 
+                // Плавное затухание ускорения от скролла (для Hero)
                 if (isHero && scrollSpeed > 0) {
                     scrollSpeed *= 0.95;
                     if (scrollSpeed < 0.01) scrollSpeed = 0;
@@ -673,7 +663,7 @@ function initRunoverEffects() {
                 effectState.geo.footerH = footer.offsetHeight;
             };
 
-            footer.style.transform = `translate3d(0, -${maxOffset}px, 0)`;
+            footer.style.transform = `translate3d(0, -${maxOffset.toFixed(4)}px, 0)`;
             footer.style.willChange = 'transform';
 
             const observer = new IntersectionObserver((entries) => {
@@ -699,13 +689,13 @@ function initRunoverEffects() {
         const progress = Math.max(0, Math.min((scroll - geo.triggerStart) / (geo.triggerEnd - geo.triggerStart || 1), 1));
 
         const offset = (1 - progress) * -Math.min(geo.footerH * 0.3, maxOffset);
-        footer.style.transform = `translate3d(0, ${offset}px, 0)`;
+        footer.style.transform = `translate3d(0, ${offset.toFixed(4)}px, 0)`;
 
         if (shouldScale) {
             const scale = 1 - (progress * SCALE_REDUCTION);
             const radius = progress * BORDER_RADIUS;
             content.style.transform = `scale(${scale.toFixed(4)})`;
-            content.style.borderRadius = `0 0 ${radius}px ${radius}px`;
+            content.style.borderRadius = `0 0 ${radius.toFixed(4)}px ${radius.toFixed(4)}px`;
         }
     }
 
@@ -954,7 +944,6 @@ window.addEventListener('resize', () => {
 document.addEventListener('DOMContentLoaded', initExpandable);
 
 initPreloader();
-
 
 (function initBarbaTransition() {
 
