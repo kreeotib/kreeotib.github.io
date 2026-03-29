@@ -81,6 +81,9 @@ body.no-scroll {
       &--small {
         padding: 0 .625rem;
       }
+      &--full{
+        padding: 0;
+      }
     }
   }
 }
@@ -623,11 +626,17 @@ a.text--grey:hover {
 
   &__svg {
     display: flex;
+    height: 190px;
+    img{
+      width: auto;
+      height: 100%;
+    }
   }
 
   &__svg svg {
     display: block;
     flex-shrink: 0;
+    height: 190px;
   }
 
   &__text {
@@ -712,13 +721,33 @@ a.text--grey:hover {
   }
 }
 
+.about-main{
+  position: relative;
+  &::before {
+    @media screen and (max-width: 767px) {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      pointer-events: none;
+      transform: translateY(10rem);
+      width: 100%;
+      height: 100rem;
+      display: block;
+      background: url("../../images/section-gradients/about-m.webp") right center/contain no-repeat;
+      animation: pulse 5s linear infinite;
+    }
+  }
+}
+
 .section {
   position: relative;
   z-index: 4;
   transform: scale(1) translateZ(0);
 
   &-about, &-levels {
-
+    z-index: 7;
     will-change: transform, border-radius;
   }
 
@@ -934,7 +963,7 @@ a.text--grey:hover {
   &--about {
     position: relative;
     background-color: #000;
-    z-index: 5;
+    z-index: 7;
 
     .section__wrapper {
       position: relative;
@@ -942,22 +971,7 @@ a.text--grey:hover {
       z-index: 3;
     }
 
-    &::before {
-      @media screen and (max-width: 767px) {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 1;
-        pointer-events: none;
-        transform: translateY(10rem);
-        width: 100%;
-        height: 100rem;
-        display: block;
-        background: url("../../images/section-gradients/about-m.webp") right center/contain no-repeat;
-        animation: pulse 5s linear infinite;
-      }
-    }
+
   }
 
   &-levels {
@@ -1515,7 +1529,7 @@ a.text--grey:hover {
 .numbers {
 
   background: url("../../images/numbers/bg.webp") center center/cover no-repeat;
-
+  z-index: 6;
   &-grid {
     display: flex;
     align-items: center;

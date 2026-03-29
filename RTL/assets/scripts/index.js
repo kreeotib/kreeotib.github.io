@@ -79,7 +79,7 @@ class HeroAccelerator {
             scrollTrigger: {
                 trigger: this.track,
                 start: 'top top',
-                end: `+=${scrollable * 1.1}`,
+                end: `+=${scrollable * 1.3}`,
                 scrub: true,
                 invalidateOnRefresh: true,
                 onUpdate: (self) => {
@@ -92,6 +92,10 @@ class HeroAccelerator {
                     const gradOpacity = this.norm(progress, 0.0, 0.30);
                     const gradFill = this.norm(progress, 0.15, 1);
                     const p = gradFill / 2.2;
+
+                    // Hero opacity fade-out (быстрее начинается)
+                    const heroOpacity = 1 - this.norm(progress, 0.7, 1.0);
+                    this.hero.style.opacity = heroOpacity;
 
                     // Apply CSS variables
                     this.hero.style.setProperty('--p', p.toFixed(4));
@@ -165,11 +169,35 @@ const TitleReveal = (() => {
 
         const text = el.textContent.trim();
         el.setAttribute('aria-label', text);
+
+        // Получаем вычисленные стили элемента
+        const computed = window.getComputedStyle(el);
+
+        // Вычисляем доступную ширину с учетом padding
+        const paddingLeft = parseFloat(computed.paddingLeft);
+        const paddingRight = parseFloat(computed.paddingRight);
+        const availableWidth = el.clientWidth - paddingLeft - paddingRight;
+
         el.innerHTML = '';
 
+        // Создаем probe с полным копированием стилей
         const probe = document.createElement('span');
-        probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;';
-        el.appendChild(probe);
+        probe.style.cssText = `
+            position: absolute;
+            visibility: hidden;
+            white-space: nowrap;
+            left: -9999px;
+            font-family: ${computed.fontFamily};
+            font-size: ${computed.fontSize};
+            font-weight: ${computed.fontWeight};
+            font-style: ${computed.fontStyle};
+            letter-spacing: ${computed.letterSpacing};
+            word-spacing: ${computed.wordSpacing};
+            text-transform: ${computed.textTransform};
+        `;
+
+        // Добавляем probe в body, чтобы избежать проблем с контекстом
+        document.body.appendChild(probe);
 
         const words = text.split(/\s+/);
         const lines = [];
@@ -178,11 +206,21 @@ const TitleReveal = (() => {
         for (const word of words) {
             const test = cur ? cur + ' ' + word : word;
             probe.textContent = test;
-            if (cur && probe.offsetWidth > el.offsetWidth) { lines.push(cur); cur = word; }
-            else { cur = test; }
+
+            // Используем scrollWidth для более точного измерения
+            const testWidth = probe.scrollWidth;
+
+            if (cur && testWidth > availableWidth) {
+                lines.push(cur);
+                cur = word;
+            } else {
+                cur = test;
+            }
         }
         if (cur) lines.push(cur);
-        el.removeChild(probe);
+
+        // Удаляем probe из DOM
+        document.body.removeChild(probe);
 
         lines.forEach(lineText => {
             const wrap = document.createElement('span');
