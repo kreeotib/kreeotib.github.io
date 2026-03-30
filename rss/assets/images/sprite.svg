@@ -5,6 +5,9 @@
         <path fill="currentColor" d="M826.758 259.786c0-165.618 114.193-259.808 239.023-259.808 65.455 0 118.737 30.38 153.781 65.323l-68.515 83.55c-24.355-21.28-48.71-36.455-82.211-36.455-57.85 0-108.102 53.171-108.102 142.827s42.618 144.338 106.56 144.338c38.074 0 68.515-19.74 89.81-42.531l68.521 82.038c-41.862 48.607-98.962 72.94-162.904 72.94-126.371 0-235.991-83.55-235.991-252.221z"></path>
         <path fill="currentColor" d="M1374.744 99.795l-161.245 160.909 161.245 160.908 161.239-160.908-161.239-160.909zM1272.664 260.704h204.154l-102.074 101.865-102.080-101.865z"></path>
     </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 732 512" id="arrow-bottom">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="113.7832" stroke="currentColor" d="M73.178 91.429l292.571 329.143 292.572-329.142"></path>
+    </symbol>
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 313 512" id="short-arrow-right">
         <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="85.3333" stroke="currentColor" d="M42.666 42.666l212.947 212.947-212.947 212.946"></path>
     </symbol>

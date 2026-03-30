@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+    <link rel="stylesheet" href="assets/styles/css/about.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header__row">
+                <a href="/" class="header__logo">
+                    <svg class="logo__img">
+                        <use xlink:href="assets/images/sprite.svg#logo"></use>
+                    </svg>
+                </a>
+                <nav class="header-nav">
+                    <ul class="header-nav__list">
+                        <li class="header-nav__item">
+                            <a href="catalog.html" class="header-nav__link" data-text="Каталог проектов">
+                                <span>Каталог проектов</span>
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="postroeno.html" class="header-nav__link" data-text="Построено">
+                                <span>Построено</span>
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <label class="header-nav__link" data-text="Услуги">
+                                <input type="checkbox" name="services-toggle" id="" class="header-nav__input">
+                                <span>Услуги</span>
+                            </label>
+                            <ul class="header-nav__sublist">
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Ипотека на дом</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Подобрать участок</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Фундамент под ключ</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Проектирование</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Строительство дома</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Технадзор</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Инженерные системы</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Чистовая отделка</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Дизайн интерьера</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Благоустройство участка</a>
+                                </li>
+                                <li class="header-nav__item header-nav__item--divider">
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Купить бетон</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Купить газобетон</a>
+                                </li>
+                                <li class="header-nav__item">
+                                    <a href="#" class="header-nav__link">Купить материалы Grand Line</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link" data-text="О компании">
+                                <span>О компании</span>
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="contacts.html" class="header-nav__link" data-text="Контакты">
+                                <span>Контакты</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__burger">
+                    <button class="burger">
+                        <span class="burger__item"></span>
+                        <span class="burger__item"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="hero animation-wrapper">
+            <div class="hero__wrapper">
+                <div class="hero-bg">
+                    <video src="assets/images/hero.mp4" playsinline muted autoplay
+                           loop webkit-playsinline disablePictureInPicture preload="metadata"
+                           controlslist="nodownload nofullscreen noremoteplayback" class="hero-bg__item"></video>
+                </div>
+                <div class="hero__content">
+                    <div class="container">
+                        <a href="/" class="logo hero__logo" data-animation>
+                            <svg class="logo__img">
+                                <use xlink:href="assets/images/sprite.svg#logo"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero__footer">
+                    <div class="container">
+                        <a href="#" class="title title--grey title--small" data-animation>
+                            Строительная компания
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section--dark section-slider">
+            <div class="section__wrapper">
+                <div class="container">
+                    <div class="section__content section__content--regular">
+                        <div class="section__header animation-wrapper">
+                            <h2 class="title title--base title--bold" data-animation>
+                                Ключевые лица компании
+                            </h2>
+                        </div>
+                        <div class="auto-slider slider animation-wrapper person-slider">
+                            <div class="swiper-wrapper">
+                                <div data-animation class="swiper-slide person-slider__item person-card">
+                                    <div class="person-card__wrapper">
+                                        <div class="person-card__img ">
+                                            <img src="assets/images/person/1.webp" alt="" loading="lazy">
+                                        </div>
+                                        <div class="person-card__content">
+                                            <p class="title title--tiny title--medium person-card__title">
+                                                Смирнов
+                                                <br>
+                                                Никита Сергеевич
+                                            </p>
+                                            <p class="text text--body text--accent--light">
+                                                Генеральный продюссер
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-animation class="swiper-slide person-slider__item person-card">
+                                    <div class="person-card__wrapper">
+                                        <div class="person-card__img ">
+                                            <img src="assets/images/person/1.webp" alt="" loading="lazy">
+                                        </div>
+                                        <div class="person-card__content">
+                                            <p class="title title--tiny title--medium person-card__title">
+                                                Смирнов
+                                                <br>
+                                                Никита Сергеевич
+                                            </p>
+                                            <p class="text text--body text--accent--light">
+                                                Генеральный продюссер
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-animation class="swiper-slide person-slider__item person-card">
+                                    <div class="person-card__wrapper">
+                                        <div class="person-card__img ">
+                                            <img src="assets/images/person/1.webp" alt="" loading="lazy">
+                                        </div>
+                                        <div class="person-card__content">
+                                            <p class="title title--tiny title--medium person-card__title">
+                                                Смирнов
+                                                <br>
+                                                Никита Сергеевич
+                                            </p>
+                                            <p class="text text--body text--accent--light">
+                                                Генеральный продюссер
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-animation class="swiper-slide person-slider__item person-card">
+                                    <div class="person-card__wrapper">
+                                        <div class="person-card__img ">
+                                            <img src="assets/images/person/1.webp" alt="" loading="lazy">
+                                        </div>
+                                        <div class="person-card__content">
+                                            <p class="title title--tiny title--medium person-card__title">
+                                                Смирнов
+                                                <br>
+                                                Никита Сергеевич
+                                            </p>
+                                            <p class="text text--body text--accent--light">
+                                                Генеральный продюссер
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-animation class="swiper-slide person-slider__item person-card">
+                                    <div class="person-card__wrapper">
+                                        <div class="person-card__img ">
+                                            <img src="assets/images/person/1.webp" alt="" loading="lazy">
+                                        </div>
+                                        <div class="person-card__content">
+                                            <p class="title title--tiny title--medium person-card__title">
+                                                Смирнов
+                                                <br>
+                                                Никита Сергеевич
+                                            </p>
+                                            <p class="text text--body text--accent--light">
+                                                Руководитель направления ипотечного строительства
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-nav slider-nav--margin--small">
+                                <div class="slider-button slider-button__prev auto-slider-button-prev" data-animation>
+                                    <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#short-arrow-left"></use>
+                                    </svg>
+                                </div>
+                                <div class="slider-button slider-button__next auto-slider-button-next" data-animation>
+                                    <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#short-arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="block__wrapper">
+                <div class="section section-slider">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--regular">
+                                <div class="section__header">
+                                    <h2 class="title title--base title--bold" data-animation>
+                                        Отзывы о компании
+                                    </h2>
+                                </div>
+                                <div class="auto-slider slider animation-wrapper reviews-slider">
+                                    <div class="swiper-wrapper">
+                                        <div data-animation class="swiper-slide reviews-slider__item reviews-card">
+                                            <div class="reviews-card__img">
+                                                <img src="assets/images/reviews/1.webp" alt="">
+                                            </div>
+
+                                        </div>
+                                        <div data-animation class="swiper-slide reviews-slider__item reviews-card">
+                                            <div class="reviews-card__img">
+                                                <img src="assets/images/reviews/2.webp" alt="">
+                                            </div>
+
+                                        </div>
+                                        <div data-animation class="swiper-slide reviews-slider__item reviews-card">
+                                            <div class="reviews-card__img">
+                                                <img src="assets/images/reviews/1.webp" alt="">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="slider-nav slider-nav--margin--small">
+                                        <div class="slider-button slider-button__prev auto-slider-button-prev"
+                                             data-animation>
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#short-arrow-left"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="slider-button slider-button__next auto-slider-button-next"
+                                             data-animation>
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#short-arrow-right"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__text animation-wrapper">
+                                <a href="#" class="button button--link button--link--middle" data-animation>
+                                    Каталог проектов
+                                    <svg class="button__icon">
+                                        <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="button button--link button--link--middle" data-animation>
+                                    Отзывы на Яндекс.Картах
+                                    <svg class="button__icon">
+                                        <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="button button--link button--link--middle " data-animation>
+                                    Фото построенных объектов
+                                    <svg class="button__icon">
+                                        <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="button button--link button--link--middle" data-animation>
+                                    Скачать презентацию о компании
+                                    <svg class="button__icon">
+                                        <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__header section__header--small animation-wrapper">
+                                <p class="title title--headline title--bold" data-animation>
+                                    Наш путь
+                                </p>
+                                <p class="text text--base" data-animation>
+                                    Хук, который заставит тебя читать!
+                                    <br>
+                                    реф - пост с каруселью и миссией рестика (ДК)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Бетон
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            Мы начали свой путь с производства бетона.
+                                            <br>
+                                            У нас 3 завода в Ленобласти, а также партнёры в Москве, Краснодаре, Анапе и
+                                            Ростове-на-Дону.
+                                        </p>
+                                        <p class="text text--base">
+                                            Мы знаем, что качественный дом начинается с производства.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="section-img section-img--big js-gallery-item" data-animation>
+                                    <img src="assets/images/about/gallery/1.webp" alt="" class="section-img__item "
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section section-slider">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Фундаменты
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            Заказчики спрашивали, можем ли мы залить плиту под ключ. <br>
+                                            Мы сформировали первые бригады монолитчиков в 2017 году и зашли на рынок
+                                            строительных услуг с предложением: "Фундамент под ключ
+                                            от бетонного завода".
+                                        </p>
+                                        <p class="text text--base">
+                                            Мы заметили, что людям спокойнее, когда есть один ответственный
+                                            за результат.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="auto-slider slider animation-wrapper img-slider js-gallery" data-animation>
+                                    <div class="swiper-wrapper">
+                                        <div data-animation
+                                             class="swiper-slide img-slider__item section-img section-img--big js-gallery-item">
+                                            <img src="assets/images/about/gallery/foundaments/1.webp" alt=""
+                                                 loading="lazy"
+                                                 class="section-img__item">
+                                        </div>
+                                        <div data-animation
+                                             class="swiper-slide img-slider__item section-img section-img--big js-gallery-item">
+                                            <img src="assets/images/about/gallery/foundaments/2.webp" alt=""
+                                                 loading="lazy"
+                                                 class="section-img__item">
+                                        </div>
+                                        <div data-animation
+                                             class="swiper-slide img-slider__item section-img section-img--big js-gallery-item">
+                                            <img src="assets/images/about/gallery/foundaments/3.webp" alt=""
+                                                 loading="lazy"
+                                                 class="section-img__item">
+                                        </div>
+                                    </div>
+                                    <div class="slider-nav slider-nav--margin--small">
+                                        <div class="slider-button slider-button__prev auto-slider-button-prev"
+                                             data-animation>
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#short-arrow-left"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="slider-button slider-button__next auto-slider-button-next"
+                                             data-animation>
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#short-arrow-right"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Дома под ключ
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            Успешно построив первые фундаменты, заказчики просили выполнить последующие
+                                            этапы строительства. Так мы начали строить первые дома под ключ.
+                                        </p>
+                                        <p class="text text--base">
+                                            Мы поняли - сделав работу хорошо, людям спокойнее идти дальше с нами, чем
+                                            искать новых непроверенных подрядчиков.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="section-img section-img--big js-gallery-item" data-animation>
+                                    <img src="assets/images/about/gallery/2.webp" alt="" class="section-img__item "
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section section-slider">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Храм
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            Однажды к нам обратился батюшка и заказал фундамент под храм, но этим всё не
+                                            ограничилось. <br>
+                                            Всё, кроме купола строилось нашей компанией в течение нескольких лет.
+
+
+                                        </p>
+                                        <p class="text text--base">
+                                            Команда сформировалась как коллектив <br>
+                                            Мы проверили команду в бою <br>
+                                            Мы сформировали команду специалистов <br>
+                                            Решение такой задачи научило нас___
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="auto-slider slider animation-wrapper img-slider js-gallery" data-animation>
+                                    <div class="swiper-wrapper">
+                                        <div data-animation
+                                             class="swiper-slide img-slider__item section-img section-img--big js-gallery-item">
+                                            <img src="assets/images/about/gallery/khram/1.webp" alt="" loading="lazy"
+                                                 class="section-img__item">
+                                        </div>
+                                        <div data-animation
+                                             class="swiper-slide img-slider__item section-img section-img--big js-gallery-item">
+                                            <img src="assets/images/about/gallery/khram/2.webp" alt="" loading="lazy"
+                                                 class="section-img__item">
+                                        </div>
+                                        <div data-animation
+                                             class="swiper-slide img-slider__item section-img section-img--big js-gallery-item">
+                                            <img src="assets/images/about/gallery/khram/3.webp" alt="" loading="lazy"
+                                                 class="section-img__item">
+                                        </div>
+                                    </div>
+                                    <div class="slider-nav slider-nav--margin--small">
+                                        <div class="slider-button slider-button__prev auto-slider-button-prev"
+                                             data-animation>
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#short-arrow-left"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="slider-button slider-button__next auto-slider-button-next"
+                                             data-animation>
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#short-arrow-right"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Льготная ипотека
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            В&nbsp;2019 году мы&nbsp;построили первый дом по&nbsp;Сельской ипотеке и&nbsp;стали
+                                            одними из
+                                            первых в&nbsp;Ленобласти, кто получил эту аккредитацию.
+                                        </p>
+                                        <p class="text text--base">
+                                            Первые ипотечные дома мы построили себе в убыток, но первые договора
+                                            подписывались сложно, материалы всё время дорожали, а смету по закону нужно
+                                            было зафиксировать, – приходилось исполнять свои обязательства.
+                                        </p>
+                                        <p class="text text--base">
+                                            ковид, очко <br>
+                                            но мы вышли оттуда с умением фиксировать. <br>
+                                            мы не опустили руки <br>
+                                            срастили и научились
+                                        </p>
+                                        <p class="text text--base">
+                                            зачем фиксировать цену? <br>
+                                            дать людям постоянность во времена того, когда всё идёт по пизде
+                                            материалы во время ковида дорожали <br>
+                                            но вместо того, чтобы повысить смету, <br>
+                                            мы не повышали цену дома. <br>
+                                            ля нас было принципиально важно <br>
+                                            было сложно, зато мы научились держать слово <br>
+                                            но люди реально заехали в свои дома <br>
+                                            научились юридически и фактически фиксировать цену дома в договоре, работать
+                                            под строгим технадзором и выполнять гарантийные обязательства. Теперь это
+                                            то, что отличает нас от большинства других компаний.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="section-img section-img--big js-gallery-item" data-animation>
+                                    <picture class="section-img__item">
+                                        <source
+                                                srcset="assets/images/about/gallery/3-m.webp"
+                                                media="(max-width:640px)"/>
+                                        <img src="assets/images/about/gallery/3.webp" alt="" loading="lazy"/>
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Персонализация
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            Построив несколько десятков домов, мы заметили, что всегда вносились
+                                            изменения <br>
+                                            в проект дома. <br>
+                                            Всегда было индивидуально под заказчика. <br>
+                                            Возникла необходимость в отделе проектирования.
+                                        </p>
+                                        <p class="text text--base">
+                                            Мы разработали свои типовые проекты специально для льготной ипотеки и
+                                            научились их адаптировать под ваши запросы. <br>
+                                            Создали горячую линию по ипотеке и бесплатно проконсультировали несколько
+                                            тысяч людей. <br>
+                                            Научились искать земельные участки, которые подходят под льготные программы.
+                                            <br>
+                                            Стали открыто освещать нашу работу в социальных сетях.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="section-img section-img--fit js-gallery-item" data-animation>
+                                    <picture class="section-img__item">
+                                        <img src="assets/images/about/gallery/4.webp" alt="" loading="lazy"/>
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Resolution
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            Сейчас мы - аккредитованный в 7 банках застройщик ИЖС на строительство <br>
+                                            по ЭСКРОУ-счетам.
+                                            Государство одобрило нам проектное финансирование для строительства домов
+                                            <br>
+                                            по льготной ипотеке.
+                                        </p>
+                                        <p class="text text--base">
+                                            Спустя более 10 лет с открытия первого бетонного завода, мы пришли к тому,
+                                            что можем провести вас через все этапы переезда за город.
+                                        </p>
+                                        <p class="text text--base">
+                                            Поиск участка. Проектирование. Строительство.
+                                            Инженерные системы. Чистовая отделка. Технадзор. Благоустройство.
+                                        </p>
+                                        <p class="text text--base">
+                                            Мы фокусируемся на домах для круглогодичного проживания.
+                                            И стремимся воссоздать вашу мечту с максимальной точностью.
+                                            Мы не привязаны к конкретной технологии строительства.
+                                            Мы также не привязаны к одному посёлку.
+                                            Мы строим дома не в одном месте, а там где у вас участок.
+                                            Да, у нас объекты разбросаны по всей Ленобласти.
+                                        </p>
+                                        <p class="text text--base">
+                                            Мы разработали свои типовые проекты специально для льготной ипотеки и
+                                            научились их адаптировать под ваши запросы. <br>
+                                            Создали горячую линию по ипотеке и бесплатно проконсультировали несколько
+                                            тысяч людей. <br>
+                                            Научились искать земельные участки, которые подходят под льготные программы.
+                                            <br>
+                                            Стали открыто освещать нашу работу в социальных сетях.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="section-img section-img--big js-gallery-item" data-animation>
+                                    <picture class="section-img__item">
+                                        <img src="assets/images/about/gallery/5.webp" alt="" loading="lazy"/>
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section__wrapper section__wrapper--small ">
+                        <div class="container">
+                            <div class="section__content section__content--middle">
+                                <div class="section__header section__header--small animation-wrapper">
+                                    <p class="title title--middle title--semibold" data-animation>
+                                        Примени к себе
+                                    </p>
+                                    <div class="section__text" data-animation>
+                                        <p class="text text--base">
+                                            Если вы хотите иметь свой загородный дом - наша цель - дать вам наилучшую
+                                            комплектацию дома при заданном бюджете, чтобы дом был надёжным. <br>
+                                            Чтобы ты <br>
+                                            чтобы ты кайфовал и жил с комфортом <br>
+                                            чтобы всё было надёжно и на много лет вперёд <br>
+                                            чтобы был дом, куда можно переехать, а не летняя дача <br>
+                                            чтобы ты порекомендовал нас друзьям <br>
+                                            чтобы ты не переплачивал за обслуживание дома и жил в тепле и комфорте <br>
+                                            И зафиксируем цену в день подписания договора, даже если мы строим не в
+                                            ипотеку. <br>
+                                            Повышение цен на стройматериалы и повышения сметы - это то, о чём вам больше
+                                            не нужно будет думать. <br>
+                                            А ещё предоставим гарантийное обслуживание на 10 лет (всплывайка - что
+                                            покрывает)
+                                        </p>
+                                        <p class="text text--base">
+                                            РСС. Константа в мире переменных.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="section-img section-img--fit js-gallery-item" data-animation>
+                                    <picture class="section-img__item">
+                                        <img src="assets/images/about/gallery/6.webp" alt="" loading="lazy"/>
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="container">
+                <div class="footer__column">
+                    <a href="/" class="logo footer__logo">
+                        <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo"></use>
+                        </svg>
+                    </a>
+                    <div class="footer__row">
+                        <ul class="footer-list">
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">Главная</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="catalog.html" class="footer-list__link">Каталог проектов</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="postroeno.html" class="footer-list__link">Построено</a>
+                            </li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">Услуги</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="#" class="footer-list__link">О компании</a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="contacts.html" class="footer-list__link">Контакты</a>
+                            </li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li class="footer-list__item">
+                                <a href="tel:+7 (812) 409-41-03"
+                                   class="footer-list__link footer-list__link--semibold footer-list__link--right">+7
+                                    (812) 409-41-03
+                                </a>
+                            </li>
+                            <li class="footer-list__item">
+                                <a href="mailto:info@rss.group"
+                                   class="footer-list__link footer-list__link--semibold footer-list__link--right">
+                                    info@rss.group
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-info">
+                        <div class="footer-info__wrapper">
+                            <p class="text text--subtitle text--white">
+                                Цены, указанные на&nbsp;сайте имеют ознакомительный характер и&nbsp;не&nbsp;являются
+                                публичной
+                                офертой.Цена зависит от&nbsp;удалённости объекта и&nbsp;ваших пожеланий. Актуальную
+                                информацию
+                                уточняйте у&nbsp;менеджера.
+                            </p>
+                            <span class="footer-info__divider"></span>
+                            <div class="footer-info__row">
+                                <p class="footer-info__item text text--subtitle text--white">
+                                    &copy;&nbsp;Все права защищены
+                                </p>
+                                <p class="footer-info__item text text--subtitle text--white">
+                                    ИНН: 7807128989
+                                </p>
+                                <p class="footer-info__item text text--subtitle text--white">
+                                    ОГРН: 1167847275485
+                                </p>
+                                <a href="#" class="footer-info__item text text--subtitle text--white text--medium">
+                                    Политика конфиденциальности
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__decor">
+            <img src="assets/images/footer-decorsvg.svg" alt="">
+        </div>
+    </footer>
+</div>
+<div class="popup popup--lightbox" id="popup-lightbox">
+    <div class="popup__wrapper">
+        <div class="popup__overlay"></div>
+        <div class="popup__content ">
+            <button class="popup-close popup__close">
+                <svg class="icon">
+                    <use xlink:href="assets/images/sprite.svg#xmark"></use>
+                </svg>
+            </button>
+            <div class="lightbox-popup">
+                <div class="lightbox-popup-prev lightbox-popup__button lightbox-popup__button--prev">
+                    <svg class="icon">
+                        <use xlink:href="assets/images/sprite.svg#short-arrow-left"></use>
+                    </svg>
+                </div>
+                <div class="lightbox-popup__item">
+                    <img loading="lazy" src="assets/images/gallery/01.webp" alt="" class="lightbox-popup__img">
+                </div>
+                <div class="lightbox-popup-next lightbox-popup__button lightbox-popup__button--next">
+                    <svg class="icon">
+                        <use xlink:href="assets/images/sprite.svg#short-arrow-right"></use>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/scripts/index.js"></script>
+</body>
+</html>

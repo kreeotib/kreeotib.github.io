@@ -411,10 +411,14 @@ const CopyText = (() => {
         textSelector: '.copy__text',
         buttonSelector: '.copy__button',
         activeClass: 'is-copied',
+        processingClass: 'is-processing',
         resetDelay: 2000,
+        animationDuration: 300,
+        tipText: 'Скопировано !'
     };
 
     let config = {...DEFAULTS};
+    const originalButtonStates = new WeakMap();
 
     function copyToClipboard(text) {
         if (navigator.clipboard?.writeText) {
@@ -431,23 +435,87 @@ const CopyText = (() => {
         return Promise.resolve();
     }
 
+    function transformButton(button) {
+        if (!originalButtonStates.has(button)) {
+            originalButtonStates.set(button, {
+                innerHTML: button.innerHTML,
+                className: button.className
+            });
+        }
+
+        const svg = button.querySelector('.copy__icon');
+        if (!svg) return;
+
+        const svgClone = svg.cloneNode(true);
+        svgClone.classList.remove('copy__icon');
+        svgClone.classList.add('tip__icon');
+
+        const tipText = document.createElement('span');
+        tipText.className = 'tip__text active';
+        tipText.textContent = config.tipText;
+
+        const wrapper = document.createElement('span');
+        wrapper.className = 'tip__wrapper';
+        wrapper.appendChild(svgClone);
+        wrapper.appendChild(tipText);
+
+        button.innerHTML = '';
+        button.appendChild(wrapper);
+        button.classList.add('tip');
+    }
+
+    function restoreButton(button) {
+        const original = originalButtonStates.get(button);
+        if (!original) return;
+
+        button.className = original.className;
+        button.innerHTML = original.innerHTML;
+    }
+
     function handleCopy(wrapper) {
+        if (wrapper.classList.contains(config.processingClass)) {
+            return;
+        }
+
         const textEl = wrapper.querySelector(config.textSelector);
         if (!textEl) {
             console.warn('[CopyText] No text element found in wrapper:', wrapper);
             return;
         }
 
+        const button = wrapper.querySelector(config.buttonSelector);
+        if (!button) {
+            console.warn('[CopyText] No button element found in wrapper:', wrapper);
+            return;
+        }
+
         const text = textEl.textContent.trim();
+
+        wrapper.classList.add(config.processingClass);
 
         copyToClipboard(text)
             .then(() => {
-                wrapper.classList.add(config.activeClass);
-                setTimeout(() => wrapper.classList.remove(config.activeClass), config.resetDelay);
+                transformButton(button);
+
+                requestAnimationFrame(() => {
+                    wrapper.classList.add(config.activeClass);
+                });
+
+                setTimeout(() => {
+                    wrapper.classList.remove(config.activeClass);
+
+                    setTimeout(() => {
+                        restoreButton(button);
+                        wrapper.classList.remove(config.processingClass);
+                    }, config.animationDuration);
+
+                }, config.resetDelay);
+
                 wrapper.dispatchEvent(new CustomEvent('copy:success', {bubbles: true, detail: {text}}));
             })
             .catch(err => {
                 console.warn('[CopyText] Copy failed:', err);
+                wrapper.classList.remove(config.processingClass);
                 wrapper.dispatchEvent(new CustomEvent('copy:error', {bubbles: true, detail: {err}}));
             });
     }
@@ -644,7 +712,7 @@ const ParallaxEffect = (() => {
         smooth: true,
     };
 
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
     let items = [];
 
 
@@ -668,7 +736,7 @@ const ParallaxEffect = (() => {
 
 
     function init(options = {}) {
-        config = { ...DEFAULTS, ...options };
+        config = {...DEFAULTS, ...options};
 
         const containers = document.querySelectorAll(config.containerSelector);
 
@@ -702,12 +770,12 @@ const ParallaxEffect = (() => {
                 img.style.transition = 'transform 0.1s ease-out';
             }
 
-            return { container, img };
+            return {container, img};
         }).filter(item => item !== null);
 
         window.addEventListener('scroll', () => {
             requestAnimationFrame(render);
-        }, { passive: true });
+        }, {passive: true});
 
         render();
     }
@@ -717,7 +785,7 @@ const ParallaxEffect = (() => {
         init(config);
     }
 
-    return { init, refresh };
+    return {init, refresh};
 })();
 
 window.ParallaxEffect = ParallaxEffect;
@@ -735,7 +803,7 @@ const Marquee = (() => {
         direction: 'left',
     };
 
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
     let instances = [];
 
     function animate() {
@@ -757,7 +825,7 @@ const Marquee = (() => {
     }
 
     function init(options = {}) {
-        config = { ...DEFAULTS, ...options };
+        config = {...DEFAULTS, ...options};
         const elements = document.querySelectorAll(config.selector);
 
         if (!elements.length) {
@@ -797,7 +865,7 @@ const Marquee = (() => {
 
     window.addEventListener('resize', refresh);
 
-    return { init, refresh };
+    return {init, refresh};
 })();
 
 window.Marquee = Marquee;
@@ -806,26 +874,84 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!window.__LB_MANUAL_INIT__) Marquee.init();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const stepsSliderElement = document.querySelector('.steps-slider');
-    const stepsSlider = new Swiper(stepsSliderElement, {
-        init: false,
-        slidesPerView: 'auto',
-        spaceBetween: 16,
-        speed: 500,
-        breakpoints: {
-            1025: {
-                spaceBetween: 24,
-            }
-        },
-        navigation: {
-            prevEl: '.steps-slider-button-prev',
-            nextEl: '.steps-slider-button-next'
-        },
-    });
+const BurgerMenu = (() => {
+    const DEFAULTS = {
+        burgerSelector: '.burger',
+        navSelector: '.header-nav',
+        bodyClass: 'no-scroll',
+        activeClass: 'active'
+    };
 
-    if (stepsSliderElement) {
-        stepsSlider.init();
+    let config = {...DEFAULTS};
+    let burger = null;
+    let nav = null;
+    let isOpen = false;
+
+    function toggle() {
+        isOpen = !isOpen;
+
+        document.body.classList.toggle(config.bodyClass);
+        burger.classList.toggle(config.activeClass);
+        nav.classList.toggle(config.activeClass);
+    }
+
+    function close() {
+        if (!isOpen) return;
+
+        isOpen = false;
+        document.body.classList.remove(config.bodyClass);
+        burger.classList.remove(config.activeClass);
+        nav.classList.remove(config.activeClass);
+    }
+
+    function handleLinkClick(e) {
+        if (e.target.tagName === 'A') {
+            close();
+        }
+    }
+
+    function init(options = {}) {
+        config = {...DEFAULTS, ...options};
+
+        burger = document.querySelector(config.burgerSelector);
+        nav = document.querySelector(config.navSelector);
+
+        if (!burger || !nav) {
+            return;
+        }
+
+        burger.addEventListener('click', toggle);
+        nav.addEventListener('click', handleLinkClick);
+    }
+
+    return {init, close};
+})();
+
+window.BurgerMenu = BurgerMenu;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__LB_MANUAL_INIT__) BurgerMenu.init();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const autoSliderElement = document.querySelectorAll('.auto-slider');
+    if (autoSliderElement.length) {
+        autoSliderElement.forEach(slider => {
+            const autoSlider = new Swiper(slider, {
+                slidesPerView: 'auto',
+                spaceBetween: 8,
+                speed: 500,
+                breakpoints: {
+                    1025: {
+                        spaceBetween: 24,
+                    }
+                },
+                navigation: {
+                    prevEl: '.auto-slider-button-prev',
+                    nextEl: '.auto-slider-button-next'
+                },
+            });
+        })
     }
 
 
@@ -836,15 +962,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const productSliderImagesNav = new Swiper(productSliderImagesNavElement, {
         slidesPerView: 'auto',
         freeMode: true,
-        spaceBetween:4,
+        spaceBetween: 4,
         watchSlidesProgress: true,
     });
 
     const productSliderImages = new Swiper(productSliderImagesElement, {
         slidesPerView: 1,
         effect: 'fade',
-        fadeEffect: { crossFade: true },
-        thumbs: { swiper: productSliderImagesNav },
+        fadeEffect: {crossFade: true},
+        thumbs: {swiper: productSliderImagesNav},
     });
 });
 
