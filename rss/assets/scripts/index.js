@@ -169,7 +169,7 @@ const ScrollReveal = (() => {
 window.ScrollReveal = ScrollReveal;
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({ initialDelay: 300});
+    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({initialDelay: 300});
 });
 
 const CatalogFilter = (() => {
@@ -417,14 +417,10 @@ const CopyText = (() => {
         textSelector: '.copy__text',
         buttonSelector: '.copy__button',
         activeClass: 'is-copied',
-        processingClass: 'is-processing',
         resetDelay: 2000,
-        animationDuration: 300,
-        tipText: 'Скопировано !'
     };
 
     let config = {...DEFAULTS};
-    const originalButtonStates = new WeakMap();
 
     function copyToClipboard(text) {
         if (navigator.clipboard?.writeText) {
@@ -441,87 +437,25 @@ const CopyText = (() => {
         return Promise.resolve();
     }
 
-    function transformButton(button) {
-        if (!originalButtonStates.has(button)) {
-            originalButtonStates.set(button, {
-                innerHTML: button.innerHTML,
-                className: button.className
-            });
-        }
-
-        const svg = button.querySelector('.copy__icon');
-        if (!svg) return;
-
-        const svgClone = svg.cloneNode(true);
-        svgClone.classList.remove('copy__icon');
-        svgClone.classList.add('tip__icon');
-
-        const tipText = document.createElement('span');
-        tipText.className = 'tip__text active';
-        tipText.textContent = config.tipText;
-
-        const wrapper = document.createElement('span');
-        wrapper.className = 'tip__wrapper';
-        wrapper.appendChild(svgClone);
-        wrapper.appendChild(tipText);
-
-        button.innerHTML = '';
-        button.appendChild(wrapper);
-        button.classList.add('tip');
-    }
-
-    function restoreButton(button) {
-        const original = originalButtonStates.get(button);
-        if (!original) return;
-
-        button.className = original.className;
-        button.innerHTML = original.innerHTML;
-    }
-
     function handleCopy(wrapper) {
-        if (wrapper.classList.contains(config.processingClass)) {
-            return;
-        }
-
         const textEl = wrapper.querySelector(config.textSelector);
         if (!textEl) {
             console.warn('[CopyText] No text element found in wrapper:', wrapper);
             return;
         }
 
-        const button = wrapper.querySelector(config.buttonSelector);
-        if (!button) {
-            console.warn('[CopyText] No button element found in wrapper:', wrapper);
-            return;
-        }
-
         const text = textEl.textContent.trim();
-
-        wrapper.classList.add(config.processingClass);
 
         copyToClipboard(text)
             .then(() => {
-                transformButton(button);
-
-                requestAnimationFrame(() => {
-                    wrapper.classList.add(config.activeClass);
-                });
-
-                setTimeout(() => {
-                    wrapper.classList.remove(config.activeClass);
-
-                    setTimeout(() => {
-                        restoreButton(button);
-                        wrapper.classList.remove(config.processingClass);
-                    }, config.animationDuration);
-
-                }, config.resetDelay);
-
+                wrapper.classList.add(config.activeClass);
+                TipEffect.showTip(wrapper.querySelector(config.buttonSelector), "Скопировано!");
+                setTimeout(() => {TipEffect.hideTip();}, config.resetDelay);
+                setTimeout(() => wrapper.classList.remove(config.activeClass), config.resetDelay);
                 wrapper.dispatchEvent(new CustomEvent('copy:success', {bubbles: true, detail: {text}}));
             })
             .catch(err => {
                 console.warn('[CopyText] Copy failed:', err);
-                wrapper.classList.remove(config.processingClass);
                 wrapper.dispatchEvent(new CustomEvent('copy:error', {bubbles: true, detail: {err}}));
             });
     }
@@ -969,6 +903,209 @@ window.BurgerMenu = BurgerMenu;
 
 document.addEventListener('DOMContentLoaded', () => {
     if (!window.__LB_MANUAL_INIT__) BurgerMenu.init();
+});
+
+const TipEffect = (() => {
+    const DEFAULTS = {
+        selector: '[data-tip]',
+        positionSelector: '.tip-icon',
+        className: 'tip-text',
+        offset: 12,
+        delay: 150,
+        transitionDuration: 300,
+        edgeOffset: 16,
+    };
+
+    let config = {...DEFAULTS};
+    let currentTip = null;
+    let currentTarget = null;
+    let showTimeout = null;
+    let hideTimeout = null;
+
+    function createTipElement(text) {
+        const tip = document.createElement('span');
+        tip.className = config.className;
+        tip.textContent = text;
+
+        const arrow = document.createElement('span');
+        arrow.className = `${config.className}-arrow`;
+        tip.appendChild(arrow);
+
+        return tip;
+    }
+
+    function getPosition(target, tip) {
+        const targetRect = target.getBoundingClientRect();
+        const tipRect = tip.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        let left = targetRect.left + (targetRect.width / 2);
+        let positionClass = '';
+
+
+        const tipHalfWidth = tipRect.width / 2;
+        const leftEdge = left - tipHalfWidth;
+        const rightEdge = left + tipHalfWidth;
+
+        if (leftEdge < config.edgeOffset) {
+            left = targetRect.left;
+            positionClass = 'bottom-left';
+        } else if (rightEdge > viewportWidth - config.edgeOffset) {
+            left = targetRect.right;
+            positionClass = 'bottom-right';
+        }
+
+        const top = targetRect.top - tipRect.height - config.offset;
+
+        return {left, top, positionClass};
+    }
+
+    function positionTip(target, tip) {
+        const {left, top, positionClass} = getPosition(target, tip);
+
+        tip.style.left = `${left}px`;
+        tip.style.top = `${top}px`;
+
+        tip.classList.remove('bottom-left', 'bottom-right');
+
+        if (positionClass) {
+            tip.classList.add(positionClass);
+        }
+    }
+
+    function showTip(target, manualText = null) {
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+
+        if (currentTarget === target && currentTip) {
+            return;
+        }
+
+        if (currentTip) {
+            hideTip(true);
+        }
+
+        const tipText = manualText || target.dataset.tip;
+
+        if (!tipText) {
+            console.warn('[TipEffect] No tip text found');
+            return;
+        }
+
+        currentTarget = target;
+
+        showTimeout = setTimeout(() => {
+            currentTip = createTipElement(tipText);
+            document.body.appendChild(currentTip);
+
+            requestAnimationFrame(() => {
+                positionTip(target.querySelector(config.positionSelector) || target, currentTip);
+
+                requestAnimationFrame(() => {
+                    currentTip.classList.add('active');
+                });
+            });
+        }, config.delay);
+    }
+
+    function hideTip(immediate = false) {
+        if (showTimeout) {
+            clearTimeout(showTimeout);
+            showTimeout = null;
+        }
+
+        if (!currentTip) return;
+
+        if (immediate) {
+            currentTip.remove();
+            currentTip = null;
+            currentTarget = null;
+            return;
+        }
+
+        currentTip.classList.remove('active');
+
+        hideTimeout = setTimeout(() => {
+            if (currentTip) {
+                currentTip.remove();
+                currentTip = null;
+                currentTarget = null;
+            }
+        }, config.transitionDuration);
+    }
+
+    function handleMouseEnter(event) {
+        const target = event.currentTarget;
+        showTip(target);
+    }
+
+    function handleMouseLeave() {
+        hideTip();
+    }
+
+    function handleScroll() {
+        if (currentTip && currentTarget) {
+            requestAnimationFrame(() => {
+                positionTip(currentTarget, currentTip);
+            });
+        }
+    }
+
+    function init(options = {}) {
+        config = {...DEFAULTS, ...options};
+
+        const elements = document.querySelectorAll(config.selector);
+
+        if (!elements.length) {
+            console.warn('[TipEffect] No elements found for selector:', config.selector);
+            return;
+        }
+
+        elements.forEach(element => {
+            element.addEventListener('mouseenter', handleMouseEnter);
+            element.addEventListener('mouseleave', handleMouseLeave);
+        });
+
+        window.addEventListener('scroll', handleScroll, {passive: true});
+
+        console.log(`[TipEffect] Initialized ${elements.length} tip(s)`);
+    }
+
+    function destroy() {
+        const elements = document.querySelectorAll(config.selector);
+
+        elements.forEach(element => {
+            element.removeEventListener('mouseenter', handleMouseEnter);
+            element.removeEventListener('mouseleave', handleMouseLeave);
+        });
+
+        window.removeEventListener('scroll', handleScroll);
+
+        if (currentTip) {
+            hideTip(true);
+        }
+    }
+
+    function refresh() {
+        destroy();
+        init(config);
+    }
+
+    return {
+        init,
+        destroy,
+        refresh,
+        showTip,
+        hideTip
+    };
+})();
+
+window.TipEffect = TipEffect;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__LB_MANUAL_INIT__) TipEffect.init();
 });
 
 document.addEventListener('DOMContentLoaded', () => {

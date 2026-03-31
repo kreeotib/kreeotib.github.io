@@ -2119,7 +2119,8 @@ a.text--white:hover {
 .tip__label {
   align-self: center;
 }
-.tip__wrapper {
+.tip-icon {
+  color: #8794A7;
   flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
@@ -2128,10 +2129,8 @@ a.text--white:hover {
   justify-content: center;
   position: relative;
 }
-.tip__icon {
-  color: #8794A7;
-  width: 100%;
-  height: 100%;
+.tip-icon:hover {
+  cursor: pointer;
 }
 .tip__wrapper:hover {
   cursor: pointer;
@@ -2144,7 +2143,7 @@ a.text--white:hover {
   visibility: visible;
   bottom: calc(100% + 0.75rem);
 }
-.tip__text {
+.tip-text {
   font-size: var(--text-size-subtitle);
   padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
@@ -2152,16 +2151,31 @@ a.text--white:hover {
   background: var(--color-dark);
   max-width: 16.25rem;
   width: max-content;
-  position: absolute;
-  bottom: 100%;
+  z-index: 6;
+  position: fixed;
   color: #fff;
-  left: 50%;
   transform: translateX(-50%);
   opacity: 0;
   visibility: hidden;
   transition: 0.3s visibility, 0.5s opacity, 0.5s bottom;
 }
-.tip__text::before {
+.tip-text.active {
+  opacity: 1;
+  visibility: visible;
+}
+.tip-text.bottom-right {
+  transform: translateX(calc(-100% + 0.75rem));
+}
+.tip-text.bottom-right::before {
+  left: calc(100% - 1.5rem);
+}
+.tip-text.bottom-left {
+  transform: translateX(-0.75rem);
+}
+.tip-text.bottom-left::before {
+  left: 1.5rem;
+}
+.tip-text::before {
   content: "";
   position: absolute;
   display: inline-block;
