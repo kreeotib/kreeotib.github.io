@@ -5,6 +5,9 @@
     }
     &__item{
       max-width: 18.125rem;
+      &--empty{
+        width: calc(100% - 18.125rem);
+      }
       @media screen and (max-width: 640px) {
         max-width: 12.5rem;
       }

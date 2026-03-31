@@ -116,22 +116,22 @@
         <div class="hero animation-wrapper">
             <div class="hero__wrapper">
                 <div class="hero-bg">
-                    <video src="assets/images/hero.mp4" playsinline muted autoplay
+                    <video src="assets/video/hero.mp4" playsinline muted autoplay poster="assets/video/hero-poster.webp"
                            loop webkit-playsinline disablePictureInPicture preload="metadata"
                            controlslist="nodownload nofullscreen noremoteplayback" class="hero-bg__item"></video>
                 </div>
-                <div class="hero__content">
+                <div class="hero__content" data-animation>
                     <div class="container">
-                        <a href="/" class="logo hero__logo" data-animation>
+                        <a href="/" class="logo hero__logo" >
                             <svg class="logo__img">
                                 <use xlink:href="assets/images/sprite.svg#logo"></use>
                             </svg>
                         </a>
                     </div>
                 </div>
-                <div class="hero__footer">
+                <div class="hero__footer" data-animation>
                     <div class="container">
-                        <a href="#" class="title title--grey title--small" data-animation>
+                        <a href="#" class="title title--grey title--small" >
                             Строительная компания
                         </a>
                     </div>
@@ -611,7 +611,7 @@
                                 </p>
                             </div>
                         </div>
-                        <video data-animation src="assets/images/house.mp4" playsinline muted autoplay
+                        <video poster="assets/video/house-poster.webp" data-animation src="assets/video/house.mp4" playsinline muted autoplay
                                loop webkit-playsinline disablePictureInPicture
                                controlslist="nodownload nofullscreen noremoteplayback" class="section-video"></video>
                     </div>

@@ -7,6 +7,7 @@ const ScrollReveal = (() => {
         threshold: 0,
         rootMargin: '0px 0px -40px 0px',
         once: true,
+        initialDelay: 100,
     };
 
     let observer = null;
@@ -22,8 +23,8 @@ const ScrollReveal = (() => {
 
     function revealItem(item, delay = 0) {
         setTimeout(() => {
-            item.style.opacity = '';
-            item.style.transform = '';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
             item.style.willChange = '';
 
             item.addEventListener('transitionend', () => {
@@ -31,6 +32,8 @@ const ScrollReveal = (() => {
                     item.removeAttribute('data-animation');
                     item.setAttribute('data-animation-final', '');
                     item.style.transition = '';
+                    item.style.opacity = '';
+                    item.style.transform = '';
                 }
             }, {once: true});
         }, delay);
@@ -107,9 +110,12 @@ const ScrollReveal = (() => {
         }
 
         prepareItems();
-        buildObserver();
-        observeTargets();
-        initialized = true;
+
+        setTimeout(() => {
+            buildObserver();
+            observeTargets();
+            initialized = true;
+        }, config.initialDelay);
     }
 
     function reveal(target) {
@@ -131,8 +137,8 @@ const ScrollReveal = (() => {
 
     function skipAll() {
         document.querySelectorAll('[data-animation]').forEach(item => {
-            item.style.opacity = '';
-            item.style.transform = '';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
             item.style.transition = '';
             item.style.willChange = '';
             item.removeAttribute('data-animation');
@@ -163,7 +169,7 @@ const ScrollReveal = (() => {
 window.ScrollReveal = ScrollReveal;
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init();
+    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({ initialDelay: 300});
 });
 
 const CatalogFilter = (() => {
@@ -580,6 +586,8 @@ const Lightbox = (() => {
     let config = {...DEFAULTS};
     let currentItem = null;
     let currentGalleryItems = [];
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     function getImageSrc(item) {
         const bigAttr = item.getAttribute('data-big');
@@ -627,6 +635,19 @@ const Lightbox = (() => {
         if (next) setImage(next);
     }
 
+    function handleSwipe() {
+        const diff = touchStartX - touchEndX;
+        const threshold = 50;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                navigate(1);
+            } else {
+                navigate(-1);
+            }
+        }
+    }
+
     function open(item) {
         if (!item) {
             console.warn('[Lightbox] open() — item not found.');
@@ -661,7 +682,6 @@ const Lightbox = (() => {
             }
         });
 
-
         document.addEventListener('keydown', (e) => {
             const popup = document.querySelector(config.popupId);
             if (!popup?.classList.contains('is-active')) return;
@@ -675,6 +695,24 @@ const Lightbox = (() => {
             currentItem = null;
             currentGalleryItems = [];
         });
+
+        const popup = document.querySelector(config.popupId);
+        if (popup) {
+            popup.addEventListener('touchstart', (e) => {
+                const img = getImg();
+                if (e.target === img) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }
+            }, {passive: true});
+
+            popup.addEventListener('touchend', (e) => {
+                const img = getImg();
+                if (e.target === img) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }
+            }, {passive: true});
+        }
     }
 
     function init(options = {}) {
@@ -937,10 +975,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const autoSliderElement = document.querySelectorAll('.auto-slider');
     if (autoSliderElement.length) {
         autoSliderElement.forEach(slider => {
+            const swiperWidth = slider.offsetWidth;
+            const slideWidth = slider.querySelector('.swiper-slide').offsetWidth;
             const autoSlider = new Swiper(slider, {
                 slidesPerView: 'auto',
                 spaceBetween: 8,
                 speed: 500,
+                slidesOffsetAfter: swiperWidth - slideWidth,
                 breakpoints: {
                     1025: {
                         spaceBetween: 24,

@@ -4,6 +4,9 @@
 .person-slider__item {
   max-width: 18.125rem;
 }
+.person-slider__item--empty {
+  width: calc(100% - 18.125rem);
+}
 @media screen and (max-width: 640px) {
   .person-slider__item {
     max-width: 12.5rem;

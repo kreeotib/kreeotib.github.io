@@ -119,9 +119,9 @@
             <div class="hero__wrapper">
                 <div class="hero-bg">
                     <picture class="hero-bg__item">
+                        <source srcset="assets/images/postroeno.webp" media="(max-width:640px)"/> <!--  Путь к картинке на мооб  -->
                         <img src="assets/images/postroeno.webp" alt="">
                     </picture>
-
                 </div>
             </div>
         </div>
@@ -435,7 +435,7 @@
 </div>
 
 <div class="popup popup--lightbox" id="popup-lightbox">
-    <div class="popup__wrapper">
+    <div class="popup__wrapper popup__wrapper--full--mobile">
         <div class="popup__overlay"></div>
         <div class="popup__content ">
             <button class="popup-close popup__close">
@@ -443,8 +443,8 @@
                     <use xlink:href="assets/images/sprite.svg#xmark"></use>
                 </svg>
             </button>
-            <div class="lightbox-popup">
-                <div class="lightbox-popup-prev lightbox-popup__button lightbox-popup__button--prev">
+            <div class="lightbox-popup lightbox-popup--full--mobile">
+                <div class="lightbox-popup-prev lightbox-popup__button lightbox-popup__button--desktop lightbox-popup__button--prev">
                     <svg class="icon">
                         <use xlink:href="assets/images/sprite.svg#short-arrow-left"></use>
                     </svg>
@@ -452,7 +452,7 @@
                 <div class="lightbox-popup__item">
                     <img loading="lazy" src="assets/images/gallery/01.webp" alt="" class="lightbox-popup__img">
                 </div>
-                <div class="lightbox-popup-next lightbox-popup__button lightbox-popup__button--next">
+                <div class="lightbox-popup-next lightbox-popup__button lightbox-popup__button--desktop lightbox-popup__button--next">
                     <svg class="icon">
                         <use xlink:href="assets/images/sprite.svg#short-arrow-right"></use>
                     </svg>

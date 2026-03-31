@@ -331,6 +331,7 @@ a.text--white:hover {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transform: translateZ(0);
 }
 
 .header {
@@ -453,7 +454,7 @@ a.text--white:hover {
   opacity: 0;
   visibility: hidden;
   transform: translateY(0.5rem);
-  transition: 0.5s opacity, 0.3s visibility, 0.5s transform, 0.3s max-height, 3s padding;
+  transition: 0.5s opacity, 0.3s visibility, 0.5s transform, 0.5s max-height, 0.5s padding;
 }
 @media screen and (max-width: 1240px) {
   .header-nav__sublist {
@@ -467,6 +468,7 @@ a.text--white:hover {
     max-height: 0;
     padding: 0;
     overflow: hidden;
+    transition: 0.3s opacity, 0.3s visibility, 0.5s transform, 0.5s max-height, 0.5s padding;
   }
 }
 .header-nav__sublist .header-nav__link {
@@ -623,7 +625,7 @@ a.text--white:hover {
     height: 100%;
     z-index: 2;
     opacity: 0.65;
-    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
   }
 }
 .hero-bg__item {
@@ -1696,6 +1698,7 @@ a.text--white:hover {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.25);
   z-index: 4;
+  pointer-events: auto;
   transition: 0.3s opacity;
 }
 .popup__close:hover {
@@ -1740,6 +1743,12 @@ a.text--white:hover {
     padding: 0.875rem var(--container-padding);
   }
 }
+@media screen and (max-width: 1240px) {
+  .popup__wrapper--full--mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 .popup__overlay {
   position: fixed;
@@ -1764,6 +1773,7 @@ a.text--white:hover {
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  pointer-events: none;
 }
 .popup--lightbox .popup__close {
   top: 0;
@@ -1787,10 +1797,16 @@ a.text--white:hover {
   align-items: center;
   justify-content: space-between;
   gap: 2.75rem;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 @media screen and (max-width: 1240px) {
   .lightbox-popup {
     gap: 1rem;
+  }
+  .lightbox-popup--full--mobile {
+    padding: 0;
   }
 }
 .lightbox-popup__item {
@@ -1801,9 +1817,12 @@ a.text--white:hover {
   height: 100%;
 }
 .lightbox-popup__img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  pointer-events: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 .lightbox-popup__button {
   width: 3rem;
@@ -1825,6 +1844,11 @@ a.text--white:hover {
 .lightbox-popup__button:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+@media screen and (max-width: 1240px) {
+  .lightbox-popup__button {
+    display: none;
+  }
 }
 @media screen and (max-width: 640px) {
   .lightbox-popup__button {
@@ -2241,6 +2265,10 @@ a.text--white:hover {
   .estimate-banner__header {
     gap: 0.875rem;
   }
+}
+
+[data-animation] {
+  opacity: 0;
 }
 
 /*# sourceMappingURL=index.css.map */
