@@ -1776,13 +1776,18 @@ a.text--white:hover {
   pointer-events: none;
 }
 .popup--lightbox .popup__close {
-  top: 0;
+  top: -3.125rem;
   right: 2rem;
   left: unset;
 }
 @media screen and (max-width: 1240px) {
   .popup--lightbox .popup__close {
     right: 1rem;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .popup--lightbox .popup__wrapper {
+    padding: 4rem 0;
   }
 }
 

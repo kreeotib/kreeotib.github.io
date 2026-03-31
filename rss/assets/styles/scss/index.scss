@@ -1969,11 +1969,16 @@ a.text--white:hover {
   }
 
   &--lightbox &__close {
-    top: 0;
+    top: -3.125rem;
     right: 2rem;
     left: unset;
     @media screen and (max-width: 1240px) {
       right: 1rem;
+    }
+  }
+  &--lightbox &__wrapper{
+    @media screen and (max-width: 1240px) {
+      padding: 4rem 0;
     }
   }
 }
