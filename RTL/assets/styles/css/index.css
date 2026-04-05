@@ -1135,6 +1135,9 @@ a.text--grey:hover {
   gap: 1.5rem;
   position: relative;
   z-index: 3;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .card__wrapper--small {
   padding: 1.25rem 2.5rem;
@@ -1547,6 +1550,9 @@ a.text--grey:hover {
   border-radius: 1.5rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .project-item__blur {
   position: absolute;
@@ -1562,6 +1568,9 @@ a.text--grey:hover {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 100%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 .project-item__header {
   display: flex;
@@ -1577,7 +1586,6 @@ a.text--grey:hover {
   pointer-events: none;
   border-radius: 1.5rem;
   overflow: hidden;
-  will-change: opacity;
 }
 .project-item__content {
   display: flex;

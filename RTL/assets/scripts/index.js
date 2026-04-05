@@ -418,6 +418,7 @@ function initSliders() {
                 slidesPerView: 'auto',
                 spaceBetween: 24,
                 speed: 500,
+                cssMode: true,
                 breakpoints: { 768: { spaceBetween: 0 } },
                 pagination: {
                     el: '.levels-pagination',
@@ -437,6 +438,7 @@ function initSliders() {
                 slidesPerView: 'auto',
                 spaceBetween: 24,
                 speed: 500,
+                cssMode: true,
                 navigation: {
                     prevEl: '.project-slider-button-prev',
                     nextEl: '.project-slider-button-next'

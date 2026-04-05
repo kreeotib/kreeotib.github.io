@@ -1343,6 +1343,9 @@ a.text--grey:hover {
     gap: 1.5rem;
     position: relative;
     z-index: 3;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 
     &--small {
       padding: 1.25rem 2.5rem;
@@ -1813,6 +1816,11 @@ a.text--grey:hover {
       border-radius: 1.5rem;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.2);
+
+
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
     }
 
     &__blur {
@@ -1837,6 +1845,11 @@ a.text--grey:hover {
                       rgba(0, 0, 0, 0.0) 0%,
                       rgba(0, 0, 0, 0.35) 100%
       );
+
+
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
     }
 
     &__header {
@@ -1856,7 +1869,6 @@ a.text--grey:hover {
       pointer-events: none;
       border-radius: 1.5rem;
       overflow: hidden;
-      will-change: opacity;
     }
 
     &__content {
