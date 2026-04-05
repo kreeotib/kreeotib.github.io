@@ -74,7 +74,6 @@ class HeroAccelerator {
         const trackHeight = this.track.offsetHeight;
         const scrollable = trackHeight - vh;
 
-        // Main ScrollTrigger for hero effects
         gsap.timeline({
             scrollTrigger: {
                 trigger: this.track,
@@ -86,23 +85,19 @@ class HeroAccelerator {
                     const progress = self.progress;
                     const localScroll = self.scroll() - self.start;
 
-                    // Calculate all progress values using the same logic
                     const textRise = this.norm(progress, 0, 1.0);
                     const textOpacity = 1 - this.norm(progress / 1.5, 0.80, 1.0);
                     const gradOpacity = this.norm(progress, 0.0, 0.30);
                     const gradFill = this.norm(progress, 0.15, 1);
                     const p = gradFill / 2.2;
 
-                    // Hero opacity fade-out (быстрее начинается)
                     const heroOpacity = 1 - this.norm(progress, 0.7, 1.0);
                     this.hero.style.opacity = heroOpacity;
 
-                    // Apply CSS variables
                     this.hero.style.setProperty('--p', p.toFixed(4));
                     this.hero.style.setProperty('--grad-opacity', gradOpacity.toFixed(4));
                     this.hero.style.setProperty('--sy', localScroll.toFixed(0) + 'px');
 
-                    // Content animation
                     if (this.content) {
                         const maxRise = vh * 4.4;
                         gsap.set(this.content, {
@@ -132,36 +127,46 @@ const TitleReveal = (() => {
     }
 
     function animateBar(bar, delay) {
+        // Отменяем предыдущую анимацию, если есть
+        if (bar._raf) cancelAnimationFrame(bar._raf);
+
         return new Promise(resolve => {
             let t0 = null;
-            let rafIn, rafOut;
+            let phase = 'in'; // 'in' | 'out'
+            let t1 = null;
 
-            function sweepIn(ts) {
+            function tick(ts) {
                 if (!t0) t0 = ts;
-                const elapsed = ts - t0 - delay;
-                if (elapsed < 0) { rafIn = requestAnimationFrame(sweepIn); return; }
 
-                const p = Math.min(elapsed / CFG.sweepIn, 1);
-                bar.style.transform = `scaleX(${eio(p)})`;
-                bar.style.transformOrigin = 'left center';
+                if (phase === 'in') {
+                    const elapsed = ts - t0 - delay;
+                    if (elapsed < 0) { bar._raf = requestAnimationFrame(tick); return; }
 
-                if (p < 1) { rafIn = requestAnimationFrame(sweepIn); return; }
+                    const p = Math.min(elapsed / CFG.sweepIn, 1);
+                    bar.style.transformOrigin = 'left center';
+                    bar.style.transform = `scaleX(${eio(p)})`;
 
-                let t1 = null;
-                function sweepOut(ts2) {
-                    if (!t1) t1 = ts2;
-                    const p2 = Math.min((ts2 - t1) / CFG.sweepOut, 1);
+                    if (p < 1) { bar._raf = requestAnimationFrame(tick); return; }
+                    phase = 'out';
+                    t1 = ts;
+                }
+
+                if (phase === 'out') {
+                    const p2 = Math.min((ts - t1) / CFG.sweepOut, 1);
                     bar.style.transformOrigin = 'right center';
                     bar.style.transform = `scaleX(${1 - eio(p2)})`;
-                    if (p2 < 1) { rafOut = requestAnimationFrame(sweepOut); return; }
+
+                    if (p2 < 1) { bar._raf = requestAnimationFrame(tick); return; }
+                    bar._raf = null;
                     resolve();
                 }
-                rafOut = requestAnimationFrame(sweepOut);
             }
-            rafIn = requestAnimationFrame(sweepIn);
-            bar._rafs = [rafIn, rafOut];
+
+            bar._raf = requestAnimationFrame(tick);
         });
     }
+
+
 
     function build(el) {
         if (el.dataset.rvBuilt) return;
@@ -170,17 +175,14 @@ const TitleReveal = (() => {
         const text = el.textContent.trim();
         el.setAttribute('aria-label', text);
 
-        // Получаем вычисленные стили элемента
         const computed = window.getComputedStyle(el);
 
-        // Вычисляем доступную ширину с учетом padding
         const paddingLeft = parseFloat(computed.paddingLeft);
         const paddingRight = parseFloat(computed.paddingRight);
         const availableWidth = el.clientWidth - paddingLeft - paddingRight;
 
         el.innerHTML = '';
 
-        // Создаем probe с полным копированием стилей
         const probe = document.createElement('span');
         probe.style.cssText = `
             position: absolute;
@@ -196,7 +198,6 @@ const TitleReveal = (() => {
             text-transform: ${computed.textTransform};
         `;
 
-        // Добавляем probe в body, чтобы избежать проблем с контекстом
         document.body.appendChild(probe);
 
         const words = text.split(/\s+/);
@@ -207,7 +208,6 @@ const TitleReveal = (() => {
             const test = cur ? cur + ' ' + word : word;
             probe.textContent = test;
 
-            // Используем scrollWidth для более точного измерения
             const testWidth = probe.scrollWidth;
 
             if (cur && testWidth > availableWidth) {
@@ -219,7 +219,6 @@ const TitleReveal = (() => {
         }
         if (cur) lines.push(cur);
 
-        // Удаляем probe из DOM
         document.body.removeChild(probe);
 
         lines.forEach(lineText => {
@@ -254,7 +253,7 @@ const TitleReveal = (() => {
 
     function reset(el) {
         el.querySelectorAll('.rv-bar').forEach(b => {
-            if (b._rafs) b._rafs.forEach(cancelAnimationFrame);
+            if (b._raf) { cancelAnimationFrame(b._raf); b._raf = null; }
             b.style.transform = 'scaleX(0)';
             b.style.transformOrigin = 'left center';
         });

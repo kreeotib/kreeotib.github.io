@@ -41,7 +41,7 @@
     //
     --section-padding--big: 3.125rem;
     --section-padding: 1.5rem;
-    --section-spacer: 2rem;
+    --section-spacer: 1.5rem;
   }
 }
 
@@ -81,9 +81,6 @@ body.no-scroll {
       &--small {
         padding: 0 .625rem;
       }
-      &--full{
-        padding: 0;
-      }
     }
   }
 }
@@ -102,15 +99,7 @@ body.no-scroll {
   z-index: 3;
   background: #01040B;
   min-height: 100vh;
-  transform-style: preserve-3d;
-
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-
-
-  &-wrapper {
-    overflow: hidden;
-  }
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -123,11 +112,6 @@ body.no-scroll {
     z-index: 1;
     background: url("../../images/section-gradients/body.webp") bottom right/cover no-repeat;
   }
-}
-
-.section-last {
-  position: relative;
-
 }
 
 .text {
@@ -626,20 +610,11 @@ a.text--grey:hover {
 
   &__svg {
     display: flex;
-    height: 190px;
-    @media screen and (max-width: 767px) {
-      height: 80px;
-    }
-    img{
-      width: auto;
-      height: 100%;
-    }
   }
 
   &__svg svg {
     display: block;
     flex-shrink: 0;
-    height: 190px;
   }
 
   &__text {
@@ -683,10 +658,16 @@ a.text--grey:hover {
       inset: 0;
       z-index: 2;
       opacity: var(--grad-opacity, 0);
-      background: radial-gradient(ellipse 220% 180% at 50% -60%, transparent 0%, transparent calc(65% * (1 - var(--p, 0) * 1.5)), rgba(0, 0, 0, 0.8) calc(85% * (1 - var(--p, 0) * 1.5)), #000 calc(105% * (1 - var(--p, 0) * 1.5)), #000 100%);
+      background: radial-gradient(
+                      ellipse 220% 180% at 50% -60%,
+                      transparent 0%,
+                      transparent calc(65% * (1 - var(--p, 0) * 1.5)),
+                      rgba(0, 0, 0, 0.8) calc(85% * (1 - var(--p, 0) * 1.5)),
+                      #000 calc(105% * (1 - var(--p, 0) * 1.5)),
+                      #000 100%
+      );
       will-change: opacity, background;
       pointer-events: none;
-
     }
 
     video {
@@ -709,11 +690,12 @@ a.text--grey:hover {
     gap: var(--section-spacer-big);
     padding: 6.25rem 0;
     @media screen and (max-width: 767px) {
+
       padding-bottom: 5rem;
     }
 
     &--project {
-      //padding: 18.75rem 0 6.25rem 0;
+      padding: 18.75rem 0 6.25rem 0;
       justify-content: space-between;
       @media screen and (max-width: 767px) {
         gap: 5rem;
@@ -724,35 +706,10 @@ a.text--grey:hover {
   }
 }
 
-.about-main{
-  position: relative;
-  &::before {
-    @media screen and (max-width: 767px) {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 1;
-      pointer-events: none;
-      transform: translateY(10rem);
-      width: 100%;
-      height: 100rem;
-      display: block;
-      background: url("../../images/section-gradients/about-m.webp") right center/contain no-repeat;
-      animation: pulse 5s linear infinite;
-    }
-  }
-}
-
 .section {
   position: relative;
   z-index: 4;
   transform: scale(1) translateZ(0);
-
-  &-about, &-levels {
-    z-index: 7;
-    will-change: transform, border-radius;
-  }
 
   &__img {
     display: flex;
@@ -966,7 +923,7 @@ a.text--grey:hover {
   &--about {
     position: relative;
     background-color: #000;
-    z-index: 7;
+    z-index: 5;
 
     .section__wrapper {
       position: relative;
@@ -974,24 +931,27 @@ a.text--grey:hover {
       z-index: 3;
     }
 
-
+    &::before {
+      @media screen and (max-width: 767px) {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        pointer-events: none;
+        transform: translateY(10rem);
+        width: 100%;
+        height: 100rem;
+        display: block;
+        background: url("../../images/section-gradients/about-m.webp") right center/contain no-repeat;
+        animation: pulse 5s linear infinite;
+      }
+    }
   }
 
   &-levels {
     position: relative;
-    z-index: 5;
 
-    overflow: hidden;
-    &::before{
-      content:"";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 25%;
-      background:#01040B;
-      z-index:0;
-    }
     &__wrapper {
       position: relative;
       z-index: 4;
@@ -1003,10 +963,9 @@ a.text--grey:hover {
       justify-content: center;
       position: absolute;
       left: 0;
-      bottom: -50%;
+      bottom: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
       object-fit: contain;
       object-position: bottom center;
       pointer-events: none;
@@ -1022,8 +981,6 @@ a.text--grey:hover {
           display: none;
         }
       }
-
-
 
       img {
         width: 100%;
@@ -1158,6 +1115,7 @@ a.text--grey:hover {
 
   overflow: hidden;
   @media screen and (max-width: 767px) {
+    border-radius: .625rem;
     min-height: 27.5rem;
 
   }
@@ -1172,7 +1130,6 @@ a.text--grey:hover {
     background-size: 100% 200%;
     background-position: 0% 100%;
     transition: background-position .3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 
     &:hover {
       background-position: 0% 0%;
@@ -1181,6 +1138,7 @@ a.text--grey:hover {
 
     min-height: 31.25rem;
     @media screen and (min-width: 768px) {
+      border: transparent;
     }
     @media screen and (max-width: 767px) {
       min-height: 23.125rem;
@@ -1192,7 +1150,6 @@ a.text--grey:hover {
     @media screen and (min-width: 768px) {
       text-align: center;
       border-radius: 0;
-      border: none;
       &::before, &::after {
         display: none;
       }
@@ -1265,7 +1222,6 @@ a.text--grey:hover {
     pointer-events: none;
     justify-content: center;
 
-    transform: translateZ(0);
     &.hover img {
       opacity: 0;
     }
@@ -1446,6 +1402,22 @@ a.text--grey:hover {
     position: relative;
     height: auto;
 
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(292deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 58.29%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+      z-index: 2;
+
+      @media screen and (max-width: 767px) {
+        background: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 44.06%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+
     &__wrapper {
       position: relative;
       height: 100%;
@@ -1528,7 +1500,7 @@ a.text--grey:hover {
 .numbers {
 
   background: url("../../images/numbers/bg.webp") center center/cover no-repeat;
-  z-index: 6;
+
   &-grid {
     display: flex;
     align-items: center;
@@ -1655,11 +1627,6 @@ a.text--grey:hover {
     line-height: .9;
     font-weight: 600;
     font-size: 9.375rem;
-
-    .counter {
-      display: block;
-    }
-
     @media screen and (max-width: 767px) {
       font-size: 4.5rem;
     }
@@ -1870,22 +1837,10 @@ a.text--grey:hover {
   }
 }
 
-.video-wrapper,
-[class*="video"],
-.levels__video, .person-item__bg, .geo-slider__item {
-  contain: layout style paint;
-}
-
 
 .footer {
-  position: relative;
-  isolation: isolate;
+
   z-index: 2;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
 
   &__label {
     padding: 3.125rem var(--container-padding);
@@ -2450,11 +2405,6 @@ a.text--grey:hover {
     width: 16.25rem;
     flex-shrink: 0;
     height: 11.875rem;
-
-    user-select: none;
-    -webkit-user-select: none;
-
-    pointer-events: none;
     @media screen and (max-width: 767px) {
       width: 7.5rem;
       height: 5.625rem;
@@ -2466,11 +2416,6 @@ a.text--grey:hover {
       object-fit: contain;
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
-
-      user-select: none;
-      -webkit-user-select: none;
-
-      pointer-events: none;
     }
   }
 }
@@ -2480,49 +2425,10 @@ a.text--grey:hover {
   --y: -999px;
   --glow-color: 43, 49, 53;
   --glow-opacity: 0;
-
-
 }
 
 .card--principles .card__bg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: relative;
-    z-index: 2;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(43, 49, 53, 0.7) 0%, rgba(43, 49, 53, 0) 100%);
-
-
-    left: 0;
-    top: 0;
-    display: block;
-    pointer-events: none;
-
-    opacity: 0;
-    z-index: 0;
-    transition: .3s opacity;
-
-  }
-}
-
-
-.card--principles:hover .card__bg {
-  &::before {
-    opacity: 1;
-    animation: pulse 5s infinite;
-  }
 }
 
 .card--principles::before {
@@ -2536,8 +2442,8 @@ a.text--grey:hover {
   pointer-events: none;
   background: radial-gradient(
                   450px circle at var(--x) var(--y),
-                  rgba(var(--glow-color), .7) 0%,
-                  rgba(var(--glow-color), 0.4) 35%,
+                  rgba(var(--glow-color), 1) 0%,
+                  rgba(var(--glow-color), 0.6) 35%,
                   transparent 60%
   );
   opacity: var(--glow-opacity);
@@ -2553,8 +2459,8 @@ a.text--grey:hover {
   border-radius: inherit;
   background: radial-gradient(
                   250px circle at var(--x) var(--y),
-                  rgba(var(--glow-color), .7) 0%,
-                  rgba(var(--glow-color), 0.4) 40%,
+                  rgba(var(--glow-color), 1) 0%,
+                  rgba(var(--glow-color), 0.7) 40%,
                   transparent 60%
   );
   opacity: var(--glow-opacity);
@@ -2609,17 +2515,13 @@ a.text--grey:hover {
   display: flex;
   white-space: nowrap;
 
-  &--dynamic {
-    user-select: none;
-    -webkit-user-select: none;
-  }
-
   &-content {
     flex-shrink: 0;
-    will-change: transform;
+    will-change: transform; // Подсказка браузеру для выноса на GPU
   }
 }
 
+// Улучшение прелоадера
 .preloader {
   position: fixed;
   inset: 0;
@@ -2749,11 +2651,6 @@ b {
 
     }
   }
-}
-
-video {
-  transform: scale(1) translateZ(0);
-  will-change: transform;
 }
 
 .video {
@@ -2942,15 +2839,13 @@ video {
   height: 100%;
 
   min-height: 100vh;
-
-  &__text {
+  &__text{
     @media screen and (max-width: 767px) {
       max-width: 20rem;
       width: 100%;
     }
   }
-
-  &__wrapper {
+  &__wrapper{
     position: relative;
     z-index: 3;
     height: 100%;
@@ -2962,13 +2857,11 @@ video {
     justify-content: center;
     padding: 11.25rem 0;
     text-align: center;
-
-    .container {
+    .container{
       height: 100%;
     }
   }
-
-  &__bg {
+  &__bg{
     position: absolute;
     left: 0;
     top: 0;
@@ -2985,15 +2878,14 @@ video {
 
       display: none;
     }
-
-    &--mobile {
+    &--mobile{
       display: none;
       @media screen and (max-width: 767px) {
         display: block;
       }
     }
 
-    &::before {
+    &::before{
       content: "";
       position: absolute;
       left: 0;
@@ -3002,10 +2894,9 @@ video {
       height: 100%;
       z-index: 2;
       display: block;
-      background: rgba(#000, .25);
+      background: rgba(#000,.25);
     }
-
-    video, img {
+    video,img{
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -3014,40 +2905,13 @@ video {
       position: relative;
     }
   }
-
   &__column {
     text-align: center;
     justify-content: center;
     align-items: center;
     height: 100%;
   }
-
-  &__button {
+  &__button{
     margin-top: auto;
   }
-}
-
-
-.transition-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  background: rgba(0, 0, 0, 0);
-  pointer-events: none;
-  overflow: hidden;
-  transition: background 0.6s ease;
-}
-
-.transition-overlay.is-visible {
-  background: rgba(0, 0, 0, 1);
-  pointer-events: auto;
-}
-
-.project-item {
-  position: relative;
-  z-index: 1;
-}
-
-.projects-section {
-  overflow: hidden;
 }
