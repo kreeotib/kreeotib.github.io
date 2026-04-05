@@ -1,3 +1,63 @@
+/**
+ * VideoLazyLoader — загружает видео только когда они попадают в viewport.
+ * На мобильных устройствах или при медленном соединении видео в карточках
+ * не загружаются вовсе (показывается постер).
+ */
+class VideoLazyLoader {
+    constructor(options = {}) {
+        this.isMobile = window.innerWidth < 768;
+        this.isSlow = this._checkSlowConnection();
+        this.rootMargin = options.rootMargin || '200px 0px';
+        this.observer = null;
+        this._init();
+    }
+
+    _checkSlowConnection() {
+        const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (!conn) return false;
+        return conn.saveData || (conn.effectiveType && ['slow-2g', '2g', '3g'].includes(conn.effectiveType));
+    }
+
+    _init() {
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const video = entry.target;
+                this._loadVideo(video);
+                this.observer.unobserve(video);
+            });
+        }, { rootMargin: this.rootMargin });
+    }
+
+    _loadVideo(video) {
+        const src = video.dataset.src;
+        if (!src || video.src) return;
+
+        // На мобильных/медленных: не грузим видео для карточек (у них есть постер/img)
+        const isCardVideo = video.closest('.project-item__img, .card__video');
+        if ((this.isMobile || this.isSlow) && isCardVideo) {
+            return; // показываем только постер-картинку
+        }
+
+        video.src = src;
+        video.load();
+    }
+
+    observe(selector) {
+        document.querySelectorAll(selector || 'video[data-src]').forEach(video => {
+            if (video.src && video.src !== window.location.href) return; // уже загружено
+            this.observer.observe(video);
+        });
+    }
+
+    /** Вручную загрузить конкретное видео (для ховера на десктопе) */
+    static loadOne(video) {
+        if (!video || !video.dataset.src || (video.src && video.src !== window.location.href)) return;
+        video.src = video.dataset.src;
+        video.load();
+    }
+}
+
 class CounterAnimator {
     constructor(options = {}) {
         this.options = { threshold: 0.3, rootMargin: '0px', ...options };
@@ -405,6 +465,7 @@ function initCards() {
                     if (fadeTimeout) clearTimeout(fadeTimeout);
                     imgWrapper.classList.remove('fade-to-poster');
                     imgWrapper.classList.add('hover');
+                    VideoLazyLoader.loadOne(video);
                     video.currentTime = 0;
                     try {
                         playPromise = video.play();
@@ -446,6 +507,7 @@ function initCards() {
                 card.addEventListener('mouseenter', async () => {
                     if (animationFrame) cancelAnimationFrame(animationFrame);
                     imgWrapper.classList.add('hover');
+                    VideoLazyLoader.loadOne(video);
                     try {
                         playPromise = video.play();
                         await playPromise;
@@ -894,6 +956,20 @@ function refreshPageScripts() {
     initPrinciplesCards();
     initPersonSlider();
     initExpandable();
+
+    // Lazy-load videos when they enter viewport
+    const videoLoader = new VideoLazyLoader({ rootMargin: '300px 0px' });
+    videoLoader.observe('video[data-src]');
+
+    // On very slow connections, pause hero video to save bandwidth for content
+    if (videoLoader.isSlow) {
+        const heroVideo = document.querySelector('.hero__bg video');
+        if (heroVideo) {
+            heroVideo.pause();
+            heroVideo.preload = 'none';
+            heroVideo.removeAttribute('autoplay');
+        }
+    }
 
     new HeroAccelerator('.hero');
 
