@@ -71,7 +71,7 @@ class HeroAccelerator {
     }
 
     init() {
-        const speed = 0.5;
+        const speed = 0.3;
         const extra = 1 + speed;
 
 
