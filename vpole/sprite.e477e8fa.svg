@@ -40,6 +40,6 @@
         <path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="12.8" stroke="currentColor" d="M256 318.248v65.752"></path>
     </symbol>
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 910 512" id="arrow">
-        x        <path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="113.7778" stroke="currentColor" d="M56.777 85.334l398.229 341.334 398.216-341.334"></path>
+       <path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="113.7778" stroke="currentColor" d="M56.777 85.334l398.229 341.334 398.216-341.334"></path>
     </symbol>
 </svg>
