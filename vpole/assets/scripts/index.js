@@ -1,0 +1,1293 @@
+const ScrollLock = (() => {
+    let lockCount = 0;
+    let scrollbarWidth = 0;
+
+    function getScrollbarWidth() {
+        const div = document.createElement('div');
+        div.style.cssText = 'width:100px;height:100px;overflow:scroll;position:absolute;top:-9999px;';
+        document.body.appendChild(div);
+        const width = div.offsetWidth - div.clientWidth;
+        document.body.removeChild(div);
+        return width;
+    }
+
+    function applyLock() {
+        scrollbarWidth = getScrollbarWidth();
+        document.documentElement.style.overflow = 'hidden';
+        if (scrollbarWidth > 0) {
+            document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
+        }
+        if (window.lenis && typeof window.lenis.stop === 'function') {
+            window.lenis.stop();
+        }
+    }
+
+    function applyUnlock() {
+        document.documentElement.style.overflow = '';
+        document.documentElement.style.paddingRight = '';
+        if (window.lenis && typeof window.lenis.start === 'function') {
+            window.lenis.start();
+        }
+    }
+
+    function lock() {
+        lockCount++;
+        if (lockCount === 1) applyLock();
+    }
+
+    function unlock() {
+        if (lockCount === 0) return;
+        lockCount--;
+        if (lockCount === 0) applyUnlock();
+    }
+
+    function reset() {
+        lockCount = 0;
+        applyUnlock();
+    }
+
+    function isLocked() {
+        return lockCount > 0;
+    }
+
+    return {lock, unlock, reset, isLocked};
+})();
+
+window.ScrollLock = ScrollLock;
+
+const StickyCenterGrid = (() => {
+    const DEFAULTS = {
+        selector: '[data-sticky-grid]',
+        stickySelector: '.grid__sticky',
+        columnSelector: '.grid__column:not(.grid__sticky)',
+        headerAttr: 'data-sticky-grid-header',
+        defaultHeaderSelector: '.header',
+    };
+
+    let config = { ...DEFAULTS };
+    let instances = [];
+    let ro = null;
+    let rafPending = false;
+    let resizeTimer = null;
+    let onLenisScroll = null;
+    let onWindowScroll = null;
+    let initialized = false;
+
+    function getHeaderHeight(selector) {
+        const el = document.querySelector(selector);
+        return el ? el.offsetHeight : 0;
+    }
+
+    function measure(entry) {
+        const { fixed, headerSelector } = entry;
+
+        const vh = window.innerHeight;
+        const headerH = getHeaderHeight(headerSelector);
+        const fixedH = fixed.offsetHeight;
+        const isTall = fixedH > vh;
+
+        const top = isTall
+            ? headerH
+            : Math.max(0, (vh + headerH - fixedH) / 2);
+
+        fixed.style.setProperty('--scg-top', `${top}px`);
+        fixed.style.setProperty('--scg-header-h', `${headerH}px`);
+        fixed.style.setProperty('--scg-fixed-h', `${fixedH}px`);
+        fixed.style.setProperty('--scg-vh', `${vh}px`);
+        fixed.style.setProperty('--scg-mode', isTall ? 'tall' : 'center');
+    }
+
+    function measureAll() {
+        instances.forEach(measure);
+    }
+
+    function scheduleUpdate() {
+        if (rafPending) return;
+        rafPending = true;
+
+        requestAnimationFrame(() => {
+            rafPending = false;
+            measureAll();
+        });
+    }
+
+    function setupInstance(grid) {
+        const fixed = grid.querySelector(config.stickySelector);
+        const column = grid.querySelector(config.columnSelector);
+
+        if (!fixed || !column) return;
+
+        const headerSelector = grid.getAttribute(config.headerAttr) || config.defaultHeaderSelector;
+        const entry = { grid, fixed, column, headerSelector };
+
+        instances.push(entry);
+        measure(entry);
+
+        if (ro) {
+            ro.observe(fixed);
+            ro.observe(column);
+        }
+    }
+
+    function bindScroll() {
+        const lenis = window.lenis;
+
+        if (lenis && typeof lenis.on === 'function') {
+            onLenisScroll = () => scheduleUpdate();
+            lenis.on('scroll', onLenisScroll);
+        } else {
+            onWindowScroll = () => scheduleUpdate();
+            window.addEventListener('scroll', onWindowScroll, { passive: true });
+        }
+    }
+
+    function unbindScroll() {
+        const lenis = window.lenis;
+        if (lenis && onLenisScroll && typeof lenis.off === 'function') {
+            lenis.off('scroll', onLenisScroll);
+            onLenisScroll = null;
+        }
+        if (onWindowScroll) {
+            window.removeEventListener('scroll', onWindowScroll);
+            onWindowScroll = null;
+        }
+    }
+
+    function onResize() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(scheduleUpdate, 150);
+    }
+
+    function init(options = {}) {
+        if (initialized) return;
+        config = { ...DEFAULTS, ...options };
+
+        const grids = document.querySelectorAll(config.selector);
+        if (!grids.length) return;
+
+        ro = new ResizeObserver(scheduleUpdate);
+
+        grids.forEach(setupInstance);
+        bindScroll();
+
+        window.addEventListener('resize', onResize, { passive: true });
+
+        initialized = true;
+    }
+
+    function refresh() {
+        if (!initialized) return;
+        measureAll();
+    }
+
+    function destroy() {
+        if (!initialized) return;
+        unbindScroll();
+        if (ro) { ro.disconnect(); ro = null; }
+        window.removeEventListener('resize', onResize);
+        clearTimeout(resizeTimer);
+
+        instances.forEach(entry => {
+            entry.fixed.style.removeProperty('--scg-top');
+            entry.fixed.style.removeProperty('--scg-header-h');
+            entry.fixed.style.removeProperty('--scg-fixed-h');
+            entry.fixed.style.removeProperty('--scg-vh');
+            entry.fixed.style.removeProperty('--scg-mode');
+        });
+
+        instances = [];
+        initialized = false;
+    }
+
+    return { init, refresh, destroy };
+})();
+
+window.StickyCenterGrid = StickyCenterGrid;
+
+const SmoothScroll = (() => {
+    const DEFAULTS = {
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        smoothTouch: false,
+    };
+
+    let lenis = null;
+    let rafId = null;
+
+    function raf(time) {
+        if (lenis) lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+    }
+
+    function init(options = {}) {
+        if (typeof Lenis === 'undefined') {
+            console.warn('[SmoothScroll] Lenis is not loaded.');
+            return null;
+        }
+        if (lenis) return lenis;
+
+        lenis = new Lenis({...DEFAULTS, ...options});
+        window.lenis = lenis;
+
+        rafId = requestAnimationFrame(raf);
+        return lenis;
+    }
+
+    function destroy() {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+        if (lenis) {
+            lenis.destroy();
+            lenis = null;
+            window.lenis = null;
+        }
+    }
+
+    function get() {
+        return lenis;
+    }
+
+    return {init, destroy, get};
+})();
+
+window.SmoothScroll = SmoothScroll;
+
+const HeroBackground = (() => {
+    const defaults = {
+        selector: '[data-hero-bg]',
+        videoClass: 'hero-bg__item hero-bg__item--video',
+        readyClass: 'is-ready',
+        idleTimeout: 2000,
+        readyFallbackMs: 3000,
+    };
+
+    let config = { ...defaults };
+    let root = null;
+    let image = null;
+    let video = null;
+    let mql = null;
+    let videoSrc = '';
+    let videoPoster = '';
+    let idleHandle = null;
+    let readyTimer = null;
+    let isInitialized = false;
+
+    function runWhenIdle(cb) {
+        if ('requestIdleCallback' in window) {
+            idleHandle = window.requestIdleCallback(cb, { timeout: config.idleTimeout });
+        } else {
+            idleHandle = window.setTimeout(cb, 200);
+        }
+    }
+
+    function cancelIdle() {
+        if (idleHandle == null) return;
+        if ('cancelIdleCallback' in window) window.cancelIdleCallback(idleHandle);
+        else window.clearTimeout(idleHandle);
+        idleHandle = null;
+    }
+
+    function createVideo() {
+        const v = document.createElement('video');
+        v.className = config.videoClass;
+
+        // Muted MUST be set before src for autoplay to work on most browsers.
+        v.muted = true;
+        v.defaultMuted = true;
+        v.setAttribute('muted', '');
+
+        v.autoplay = true;
+        v.loop = true;
+        v.playsInline = true;
+        v.setAttribute('autoplay', '');
+        v.setAttribute('loop', '');
+        v.setAttribute('playsinline', '');
+
+        // preload="metadata" is the sweet spot: starts the fetch (unlike "none"
+        // which sometimes stalls after load()), but doesn't pull the whole file
+        // before we're ready to play.
+        v.preload = 'metadata';
+
+        const poster = videoPoster || (image && image.currentSrc) || '';
+        if (poster) v.poster = poster;
+
+        return v;
+    }
+
+    function markReady() {
+        if (!video || video.classList.contains(config.readyClass)) return;
+        video.classList.add(config.readyClass);
+        if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+
+        const p = video.play();
+        if (p && typeof p.catch === 'function') {
+            p.catch((err) => console.warn('[HeroBackground] play() rejected:', err));
+        }
+    }
+
+    function mountVideo() {
+        if (video || !videoSrc) return;
+
+        video = createVideo();
+
+        // canplay fires once the browser can begin playback — more reliable
+        // than loadeddata for the autoplay path.
+        video.addEventListener('canplay', markReady, { once: true });
+        video.addEventListener('loadeddata', markReady, { once: true });
+        video.addEventListener('error', (e) => {
+            const err = video.error;
+            const codes = {
+                1: 'MEDIA_ERR_ABORTED — fetch aborted by user',
+                2: 'MEDIA_ERR_NETWORK — network error while fetching',
+                3: 'MEDIA_ERR_DECODE — decoding failed (corrupt/unsupported codec)',
+                4: 'MEDIA_ERR_SRC_NOT_SUPPORTED — 404, wrong MIME, or format not supported',
+            };
+            console.error('[HeroBackground] video error:', {
+                code: err && err.code,
+                message: err && (codes[err.code] || err.message),
+                src: video.currentSrc,
+                networkState: video.networkState,
+                readyState: video.readyState,
+            });
+            unmountVideo();
+        }, { once: true });
+
+        // Safety net: if neither event fires (rare, but happens behind some
+        // proxies / slow connections), reveal the video anyway after Ns.
+        readyTimer = setTimeout(markReady, config.readyFallbackMs);
+
+        // Append FIRST, then set src — avoids a detached-element fetch edge case.
+        root.appendChild(video);
+        video.src = videoSrc;
+        video.load();
+    }
+
+    function unmountVideo() {
+        if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+        if (!video) return;
+        try {
+            video.pause();
+            video.removeAttribute('src');
+            video.load();
+        } catch (_) { /* noop */ }
+        video.remove();
+        video = null;
+    }
+
+    function handleViewportChange(e) {
+        if (e.matches) runWhenIdle(mountVideo);
+        else { cancelIdle(); unmountVideo(); }
+    }
+
+    function init(options = {}) {
+        if (isInitialized) return;
+        config = { ...defaults, ...options };
+
+        root = document.querySelector(config.selector);
+        if (!root) return;
+
+        image = root.querySelector('img');
+        videoSrc = root.dataset.videoSrc || '';
+        videoPoster = root.dataset.videoPoster || '';
+        const breakpoint = parseInt(root.dataset.breakpoint, 10) || 768;
+
+        mql = window.matchMedia(`(min-width: ${breakpoint}px)`);
+        if (mql.matches) runWhenIdle(mountVideo);
+        mql.addEventListener('change', handleViewportChange);
+
+        isInitialized = true;
+    }
+
+    function destroy() {
+        if (!isInitialized) return;
+        cancelIdle();
+        unmountVideo();
+        if (mql) mql.removeEventListener('change', handleViewportChange);
+        mql = null; root = null; image = null;
+        videoSrc = ''; videoPoster = '';
+        isInitialized = false;
+    }
+
+    function get() {
+        return { root, image, video, mql, videoSrc, videoPoster, isInitialized };
+    }
+
+    return { init, destroy, get };
+})();
+
+window.HeroBackground = HeroBackground;
+
+const Parallax = (() => {
+    const DEFAULTS = {
+        selector: '.parallax',
+        speed: 0.5,
+        lerp: 1,
+        maxScale: 1.2,
+        disableOnMobile: false,
+        mobileBreakpoint: 768,
+    };
+
+    let elements = [];
+    let options = null;
+    let rafId = null;
+    let io = null;
+    let ro = null;
+    let scrollUnsub = null;
+    let resizeHandler = null;
+    let reducedMotion = false;
+    let initialized = false;
+
+    function isMobile() {
+        const bp = (options && options.mobileBreakpoint) || DEFAULTS.mobileBreakpoint;
+        return window.innerWidth <= bp;
+    }
+
+    function getTarget(el) {
+        const marked = el.querySelector('[data-parallax-target]');
+        if (marked) return marked;
+        const img = el.querySelector('img');
+        if (img) return img;
+        return el;
+    }
+
+    function resolveSpeedAndScale(ch, requestedSpeed, vh, maxScale) {
+        if (!ch || !vh) return {speed: requestedSpeed, scale: 1};
+        const maxDelta = Math.max(0, (maxScale - 1) * ch / (vh + ch));
+        const delta = 1 - requestedSpeed;
+        const clamped = Math.max(-maxDelta, Math.min(maxDelta, delta));
+        const effectiveSpeed = 1 - clamped;
+        const scale = 1 + Math.abs(clamped) * (vh + ch) / ch;
+        return {speed: effectiveSpeed, scale};
+    }
+
+    function measure(entry) {
+        const rect = entry.el.getBoundingClientRect();
+        entry.top = rect.top + window.scrollY;
+        entry.height = rect.height;
+        entry.vh = window.innerHeight;
+        if (entry.userScale != null) {
+            entry.scale = entry.userScale;
+            entry.speed = entry.requestedSpeed;
+        } else {
+            const resolved = resolveSpeedAndScale(
+                entry.height,
+                entry.requestedSpeed,
+                entry.vh,
+                options.maxScale
+            );
+            entry.speed = resolved.speed;
+            entry.scale = resolved.scale;
+        }
+    }
+
+    function measureAll() {
+        for (const entry of elements) measure(entry);
+    }
+
+    function register(el) {
+        const raw = el.dataset.parallaxSpeed;
+        const parsed = raw != null ? parseFloat(raw) : NaN;
+        const requestedSpeed = isNaN(parsed) ? options.speed : parsed;
+        const axis = el.dataset.parallaxAxis === 'x' ? 'x' : 'y';
+        const userScale = el.dataset.parallaxScale != null
+            ? parseFloat(el.dataset.parallaxScale)
+            : null;
+        return {
+            el,
+            target: getTarget(el),
+            requestedSpeed,
+            speed: requestedSpeed,
+            axis,
+            userScale,
+            top: 0,
+            height: 0,
+            vh: 0,
+            scale: 1,
+            currentY: 0,
+            targetY: 0,
+            visible: false,
+        };
+    }
+
+    function updateTarget(entry) {
+        if (reducedMotion) {
+            entry.targetY = 0;
+            return;
+        }
+        const delta = window.scrollY - (entry.top + entry.height / 2 - entry.vh / 2);
+        entry.targetY = delta * (1 - entry.speed);
+    }
+
+    function applyTransform(entry) {
+        const v = entry.currentY.toFixed(2);
+        const s = entry.scale;
+        entry.target.style.transform = entry.axis === 'x'
+            ? `translate3d(${v}px, 0, 0) scale(${s})`
+            : `translate3d(0, ${v}px, 0) scale(${s})`;
+    }
+
+    function tick() {
+        const lerp = options.lerp;
+        for (const entry of elements) {
+            if (entry.visible) updateTarget(entry);
+        }
+        for (const entry of elements) {
+            if (!entry.visible) continue;
+            if (lerp >= 1) {
+                entry.currentY = entry.targetY;
+            } else {
+                entry.currentY += (entry.targetY - entry.currentY) * lerp;
+            }
+            applyTransform(entry);
+        }
+        rafId = requestAnimationFrame(tick);
+    }
+
+    function handleIntersect(ioEntries) {
+        for (const ioEntry of ioEntries) {
+            const entry = elements.find((e) => e.el === ioEntry.target);
+            if (!entry) continue;
+            const wasVisible = entry.visible;
+            entry.visible = ioEntry.isIntersecting;
+            if (!wasVisible && entry.visible) {
+                measure(entry);
+                updateTarget(entry);
+                entry.currentY = entry.targetY;
+                applyTransform(entry);
+            }
+            entry.target.style.willChange = entry.visible ? 'transform' : '';
+        }
+    }
+
+    function handleResize() {
+        measureAll();
+        for (const entry of elements) {
+            if (!entry.visible) continue;
+            updateTarget(entry);
+            entry.currentY = entry.targetY;
+            applyTransform(entry);
+        }
+    }
+
+    function init(userOptions = {}) {
+        if (initialized) return api;
+
+        options = {...DEFAULTS, ...userOptions};
+
+        if (options.disableOnMobile && isMobile()) {
+            initialized = true;
+            window.parallax = api;
+            return api;
+        }
+
+        reducedMotion = typeof window.matchMedia !== 'undefined'
+            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const nodes = document.querySelectorAll(options.selector);
+        if (!nodes.length) {
+            console.warn('[Parallax] No elements matched selector:', options.selector);
+        }
+
+        elements = [];
+        for (const node of nodes) {
+            const entry = register(node);
+            if (entry) elements.push(entry);
+        }
+
+        measureAll();
+
+        for (const entry of elements) {
+            updateTarget(entry);
+            entry.currentY = entry.targetY;
+            applyTransform(entry);
+        }
+
+        if (typeof IntersectionObserver !== 'undefined') {
+            io = new IntersectionObserver(handleIntersect, {
+                rootMargin: '20% 0%',
+                threshold: 0,
+            });
+            for (const entry of elements) io.observe(entry.el);
+        } else {
+            for (const entry of elements) entry.visible = true;
+        }
+
+        if (typeof ResizeObserver !== 'undefined') {
+            ro = new ResizeObserver(handleResize);
+            ro.observe(document.documentElement);
+            for (const entry of elements) ro.observe(entry.el);
+        }
+
+        resizeHandler = handleResize;
+        window.addEventListener('resize', resizeHandler, {passive: true});
+
+        const onScroll = () => {};
+        if (window.lenis && typeof window.lenis.on === 'function') {
+            window.lenis.on('scroll', onScroll);
+            scrollUnsub = () => {
+                if (window.lenis && typeof window.lenis.off === 'function') {
+                    window.lenis.off('scroll', onScroll);
+                }
+            };
+        } else {
+            window.addEventListener('scroll', onScroll, {passive: true});
+            scrollUnsub = () => window.removeEventListener('scroll', onScroll);
+        }
+
+        rafId = requestAnimationFrame(tick);
+        initialized = true;
+        window.parallax = api;
+        return api;
+    }
+
+    function destroy() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = null;
+
+        if (io) io.disconnect();
+        io = null;
+
+        if (ro) ro.disconnect();
+        ro = null;
+
+        if (scrollUnsub) scrollUnsub();
+        scrollUnsub = null;
+
+        if (resizeHandler) window.removeEventListener('resize', resizeHandler);
+        resizeHandler = null;
+
+        for (const entry of elements) {
+            entry.target.style.transform = '';
+            entry.target.style.willChange = '';
+        }
+
+        elements = [];
+        options = null;
+        reducedMotion = false;
+        initialized = false;
+
+        if (window.parallax === api) delete window.parallax;
+    }
+
+    function get() {
+        return {elements, options, initialized};
+    }
+
+    const api = {init, destroy, get};
+    return api;
+})();
+
+window.Parallax = Parallax;
+
+const AnchorScroll = (() => {
+    const DEFAULTS = {
+        linkSelector: 'a[href^="#"], [data-scroll-to]',
+        targetAttr: 'data-scroll-to',
+        offsetAttr: 'data-scroll-offset',
+        durationAttr: 'data-scroll-duration',
+        defaultOffset: 0,
+        defaultDuration: 1.2,
+        headerSelector: '.header',
+        updateHash: true,
+    };
+
+    let config = {...DEFAULTS};
+    let onClick = null;
+    let initialized = false;
+
+    function getHeaderOffset() {
+        if (!config.headerSelector) return 0;
+        const header = document.querySelector(config.headerSelector);
+        return header ? header.offsetHeight : 0;
+    }
+
+    function resolveTarget(link) {
+        const customSel = link.getAttribute(config.targetAttr);
+        if (customSel) {
+            return customSel === 'top' ? 'top' : document.querySelector(customSel);
+        }
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return null;
+        if (href === '#top') return 'top';
+        try {
+            return document.querySelector(href);
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function scrollTo(target, options = {}) {
+        const offset = (options.offset ?? config.defaultOffset) - getHeaderOffset();
+        const duration = options.duration ?? config.defaultDuration;
+        const lenis = window.lenis;
+
+        if (lenis && typeof lenis.scrollTo === 'function') {
+            lenis.scrollTo(target === 'top' ? 0 : target, {
+                offset,
+                duration,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+            return;
+        }
+
+        let y;
+        if (target === 'top') {
+            y = 0;
+        } else if (typeof target === 'number') {
+            y = target;
+        } else if (target instanceof Element) {
+            y = target.getBoundingClientRect().top + window.scrollY + offset;
+        } else {
+            return;
+        }
+
+        window.scrollTo({top: y, behavior: 'smooth'});
+    }
+
+    function handleClick(event) {
+        const link = event.target.closest(config.linkSelector);
+        if (!link) return;
+
+        if (event.defaultPrevented) return;
+        if (event.button !== 0) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (link.target && link.target !== '_self') return;
+
+        const target = resolveTarget(link);
+        if (!target) return;
+
+        event.preventDefault();
+
+        const rawOffset = parseFloat(link.getAttribute(config.offsetAttr));
+        const rawDuration = parseFloat(link.getAttribute(config.durationAttr));
+
+        scrollTo(target, {
+            offset: Number.isNaN(rawOffset) ? undefined : rawOffset,
+            duration: Number.isNaN(rawDuration) ? undefined : rawDuration,
+        });
+
+        if (config.updateHash) {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#') && href.length > 1) {
+                history.replaceState(null, '', href);
+            }
+        }
+    }
+
+    function init(options = {}) {
+        if (initialized) return;
+        config = {...DEFAULTS, ...options};
+
+        onClick = handleClick;
+        document.addEventListener('click', onClick);
+
+        if (window.location.hash && window.location.hash.length > 1) {
+            try {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => scrollTo(target));
+                    });
+                }
+            } catch (e) {  }
+        }
+
+        initialized = true;
+    }
+
+    function destroy() {
+        if (!initialized) return;
+        document.removeEventListener('click', onClick);
+        onClick = null;
+        initialized = false;
+    }
+
+    return {init, destroy, scrollTo};
+})();
+
+window.AnchorScroll = AnchorScroll;
+
+const ContactShowcase = (() => {
+    const DEFAULTS = {
+        root: '.contact-showcase',
+        itemSelector: '.contact-showcase__item',
+        buttonSelector: '.contact-item__button',
+        activeClass: 'contact-showcase__item--active',
+        targetAttr: 'data-target',
+        initialIndex: 0,
+    };
+
+    let config = {...DEFAULTS};
+    let root = null;
+    let items = [];
+    let currentIndex = 0;
+    let initialized = false;
+
+    function setActive(index) {
+        if (index < 0 || index >= items.length) return;
+        items.forEach((item, i) => item.classList.toggle(config.activeClass, i === index));
+        currentIndex = index;
+    }
+
+    function handleClick(event) {
+        const button = event.target.closest(config.buttonSelector);
+        if (!button || !root.contains(button)) return;
+
+        const target = button.getAttribute(config.targetAttr);
+        if (target === null) return;
+
+        const index = parseInt(target, 10);
+        if (Number.isNaN(index)) return;
+
+        setActive(index);
+    }
+
+    function bindEvents() {
+        root.addEventListener('click', handleClick);
+    }
+
+    function unbindEvents() {
+        root.removeEventListener('click', handleClick);
+    }
+
+    function init(options = {}) {
+        config = {...DEFAULTS, ...options};
+        root = document.querySelector(config.root);
+
+        if (!root) {
+            console.warn('[Showcase] Root element not found.');
+            return;
+        }
+
+        items = Array.from(root.querySelectorAll(config.itemSelector));
+
+        if (!items.length) {
+            console.warn('[Showcase] No items found.');
+            return;
+        }
+
+        setActive(config.initialIndex);
+        bindEvents();
+        initialized = true;
+    }
+
+    function goTo(index) {
+        if (!initialized) return;
+        setActive(index);
+    }
+
+    function reset() {
+        if (!initialized) return;
+        setActive(config.initialIndex);
+    }
+
+    function destroy() {
+        if (!initialized) return;
+        unbindEvents();
+        items = [];
+        root = null;
+        currentIndex = 0;
+        initialized = false;
+    }
+
+    return {init, goTo, reset, destroy};
+})();
+
+window.ContactShowcase = ContactShowcase;
+
+const BurgerMenu = (() => {
+    const DEFAULTS = {
+        burgerSelector: '.burger',
+        menuSelector: '.mobile-menu',
+        burgerActiveClass: 'burger--active',
+        menuActiveClass: 'mobile-menu--active',
+        bodyLockClass: 'no-scroll',
+        closeOnLinkClick: true,
+        linkSelector: 'a',
+    };
+
+    let config = {...DEFAULTS};
+    let burgers = [];
+    let menu = null;
+    let isOpen = false;
+    let initialized = false;
+
+    function setState(state) {
+        if (state === isOpen) return;
+        isOpen = state;
+
+        burgers.forEach(burger => burger.classList.toggle(config.burgerActiveClass, isOpen));
+        if (menu) menu.classList.toggle(config.menuActiveClass, isOpen);
+        document.body.classList.toggle(config.bodyLockClass, isOpen);
+
+        if (isOpen) {
+            ScrollLock.lock();
+        } else {
+            ScrollLock.unlock();
+        }
+    }
+
+    function toggle() { setState(!isOpen); }
+    function open()   { setState(true); }
+    function close()  { setState(false); }
+
+    function handleBurgerClick(event) {
+        event.preventDefault();
+        toggle();
+    }
+
+    function handleMenuClick(event) {
+        const link = event.target.closest(config.linkSelector);
+        if (!link || !menu.contains(link)) return;
+        close();
+    }
+
+    function bindEvents() {
+        burgers.forEach(burger => burger.addEventListener('click', handleBurgerClick));
+        if (config.closeOnLinkClick && menu) {
+            menu.addEventListener('click', handleMenuClick);
+        }
+    }
+
+    function unbindEvents() {
+        burgers.forEach(burger => burger.removeEventListener('click', handleBurgerClick));
+        if (menu) menu.removeEventListener('click', handleMenuClick);
+    }
+
+    function init(options = {}) {
+        config = {...DEFAULTS, ...options};
+        burgers = Array.from(document.querySelectorAll(config.burgerSelector));
+        menu = document.querySelector(config.menuSelector);
+
+        if (!burgers.length) {
+            console.warn('[BurgerMenu] No burger elements found.');
+            return;
+        }
+
+        if (!menu) {
+            console.warn('[BurgerMenu] Mobile menu element not found.');
+            return;
+        }
+
+        bindEvents();
+        initialized = true;
+    }
+
+    function destroy() {
+        if (!initialized) return;
+        unbindEvents();
+        setState(false);
+        burgers = [];
+        menu = null;
+        initialized = false;
+    }
+
+    return {init, toggle, open, close, destroy};
+})();
+
+window.BurgerMenu = BurgerMenu;
+
+const ToggleWrapper = (() => {
+    const DEFAULTS = {
+        wrapperSelector: '.toggle-wrapper',
+        blockSelector: '.toggle-block',
+        openClass: 'open',
+        heightVar: '--toggle-height',
+        transitionProperty: 'max-height',
+    };
+
+    let config = {...DEFAULTS};
+    const resizeObservers = new WeakMap();
+    const mutationObservers = new WeakMap();
+    const transitionHandlers = new WeakMap();
+    const registered = new WeakSet();
+
+    function updateHeight(wrapper, block) {
+        wrapper.style.setProperty(config.heightVar, block.scrollHeight + 'px');
+    }
+
+    function createTransitionHandler(wrapper) {
+        return function (event) {
+            if (event.target !== wrapper) return;
+            if (event.propertyName !== config.transitionProperty) return;
+            if (wrapper.classList.contains(config.openClass)) {
+                wrapper.style.maxHeight = 'none';
+            }
+        };
+    }
+
+    function openWrapper(wrapper) {
+        wrapper.style.maxHeight = '';
+        void wrapper.offsetHeight;
+    }
+
+    function closeWrapper(wrapper, block) {
+        wrapper.style.maxHeight = block.scrollHeight + 'px';
+        void wrapper.offsetHeight;
+        requestAnimationFrame(() => {
+            wrapper.style.maxHeight = '';
+        });
+    }
+
+    function observeClass(wrapper, block) {
+        let wasOpen = wrapper.classList.contains(config.openClass);
+        if (wasOpen) wrapper.style.maxHeight = 'none';
+
+        const observer = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') continue;
+                const isOpen = wrapper.classList.contains(config.openClass);
+                if (isOpen === wasOpen) continue;
+                if (isOpen) openWrapper(wrapper);
+                else closeWrapper(wrapper, block);
+                wasOpen = isOpen;
+            }
+        });
+
+        observer.observe(wrapper, {attributes: true, attributeFilter: ['class']});
+        mutationObservers.set(wrapper, observer);
+    }
+
+    function observeResize(wrapper, block) {
+        const observer = new ResizeObserver(() => updateHeight(wrapper, block));
+        observer.observe(block);
+        resizeObservers.set(block, observer);
+    }
+
+    function initWrapper(wrapper) {
+        if (registered.has(wrapper)) return;
+        const block = wrapper.querySelector(':scope > ' + config.blockSelector);
+        if (!block) return;
+
+        registered.add(wrapper);
+        updateHeight(wrapper, block);
+        observeResize(wrapper, block);
+
+        const handler = createTransitionHandler(wrapper);
+        wrapper.addEventListener('transitionend', handler);
+        transitionHandlers.set(wrapper, handler);
+
+        observeClass(wrapper, block);
+    }
+
+    function init(container, options = {}) {
+        config = {...DEFAULTS, ...options};
+        const root = container || document;
+        const wrappers = root.querySelectorAll(config.wrapperSelector);
+
+        if (!wrappers.length) {
+            console.warn('[ToggleWrapper] No wrappers found.');
+            return;
+        }
+
+        wrappers.forEach(initWrapper);
+    }
+
+    function refresh(container) {
+        const root = container || document;
+        const wrappers = root.querySelectorAll(config.wrapperSelector);
+        wrappers.forEach((wrapper) => {
+            const block = wrapper.querySelector(':scope > ' + config.blockSelector);
+            if (block) updateHeight(wrapper, block);
+        });
+    }
+
+    function destroy(wrapper) {
+        if (!registered.has(wrapper)) return;
+        const block = wrapper.querySelector(':scope > ' + config.blockSelector);
+
+        const resizeObserver = block && resizeObservers.get(block);
+        if (resizeObserver) {
+            resizeObserver.disconnect();
+            resizeObservers.delete(block);
+        }
+
+        const mutationObserver = mutationObservers.get(wrapper);
+        if (mutationObserver) {
+            mutationObserver.disconnect();
+            mutationObservers.delete(wrapper);
+        }
+
+        const handler = transitionHandlers.get(wrapper);
+        if (handler) {
+            wrapper.removeEventListener('transitionend', handler);
+            transitionHandlers.delete(wrapper);
+        }
+
+        registered.delete(wrapper);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => init());
+    } else {
+        init();
+    }
+
+    return {init, refresh, destroy};
+})();
+
+window.ToggleWrapper = ToggleWrapper;
+
+const Popup = (() => {
+    const CLOSE_DURATION = 210;
+
+    let activePopup = null;
+
+    function find(selector) {
+        const el = document.querySelector(selector);
+        if (!el) {
+            console.warn(`[Popup] Element "${selector}" not found on page.`);
+            return null;
+        }
+        return el;
+    }
+
+    function close() {
+        if (!activePopup) return;
+
+        const popup = activePopup;
+        activePopup = null;
+
+        ScrollLock.unlock();
+        popup.classList.add('is-closing');
+
+        setTimeout(() => {
+            popup.classList.remove('is-active', 'is-closing');
+            popup.dispatchEvent(new CustomEvent('popup:closed', {bubbles: true}));
+        }, CLOSE_DURATION);
+    }
+
+    function open(selector) {
+        const popup = find(selector);
+        if (!popup) return;
+
+        if (activePopup && activePopup !== popup) close();
+
+        activePopup = popup;
+        popup.classList.add('is-active');
+        ScrollLock.lock();
+        popup.scrollTop = 0;
+        popup.dispatchEvent(new CustomEvent('popup:opened', {bubbles: true}));
+    }
+
+    function bindTriggers() {
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('[data-popup]');
+            if (trigger) {
+                e.preventDefault();
+                open(trigger.dataset.popup);
+                return;
+            }
+
+            if (e.target.closest('.popup-close')) {
+                close();
+                return;
+            }
+
+            if (e.target.closest('.popup.is-active') && !e.target.closest('.popup__content')) {
+                close();
+            }
+        });
+    }
+
+    function bindKeyboard() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && activePopup) close();
+        });
+    }
+
+    function init() {
+        bindTriggers();
+        bindKeyboard();
+    }
+
+    return {init, open, close};
+})();
+
+window.Popup = Popup;
+
+document.addEventListener('DOMContentLoaded', () => {
+    SmoothScroll.init();
+    Parallax.init();
+    AnchorScroll.init();
+    ContactShowcase.init();
+    BurgerMenu.init();
+    Popup.init();
+    ToggleWrapper.init();
+    StickyCenterGrid.init();
+    HeroBackground.init();
+
+    const teamSlider = new Swiper('.team-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        mousewheel:{
+            invert:false,
+            forceToAxis:true,
+        },
+        breakpoints: {
+            641: {
+                spaceBetween: 20,
+            }
+        }
+    });
+
+    const teaserSlider = new Swiper('.teaser-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        mousewheel:{
+            invert:false,
+            forceToAxis:true,
+        },
+        breakpoints: {
+            1241: {
+                spaceBetween: 0,
+            }
+        }
+    });
+
+    const pricingSlider = new Swiper('.pricing-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        mousewheel:{
+            invert:false,
+            forceToAxis:true,
+        },
+        breakpoints: {
+            641: {
+                spaceBetween: 0,
+            }
+        }
+    });
+});
+
+(function () {
+    document.addEventListener('submit', (e) => {
+        e.preventDefault();
+        window.Popup.open('.popup-thanks');
+    });
+})();
+
+(function () {
+    document.querySelectorAll('.js-phone-mask').forEach(function (el) {
+        IMask(el, {
+            mask: '+7 000 000 00 00',
+        });
+    });
+})();
+
+(function () {
+document.querySelectorAll('.faq-list input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        if (this.checked) {
+
+            document.querySelectorAll('.faq-list input[type="checkbox"]').forEach(cb => {
+                if (cb !== this) cb.checked = false;
+            });
+        }
+    });
+});
+})();
