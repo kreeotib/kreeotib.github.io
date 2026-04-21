@@ -64,7 +64,7 @@ const StickyCenterGrid = (() => {
         defaultHeaderSelector: '.header',
     };
 
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
     let instances = [];
     let ro = null;
     let rafPending = false;
@@ -79,7 +79,7 @@ const StickyCenterGrid = (() => {
     }
 
     function measure(entry) {
-        const { fixed, headerSelector } = entry;
+        const {fixed, headerSelector} = entry;
 
         const vh = window.innerHeight;
         const headerH = getHeaderHeight(headerSelector);
@@ -118,7 +118,7 @@ const StickyCenterGrid = (() => {
         if (!fixed || !column) return;
 
         const headerSelector = grid.getAttribute(config.headerAttr) || config.defaultHeaderSelector;
-        const entry = { grid, fixed, column, headerSelector };
+        const entry = {grid, fixed, column, headerSelector};
 
         instances.push(entry);
         measure(entry);
@@ -137,7 +137,7 @@ const StickyCenterGrid = (() => {
             lenis.on('scroll', onLenisScroll);
         } else {
             onWindowScroll = () => scheduleUpdate();
-            window.addEventListener('scroll', onWindowScroll, { passive: true });
+            window.addEventListener('scroll', onWindowScroll, {passive: true});
         }
     }
 
@@ -160,7 +160,7 @@ const StickyCenterGrid = (() => {
 
     function init(options = {}) {
         if (initialized) return;
-        config = { ...DEFAULTS, ...options };
+        config = {...DEFAULTS, ...options};
 
         const grids = document.querySelectorAll(config.selector);
         if (!grids.length) return;
@@ -170,7 +170,7 @@ const StickyCenterGrid = (() => {
         grids.forEach(setupInstance);
         bindScroll();
 
-        window.addEventListener('resize', onResize, { passive: true });
+        window.addEventListener('resize', onResize, {passive: true});
 
         initialized = true;
     }
@@ -183,7 +183,10 @@ const StickyCenterGrid = (() => {
     function destroy() {
         if (!initialized) return;
         unbindScroll();
-        if (ro) { ro.disconnect(); ro = null; }
+        if (ro) {
+            ro.disconnect();
+            ro = null;
+        }
         window.removeEventListener('resize', onResize);
         clearTimeout(resizeTimer);
 
@@ -199,7 +202,7 @@ const StickyCenterGrid = (() => {
         initialized = false;
     }
 
-    return { init, refresh, destroy };
+    return {init, refresh, destroy};
 })();
 
 window.StickyCenterGrid = StickyCenterGrid;
@@ -264,7 +267,7 @@ const HeroBackground = (() => {
         readyFallbackMs: 3000,
     };
 
-    let config = { ...defaults };
+    let config = {...defaults};
     let root = null;
     let image = null;
     let video = null;
@@ -277,7 +280,7 @@ const HeroBackground = (() => {
 
     function runWhenIdle(cb) {
         if ('requestIdleCallback' in window) {
-            idleHandle = window.requestIdleCallback(cb, { timeout: config.idleTimeout });
+            idleHandle = window.requestIdleCallback(cb, {timeout: config.idleTimeout});
         } else {
             idleHandle = window.setTimeout(cb, 200);
         }
@@ -320,7 +323,10 @@ const HeroBackground = (() => {
     function markReady() {
         if (!video || video.classList.contains(config.readyClass)) return;
         video.classList.add(config.readyClass);
-        if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+        if (readyTimer) {
+            clearTimeout(readyTimer);
+            readyTimer = null;
+        }
 
         const p = video.play();
         if (p && typeof p.catch === 'function') {
@@ -335,8 +341,8 @@ const HeroBackground = (() => {
 
         // canplay fires once the browser can begin playback — more reliable
         // than loadeddata for the autoplay path.
-        video.addEventListener('canplay', markReady, { once: true });
-        video.addEventListener('loadeddata', markReady, { once: true });
+        video.addEventListener('canplay', markReady, {once: true});
+        video.addEventListener('loadeddata', markReady, {once: true});
         video.addEventListener('error', (e) => {
             const err = video.error;
             const codes = {
@@ -353,7 +359,7 @@ const HeroBackground = (() => {
                 readyState: video.readyState,
             });
             unmountVideo();
-        }, { once: true });
+        }, {once: true});
 
         // Safety net: if neither event fires (rare, but happens behind some
         // proxies / slow connections), reveal the video anyway after Ns.
@@ -366,25 +372,32 @@ const HeroBackground = (() => {
     }
 
     function unmountVideo() {
-        if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+        if (readyTimer) {
+            clearTimeout(readyTimer);
+            readyTimer = null;
+        }
         if (!video) return;
         try {
             video.pause();
             video.removeAttribute('src');
             video.load();
-        } catch (_) { /* noop */ }
+        } catch (_) { /* noop */
+        }
         video.remove();
         video = null;
     }
 
     function handleViewportChange(e) {
         if (e.matches) runWhenIdle(mountVideo);
-        else { cancelIdle(); unmountVideo(); }
+        else {
+            cancelIdle();
+            unmountVideo();
+        }
     }
 
     function init(options = {}) {
         if (isInitialized) return;
-        config = { ...defaults, ...options };
+        config = {...defaults, ...options};
 
         root = document.querySelector(config.selector);
         if (!root) return;
@@ -406,16 +419,19 @@ const HeroBackground = (() => {
         cancelIdle();
         unmountVideo();
         if (mql) mql.removeEventListener('change', handleViewportChange);
-        mql = null; root = null; image = null;
-        videoSrc = ''; videoPoster = '';
+        mql = null;
+        root = null;
+        image = null;
+        videoSrc = '';
+        videoPoster = '';
         isInitialized = false;
     }
 
     function get() {
-        return { root, image, video, mql, videoSrc, videoPoster, isInitialized };
+        return {root, image, video, mql, videoSrc, videoPoster, isInitialized};
     }
 
-    return { init, destroy, get };
+    return {init, destroy, get};
 })();
 
 window.HeroBackground = HeroBackground;
@@ -624,7 +640,8 @@ const Parallax = (() => {
         resizeHandler = handleResize;
         window.addEventListener('resize', resizeHandler, {passive: true});
 
-        const onScroll = () => {};
+        const onScroll = () => {
+        };
         if (window.lenis && typeof window.lenis.on === 'function') {
             window.lenis.on('scroll', onScroll);
             scrollUnsub = () => {
@@ -793,7 +810,8 @@ const AnchorScroll = (() => {
                         requestAnimationFrame(() => scrollTo(target));
                     });
                 }
-            } catch (e) {  }
+            } catch (e) {
+            }
         }
 
         initialized = true;
@@ -931,9 +949,17 @@ const BurgerMenu = (() => {
         }
     }
 
-    function toggle() { setState(!isOpen); }
-    function open()   { setState(true); }
-    function close()  { setState(false); }
+    function toggle() {
+        setState(!isOpen);
+    }
+
+    function open() {
+        setState(true);
+    }
+
+    function close() {
+        setState(false);
+    }
 
     function handleBurgerClick(event) {
         event.preventDefault();
@@ -1210,6 +1236,182 @@ const Popup = (() => {
 
 window.Popup = Popup;
 
+
+const TeamPopup = (() => {
+    const DEFAULTS = {
+        cardSelector: '.team-card',
+        popupSelector: '.popup-team',
+        roleSelector: '.team-popup__info .text--accent--light',
+        nameSelector: '.team-popup__info .title',
+        imgSelector: '.team-popup__img img',
+        textSelector: '.team-popup__text',
+        imgPathTpl: 'assets/media/images/team/{id}.webp',
+        bioParagraphClass: 'text text--tiny',
+        boldClass: 'text text--medium',
+        scrollbarOptions: {
+            scrollbars: {  },
+        },
+    };
+
+    const teamData = {
+        1: {
+            role: 'Спикер',
+            name: 'Алексей Семихатов',
+            bio: [
+                'Алексей Семихатов — доктор физико-математических наук, ведущий научный сотрудник Физического института им. П. Н. Лебедева РАН (ФИАН), ведущий программы «Вопрос науки» на телеканале «Россия-24» и один из самых ярких популяризаторов науки в России.',
+                'Алексей принадлежит к редкому типу учёных, которые не просто делают открытия, но и умеют увлечь физикой аудиторию любого уровня. На своих выступлениях он стирает грань между сложной академической теорией и повседневной реальностью. Говорит ли он о квантовой механике, космологии или происхождении времени — его речь всегда безупречно структурирована, остроумна и лишена наукообразия.',
+            ],
+        },
+        2: {
+            role: 'Спикер',
+            name: 'Паата Амонашвили',
+            bio: [
+                'Ведущий представитель философско-педагогического направления «Школа Жизни», последователь идей своего отца — академика Шалвы Амонашвили. Обладая фундаментальным образованием в области социологии и психологии, Паата Шалвович посвятил свою жизнь развитию гуманного подхода в образовании, который сегодня находит отклик у педагогов по всему миру.',
+                'В своей докторской диссертации он исследовал влияние эмоциональной связи между учителем и учеником на академическую успеваемость и доказал то, о чём многие догадывались интуитивно: любовь к учителю напрямую влияет на баллы на экзаменах.',
+            ],
+        },
+        3: {
+            role: 'Founder',
+            name: 'Морис Шакая',
+            bio: [
+                'Серийный предприниматель с 14-летним опытом.',
+                'В 2012 году на сэкономленные деньги открыл уютное бейгл-кафе с видом на набережную Фонтанки. К 2025 году запустил более 25 проектов и собрал команду из 800 человек. Самый известный из них — «Хачапури и вино» в Москве, Санкт-Петербурге и Сочи.',
+                'Опыт показал: команда, действующая как единый организм, способна находить решения даже в самые турбулентные времена. Так наши компании успешно прошли через ряд внутренних и внешних кризисов.',
+                'Моя задача как предпринимателя — создавать среду, в которой команды могут расти, сохраняя качество продукта, благоприятно влияющего на мир. Через смену ролей, раскрытие творческого потенциала, ответственность и живые отношения бизнес становится более гуманным, гибким и устойчивым к изменениям. Меня увлекает всё, что связано с сознанием. Я ищу ответы в совершенно разных дисциплинах, и меня восхищает, какие разнообразные дороги к ним приводят.',
+                'Сегодня моя главная практика — это воспитание дочери и отношения с Саломе, моей женой. Учусь не зависать в мыслях, когда дочка тычет пальцем в розетку.',
+            ],
+        },
+        4: {
+            role: 'Co-founder',
+            name: 'Наташа Щедрина',
+            bio: [
+                'Интерес и любопытство — мои главные двигатели в жизни. Я всегда выбираю проекты руководствуясь критерием: интересно или нет. Вот эта стратегия — «идти на зов» — привела к тому, что мне посчастливилось поучаствовать в интереснейших международных проектах, встретить людей, общение с которыми меняет. Именно этот опыт общения с людьми увлечёнными, горящими своим делом считаю одним из самых ценных подарков в жизни.',
+                'Мои наблюдения и опыт показали, что правильная среда позволяет профессионалам и командам расти быстрее и качественнее через взаимодействие. Сейчас мне особенно интересно спроектировать такую среду, сообщество, где через коллективный опыт и методологию мы могли бы помочь вырастить сильные самостоятельные команды.',
+                'Закончила факультет политологии СПбГУ. Когда поступала — мы были частью философского факультета. Учились в старейшем корпусе на Менделеевской линии, делили здание с историческим факультетом. И это не могло не сказаться на атмосфере — философы, историки под одной крышей, обмен мнениями и жаркие споры. Та среда, люди, междисциплинарность оказали огромное влияние на мои взгляды.',
+                'Сегодня я управляю деловым сообществом Club First в Петербурге. Клуб объединяет 900+ собственников среднего и крупного бизнеса по всей стране и за её пределами. Вместе с предпринимателями мы формируем культурный код российского предпринимательского сообщества, встречаем вызовы экономики, формируем и тестируем гипотезы, как строить бизнес дальше, наблюдаем за развитием трендов и создаём свои. За время работы в клубе мне посчастливилось провести более сотни глубинных интервью с одиозными, талантливыми, смелыми предпринимателями, поучаствовать в бесчисленном количестве рабочих групп, нетворкинг-сессий.',
+                'Между этими двумя отметками на «линии жизни» были ещё креативные проекты в интересах международных транснациональных компаний Bacardi и Philip Morris Intl., опыт работы пресс-секретарём в Генеральном консульстве Израиля, работа в зоне первых лиц государства на Кубке Конфедераций в интересах FIFA, запуск с классной командой первого и самого знакового для Петербурга фудкорта — «Василеостровского Рынка», и много-много интересного! Кажется, есть чем поделиться!',
+            ],
+        },
+        5: {
+            role: 'Режиссёр творческого трека',
+            name: 'Виктория Грек',
+            bio: ['Добавится чуть позже.'],
+        },
+        6: {
+            role: 'Видеограф',
+            name: 'Кирилл Пронин',
+            bio: [
+                'Кто я?',
+                'Режиссёр, видеограф, оператор, художник, фотограф? Блогер, публикующий живописный контент? Проще — творческий человек.',
+                'Для меня творчество всегда было чем-то обыденным, я просто запечатлевал мир. Словно с самого первого шага я ощущал потребность фиксировать все самые замечательные моменты моей жизни, не позволяя им размываться во времени, сохраняя их через камеру навсегда (или почти навсегда).',
+                'Вскоре я стал замечать, что мои, казалось бы настолько же бытовые, как нарезка батона, творческие плоды нравятся и другим людям и высоко оцениваются ими. Как это..? Оказалось, мой взгляд на вещи имеет ценность? И я понял — явление, снятое камерой, обнаруживает в себе то, что без камеры в нём попросту не было бы видно.',
+                'Потому я начал оттачивать своё видение: учился вглядываться в предметы, людей, события, стремился понять их суть «до конца», перенимал опыт заслуженных мастеров, дисциплинируя своё отношение к искусству и культуре в целом.',
+                'К 27-ми годам мне довелось соприкоснуться с двумя авторитетными киношколами Москвы: ВГИКом и МШНК, — но ни в одной из них я не угнездился. Тем не менее, именно эти институции позволили мне довольно обширно овладеть теорией классической музыки, живописи, фотографии, углублённо изучить кинематограф.',
+                'Не раз мне выпадала возможность снимать имиджевые видеоработы для разных крупных компаний: от заводов и фабрик до салонов красоты. Помимо прочего, в моём послужном списке есть и полнометражный фильм, снятый при поддержке Министерства Культуры, в котором я выступил в качестве сценариста, а главные роли исполнили известные актёры театра и кино. (Фильм выходит в прокат в 2027 году.)',
+                'Но, в конце концов, эти судьбоносные виражи оказались всего лишь ступеньками к моему нынешнему и главному креативному ремеслу: блогингу. Мне очень нравится взаимодействовать с по-настоящему живыми, мыслящими людьми, обмениваться с ними знаниями, просто болтать, обсуждая нашу разноцветную жизнь: от новых мемчиков в Inst’е до запылившихся книг на полках. Как и творчество, мне это настолько же необходимо, необходим сам человек.',
+                'Думаю, выражение, употребляемое многими из нас по приезде из путешествий — «камера этого не передаёт» — вернее было бы переформулировать так: «камера показывает лишь самую малость того, что я видел на самом деле». Но камера — это, прежде всего, инструмент, предоставляющий реальности возможность описывать саму себя. И то, как много мы смогли вместить реальности в кадр, зависит не от камеры, а от нашей осознанности и понимания того, что мы хотели снять и что именно снимаем на самом деле: живописный закат над морем может стать холодным пятном на фотографии, а перемотанная изолентой настольная лампа, поместившаяся в кадр, может напомнить нам, как было тепло и уютно в детстве в гостях у бабушки.',
+                'Оптимального творческого пути не существует, и в этом его главная ценность. До конца понятых людей тоже, и это прекрасно, — каждому своё кино!',
+            ],
+        },
+        7: {
+            role: 'Project-manager',
+            name: 'Мария Саличева',
+            bio: [
+                'Мой профессиональный трек начался с архитектурно-строительного университета. Как ни странно, несмотря на то, что я уже не занимаюсь строительством, образование прекрасно встроилось в мою текущую деятельность — я легко ориентируюсь в архитектуре проекта и могу выстроить с нуля многие процессы.',
+                'Знаю, что возможно абсолютно всё. В этом смысле стараюсь не опираться на опыт, который есть у меня или у других, скорее — иду за мечтой. Часто всё получается, порой — даже лучше, чем планировала.',
+                'Ценю добрые и тёплые отношения в команде, способность прийти на помощь и поговорить открыто, если что-то идёт не так.',
+                'Моя любовь к коммуникации нашла отражение в текущей профессиональной деятельности — уже второй год я помогаю развивать деловое сообщество ClubFirst. Творческая идентичность во мне проявилась в создании своего бренда пляжной одежды, а стремление к структуре реализуется в работе над Кэмпом.',
+                'Обожаю бег, горный трекинг, обошла весь Кавказ, один из любимых маршрутов — Via Ferrata в Сочи.',
+            ],
+        },
+    };
+    let config = { ...DEFAULTS };
+    let popup = null;
+    let refs = {};
+    let osInstance = null;
+
+    function escapeHtml(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function renderBio(bio) {
+        const paragraphs = bio.map(p => {
+            const text = typeof p === 'string' ? escapeHtml(p) : `<span class="${config.boldClass}">${escapeHtml(p.bold)}</span>`;
+            return `<p class="${config.bioParagraphClass}">${text}</p>`;
+        });
+        return paragraphs.join('');
+    }
+
+    function initScrollbar() {
+        if (osInstance) {
+            osInstance.destroy();
+            osInstance = null;
+        }
+
+        if (typeof OverlayScrollbarsGlobal === 'undefined') return;
+
+        const { OverlayScrollbars } = OverlayScrollbarsGlobal;
+
+        setTimeout(() => {
+            osInstance = OverlayScrollbars(refs.text, config.scrollbarOptions);
+        }, 10);
+    }
+
+    function fillPopup(id) {
+        const data = teamData[id];
+        if (!data) return false;
+
+        if (refs.role) refs.role.textContent = data.role;
+        if (refs.name) refs.name.textContent = data.name;
+        if (refs.img) {
+            refs.img.src = config.imgPathTpl.replace('{id}', id);
+            refs.img.alt = data.name;
+        }
+
+        if (refs.text) {
+            refs.text.innerHTML = renderBio(data.bio);
+        }
+
+        return true;
+    }
+
+    function handleCardClick(event) {
+        const card = event.target.closest(config.cardSelector);
+        if (!card || card.closest(config.popupSelector)) return;
+
+        const id = card.id;
+        if (!id || !teamData[id]) return;
+
+        if (fillPopup(id)) {
+            if (window.Popup && typeof window.Popup.open === 'function') {
+                window.Popup.open(config.popupSelector);
+            }
+
+            initScrollbar();
+        }
+    }
+
+    function init(options = {}) {
+        config = { ...DEFAULTS, ...options };
+        popup = document.querySelector(config.popupSelector);
+
+        if (!popup) return;
+
+        refs = {
+            role: popup.querySelector(config.roleSelector),
+            name: popup.querySelector(config.nameSelector),
+            img: popup.querySelector(config.imgSelector),
+            text: popup.querySelector(config.textSelector),
+        };
+
+        document.addEventListener('click', handleCardClick);
+    }
+
+    return { init };
+})();
+
+window.TeamPopup = TeamPopup;
+
 document.addEventListener('DOMContentLoaded', () => {
     SmoothScroll.init();
     Parallax.init();
@@ -1220,13 +1422,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ToggleWrapper.init();
     StickyCenterGrid.init();
     HeroBackground.init();
+    TeamPopup.init()
+
 
     const teamSlider = new Swiper('.team-slider', {
         slidesPerView: 'auto',
         spaceBetween: 10,
-        mousewheel:{
-            invert:false,
-            forceToAxis:true,
+        mousewheel: {
+            invert: false,
+            forceToAxis: true,
         },
         breakpoints: {
             641: {
@@ -1238,9 +1442,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const teaserSlider = new Swiper('.teaser-slider', {
         slidesPerView: 'auto',
         spaceBetween: 10,
-        mousewheel:{
-            invert:false,
-            forceToAxis:true,
+        mousewheel: {
+            invert: false,
+            forceToAxis: true,
         },
         breakpoints: {
             1241: {
@@ -1252,9 +1456,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pricingSlider = new Swiper('.pricing-slider', {
         slidesPerView: 'auto',
         spaceBetween: 10,
-        mousewheel:{
-            invert:false,
-            forceToAxis:true,
+        mousewheel: {
+            invert: false,
+            forceToAxis: true,
         },
         breakpoints: {
             641: {
@@ -1280,14 +1484,14 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 (function () {
-document.querySelectorAll('.faq-list input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', function () {
-        if (this.checked) {
+    document.querySelectorAll('.faq-list input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
 
-            document.querySelectorAll('.faq-list input[type="checkbox"]').forEach(cb => {
-                if (cb !== this) cb.checked = false;
-            });
-        }
+                document.querySelectorAll('.faq-list input[type="checkbox"]').forEach(cb => {
+                    if (cb !== this) cb.checked = false;
+                });
+            }
+        });
     });
-});
 })();

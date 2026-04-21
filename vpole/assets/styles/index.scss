@@ -67,7 +67,7 @@
     --container-padding: 2.625rem;
     --container-padding-small: 0.625rem;
     //
-    --title-size-middle: 2.25rem;
+    --title-size-middle: 2.1875rem;
     --title-size-base: 2.8125rem;
     --title-size-large: 1.875rem;
     --title-size-big: 3.375rem;
@@ -287,6 +287,10 @@ body.no-scroll {
           font-size: 1.5rem;
         }
 
+        &--middle {
+          font-size: 1.125rem;
+        }
+
         &--small {
           font-size: 1rem;
         }
@@ -382,8 +386,9 @@ body.no-scroll {
     color: var(--color-white);
     border-color: var(--color-blue);
 
-    transition: .3s background-color,.3s border-color;
-    &:hover{
+    transition: .3s background-color, .3s border-color;
+
+    &:hover {
       background: #263956;
       border-color: #263956;
     }
@@ -392,13 +397,15 @@ body.no-scroll {
   &--bordered {
     border-color: var(--color-white);
     color: var(--color-white);
-    &--blue{
+
+    &--blue {
       background-color: transparent;
       color: var(--color-blue);
       border-color: var(--color-blue);
 
       transition: .3s color, .3s border-color;
-      &:hover{
+
+      &:hover {
         color: #263956;
         border-color: #263956;
       }
@@ -434,15 +441,15 @@ body.no-scroll {
     }
   }
 
-  &--mobile{
+  &--mobile {
     display: none;
-    @include mobile{
+    @include mobile {
       display: flex;
     }
   }
 
-  &--desktop{
-    @include mobile{
+  &--desktop {
+    @include mobile {
       display: none;
     }
   }
@@ -462,9 +469,9 @@ body.no-scroll {
     top: 0;
     left: 0;
     z-index: 11;
-    background: var(--color-dark);
+
     color: var(--color-white);
-    overflow: auto;
+    overflow: hidden auto;
 
 
     display: flex;
@@ -474,12 +481,37 @@ body.no-scroll {
     }
     opacity: 0;
     visibility: hidden;
-    transition: .3s visibility, .5s opacity;
+    transition: .1s .3s visibility, .1s .3s opacity;
+
+    &::before {
+      content: "";
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-dark);
+      pointer-events: none;
+      transform: translate(100%);
+
+      transition: .3s .2s transform;
+    }
 
     &--active {
       opacity: 1;
       visibility: visible;
+
+      transition: .1s .1s visibility, .1s .1s opacity;
+
+      &::before {
+        transform: translate(0);
+      }
     }
+
+    &--active &__wrapper, &--active &__header {
+      transform: translate(0);
+    }
+
 
     &__logo {
       color: var(--color-white);
@@ -491,6 +523,11 @@ body.no-scroll {
         width: 6.25rem;
         height: 2.5rem;
       }
+    }
+
+    &__wrapper, &__header {
+      transform: translateX(100%);
+      transition: .3s .2s transform;
     }
 
     &__header {
@@ -533,6 +570,8 @@ body.no-scroll {
       justify-content: space-between;
       gap: 5rem;
       flex-grow: 1;
+
+
       @include mobile {
         gap: 1.875rem;
         padding: 1.875rem 1.25rem;
@@ -972,11 +1011,12 @@ body.no-scroll {
       position: absolute;
       left: 0;
       top: 0;
-      &--image{
+
+      &--image {
         object-fit: cover;
         z-index: 1;
         opacity: 0;
-        @include mobile{
+        @include mobile {
           opacity: 1;
         }
       }
@@ -1024,6 +1064,11 @@ body.no-scroll {
 
 
     &--slogan {
+      @include tablet-only {
+        max-width: 55rem;
+        width: 100%;
+      }
+
       &::before {
         content: "";
         position: absolute;
@@ -1035,9 +1080,12 @@ body.no-scroll {
         z-index: 0;
         pointer-events: none;
         @include tablet {
-          width: 100%;
-          right: 0;
-          height: 1.5rem;
+          width: 30rem;
+          background: url("../media/images/decor-title/slogan-mobile.svg") left bottom/contain no-repeat;
+          height: 1.75rem;
+          top: calc(100% - 4rem);
+          right: 3rem;
+
         }
         @include mobile {
           width: 12.5rem;
@@ -1139,11 +1187,12 @@ body.no-scroll {
     overflow: hidden;
   }
 
-  &__line{
+  &__line {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+
   &__wrapper {
     padding: var(--section-padding) 0;
   }
@@ -1242,6 +1291,10 @@ body.no-scroll {
       &__img {
         grid-column-end: span 5;
       }
+    }
+
+    @include mobile {
+      gap: 2.5rem;
     }
   }
 
@@ -1476,6 +1529,8 @@ body.no-scroll {
 
 
 .teaser {
+  overflow: hidden;
+
   &__title {
     max-width: 71.25rem;
     width: 100%;
@@ -1485,6 +1540,7 @@ body.no-scroll {
     max-width: 100%;
     width: 100%;
 
+    overflow: visible;
     flex-grow: 1;
     pointer-events: none;
     @include mobile {
@@ -1651,9 +1707,21 @@ body.no-scroll {
 
   }
 
+  &__title {
+
+  }
+
   &__text {
-    max-width: 35rem;
+    max-width: 34.75rem;
     width: 100%;
+
+    &--tablet {
+      &--big {
+        @include tablet-only {
+          max-width: 40rem;
+        }
+      }
+    }
   }
 
   &-gallery {
@@ -1726,17 +1794,23 @@ body.no-scroll {
 
 .showcase {
   position: relative;
-  padding-bottom: 56.25%;
-
-  &--location {
-    padding-bottom: 45%;
-  }
+  padding-bottom: 40%;
 
   @include tablet {
-    padding-bottom: 100%;
+    padding-bottom: 60%;
   }
   @include mobile {
     padding-bottom: 180%;
+  }
+
+  &--location {
+    padding-bottom: 45%;
+    @include tablet {
+      padding-bottom: 100%;
+    }
+    @include mobile {
+      padding-bottom: 180%;
+    }
   }
 
 
@@ -2010,7 +2084,7 @@ body.no-scroll {
     --scallop-r: 0.75rem;
     --scallop-count: 55;
     --scallop-step: calc(100% / var(--scallop-count));
-
+    --overlap: 1px;
     @include tablet {
       padding-top: 3.125rem;
       padding-bottom: 6.25rem;
@@ -2022,11 +2096,21 @@ body.no-scroll {
       --scallop-count: 15;
     }
 
-    -webkit-mask: radial-gradient(circle at 50% 100%, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
-    linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--scallop-h)) no-repeat;
+    -webkit-mask:
+            radial-gradient(circle at 50% 100%,
+                    transparent var(--scallop-r),
+                    #000 calc(var(--scallop-r) + 0.5px))
+            50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
+            linear-gradient(#000, #000)
+            0 0 / 100% calc(100% - var(--scallop-h) + var(--overlap)) no-repeat;
 
-    mask: radial-gradient(circle at 50% 100%, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
-    linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--scallop-h)) no-repeat;
+    mask:
+            radial-gradient(circle at 50% 100%,
+                    transparent var(--scallop-r),
+                    #000 calc(var(--scallop-r) + 0.5px))
+            50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
+            linear-gradient(#000, #000)
+            0 0 / 100% calc(100% - var(--scallop-h) + var(--overlap)) no-repeat;
     overflow: hidden;
     @include mobile {
       padding: 1.875rem calc(var(--container-padding) - var(--container-padding-small));
@@ -2169,10 +2253,7 @@ body.no-scroll {
 .pricing {
   overflow: hidden;
 
-  pointer-events: none;
-  @include mobile{
-    pointer-events: auto;
-  }
+
   &-slider {
     width: 100%;
     overflow: visible;
@@ -2204,8 +2285,11 @@ body.no-scroll {
     --pricing-card-padding: 3.125rem;
     position: relative;
     pointer-events: auto;
-    &:hover{
-      cursor: pointer;}
+
+    &:hover {
+      cursor: pointer;
+    }
+
     @include tablet {
       --pricing-card-padding: 2.5rem;
     }
@@ -2222,7 +2306,7 @@ body.no-scroll {
       color: var(--color-dark);
     }
 
-    &__input{
+    &__input {
       position: absolute;
       left: 0;
       top: 0;
@@ -2243,7 +2327,8 @@ body.no-scroll {
       position: relative;
       z-index: 3;
       border-bottom: 1.20px dashed var(--color-white);
-      &::before,&::after{
+
+      &::before, &::after {
         content: "";
         position: absolute;
         width: 1.5rem;
@@ -2252,22 +2337,25 @@ body.no-scroll {
         background: var(--color-white-dark);
         z-index: 2;
         pointer-events: none;
-        @include mobile{
+        @include mobile {
           width: 1rem;
           height: 1rem;
         }
       }
-      &::before{
+
+      &::before {
         bottom: 0;
         right: 0;
         transform: translateY(50%) translateX(50%);
 
       }
-      &::after{
+
+      &::after {
         bottom: 0;
         left: 0;
         transform: translateY(50%) translateX(-50%);
       }
+
       @include tablet {
         padding: 2.5rem;
         gap: .875rem;
@@ -2278,34 +2366,36 @@ body.no-scroll {
       }
     }
 
-    @include desktop-only{
+    @include desktop-only {
       &:hover &__list {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
       }
     }
-    @include tablet{
+    @include tablet {
       &:has(:checked) &__list {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
       }
-      &:has(:checked) &__button{
-        &::after{
+      &:has(:checked) &__button {
+        &::after {
           content: attr(data-close);
         }
-        .button__icon{
+
+        .button__icon {
           display: none;
           width: .875rem;
           height: .875rem;
           transform: translateY(5%);
-          @include mobile{
+          @include mobile {
 
             width: .625rem;
             height: .625rem;
           }
-          &--active{
+
+          &--active {
             display: flex;
           }
         }
@@ -2412,13 +2502,15 @@ body.no-scroll {
     }
 
     &__button {
-      &::after{
+      &::after {
         content: attr(data-open);
       }
-      .button__icon--active{
+
+      .button__icon--active {
         display: none;
       }
-      @include desktop-only{
+
+      @include desktop-only {
         pointer-events: none;
       }
       @include tablet {
@@ -2551,9 +2643,17 @@ body.no-scroll {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+
+      &--small{
+        gap: 1rem;
+      }
       @include mobile {
         gap: 1.25rem;
         margin-top: 1.25rem;
+        &--small{
+          gap: .625rem;
+          margin-top: 0;
+        }
       }
     }
 
@@ -2786,20 +2886,31 @@ body.no-scroll {
     --scallop-r: 0.75rem;
     --scallop-count: 55;
     --scallop-step: calc(100% / var(--scallop-count));
-
+    --overlap: 1px;
     @include mobile {
       --scallop-h: 0.9375rem;
       --scallop-r: 0.46875rem;
       --scallop-count: 15;
     }
 
-    -webkit-mask: radial-gradient(circle at 50% 0, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 0 / var(--scallop-step) var(--scallop-h) repeat-x,
-    radial-gradient(circle at 50% 100%, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
-    linear-gradient(#000, #000) 0 var(--scallop-h) / 100% calc(100% - var(--scallop-h) * 2) no-repeat;
+    -webkit-mask: radial-gradient(circle at 50% 0,
+            transparent var(--scallop-r),
+            #000 calc(var(--scallop-r) + 0.5px)) 50% 0 / var(--scallop-step) var(--scallop-h) repeat-x,
+    radial-gradient(circle at 50% 100%,
+                    transparent var(--scallop-r),
+                    #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
+    linear-gradient(#000, #000) 0 calc(var(--scallop-h) - var(--overlap))
+    / 100% calc(100% - var(--scallop-h) * 2 + var(--overlap) * 2) no-repeat;
 
-    mask: radial-gradient(circle at 50% 0, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 0 / var(--scallop-step) var(--scallop-h) repeat-x,
-    radial-gradient(circle at 50% 100%, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
-    linear-gradient(#000, #000) 0 var(--scallop-h) / 100% calc(100% - var(--scallop-h) * 2) no-repeat;
+    mask: radial-gradient(circle at 50% 0,
+            transparent var(--scallop-r),
+            #000 calc(var(--scallop-r) + 0.5px)) 50% 0 / var(--scallop-step) var(--scallop-h) repeat-x,
+    radial-gradient(circle at 50% 100%,
+                    transparent var(--scallop-r),
+                    #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
+    linear-gradient(#000, #000) 0 calc(var(--scallop-h) - var(--overlap))
+    / 100% calc(100% - var(--scallop-h) * 2 + var(--overlap) * 2) no-repeat;
+
     overflow: hidden;
     @include tablet {
       padding-bottom: 5.625rem;
@@ -3595,6 +3706,10 @@ body.no-scroll {
         top: 0;
         right: -2rem;
         &::before, &::after {
+          width: 1.5rem;
+          height: 1.5rem;
+          height: 2px;
+          top: calc(50% - 1px);
           background: var(--color-white);
         }
       }
@@ -3735,8 +3850,10 @@ body.no-scroll {
     --popup-text-color: var(--color-dark);
     color: var(--popup-text-color);
     @include desktop-only {
-
       height: 80vh;
+    }
+    @include tablet-only {
+      width: 53.125rem;
     }
 
     margin: 0 auto;
@@ -3759,27 +3876,11 @@ body.no-scroll {
       scrollbar-width: none;
       -ms-overflow-style: none;
 
+      .text + .text{
+        margin-top: var(--text-size-tiny);
+      }
       &::-webkit-scrollbar {
         display: none;
-      }
-
-      .simplebar-track.simplebar-vertical {
-        background: #DDCFBA;
-        width: 3px;
-        padding: 0;
-        margin: 0;
-      }
-
-      .simplebar-track.simplebar-horizontal {
-        background: #DDCFBA;
-      }
-
-      .simplebar-scrollbar::before {
-        background: var(--color-accent);
-        border-radius: 0px;
-        opacity: 1 !important;
-        width: 100%;
-        inset: 0;
       }
     }
 
@@ -3860,6 +3961,10 @@ body.no-scroll {
     color: var(--popup-text-color);
     position: relative;
 
+
+    &--dark{
+      background-color: var(--color-white-dark);
+    }
     &--thanks {
       background-color: #263956;
       --popup-text-color: var(--color-white);
@@ -3875,7 +3980,7 @@ body.no-scroll {
       --scallop-r: 0.78125rem;
       --scallop-count: 15;
       --scallop-step: calc(100% / var(--scallop-count));
-
+      --overlap: 1px;
 
       @include mobile {
         --scallop-h: 0.9375rem;
@@ -3883,11 +3988,15 @@ body.no-scroll {
         --scallop-count: 14.9;
       }
 
-      -webkit-mask: radial-gradient(circle at 50% 100%, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
-      linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--scallop-h)) no-repeat;
+      -webkit-mask: radial-gradient(circle at 50% 100%,
+              transparent var(--scallop-r),
+              #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
+      linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--scallop-h) + var(--overlap)) no-repeat;
 
-      mask: radial-gradient(circle at 50% 100%, transparent var(--scallop-r), #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
-      linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--scallop-h)) no-repeat;
+      mask: radial-gradient(circle at 50% 100%,
+              transparent var(--scallop-r),
+              #000 calc(var(--scallop-r) + 0.5px)) 50% 100% / var(--scallop-step) var(--scallop-h) repeat-x,
+      linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--scallop-h) + var(--overlap)) no-repeat;
 
       overflow: hidden;
     }
@@ -3915,6 +4024,10 @@ body.no-scroll {
       gap: 1.875rem;
       @include mobile {
         gap: 1.25rem;
+        &--filling{
+          max-width: 10rem;
+          width: 100%;
+        }
       }
     }
 
@@ -3930,4 +4043,73 @@ body.no-scroll {
       }
     }
   }
+}
+
+.filling{
+  &-list{
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+  }
+
+  &-item{
+    background-color: #FFF9ED;
+    padding: 1.875rem;
+    @include mobile{
+      padding: 1.25rem;
+    }
+    &__header{
+      display: flex;
+      align-items: flex-start;
+      gap: .625rem;
+    }
+
+    &__icon{
+      color: var(--color-dark);
+      width: 2.5rem;
+      height: 2.5rem;
+      flex-shrink: 0;
+
+      position: absolute;
+      right: 0;
+      top: 0;
+      @include mobile{
+        width: 1.25rem;
+        height: 1.25rem;
+        position: relative;
+      }
+    }
+    &__wrapper{
+      background-color: var(--color-white);
+      padding-right: 3.5rem;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      @include mobile{
+        padding: 0;
+        gap: .75rem ;
+      }
+    }
+  }
+}
+
+.os-scrollbar {
+  --os-padding-perpendicular: 0;
+  --os-padding-axis: 0;
+  --os-track-bg: #DDCFBA;
+  --os-track-bg-hover: #DDCFBA;
+  --os-track-bg-active: #DDCFBA;
+  --os-handle-bg: var(--color-accent);
+  --os-handle-bg-hover: var(--color-accent);
+  --os-handle-bg-active: var(--color-accent);
+  --os-handle-border-radius: 0;
+  --os-handle-perpendicular-size: 100%;
+  --os-handle-perpendicular-size-hover: 100%;
+}
+
+/* width: 3px у вертикального как в оригинале */
+.os-scrollbar-vertical {
+  --os-size: 3px;
 }
