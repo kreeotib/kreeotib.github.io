@@ -58,6 +58,7 @@
   --color-accent: #304D1D;
   --color-accent-light: #6A8850;
   --color-blue: #476899;
+  --color-yellow:#E6AD3B;
 }
 
 @include tablet {
@@ -103,6 +104,217 @@
     --text-size-middle: .875rem;
     --text-size-big: .875rem;
     --text-size-tiny: .875rem;
+  }
+}
+
+
+.preloader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  pointer-events: none;
+  background-color: var(--color-accent);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+  transition: .3s visibility, .5s opacity;
+  &--hidden{
+    opacity: 0;
+    visibility: hidden;
+  }
+  &__wrapper{
+  }
+
+  &-main{
+    position: relative;
+  }
+  &-word{
+    position: absolute;
+    pointer-events: none;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    font-family: var(--font-accent);
+    line-height: 1.25;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: -0.02em;
+
+    $total-time: 5s;
+    opacity: 0;
+
+    @include tablet{
+      font-size: 1.75rem;
+    }
+
+    @include mobile{
+      font-size: 1rem;
+    }
+
+    &:nth-child(1) { animation: preloaderWord 100s 1s forwards; }
+    &:nth-child(2) { animation: preloaderWord 100s 2s forwards; }
+    &:nth-child(3) { animation: preloaderWord 100s 3s forwards; }
+    &:nth-child(4) { animation: preloaderWord 100s 4s forwards; }
+    &:nth-child(5) { animation: preloaderWord 100s 5s forwards; }
+    &--first{
+      font-size: 2rem;
+      right:calc(100% + 2rem);
+      top:  -4.75rem;
+      @include tablet{
+        font-size: 1.4rem;
+        right:calc(100% + 1.4rem);
+        top: -3.25rem;
+      }
+      @include mobile{
+        font-size: .8rem;
+        right:calc(50% + .8rem);
+        top: -2rem;
+      }
+    }
+    &--second{
+      left: calc(100% + 6.25rem);
+      top: 100%;
+      @include tablet{
+        left: calc(100% + 4rem);
+      }
+      @include mobile{
+        left: calc(50% + 2.4rem);
+      }
+    }
+    &--third{
+      font-size: 2.125rem;
+      left: calc(100% + 5.25rem);
+      bottom: calc(100% + 7.25rem);
+      @include tablet{
+        font-size: 1.4rem;
+        left: calc(100% + 3.5rem);
+        bottom: calc(100% + 5rem);
+      }
+      @include mobile{
+        font-size: .8rem;
+        left: calc(50% + 2rem);
+        bottom: calc(100% + 2.8rem);
+      }
+    }
+    &--fourth{
+      font-size: 2.375rem;
+      right: 100%;
+      top: calc(100% + 5.625rem);
+      @include tablet{
+        font-size: 1.6rem;
+        top: calc(100% + 4rem);
+      }
+      @include mobile{
+        font-size: .9rem;
+        top: calc(100% + 2.2rem);
+        right: 75%;
+      }
+    }
+    &--fifth{
+      font-size: 1.75rem;
+      bottom: calc(100% + 11.25rem);
+      left: 100%;
+      transform: translateX(-50%);
+      @include tablet{
+        font-size: 1.2rem;
+        bottom: calc(100% + 8rem);
+      }
+      @include mobile{
+        font-size: .7rem;
+
+        bottom: calc(100% + 4rem);
+      }
+    }
+  }
+  &-logo{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    @include tablet{
+      gap: 1.25rem;
+    }
+    @include mobile{
+      gap: .625rem;
+    }
+    &__main{
+      width: 30.625rem;
+      height: 6rem;
+      @include tablet{
+        width: 23.75rem;
+        height: 4.6875rem;
+      }
+      @include mobile{
+        width: 12.5rem;
+        height: 2.5rem;
+      }
+    }
+    &__line{
+      position: relative;
+      -webkit-mask-image: url('../media/images/preloader/preloader-line.svg');
+      mask-image: url('../media/images/preloader/preloader-line.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      background-color:var(--color-accent-light) ;
+
+      width: 32.5rem;
+      height: 4.25rem;
+      @include tablet{
+        width: 25rem;
+        height: 3.25rem;
+      }
+      @include mobile{
+        width: 13.25rem;
+        height: 1.75rem;
+      }
+      &::before{
+        content: "";
+        width: 0;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: var(--color-yellow);
+
+        animation:preloaderLineWidth 100s linear forwards;
+        animation-play-state: paused;
+        animation-delay: var(--animation-delay);
+      }
+    }
+  }
+}
+@keyframes preloaderLineWidth {
+  0% {
+    width: 0%;
+  }
+  95% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes preloaderWord {
+  0% {
+    filter: blur(7px);
+    -webkit-filter:blur(7px);
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
   }
 }
 
@@ -229,7 +441,7 @@ body.no-scroll {
   }
 
   &--yellow {
-    color: #E6AD3B;
+    color: var(--color-yellow);
   }
 
   &--medium {
@@ -423,13 +635,13 @@ body.no-scroll {
   &--white {
     background: var(--color-white);
     border-color: var(--color-white);
-    color: #E6AD3B;
+    color: var(--color-yellow);
 
     transition: .3s color, .3s background-color;
 
     &:hover {
-      background-color: #E6AD3B;
-      border-color: #E6AD3B;
+      background-color: var(--color-yellow);
+      border-color: var(--color-yellow);
       color: var(--color-white);
     }
   }
@@ -444,7 +656,7 @@ body.no-scroll {
       transition: .3s color;
 
       &:hover {
-        color: #E6AD3B;
+        color: var(--color-yellow);
       }
     }
   }
@@ -884,7 +1096,7 @@ body.no-scroll {
       transition: .3s color;
 
       &:hover {
-        color: #E6AD3B;
+        color: var(--color-yellow);
       }
     }
   }
@@ -1010,22 +1222,27 @@ body.no-scroll {
     justify-content: center;
     z-index: 0;
 
+    overflow: hidden;
+
     background-color: #000;
 
     &__item {
-      width: 100%;
+      width: auto;
       height: 100%;
       object-fit: contain;
 
       position: absolute;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       top: 0;
 
       &--image {
         object-fit: cover;
         z-index: 1;
         opacity: 0;
-        @include mobile {
+        left:0;
+        transform: translateX(0);
+        @include tablet {
           opacity: 1;
         }
       }
@@ -3195,7 +3412,7 @@ body.no-scroll {
       text-transform: uppercase;
 
       &:hover {
-        color: #E6AD3B;
+        color: var(--color-yellow);
       }
 
       @include mobile {
@@ -3285,7 +3502,7 @@ body.no-scroll {
     }
 
     &:hover &__button {
-      color: #E6AD3B;
+      color: var(--color-yellow);
     }
 
     &__img {

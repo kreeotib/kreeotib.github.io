@@ -267,7 +267,8 @@ const HeroBackground = (() => {
         readyFallbackMs: 3000,
     };
 
-    let config = {...defaults};
+    let config;
+    config = {...defaults};
     let root = null;
     let image = null;
     let video = null;
@@ -435,7 +436,407 @@ const HeroBackground = (() => {
 })();
 
 window.HeroBackground = HeroBackground;
+/**
+ * Preloader
+ *
+ * Stretches the preloader CSS animations to match real page-load progress.
+ *
+ * Technique: the CSS keyframes (preloaderLineWidth, preloaderWord) use a long
+ * duration (100 s) and `animation-play-state: paused`. A negative
+ * `animation-delay` scrubs the paused animation to any point in its timeline:
+ *
+ *     delay = -(progress × duration)   →   0 % … 100 % of the keyframes
+ *
+ * The script tracks loading milestones (DOM, fonts, hero video, window.load),
+ * converts them to a weighted 0→1 target, then eases the actual progress
+ * toward that target every frame, updating the CSS custom property
+ * `--animation-delay` (line) and inline `animationDelay` (words).
+ *
+ * Depends on: ScrollLock (required), HeroBackground (optional — gracefully degrades when absent).
+ */
 
+const Preloader = (() => {
+    /* ------------------------------------------------------------------ */
+    /*  Defaults                                                          */
+    /* ------------------------------------------------------------------ */
+    const defaults = {
+        selector:        '.preloader',
+        hiddenClass:     'preloader--hidden',
+        lineSelector:    '.preloader-logo__line',
+        wordSelector:    '.preloader-word',
+        heroSelector:    '[data-hero-bg]',
+        videoReadyClass: 'is-ready',
+
+        /** Must match the CSS `animation-duration` on line + words (seconds). */
+        animDuration: 100,
+
+        /** Lerp factor per frame — lower = smoother / slower easing. */
+        ease: 0.065,
+
+        /** Never close the preloader before this many ms have elapsed. */
+        minShowMs: 1400,
+
+        /** Extra pause after progress hits 1 before hiding (lets the eye settle). */
+        hideDelayMs: 250,
+
+        /** Cap progress until every milestone resolves (prevents premature 100 %). */
+        softCap: 0.92,
+    };
+
+    /* ------------------------------------------------------------------ */
+    /*  State                                                             */
+    /* ------------------------------------------------------------------ */
+    let config     = { ...defaults };
+    let el         = null;   // .preloader
+    let lineEl     = null;   // .preloader-logo__line  (owns --animation-delay)
+    let words      = [];     // NodeList → Array of .preloader-word elements
+    let progress   = 0;      // current rendered progress  (0 → 1)
+    let target     = 0;      // where we're easing toward  (0 → 1)
+    let rafId      = null;
+    let startTs    = 0;
+    let observer   = null;   // MutationObserver for hero video
+    let videoEl    = null;   // cached reference once the <video> appears
+    let isFinished = false;
+    let isInitialized = false;
+
+    /**
+     * Milestones — each carries a weight and a partial value (0 → 1).
+     * `done` locks the milestone at 1.
+     */
+    const milestones = {
+        dom:   { weight: 0.08, done: false, partial: 0 },
+        fonts: { weight: 0.07, done: false, partial: 0 },
+        hero:  { weight: 0.55, done: false, partial: 0 },
+        load:  { weight: 0.30, done: false, partial: 0 },
+    };
+
+    /* ------------------------------------------------------------------ */
+    /*  Progress helpers                                                  */
+    /* ------------------------------------------------------------------ */
+    function allDone() {
+        for (const k in milestones) if (!milestones[k].done) return false;
+        return true;
+    }
+
+    function computeTarget() {
+        let t = 0;
+        for (const k in milestones) {
+            const m = milestones[k];
+            t += m.weight * (m.done ? 1 : m.partial);
+        }
+        // Soft-cap until every milestone has fully resolved.
+        return allDone() ? Math.min(t, 1) : Math.min(t, config.softCap);
+    }
+
+    function resolve(key) {
+        if (!milestones[key]) return;
+        milestones[key].done    = true;
+        milestones[key].partial = 1;
+        target = computeTarget();
+    }
+
+    function partial(key, value) {
+        if (!milestones[key] || milestones[key].done) return;
+        milestones[key].partial = Math.max(milestones[key].partial, Math.min(value, 1));
+        target = computeTarget();
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Scrubbing                                                         */
+    /* ------------------------------------------------------------------ */
+
+    /**
+     * Word stagger map — each word fades in across a [start, end] slice of the
+     * overall progress.  Overlapping windows make the reveals feel organic.
+     */
+    const wordWindows = [
+        [0.04, 0.28],   // word 1
+        [0.18, 0.42],   // word 2
+        [0.32, 0.58],   // word 3
+        [0.48, 0.72],   // word 4
+        [0.62, 0.88],   // word 5
+    ];
+
+    function scrub(p) {
+        // --- Line (::before receives the custom property) ---
+        if (lineEl) {
+            const delay = -(p * config.animDuration);
+            lineEl.style.setProperty('--animation-delay', delay + 's');
+        }
+
+        // --- Words ---
+        for (let i = 0; i < words.length; i++) {
+            const win = wordWindows[i] || wordWindows[wordWindows.length - 1];
+            const span = win[1] - win[0];
+            const local = Math.max(0, Math.min(1, (p - win[0]) / span));
+            words[i].style.animationDelay     = -(local * config.animDuration) + 's';
+            words[i].style.animationPlayState  = 'paused';
+        }
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Frame loop                                                        */
+    /* ------------------------------------------------------------------ */
+    function tick() {
+        if (isFinished) return;
+
+        progress += (target - progress) * config.ease;
+
+        // Snap when close enough to prevent infinite crawl.
+        if (Math.abs(target - progress) < 0.002) progress = target;
+
+        scrub(progress);
+
+        if (progress >= 1 && allDone()) {
+            finish();
+            return;
+        }
+
+        rafId = requestAnimationFrame(tick);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Finish & hide                                                     */
+    /* ------------------------------------------------------------------ */
+    function finish() {
+        if (isFinished) return;
+        isFinished = true;
+
+        cancelAnimationFrame(rafId);
+        rafId = null;
+
+        // Make sure we're fully scrubbed to the end state.
+        scrub(1);
+
+        // Respect minimum display time so fast loads still show the brand.
+        const elapsed   = performance.now() - startTs;
+        const remaining = Math.max(0, config.minShowMs - elapsed);
+
+        setTimeout(() => {
+            if (el) el.classList.add(config.hiddenClass);
+            if (window.ScrollLock) ScrollLock.unlock();
+            cleanUp();
+        }, remaining + config.hideDelayMs);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Hero-video monitoring                                             */
+    /* ------------------------------------------------------------------ */
+
+    /**
+     * Attach progress / ready listeners to the video element created by
+     * HeroBackground.  Called once the <video> appears in the DOM.
+     */
+    function bindVideo(v) {
+        if (videoEl) return;          // already bound
+        videoEl = v;
+
+        // Intermediate buffering progress.
+        const onProgress = () => {
+            try {
+                if (!videoEl.duration || !videoEl.buffered.length) return;
+                const buffered = videoEl.buffered.end(videoEl.buffered.length - 1);
+                partial('hero', buffered / videoEl.duration);
+            } catch (_) { /* buffered may throw if nothing loaded yet */ }
+        };
+
+        const onReady = () => {
+            resolve('hero');
+            videoEl.removeEventListener('progress', onProgress);
+        };
+
+        videoEl.addEventListener('progress',   onProgress);
+        videoEl.addEventListener('canplay',     onReady, { once: true });
+        videoEl.addEventListener('loadeddata',  onReady, { once: true });
+        videoEl.addEventListener('error', () => {
+            // Video failed — don't let it block the preloader forever.
+            resolve('hero');
+        }, { once: true });
+
+        // If the video is *already* ready (cached / instant load).
+        if (videoEl.readyState >= 3) {
+            resolve('hero');
+            return;
+        }
+
+        // Trickle: give a small initial bump once metadata arrives.
+        videoEl.addEventListener('loadedmetadata', () => partial('hero', 0.15), { once: true });
+    }
+
+    /**
+     * Watch the hero container for a <video> child to appear.
+     * HeroBackground inserts the element lazily (requestIdleCallback),
+     * so we can't query it synchronously.
+     */
+    function watchHero() {
+        const heroRoot = document.querySelector(config.heroSelector);
+
+        if (!heroRoot) {
+            // No hero section at all — skip the milestone entirely.
+            resolve('hero');
+            return;
+        }
+
+        const videoSrc = heroRoot.dataset.videoSrc || '';
+        const breakpoint = parseInt(heroRoot.dataset.breakpoint, 10) || 768;
+
+        // On viewports below the breakpoint HeroBackground won't create a video.
+        if (!videoSrc || window.innerWidth < breakpoint) {
+            resolve('hero');
+            return;
+        }
+
+        // Maybe HeroBackground already created it (race condition if our init is late).
+        const existing = heroRoot.querySelector('video');
+        if (existing) {
+            bindVideo(existing);
+            return;
+        }
+
+        // Otherwise observe child additions until the <video> appears.
+        observer = new MutationObserver((mutations) => {
+            for (const m of mutations) {
+                for (const node of m.addedNodes) {
+                    if (node.nodeName === 'VIDEO') {
+                        bindVideo(node);
+                        observer.disconnect();
+                        observer = null;
+                        return;
+                    }
+                }
+            }
+        });
+
+        observer.observe(heroRoot, { childList: true });
+
+        // Safety: if no video appears within 8 s, resolve anyway.
+        setTimeout(() => {
+            if (!milestones.hero.done) resolve('hero');
+        }, 8000);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Resource monitoring helpers                                       */
+    /* ------------------------------------------------------------------ */
+    function watchFonts() {
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => resolve('fonts')).catch(() => resolve('fonts'));
+        } else {
+            resolve('fonts');
+        }
+    }
+
+    function watchWindowLoad() {
+        if (document.readyState === 'complete') {
+            resolve('load');
+            return;
+        }
+
+        // Trickle sub-resource progress via PerformanceObserver when available.
+        if (typeof PerformanceObserver !== 'undefined') {
+            try {
+                let counted = 0;
+                const po = new PerformanceObserver((list) => {
+                    counted += list.getEntries().length;
+                    // Estimate: assume ~30 sub-resources is a "full" page.
+                    partial('load', Math.min(counted / 30, 0.9));
+                });
+                po.observe({ type: 'resource', buffered: true });
+                // Clean up after load.
+                window.addEventListener('load', () => {
+                    try { po.disconnect(); } catch (_) {}
+                }, { once: true });
+            } catch (_) { /* PerformanceObserver not supported — degrade gracefully */ }
+        }
+
+        window.addEventListener('load', () => resolve('load'), { once: true });
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Clean-up                                                          */
+    /* ------------------------------------------------------------------ */
+    function cleanUp() {
+        if (observer) {
+            observer.disconnect();
+            observer = null;
+        }
+        videoEl = null;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Public API                                                        */
+    /* ------------------------------------------------------------------ */
+    function init(options) {
+        if (isInitialized) return;
+        config = { ...defaults, ...options };
+
+        // Force the page to the top on every fresh load / transition.
+        // Setting scrollRestoration beats the browser's own restore behaviour.
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+
+        // Prevent the user from scrolling while the preloader is active.
+        if (window.ScrollLock) ScrollLock.lock();
+
+        el = document.querySelector(config.selector);
+        if (!el) {
+            if (window.ScrollLock) ScrollLock.unlock();
+            return;
+        }
+
+        lineEl = el.querySelector(config.lineSelector);
+        words  = Array.from(el.querySelectorAll(config.wordSelector));
+
+        // Pause every word animation immediately so we can scrub them.
+        words.forEach((w) => {
+            w.style.animationPlayState = 'paused';
+            w.style.animationDelay     = '0s';
+        });
+
+        // Start the clock.
+        startTs = performance.now();
+
+        // Resolve DOM milestone — if we're running, the DOM is clearly parsed.
+        if (document.readyState !== 'loading') {
+            resolve('dom');
+        } else {
+            document.addEventListener('DOMContentLoaded', () => resolve('dom'), { once: true });
+        }
+
+        watchFonts();
+        watchHero();
+        watchWindowLoad();
+
+        // Kick off the render loop.
+        rafId = requestAnimationFrame(tick);
+
+        isInitialized = true;
+    }
+
+    function destroy() {
+        if (!isInitialized) return;
+        cancelAnimationFrame(rafId);
+        rafId = null;
+        cleanUp();
+        if (window.ScrollLock) ScrollLock.unlock();
+        el      = null;
+        lineEl  = null;
+        words   = [];
+        isInitialized = false;
+    }
+
+    function get() {
+        return {
+            el, lineEl, words, progress, target,
+            milestones: { ...milestones },
+            isFinished, isInitialized,
+        };
+    }
+
+    return { init, destroy, get };
+})();
+
+window.Preloader = Preloader;
 const Parallax = (() => {
     const DEFAULTS = {
         selector: '.parallax',
@@ -1249,7 +1650,7 @@ const TeamPopup = (() => {
         bioParagraphClass: 'text text--tiny',
         boldClass: 'text text--medium',
         scrollbarOptions: {
-            scrollbars: {  },
+            scrollbars: {},
         },
     };
 
@@ -1325,7 +1726,7 @@ const TeamPopup = (() => {
             ],
         },
     };
-    let config = { ...DEFAULTS };
+    let config = {...DEFAULTS};
     let popup = null;
     let refs = {};
     let osInstance = null;
@@ -1350,7 +1751,7 @@ const TeamPopup = (() => {
 
         if (typeof OverlayScrollbarsGlobal === 'undefined') return;
 
-        const { OverlayScrollbars } = OverlayScrollbarsGlobal;
+        const {OverlayScrollbars} = OverlayScrollbarsGlobal;
 
         setTimeout(() => {
             osInstance = OverlayScrollbars(refs.text, config.scrollbarOptions);
@@ -1392,7 +1793,7 @@ const TeamPopup = (() => {
     }
 
     function init(options = {}) {
-        config = { ...DEFAULTS, ...options };
+        config = {...DEFAULTS, ...options};
         popup = document.querySelector(config.popupSelector);
 
         if (!popup) return;
@@ -1407,12 +1808,13 @@ const TeamPopup = (() => {
         document.addEventListener('click', handleCardClick);
     }
 
-    return { init };
+    return {init};
 })();
 
 window.TeamPopup = TeamPopup;
 
 document.addEventListener('DOMContentLoaded', () => {
+    Preloader.init();
     SmoothScroll.init();
     Parallax.init();
     AnchorScroll.init();
