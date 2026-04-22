@@ -127,6 +127,10 @@
   visibility: hidden;
 
   transition: .3s visibility, .5s opacity;
+  &--active{
+    opacity: 1;
+    visibility: visible;
+  }
   &--hidden{
     opacity: 0;
     visibility: hidden;
