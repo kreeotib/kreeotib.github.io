@@ -436,24 +436,7 @@ const HeroBackground = (() => {
 })();
 
 window.HeroBackground = HeroBackground;
-/**
- * Preloader
- *
- * Stretches the preloader CSS animations to match real page-load progress.
- *
- * Technique: the CSS keyframes (preloaderLineWidth, preloaderWord) use a long
- * duration (100 s) and `animation-play-state: paused`. A negative
- * `animation-delay` scrubs the paused animation to any point in its timeline:
- *
- *     delay = -(progress × duration)   →   0 % … 100 % of the keyframes
- *
- * The script tracks loading milestones (DOM, fonts, hero video, window.load),
- * converts them to a weighted 0→1 target, then eases the actual progress
- * toward that target every frame, updating the CSS custom property
- * `--animation-delay` (line) and inline `animationDelay` (words).
- *
- * Depends on: ScrollLock (required), HeroBackground (optional — gracefully degrades when absent).
- */
+
 
 const Preloader = (() => {
     /* ------------------------------------------------------------------ */
@@ -470,8 +453,21 @@ const Preloader = (() => {
         /** Must match the CSS `animation-duration` on line + words (seconds). */
         animDuration: 100,
 
-        /** Lerp factor per frame — lower = smoother / slower easing. */
-        ease: 0.065,
+        /**
+         * Critically-damped spring parameters (SmoothDamp).
+         * smoothTime  — approximate seconds to reach the target.
+         * maxSpeed    — clamp per-second velocity (prevents harsh jumps when
+         *               several milestones resolve at once).
+         */
+        smoothTime: 0.9,
+        maxSpeed:   0.28,
+
+        /**
+         * Display smoothing — a second-order filter that decouples the visual
+         * scrub from the reactive spring.  Lower = silkier but laggier.
+         * Value is the per-frame lerp factor normalised to 60 fps.
+         */
+        displaySmoothing: 0.045,
 
         /** Never close the preloader before this many ms have elapsed. */
         minShowMs: 1400,
@@ -491,7 +487,10 @@ const Preloader = (() => {
     let lineEl     = null;   // .preloader-logo__line  (owns --animation-delay)
     let words      = [];     // NodeList → Array of .preloader-word elements
     let progress   = 0;      // current rendered progress  (0 → 1)
+    let displayProgress = 0; // second-order smoothed value — drives the visual scrub
     let target     = 0;      // where we're easing toward  (0 → 1)
+    let velocity   = 0;      // current speed (units / s) — driven by the spring
+    let lastFrameTs = 0;     // previous rAF timestamp for delta-time
     let rafId      = null;
     let startTs    = 0;
     let observer   = null;   // MutationObserver for hero video
@@ -547,18 +546,31 @@ const Preloader = (() => {
 
     /**
      * Word stagger map — each word fades in across a [start, end] slice of the
-     * overall progress.  Overlapping windows make the reveals feel organic.
+     * overall progress.  Wide, overlapping windows keep reveals gentle.
      */
     const wordWindows = [
-        [0.04, 0.28],   // word 1
-        [0.18, 0.42],   // word 2
-        [0.32, 0.58],   // word 3
-        [0.48, 0.72],   // word 4
-        [0.62, 0.88],   // word 5
+        [0.01, 0.36],   // word 1
+        [0.10, 0.50],   // word 2
+        [0.22, 0.66],   // word 3
+        [0.36, 0.80],   // word 4
+        [0.50, 0.96],   // word 5
     ];
+
+    /* ---- Easing helper ---- */
+
+    /**
+     * Quartic ease-out — gentler than cubic, with a much longer deceleration
+     * tail.  Words drift into full opacity / zero blur instead of snapping.
+     */
+    function easeOutQuart(t) {
+        const inv = 1 - t;
+        return 1 - inv * inv * inv * inv;
+    }
 
     function scrub(p) {
         // --- Line (::before receives the custom property) ---
+        // No additional easing here — the two-stage smoothing (spring →
+        // displayProgress lerp) already produces a silky curve.
         if (lineEl) {
             const delay = -(p * config.animDuration);
             lineEl.style.setProperty('--animation-delay', delay + 's');
@@ -568,24 +580,76 @@ const Preloader = (() => {
         for (let i = 0; i < words.length; i++) {
             const win = wordWindows[i] || wordWindows[wordWindows.length - 1];
             const span = win[1] - win[0];
-            const local = Math.max(0, Math.min(1, (p - win[0]) / span));
-            words[i].style.animationDelay     = -(local * config.animDuration) + 's';
+            const linear = Math.max(0, Math.min(1, (p - win[0]) / span));
+            const eased  = easeOutQuart(linear);
+            words[i].style.animationDelay     = -(eased * config.animDuration) + 's';
             words[i].style.animationPlayState  = 'paused';
         }
     }
 
     /* ------------------------------------------------------------------ */
-    /*  Frame loop                                                        */
+    /*  Frame loop — critically-damped spring (SmoothDamp)                */
     /* ------------------------------------------------------------------ */
-    function tick() {
+
+    /**
+     * Attempt the same critically-damped spring that game engines use
+     * (cf. Unity's Mathf.SmoothDamp).  It gives natural acceleration,
+     * deceleration, and never overshoots — much softer than a raw lerp
+     * when the target jumps suddenly.
+     */
+    function smoothDamp(current, tgt, dt) {
+        const smoothTime = Math.max(0.0001, config.smoothTime);
+        const omega  = 2 / smoothTime;
+        const x      = omega * dt;
+        const exp    = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
+
+        let   change = current - tgt;
+        const maxChange = config.maxSpeed * smoothTime;
+        change = Math.max(-maxChange, Math.min(maxChange, change));
+
+        const adjusted = current - change;
+        const temp     = (velocity + omega * change) * dt;
+        velocity       = (velocity - omega * temp) * exp;
+
+        let result = adjusted + (change + temp) * exp;
+
+        // Clamp & prevent overshooting past the target.
+        if ((tgt - current > 0) === (result > tgt)) {
+            result   = tgt;
+            velocity = 0;
+        }
+
+        return result;
+    }
+
+    function tick(now) {
         if (isFinished) return;
 
-        progress += (target - progress) * config.ease;
+        // Delta time in seconds, clamped to avoid spiral-of-death on tab switch.
+        if (!lastFrameTs) lastFrameTs = now;
+        const dt = Math.min((now - lastFrameTs) / 1000, 0.1);
+        lastFrameTs = now;
 
-        // Snap when close enough to prevent infinite crawl.
-        if (Math.abs(target - progress) < 0.002) progress = target;
+        // --- First stage: spring drives `progress` toward `target` ---
+        progress = smoothDamp(progress, target, dt);
 
-        scrub(progress);
+        if (Math.abs(target - progress) < 0.0004 && Math.abs(velocity) < 0.001) {
+            progress = target;
+            velocity = 0;
+        }
+
+        // --- Second stage: display lerp absorbs remaining jitter ---
+        // Normalise the per-frame factor to 60 fps so the feel is framerate-
+        // independent.  `1 - (1 - k)^(dt*60)` is the standard trick.
+        const k = 1 - Math.pow(1 - config.displaySmoothing, dt * 60);
+        displayProgress += (progress - displayProgress) * k;
+
+        // Snap display when it's essentially caught up.
+        if (Math.abs(progress - displayProgress) < 0.0003) {
+            displayProgress = progress;
+        }
+
+        scrub(displayProgress);
 
         if (progress >= 1 && allDone()) {
             finish();
@@ -606,6 +670,7 @@ const Preloader = (() => {
         rafId = null;
 
         // Make sure we're fully scrubbed to the end state.
+        displayProgress = 1;
         scrub(1);
 
         // Respect minimum display time so fast loads still show the brand.
@@ -819,6 +884,9 @@ const Preloader = (() => {
         rafId = null;
         cleanUp();
         if (window.ScrollLock) ScrollLock.unlock();
+        velocity    = 0;
+        displayProgress = 0;
+        lastFrameTs = 0;
         el      = null;
         lineEl  = null;
         words   = [];
@@ -827,7 +895,7 @@ const Preloader = (() => {
 
     function get() {
         return {
-            el, lineEl, words, progress, target,
+            el, lineEl, words, progress, displayProgress, target, velocity,
             milestones: { ...milestones },
             isFinished, isInitialized,
         };
@@ -837,6 +905,7 @@ const Preloader = (() => {
 })();
 
 window.Preloader = Preloader;
+
 const Parallax = (() => {
     const DEFAULTS = {
         selector: '.parallax',
