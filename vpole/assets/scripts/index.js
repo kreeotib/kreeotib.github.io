@@ -1800,6 +1800,132 @@ const TeamPopup = (() => {
 
 window.TeamPopup = TeamPopup;
 
+const FormSender = (() => {
+    const DEFAULTS = {
+        formSelector: '.form form',
+        submitBtnSelector: 'button[type="submit"]',
+        endpoint: '/mail.php',
+        submitText: 'Отправить заявку',
+        sendingText: 'Отправка...',
+        successPopup: '.popup-thanks',
+        resetOnSuccess: true,
+    };
+
+    let config = {};
+    let forms = [];
+    let initialized = false;
+
+    function getFormData(form) {
+        const data = new FormData();
+        const inputs = form.querySelectorAll('input, textarea, select');
+
+        inputs.forEach(input => {
+            const name = input.name || input.placeholder || input.type;
+            const value = input.value.trim();
+            if (name && value) {
+                data.append(name, value);
+            }
+        });
+
+        return data;
+    }
+
+    function setLoading(form, loading) {
+        const btn = form.querySelector(config.submitBtnSelector);
+        if (!btn) return;
+
+        btn.disabled = loading;
+        btn.textContent = loading ? config.sendingText : config.submitText;
+    }
+
+    async function send(form) {
+        const data = getFormData(form);
+
+        const response = await fetch(config.endpoint, {
+            method: 'POST',
+            body: data,
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        return response.json();
+    }
+
+    function onSuccess(form) {
+        if (config.resetOnSuccess) {
+            form.reset();
+        }
+
+        if (window.Popup && typeof window.Popup.close === 'function') {
+            window.Popup.close();
+        }
+
+        if (window.Popup && typeof window.Popup.open === 'function') {
+            window.Popup.open(config.successPopup);
+        }
+    }
+
+    function onError(error) {
+        console.error('[FormSender] Ошибка отправки:', error);
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        const form = event.target;
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        setLoading(form, true);
+
+        try {
+            await send(form);
+            onSuccess(form);
+        } catch (error) {
+            onError(error);
+        } finally {
+            setLoading(form, false);
+        }
+    }
+
+    function bindEvents() {
+        forms.forEach(form => form.addEventListener('submit', handleSubmit));
+    }
+
+    function unbindEvents() {
+        forms.forEach(form => form.removeEventListener('submit', handleSubmit));
+    }
+
+    function init(options = {}) {
+        config = { ...DEFAULTS, ...options };
+        forms = Array.from(document.querySelectorAll(config.formSelector));
+
+        if (!forms.length) {
+            console.warn('[FormSender] No forms found.');
+            return;
+        }
+
+        bindEvents();
+        initialized = true;
+    }
+
+    function destroy() {
+        if (!initialized) return;
+        unbindEvents();
+        forms = [];
+        initialized = false;
+    }
+
+    return { init, destroy };
+})();
+
+window.FormSender = FormSender;
+
 document.addEventListener('DOMContentLoaded', () => {
     SmoothScroll.init();
     Parallax.init();
@@ -1810,7 +1936,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ToggleWrapper.init();
     StickyCenterGrid.init();
     HeroBackground.init();
-    TeamPopup.init()
+    TeamPopup.init();
+
+    FormSender.init();
 
 
     const teamSlider = new Swiper('.team-slider', {
@@ -1855,13 +1983,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-(function () {
-    document.addEventListener('submit', (e) => {
-        e.preventDefault();
-        window.Popup.open('.popup-thanks');
-    });
-})();
 
 (function () {
     document.querySelectorAll('.js-phone-mask').forEach(function (el) {
