@@ -594,6 +594,7 @@ body.no-scroll {
   background: #F8F8EE;
   @include mobile{
     width: 100%;
+    position: relative;
   }
   &__logo{
     width: 8.75rem;
@@ -705,6 +706,20 @@ body.no-scroll {
     &__list{
       display: flex;
       flex-direction: column;
+    }
+
+    &__item:not(:last-child) &__link.active,
+    &__item:not(:last-child) &__link:hover {
+      @include no-mobile {
+        border-bottom-color: transparent;
+      }
+    }
+
+    &__item:has(+ .sidebar-nav__item > .sidebar-nav__link.active) &__link,
+    &__item:has(+ .sidebar-nav__item > .sidebar-nav__link:hover) &__link {
+      @include no-mobile {
+        border-bottom-color: transparent;
+      }
     }
 
     &__item{
@@ -882,6 +897,9 @@ body.no-scroll {
     &:has(:checked) &__text{
       -webkit-line-clamp: unset;
     }
+    &__category{
+      color:#575555;
+    }
     &__content{
       display: flex;
       flex-direction: column;
@@ -906,6 +924,20 @@ body.no-scroll {
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+    }
+    &__item:not(:last-child) &__link.active,
+    &__item:not(:last-child) &__link:hover {
+      @include no-mobile {
+        border-bottom-color: transparent;
+      }
+    }
+
+    // Убираем border-bottom у пункта ПЕРЕД активным/наведённым
+    &__item:has(+ &__item > &__link.active) &__link,
+    &__item:has(+ &__item > &__link:hover) &__link {
+      @include no-mobile {
+        border-bottom-color: transparent;
       }
     }
     &__more{
