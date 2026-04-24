@@ -440,72 +440,46 @@ window.HeroBackground = HeroBackground;
 
 const Preloader = (() => {
     const defaults = {
-        selector:        '.preloader',
-        hiddenClass:     'preloader--hidden',
-        lineSelector:    '.preloader-logo__line',
-        wordSelector:    '.preloader-word',
-        heroSelector:    '[data-hero-bg]',
-        videoReadyClass: 'is-ready',
-        animDuration: 100,
-        smoothTime: 0.9,
-        maxSpeed:   0.28,
+        selector:         '.preloader',
+        hiddenClass:      'preloader--hidden',
+        lineSelector:     '.preloader-logo__line',
+        wordSelector:     '.preloader-word',
+        heroSelector:     '[data-hero-bg]',
+        animDuration:     100,
+        smoothTime:       0.9,
+        maxSpeed:         0.28,
         displaySmoothing: 0.045,
-        minShowMs: 1400,
-        hideDelayMs: 250,
-        softCap: 0.92,
+        minShowMs:        1400,
+        hideTransitionMs: 1000,
+        softCap:          0.92,
     };
-    let config     = { ...defaults };
-    let el         = null;
-    let lineEl     = null;
-    let words      = [];
-    let progress   = 0;
+
+    let config          = { ...defaults };
+    let el              = null;
+    let lineEl          = null;
+    let words           = [];
+    let progress        = 0;
     let displayProgress = 0;
-    let target     = 0;
-    let velocity   = 0;
-    let lastFrameTs = 0;
-    let rafId      = null;
-    let startTs    = 0;
-    let observer   = null;
-    let videoEl    = null;
-    let isFinished = false;
-    let isInitialized = false;
+    let target          = 0;
+    let velocity        = 0;
+    let lastFrameTs     = 0;
+    let rafId           = null;
+    let startTs         = 0;
+    let observer        = null;
+    let videoEl         = null;
+    let heroReady       = false;
+    let isFinished      = false;
+    let isInitialized   = false;
 
-    const milestones = {
-        dom:   { weight: 0.08, done: false, partial: 0 },
-        fonts: { weight: 0.07, done: false, partial: 0 },
-        hero:  { weight: 0.55, done: false, partial: 0 },
-        load:  { weight: 0.30, done: false, partial: 0 },
-    };
-
-
-    function allDone() {
-        for (const k in milestones) if (!milestones[k].done) return false;
-        return true;
+    function resolve() {
+        heroReady = true;
+        target = 1;
     }
 
-    function computeTarget() {
-        let t = 0;
-        for (const k in milestones) {
-            const m = milestones[k];
-            t += m.weight * (m.done ? 1 : m.partial);
-        }
-
-        return allDone() ? Math.min(t, 1) : Math.min(t, config.softCap);
+    function partial(value) {
+        if (heroReady) return;
+        target = Math.min(Math.max(target, value), config.softCap);
     }
-
-    function resolve(key) {
-        if (!milestones[key]) return;
-        milestones[key].done    = true;
-        milestones[key].partial = 1;
-        target = computeTarget();
-    }
-
-    function partial(key, value) {
-        if (!milestones[key] || milestones[key].done) return;
-        milestones[key].partial = Math.max(milestones[key].partial, Math.min(value, 1));
-        target = computeTarget();
-    }
-
 
     const wordWindows = [
         [0.01, 0.36],
@@ -521,31 +495,28 @@ const Preloader = (() => {
     }
 
     function scrub(p) {
-
         if (lineEl) {
-            const delay = -(p * config.animDuration);
-            lineEl.style.setProperty('--animation-delay', delay + 's');
+            lineEl.style.setProperty('--animation-delay', -(p * config.animDuration) + 's');
         }
 
-
         for (let i = 0; i < words.length; i++) {
-            const win = wordWindows[i] || wordWindows[wordWindows.length - 1];
+            const win  = wordWindows[i] || wordWindows[wordWindows.length - 1];
             const span = win[1] - win[0];
             const linear = Math.max(0, Math.min(1, (p - win[0]) / span));
             const eased  = easeOutQuart(linear);
-            words[i].style.animationDelay     = -(eased * config.animDuration) + 's';
-            words[i].style.animationPlayState  = 'paused';
+            words[i].style.animationDelay    = -(eased * config.animDuration) + 's';
+            words[i].style.animationPlayState = 'paused';
         }
     }
 
     function smoothDamp(current, tgt, dt) {
         const smoothTime = Math.max(0.0001, config.smoothTime);
-        const omega  = 2 / smoothTime;
-        const x      = omega * dt;
-        const exp    = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
+        const omega      = 2 / smoothTime;
+        const x          = omega * dt;
+        const exp        = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
 
-        let   change = current - tgt;
-        const maxChange = config.maxSpeed * smoothTime;
+        let   change     = current - tgt;
+        const maxChange  = config.maxSpeed * smoothTime;
         change = Math.max(-maxChange, Math.min(maxChange, change));
 
         const adjusted = current - change;
@@ -553,7 +524,6 @@ const Preloader = (() => {
         velocity       = (velocity - omega * temp) * exp;
 
         let result = adjusted + (change + temp) * exp;
-
 
         if ((tgt - current > 0) === (result > tgt)) {
             result   = tgt;
@@ -566,11 +536,9 @@ const Preloader = (() => {
     function tick(now) {
         if (isFinished) return;
 
-
         if (!lastFrameTs) lastFrameTs = now;
         const dt = Math.min((now - lastFrameTs) / 1000, 0.1);
         lastFrameTs = now;
-
 
         progress = smoothDamp(progress, target, dt);
 
@@ -579,10 +547,8 @@ const Preloader = (() => {
             velocity = 0;
         }
 
-
         const k = 1 - Math.pow(1 - config.displaySmoothing, dt * 60);
         displayProgress += (progress - displayProgress) * k;
-
 
         if (Math.abs(progress - displayProgress) < 0.0003) {
             displayProgress = progress;
@@ -590,7 +556,7 @@ const Preloader = (() => {
 
         scrub(displayProgress);
 
-        if (progress >= 1 && allDone()) {
+        if (progress >= 1 && heroReady) {
             finish();
             return;
         }
@@ -598,6 +564,14 @@ const Preloader = (() => {
         rafId = requestAnimationFrame(tick);
     }
 
+    function startVideo() {
+        if (!videoEl) return;
+        videoEl.currentTime = 0;
+        const p = videoEl.play();
+        if (p && typeof p.catch === 'function') {
+            p.catch(() => {});
+        }
+    }
 
     function finish() {
         if (isFinished) return;
@@ -605,7 +579,6 @@ const Preloader = (() => {
 
         cancelAnimationFrame(rafId);
         rafId = null;
-
 
         displayProgress = 1;
         scrub(1);
@@ -616,74 +589,79 @@ const Preloader = (() => {
         setTimeout(() => {
             if (el) el.classList.add(config.hiddenClass);
             if (window.ScrollLock) ScrollLock.unlock();
-            cleanUp();
-        }, remaining + config.hideDelayMs);
+
+            setTimeout(() => {
+                startVideo();
+                cleanUp();
+            }, config.hideTransitionMs);
+        }, remaining);
     }
 
-
+    function pauseVideo() {
+        if (!videoEl) return;
+        try { videoEl.pause(); } catch (_) {}
+    }
 
     function bindVideo(v) {
         if (videoEl) return;
         videoEl = v;
 
+        videoEl.autoplay = false;
+        videoEl.removeAttribute('autoplay');
+        pauseVideo();
 
         const onProgress = () => {
             try {
                 if (!videoEl.duration || !videoEl.buffered.length) return;
                 const buffered = videoEl.buffered.end(videoEl.buffered.length - 1);
-                partial('hero', buffered / videoEl.duration);
-            } catch (_) { }
+                partial(buffered / videoEl.duration);
+            } catch (_) {}
         };
 
         const onReady = () => {
-            resolve('hero');
+            pauseVideo();
+            resolve();
             videoEl.removeEventListener('progress', onProgress);
         };
 
-        videoEl.addEventListener('progress',   onProgress);
-        videoEl.addEventListener('canplay',     onReady, { once: true });
-        videoEl.addEventListener('loadeddata',  onReady, { once: true });
-        videoEl.addEventListener('error', () => {
-
-            resolve('hero');
-        }, { once: true });
-
+        videoEl.addEventListener('progress',  onProgress);
+        videoEl.addEventListener('canplay',    onReady, { once: true });
+        videoEl.addEventListener('loadeddata', onReady, { once: true });
+        videoEl.addEventListener('playing', () => {
+            if (!isFinished) pauseVideo();
+        });
+        videoEl.addEventListener('error', () => resolve(), { once: true });
 
         if (videoEl.readyState >= 3) {
-            resolve('hero');
+            pauseVideo();
+            resolve();
             return;
         }
 
-
-        videoEl.addEventListener('loadedmetadata', () => partial('hero', 0.15), { once: true });
+        videoEl.addEventListener('loadedmetadata', () => partial(0.15), { once: true });
     }
-
 
     function watchHero() {
         const heroRoot = document.querySelector(config.heroSelector);
 
         if (!heroRoot) {
-
-            resolve('hero');
+            resolve();
             return;
         }
 
-        const videoSrc = heroRoot.dataset.videoSrc || '';
+        const videoSrc   = heroRoot.dataset.videoSrc || '';
         const breakpoint = parseInt(heroRoot.dataset.breakpoint, 10) || 768;
 
-
         if (!videoSrc || window.innerWidth < breakpoint) {
-            resolve('hero');
+            resolve();
             return;
         }
-
 
         const existing = heroRoot.querySelector('video');
         if (existing) {
             bindVideo(existing);
             return;
         }
-
 
         observer = new MutationObserver((mutations) => {
             for (const m of mutations) {
@@ -700,64 +678,24 @@ const Preloader = (() => {
 
         observer.observe(heroRoot, { childList: true });
 
-
         setTimeout(() => {
-            if (!milestones.hero.done) resolve('hero');
+            if (!heroReady) resolve();
         }, 8000);
     }
-
-
-    function watchFonts() {
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(() => resolve('fonts')).catch(() => resolve('fonts'));
-        } else {
-            resolve('fonts');
-        }
-    }
-
-    function watchWindowLoad() {
-        if (document.readyState === 'complete') {
-            resolve('load');
-            return;
-        }
-
-
-        if (typeof PerformanceObserver !== 'undefined') {
-            try {
-                let counted = 0;
-                const po = new PerformanceObserver((list) => {
-                    counted += list.getEntries().length;
-                    partial('load', Math.min(counted / 30, 0.9));
-                });
-                po.observe({ type: 'resource', buffered: true });
-
-                window.addEventListener('load', () => {
-                    try { po.disconnect(); } catch (_) {}
-                }, { once: true });
-            } catch (_) {  }
-        }
-
-        window.addEventListener('load', () => resolve('load'), { once: true });
-    }
-
 
     function cleanUp() {
         if (observer) {
             observer.disconnect();
             observer = null;
         }
-        videoEl = null;
     }
-
 
     function init(options) {
         if (isInitialized) return;
         config = { ...defaults, ...options };
 
-
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
         window.scrollTo(0, 0);
-
 
         if (window.ScrollLock) ScrollLock.lock();
 
@@ -770,27 +708,13 @@ const Preloader = (() => {
         lineEl = el.querySelector(config.lineSelector);
         words  = Array.from(el.querySelectorAll(config.wordSelector));
 
-
         words.forEach((w) => {
             w.style.animationPlayState = 'paused';
             w.style.animationDelay     = '0s';
         });
 
-
         startTs = performance.now();
-
-
-        if (document.readyState !== 'loading') {
-            resolve('dom');
-        } else {
-            document.addEventListener('DOMContentLoaded', () => resolve('dom'), { once: true });
-        }
-
-        watchFonts();
         watchHero();
-        watchWindowLoad();
-
-
         rafId = requestAnimationFrame(tick);
 
         isInitialized = true;
@@ -802,25 +726,27 @@ const Preloader = (() => {
         rafId = null;
         cleanUp();
         if (window.ScrollLock) ScrollLock.unlock();
-        velocity    = 0;
+        velocity        = 0;
         displayProgress = 0;
-        lastFrameTs = 0;
-        el      = null;
-        lineEl  = null;
-        words   = [];
-        isInitialized = false;
+        lastFrameTs     = 0;
+        el              = null;
+        lineEl          = null;
+        words           = [];
+        videoEl         = null;
+        isInitialized   = false;
     }
 
     function get() {
         return {
-            el, lineEl, words, progress, displayProgress, target, velocity,
-            milestones: { ...milestones },
-            isFinished, isInitialized,
+            el, lineEl, words, progress, displayProgress,
+            target, velocity, heroReady, isFinished, isInitialized,
         };
     }
 
     return { init, destroy, get };
 })();
+
+window.Preloader = Preloader;
 
 window.Preloader = Preloader;
 
@@ -1927,6 +1853,7 @@ const FormSender = (() => {
 window.FormSender = FormSender;
 
 document.addEventListener('DOMContentLoaded', () => {
+    Preloader.init();
     SmoothScroll.init();
     Parallax.init();
     AnchorScroll.init();
