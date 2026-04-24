@@ -1,0 +1,124 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+        link(rel="stylesheet" href="assets/styles/css/reset.css")
+        link(rel="stylesheet" href="assets/styles/css/index.css")
+        title Медиа ремесло
+    body
+        .page-wrapper
+            .page
+                .container
+                    .page__grid
+                        aside.sidebar
+                            .sidebar__wrapper
+                                .sidebar__header
+                                    a(href="#").sidebar__logo.logo
+                                        img.logo__img(src="assets/media/images/logo.svg")
+                                    .sidebar__burger
+                                        a(href="#").burger
+                                            span.burger__item
+                                            span.burger__item
+                                            span.burger__item
+                                .sidebar-nav
+                                    p.sidebar-nav__title Разделы
+                                    ul.sidebar-nav__list
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Продвижение
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link.active Монетизация
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Контент и уаковка
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Аналитика
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Разное
+                                    .sidebar-nav__footer
+                                        a(href="#").button.button--small.button--full.button--dark Личный кабинет
+                                        a(href="#").burger.burger--text закрыть меню
+
+                                .sidebar__footer
+                                    a(href="#").sidebar-link #[img(class="icon" src="assets/media/images/icons/user.webp")] Личный кабинет
+                        main.content.page__content
+                            .article-list
+                                .article-list__header
+                                    p.article-list__title.text.text--base.text--medium #[img(class="icon" src="assets/media/images/icons/fire.webp")] Горячее
+                                .article-list__content
+                                    .article-item
+                                        .article-item__wrapper
+                                            .article-item__header
+                                                p.text.text--base.text--medium Продвижение, Монетизация
+                                                p.text.text--big.text--semibold Спасибо бабуле или 32 тыс. подписчиков за месяц и 200 тыс. рублей прибыли на канале с открытками в Max
+                                            .article-item__img
+                                                img(src="assets/media/images/article/main.webp")
+                                            .article-item__desc
+                                                .article-item__text Кнопку маски в обновленной фигме можно найти сразу в нескольких местах. На скриншоте выше показано, что она находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева. находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева.
+                                            .article-item__footer
+                                                label.article-item__more(data-open="Показать полностью" data-close="Скрыть")
+                                                    input(type="checkbox")
+                                                    img(class="icon" src="assets/media/images/icons/arrow.webp")
+                                                a(href="#").article-item__icon
+                                                    img(class="icon" src="assets/media/images/icons/bookmark.webp")
+                                    .article-item
+                                        .article-item__wrapper
+                                            .article-item__header
+                                                p.text.text--base.text--medium Продвижение, Монетизация
+                                                p.text.text--big.text--semibold Спасибо бабуле или 32 тыс. подписчиков за месяц и 200 тыс. рублей прибыли на канале с открытками в Max
+                                            .article-item__img
+                                                img(src="assets/media/images/article/main.webp")
+                                            .article-item__desc
+                                                .article-item__text Кнопку маски в обновленной фигме можно найти сразу в нескольких местах. На скриншоте выше показано, что она находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева. находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева.
+                                            .article-item__footer
+                                                label.article-item__more(data-open="Показать полностью" data-close="Скрыть")
+                                                    input(type="checkbox")
+                                                    img(class="icon" src="assets/media/images/icons/arrow.webp")
+                                                a(href="#").article-item__icon
+                                                    img(class="icon" src="assets/media/images/icons/bookmark.webp")
+                                .article-list__header
+                                    p.article-list__title.text.text--base.text--medium #[img(class="icon" src="assets/media/images/icons/fire.webp")] Горячее
+                                .article-list__content
+                                    .article-item
+                                        .article-item__wrapper
+                                            .article-item__header
+                                                p.text.text--base.text--medium Продвижение, Монетизация
+                                                p.text.text--big.text--semibold Спасибо бабуле или 32 тыс. подписчиков за месяц и 200 тыс. рублей прибыли на канале с открытками в Max
+                                            .article-item__img
+                                                img(src="assets/media/images/article/main.webp")
+                                            .article-item__desc
+                                                .article-item__text Кнопку маски в обновленной фигме можно найти сразу в нескольких местах. На скриншоте выше показано, что она находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева. находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева.
+                                            .article-item__footer
+                                                label.article-item__more(data-open="Показать полностью" data-close="Скрыть")
+                                                    input(type="checkbox")
+                                                    img(class="icon" src="assets/media/images/icons/arrow.webp")
+                                                a(href="#").article-item__icon
+                                                    img(class="icon" src="assets/media/images/icons/bookmark.webp")
+                                    .article-item
+                                        .article-item__wrapper
+                                            .article-item__header
+                                                p.text.text--base.text--medium Продвижение, Монетизация
+                                                p.text.text--big.text--semibold Спасибо бабуле или 32 тыс. подписчиков за месяц и 200 тыс. рублей прибыли на канале с открытками в Max
+                                            .article-item__img
+                                                img(src="assets/media/images/article/main.webp")
+                                            .article-item__desc
+                                                .article-item__text Кнопку маски в обновленной фигме можно найти сразу в нескольких местах. На скриншоте выше показано, что она находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева. находится в контекстном меню, появляющемся при нажатии на слой правой кнопкой мыши. Такое же меню появляется и при правом клике по названию слоя на панели слева.
+                                            .article-item__footer
+                                                label.article-item__more(data-open="Показать полностью" data-close="Скрыть")
+                                                    input(type="checkbox")
+                                                    img(class="icon" src="assets/media/images/icons/arrow.webp")
+                                                a(href="#").article-item__icon
+                                                    img(class="icon" src="assets/media/images/icons/bookmark.webp")
+                        .header-profile
+                            .header-profile__wrapper
+                                a(href="#").favorite-link Избранное
+                                    img.icon(src="assets/media/images/icons/heart.webp")
+                                a(href="#").account-link
+                                    img.icon(src="assets/media/images/icons/user-white.webp")
+        script(src="assets/scripts/index.js")
+
+
+

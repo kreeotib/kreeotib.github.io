@@ -1,0 +1,47 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+        link(rel="stylesheet" href="assets/styles/css/reset.css")
+        link(rel="stylesheet" href="assets/styles/css/index.css")
+        title Медиа ремесло
+    body
+        .page-wrapper
+            header.header
+                a(href="#").header__logo.logo
+                    img.logo__img(src="assets/media/images/logo.svg")
+            main.content
+                .content__wrapper
+                    .container
+                        .block
+                            .block__wrapper
+                                .block__header
+                                    .block__title
+                                        p.text.text--middle.text--medium Выберите тариф
+                                        img.icon(src="assets/media/images/stickers/cat.webp")
+                                form.block__content.block__content.tariff
+                                    .tariff__wrapper
+                                        .tariff__title
+                                            p.text.text--base.text--medium Для новых пользователей
+                                        .tariff__content
+                                            .tariff-row
+                                                p.tariff-row__day 2 <br> #[span дня]
+                                                p.text.text--big.text--light Пробный
+                                                p.tariff-price #[span.tariff-price__old 990₽] #[span.tariff-price__new 99₽]
+                                            p.text.text--base.text--light   Попробовать полный доступ к <br> платформе на 2 дня всего за 99 рублей
+                                        .tariff__footer
+                                            button(type="submit").button.button--small.button--dark.button--full Оплатить
+                                        .tariff__content
+                                            label.checkbox
+                                                input(type="checkbox" required).checkbox__input
+                                                span.checkbox__checkmark
+                                                span.checkbox__text.checkbox__text--small Согласен с&nbsp;#[a(href="#") политикой обработки персональных данных], #[a(href="#") правилами предоставления услуг по&nbsp;подписке], #[a(href="#") соглашением с&nbsp;подпиской], #[a(href="#") договором-офертой] и&nbsp;#[a(href="#") условиями использования.]
+                                            label.checkbox
+                                                input(type="checkbox" required).checkbox__input
+                                                span.checkbox__checkmark
+                                                span.checkbox__text.checkbox__text--small Согласен на автоматическую оплату 990 рублей каждые 30 дней по истечению пробного периода 2 дня

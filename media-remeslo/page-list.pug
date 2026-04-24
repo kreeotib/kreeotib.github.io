@@ -1,0 +1,79 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+        link(rel="stylesheet" href="assets/styles/css/reset.css")
+        link(rel="stylesheet" href="assets/styles/css/index.css")
+        title Медиа ремесло
+    body
+        .page-wrapper
+            .page
+                .container
+                    .page__grid
+                        aside.sidebar
+                            .sidebar__wrapper
+                                .sidebar__header
+                                    a(href="#").sidebar__logo.logo
+                                        img.logo__img(src="assets/media/images/logo.svg")
+                                    .sidebar__burger
+                                        a(href="#").burger
+                                            span.burger__item
+                                            span.burger__item
+                                            span.burger__item
+                                .sidebar-nav
+                                    p.sidebar-nav__title Разделы
+                                    ul.sidebar-nav__list
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Продвижение
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link.active Монетизация
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Контент и уаковка
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Аналитика
+                                        li.sidebar-nav__item
+                                            a(href="#").sidebar-nav__link Разное
+                                    .sidebar-nav__footer
+                                        a(href="#").button.button--small.button--full.button--dark Личный кабинет
+                                        a(href="#").burger.burger--text закрыть меню
+
+                                .sidebar__footer
+                                    a(href="#").sidebar-link #[img(class="icon" src="assets/media/images/icons/user.webp")] Личный кабинет
+                        main.content.page__content
+                            ul
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="home.html") home
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="article-list.html") article list
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="article.html") article
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="article-plug.html") article no access
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="tariff.html") tariff list
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="tariff-payment.html") tariff payment
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="account.html") account
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="login.html") login
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="register.html") register
+                                li(style=" text-transform:uppercase; font-weight:600").text.text--big
+                                    a(href="no-payment.html") no payment
+
+                        .header-profile
+                            .header-profile__wrapper
+                                a(href="#").favorite-link Избранное
+                                    img.icon(src="assets/media/images/icons/heart.webp")
+                                a(href="#").account-link
+                                    img.icon(src="assets/media/images/icons/user-white.webp")
+        script(src="assets/scripts/index.js")
+
+
+
