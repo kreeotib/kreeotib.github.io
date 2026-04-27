@@ -1,0 +1,4 @@
+[22-Apr-2026 23:15:57 Europe/Moscow] PHP Fatal error:  Uncaught Error: Class "SMTP" not found in /home/c/cl270182/public_html/mail.php:24
+Stack trace:
+#0 {main}
+  thrown in /home/c/cl270182/public_html/mail.php on line 24

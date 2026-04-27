@@ -4,13 +4,28 @@ class CounterAnimator {
         this.observer = new IntersectionObserver(this.handleIntersect.bind(this), this.options);
     }
 
+    formatNumber(value) {
+        return value.toLocaleString('ru-RU').replace(/\u00A0/g, ' ');
+    }
+
+    getOrCreateItem(element) {
+        let item = element.querySelector('.counter__item');
+        if (!item) {
+            item = document.createElement('span');
+            item.className = 'counter__item';
+            element.appendChild(item);
+        }
+        return item;
+    }
+
     animateCounter(element, start, rawEnd, duration = 1500, delay = 0) {
-        const match = rawEnd.toString().match(/([^0-9]*)([0-9]+)([^0-9]*)/);
+        const match = rawEnd.toString().match(/([^0-9]*)([0-9]+)(.*)/);
         if (!match) return;
 
         const prefix = match[1] || '';
         const endValue = parseInt(match[2], 10);
         const suffix = match[3] || '';
+        const item = this.getOrCreateItem(element);
 
         setTimeout(() => {
             const startTime = performance.now();
@@ -23,12 +38,13 @@ class CounterAnimator {
                     ? 2 * progress * progress
                     : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
-                element.setAttribute('data-count', `${prefix}${Math.floor(start + difference * easeProgress).toLocaleString('ru-RU')}${suffix}`);
+                const currentValue = Math.floor(start + difference * easeProgress);
+                item.textContent = `${prefix}${this.formatNumber(currentValue)}${suffix}`;
 
                 if (progress < 1) {
                     requestAnimationFrame(update);
                 } else {
-                    element.setAttribute('data-count', `${prefix}${endValue.toLocaleString('ru-RU')}${suffix}`);
+                    item.textContent = `${prefix}${this.formatNumber(endValue)}${suffix}`;
                 }
             };
             requestAnimationFrame(update);
@@ -49,10 +65,11 @@ class CounterAnimator {
         document.querySelectorAll(selector).forEach(block => {
             block.querySelectorAll('.counter[data-end]').forEach(counter => {
                 const rawValue = counter.getAttribute('data-end') || '0';
-                const parts = rawValue.match(/([^0-9]*)([0-9]+)([^0-9]*)/);
-                counter.setAttribute('data-count', parts ? `${parts[1]}0${parts[3]}` : '0');
-                this.observer.observe(block);
+                const parts = rawValue.match(/([^0-9]*)([0-9]+)(.*)/);
+                const item = this.getOrCreateItem(counter);
+                item.textContent = parts ? `${parts[1]}0${parts[3]}` : '0';
             });
+            this.observer.observe(block);
         });
     }
 }
@@ -64,23 +81,68 @@ class HeroAccelerator {
         if (!this.hero) return;
 
         this.track = this.hero.closest('.hero-track') ?? this.hero.parentElement;
+        this.content = this.hero.querySelector('.hero__content');
         this.bg = this.hero.querySelector('.hero__bg');
-        if (!this.bg) return;
 
-        this.init();
+        if (this.hero.classList.contains('hero-project')) {
+            this.initProject();
+        } else {
+            this.init();
+        }
     }
 
     init() {
-        const speed = 0.3;
-        const extra = 1 + speed;
+        const vh = window.innerHeight / 2.1;
+        const trackHeight = this.track.offsetHeight;
+        const scrollable = trackHeight - vh;
 
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: this.track,
+                start: 'top top',
+                end: `+=${scrollable * 1.3}`,
+                scrub: true,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                    const progress = self.progress;
+                    const localScroll = self.scroll() - self.start;
+
+                    const textRise = this.norm(progress, 0, 1.0);
+                    const textOpacity = 1 - this.norm(progress / 1.5, 0.80, 1.0);
+                    const gradOpacity = this.norm(progress, 0.0, 0.30);
+                    const gradFill = this.norm(progress, 0, 1);
+                    const p = gradFill / 2.2;
+
+                    const heroOpacity = 1 - this.norm(progress, 0.7, 1.0);
+                    this.hero.style.opacity = heroOpacity;
+
+                    this.hero.style.setProperty('--p',  p.toFixed(4));
+                    this.hero.style.setProperty('--grad-opacity', gradOpacity.toFixed(4));
+                    this.hero.style.setProperty('--sy', localScroll.toFixed(0) + 'px');
+
+                    if (this.content) {
+                        const maxRise = vh * 4;
+                        gsap.set(this.content, {
+                            y: -((textRise / 2.2) * maxRise),
+                            opacity: textOpacity
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    initProject() {
+        if (!this.bg) return;
+
+        const speed = 0.35;
+        const extra = 1 + speed;
 
         gsap.set(this.bg, {
             height: `${extra * 100}%`,
             top: `-${speed * 100}%`,
             willChange: 'transform',
         });
-
 
         const media = this.bg.querySelector('video, img');
         if (media) {
@@ -103,23 +165,31 @@ class HeroAccelerator {
             },
         });
     }
+
+    static norm(value, inMin, inMax) {
+        return Math.max(0, Math.min((value - inMin) / (inMax - inMin), 1));
+    }
+
+    norm(value, inMin, inMax) {
+        return HeroAccelerator.norm(value, inMin, inMax);
+    }
 }
 
 
 const TitleReveal = (() => {
-    const CFG = { sweepIn: 1040, sweepOut: 640, stagger: 220, rootMargin: '0px 0px -10% 0px' };
+    const CFG = { sweepIn: 1040, sweepOut: 640, stagger: 220, rootMargin: '0px 0px -30% 0px' };
 
     function eio(t) {
         return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
     function animateBar(bar, delay) {
-        // Отменяем предыдущую анимацию, если есть
+
         if (bar._raf) cancelAnimationFrame(bar._raf);
 
         return new Promise(resolve => {
             let t0 = null;
-            let phase = 'in'; // 'in' | 'out'
+            let phase = 'in';
             let t1 = null;
 
             function tick(ts) {
@@ -646,15 +716,35 @@ function initVideoToggles() {
     try {
         document.querySelectorAll('.video').forEach(wrapper => {
             const video = wrapper.querySelector('video');
-            wrapper.addEventListener('click', () => {
+
+            // Play/Pause
+            wrapper.addEventListener('click', (e) => {
+                if (e.target.closest('.video__mute')) return;
                 if (video.paused) { video.play(); wrapper.classList.add('video--play'); }
                 else { video.pause(); wrapper.classList.remove('video--play'); }
             });
             video.addEventListener('ended', () => wrapper.classList.remove('video--play'));
+
+            // Mute/Unmute
+            const muteBtn = document.createElement('div');
+            muteBtn.className = 'video__mute';
+            muteBtn.innerHTML = `
+                <img class="mute" src="/local/templates/rtl/assets/images/icons/mute.svg" alt="">
+                <img class="unmute" src="/local/templates/rtl/assets/images/icons/unmute.svg" alt="">
+            `;
+            wrapper.appendChild(muteBtn);
+
+            video.muted = true;
+            wrapper.classList.add('video--muted');
+
+            muteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                video.muted = !video.muted;
+                wrapper.classList.toggle('video--muted', video.muted);
+            });
         });
     } catch (e) { console.error('initVideoToggles error:', e); }
 }
-
 
 function initRunoverEffects() {
     const runners = document.querySelectorAll('[data-runover]');
@@ -672,18 +762,18 @@ function initRunoverEffects() {
             const shouldScale = footer.getAttribute('data-runoverscale') !== 'false';
             const maxOffset = parseInt(footer.getAttribute('data-runoveroffset')) || 150;
 
-            // Create sentinel element
+
             const sentinel = document.createElement('div');
             sentinel.style.cssText = 'height:1px; margin-bottom:-1px; pointer-events:none;';
             footer.parentNode.insertBefore(sentinel, footer);
 
-            // Set initial transform
+
             gsap.set(footer, {
                 y: -maxOffset,
                 willChange: 'transform'
             });
 
-            // Create ScrollTrigger
+
             gsap.timeline({
                 scrollTrigger: {
                     trigger: sentinel,
@@ -694,7 +784,7 @@ function initRunoverEffects() {
                     onUpdate: (self) => {
                         const progress = self.progress;
 
-                        // Footer offset animation
+
                         const footerH = footer.offsetHeight;
                         const offset = (1 - progress) * -Math.min(footerH * 0.3, maxOffset);
 
@@ -702,11 +792,10 @@ function initRunoverEffects() {
                             y: offset
                         });
 
-                        // Content scale and border-radius animation
                         if (shouldScale) {
                             const scale = 1 - (progress * SCALE_REDUCTION);
                             const radius = progress * BORDER_RADIUS;
-
+                            content.style.setProperty('--border-radius', `0 0 ${radius}px ${radius}px`);
                             gsap.set(content, {
                                 scale: scale,
                                 borderRadius: `0 0 ${radius}px ${radius}px`
@@ -835,7 +924,7 @@ function initPersonSlider() {
 const initPreloader = () => {
     try {
         const preloader  = document.querySelector('.preloader');
-        const page404bg  = document.querySelectorAll('.page404__video-wrapper');
+        const page404bg  = document.querySelectorAll('.page-404__bg');
         const last       = document.querySelector('.svg-elem-5');
 
         let loaded = false;
@@ -859,6 +948,14 @@ const initPreloader = () => {
             });
         }else{
             loaded = true;
+
+            if (page404bg.length) {
+                page404bg.forEach(bg => {
+                    const video = bg.querySelector('video');
+                    video.addEventListener('loadedmetadata', () => { video.currentTime = 0; });
+                    video.play();
+                });
+            }
             document.body.classList.remove('no-scroll');
             new CounterAnimator({ threshold: 0.3, rootMargin: '0px 0px 0px 0px' }).observeCounters('.counters-block');
         }
@@ -1225,4 +1322,25 @@ initPreloader();
         unlockScroll();
     }
 
+})();
+
+
+(function () {
+    const STORAGE_KEY = 'cookieAccepted';
+    const banner = document.querySelector('.cookie');
+
+    if (!banner) return;
+
+    if (localStorage.getItem(STORAGE_KEY) === 'true') {
+        banner.style.display = 'none';
+        return;
+    }
+
+    const button = banner.querySelector('.cookie__button');
+    if (!button) return;
+
+    button.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, 'true');
+        banner.style.display = 'none';
+    });
 })();
