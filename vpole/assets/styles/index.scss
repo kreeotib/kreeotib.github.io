@@ -326,6 +326,7 @@
 
 html {
   font-size: var(--base-size);
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -336,7 +337,6 @@ body {
 }
 
 body.no-scroll {
-  overflow: hidden;
   touch-action: none;
   -ms-touch-action: none;
 }

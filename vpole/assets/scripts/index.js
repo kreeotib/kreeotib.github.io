@@ -12,19 +12,14 @@ const ScrollLock = (() => {
     }
 
     function applyLock() {
-        scrollbarWidth = getScrollbarWidth();
-        document.documentElement.style.overflow = 'hidden';
-        if (scrollbarWidth > 0) {
-            document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
-        }
+        document.body.classList.add('no-scroll')
         if (window.lenis && typeof window.lenis.stop === 'function') {
             window.lenis.stop();
         }
     }
 
     function applyUnlock() {
-        document.documentElement.style.overflow = '';
-        document.documentElement.style.paddingRight = '';
+        document.body.classList.remove('no-scroll')
         if (window.lenis && typeof window.lenis.start === 'function') {
             window.lenis.start();
         }
@@ -680,7 +675,7 @@ const Preloader = (() => {
 
         setTimeout(() => {
             if (!heroReady) resolve();
-        }, 8000);
+        }, 4500);
     }
 
     function cleanUp() {
@@ -748,7 +743,6 @@ const Preloader = (() => {
 
 window.Preloader = Preloader;
 
-window.Preloader = Preloader;
 
 const Parallax = (() => {
     const DEFAULTS = {
@@ -1585,7 +1579,7 @@ const TeamPopup = (() => {
             ],
         },
         3: {
-            role: 'Founder',
+            role: 'Соавтор',
             name: 'Морис Шакая',
             bio: [
                 'Серийный предприниматель с 14-летним опытом.',
@@ -1596,7 +1590,7 @@ const TeamPopup = (() => {
             ],
         },
         4: {
-            role: 'Co-founder',
+            role: 'Соавтор',
             name: 'Наташа Щедрина',
             bio: [
                 'Интерес и любопытство — мои главные двигатели в жизни. Я всегда выбираю проекты руководствуясь критерием: интересно или нет. Вот эта стратегия — «идти на зов» — привела к тому, что мне посчастливилось поучаствовать в интереснейших международных проектах, встретить людей, общение с которыми меняет. Именно этот опыт общения с людьми увлечёнными, горящими своим делом считаю одним из самых ценных подарков в жизни.',
@@ -1609,7 +1603,14 @@ const TeamPopup = (() => {
         5: {
             role: 'Режиссёр творческого трека',
             name: 'Виктория Грек',
-            bio: ['Добавится чуть позже.'],
+            bio: [
+                'Автор и проводник перформативной хоровой практики «хорхор» — пространства, объединяющего голос, тело и коллективное переживание.',
+                'Создаёт на стыке театра, ритуала и телесных практик, исследует голос как инструмент перехода — личного, возрастного и творческого. Подход Виктории основан на соединении профессионального театрального опыта, хоровой работы и авторских обрядовых форматов, в которых участники становятся не зрителями, а соучастниками процесса.',
+                'Особое внимание уделяется личным ощущениям участников - их телесной включённости и способности слышать себя и других.',
+                'Моё творчество направлено на возвращение голоса как живого, природного инструмента — не только эстетического, но и трансформационного, способного менять внутреннее состояние и качество жизни.',
+                'Из интересного - летом живу на болоте.',
+                '',
+            ],
         },
         6: {
             role: 'Видеограф',
@@ -1697,11 +1698,14 @@ const TeamPopup = (() => {
         if (!id || !teamData[id]) return;
 
         if (fillPopup(id)) {
-            if (window.Popup && typeof window.Popup.open === 'function') {
-                window.Popup.open(config.popupSelector);
-            }
+           setTimeout(()=>{
+               if (window.Popup && typeof window.Popup.open === 'function') {
+                   window.Popup.open(config.popupSelector);
 
-            initScrollbar();
+               }
+
+               initScrollbar();
+           },300)
         }
     }
 
@@ -1853,8 +1857,9 @@ const FormSender = (() => {
 window.FormSender = FormSender;
 
 document.addEventListener('DOMContentLoaded', () => {
-    Preloader.init();
     SmoothScroll.init();
+    Preloader.init();
+
     Parallax.init();
     AnchorScroll.init();
     ContactShowcase.init();
