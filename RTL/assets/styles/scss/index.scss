@@ -1010,7 +1010,7 @@ h4 {
 }
 
 .hero {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 1;
@@ -1247,7 +1247,6 @@ h4 {
           bottom: 0;
           height: calc(100% + 18.75rem);
           width: 100%;
-          background: url("../../images/section-gradients/project-card.webp") bottom left/cover no-repeat;
           pointer-events: none;
           z-index: 2;
         }
@@ -1312,6 +1311,21 @@ h4 {
 
 
   &--project {
+    @media screen and (min-width: 768px) {
+      &:nth-child(1){
+        background:#000 url("../../images/section-gradients/part_1.webp") bottom left/cover no-repeat;
+
+      }
+      &:nth-child(2){
+        background:#000 url("../../images/section-gradients/part_2.webp") bottom left/cover no-repeat;
+      }
+      &:nth-child(3){
+        background:#000 url("../../images/section-gradients/part_3.webp") bottom left/cover no-repeat;
+      }
+      &:nth-child(4){
+        background:#000 url("../../images/section-gradients/part_4.webp") bottom left/cover no-repeat;
+      }
+    }
     @media screen and (min-width: 768px) {
       text-align: center;
       border-radius: 0;
@@ -2322,13 +2336,15 @@ h4 {
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
+
+      transform: translate(-50%,-50%);
+
       z-index: 4;
       pointer-events: none;
       will-change: left, top;
       transition: .3s opacity;
 
-      &.unmuted {
+      &.is-paused {
         background: url("../../images/icons/pause.svg") center center/cover no-repeat;
       }
     }
@@ -3334,4 +3350,43 @@ video {
       cursor: pointer;
     }
   }
+}
+.count-block{
+  position: relative;
+}
+
+
+.frame-sequence {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  left: 0;
+  top: 5rem;
+}
+@media screen and (max-width: 767px) {
+  .frame-sequence {
+    top: 0;
+  }
+}
+.frame-sequence__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.count__wrapper{
+  position: relative;
+  z-index: 10;
+}
+
+.count__text,.count__number{
+  position: relative;
+  z-index: 9;
+}
+
+.count__text:last-child{
+  position: relative;
+  z-index: 11;
 }

@@ -890,37 +890,74 @@ function initPersonSlider() {
         }
 
         function onSlideChange() {
-            if (!involved) return;
-            activateVideo(personSlider.realIndex, soundOn, true);
-            personSliderElement.classList.remove('unmuted');
-            soundOn = false;
+            activateVideo(personSlider.realIndex, soundOn, false);
+            loadVideo(videos[(personSlider.realIndex + 1) % videos.length]);
         }
+
+        activateVideo(0, false);
 
         new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                involved = true;
-                loadVideo(videos[personSlider.realIndex]);
-                videos[personSlider.realIndex].muted = true;
                 videos[personSlider.realIndex].play().catch(() => {});
             });
         }, { threshold: 0.3 }).observe(personSliderElement);
 
-        personSliderElement.addEventListener('click', () => {
-            if (!involved) return;
-            if (soundBtn) soundBtn.click();
+        personSliderElement.addEventListener('click', (e) => {
+            if (soundBtn && soundBtn.contains(e.target)) return;
+            if (!involved) { involved = true; personSliderElement.classList.add('involved'); }
+            if (!soundOn) {
+                setSound(true);
+                videos[personSlider.realIndex].currentTime = 0;
+                videos[personSlider.realIndex].play().catch(() => {});
+            } else {
+                setSound(false);
+            }
         });
 
         if (soundBtn) {
             soundBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                if (!involved) { involved = true; personSliderElement.classList.add('involved'); }
                 setSound(!soundOn);
             });
         }
 
+        videos.forEach((video, i) => {
+            video.removeAttribute('loop');
+            video.addEventListener('ended', () => {
+                const nextIndex = (i + 1) % videos.length;
+                loadVideo(videos[nextIndex]);
+                personSlider.slideTo(nextIndex);
+            });
+        });
+
+        const cursorDot = personSliderElement.querySelector('.person-slider__cursor');
+        let targetX = personSliderElement.offsetWidth * 0.75;
+        let targetY = personSliderElement.offsetHeight / 2;
+        let currentX = targetX;
+        let currentY = targetY;
+
+        (function animateCursor() {
+            currentX += (targetX - currentX) * 0.08;
+            currentY += (targetY - currentY) * 0.08;
+            cursorDot.style.left = currentX + 'px';
+            cursorDot.style.top = currentY + 'px';
+            requestAnimationFrame(animateCursor);
+        })();
+
+        personSliderElement.addEventListener('mousemove', (e) => {
+            const rect = personSliderElement.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            if (x >= rect.width / 2) { targetX = x; targetY = e.clientY - rect.top; }
+        });
+
+        personSliderElement.addEventListener('mouseleave', () => {
+            targetX = personSliderElement.offsetWidth * 0.75;
+            targetY = personSliderElement.offsetHeight / 2;
+        });
     } catch (e) { console.error('initPersonSlider error:', e); }
 }
-
 const initPreloader = () => {
     try {
         const preloader  = document.querySelector('.preloader');
@@ -964,6 +1001,145 @@ const initPreloader = () => {
     } catch (e) { console.error('initPreloader error:'); }
 };
 
+class FrameSequence {
+    constructor(selector, opts = {}) {
+        this.container = typeof selector === 'string'
+            ? document.querySelector(selector)
+            : selector;
+        if (!this.container) return;
+
+        const d = this.container.dataset;
+
+        this.path       = opts.path       || d.framesPath       || '/img/sequence';
+        this.frameCount = opts.frameCount || parseInt(d.framesCount, 10) || 25;
+        this.prefix     = opts.prefix     || d.framesPrefix     || '1_';
+        this.ext        = opts.ext        || d.framesExt        || '.webp';
+        this.padLength  = opts.padLength  || parseInt(d.framesPad, 10) || 5;
+        this.pinSpacing = opts.pinSpacing || d.framesPinSpacing || '300vh';
+        this.cover      = opts.cover      ?? true;
+
+        this.canvas = this.container.querySelector('canvas') || this._createCanvas();
+        this.ctx    = this.canvas.getContext('2d');
+
+        this.images       = new Array(this.frameCount);
+        this.loaded       = new Uint8Array(this.frameCount);
+        this.currentIndex = -1;
+
+        this._resize();
+        this._preload().then(() => this._initScrollTrigger());
+        this._bindResize();
+    }
+
+    _frameSrc(i) {
+        return `${this.path}/${this.prefix}${String(i).padStart(this.padLength, '0')}${this.ext}`;
+    }
+
+    _loadImage(i) {
+        return new Promise(resolve => {
+            if (this.loaded[i]) { resolve(this.images[i]); return; }
+            const img = new Image();
+            img.decoding = 'async';
+            img.onload  = () => { this.images[i] = img; this.loaded[i] = 1; resolve(img); };
+            img.onerror = () => resolve(null);
+            img.src = this._frameSrc(i);
+        });
+    }
+
+    async _preload() {
+        await this._loadImage(0);
+        this._draw(0);
+        await Promise.all(
+            Array.from({ length: this.frameCount - 1 }, (_, i) => this._loadImage(i + 1))
+        );
+    }
+
+    _draw(index) {
+        if (index === this.currentIndex) return;
+        const img = this.images[index];
+        if (!img) return;
+        this.currentIndex = index;
+
+        const cw = this.canvas.width;
+        const ch = this.canvas.height;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+
+        const scale = this.cover
+            ? Math.max(cw / iw, ch / ih)
+            : Math.min(cw / iw, ch / ih);
+
+        const dw = iw * scale;
+        const dh = ih * scale;
+
+        this.ctx.clearRect(0, 0, cw, ch);
+        this.ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    }
+
+    _initScrollTrigger() {
+        const self = this;
+
+        this.st = ScrollTrigger.create({
+            trigger:             self.container,
+            start:               'top center',
+            end:                 '+=' + self.pinSpacing,
+            pin:                 false,
+            pinType:             'transform',
+            anticipatePin:       1,
+            scrub:               true,
+            invalidateOnRefresh: true,
+            onUpdate(st) {
+                const frame = Math.min(
+                    self.frameCount - 1,
+                    Math.round(st.progress * (self.frameCount - 1))
+                );
+                self._draw(frame);
+            }
+        });
+    }
+
+    _resize() {
+        const rect = this.canvas.parentElement.getBoundingClientRect();
+        const dpr  = Math.min(window.devicePixelRatio || 1, 2);
+
+        this.canvas.width  = rect.width  * dpr;
+        this.canvas.height = rect.height * dpr;
+        this.canvas.style.width  = rect.width  + 'px';
+        this.canvas.style.height = rect.height + 'px';
+
+        const prev = Math.max(0, this.currentIndex);
+        this.currentIndex = -1;
+        if (this.loaded[prev]) this._draw(prev);
+    }
+
+    _bindResize() {
+        let t;
+        window.addEventListener('resize', () => {
+            clearTimeout(t);
+            t = setTimeout(() => { this._resize(); ScrollTrigger.refresh(); }, 150);
+        });
+    }
+
+    _createCanvas() {
+        const c = document.createElement('canvas');
+        c.className = 'frame-sequence__canvas';
+        this.container.appendChild(c);
+        return c;
+    }
+
+    destroy() {
+        if (this.st) { this.st.kill(); this.st = null; }
+        this.images = [];
+        this.loaded = new Uint8Array(0);
+    }
+}
+
+function initFrameSequences() {
+    document.querySelectorAll('.frame-sequence').forEach(el => {
+        if (el._frameSeq) return;
+        el._frameSeq = new FrameSequence(el);
+    });
+}
+
 function refreshPageScripts() {
 
     initSliders();
@@ -972,6 +1148,7 @@ function refreshPageScripts() {
     initHeader();
     initCardAnimations();
     initVideoToggles();
+    initFrameSequences();
     initRunoverEffects();
     initPrinciplesCards();
     initPersonSlider();
