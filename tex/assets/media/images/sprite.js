@@ -1,1 +1,1 @@
-module.exports = "../../../sprite-JEPMGOPJ.svg";
+module.exports = "../../../sprite-HSEJAKYN.svg";
