@@ -11,6 +11,9 @@
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 512" id="arrow">
         <path fill="currentColor" d="M268.169 284.44l-214.543 227.56-53.626-56.88 187.73-199.12-187.73-199.12 53.626-56.88 214.543 227.56c7.11 7.543 11.104 17.774 11.104 28.44s-3.994 20.897-11.104 28.44z"></path>
     </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 736 512" id="check">
+        <path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="96" stroke="currentColor" d="M31.625 198.759l250.435 219.43 389.566-384.002"></path>
+    </symbol>
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 951 512" id="arrow-down">
         <path fill="currentColor" d="M422.611 491.643l-422.611-393.329 105.635-98.314 369.794 344.171 369.795-344.171 105.633 98.315-422.611 393.328c-14.010 13.035-33.008 20.357-52.817 20.357s-38.808-7.322-52.817-20.357z"></path>
     </symbol>
@@ -40,5 +43,8 @@
     </symbol>
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427 512" id="play">
         <path fill="currentColor" d="M426.666 246.333l-426.666 246.335v-492.672l426.666 246.337z"></path>
+    </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="pin">
+        <path fill="currentColor" d="M258.57 0c-102.245 0-185.427 83.182-185.427 185.426 0 126.888 165.939 313.167 173.004 321.034 6.636 7.391 18.222 7.38 24.846 0 7.065-7.866 173.002-194.146 173.002-321.034 0-102.244-83.182-185.426-185.425-185.426zM258.57 278.719c-51.442 0-93.292-41.851-93.292-93.293s41.851-93.292 93.292-93.292c51.441 0 93.291 41.851 93.291 93.293s-41.85 93.292-93.291 93.292z"></path>
     </symbol>
 </svg>
