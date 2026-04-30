@@ -546,7 +546,10 @@ class VideoController {
         if (!video || this.isTransitioning) return;
 
         if (this.activeVideo === video && this.isPlaying) return;
-
+        video.preload = 'auto';
+        video.load();
+        video.style.display = 'block';
+        video.offsetHeight; // force reflow
         this.isTransitioning = true;
 
         await this.stopActive();
