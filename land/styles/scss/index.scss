@@ -301,13 +301,21 @@ body.no-scroll{
 }
 
 .screen-slider{
-  position: relative;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  top: 50%;
+  transform: translateY(-50%);
   @include tablet{
 
     z-index: 3;
     width: 16.25rem;
     height: 30rem;
     margin: 0 auto;
+
+    position: relative;
+    transform: translate(0);
+    top: 0;
   }
   &__item{
     position: absolute;
