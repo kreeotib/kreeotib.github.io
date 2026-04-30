@@ -462,6 +462,7 @@ function initCards() {
 
     document.querySelectorAll('.project-item, .card').forEach(card => {
         const video = videoController.getActiveVideoFromContainer(card);
+        console.log(video)
         const wrapper =
             card.querySelector('.card__video') ||
             card.querySelector('.project-item__img');
