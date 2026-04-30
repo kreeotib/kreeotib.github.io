@@ -130,6 +130,18 @@ class HeroAccelerator {
                 }
             }
         });
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: this.hero,
+                start: 'top top',
+                end: `bottom top`,
+                scrub: true,
+                pin:true,
+                invalidateOnRefresh: true,
+            }
+        });
+
+
     }
 
     initProject() {
@@ -428,102 +440,201 @@ function initSliders() {
     } catch (e) { console.error('levelsSlider error:', e); }
 
     try {
-        const projectSliderElement = document.querySelector('.project-slider');
-        if (projectSliderElement) {
-            new Swiper(projectSliderElement, {
-                slidesPerView: 'auto',
-                spaceBetween: 24,
-                speed: 500,
-                navigation: {
-                    prevEl: '.project-slider-button-prev',
-                    nextEl: '.project-slider-button-next'
+        const projectSwiper = new Swiper(projectSliderElement, {
+            slidesPerView: 'auto',
+            spaceBetween: 24,
+            speed: 500,
+            navigation: {
+                prevEl: '.project-slider-button-prev',
+                nextEl: '.project-slider-button-next'
+            },
+            on: {
+                slideChangeTransitionStart: function () {
+                    const slide = this.slides[this.activeIndex];
+                    const video = slide?.querySelector('video');
+
+                    if (!video) return;
+
+                    videoController.play(video, {
+                        lockSwiper: true
+                    });
                 }
-            });
-        }
+            }
+        });
+        videoController.attachSwiper(projectSwiper);
     } catch (e) { console.error('projectSlider error:', e); }
 }
 
-
-function initCards() {
-    try {
-        document.querySelectorAll('.project-item, .card').forEach((card, index) => {
-            const video = card.querySelector('video');
-            const imgWrapper = card.querySelector('.card__video') || card.querySelector('.project-item__img');
-            if (!video || !imgWrapper) return;
-
-            video.muted = true;
-            video.loop = false;
-            let playPromise = null;
-
-            if (card.classList.contains('card--level')) {
-                let fadeTimeout = null;
-
-                const startVideo = async () => {
-                    if (fadeTimeout) clearTimeout(fadeTimeout);
-                    imgWrapper.classList.remove('fade-to-poster');
-                    imgWrapper.classList.add('hover');
-                    video.currentTime = 0;
-                    try {
-                        playPromise = video.play();
-                        await playPromise;
-                    } catch (e) {}
-                };
-
-                const stopVideo = async () => {
-                    if (playPromise) {
-                        try { await playPromise; } catch (e) {}
-                    }
-                    video.pause();
-                    imgWrapper.classList.add('fade-to-poster');
-                    fadeTimeout = setTimeout(() => {
-                        imgWrapper.classList.remove('hover', 'fade-to-poster');
-                    }, 400);
-                };
-
-                card.addEventListener('mouseenter', startVideo);
-                card.addEventListener('mouseleave', stopVideo);
-                card.addEventListener('touchstart', () => {
-                    imgWrapper.classList.contains('hover') ? stopVideo() : startVideo();
-                }, { passive: true });
-
-            } else {
-                let animationFrame = null;
-                video.loop = true;
-
-                const playReverse = () => {
-                    if (video.currentTime <= 0) {
-                        cancelAnimationFrame(animationFrame);
-                        imgWrapper.classList.remove('hover');
-                        return;
-                    }
-                    video.currentTime = Math.max(0, video.currentTime - 0.05);
-                    animationFrame = requestAnimationFrame(playReverse);
-                };
-
-                card.addEventListener('mouseenter', async () => {
-                    if (animationFrame) cancelAnimationFrame(animationFrame);
-                    imgWrapper.classList.add('hover');
-                    try {
-                        playPromise = video.play();
-                        await playPromise;
-                    } catch (e) {}
-                });
-
-                card.addEventListener('mouseleave', async () => {
-                    if (playPromise) {
-                        try { await playPromise; } catch (e) {}
-                    }
-                    video.pause();
-                    playReverse();
-                });
-
-                card.addEventListener('touchstart', () => {
-                    video.paused ? card.dispatchEvent(new Event('mouseenter')) : card.dispatchEvent(new Event('mouseleave'));
-                }, { passive: true });
-            }
-        });
-    } catch (e) {}
+const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+if (navigator.hardwareConcurrency <= 4) {
+    document.documentElement.classList.add('no-blur');
 }
+function initCards() {
+    const isDesktop = window.innerWidth >= 768;
+
+    document.querySelectorAll('.project-item, .card').forEach(card => {
+        const video = card.querySelector('video');
+        const wrapper =
+            card.querySelector('.card__video') ||
+            card.querySelector('.project-item__img');
+
+        if (!video || !wrapper) return;
+
+        if (isDesktop) {
+            const reverse = !card.classList.contains('card--level');
+
+            card.addEventListener('mouseenter', () => {
+                videoController.play(video, {
+                    reverseOnStop: reverse,
+                    wrapper
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                videoController.stop({
+                    reverse,
+                    wrapper
+                });
+            });
+        } else {
+            // мобильный tap toggle
+            card.addEventListener(
+                'touchstart',
+                () => {
+                    if (videoController.activeVideo === video) {
+                        videoController.stop({ wrapper });
+                    } else {
+                        videoController.play(video, { wrapper });
+                    }
+                },
+                { passive: true }
+            );
+        }
+    });
+}
+
+class VideoController {
+    constructor() {
+        this.activeVideo = null;
+        this.playPromise = null;
+        this.raf = null;
+        this.isPlaying = false;
+        this.isTransitioning = false;
+        this.swiper = null;
+    }
+
+    attachSwiper(swiperInstance) {
+        this.swiper = swiperInstance;
+    }
+
+    cancelRAF() {
+        if (this.raf) {
+            cancelAnimationFrame(this.raf);
+            this.raf = null;
+        }
+    }
+
+    async stopActive(reset = true) {
+        if (!this.activeVideo) return;
+
+        this.cancelRAF();
+
+        try {
+            if (this.playPromise) await this.playPromise;
+        } catch (e) {}
+
+        this.activeVideo.pause();
+
+        if (reset) {
+            this.activeVideo.currentTime = 0;
+        }
+
+        this.activeVideo = null;
+        this.isPlaying = false;
+    }
+
+    async play(video, { reverseOnStop = false, wrapper = null, lockSwiper = false } = {}) {
+        if (!video || this.isTransitioning) return;
+
+        if (this.activeVideo === video && this.isPlaying) return;
+
+        this.isTransitioning = true;
+
+        await this.stopActive();
+
+        this.activeVideo = video;
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.currentTime = 0;
+
+        if (wrapper) wrapper.classList.add('hover');
+
+        if (lockSwiper && this.swiper) {
+            this.swiper.allowTouchMove = false;
+        }
+
+        try {
+            this.playPromise = video.play();
+            await this.playPromise;
+            this.isPlaying = true;
+        } catch (e) {}
+
+        if (lockSwiper && this.swiper) {
+            video.onended = () => {
+                this.swiper.allowTouchMove = true;
+            };
+        }
+
+        if (reverseOnStop) {
+            video.dataset.reverse = 'true';
+        }
+
+        this.isTransitioning = false;
+    }
+
+    async stop({ reverse = false, wrapper = null } = {}) {
+        if (!this.activeVideo || this.isTransitioning) return;
+
+        this.isTransitioning = true;
+
+        const video = this.activeVideo;
+
+        try {
+            if (this.playPromise) await this.playPromise;
+        } catch (e) {}
+
+        video.pause();
+
+        if (reverse && video.dataset.reverse === 'true') {
+            const reverseStep = () => {
+                if (!this.activeVideo) return;
+
+                if (video.currentTime <= 0) {
+                    this.cancelRAF();
+                    if (wrapper) wrapper.classList.remove('hover');
+                    this.activeVideo = null;
+                    this.isPlaying = false;
+                    return;
+                }
+
+                video.currentTime = Math.max(0, video.currentTime - 0.05);
+                this.raf = requestAnimationFrame(reverseStep);
+            };
+
+            reverseStep();
+        } else {
+            if (wrapper) wrapper.classList.remove('hover');
+            video.currentTime = 0;
+            this.activeVideo = null;
+            this.isPlaying = false;
+        }
+
+        this.isTransitioning = false;
+    }
+}
+
+const videoController = new VideoController();
 
 const initCardAnimations = () => {
     const cards = document.querySelectorAll('.card-animate');
@@ -748,7 +859,7 @@ function initVideoToggles() {
 
 function initRunoverEffects() {
     const runners = document.querySelectorAll('[data-runover]');
-    if (!runners.length) return;
+    if (!runners.length || !isDesktop) return;
 
     const SCALE_REDUCTION = 0.1;
     const BORDER_RADIUS = 40;
@@ -965,40 +1076,51 @@ const initPreloader = () => {
         const last       = document.querySelector('.svg-elem-5');
 
         let loaded = false;
+        let forceTimeout;
 
-        if(preloader){
-            window.addEventListener('load', () => {
-                last.addEventListener('animationiteration', () => {
-                    if (loaded) return;
-                    if (page404bg.length) {
-                        page404bg.forEach(bg => {
-                            const video = bg.querySelector('video');
-                            video.addEventListener('loadedmetadata', () => { video.currentTime = 0; });
-                            video.play();
-                        });
-                    }
-                    loaded = true;
-                    preloader.classList.add('hidden');
-                    document.body.classList.remove('no-scroll');
-                    new CounterAnimator({ threshold: 0.3, rootMargin: '0px 0px 0px 0px' }).observeCounters('.counters-block');
-                });
-            });
-        }else{
+        const finishLoading = () => {
+            if (loaded) return;
             loaded = true;
 
             if (page404bg.length) {
                 page404bg.forEach(bg => {
                     const video = bg.querySelector('video');
-                    video.addEventListener('loadedmetadata', () => { video.currentTime = 0; });
-                    video.play();
+                    if (video) {
+                        video.addEventListener('loadedmetadata', () => { video.currentTime = 0; });
+                        video.play().catch(() => {});
+                    }
                 });
             }
+
+            if (preloader) preloader.classList.add('hidden');
             document.body.classList.remove('no-scroll');
-            new CounterAnimator({ threshold: 0.3, rootMargin: '0px 0px 0px 0px' }).observeCounters('.counters-block');
+
+            new CounterAnimator({
+                threshold: 0.3,
+                rootMargin: '0px 0px 0px 0px'
+            }).observeCounters('.counters-block');
+
+            clearTimeout(forceTimeout);
+        };
+
+        if (preloader) {
+
+            // Принудительное завершение через 5 секунд
+            forceTimeout = setTimeout(finishLoading, 5000);
+
+            window.addEventListener('load', () => {
+                if (!last) return finishLoading();
+
+                last.addEventListener('animationiteration', finishLoading);
+            });
+
+        } else {
+            finishLoading();
         }
 
-
-    } catch (e) { console.error('initPreloader error:'); }
+    } catch (e) {
+        console.error('initPreloader error:', e);
+    }
 };
 
 class FrameSequence {
