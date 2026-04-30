@@ -1113,7 +1113,7 @@ const initPreloader = () => {
         if (preloader) {
 
             // Принудительное завершение через 5 секунд
-            forceTimeout = setTimeout(finishLoading, 5000);
+            forceTimeout = setTimeout(finishLoading, 15000);
 
             window.addEventListener('load', () => {
                 if (!last) return finishLoading();

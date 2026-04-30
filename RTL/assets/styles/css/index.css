@@ -1199,9 +1199,15 @@ h4 {
   .card__video--desktop {
     display: none;
   }
+  .card__video--desktop video {
+    display: none;
+  }
 }
 @media screen and (min-width: 768px) {
   .card__video--mobile {
+    display: none;
+  }
+  .card__video--mobile video {
     display: none;
   }
 }

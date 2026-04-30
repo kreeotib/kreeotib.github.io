@@ -1436,6 +1436,9 @@ h4 {
 
       @media screen and (max-width: 767px) {
         display: none;
+        video{
+          display: none;
+        }
       }
     }
 
@@ -1443,6 +1446,9 @@ h4 {
 
       @media screen and (min-width: 768px) {
         display: none;
+        video{
+          display: none;
+        }
       }
     }
   }
