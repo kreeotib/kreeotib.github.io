@@ -440,6 +440,7 @@ function initSliders() {
     } catch (e) { console.error('levelsSlider error:', e); }
 
     try {
+        const projectSliderElement = document.querySelector('.project-slider');
         const projectSwiper = new Swiper(projectSliderElement, {
             slidesPerView: 'auto',
             spaceBetween: 24,
