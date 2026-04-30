@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="scripts/swiper.css">
 
+    <link rel="stylesheet" href="styles/css/fonts.css">
     <link rel="stylesheet" href="styles/css/reset.css">
     <link rel="stylesheet" href="styles/css/index.css">
 </head>
@@ -71,72 +72,68 @@
                             <p class="info__text">
                                 Скачайте каталог лучших новостроек в Хамовниках от Whitewill
                             </p>
-                            <div class="screen-slider">
-                                <div class="screen-slider__item">
-                                    <div class="gallery">
-                                        <div class="gallery-slider swiper">
-                                            <div class="swiper-wrapper">
-                                                <div class="gallery__item swiper-slide">
-                                                    <img src="images/gallery/1.webp" alt="">
-                                                </div>
-                                                <div class="gallery__item swiper-slide">
-                                                    <img src="images/gallery/1.webp" alt="">
-                                                </div>
-                                                <div class="gallery__item swiper-slide">
-                                                    <img src="images/gallery/1.webp" alt="">
-                                                </div>
-                                                <div class="gallery__item swiper-slide">
-                                                    <img src="images/gallery/1.webp" alt="">
+                            <div class="screen">
+                                <div class="screen-slider">
+                                    <div class="screen-slider__item">
+                                        <div class="gallery">
+                                            <div class="gallery-slider swiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="gallery__item swiper-slide">
+                                                        <img src="images/gallery/1.webp" alt="">
+                                                    </div>
+                                                    <div class="gallery__item swiper-slide">
+                                                        <img src="images/gallery/1.webp" alt="">
+                                                    </div>
+                                                    <div class="gallery__item swiper-slide">
+                                                        <img src="images/gallery/1.webp" alt="">
+                                                    </div>
+                                                    <div class="gallery__item swiper-slide">
+                                                        <img src="images/gallery/1.webp" alt="">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <form action="" class="form">
+                            <div action="mail.php" class="form">
                                 <div class="form__wrapper">
                                     <div class="form-input">
-                                        <input type="text" name="phone" placeholder="+7 000 000 00 00" class="js-phone-mask form-input__item">
-                                        <button type="submit" class="form__button">Скачать каталог</button>
+                                        <input minlength="17" required type="text" name="phone" placeholder="+7 000 000 00 00" class="js-phone-mask form-input__item">
+                                        <button data-popup=".popup-thanks" type="submit" class="form__button">Скачать каталог</button>
                                     </div>
-                                    <div class="form__row">
-                                        <p class="form__text">
-                                            PDF, 7.71
-                                            МБ
-                                        </p>
-                                        <p class="form__text">
-                                            Обновлен:
-                                            11 апреля 2026
-                                        </p>
-                                        <p class="form__text">
+                                    <div class="form__grid">
+                                        <div class="form__row">
+                                            <p class="form__text">
+                                                PDF, 7.71
+                                                МБ
+                                            </p>
+                                            <p class="form__text">
+                                                Обновлен:
+                                                11 апреля 2026
+                                            </p>
+                                            <p class="form__text">
 
-                                            Время скачивания:
-                                            3 секунды
+                                                Время скачивания:
+                                                3 секунды
 
+                                            </p>
+                                        </div>
+                                        <p class="info__subtext info__subtext--mobile">
+                                            Отправляя заявку, вы даёте своё
+                                            <span class="tip">
+                                        согласие
+                                        <span class="tip__content">
+                                            Я полностью ознакомился и согласен с <a href="#">Пользовательским соглашением</a>, <a
+                                                href="#">Политикой обработки персональных данных и файлов Cookie</a>, и предоставляю конкретное, предметное, информированное, сознательное и однозначное <a
+                                                href="#">Согласие на обработку моих персональных данных.</a></span>
+                                    </span>
+                                            на обработку персональных данных.
                                         </p>
                                     </div>
-                                    <nav class="header-nav header-nav--mobile">
-                                        <ul class="header-list">
-                                            <li class="header-list__item">
-                                                <a href="#" class="header-list__link">
-                                                    Политика конфиденциальности
-                                                </a>
-                                            </li>
-                                            <li class="header-list__item">
-                                                <a href="#" class="header-list__link">
-                                                    Пользовательское соглашение
-                                                </a>
-                                            </li>
-                                            <li class="header-list__item">
-                                                <a href="#" class="header-list__link">
-                                                    Проект компании Whitewill | 2026
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </div>
-                            </form>
+                            </div>
                             <div class="info__footer">
                                 <p class="info__subtext">
                                     Отправляя заявку, вы даёте своё
@@ -150,6 +147,25 @@
                                     на обработку персональных данных.
                                 </p>
                             </div>
+                            <nav class="header-nav header-nav--mobile">
+                                <ul class="header-list">
+                                    <li class="header-list__item">
+                                        <a href="#" class="header-list__link">
+                                            Политика конфиденциальности
+                                        </a>
+                                    </li>
+                                    <li class="header-list__item">
+                                        <a href="#" class="header-list__link">
+                                            Пользовательское соглашение
+                                        </a>
+                                    </li>
+                                    <li class="header-list__item">
+                                        <a href="#" class="header-list__link">
+                                            Проект компании Whitewill | 2026
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
 
@@ -157,6 +173,25 @@
             </div>
         </div>
     </main>
+</div>
+
+<div class="popup popup-thanks" data-lenis-prevent="">
+    <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+            <div class="thanks-popup">
+                <div class="popup__close popup-close"></div>
+                <div class="thanks-popup__wrapper">
+                    <p class="thanks-popup__title">
+                        Спасибо за заявку
+                    </p>
+                    <p class="thanks-popup__text">
+                        Мы скоро свяжемся с вами
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="scripts/imask.js"></script>

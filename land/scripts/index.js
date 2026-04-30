@@ -128,7 +128,6 @@ const ScrollLock = (() => {
 
 window.ScrollLock = ScrollLock;
 
-
 const FormSender = (() => {
     const DEFAULTS = {
         formSelector: '.form form',
@@ -258,10 +257,21 @@ window.FormSender = FormSender;
 
 (function () {
     document.querySelectorAll('.js-phone-mask').forEach(function (el) {
+        el.addEventListener('input',e=>{
+
+            console.log(e.target.value.length)
+        })
         IMask(el, {
             mask: '+7 000 000 00 00',
         });
     });
+})();
+
+(function () {
+    document.addEventListener('DOMContentLoaded',()=>{
+        Popup.init()
+        FormSender.init()
+    })
 })();
 
 
