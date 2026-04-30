@@ -551,7 +551,9 @@ class VideoController {
         video.style.display = 'block';
         video.offsetHeight; // force reflow
         this.isTransitioning = true;
-
+        video.play().catch(err => {
+            console.log('Safari play error:', err);
+        });
         await this.stopActive();
 
         this.activeVideo = video;
