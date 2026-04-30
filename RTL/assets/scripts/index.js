@@ -546,14 +546,6 @@ class VideoController {
         if (!video || this.isTransitioning) return;
 
         if (this.activeVideo === video && this.isPlaying) return;
-        video.preload = 'auto';
-        video.load();
-        video.style.display = 'block';
-        video.offsetHeight; // force reflow
-        this.isTransitioning = true;
-        video.play().catch(err => {
-            console.log('Safari play error:', err);
-        });
         await this.stopActive();
 
         this.activeVideo = video;
@@ -633,11 +625,9 @@ class VideoController {
 
         for (const video of videos) {
             const style = window.getComputedStyle(video);
-
+            const rect = video.getBoundingClientRect();
             const isVisible =
-                style.display !== 'none' &&
-                style.visibility !== 'hidden' &&
-                video.offsetParent !== null;
+                rect.width > 0 && rect.height > 0;
 
             if (isVisible) return video;
         }

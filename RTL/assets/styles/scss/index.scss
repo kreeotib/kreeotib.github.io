@@ -1432,12 +1432,25 @@ h4 {
       transition: .3s opacity;
     }
 
+    @media screen and (max-width: 767px) {
+      img.desktop{
+        display: none;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      img.mobile{
+        display: none;
+      }
+    }
+
     &--desktop {
 
       @media screen and (max-width: 767px) {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
         video{
-          display: none;
+          visibility: hidden;
+          opacity: 0;
         }
       }
     }
@@ -1445,9 +1458,11 @@ h4 {
     &--mobile {
 
       @media screen and (min-width: 768px) {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
         video{
-          display: none;
+          visibility: hidden;
+          opacity: 0;
         }
       }
     }

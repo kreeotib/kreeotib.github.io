@@ -702,13 +702,13 @@
                             <div class="levels swiper">
                                 <div class="levels-grid swiper-wrapper">
                                     <div class="swiper-slide levels-grid__item card--level levels-grid__item--big card">
-                                        <div class="card__video card__video--desktop">
-                                            <img src="assets/video/levels/log.webp" alt="">
-                                            <video src="assets/video/levels/log.mp4" poster="assets/video/levels/log.webp" playsinline="" muted="" loop="" webkit-playsinline="" disablepictureinpicture="" preload="metadata" controlslist="nodownload nofullscreen noremoteplayback"></video>
-                                        </div>
-                                        <div class="card__video card__video--mobile">
-                                            <img src="assets/video/levels/log-m.webp" alt="">
-                                            <video src="assets/video/levels/log-m.mp4" poster="assets/video/levels/log-m.webp" playsinline="" muted="" loop="" webkit-playsinline="" disablepictureinpicture="" preload="metadata" controlslist="nodownload nofullscreen noremoteplayback"></video>
+                                        <div class="card__video">
+                                            <img class="mobile" src="assets/video/levels/log-m.webp" alt="">
+                                            <img class="desktop" src="assets/video/levels/log.webp" alt="">
+                                            <video src="assets/video/levels/log-m.mp4"  playsinline="" muted="" loop="" webkit-playsinline="" disablepictureinpicture="" preload="metadata" controlslist="nodownload nofullscreen noremoteplayback">
+                                                <source media="(min-width: 768px)" src="assets/video/levels/log.mp4">
+                                                <source media="(max-width: 767px)" src="assets/video/levels/log-m.mp4">
+                                            </video>
                                         </div>
                                         <div class="card__wrapper">
                                             <svg class="card__icon">

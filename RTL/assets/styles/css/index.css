@@ -1196,19 +1196,33 @@ h4 {
   transition: 0.3s opacity;
 }
 @media screen and (max-width: 767px) {
-  .card__video--desktop {
-    display: none;
-  }
-  .card__video--desktop video {
+  .card__video img.desktop {
     display: none;
   }
 }
 @media screen and (min-width: 768px) {
-  .card__video--mobile {
+  .card__video img.mobile {
     display: none;
   }
+}
+@media screen and (max-width: 767px) {
+  .card__video--desktop {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .card__video--desktop video {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card__video--mobile {
+    visibility: hidden;
+    opacity: 0;
+  }
   .card__video--mobile video {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
 }
 .card__bg {
