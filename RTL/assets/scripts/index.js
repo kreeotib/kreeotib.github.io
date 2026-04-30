@@ -449,20 +449,7 @@ function initSliders() {
                 prevEl: '.project-slider-button-prev',
                 nextEl: '.project-slider-button-next'
             },
-            on: {
-                slideChangeTransitionStart: function () {
-                    const slide = this.slides[this.activeIndex];
-                    const video = slide?.querySelector('video');
-
-                    if (!video) return;
-
-                    videoController.play(video, {
-                        lockSwiper: true
-                    });
-                }
-            }
         });
-        videoController.attachSwiper(projectSwiper);
     } catch (e) { console.error('projectSlider error:', e); }
 }
 
@@ -474,7 +461,7 @@ function initCards() {
     const isDesktop = window.innerWidth >= 768;
 
     document.querySelectorAll('.project-item, .card').forEach(card => {
-        const video = card.querySelector('video');
+        const video = videoController.getActiveVideoFromContainer(card);
         const wrapper =
             card.querySelector('.card__video') ||
             card.querySelector('.project-item__img');
@@ -632,6 +619,25 @@ class VideoController {
         }
 
         this.isTransitioning = false;
+    }
+
+    getActiveVideoFromContainer(container) {
+        const videos = container.querySelectorAll('video');
+        if (!videos.length) return null;
+
+        for (const video of videos) {
+            const style = window.getComputedStyle(video);
+
+            const isVisible =
+                style.display !== 'none' &&
+                style.visibility !== 'hidden' &&
+                video.offsetParent !== null;
+
+            if (isVisible) return video;
+        }
+
+        // fallback — первый
+        return videos[0];
     }
 }
 
