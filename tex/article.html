@@ -10,8 +10,65 @@
     <link href="assets/styles/index.css" rel="stylesheet">
   </head>
   <body>
+    <div class="menu">
+      <div class="menu__wrapper">
+        <div class="menu__header"><a class="menu__logo logo" href="/"><img class="logo__img" src="assets/media/images/logo-color.webp" draggable="false" ondragstart="return false;"></a>
+          <div class="menu__burger">
+            <div class="burger">
+              <div class="burger__wrapper">
+                <div class="burger__icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu__content">
+          <nav class="menu-nav">
+            <ul class="menu-nav__list">
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#">Главная</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#about">О нас</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#program">Полезные материалы</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#location">Гарантия</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#pricing">Журнал проектов</a></li>
+            </ul>
+          </nav><span class="menu__divider menu__divider--mobile"></span>
+          <ul class="menu-list">
+            <li class="menu-list__row"><a class="text text--big text--semibold" href="+7 (800) 777-53-74">+7 (800) 777-53-74</a>
+              <p class="text text--middle text--grey--light">Заявки по монтажу</p>
+            </li>
+            <li class="menu-list__row"><a class="text text--big text--semibold" href="++7 (911) 257-12-50">+7 (911) 257-12-50</a>
+              <p class="text text--middle text--grey--light">Отдел продаж</p>
+            </li>
+          </ul>
+          <ul class="menu-list menu-list--contact">
+            <li><a class="menu-list__row" href="mailto:info@sankt-tehnik.ru">
+                <svg class="icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#mail"></use>
+                </svg>
+                <p class="text text--middle text--semibold">info@sankt-tehnik.ru</p></a></li>
+            <li><a class="menu-list__row" href="#" target="_blank">
+                <svg class="icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                </svg>
+                <p class="text text--middle text--semibold">Показать на карте</p></a></li>
+          </ul>
+          <button class="button button--base button--accent" data-popup=".popup-application">Заказать расчёт</button>
+        </div><span class="menu__divider"></span>
+        <div class="menu__footer">
+          <ul class="social-list">
+            <li class="social-list__item"><a class="social-link button" href="#">
+                <svg class="icon social-link" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#vk"></use>
+                </svg></a></li>
+            <li class="social-list__item"><a class="social-link button" href="#">
+                <svg class="icon social-link__icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#pic"></use>
+                </svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="page-wrapper">
-      <header class="header">
+      <header class="header" data-sticky>
         <div class="header-top">
           <div class="container">
             <div class="header-top__row">
@@ -50,7 +107,7 @@
               <div class="header-social">
                 <ul class="social-list header-social__list">
                   <li class="social-list__item"><a class="social-link button" href="#">
-                      <svg class="icon social-link" draggable="false" ondragstart="return false;">
+                      <svg class="icon social-link__icon" draggable="false" ondragstart="return false;">
                         <use xlink:href="assets/media/images/sprite.svg#vk"></use>
                       </svg></a></li>
                   <li class="social-list__item"><a class="social-link button" href="#">
@@ -59,7 +116,9 @@
                       </svg></a></li>
                 </ul>
               </div>
-              <div class="header-buttons"><a class="button header-buttons__item" href="#"></a><a class="button button--accent button--base header-buttons__item" href="#">Заказать расчёт</a></div>
+              <div class="header-buttons"><a class="button header-buttons__item" href="#"></a>
+                <button class="button button--accent button--base header-buttons__item" data-popup=".popup-application">Заказать расчёт</button>
+              </div>
               <div class="header-burger">
                 <div class="burger">
                   <div class="burger__wrapper"><span class="burger__text">Меню</span>
@@ -76,28 +135,32 @@
           <section class="section">
             <div class="container">
               <div class="section-header">
-                <div class="section-header__column">
-                  <div class="breadcrumbs">
-                    <ul class="breadcrumbs__list">
-                      <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Главная</a></li>
-                      <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Полезные материалы</a></li>
-                      <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Может ли водяной теплый пол быть единственной системой отопления в частном доме?</a></li>
-                    </ul>
+                <div class="grid grid-page">
+                  <div class="grid-page__header">
+                    <div class="section-header__column">
+                      <div class="breadcrumbs">
+                        <ul class="breadcrumbs__list">
+                          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Главная</a></li>
+                          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Полезные материалы</a></li>
+                          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Может ли водяной теплый пол быть единственной системой отопления в частном доме?</a></li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="grid grid-page">
-                <div class="grid-page__column">
+              <div class="grid grid-page js-gallery">
+                <div class="grid-page__header">
                   <div class="page-card">
                     <div class="page-card__bg image"><img class="image__item" src="assets/media/images/article/1.webp" draggable="false" ondragstart="return false;"></div>
                     <div class="page-card__wrapper">
                       <div class="page-card__header">
-                        <p class="title title--large title--large--mobile--small">Может&nbsp;ли водяной тёплый пол быть единственной системой отопления в&nbsp;частном доме?</p>
+                        <p class="title title--large title--large--mobile--small page-card__title">Может&nbsp;ли водяной тёплый пол быть единственной системой отопления в&nbsp;частном доме?</p>
                       </div>
                       <div class="page-card__footer">
                         <div class="page-card__row">
-                          <p class="text text--base">Полезные материалы</p><span class="page-card__divider"></span>
-                          <p class="text text--base text--grey">Санкт-Техник</p>
+                          <p class="text text--base text--mobile--small">Полезные материалы</p><span class="page-card__divider"></span>
+                          <p class="text text--base text--grey text--mobile--small"> Санкт-Техник</p>
                         </div>
                       </div>
                     </div>
@@ -113,13 +176,13 @@
                             <p>Начнём с&nbsp;того, что теплопотери современного частного дома, построенного по&nbsp;существующим нормам и&nbsp;правилам, составляют 50&mdash;70Вт с&nbsp;1кв.м. Исключением являются коттеджи из&nbsp;клеёного бруса с&nbsp;толщиной стен не&nbsp;более 150мм(это 60&mdash;80Вт) и&nbsp;дома из&nbsp;круглого бревна(это 80&mdash;100Вт).</p>
                             <p>Водяной тёплый пол, с&nbsp;самым распространённым расстоянием между труб в&nbsp;150мм, смонтированный на&nbsp;утеплителе 100мм(лучше укладывать два слоя по&nbsp;50мм), стяжкой с&nbsp;высотой 70&mdash;80мм и&nbsp;финишным покрытием в&nbsp;виде плитки или керамогранита выдаёт 70&mdash;80Вт с&nbsp;квадрата при температуре теплоносителя 35&nbsp;градусов. Обратите внимание, что это именно температура теплоносителя,&nbsp;&mdash; на&nbsp;поверхности пола вы&nbsp;получите уменьшение этого значения примерно на&nbsp;3&nbsp;градуса.</p>
                           </div>
-                          <div class="image image--video"><img class="image__item" src="assets/media/images/about/ng.webp" draggable="false" ondragstart="return false;"></div>
+                          <div class="image image--video js-gallery-item"><img class="image__item" src="assets/media/images/about/ng.webp" draggable="false" ondragstart="return false;"></div>
                           <div class="page-block__text">
                             <p>Важный момент,&nbsp;&mdash; мощность системы отопления считается для компенсации самой отрицательной температуры на&nbsp;улице, которая может быть в&nbsp;регионе. И&nbsp;все цифры, написанные выше, утверждаются для Петербурга при морозе на&nbsp;улице в&nbsp;24&nbsp;градуса, а&nbsp;для Москвы в&nbsp;26(что странно, так как Москва явно южнее). Всех проектировщиков это обязывают делать утверждённые нормы. Как понимаете, за&nbsp;зиму такой температуры может зачастую не&nbsp;быть вовсе, либо продлиться всего несколько дней, не&nbsp;особо повлияв полностью прогретый и&nbsp;набравший тепло дом.</p>
                           </div>
                           <div class="page-block__row">
-                            <div class="image image--square"><img class="image__item" src="assets/media/images/about/ng.webp" draggable="false" ondragstart="return false;"></div>
-                            <div class="image image--square"><img class="image__item" src="assets/media/images/about/ng.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="image image--square js-gallery-item"><img class="image__item" src="assets/media/images/about/ng.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="image image--square js-gallery-item"><img class="image__item" src="assets/media/images/about/ng.webp" draggable="false" ondragstart="return false;"></div>
                           </div>
                           <div class="page-block__text">
                             <p>Также нужно понимать, что основные теплопотери дома происходят от&nbsp;системы вентиляции (если она БЕЗ рекуперации!) и&nbsp;открытых окон и&nbsp;дверей. <a>Просто ссылка.</a> По&nbsp;сравнению с&nbsp;ними потери тепла через ограждающие конструкции,&nbsp;&mdash; основание дома, кровлю, стены и&nbsp;закрытые окна с&nbsp;дверями,&nbsp;&mdash; несущественны. Поэтому в&nbsp;этих вопросах большую роль играют привычки проживающих,&nbsp;&mdash; кто‑то любит воздух посвежее и&nbsp;постоянно открывает окна или включает вентиляцию, а&nbsp;кто‑то предпочитает тепло, действуя наоборот.</p>
@@ -166,13 +229,13 @@
                               <li> Если же с давлением совсем беда(т.е. периодически оно просто отсутствует, либо критично мало), то требуется установить более сложную систему – накопительную емкость с защитными механизмами от перелива(электрическим и механическим), откуда вода будет забираться и подаваться насосной станцией</li>
                             </ol>
                           </div>
-                          <div class="subscribe-buttons"><a class="button button--base button--accent" href="#">
+                          <div class="subscribe-buttons"><a class="button button--base button--base--mobile--small button--accent" href="#">
                               <svg class="button__icon icon">
                                 <use xlink:href="assets/media/images/sprite.svg#vk-small"></use>
-                              </svg><span>Мы Вконтакте</span></a><a class="button button--base button--accent" href="#">
+                              </svg><span class="button__text button__text--desktop">Мы Вконтакте</span><span class="button__text button__text--mobile">Наш ВК</span></a><a class="button button--base button--base--mobile--small button--accent" href="#">
                               <svg class="button__icon icon">
                                 <use xlink:href="assets/media/images/sprite.svg#pic-small"></use>
-                              </svg><span>Мы на Пикабу</span></a></div>
+                              </svg><span class="button__text button__text--desktop">Мы на Пикабу</span><span class="button__text button__text--mobile">Пикабу</span></a></div>
                         </div>
                       </div>
                     </div>
@@ -370,11 +433,89 @@
             <div class="footer-bottom">
               <div class="footer-bottom__wrapper"><a class="text text--grey--light text--medium text--base" href="#" target="_blank">Политика конфиденциальности</a>
                 <p class="text text--grey--light text--medium text--base">Санкт-Техник 2026</p>
-                <p class="text text--grey--light text--medium text--base">Разработка сайта:<a href="#" target="_blank">akcent</a></p>
+                <p class="text text--grey--light text--medium text--base">Разработка сайта:&nbsp;<a href="#" target="_blank">akcent</a></p>
               </div>
             </div>
           </div>
         </footer>
+      </div>
+    </div>
+    <div class="float-buttons"><a class="float-button button" href="#"><img class="float-button__icon" src="assets/media/images/icons/tg-color.svg" draggable="false" ondragstart="return false;"><span class="float-button__text">Написать нам <span class="text text--semibold">в&nbsp;Telegram</span></span></a><a class="float-button button" href="#"><img class="float-button__icon" src="assets/media/images/icons/max-color.svg" draggable="false" ondragstart="return false;"><span class="float-button__text">Написать нам <span class="text text--semibold">в&nbsp;MAX</span></span></a></div>
+    <div class="popup popup-video" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal-video">
+            <div class="modal-video__wrapper">
+              <video src="" controls></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-application" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <form class="modal form"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper">
+              <div class="modal__header">
+                <p class="title title--large">Заказать расчёт</p>
+                <p class="tex text--big">Оставьте заявку&nbsp;&mdash; наш менеджер свяжется с&nbsp;вами, подробно всё объяснит и&nbsp;сделает расчёт</p>
+              </div>
+              <div class="form__content">
+                <label class="input">
+                  <input class="input__item" type="text" required placeholder="Ваше имя*">
+                </label>
+                <label class="input">
+                  <input class="input__item js-phone-mask" type="text" minlength="17" required placeholder="Ваш телефон*">
+                </label>
+              </div>
+              <div class="form__footer">
+                <button class="button button--full button--accent button--base" type="submit">Отправить заявку</button>
+                <p class="form__text">Отправляя заявку, вы&nbsp;соглашаетесь с&nbsp;Политикой конфиденциальности</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-thanks" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal modal-thanks"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper modal__wrapper--thanks"><span class="modal__icon">
+                <svg class="icon">
+                  <use xlink:href="assets/media/images/sprite.svg#check"></use>
+                </svg></span>
+              <div class="modal__header">
+                <p class="title title--large">Ваша заявка отправлена</p>
+                <p class="tex text--big">Наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup--lightbox" id="popup-lightbox">
+      <div class="popup__wrapper popup__wrapper--full--mobile">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="lightbox-popup">
+            <div class="lightbox-popup-prev lightbox-popup__button lightbox-popup__button--prev">
+              <svg class="icon">
+                <use xlink:href="assets/media/images/sprite.svg#arrow"></use>
+              </svg>
+            </div>
+            <div class="lightbox-popup__item"><img class="lightbox-popup__img" loading="lazy" src="assets/images/gallery/01.webp" alt=""></div>
+            <div class="lightbox-popup-next lightbox-popup__button lightbox-popup__button--next">
+              <svg class="icon">
+                <use xlink:href="assets/media/images/sprite.svg#arrow"></use>
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

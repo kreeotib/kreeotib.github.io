@@ -10,8 +10,65 @@
     <link href="assets/styles/index.css" rel="stylesheet">
   </head>
   <body>
+    <div class="menu">
+      <div class="menu__wrapper">
+        <div class="menu__header"><a class="menu__logo logo" href="/"><img class="logo__img" src="assets/media/images/logo-color.webp" draggable="false" ondragstart="return false;"></a>
+          <div class="menu__burger">
+            <div class="burger">
+              <div class="burger__wrapper">
+                <div class="burger__icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu__content">
+          <nav class="menu-nav">
+            <ul class="menu-nav__list">
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#">Главная</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#about">О нас</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#program">Полезные материалы</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#location">Гарантия</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#pricing">Журнал проектов</a></li>
+            </ul>
+          </nav><span class="menu__divider menu__divider--mobile"></span>
+          <ul class="menu-list">
+            <li class="menu-list__row"><a class="text text--big text--semibold" href="+7 (800) 777-53-74">+7 (800) 777-53-74</a>
+              <p class="text text--middle text--grey--light">Заявки по монтажу</p>
+            </li>
+            <li class="menu-list__row"><a class="text text--big text--semibold" href="++7 (911) 257-12-50">+7 (911) 257-12-50</a>
+              <p class="text text--middle text--grey--light">Отдел продаж</p>
+            </li>
+          </ul>
+          <ul class="menu-list menu-list--contact">
+            <li><a class="menu-list__row" href="mailto:info@sankt-tehnik.ru">
+                <svg class="icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#mail"></use>
+                </svg>
+                <p class="text text--middle text--semibold">info@sankt-tehnik.ru</p></a></li>
+            <li><a class="menu-list__row" href="#" target="_blank">
+                <svg class="icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                </svg>
+                <p class="text text--middle text--semibold">Показать на карте</p></a></li>
+          </ul>
+          <button class="button button--base button--accent" data-popup=".popup-application">Заказать расчёт</button>
+        </div><span class="menu__divider"></span>
+        <div class="menu__footer">
+          <ul class="social-list">
+            <li class="social-list__item"><a class="social-link button" href="#">
+                <svg class="icon social-link" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#vk"></use>
+                </svg></a></li>
+            <li class="social-list__item"><a class="social-link button" href="#">
+                <svg class="icon social-link__icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#pic"></use>
+                </svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="page-wrapper">
-      <header class="header">
+      <header class="header" data-sticky>
         <div class="header-top">
           <div class="container">
             <div class="header-top__row">
@@ -50,7 +107,7 @@
               <div class="header-social">
                 <ul class="social-list header-social__list">
                   <li class="social-list__item"><a class="social-link button" href="#">
-                      <svg class="icon social-link" draggable="false" ondragstart="return false;">
+                      <svg class="icon social-link__icon" draggable="false" ondragstart="return false;">
                         <use xlink:href="assets/media/images/sprite.svg#vk"></use>
                       </svg></a></li>
                   <li class="social-list__item"><a class="social-link button" href="#">
@@ -59,7 +116,9 @@
                       </svg></a></li>
                 </ul>
               </div>
-              <div class="header-buttons"><a class="button header-buttons__item" href="#"></a><a class="button button--accent button--base header-buttons__item" href="#">Заказать расчёт</a></div>
+              <div class="header-buttons"><a class="button header-buttons__item" href="#"></a>
+                <button class="button button--accent button--base header-buttons__item" data-popup=".popup-application">Заказать расчёт</button>
+              </div>
               <div class="header-burger">
                 <div class="burger">
                   <div class="burger__wrapper"><span class="burger__text">Меню</span>
@@ -342,11 +401,69 @@
             <div class="footer-bottom">
               <div class="footer-bottom__wrapper"><a class="text text--grey--light text--medium text--base" href="#" target="_blank">Политика конфиденциальности</a>
                 <p class="text text--grey--light text--medium text--base">Санкт-Техник 2026</p>
-                <p class="text text--grey--light text--medium text--base">Разработка сайта:<a href="#" target="_blank">akcent</a></p>
+                <p class="text text--grey--light text--medium text--base">Разработка сайта:&nbsp;<a href="#" target="_blank">akcent</a></p>
               </div>
             </div>
           </div>
         </footer>
+      </div>
+    </div>
+    <div class="float-buttons"><a class="float-button button" href="#"><img class="float-button__icon" src="assets/media/images/icons/tg-color.svg" draggable="false" ondragstart="return false;"><span class="float-button__text">Написать нам <span class="text text--semibold">в&nbsp;Telegram</span></span></a><a class="float-button button" href="#"><img class="float-button__icon" src="assets/media/images/icons/max-color.svg" draggable="false" ondragstart="return false;"><span class="float-button__text">Написать нам <span class="text text--semibold">в&nbsp;MAX</span></span></a></div>
+    <div class="popup popup-video" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal-video">
+            <div class="modal-video__wrapper">
+              <video src="" controls></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-application" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <form class="modal form"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper">
+              <div class="modal__header">
+                <p class="title title--large">Заказать расчёт</p>
+                <p class="tex text--big">Оставьте заявку&nbsp;&mdash; наш менеджер свяжется с&nbsp;вами, подробно всё объяснит и&nbsp;сделает расчёт</p>
+              </div>
+              <div class="form__content">
+                <label class="input">
+                  <input class="input__item" type="text" required placeholder="Ваше имя*">
+                </label>
+                <label class="input">
+                  <input class="input__item js-phone-mask" type="text" minlength="17" required placeholder="Ваш телефон*">
+                </label>
+              </div>
+              <div class="form__footer">
+                <button class="button button--full button--accent button--base" type="submit">Отправить заявку</button>
+                <p class="form__text">Отправляя заявку, вы&nbsp;соглашаетесь с&nbsp;Политикой конфиденциальности</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-thanks" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal modal-thanks"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper modal__wrapper--thanks"><span class="modal__icon">
+                <svg class="icon">
+                  <use xlink:href="assets/media/images/sprite.svg#check"></use>
+                </svg></span>
+              <div class="modal__header">
+                <p class="title title--large">Ваша заявка отправлена</p>
+                <p class="tex text--big">Наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

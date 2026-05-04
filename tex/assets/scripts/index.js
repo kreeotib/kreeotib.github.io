@@ -128,46 +128,45 @@ const ScrollLock = (() => {
 
 window.ScrollLock = ScrollLock;
 
-const StickyCenterGrid = (() => {
+const StickyElement = (() => {
     const DEFAULTS = {
-        selector: '[data-sticky-grid]',
-        stickySelector: '.grid__sticky',
-        columnSelector: '.grid__column:not(.grid__sticky)',
-        headerAttr: 'data-sticky-grid-header',
-        defaultHeaderSelector: '.header',
+        selector: '[data-sticky]',
+        headerSelector: '.header',
+        headerTopSelector: '.header-top',
     };
 
-    let config = {...DEFAULTS};
+    let config = { ...DEFAULTS };
     let instances = [];
     let ro = null;
     let rafPending = false;
     let resizeTimer = null;
-    let onLenisScroll = null;
-    let onWindowScroll = null;
     let initialized = false;
 
-    function getHeaderHeight(selector) {
-        const el = document.querySelector(selector);
+    function getHeaderHeight() {
+        const el = document.querySelector(config.headerSelector);
+        return el ? el.offsetHeight : 0;
+    }
+
+    function getHeaderTopHeight() {
+        const el = document.querySelector(config.headerTopSelector);
         return el ? el.offsetHeight : 0;
     }
 
     function measure(entry) {
-        const {fixed, headerSelector} = entry;
+        const { sticky } = entry;
 
         const vh = window.innerHeight;
-        const headerH = getHeaderHeight(headerSelector);
-        const fixedH = fixed.offsetHeight;
-        const isTall = fixedH > vh;
+        const headerH = getHeaderHeight();
+        const headerTopH = getHeaderTopHeight();
+        const stickyH = sticky.offsetHeight;
 
-        const top = isTall
-            ? headerH
-            : Math.max(0, (vh + headerH - fixedH) / 2);
+        const top = Math.max(0, (vh + headerH - stickyH) / 2);
 
-        fixed.style.setProperty('--scg-top', `${top}px`);
-        fixed.style.setProperty('--scg-header-h', `${headerH}px`);
-        fixed.style.setProperty('--scg-fixed-h', `${fixedH}px`);
-        fixed.style.setProperty('--scg-vh', `${vh}px`);
-        fixed.style.setProperty('--scg-mode', isTall ? 'tall' : 'center');
+        sticky.style.setProperty('--sticky-top', `${top}px`);
+        sticky.style.setProperty('--sticky-header-top-height', `-${headerTopH}px`);
+        sticky.style.setProperty('--sticky-header-height', `${headerH}px`);
+        sticky.style.setProperty('--sticky-element-height', `${stickyH}px`);
+        sticky.style.setProperty('--sticky-viewport-height', `${vh}px`);
     }
 
     function measureAll() {
@@ -177,53 +176,10 @@ const StickyCenterGrid = (() => {
     function scheduleUpdate() {
         if (rafPending) return;
         rafPending = true;
-
         requestAnimationFrame(() => {
             rafPending = false;
             measureAll();
         });
-    }
-
-    function setupInstance(grid) {
-        const fixed = grid.querySelector(config.stickySelector);
-        const column = grid.querySelector(config.columnSelector);
-
-        if (!fixed || !column) return;
-
-        const headerSelector = grid.getAttribute(config.headerAttr) || config.defaultHeaderSelector;
-        const entry = {grid, fixed, column, headerSelector};
-
-        instances.push(entry);
-        measure(entry);
-
-        if (ro) {
-            ro.observe(fixed);
-            ro.observe(column);
-        }
-    }
-
-    function bindScroll() {
-        const lenis = window.lenis;
-
-        if (lenis && typeof lenis.on === 'function') {
-            onLenisScroll = () => scheduleUpdate();
-            lenis.on('scroll', onLenisScroll);
-        } else {
-            onWindowScroll = () => scheduleUpdate();
-            window.addEventListener('scroll', onWindowScroll, {passive: true});
-        }
-    }
-
-    function unbindScroll() {
-        const lenis = window.lenis;
-        if (lenis && onLenisScroll && typeof lenis.off === 'function') {
-            lenis.off('scroll', onLenisScroll);
-            onLenisScroll = null;
-        }
-        if (onWindowScroll) {
-            window.removeEventListener('scroll', onWindowScroll);
-            onWindowScroll = null;
-        }
     }
 
     function onResize() {
@@ -233,17 +189,22 @@ const StickyCenterGrid = (() => {
 
     function init(options = {}) {
         if (initialized) return;
-        config = {...DEFAULTS, ...options};
+        config = { ...DEFAULTS, ...options };
 
-        const grids = document.querySelectorAll(config.selector);
-        if (!grids.length) return;
+        const elements = document.querySelectorAll(config.selector);
+        if (!elements.length) return;
 
         ro = new ResizeObserver(scheduleUpdate);
 
-        grids.forEach(setupInstance);
-        bindScroll();
+        elements.forEach(sticky => {
+            const entry = { sticky };
+            instances.push(entry);
+            measure(entry);
+            ro.observe(sticky);
+        });
 
-        window.addEventListener('resize', onResize, {passive: true});
+        window.addEventListener('scroll', scheduleUpdate, { passive: true });
+        window.addEventListener('resize', onResize, { passive: true });
 
         initialized = true;
     }
@@ -255,30 +216,202 @@ const StickyCenterGrid = (() => {
 
     function destroy() {
         if (!initialized) return;
-        unbindScroll();
+
         if (ro) {
             ro.disconnect();
             ro = null;
         }
+
+        window.removeEventListener('scroll', scheduleUpdate);
         window.removeEventListener('resize', onResize);
         clearTimeout(resizeTimer);
 
-        instances.forEach(entry => {
-            entry.fixed.style.removeProperty('--scg-top');
-            entry.fixed.style.removeProperty('--scg-header-h');
-            entry.fixed.style.removeProperty('--scg-fixed-h');
-            entry.fixed.style.removeProperty('--scg-vh');
-            entry.fixed.style.removeProperty('--scg-mode');
+        instances.forEach(({ sticky }) => {
+            sticky.style.removeProperty('--sticky-top');
+            sticky.style.removeProperty('--sticky-header-height');
+            sticky.style.removeProperty('--sticky-element-height');
+            sticky.style.removeProperty('--sticky-viewport-height');
         });
 
         instances = [];
+        config = { ...DEFAULTS };
         initialized = false;
     }
 
-    return {init, refresh, destroy};
+    return { init, refresh, destroy };
 })();
 
-window.StickyCenterGrid = StickyCenterGrid;
+window.StickyElement = StickyElement;
+
+const Lightbox = (() => {
+    const DEFAULTS = {
+        itemSelector: '.js-gallery-item',
+        gallerySelector: '.js-gallery',
+        imageSelector: 'img',
+        popupId: '#popup-lightbox',
+        imgSelector: '.lightbox-popup__img',
+        prevSelector: '.lightbox-popup-prev',
+        nextSelector: '.lightbox-popup-next',
+    };
+
+    let config = {...DEFAULTS};
+    let currentItem = null;
+    let currentGalleryItems = [];
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function getImageSrc(item) {
+        const bigAttr = item.getAttribute('data-big');
+        if (bigAttr) return bigAttr;
+        const img = item.querySelector(config.imageSelector);
+        return img ? img.getAttribute('src') : null;
+    }
+
+    function getImg() {
+        return document.querySelector(config.imgSelector);
+    }
+
+    function updateNav() {
+        const index = currentGalleryItems.indexOf(currentItem);
+        const prev = document.querySelector(config.prevSelector);
+        const next = document.querySelector(config.nextSelector);
+        if (!prev || !next) return;
+
+        const single = currentGalleryItems.length <= 1;
+        prev.style.display = single ? 'none' : '';
+        next.style.display = single ? 'none' : '';
+        prev.classList.toggle('is-disabled', index <= 0);
+        next.classList.toggle('is-disabled', index >= currentGalleryItems.length - 1);
+    }
+
+    function setImage(item) {
+        currentItem = item;
+        const img = getImg();
+        if (!img) return;
+
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = getImageSrc(item);
+            img.onload = () => {
+                img.style.opacity = '1';
+            };
+        }, 150);
+
+        updateNav();
+    }
+
+    function navigate(dir) {
+        const index = currentGalleryItems.indexOf(currentItem);
+        const next = currentGalleryItems[index + dir];
+        if (next) setImage(next);
+    }
+
+    function handleSwipe() {
+        const diff = touchStartX - touchEndX;
+        const threshold = 50;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                navigate(1);
+            } else {
+                navigate(-1);
+            }
+        }
+    }
+
+    function open(item) {
+        if (!item) {
+            console.warn('[Lightbox] open() — item not found.');
+            return;
+        }
+
+        const gallery = item.closest(config.gallerySelector);
+        currentGalleryItems = gallery
+            ? Array.from(gallery.querySelectorAll(config.itemSelector))
+            : [item];
+
+        setImage(item);
+        window.Popup?.open(config.popupId);
+    }
+
+    function bindEvents() {
+        document.addEventListener('click', (e) => {
+            const item = e.target.closest(config.itemSelector);
+            if (item) {
+                e.preventDefault();
+                open(item);
+                return;
+            }
+
+            if (e.target.closest(config.prevSelector)) {
+                navigate(-1);
+                return;
+            }
+            if (e.target.closest(config.nextSelector)) {
+                navigate(1);
+                return;
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const popup = document.querySelector(config.popupId);
+            if (!popup?.classList.contains('is-active')) return;
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+        });
+
+        document.querySelector(config.popupId)?.addEventListener('popup:closed', () => {
+            const img = getImg();
+            if (img) img.src = '';
+            currentItem = null;
+            currentGalleryItems = [];
+        });
+
+        const popup = document.querySelector(config.popupId);
+        if (popup) {
+            popup.addEventListener('touchstart', (e) => {
+                const img = getImg();
+                if (e.target === img) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }
+            }, {passive: true});
+
+            popup.addEventListener('touchend', (e) => {
+                const img = getImg();
+                if (e.target === img) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }
+            }, {passive: true});
+        }
+    }
+
+    function init(options = {}) {
+        config = {...DEFAULTS, ...options};
+
+        const items = document.querySelectorAll(config.itemSelector);
+        if (!items.length) {
+            console.warn('[Lightbox] No gallery items found on page.');
+            return;
+        }
+
+        if (!document.querySelector(config.popupId)) {
+            console.warn(`[Lightbox] Popup "${config.popupId}" not found on page.`);
+            return;
+        }
+
+        bindEvents();
+    }
+
+    return {init, open};
+})();
+
+window.Lightbox = Lightbox;
+
+document.addEventListener('DOMContentLoaded', () => {
+     Lightbox.init();
+});
+
 
 const ToggleWrapper = (() => {
     const DEFAULTS = {
@@ -523,7 +656,7 @@ window.BurgerMenu = BurgerMenu;
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    StickyCenterGrid.init();
+    StickyElement.init();
     ToggleWrapper.init();
     Popup.init();
     BurgerMenu.init();
@@ -602,5 +735,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 Popup.open('.popup-thanks')
             })
         });
+    }
+})();
+
+
+(function () {
+    const header = document.querySelector('.header');
+    if(header){
+        const headerTop = header.querySelector('.header-top');
+        const headerTopH =  headerTop.getBoundingClientRect().height;
+        window.addEventListener('scroll',()=>{
+            if(window.scrollY > headerTopH){
+                header.classList.add('is-fixed')
+            }else{
+                header.classList.remove('is-fixed')
+            }
+        })
     }
 })();

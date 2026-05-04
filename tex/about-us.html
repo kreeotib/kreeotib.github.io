@@ -10,8 +10,65 @@
     <link href="assets/styles/index.css" rel="stylesheet">
   </head>
   <body>
+    <div class="menu">
+      <div class="menu__wrapper">
+        <div class="menu__header"><a class="menu__logo logo" href="/"><img class="logo__img" src="assets/media/images/logo-color.webp" draggable="false" ondragstart="return false;"></a>
+          <div class="menu__burger">
+            <div class="burger">
+              <div class="burger__wrapper">
+                <div class="burger__icon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu__content">
+          <nav class="menu-nav">
+            <ul class="menu-nav__list">
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#">Главная</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#about">О нас</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#program">Полезные материалы</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#location">Гарантия</a></li>
+              <li class="menu-nav__item"><a class="menu-nav__link" href="#pricing">Журнал проектов</a></li>
+            </ul>
+          </nav><span class="menu__divider menu__divider--mobile"></span>
+          <ul class="menu-list">
+            <li class="menu-list__row"><a class="text text--big text--semibold" href="+7 (800) 777-53-74">+7 (800) 777-53-74</a>
+              <p class="text text--middle text--grey--light">Заявки по монтажу</p>
+            </li>
+            <li class="menu-list__row"><a class="text text--big text--semibold" href="++7 (911) 257-12-50">+7 (911) 257-12-50</a>
+              <p class="text text--middle text--grey--light">Отдел продаж</p>
+            </li>
+          </ul>
+          <ul class="menu-list menu-list--contact">
+            <li><a class="menu-list__row" href="mailto:info@sankt-tehnik.ru">
+                <svg class="icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#mail"></use>
+                </svg>
+                <p class="text text--middle text--semibold">info@sankt-tehnik.ru</p></a></li>
+            <li><a class="menu-list__row" href="#" target="_blank">
+                <svg class="icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                </svg>
+                <p class="text text--middle text--semibold">Показать на карте</p></a></li>
+          </ul>
+          <button class="button button--base button--accent" data-popup=".popup-application">Заказать расчёт</button>
+        </div><span class="menu__divider"></span>
+        <div class="menu__footer">
+          <ul class="social-list">
+            <li class="social-list__item"><a class="social-link button" href="#">
+                <svg class="icon social-link" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#vk"></use>
+                </svg></a></li>
+            <li class="social-list__item"><a class="social-link button" href="#">
+                <svg class="icon social-link__icon" draggable="false" ondragstart="return false;">
+                  <use xlink:href="assets/media/images/sprite.svg#pic"></use>
+                </svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="page-wrapper">
-      <header class="header">
+      <header class="header" data-sticky>
         <div class="header-top">
           <div class="container">
             <div class="header-top__row">
@@ -50,7 +107,7 @@
               <div class="header-social">
                 <ul class="social-list header-social__list">
                   <li class="social-list__item"><a class="social-link button" href="#">
-                      <svg class="icon social-link" draggable="false" ondragstart="return false;">
+                      <svg class="icon social-link__icon" draggable="false" ondragstart="return false;">
                         <use xlink:href="assets/media/images/sprite.svg#vk"></use>
                       </svg></a></li>
                   <li class="social-list__item"><a class="social-link button" href="#">
@@ -59,7 +116,9 @@
                       </svg></a></li>
                 </ul>
               </div>
-              <div class="header-buttons"><a class="button header-buttons__item" href="#"></a><a class="button button--accent button--base header-buttons__item" href="#">Заказать расчёт</a></div>
+              <div class="header-buttons"><a class="button header-buttons__item" href="#"></a>
+                <button class="button button--accent button--base header-buttons__item" data-popup=".popup-application">Заказать расчёт</button>
+              </div>
               <div class="header-burger">
                 <div class="burger">
                   <div class="burger__wrapper"><span class="burger__text">Меню</span>
@@ -87,12 +146,12 @@
                 </div>
               </div>
               <div class="grid grid-page">
-                <div class="grid-page__column">
+                <div class="grid-page__header">
                   <div class="page-card">
                     <div class="page-card__wrapper">
                       <div class="page-card__header">
                         <p class="text text--middle text--grey">История компании</p>
-                        <p class="title title--large title--large--mobile--small">Меня зовут Иванов Евгений, я&nbsp;основатель компании <span class="title title--accent">Санкт-Техник</span></p>
+                        <p class="title title--large title--large--mobile--small page-card__title">Меня зовут Иванов <br> Евгений, я&nbsp;основатель компании <span class="title title--accent">Санкт-Техник</span></p>
                       </div>
                       <p class="page-card__text">Решил написать здесь подробно, как попал в&nbsp;строительство, как и&nbsp;где учился монтажу отопления и&nbsp;водоснабжения. Как после этого работал несколько лет свободным монтажником. Как получилось, что поступило предложение создать фирму, где я&nbsp;отвечал за&nbsp;монтаж. Как сняли клип про унитаз. Как я&nbsp;собирал по&nbsp;крупицам команду. Как разошлись с&nbsp;партнёром, и&nbsp;как я&nbsp;создал уже свою.</p>
                     </div>
@@ -103,7 +162,7 @@
                     <div class="page-content__list number-tag-list">
                       <div class="page-block">
                         <div class="page-block__wrapper">
-                          <div class="number-tag">Предыстория</div>
+                          <div class="number-tag number-tag--mobile--small">Предыстория</div>
                           <div class="page-block__text">
                             <p>В&nbsp;2003 году я&nbsp;учился на&nbsp;5&nbsp;курсе ГУТ имени проф. М.А. Бонч-Бруевича. Примерно за&nbsp;полгода до&nbsp;окончания, друг предложил вместе с&nbsp;ним пойти поработать сантехником. Несмотря на&nbsp;то, что слово &laquo;сантехник&raquo; для меня на&nbsp;тот момент было едва&nbsp;ли не&nbsp;ругательным, но&nbsp;з.п. около 800&nbsp;₽ в&nbsp;день была для меня тогда значительной, и&nbsp;я&nbsp;согласился. Что и&nbsp;где конкретно нужно будет делать особо не&nbsp;уточнял. Почему‑то предполагал, что буду ходить с&nbsp;другими сантехниками по&nbsp;затхлым подвалам и&nbsp;ремонтировать канализацию. Или по&nbsp;квартирам устанавливать унитазы. Вот такие у&nbsp;меня были стереотипы. Задерживаться более месяца на&nbsp;такой работе не&nbsp;собирался.</p>
                             <p>Но&nbsp;реальность оказалась совершенно другой.</p>
@@ -137,7 +196,7 @@
                       </div>
                       <div class="page-block">
                         <div class="page-block__wrapper">
-                          <div class="number-tag">История компании</div>
+                          <div class="number-tag number-tag--mobile--small">История компании</div>
                           <div class="page-block__text">
                             <p>Примерно в&nbsp;2014 году появилось название &laquo;Санкт-Техник&raquo;. И&nbsp;вышло это так.</p>
                             <p>Я&nbsp;приехал со&nbsp;своим напарником на&nbsp;очередной объект. Там была проходная с&nbsp;двумя охранниками.</p>
@@ -155,7 +214,7 @@
                       </div>
                       <div class="page-block">
                         <div class="page-block__wrapper">
-                          <div class="number-tag">Открытие</div>
+                          <div class="number-tag number-tag--mobile--small">Открытие</div>
                           <div class="page-block__text">
                             <p>Объекты шли. Квалифицированных монтажников катастрофически не&nbsp;хватало. Примерно для половины текущих объектов я&nbsp;набирал студентов и&nbsp;других людей без опыта и&nbsp;каждое утро на&nbsp;объектах давал задание&nbsp;&mdash; что нужно смонтировать за&nbsp;день. На&nbsp;следующее утро проверял, что и&nbsp;как сделано и&nbsp;ставил следующую задачу. Так достаточно неплохо монтировал объекты.</p>
                             <p>Текучка кадров была огромная, так как абсолютное большинство не&nbsp;устраивали меня отношением к&nbsp;делу. Новые люди без опыта и&nbsp;с&nbsp;опытом появлялись постоянно и&nbsp;увольнялись мной или уходили сами. Несколько человек меня кинули на&nbsp;деньги, инструмент и&nbsp;материал.</p>
@@ -176,7 +235,7 @@
                       </div>
                       <div class="page-block">
                         <div class="page-block__wrapper">
-                          <div class="number-tag">Расставание</div>
+                          <div class="number-tag number-tag--mobile--small">Расставание</div>
                           <div class="page-block__text">
                             <p>В&nbsp;конце 2018 года наши взгляды на&nbsp;дальнейшее развитие с&nbsp;партнёром разошлись, и&nbsp;мы&nbsp;расстались.</p>
                             <p>Для меня расставание было достаточно напряжённым, так как рекламой, появлением заказов, поставкой материалов, бухгалтерией и&nbsp;развитием занимался&nbsp;он. Я, напомню, отвечал только за&nbsp;монтаж, его качество и&nbsp;эстетику.</p>
@@ -189,7 +248,7 @@
                       </div>
                       <div class="page-block">
                         <div class="page-block__wrapper">
-                          <div class="number-tag">Развитие</div>
+                          <div class="number-tag number-tag--mobile--small">Развитие</div>
                           <div class="page-block__text">
                             <p>Большинство монтажников при расставании ушли со&nbsp;мной, но&nbsp;некоторые остались, так как впереди была неопределённость и&nbsp;клиентов практически не&nbsp;было.</p>
                             <p>С&nbsp;одной стороны, пугало&nbsp;то, что всём нужно было начинать разбираться самому,&nbsp;&mdash; открывать ООО и&nbsp;ИП, разбираться с&nbsp;бухгалтерией, делать сайт, разбираться в&nbsp;рекламе и&nbsp;заниматься поступлением клиентов. Но&nbsp;с&nbsp;другой, теперь всё зависело от&nbsp;меня и&nbsp;людей рядом со&nbsp;мной. Поэтому, выйдя из&nbsp;зоны комфорта, стал работать значительно больше, что в&nbsp;скором времени заставило появиться результату.</p>
@@ -431,11 +490,69 @@
             <div class="footer-bottom">
               <div class="footer-bottom__wrapper"><a class="text text--grey--light text--medium text--base" href="#" target="_blank">Политика конфиденциальности</a>
                 <p class="text text--grey--light text--medium text--base">Санкт-Техник 2026</p>
-                <p class="text text--grey--light text--medium text--base">Разработка сайта:<a href="#" target="_blank">akcent</a></p>
+                <p class="text text--grey--light text--medium text--base">Разработка сайта:&nbsp;<a href="#" target="_blank">akcent</a></p>
               </div>
             </div>
           </div>
         </footer>
+      </div>
+    </div>
+    <div class="float-buttons"><a class="float-button button" href="#"><img class="float-button__icon" src="assets/media/images/icons/tg-color.svg" draggable="false" ondragstart="return false;"><span class="float-button__text">Написать нам <span class="text text--semibold">в&nbsp;Telegram</span></span></a><a class="float-button button" href="#"><img class="float-button__icon" src="assets/media/images/icons/max-color.svg" draggable="false" ondragstart="return false;"><span class="float-button__text">Написать нам <span class="text text--semibold">в&nbsp;MAX</span></span></a></div>
+    <div class="popup popup-video" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal-video">
+            <div class="modal-video__wrapper">
+              <video src="" controls></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-application" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <form class="modal form"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper">
+              <div class="modal__header">
+                <p class="title title--large">Заказать расчёт</p>
+                <p class="tex text--big">Оставьте заявку&nbsp;&mdash; наш менеджер свяжется с&nbsp;вами, подробно всё объяснит и&nbsp;сделает расчёт</p>
+              </div>
+              <div class="form__content">
+                <label class="input">
+                  <input class="input__item" type="text" required placeholder="Ваше имя*">
+                </label>
+                <label class="input">
+                  <input class="input__item js-phone-mask" type="text" minlength="17" required placeholder="Ваш телефон*">
+                </label>
+              </div>
+              <div class="form__footer">
+                <button class="button button--full button--accent button--base" type="submit">Отправить заявку</button>
+                <p class="form__text">Отправляя заявку, вы&nbsp;соглашаетесь с&nbsp;Политикой конфиденциальности</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-thanks" data-lenis-prevent>
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal modal-thanks"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper modal__wrapper--thanks"><span class="modal__icon">
+                <svg class="icon">
+                  <use xlink:href="assets/media/images/sprite.svg#check"></use>
+                </svg></span>
+              <div class="modal__header">
+                <p class="title title--large">Ваша заявка отправлена</p>
+                <p class="tex text--big">Наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

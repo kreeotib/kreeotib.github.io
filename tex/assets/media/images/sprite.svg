@@ -41,8 +41,8 @@
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398 512" id="download">
         <path fill="currentColor" d="M0 512h398.222v-60.234h-398.222zM398.222 180.706h-113.778v-180.706h-170.667v180.706h-113.778l199.111 210.823 199.111-210.823z"></path>
     </symbol>
-    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427 512" id="play">
-        <path fill="currentColor" d="M426.666 246.333l-426.666 246.335v-492.672l426.666 246.337z"></path>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="play">
+        <path fill="currentColor" d="M349.091 256l-139.637 80.62v-161.239l139.637 80.619z"></path>
     </symbol>
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="pin">
         <path fill="currentColor" d="M258.57 0c-102.245 0-185.427 83.182-185.427 185.426 0 126.888 165.939 313.167 173.004 321.034 6.636 7.391 18.222 7.38 24.846 0 7.065-7.866 173.002-194.146 173.002-321.034 0-102.244-83.182-185.426-185.425-185.426zM258.57 278.719c-51.442 0-93.292-41.851-93.292-93.293s41.851-93.292 93.292-93.292c51.441 0 93.291 41.851 93.291 93.293s-41.85 93.292-93.291 93.292z"></path>
