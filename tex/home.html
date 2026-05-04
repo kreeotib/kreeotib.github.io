@@ -235,8 +235,9 @@
                           <script type="text/javascript">
                             (function () {
                                 var frame = document.currentScript.closest('.works-vk__frame');
+                                var ratio = window.innerWidth < 641 ? 144 : window.innerWidth < 1241 ? 134 : 162;
                                 var width = frame.offsetWidth * 95 / 100;
-                                var height = width * 165 / 100;
+                                var height = width * ratio / 100;
                             
                                 VK.Widgets.Group("vk_groups", {
                                     mode: 4,
