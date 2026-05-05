@@ -322,6 +322,9 @@ body.no-scroll {
   width: 100%;
   margin: 0 auto;
 
+  @include mobile{
+    max-width: 100%;
+  }
   &--white {
     background-color: #fff;
     border-radius: 1rem;
@@ -887,7 +890,6 @@ body.no-scroll {
         @include no-mobile {
           background-color: #000;
           color: #fff;
-          border-radius: 1rem;
         }
       }
     }
@@ -967,6 +969,7 @@ body.no-scroll {
     flex-direction: column;
     @include mobile {
       padding-top: 0;
+      width: 100%;
     }
   }
 
@@ -998,7 +1001,7 @@ body.no-scroll {
     margin-top: 50vh;
     padding-top: 6.25rem;
     @include mobile {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, #f8f8ee 26.92%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, #f2f2f2 26.92%);
     }
   }
 
@@ -1042,6 +1045,7 @@ body.no-scroll {
 
   &-item {
     position: relative;
+    overflow: hidden;
 
     &:has(.article-plug) {
       .article-item__wrapper {
@@ -1072,6 +1076,13 @@ body.no-scroll {
 
     &__category {
       color: #575555;
+    }
+
+    &__title{
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     &__content {
@@ -1173,6 +1184,7 @@ body.no-scroll {
       background-color: #FFFFFF;
       border-radius: 1rem;
       height: 100%;
+      border:1px solid rgba(220, 220, 220, 1);
     }
 
     &__text {
@@ -1249,66 +1261,78 @@ body.no-scroll {
     flex-wrap: wrap;
     gap: .5rem;
 
-    @include no-mobile{
-      &__item{
-        position: absolute;
 
-        &:first-child{
-          left: 7.25rem;
-          top: 3.375rem;
-        }
-        &:nth-child(2){
-          left: 4rem;
-          top: 9.375rem;
-        }
-        &:nth-child(3){
-          right: 8.125rem;
-          top: 8.125rem;
-        }
-        &:nth-child(4){
-          top: 2.5rem;
-          right: 5.25rem;
-        }
-        &:nth-child(5){
-          bottom: 5.25rem;
-          left: 12.5rem;
-        }
-        &:nth-child(6){
-          bottom: 2.5rem;
-          left: 50%;
-          transform: translateX(-20%);
-        }
-        &:nth-child(7){
-          top: 8.125rem;
-          left: 17rem;
-        }
-        &:nth-child(8){
-          bottom: 6.25rem;
-          right: 16.25rem;
-        }
-        &:nth-child(9){
-          bottom: 3.375rem;
-          left: 18.75rem;
-        }
-        &:nth-child(10){
-          bottom: 2.5rem;
-          left: 4.375rem;
-        }
-        &:nth-child(11){
-          bottom: 3rem;
-          right: 4.625rem;
-        }
+    &--relative{
+      max-width: 28rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    &:not(&--relative){
+      @include no-mobile{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
       }
     }
 
-    @include no-mobile{
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
+    &:not(&--relative) &__item{
+      @include no-mobile{
+          position: absolute;
+
+          &:first-child{
+            left: 7.25rem;
+            top: 3.375rem;
+          }
+          &:nth-child(2){
+            left: 4rem;
+            top: 9.375rem;
+          }
+          &:nth-child(3){
+            right: 8.125rem;
+            top: 8.125rem;
+          }
+          &:nth-child(4){
+            top: 2.5rem;
+            right: 5.25rem;
+          }
+          &:nth-child(5){
+            bottom: 5.25rem;
+            left: 12.5rem;
+          }
+          &:nth-child(6){
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-20%);
+          }
+          &:nth-child(7){
+            top: 8.125rem;
+            left: 17rem;
+          }
+          &:nth-child(8){
+            bottom: 6.25rem;
+            right: 16.25rem;
+          }
+          &:nth-child(9){
+            bottom: 3.375rem;
+            left: 18.75rem;
+          }
+          &:nth-child(10){
+            bottom: 2.5rem;
+            left: 4.375rem;
+          }
+          &:nth-child(11){
+            bottom: 3rem;
+            right: 4.625rem;
+          }
+        }
     }
+
+
+
     &__item {
       flex-shrink: 0;
     }
