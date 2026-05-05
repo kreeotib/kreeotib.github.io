@@ -1261,6 +1261,7 @@ body.no-scroll {
     flex-wrap: wrap;
     gap: .5rem;
 
+    z-index: 3;
 
     &--relative{
       max-width: 28rem;
@@ -1421,6 +1422,8 @@ body.no-scroll {
       left: 0;
       top: var(--page-top-padding-minus);
       width: 100%;
+      z-index: 0;
+      pointer-events: none;
       height:calc(100% + (2 * var(--showcase-gap)) + var(--page-top-padding));
       background-image:
               linear-gradient(to right, rgba(#000000,.03) 1px, transparent 1px),
