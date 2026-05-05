@@ -85,7 +85,8 @@ a {
 a:not(.button):hover {
   color: var(--color-accent-hover);
 }
-p {
+p,
+a {
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
 }
@@ -133,29 +134,34 @@ p {
   align-items: center;
   justify-content: center;
 }
-.float-button:hover .float-button__text {
+.float-button:hover .float-button__content {
   opacity: 1;
   visibility: visible;
+  width: 9.625rem;
 }
-.float-button__text {
+.float-button__content {
   position: absolute;
   right: calc(100% + 1.25rem);
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: nowrap;
+  width: 0;
   opacity: 0;
   visibility: hidden;
+  word-break: keep-all;
+  transition:
+    0.3s visibility,
+    0.5s opacity,
+    0.5s width;
   padding: 0.5rem 1.125rem;
-  border-radius: 1.25rem;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: var(--text-size-middle);
-  width: 9.625rem;
   height: 4.375rem;
+  border-radius: 1.25rem;
   background: #E9F0F8;
-  transition: 0.3s visibility, 0.5s opacity;
 }
-.float-button__text::before {
+.float-button__content::before {
   content: "";
   width: 0;
   height: 0;
@@ -167,6 +173,13 @@ p {
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
+}
+.float-button__text {
+  font-size: var(--text-size-middle);
+  line-height: 1.1;
+  display: block;
+  width: 100%;
+  overflow: hidden;
 }
 .float-button__icon {
   border-radius: 50%;
@@ -447,6 +460,8 @@ p {
   justify-content: center;
   width: max-content;
   max-width: 100%;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
 }
 .button:hover {
   cursor: pointer;
@@ -532,6 +547,12 @@ p {
 .button--full {
   max-width: 100%;
   width: 100%;
+}
+@media screen and (max-width: 640px) {
+  .button--full--mobile {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 .button__text {
   align-self: center;
@@ -2434,10 +2455,20 @@ p {
   flex-direction: column;
   gap: 1.25rem;
 }
+@media screen and (max-width: 640px) {
+  .diff-block__list {
+    gap: 1rem;
+  }
+}
 .diff-block__list li {
   display: flex;
   align-items: flex-start;
   gap: 0.625rem;
+}
+@media screen and (max-width: 640px) {
+  .diff-block__list li {
+    gap: 0.375rem;
+  }
 }
 .diff-block__list li::before {
   content: "";
@@ -2448,6 +2479,11 @@ p {
   background: var(--color-accent);
   border-radius: 50%;
   transform: translateY(125%);
+}
+@media screen and (max-width: 640px) {
+  .diff-block__list li::before {
+    transform: translateY(0.1rem);
+  }
 }
 .diff-block__wrapper {
   display: flex;
