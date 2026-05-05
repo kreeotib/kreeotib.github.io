@@ -980,6 +980,10 @@ body.no-scroll {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    &--article{
+      padding-left: 0;
+      padding-right: 0;
+    }
     @include mobile{
       gap: 3.125rem;
 
