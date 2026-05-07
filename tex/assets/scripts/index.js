@@ -743,7 +743,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header');
     if(header){
         const headerTop = header.querySelector('.header-top');
+        const headerMain = header.querySelector('.header-main');
         const headerTopH =  headerTop.getBoundingClientRect().height;
+        const headerMainH =  headerMain.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--header-main-height', `${headerMainH}px`)
         window.addEventListener('scroll',()=>{
             if(window.scrollY > headerTopH){
                 header.classList.add('is-fixed')
