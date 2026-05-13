@@ -887,11 +887,142 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({initialDelay: 300});
 });
 
+const Popup = (() => {
+    const CLOSE_DURATION = 210;
+
+    let activePopup = null;
+
+    function find(selector) {
+        const el = document.querySelector(selector);
+        if (!el) {
+            console.warn(`[Popup] Element "${selector}" not found on page.`);
+            return null;
+        }
+        return el;
+    }
+
+    function close() {
+        if (!activePopup) return;
+
+        const popup = activePopup;
+        activePopup = null;
+
+        ScrollLock.unlock();
+        popup.classList.add('is-closing');
+
+        setTimeout(() => {
+            popup.classList.remove('is-active', 'is-closing');
+            popup.dispatchEvent(new CustomEvent('popup:closed', {bubbles: true}));
+        }, CLOSE_DURATION);
+    }
+
+    function open(selector) {
+        const popup = find(selector);
+        if (!popup) return;
+
+        if (activePopup && activePopup !== popup) close();
+
+        activePopup = popup;
+        popup.classList.add('is-active');
+        ScrollLock.lock();
+        popup.scrollTop = 0;
+        popup.dispatchEvent(new CustomEvent('popup:opened', {bubbles: true}));
+    }
+
+    function bindTriggers() {
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('[data-popup]');
+            if (trigger) {
+                e.preventDefault();
+                open(trigger.dataset.popup);
+                return;
+            }
+
+            if (e.target.closest('.popup-close')) {
+                close();
+                return;
+            }
+
+            if (e.target.closest('.popup.is-active') && !e.target.closest('.popup__content')) {
+                close();
+            }
+        });
+    }
+
+    function bindKeyboard() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && activePopup) close();
+        });
+    }
+
+    function init() {
+        bindTriggers();
+        bindKeyboard();
+    }
+
+    return {init, open, close};
+})();
+
+window.Popup = Popup;
+
+const ScrollLock = (() => {
+    let lockCount = 0;
+    let scrollbarWidth = 0;
+
+    function getScrollbarWidth() {
+        const div = document.createElement('div');
+        div.style.cssText = 'width:100px;height:100px;overflow:scroll;position:absolute;top:-9999px;';
+        document.body.appendChild(div);
+        const width = div.offsetWidth - div.clientWidth;
+        document.body.removeChild(div);
+        return width;
+    }
+
+    function applyLock() {
+        document.body.classList.add('no-scroll')
+        if (window.lenis && typeof window.lenis.stop === 'function') {
+            window.lenis.stop();
+        }
+    }
+
+    function applyUnlock() {
+        document.body.classList.remove('no-scroll')
+        if (window.lenis && typeof window.lenis.start === 'function') {
+            window.lenis.start();
+        }
+    }
+
+    function lock() {
+        lockCount++;
+        if (lockCount === 1) applyLock();
+    }
+
+    function unlock() {
+        if (lockCount === 0) return;
+        lockCount--;
+        if (lockCount === 0) applyUnlock();
+    }
+
+    function reset() {
+        lockCount = 0;
+        applyUnlock();
+    }
+
+    function isLocked() {
+        return lockCount > 0;
+    }
+
+    return {lock, unlock, reset, isLocked};
+})();
+
+window.ScrollLock = ScrollLock;
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
     PhotoSlider.init()
     Tabs.init();
+    Popup.init();
     AnchorSpy.init();
 });
 

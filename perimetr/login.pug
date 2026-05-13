@@ -1,0 +1,120 @@
+-
+    const nav = [
+        {title: 'о проекте', href: '#about'},
+        {title: 'программа', href: '#program'},
+        {title: 'локация 2026', href: '#location'},
+        {title: 'цены', href: '#pricing'},
+        {title: 'участие', href: '#contact'},
+        {title: 'faq', href: '#faq'}
+    ]
+
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        link(rel="stylesheet" href="assets/styles/css/reset.css")
+        link(rel="stylesheet" href="assets/styles/css/index.css")
+        title Периметр
+    body
+        .popup.popup-enter
+            .popup__wrapper.popup__wrapper--container
+                .popup__overlay
+                .popup__content
+                    form.modal.form
+                        span.modal__close.popup-close
+                        .modal__wrapper
+                            .form__wrapper
+                                p.title.title--base.title--white Войти в Периметр управления
+                                p.text.text--base.text--white.form__text Разберем процесс и адаптируем систему под ваши задачи
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+                                    .form-grid__item.form-grid__item--full
+                                        label.checkbox
+                                            input.checkbox__input(type="checkbox" required)
+                                            span.checkbox__checkmark
+                                                svg.icon
+                                                    use(xlink:href="assets/images/sprite.svg#check")
+                                            span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
+        .cookie
+            .cookie__wrapper
+                p.cookie__text Для оптимизации работы сайта мы используем #[a(href="#") файлы cookie]. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение
+                button.button.button--base.button--accent.button--full.cookie__button Отлично
+        .page-wrapper
+            header.header.header--login
+                .header__wrapper
+                    .container
+                        .header__row
+                            a(href="#").logo.header__logo.image
+                                svg.logo__img.image__item
+                                    use(xlink:href="assets/images/sprite.svg#logo")
+                            .header__buttons.button-list.button-list--header
+                                a(href="#").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#mail")
+                                a(href="#").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone")
+                                a(href="#").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Оставить заявку
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#connect")
+                                a(href="#" data-popup=".popup-enter").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Войти
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#home")
+                                a(href="#" ).button.button--base.button--icon--mobile.button--accent
+                                    span.button__text Контакты
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone-burger")
+            main.content
+                .login
+                    .login__bg.image
+                        img(src="assets/images/login.webp" draggable="false" ondragstart="return false;").image__item
+                    .login__content.form
+                        .form__wrapper
+                            p.title.title--base.title--white Войти в Периметр управления
+                            p.text.text--base.text--white.form__text Разберем процесс и адаптируем систему под ваши задачи
+                            .form-grid
+                                .form-grid__item
+                                    label.input
+                                        input.input__item(type="text" placeholder="Имя")
+                                .form-grid__item
+                                    label.input
+                                        input.input__item(type="text" placeholder="Название компании")
+                                .form-grid__item
+                                    label.input
+                                        input.input__item(type="text" placeholder="Телефон")
+                                .form-grid__item
+                                    label.input
+                                        input.input__item(type="text" placeholder="Email")
+                                .form-grid__item.form-grid__item--full
+                                    button(type="submit").button.button--full.button--big.button--white
+                                        span.button__text Отправить
+                                .form-grid__item.form-grid__item--full
+                                    label.checkbox
+                                        input.checkbox__input(type="checkbox" required)
+                                        span.checkbox__checkmark
+                                            svg.icon
+                                                use(xlink:href="assets/images/sprite.svg#check")
+                                        span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
+        script(src="assets/scripts/index.js")

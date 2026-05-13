@@ -22,6 +22,39 @@ html(lang="ru")
         link(rel="stylesheet" href="assets/styles/css/index.css")
         title Периметр
     body
+        .popup.popup-enter
+            .popup__wrapper.popup__wrapper--container
+                .popup__overlay
+                .popup__content
+                    form.modal.form
+                        span.modal__close.popup-close
+                        .modal__wrapper
+                            .form__wrapper
+                                p.title.title--base.title--white Войти в Периметр управления
+                                p.text.text--base.text--white.form__text Разберем процесс и адаптируем систему под ваши задачи
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+                                    .form-grid__item.form-grid__item--full
+                                        label.checkbox
+                                            input.checkbox__input(type="checkbox" required)
+                                            span.checkbox__checkmark
+                                                svg.icon
+                                                    use(xlink:href="assets/images/sprite.svg#check")
+                                            span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
         .cookie
             .cookie__wrapper
                 p.cookie__text Для оптимизации работы сайта мы используем #[a(href="#") файлы cookie]. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение
@@ -45,11 +78,11 @@ html(lang="ru")
                                     span.button__text Оставить заявку
                                     svg.button__icon
                                         use(xlink:href="assets/images/sprite.svg#connect")
-                                a(href="#").button.button--base.button--icon--mobile.button--bordered
+                                a(href="#" data-popup=".popup-enter").button.button--base.button--icon--mobile.button--bordered
                                     span.button__text Войти
                                     svg.button__icon
                                         use(xlink:href="assets/images/sprite.svg#home")
-                                a(href="#").button.button--base.button--icon--mobile.button--accent
+                                a(href="#" ).button.button--base.button--icon--mobile.button--accent
                                     span.button__text Контакты
                                     svg.button__icon
                                         use(xlink:href="assets/images/sprite.svg#phone-burger")
@@ -80,7 +113,7 @@ html(lang="ru")
                                 .section__column
                                     p.title.title--base.title--center.section__title.about__title Приемка, фотоактирование, диагностика и движение — в одной системе с полной прозрачностью
                                     .button-list.button-list--shadow.about__nav
-                                        a(href="#").button.button--base.button--icon.button--accent.about__button.tabs-button.tabs-button-next
+                                        a(href="#").button.button--base.button--icon.button--accent.about__button.tabs-button.tabs-button-prev
                                             svg.button__icon
                                                 use(xlink:href="assets/images/sprite.svg#arrow-left")
                                         a(href="#").button.button--base.button--icon--mobile.button--bordered.about__button.tabs-button
@@ -95,7 +128,7 @@ html(lang="ru")
                                             span.button__text Единая аналитическая система
                                             svg.button__icon
                                                 use(xlink:href="assets/images/sprite.svg#audience")
-                                        a(href="#").button.button--base.button--icon.button--accent.about__button.tabs-button.tabs-button-prev
+                                        a(href="#").button.button--base.button--icon.button--accent.about__button.tabs-button.tabs-button-next
                                             svg.button__icon
                                                 use(xlink:href="assets/images/sprite.svg#arrow-right")
                                     .tabs-content-wrapper
@@ -251,7 +284,7 @@ html(lang="ru")
                                                 span.button__text Оставить заявку
                                                 svg.button__icon
                                                     use(xlink:href="assets/images/sprite.svg#connect")
-                                            a(href="#").button.button--base.button--accent
+                                            a(href="#" data-popup=".popup-enter").button.button--base.button--accent
                                                 span.button__text Войти
                                                 svg.button__icon
                                                     use(xlink:href="assets/images/sprite.svg#home")
@@ -654,10 +687,10 @@ html(lang="ru")
                 .nav
                     .nav-buttons
                         .button-list.button-list--accent.button-list--column
-                            a(href="#").button.button--base.button--icon.button--accent.anchor-next
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-prev
                                 svg.button__icon
                                     use(xlink:href="assets/images/sprite.svg#arrow-top")
-                            a(href="#").button.button--base.button--icon.button--accent.anchor-prev
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-next
                                 svg.button__icon
                                     use(xlink:href="assets/images/sprite.svg#arrow-down")
                     ul.nav-list.button-list.button-list--nav
@@ -691,7 +724,7 @@ html(lang="ru")
                                     use(xlink:href="assets/images/sprite.svg#audience")
                                 span.button__text Целевая аудитория
                         li.nav-list__item
-                            a(href="#").button.button--base.button--icon.button--accent
+                            a(href="#" data-popup=".popup-enter").button.button--base.button--icon.button--accent
                                 svg.button__icon
                                     use(xlink:href="assets/images/sprite.svg#home")
                         li.nav-list__item
