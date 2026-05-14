@@ -86,23 +86,74 @@ html(lang="ru")
                     .section
                         .container.container--small
                             .section__column
-                                p.title.title--base.title--center.page-title Список страниц
-                                ul(style="text-align:center; font-size:var(--title-size-small); display:flex;flex-direction:column;gap:2rem;")
-                                    li
-                                        a(href="home.html") Главная
-                                    li
-                                        a(href="about.html") О нас
-                                    li
-                                        a(href="about-system.html") О системе
-                                    li
-                                        a(href="login.html") Вход
-                                    li
-                                        a(href="policy.html") Политика
-                                    li
-                                        a(href="policy-user.html") Политика пользоватеель
-                                    li
-                                        a(href="user-agre.html") Соглашение
+                                p.title.title--base.title--center.page-title О компании «ПериметрТех»
+                                .button-list.button-list--accent.button-list--center
+                                    a(href="#").button.button--base.button--accent
+                                        span.button__text Скачать документ
+                                        svg.button__icon
+                                            use(xlink:href="assets/images/sprite.svg#download")
+                                p.text.text--base.text--center Актуальная версия от 04 мая 2026 г.
+                                .block-list
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Вводная информация
+                                                span.block__icon
+                                                input(type="checkbox" checked).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base Наша ИТ-компания «ПериметрТех» является разработчиком и исключительным правообладателем программного обеспечения – Информационной системы «ПериметрВан» (ИС «ПериметрВан»), предназначенной для комплексного контроля жизненного цикла транспортных средств.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Функциональными возможности
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base Основными функциональными возможностями ИС «ПериметрВан» являются:<br>
+                                                        | #[span.dot •] учет транспортных средств; <br>
+                                                        | #[span.dot •] учет заявок на операции на площадках ответственного хранения; <br>
+                                                        | #[span.dot •] учет взаимодействия лизинговых компаний, банков с организациями стоянок и КПП; <br>
+                                                        | #[span.dot •] формирование отчетности и документов.<br> <br>
+                                                        | ИС «ПериметрВан» реализуется в виде веб-сервиса и мобильного приложения и распространяется на основании возмездной неисключительной (простой) лицензии. <br> <br>
+                                                        | В процессе разработки программного обеспечения ИС «ПериметрВан» наша команда использовала современный технологический стек: язык программирования PHP, фреймворк Laravel, систему управления базами данных PostgreSQL, веб-сервер Nginx, контейнеризацию Kubernetes, токен доступа формата JSON Web Token. Архитектура платформы реализована по клиент-серверной модели. <br><br>
+                                                        | Помимо предоставления лицензий, мы осуществляем комплексное внедрение, модификацию и сопровождение работы ИС «ПериметрВан» на площадках, разработку и доработку отдельных модулей под потребности деятельности заказчика. <br>
+                                                        | Стоимость лицензии, внедрения ИС «ПериметрВан» и оказания услуг по техническому сопровождению рассчитывается индивидуально, запрос можно направить по электронной почте: Hello@perimetr.one или по номеру телефона +7 495 141 21 00.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Вводная информация
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base Общество с ограниченной ответственностью «ПериметрТех» (ООО «ПериметрТех») <br>
+                                                        | ИНН 9707055346 <br>
+                                                        | КПП 770701001 <br>
+                                                        | ОГРН 1267700023117 <br>
+                                                        | Юридический адрес: 27055, г. Москва, вн.тер.г. Муниципальный Округ Тверской, ул Новослободская, д. 50/1 стр. 2, кв. 137 <br>
+                                                        | Основной вид деятельности (код ОКВЭД): 62.01 Разработка компьютерного программного обеспечения <br>
+                                                        | Коды деятельности в области ИТ в соответствии с Приказом Минцифры России от 11.05.2023 № 449 «Об утверждении перечня видов деятельности в области информационных технологий» – 1.01, 2.01 <br>
+                                                        | Телефон: +7 495 141 21 00 <br>
+                                                        | Адрес электронной почты: Hello@perimetr.one
 
+                    .download
+                        .download__bg.image
+                            img.image__item(src="assets/images/download/bg.webp" draggable="false" ondragstart="return false;")
+                        .download__wrapper
+                            .container.container--small
+                                .download__grid
+                                    .download-card
+                                        .download-card__wrapper
+                                            p.download-card__title.title.title--white.title--base Функциональные характеристики ПО
+                                            p.text.text--base.text--white Настоящий документ представляет собой руководство пользователя программного обеспечения Информационная система «ПериметрВан».
+                                            a(href="#").button.button--base.button--accent.button--full Скачать документ
+                                    .download-card
+                                        .download-card__wrapper
+                                            p.download-card__title.title.title--white.title--base Руководство пользователя ПО
+                                            p.text.text--base.text--white Настоящий документ представляет собой руководство пользователя программного обеспечения Информационная система «ПериметрВан».
+                                            a(href="#").button.button--base.button--accent.button--full Скачать документ
                 .nav
                     .nav-buttons
                         .button-list.button-list--accent.button-list--column

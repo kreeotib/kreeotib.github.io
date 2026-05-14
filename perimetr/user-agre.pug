@@ -1,0 +1,360 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        link(rel="stylesheet" href="assets/styles/css/reset.css")
+        link(rel="stylesheet" href="assets/styles/css/index.css")
+        title Периметр
+    body
+        .popup.popup-enter
+            .popup__wrapper.popup__wrapper--container
+                .popup__overlay
+                .popup__content
+                    form.modal.form
+                        span.modal__close.popup-close
+                        .modal__wrapper
+                            .form__wrapper
+                                p.title.title--base.title--white Войти в Периметр управления
+                                p.text.text--base.text--white.form__text Разберем процесс и адаптируем систему под ваши задачи
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+                                    .form-grid__item.form-grid__item--full
+                                        label.checkbox
+                                            input.checkbox__input(type="checkbox" required)
+                                            span.checkbox__checkmark
+                                                svg.icon
+                                                    use(xlink:href="assets/images/sprite.svg#check")
+                                            span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
+        .cookie
+            .cookie__wrapper
+                p.cookie__text Для оптимизации работы сайта мы используем #[a(href="#") файлы cookie]. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение
+                button.button.button--base.button--accent.button--full.cookie__button Отлично
+        .page-wrapper
+            header.header
+                .header__wrapper
+                    .container
+                        .header__row
+                            a(href="#").logo.header__logo.image
+                                svg.logo__img.image__item
+                                    use(xlink:href="assets/images/sprite.svg#logo")
+                            .header__buttons.button-list.button-list--header
+                                a(href="#").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#mail")
+                                a(href="#").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone")
+                                a(href="#").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Оставить заявку
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#connect")
+                                a(href="#" data-popup=".popup-enter").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Войти
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#home")
+                                a(href="#" ).button.button--base.button--icon--mobile.button--accent
+                                    span.button__text Контакты
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone-burger")
+            main.content
+                .hero.hero--page
+                    .hero__bg.image
+                        picture.image__item
+                            <source srcset="assets/images/hero/bg-m.webp" media="(max-width: 640px)">
+                            img(src="assets/images/hero/bg.webp" draggable="false" ondragstart="return false;")
+                .content__wrapper.content__wrapper--small
+                    .section
+                        .container.container--small
+                            .section__column
+                                p.title.title--base.title--center.page-title Пользовательское соглашение
+                                p.text.text--base.text--center Актуальная версия от 04 мая 2026 г.
+                                .button-list.button-list--accent.button-list--center
+                                    a(href="#").button.button--base.button--accent
+                                        span.button__text Скачать документ
+                                        svg.button__icon
+                                            use(xlink:href="assets/images/sprite.svg#adownload")
+                                .block-list
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Вводная информация
+                                                span.block__icon
+                                                input(type="checkbox" checked).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base Настоящее Пользовательское соглашение (далее — Соглашение) регулирует отношения по предоставлению прав использования Платформы «ПериметрВан» путем предоставления удаленного доступа к ней через информационно-телекоммуникационную сеть «Интернет» между Обществом с ограниченной ответственностью «ПЕРИМЕТРТЕХ» (ИНН 9707055346), которое является юридическим лицом, созданным на территории Российской Федерации и в соответствии с законодательством Российской Федерации, с одной стороны, и юридическим лицом или индивидуальным предпринимателем, действующими по настоящему Соглашению в качестве Заказчика или Стоянки, принявшими условия настоящего Соглашения путём присоединения к настоящему Соглашению в целом и безоговорочно, с другой стороны (далее - Стороны). <br>
+                                                        | Настоящее Соглашение и отношения Сторон, возникшие из настоящего Соглашения, регулируются законодательством Российской Федерации. <br>
+                                                        | Настоящее Соглашение в соответствии со ст. 435 Гражданского кодекса Российской Федерации является непубличной офертой - адресованной &nbsp;юридическим лицам и индивидуальным предпринимателям предложением заключить настоящее Соглашение на указанных в нём условиях.
+
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Основные термины и определения
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base #[b 1.1. Платформа «ПериметрВан»/ Платформа] — принадлежащая Исполнителю информационная платформа, включая программное обеспечение для ЭВМ, базы данных, веб-интерфейсы, мобильные интерфейсы, API, интеграционные модули, отчеты, журналы событий, справочники, иные цифровые модули и функциональные элементы, предназначенные для автоматизации процессов учета, хранения, перемещения, осмотра, обслуживания, согласования, контроля и аналитики в отношении транспортных средств, техники, стоянок, пользователей, подрядчиков и связанных с этим операций. <br>
+                                                         | Платформа предназначена для учёта транспортных средств Заказчика, находящихся на Стоянках, заявок на операции на площадках ответственного хранения (Стоянок), взаимодействия Заказчика&nbsp; со Стоянками и контрольно-пропускных пунктов Стоянок, формирования отчётности и документов. <br>
+                                                         | #[b 1.2.&nbsp; Исполнитель&nbsp;]– Общество с ограниченной ответственностью «ПЕРИМЕТРТЕХ». <br>
+                                                         | #[b 1.3.&nbsp;Заказчик&nbsp;] –&nbsp; юридическое лицо или индивидуальный предприниматель, прошедшее процедуру регистрации в Платформе и имеющее право использования функций Платформы в соответствии с уровнем доступа (зарегистрированный/полноправный), заинтересованные на возмездной основе пользоваться Платформой в соответствии с ее функциональным назначением. <br>
+                                                         | #[b 1.4.&nbsp;Регистрация&nbsp;]— действие, в результате которого Пользователь получает доступ к базе данных Платформы,&nbsp; получает уникальные аутентификационные данные для входа в закрытую часть Платформы, а также может получить уникальный User ID, используемый для подписи документов в Платформе. <br>
+                                                         | #[b 1.5.&nbsp;Личный кабинет&nbsp;]— элемент закрытой части Платформы, автоматизированное рабочее место Пользователя. <br>
+                                                         | #[b 1.6.&nbsp;Пользователь&nbsp;]— физическое лицо, представитель Заказчика или Стоянки, использующее логин и пароль для входа в Личный кабинет и осуществляющее фактические и юридические действия в Платформе от имени Заказчика или Стоянки с учетом присвоенной роли и набора полномочий Пользователя. <br>
+                                                         | #[b 1.7.&nbsp;Мастер-аккаунт&nbsp;]— Пользователь, наделенный полномочиями по совершению полного комплекса действий, связанных с работой в Личном кабинете, в том числе с возможностью выдачи ролей другим Пользователям данного Заказчика или Стоянки. <br>
+                                                         | #[b 1.8. Сайт] — сайт в сети Интернет, расположенный по адресу: my.perimetr.one и perimetr.one, на котором размещена Платформа.
+                                                         | #[b 1.9. Стоянки] — площадки ответственного хранения, на которых Заказчик размещает транспортные средства.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Предмет соглашения
+                                                span.block__icon
+                                                input(type="checkbox" checked).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 2.1. В соответствии с настоящим Соглашением Исполнитель предоставляет Заказчику и Стоянкам права использования Платформы путем предоставления удаленного доступа через информационно-телекоммуникационную сеть «Интернет» к функционалу Платформы, а Заказчик и Стоянки обязуются соблюдать правила, установленные настоящим Соглашением.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Предмет соглашения
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 3.1. Исполнитель вправе: <br>
+                                                        | 3.1.1. проверять информацию, предоставляемую Заказчиком или Стоянками. <br>
+                                                        | 3.1.2. изменять настоящее Соглашение о пользовании Платформой. Изменения вступают в силу с момента публикации новой редакции Соглашения на Сайте, предыдущая редакция считается утратившей свою силу. <br>
+                                                        | 3.1.3. осуществлять информационные, рекламные оповещения Заказчика и Стоянок путем рассылки по электронной почте, по телефону и СМС-оповещений. <br> <br>
+                                                        | 3.2. Заказчик вправе: <br>
+                                                        | 3.2.1. получить доступ к использованию Платформы и ее функционалу.<br>
+                                                        | 3.2.2. размещать информацию о себе в Платформе.<br>
+                                                        | 3.2.3. производить в рамках функциональных возможностей Платформы настройки Личных кабинетов, в том числе, при наличии такой возможности, менять логин и пароль.<br>
+                                                        | 3.2.4. использовать всё функциональные возможности Платформы, предоставленные Заказчику.<br><br>
+                                                        | 3.3. Стоянки вправе:<br>
+                                                        | 3.3.1. получить доступ к использованию Платформы и ее функционалу.<br>
+                                                        | 3.3.2. размещать информацию о себе в Платформе.<br>
+                                                        | 3.3.3. производить в рамках функциональных возможностей Платформы настройки Личных кабинетов, в том числе, при наличии такой возможности, менять логин и пароль.<br>
+                                                        | 3.3.4. использовать всё функциональные возможности Платформы, предоставленные Стоянкам.<br>
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Предмет соглашения
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 4.1. Исполнитель обязуется: <br>
+                                                            | 4.1.1. предоставить Заказчику и Стоянкам права использования Платформой, в том числе наделять Пользователей уникальными User ID, используемыми для подписи документов в Платформе, предоставить Заказчику и Стоянкам права наделять Пользователей ролями и создавать им Личные кабинеты. <br>
+                                                            | 4.1.2. обеспечить Заказчику и Стоянкам возможность доступа к Личному кабинету в Платформе и информационным базам данных Исполнителя в пределах необходимого. <br> <br>
+                                                            | 4.2. Заказчик и Стоянки обязуются: <br>
+                                                            | 4.2.1. соблюдать условия настоящего Соглашения без каких-либо ограничений. <br>
+                                                            | 4.2.2. не нарушать любым образом права интеллектуальной собственности Исполнителя в отношении Платформы/Сайта или каких-либо его элементов, в частности, Заказчик и Стоянки не имеют права копировать, транслировать, рассылать, публиковать, и иным образом распространять и воспроизводить размещенные в рамках Платформы/Сайта материалы (текстовые, графические, аудио-видео материалы) без письменного согласия Исполнителя. <br>
+                                                            | 4.2.3. самостоятельно предпринимать должные меры, обеспечивающие безопасность использования Личных кабинетов Пользователей,&nbsp; предотвращающие несанкционированный доступ к ним третьих лиц. <br>
+                                                            | 4.2.4. подтверждать учетные данные Пользователей, включающие фамилию, имя, отчество, иные данные при необходимости. <br>
+                                                            | 4.2.5. периодически знакомиться с содержанием настоящего Соглашения в сети Интернет и следить за внесенными в него изменениями. <br>
+                                                            | 4.2.6. нести ответственность за противоправные действия, осуществляемые с использованием&nbsp; Личных кабинетов. <br>
+                                                            | 4.2.7. Признавать документы, подписанные электронной подписью Пользователя с помощью уникальных User ID, в качестве документов, имеющих юридическую силу, в том числе акты приема-передачи и осмотра транспортных средств.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Ответственность сторон
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 5.1. В случае неисполнения или ненадлежащего исполнения настоящего Соглашения Стороны несут ответственность, предусмотренную действующим законодательством Российской Федерации. <br>
+                                                        | 5.2. Исполнитель не несет ответственности за какой-либо ущерб, потери и прочие убытки, которые понес Заказчик или Стоянки по причине наличия у Заказчика или Стоянок и &nbsp;их Пользователей несоответствующего аппаратно-технического комплекса, необходимого для работы в Платформе: <br>
+                                                        | 5.2.1. отсутствие у Пользователя техники с необходимым набором программно-технических возможностей, удовлетворяющих требованиям для работы в Платформе. <br>
+                                                        | 5.2.2. наличие программно-технических ограничений и настроек, которые содержались в технике Пользователей, что не позволило Заказчику или Стоянкам полноценно работать в Платформе. <br>
+                                                        | 5.2.3. невозможность работы Пользователю в Платформе по причине заражения техники вирусами. <br>
+                                                        | 5.2.4. отсутствие у Пользователей доступа в Интернет, за качество услуг провайдеров связи сети Интернет, с которыми Заказчиком или Стоянками заключены соглашения о предоставлении услуг по доступу к сети Интернет. <br>
+                                                        | 5.3. Исполнитель не несет ответственности за какой-либо ущерб, потери и прочие убытки, которые понес Заказчик или Стоянки по причине ненадлежащего соблюдения требований, касающихся работы Пользователей в Платформе: <br>
+                                                        | 5.3.1. незнание Пользователями инструкций и регламентов Платформы, невыполнение или ненадлежащее выполнение Пользователями всех требований и процедур, указанных в инструкциях и регламентах, действующих в Платформе. <br>
+                                                        | 5.3.2. несоблюдение правил хранения логина (имени) и пароля или несанкционированная руководством Заказчика или Стоянок передача сотрудником, назначенным в качестве лица, ответственного за работу Пользователей в Платформе, логина (имени) и пароля для входа и работы в Платформе третьим лицам, не имеющим соответствующих полномочий и квалификации на работу в Платформе.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Форс-мажор
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 6.1. Стороны освобождаются от ответственности за частичное или полное неисполнение обязательств по настоящему Соглашению, если это неисполнение явилось следствием обстоятельств непреодолимой силы, таких как: наводнение, пожар, землетрясение и другие природные катаклизмы, а также военные действия, блокада, запретительные действия властей и акты государственных органов, разрушение коммуникаций и энергоснабжения, взрывы, возникших после заключения настоящего Соглашения, которые Стороны не могли предвидеть или предотвратить разумными способами и средствами. <br>
+                                                        | 6.2. При наступлении обстоятельств, указанных в первом пункте настоящего раздела, каждая Сторона должна без промедления письменно известить о них другую Сторону. Извещение должно содержать данные о характере обстоятельств, а также официальные документы, удостоверяющие наличие этих обстоятельств и, по возможности, дающие оценку их влиянию на возможность исполнения Стороной своих обязательств по данному Соглашению. <br>
+                                                        | 6.3. Если Сторона не направит или несвоевременно направит извещение, то она обязана возместить второй Стороне понесенные убытки. <br>
+                                                        | 6.4. Если наступившие обстоятельства, указанные в настоящем разделе, и их последствия продолжают действовать более двух месяцев, Стороны проводят дополнительные переговоры для выявления приемлемых альтернативных способов исполнения настоящего Соглашения.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Конфиденциальность
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 7.1. Каждая из Сторон в рамках отношений по настоящему Соглашению обязуется сохранять строгую конфиденциальность получения от другой Стороны технологической, финансовой, коммерческой и другой информации, полученной или ставшей им известной при исполнении настоящего Соглашения, и примет все возможные меры, чтобы предохранить полученную конфиденциальную информацию от разглашения. <br>
+                                                        | 7.2. Передача конфиденциальной информации третьим лицам, опубликование или иное разглашение такой информации, в том числе в течение трех лет после прекращения настоящего Соглашения, может осуществляться только с согласия другой Стороны, независимо от причин прекращения настоящего Соглашения.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Срок действия соглашения
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 8.1. Настоящее Соглашение вступает в силу с момента его акцепта (согласия с его условиями) Заказчиком или Стоянками. Согласие Заказчика или Стоянок без какого-либо изменения или изъятия с условиями Соглашения, изменений и дополнений к нему выражается путем проставления отметки в поле «Принимаю условия настоящего Пользовательского соглашения», размещенном в интерфейсе Платформы, либо путем подписания электронной подписью или иным образом, реализованным в Платформе. Настоящее Соглашение действует с даты вступления в силу в течение неопределенного срока. <br>
+                                                        | В отношении порядка и условий заключения настоящего Соглашения применяются нормы Гражданского кодекса Российской Федерации, регулирующие порядок и условия заключения договора присоединения (ст. 428 ГК РФ), направления оферты и акцепта (ст. 435–444 ГК РФ).
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Разрешение споров
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 9.1. Для разрешения споров по настоящему Соглашению применяется обязательный претензионный порядок со сроком ответа на претензию — 10 (десять) рабочих дней с момента ее получения. В случае не достижения согласия такие споры рассматриваются арбитражным судом города Москвы.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Условия и порядок расторжения настоящего соглашения
+                                                span.block__icon
+                                                input(type="checkbox" ).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 10.1. Исполнитель имеет право в одностороннем порядке вносить изменения в условия настоящего Соглашения. <br>
+                                                        | 10.2. Исполнитель имеет право в одностороннем порядке расторгнуть Соглашение или приостановить доступ к Платформе по причине нарушения Заказчиком или Стоянками пунктов Соглашения.
+                .nav
+                    .nav-buttons
+                        .button-list.button-list--accent.button-list--column
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-prev
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#arrow-top")
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-next
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#arrow-down")
+                    ul.nav-list.button-list.button-list--nav
+                        li.nav-list__item
+                            a(href="#").button.button--base.button--icon.button--accent
+                                svg.button__icon.button__icon--logo
+                                    use(xlink:href="assets/images/sprite.svg#logo")
+                        li.nav-list__item
+                            a(href="#about").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#chat")
+                                span.button__text О платформе
+                        li.nav-list__item
+                            a(href="#functions").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#action")
+                                span.button__text Функционал
+                        li.nav-list__item
+                            a(href="#roles").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#role")
+                                span.button__text Роли пользователей
+                        li.nav-list__item
+                            a(href="#advantages").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#advantages")
+                                span.button__text Преимущества
+                        li.nav-list__item
+                            a(href="#audience").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#audience")
+                                span.button__text Целевая аудитория
+                        li.nav-list__item
+                            a(href="#" data-popup=".popup-enter").button.button--base.button--icon.button--accent
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#home")
+                        li.nav-list__item
+                            a(href="#").button.button--base.button--icon.button--accent
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#connect")
+                .contact-showcase
+                    .container
+                        form(method="POST").contact-showcase__row
+                            .contact-showcase__img.image
+                                picture.image__item
+                                    <source srcset="assets/images/contact/decor-m.webp" media="(max-width: 640px)">
+                                    img(src="assets/images/contact/decor.webp" draggable="false" ondragstart="return false;")
+                            .contact-showcase__header
+                                p.title.title--white.title--base Войти в Периметр управления
+                                p.text.text--base.text--white.contact-showcase__text Разберем процесс и адаптируем систему под ваши задачи
+                                label.checkbox
+                                    input.checkbox__input(type="checkbox" required)
+                                    span.checkbox__checkmark
+                                        svg.icon
+                                            use(xlink:href="assets/images/sprite.svg#check")
+                                    span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
+                            .contact-showcase__form.form
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+
+
+                footer.footer
+                    .footer__wrapper
+                        .container
+                            .footer__column
+                                a.footer__logo.image
+                                    svg.image__ite
+                                        use(xlink:href="assets/images/sprite.svg#logo")
+                                .footer__row
+                                    .footer__block
+                                        a(href="tel:+7 495 141 21 00 ").button.button--base.button--accent.footer__button
+                                            span.button__text +7 495 141 21 00
+                                            svg.button__icon
+                                                use(xlink:href="assets/images/sprite.svg#phone")
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text О сервисе
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text О компании
+                                    .footer__block
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text Политика обработки персональных данных
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text Политика конфиденциальности
+                                    .footer__block
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text Пользовательское соглашение
+                                        a(href="mailto:Hello@perimetr.one").button.button--base.button--accent.footer__button
+                                            span.button__text Hello@perimetr.one
+                                            svg.button__icon
+                                                use(xlink:href="assets/images/sprite.svg#mail")
+
+
+
+                                p.footer__text 2026 PERIMETR. All rights reserved
+        script(src="assets/scripts/index.js")

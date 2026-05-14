@@ -95,26 +95,15 @@ html(lang="ru")
                             p.title.title--base.title--white Войти в Периметр управления
                             p.text.text--base.text--white.form__text Разберем процесс и адаптируем систему под ваши задачи
                             .form-grid
-                                .form-grid__item
+                                .form-grid__item.form-grid__item--full
                                     label.input
-                                        input.input__item(type="text" placeholder="Имя")
-                                .form-grid__item
+                                        input.input__item(type="text" placeholder="Введите пароль")
+                                .form-grid__item.form-grid__item--full
                                     label.input
-                                        input.input__item(type="text" placeholder="Название компании")
-                                .form-grid__item
-                                    label.input
-                                        input.input__item(type="text" placeholder="Телефон")
-                                .form-grid__item
-                                    label.input
-                                        input.input__item(type="text" placeholder="Email")
+                                        input.input__item(type="password" placeholder="Введите пароль")
                                 .form-grid__item.form-grid__item--full
                                     button(type="submit").button.button--full.button--big.button--white
                                         span.button__text Отправить
                                 .form-grid__item.form-grid__item--full
-                                    label.checkbox
-                                        input.checkbox__input(type="checkbox" required)
-                                        span.checkbox__checkmark
-                                            svg.icon
-                                                use(xlink:href="assets/images/sprite.svg#check")
-                                        span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
+                                    p.text.text--small.text--white.text--center Забыли пароль?
         script(src="assets/scripts/index.js")

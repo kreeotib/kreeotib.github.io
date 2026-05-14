@@ -1,0 +1,375 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        link(rel="stylesheet" href="assets/styles/css/reset.css")
+        link(rel="stylesheet" href="assets/styles/css/index.css")
+        title Периметр
+    body
+        .popup.popup-enter
+            .popup__wrapper.popup__wrapper--container
+                .popup__overlay
+                .popup__content
+                    form.modal.form
+                        span.modal__close.popup-close
+                        .modal__wrapper
+                            .form__wrapper
+                                p.title.title--base.title--white Войти в Периметр управления
+                                p.text.text--base.text--white.form__text Разберем процесс и адаптируем систему под ваши задачи
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+                                    .form-grid__item.form-grid__item--full
+                                        label.checkbox
+                                            input.checkbox__input(type="checkbox" required)
+                                            span.checkbox__checkmark
+                                                svg.icon
+                                                    use(xlink:href="assets/images/sprite.svg#check")
+                                            span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
+        .cookie
+            .cookie__wrapper
+                p.cookie__text Для оптимизации работы сайта мы используем #[a(href="#") файлы cookie]. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение
+                button.button.button--base.button--accent.button--full.cookie__button Отлично
+        .page-wrapper
+            header.header
+                .header__wrapper
+                    .container
+                        .header__row
+                            a(href="#").logo.header__logo.image
+                                svg.logo__img.image__item
+                                    use(xlink:href="assets/images/sprite.svg#logo")
+                            .header__buttons.button-list.button-list--header
+                                a(href="#").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#mail")
+                                a(href="#").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone")
+                                a(href="#").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Оставить заявку
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#connect")
+                                a(href="#" data-popup=".popup-enter").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Войти
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#home")
+                                a(href="#" ).button.button--base.button--icon--mobile.button--accent
+                                    span.button__text Контакты
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone-burger")
+            main.content
+                .hero.hero--page
+                    .hero__bg.image
+                        picture.image__item
+                            <source srcset="assets/images/hero/bg-m.webp" media="(max-width: 640px)">
+                            img(src="assets/images/hero/bg.webp" draggable="false" ondragstart="return false;")
+                .content__wrapper.content__wrapper--small
+                    .section
+                        .container.container--small
+                            .section__column
+                                p.title.title--base.title--center.page-title Политика конфиденциальности Общества с ограниченной ответственностью «ПЕРИМЕТРТЕХ»
+                                p.text.text--base.text--center Актуальная версия от 04 мая 2026 г.
+                                .button-list.button-list--accent.button-list--center
+                                    a(href="#").button.button--base.button--accent
+                                        span.button__text Скачать документ
+                                        svg.button__icon
+                                            use(xlink:href="assets/images/sprite.svg#download")
+                                .block-list
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Общие положения
+                                                span.block__icon
+                                                input(type="checkbox" checked).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 1.1. Политика конфиденциальности Общества с ограниченной ответственностью «ПЕРИМЕТРТЕХ» (ИНН 9707055346) &nbsp;(далее — «Оператор») предназначена для пользователей Платформы «ПериметрВан» (далее – «Платформа»),&nbsp; размещенной на сайтах, находящихся по адресу в сети Интернет #[a(href="http://my.perimetr.one") http://my.perimetr.one] и #[a(href="http://perimetr.one") http://perimetr.one] (далее – «Сайты»), а также в мобильных версиях Платформы, &nbsp;а также представителей контрагентов Оператора, определяет порядок получения, учета, обработки, накопления и хранения сведений, отнесенных к персональным данным представителей, далее именуемые «Пользователь/Пользователи», &nbsp;клиентов, далее именуемые «Клиенты», &nbsp;Оператора, а также&nbsp; защиты персональных данных Оператором в соответствии с действующим законодательством Российской Федерации, а также определяет права и обязанности Оператора в области обработки персональных данных. <br>
+                                                        | 1.2. Настоящая Политика применяется только к Сайтам &nbsp;и&nbsp;не контролирует и не несет ответственности за сайты третьих лиц, на которые Пользователь может перейти по ссылкам, доступным в Платформе и на Сайтах. <br>
+                                                        | 1.3. Использование Платформы и Сайтов означает безоговорочное согласие Пользователя с настоящей Политикой и указанными в ней условиями обработки его персональной информации; в случае несогласия с этими условиями Пользователь должен воздержаться от использования Платформы и Сайтов.
+
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Термины и определения
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 2.1. Персональные данные/ПДн — это <br>
+                                                        | 2.1.1. персональная информация, которую носители Персональных данных &nbsp;предоставляют о себе самостоятельно при регистрации (создании учетной записи) или в процессе использования Платформы или Сайтов или иным другим спсобом. <br>
+                                                        | 2.1.2. данные, которые автоматически передаются в Платформу или Сайты в процессе их использования с помощью установленного на устройстве Пользователя программного обеспечения, в том числе IP-адрес, данные файлов cookie, информация о браузере Пользователя (или иной программе, с помощью которой осуществляется доступ к&nbsp; Платформе и Сайтам), технические характеристики оборудования и программного обеспечения, используемых Пользователем, дата и время доступа к&nbsp; Платформе и Сайтам, адреса запрашиваемых страниц и иная подобная информация.2.2. Обработка Персональных данных («Обработка») - любое действие (операция) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с Персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (предоставление, доступ) третьим лицам, обезличивание, блокирование, удаление, уничтожение Персональных данных; <br>
+                                                        | 2.3. Конфиденциальность Персональных данных - обязательное для соблюдения Оператором, иным получившим доступ к Персональным данным лицом требование не допускать их раскрытия и распространения без наличия законного основания; <br>
+                                                        | 2.4. Файл cookies — означает небольшой фрагмент данных, который веб-сайт запрашивает у браузера, используемого компьютере или мобильном устройстве Пользователя. Технология cookies позволяет веб-сайту «запоминать» действия или предпочтения Пользователя. Файлы cookies хранятся локально на компьютере или мобильном устройстве Пользователя. Пользователи могут удалять сохраненные файлы cookies по своему желанию;
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Цели обработки Персональных данных
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 3.1. Оператор собирает и хранит только ту персональную информацию, которая необходима для предоставления сервисов или исполнения соглашений и договоров с Клиентами Оператора, за исключением случаев, когда законодательством предусмотрено обязательное хранение иных Персональных данных в течение определенного законом срока. <br>
+                                                        | В случае получения уведомления от носителя Персональных данных об отзыве согласия на обработку Персональных данных Оператор прекращает Обработку Персональных данных в срок, не превышающий 10 рабочих дней с момента получения уведомления. <br>
+                                                        | Уведомление об отзыве согласия на Обработку Персональных данных направляется на адрес электронной почты Оператора: #[a(href="#") hello@perimetr.one], или путем письменного обращения по юридическому адресу Оператора, содержащемуся в Едином государственном реестре юридических лиц. <br>
+                                                        | 3.2. Персональные &nbsp;данные Оператор обрабатывает в следующих целях:
+                                                    .block-table
+                                                        .block-table__wrapper
+                                                            .block-table__row
+                                                                .block-table__block
+                                                                    p.text.text--base #[b Состав Персональных данных]
+                                                                .block-table__block
+                                                                    p.text.text--base #[b Цели обработки]
+                                                                .block-table__block
+                                                                    p.text.text--base #[b Категория субъектов]
+                                                                .block-table__block
+                                                                    p.text.text--base #[b Срок обработки Пдн]
+                                                            .block-table__row
+                                                                .block-table__block
+                                                                    p.text.text--base ФИО, адрес электронной почты, номер телефона, должность
+                                                                .block-table__block
+                                                                    p.text.text--base Верификация или идентификации Пользователя при использовании Платформы и Сайтов
+                                                                .block-table__block
+                                                                    p.text.text--base Пользователи
+                                                                .block-table__block
+                                                                    p.text.text--base Оператор уничтожит ПДн как только будет прекращен заключенный между Оператором и Клиентом договор
+                                                            .block-table__row
+                                                                .block-table__block
+                                                                    p.text.text--base ФИО, адрес электронной почты, номер телефона, должность
+                                                                .block-table__block
+                                                                    p.text.text--base Установления с Пользователем обратной связи, включая направление уведомлений, запросов, касающихся использования Платформы и Сайтов, оказания услуг, обработку запросов и заявок от Пользователя
+                                                                .block-table__block
+                                                                    p.text.text--base Пользователи
+                                                                .block-table__block
+                                                                    p.text.text--base Оператор уничтожит ПДн как только будет прекращен заключенный между Оператором и Клиентом договор
+                                                            .block-table__row
+                                                                .block-table__block
+                                                                    p.text.text--base ФИО, адрес электронной почты, номер телефона, должность
+                                                                .block-table__block
+                                                                    p.text.text--base Предоставления Пользователю эффективной клиентской и технической поддержки при возникновении вопросов, связанных с использованием Платформы и Сайтов
+                                                                .block-table__block
+                                                                    p.text.text--base Пользователи
+                                                                .block-table__block
+                                                                    p.text.text--base Оператор уничтожит ПДн как только будет прекращен заключенный между Оператором и Клиентом договор
+                                                            .block-table__row
+                                                                .block-table__block
+                                                                    p.text.text--base ФИО, адрес электронной почты, номер телефона, должность
+                                                                .block-table__block
+                                                                    p.text.text--base Проведение аналитических, статистических, маркетинговых исследований и опросов, формирование на их основе персональных предложений, направление рекламных и маркетинговых рассылок
+                                                                .block-table__block
+                                                                    p.text.text--base Пользователи
+                                                                .block-table__block
+                                                                    p.text.text--base Оператор уничтожит ПДн как только Пользователь отпишется от рассылки &nbsp;Оператора &nbsp;
+                                                            .block-table__row
+                                                                .block-table__block
+                                                                    p.text.text--base Файлы cookies
+                                                                .block-table__block
+                                                                    p.text.text--base Предоставление функциональных возможностей Сайта, ознакомление с контентом
+                                                                .block-table__block
+                                                                    p.text.text--base Посетители Сайтов, Пользователи
+                                                                .block-table__block
+                                                                    p.text.text--base Указана в Политики в отношении cookie файлов
+                                                            .block-table__row
+                                                                .block-table__block
+                                                                    p.text.text--base ФИО, адрес электронной почты, номер телефона, должность
+                                                                .block-table__block
+                                                                    p.text.text--base При осуществлении коммуникаций с любыми контрагентами Оператора
+                                                                .block-table__block
+                                                                    p.text.text--base Представители компаний
+                                                                .block-table__block
+                                                                    p.text.text--base Оператор уничтожит ПДн как только представитель компании предоставит такое распоряжение
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Способы обработки Персональных данных и их передачи третьим лицам
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 4.1. Оператор хранит Персональные данные в соответствии с внутренними регламентами Оператора. <br>
+                                                        | 4.2. В отношении Персональных данных сохраняется их конфиденциальность. <br>
+                                                        | 4.3. Оператор вправе передать Персональные данные третьим лицам исключительно в случаях, предусмотренных российским законодательством в рамках установленной законодательством процедур. <br>
+                                                        | 4.4. Обработка Персональных данных осуществляется в течение срока обработки ПДн следующими способами: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передача (предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных, в том числе в информационных системах персональных данных с использованием средств автоматизации или без использования таких средств. Обработка персональных данных Пользователей осуществляется в соответствии с Федеральным&nbsp;#[a(href="#") законом]&nbsp;от 27.07.2006 N 152-ФЗ "О персональных данных".
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Обеспечение выполнения обязанностей Оператора и мер по защите Персональных данных
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 5.1. Безопасность Персональных данных, обрабатываемых Оператором, обеспечивается реализацией правовых, организационных и технических мер, необходимых для обеспечения требований федерального законодательства в области защиты персональных данных. <br>
+                                                        | 5.2. Для предотвращения несанкционированного доступа к Персональным данным Оператором применяются следующие организационно-технические меры: <br>
+                                                        | #[span.dot •] издание документов, определяющих политику Оператора в отношении Обработки Персональных данных, локальных актов по вопросам обработки персональных данных, а также локальных актов, устанавливающих процедуры, направленные на предотвращение и выявление нарушений законодательства РФ, устранение последствий таких нарушений <br>
+                                                        | #[span.dot •] назначение ответственного за организацию Обработки Персональных данных; <br>
+                                                        | #[span.dot •] назначение ответственных за обеспечение мер по сохранности Персональных данных и исключению несанкционированного доступа к ним; <br>
+                                                        | #[span.dot •] назначение ответственного за обеспечение безопасности Персональных данных в информационных системах; <br>
+                                                        | #[span.dot •] ограничение состава лиц, допущенных к Обработке Персональных данных; <br>
+                                                        | #[span.dot •] ознакомление субъектов с требованиями федерального законодательства и нормативных документов Оператора по Обработке и защите Персональных данных; <br>
+                                                        | #[span.dot •] организация учета, хранения и обращения носителей, содержащих информацию с Персональными данными; <br>
+                                                        | #[span.dot •] определение угроз безопасности Персональных данных при их обработке, формирование на их основе моделей угроз; <br>
+                                                        | #[span.dot •] разработка на основе модели угроз системы защиты Персональных данных; <br>
+                                                        | #[span.dot •] проверка готовности и эффективности использования средств защиты информации; <br>
+                                                        | #[span.dot •] использование антивирусных средств и средств восстановления системы защиты Персональных данных. <br>
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Использование технологии «Cookies» и метрических программ на Платформе и Сайтах
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base 6.1. Оператор вправе использовать технологию «cookies» для сохранения информации об ip-адресе посетителей и Пользователей Платформы и Сайтов.<br>
+                                                        | 6.2. Использование технологии «cookies» представляет собой размещение на Сайтах определенного набора символов (знаков), которые сохраняются на компьютере (далее — «устройство», с которого был выполнен вход на Сайты) посетителей и Пользователей Сайтов, при доступе к определенным местам Сайтов.<br>
+                                                        | 6.3. Цели применения Оперотором технологии «cookies»:<br>
+                                                        | #[span.dot •] аналитическая деятельность по исследованию предпочтений посетителей и Пользователей Сайтов;<br>
+                                                        | #[span.dot •] статистика по активности посетителей и Пользователей на Сайтов;<br>
+                                                        | #[span.dot •] повышение производительности и эффективности Сайтов;<br>
+                                                        | #[span.dot •] аналитика и исправление ошибок Сайтов, улучшение работы всех ресурсов Платформы и Сайтов;<br>
+                                                        | #[span.dot •] безопасность и целостность ресурсов Платформы и &nbsp;Сайтов.<br>
+                                                        | Отказаться от обработки Cookies можно в настройках своего браузера. В случае отказа Сайты будут использовать только обязательные файлы-Cookies.<br>
+                                                        | 6.4. Для обработки полученных данных могут использоваться программные средства сбора метрических данных − Яндекс.Метрика. С её помощью осуществляется сбор анонимных данных о посещениях Сайтов (без привязки к персональным данным посетителей и Пользователей Сайтов) с целью лучшего понимания поведения и улучшения Сайтов.
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.block__title.title.title--small Заключительные положения
+                                                span.block__icon
+                                                input(type="checkbox").block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base Иные права и обязанности Оператора в связи с обработкой Персональных данных определяются законодательством Российской Федерации в области Персональных данных. <br>
+                                                        | В случае противоречия законодательства Российской Федерации в области Персональных данных законодательству, регулирующему Обработку Персональных данных в стране, резидентом которой выступает Пользователь.
+                .nav
+                    .nav-buttons
+                        .button-list.button-list--accent.button-list--column
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-prev
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#arrow-top")
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-next
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#arrow-down")
+                    ul.nav-list.button-list.button-list--nav
+                        li.nav-list__item
+                            a(href="#").button.button--base.button--icon.button--accent
+                                svg.button__icon.button__icon--logo
+                                    use(xlink:href="assets/images/sprite.svg#logo")
+                        li.nav-list__item
+                            a(href="#about").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#chat")
+                                span.button__text О платформе
+                        li.nav-list__item
+                            a(href="#functions").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#action")
+                                span.button__text Функционал
+                        li.nav-list__item
+                            a(href="#roles").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#role")
+                                span.button__text Роли пользователей
+                        li.nav-list__item
+                            a(href="#advantages").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#advantages")
+                                span.button__text Преимущества
+                        li.nav-list__item
+                            a(href="#audience").button.button--base.button--icon--mobile.button--accent--light
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#audience")
+                                span.button__text Целевая аудитория
+                        li.nav-list__item
+                            a(href="#" data-popup=".popup-enter").button.button--base.button--icon.button--accent
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#home")
+                        li.nav-list__item
+                            a(href="#").button.button--base.button--icon.button--accent
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#connect")
+                .contact-showcase
+                    .container
+                        form(method="POST").contact-showcase__row
+                            .contact-showcase__img.image
+                                picture.image__item
+                                    <source srcset="assets/images/contact/decor-m.webp" media="(max-width: 640px)">
+                                    img(src="assets/images/contact/decor.webp" draggable="false" ondragstart="return false;")
+                            .contact-showcase__header
+                                p.title.title--white.title--base Войти в Периметр управления
+                                p.text.text--base.text--white.contact-showcase__text Разберем процесс и адаптируем систему под ваши задачи
+                                label.checkbox
+                                    input.checkbox__input(type="checkbox" required)
+                                    span.checkbox__checkmark
+                                        svg.icon
+                                            use(xlink:href="assets/images/sprite.svg#check")
+                                    span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="#") Политики конфиденциальности] и&nbsp;#[a(href="#") Пользовательского соглашения]
+                            .contact-showcase__form.form
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+
+
+                footer.footer
+                    .footer__wrapper
+                        .container
+                            .footer__column
+                                a.footer__logo.image
+                                    svg.image__ite
+                                        use(xlink:href="assets/images/sprite.svg#logo")
+                                .footer__row
+                                    .footer__block
+                                        a(href="tel:+7 495 141 21 00 ").button.button--base.button--accent.footer__button
+                                            span.button__text +7 495 141 21 00
+                                            svg.button__icon
+                                                use(xlink:href="assets/images/sprite.svg#phone")
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text О сервисе
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text О компании
+                                    .footer__block
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text Политика обработки персональных данных
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text Политика конфиденциальности
+                                    .footer__block
+                                        a(href="#").button.button--base.button--bordered.footer__button
+                                            span.button__text Пользовательское соглашение
+                                        a(href="mailto:Hello@perimetr.one").button.button--base.button--accent.footer__button
+                                            span.button__text Hello@perimetr.one
+                                            svg.button__icon
+                                                use(xlink:href="assets/images/sprite.svg#mail")
+
+
+
+                                p.footer__text 2026 PERIMETR. All rights reserved
+        script(src="assets/scripts/index.js")

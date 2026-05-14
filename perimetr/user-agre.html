@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+    <title>Периметр</title>
+  </head>
+  <body>
+    <div class="popup popup-enter">
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <form class="modal form"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper">
+              <div class="form__wrapper">
+                <p class="title title--base title--white">Войти в Периметр управления</p>
+                <p class="text text--base text--white form__text">Разберем процесс и адаптируем систему под ваши задачи</p>
+                <div class="form-grid">
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Имя">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Название компании">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Телефон">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Email">
+                    </label>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <button class="button button--full button--big button--white" type="submit"><span class="button__text">Отправить</span></button>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <label class="checkbox">
+                      <input class="checkbox__input" type="checkbox" required><span class="checkbox__checkmark">
+                        <svg class="icon">
+                          <use xlink:href="assets/images/sprite.svg#check"></use>
+                        </svg></span><span class="checkbox__text">Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия <a href="#">Политики конфиденциальности</a> и&nbsp;<a href="#">Пользовательского соглашения</a></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cookie">
+      <div class="cookie__wrapper">
+        <p class="cookie__text">Для оптимизации работы сайта мы используем <a href="#">файлы cookie</a>. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение</p>
+        <button class="button button--base button--accent button--full cookie__button">Отлично</button>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <header class="header">
+        <div class="header__wrapper">
+          <div class="container">
+            <div class="header__row"><a class="logo header__logo image" href="#">
+                <svg class="logo__img image__item">
+                  <use xlink:href="assets/images/sprite.svg#logo"></use>
+                </svg></a>
+              <div class="header__buttons button-list button-list--header"><a class="button button--base button--icon button--bordered" href="#">
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#mail"></use>
+                  </svg></a><a class="button button--base button--icon button--bordered" href="#">
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#phone"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="#"><span class="button__text">Оставить заявку</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Войти</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--accent" href="#"><span class="button__text">Контакты</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#phone-burger"></use>
+                  </svg></a></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="hero hero--page">
+          <div class="hero__bg image">
+            <picture class="image__item"><source srcset="assets/images/hero/bg-m.webp" media="(max-width: 640px)"><img src="assets/images/hero/bg.webp" draggable="false" ondragstart="return false;"></picture>
+          </div>
+        </div>
+        <div class="content__wrapper content__wrapper--small">
+          <div class="section">
+            <div class="container container--small">
+              <div class="section__column">
+                <p class="title title--base title--center page-title">Пользовательское соглашение</p>
+                <p class="text text--base text--center">Актуальная версия от 04 мая 2026 г.</p>
+                <div class="button-list button-list--accent button-list--center"><a class="button button--base button--accent" href="#"><span class="button__text">Скачать документ</span>
+                    <svg class="button__icon">
+                      <use xlink:href="assets/images/sprite.svg#adownload"></use>
+                    </svg></a></div>
+                <div class="block-list">
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Вводная информация</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox" checked>
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            Настоящее Пользовательское соглашение (далее — Соглашение) регулирует отношения по предоставлению прав использования Платформы «ПериметрВан» путем предоставления удаленного доступа к ней через информационно-телекоммуникационную сеть «Интернет» между Обществом с ограниченной ответственностью «ПЕРИМЕТРТЕХ» (ИНН 9707055346), которое является юридическим лицом, созданным на территории Российской Федерации и в соответствии с законодательством Российской Федерации, с одной стороны, и юридическим лицом или индивидуальным предпринимателем, действующими по настоящему Соглашению в качестве Заказчика или Стоянки, принявшими условия настоящего Соглашения путём присоединения к настоящему Соглашению в целом и безоговорочно, с другой стороны (далее - Стороны). <br>Настоящее Соглашение и отношения Сторон, возникшие из настоящего Соглашения, регулируются законодательством Российской Федерации. <br>
+                            Настоящее Соглашение в соответствии со ст. 435 Гражданского кодекса Российской Федерации является непубличной офертой - адресованной &nbsp;юридическим лицам и индивидуальным предпринимателям предложением заключить настоящее Соглашение на указанных в нём условиях.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="block__title title title--small">Основные термины и определения</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base"><b>1.1. Платформа «ПериметрВан»/ Платформа</b> — принадлежащая Исполнителю информационная платформа, включая программное обеспечение для ЭВМ, базы данных, веб-интерфейсы, мобильные интерфейсы, API, интеграционные модули, отчеты, журналы событий, справочники, иные цифровые модули и функциональные элементы, предназначенные для автоматизации процессов учета, хранения, перемещения, осмотра, обслуживания, согласования, контроля и аналитики в отношении транспортных средств, техники, стоянок, пользователей, подрядчиков и связанных с этим операций. <br>Платформа предназначена для учёта транспортных средств Заказчика, находящихся на Стоянках, заявок на операции на площадках ответственного хранения (Стоянок), взаимодействия Заказчика&nbsp; со Стоянками и контрольно-пропускных пунктов Стоянок, формирования отчётности и документов. <br>
+                            <b>1.2.&nbsp; Исполнитель&nbsp;</b>– Общество с ограниченной ответственностью «ПЕРИМЕТРТЕХ». <br>
+                            <b>1.3.&nbsp;Заказчик&nbsp;</b> –&nbsp; юридическое лицо или индивидуальный предприниматель, прошедшее процедуру регистрации в Платформе и имеющее право использования функций Платформы в соответствии с уровнем доступа (зарегистрированный/полноправный), заинтересованные на возмездной основе пользоваться Платформой в соответствии с ее функциональным назначением. <br>
+                            <b>1.4.&nbsp;Регистрация&nbsp;</b>— действие, в результате которого Пользователь получает доступ к базе данных Платформы,&nbsp; получает уникальные аутентификационные данные для входа в закрытую часть Платформы, а также может получить уникальный User ID, используемый для подписи документов в Платформе. <br>
+                            <b>1.5.&nbsp;Личный кабинет&nbsp;</b>— элемент закрытой части Платформы, автоматизированное рабочее место Пользователя. <br>
+                            <b>1.6.&nbsp;Пользователь&nbsp;</b>— физическое лицо, представитель Заказчика или Стоянки, использующее логин и пароль для входа в Личный кабинет и осуществляющее фактические и юридические действия в Платформе от имени Заказчика или Стоянки с учетом присвоенной роли и набора полномочий Пользователя. <br>
+                            <b>1.7.&nbsp;Мастер-аккаунт&nbsp;</b>— Пользователь, наделенный полномочиями по совершению полного комплекса действий, связанных с работой в Личном кабинете, в том числе с возможностью выдачи ролей другим Пользователям данного Заказчика или Стоянки. <br>
+                            <b>1.8. Сайт</b> — сайт в сети Интернет, расположенный по адресу: my.perimetr.one и perimetr.one, на котором размещена Платформа.
+                            <b>1.9. Стоянки</b> — площадки ответственного хранения, на которых Заказчик размещает транспортные средства.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Предмет соглашения</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox" checked>
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">2.1. В соответствии с настоящим Соглашением Исполнитель предоставляет Заказчику и Стоянкам права использования Платформы путем предоставления удаленного доступа через информационно-телекоммуникационную сеть «Интернет» к функционалу Платформы, а Заказчик и Стоянки обязуются соблюдать правила, установленные настоящим Соглашением.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Предмет соглашения</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            3.1. Исполнитель вправе: <br>3.1.1. проверять информацию, предоставляемую Заказчиком или Стоянками. <br>
+                            3.1.2. изменять настоящее Соглашение о пользовании Платформой. Изменения вступают в силу с момента публикации новой редакции Соглашения на Сайте, предыдущая редакция считается утратившей свою силу. <br>
+                            3.1.3. осуществлять информационные, рекламные оповещения Заказчика и Стоянок путем рассылки по электронной почте, по телефону и СМС-оповещений. <br> <br>
+                            3.2. Заказчик вправе: <br>
+                            3.2.1. получить доступ к использованию Платформы и ее функционалу.<br>
+                            3.2.2. размещать информацию о себе в Платформе.<br>
+                            3.2.3. производить в рамках функциональных возможностей Платформы настройки Личных кабинетов, в том числе, при наличии такой возможности, менять логин и пароль.<br>
+                            3.2.4. использовать всё функциональные возможности Платформы, предоставленные Заказчику.<br><br>
+                            3.3. Стоянки вправе:<br>
+                            3.3.1. получить доступ к использованию Платформы и ее функционалу.<br>
+                            3.3.2. размещать информацию о себе в Платформе.<br>
+                            3.3.3. производить в рамках функциональных возможностей Платформы настройки Личных кабинетов, в том числе, при наличии такой возможности, менять логин и пароль.<br>
+                            3.3.4. использовать всё функциональные возможности Платформы, предоставленные Стоянкам.<br>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Предмет соглашения</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            4.1. Исполнитель обязуется: <br>4.1.1. предоставить Заказчику и Стоянкам права использования Платформой, в том числе наделять Пользователей уникальными User ID, используемыми для подписи документов в Платформе, предоставить Заказчику и Стоянкам права наделять Пользователей ролями и создавать им Личные кабинеты. <br>
+                            4.1.2. обеспечить Заказчику и Стоянкам возможность доступа к Личному кабинету в Платформе и информационным базам данных Исполнителя в пределах необходимого. <br> <br>
+                            4.2. Заказчик и Стоянки обязуются: <br>
+                            4.2.1. соблюдать условия настоящего Соглашения без каких-либо ограничений. <br>
+                            4.2.2. не нарушать любым образом права интеллектуальной собственности Исполнителя в отношении Платформы/Сайта или каких-либо его элементов, в частности, Заказчик и Стоянки не имеют права копировать, транслировать, рассылать, публиковать, и иным образом распространять и воспроизводить размещенные в рамках Платформы/Сайта материалы (текстовые, графические, аудио-видео материалы) без письменного согласия Исполнителя. <br>
+                            4.2.3. самостоятельно предпринимать должные меры, обеспечивающие безопасность использования Личных кабинетов Пользователей,&nbsp; предотвращающие несанкционированный доступ к ним третьих лиц. <br>
+                            4.2.4. подтверждать учетные данные Пользователей, включающие фамилию, имя, отчество, иные данные при необходимости. <br>
+                            4.2.5. периодически знакомиться с содержанием настоящего Соглашения в сети Интернет и следить за внесенными в него изменениями. <br>
+                            4.2.6. нести ответственность за противоправные действия, осуществляемые с использованием&nbsp; Личных кабинетов. <br>
+                            4.2.7. Признавать документы, подписанные электронной подписью Пользователя с помощью уникальных User ID, в качестве документов, имеющих юридическую силу, в том числе акты приема-передачи и осмотра транспортных средств.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Ответственность сторон</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            5.1. В случае неисполнения или ненадлежащего исполнения настоящего Соглашения Стороны несут ответственность, предусмотренную действующим законодательством Российской Федерации. <br>5.2. Исполнитель не несет ответственности за какой-либо ущерб, потери и прочие убытки, которые понес Заказчик или Стоянки по причине наличия у Заказчика или Стоянок и &nbsp;их Пользователей несоответствующего аппаратно-технического комплекса, необходимого для работы в Платформе: <br>
+                            5.2.1. отсутствие у Пользователя техники с необходимым набором программно-технических возможностей, удовлетворяющих требованиям для работы в Платформе. <br>
+                            5.2.2. наличие программно-технических ограничений и настроек, которые содержались в технике Пользователей, что не позволило Заказчику или Стоянкам полноценно работать в Платформе. <br>
+                            5.2.3. невозможность работы Пользователю в Платформе по причине заражения техники вирусами. <br>
+                            5.2.4. отсутствие у Пользователей доступа в Интернет, за качество услуг провайдеров связи сети Интернет, с которыми Заказчиком или Стоянками заключены соглашения о предоставлении услуг по доступу к сети Интернет. <br>
+                            5.3. Исполнитель не несет ответственности за какой-либо ущерб, потери и прочие убытки, которые понес Заказчик или Стоянки по причине ненадлежащего соблюдения требований, касающихся работы Пользователей в Платформе: <br>
+                            5.3.1. незнание Пользователями инструкций и регламентов Платформы, невыполнение или ненадлежащее выполнение Пользователями всех требований и процедур, указанных в инструкциях и регламентах, действующих в Платформе. <br>
+                            5.3.2. несоблюдение правил хранения логина (имени) и пароля или несанкционированная руководством Заказчика или Стоянок передача сотрудником, назначенным в качестве лица, ответственного за работу Пользователей в Платформе, логина (имени) и пароля для входа и работы в Платформе третьим лицам, не имеющим соответствующих полномочий и квалификации на работу в Платформе.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Форс-мажор</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            6.1. Стороны освобождаются от ответственности за частичное или полное неисполнение обязательств по настоящему Соглашению, если это неисполнение явилось следствием обстоятельств непреодолимой силы, таких как: наводнение, пожар, землетрясение и другие природные катаклизмы, а также военные действия, блокада, запретительные действия властей и акты государственных органов, разрушение коммуникаций и энергоснабжения, взрывы, возникших после заключения настоящего Соглашения, которые Стороны не могли предвидеть или предотвратить разумными способами и средствами. <br>6.2. При наступлении обстоятельств, указанных в первом пункте настоящего раздела, каждая Сторона должна без промедления письменно известить о них другую Сторону. Извещение должно содержать данные о характере обстоятельств, а также официальные документы, удостоверяющие наличие этих обстоятельств и, по возможности, дающие оценку их влиянию на возможность исполнения Стороной своих обязательств по данному Соглашению. <br>
+                            6.3. Если Сторона не направит или несвоевременно направит извещение, то она обязана возместить второй Стороне понесенные убытки. <br>
+                            6.4. Если наступившие обстоятельства, указанные в настоящем разделе, и их последствия продолжают действовать более двух месяцев, Стороны проводят дополнительные переговоры для выявления приемлемых альтернативных способов исполнения настоящего Соглашения.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Конфиденциальность</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            7.1. Каждая из Сторон в рамках отношений по настоящему Соглашению обязуется сохранять строгую конфиденциальность получения от другой Стороны технологической, финансовой, коммерческой и другой информации, полученной или ставшей им известной при исполнении настоящего Соглашения, и примет все возможные меры, чтобы предохранить полученную конфиденциальную информацию от разглашения. <br>7.2. Передача конфиденциальной информации третьим лицам, опубликование или иное разглашение такой информации, в том числе в течение трех лет после прекращения настоящего Соглашения, может осуществляться только с согласия другой Стороны, независимо от причин прекращения настоящего Соглашения.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Срок действия соглашения</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            8.1. Настоящее Соглашение вступает в силу с момента его акцепта (согласия с его условиями) Заказчиком или Стоянками. Согласие Заказчика или Стоянок без какого-либо изменения или изъятия с условиями Соглашения, изменений и дополнений к нему выражается путем проставления отметки в поле «Принимаю условия настоящего Пользовательского соглашения», размещенном в интерфейсе Платформы, либо путем подписания электронной подписью или иным образом, реализованным в Платформе. Настоящее Соглашение действует с даты вступления в силу в течение неопределенного срока. <br>В отношении порядка и условий заключения настоящего Соглашения применяются нормы Гражданского кодекса Российской Федерации, регулирующие порядок и условия заключения договора присоединения (ст. 428 ГК РФ), направления оферты и акцепта (ст. 435–444 ГК РФ).</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Разрешение споров</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">9.1. Для разрешения споров по настоящему Соглашению применяется обязательный претензионный порядок со сроком ответа на претензию — 10 (десять) рабочих дней с момента ее получения. В случае не достижения согласия такие споры рассматриваются арбитражным судом города Москвы.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="block__wrapper">
+                      <label class="block__header">
+                        <p class="title title--small">Условия и порядок расторжения настоящего соглашения</p><span class="block__icon"></span>
+                        <input class="block__input" type="checkbox">
+                      </label>
+                      <div class="block-content">
+                        <div class="block-content__wrapper">
+                          <p class="text text--base">
+                            10.1. Исполнитель имеет право в одностороннем порядке вносить изменения в условия настоящего Соглашения. <br>10.2. Исполнитель имеет право в одностороннем порядке расторгнуть Соглашение или приостановить доступ к Платформе по причине нарушения Заказчиком или Стоянками пунктов Соглашения.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav">
+          <div class="nav-buttons">
+            <div class="button-list button-list--accent button-list--column"><a class="button button--base button--icon button--accent anchor-prev" href="#">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#arrow-top"></use>
+                </svg></a><a class="button button--base button--icon button--accent anchor-next" href="#">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#arrow-down"></use>
+                </svg></a></div>
+          </div>
+          <ul class="nav-list button-list button-list--nav">
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="#">
+                <svg class="button__icon button__icon--logo">
+                  <use xlink:href="assets/images/sprite.svg#logo"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="#about">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#chat"></use>
+                </svg><span class="button__text">О платформе</span></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="#functions">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#action"></use>
+                </svg><span class="button__text">Функционал</span></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="#roles">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#role"></use>
+                </svg><span class="button__text">Роли пользователей</span></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="#advantages">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#advantages"></use>
+                </svg><span class="button__text">Преимущества</span></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="#audience">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#audience"></use>
+                </svg><span class="button__text">Целевая аудитория</span></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="#" data-popup=".popup-enter">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#home"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="#">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#connect"></use>
+                </svg></a></li>
+          </ul>
+        </div>
+        <div class="contact-showcase">
+          <div class="container">
+            <form class="contact-showcase__row" method="POST">
+              <div class="contact-showcase__img image">
+                <picture class="image__item"><source srcset="assets/images/contact/decor-m.webp" media="(max-width: 640px)"><img src="assets/images/contact/decor.webp" draggable="false" ondragstart="return false;"></picture>
+              </div>
+              <div class="contact-showcase__header">
+                <p class="title title--white title--base">Войти в Периметр управления</p>
+                <p class="text text--base text--white contact-showcase__text">Разберем процесс и адаптируем систему под ваши задачи</p>
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" required><span class="checkbox__checkmark">
+                    <svg class="icon">
+                      <use xlink:href="assets/images/sprite.svg#check"></use>
+                    </svg></span><span class="checkbox__text">Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия <a href="#">Политики конфиденциальности</a> и&nbsp;<a href="#">Пользовательского соглашения</a></span>
+                </label>
+              </div>
+              <div class="contact-showcase__form form">
+                <div class="form-grid">
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Имя">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Название компании">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Телефон">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Email">
+                    </label>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <button class="button button--full button--big button--white" type="submit"><span class="button__text">Отправить</span></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="footer__wrapper">
+            <div class="container">
+              <div class="footer__column"><a class="footer__logo image">
+                  <svg class="image__ite">
+                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                  </svg></a>
+                <div class="footer__row">
+                  <div class="footer__block"><a class="button button--base button--accent footer__button" href="tel:+7 495 141 21 00 "><span class="button__text">+7 495 141 21 00</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#phone"></use>
+                      </svg></a><a class="button button--base button--bordered footer__button" href="#"><span class="button__text">О сервисе</span></a><a class="button button--base button--bordered footer__button" href="#"><span class="button__text">О компании</span></a></div>
+                  <div class="footer__block"><a class="button button--base button--bordered footer__button" href="#"><span class="button__text">Политика обработки персональных данных</span></a><a class="button button--base button--bordered footer__button" href="#"><span class="button__text">Политика конфиденциальности</span></a></div>
+                  <div class="footer__block"><a class="button button--base button--bordered footer__button" href="#"><span class="button__text">Пользовательское соглашение</span></a><a class="button button--base button--accent footer__button" href="mailto:Hello@perimetr.one"><span class="button__text">Hello@perimetr.one</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#mail"></use>
+                      </svg></a></div>
+                </div>
+                <p class="footer__text">2026 PERIMETR. All rights reserved</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+    <script src="assets/scripts/index.js"></script>
+  </body>
+</html>
