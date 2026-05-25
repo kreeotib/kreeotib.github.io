@@ -25,7 +25,7 @@ body {
   font-family: var(--font-main);
   font-weight: 350;
   font-size: 1rem;
-  background-color: #F2F2F2;
+  background-color: #F2F0EC;
 }
 
 body.no-scroll {
@@ -274,7 +274,7 @@ body::before {
   }
 }
 .block--white {
-  background-color: #F2F0EC;
+  background-color: #fff;
   border-radius: 1rem;
   border: 1px solid #DCDCDC;
 }
@@ -323,7 +323,7 @@ body::before {
 }
 .block--full {
   max-width: 100%;
-  background-color: #F2F0EC;
+  background-color: #fff;
   border-radius: 1rem;
   border: 1px solid #DCDCDC;
 }
@@ -352,7 +352,7 @@ body::before {
   gap: 0.75rem;
 }
 .block__content {
-  background-color: #F2F0EC;
+  background-color: #fff;
   padding: 1.25rem 1rem 1.5rem 1rem;
   border-radius: 1rem;
   border: 1px solid #DCDCDC;
@@ -505,7 +505,7 @@ body::before {
   padding: 1.25rem 1rem;
   border: 1px solid #DCDCDC;
   border-radius: 1rem;
-  background-color: #F2F0EC;
+  background-color: #fff;
 }
 .tariff__list {
   display: grid;
@@ -868,7 +868,7 @@ body::before {
   height: 100%;
   border-radius: 1rem;
   border: 1px solid #DCDCDC;
-  background-color: #F2F0EC;
+  background-color: #fff;
   padding: 1.25rem 0.75rem;
   display: flex;
   flex-direction: column;

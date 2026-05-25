@@ -62,7 +62,7 @@ body {
   font-family: var(--font-main);
   font-weight: 350;
   font-size: 1rem;
-  background-color: #F2F2F2;
+  background-color: #F2F0EC;
 }
 
 body.no-scroll {
@@ -346,7 +346,7 @@ body::before{
     max-width: 100%;
   }
   &--white {
-    background-color: #F2F0EC;
+    background-color: #fff;
     border-radius: 1rem;
     border: 1px solid #DCDCDC;
   }
@@ -407,7 +407,7 @@ body::before{
 
   &--full {
     max-width: 100%;
-    background-color: #F2F0EC;
+    background-color: #fff;
     border-radius: 1rem;
     border: 1px solid #DCDCDC;
   }
@@ -442,7 +442,7 @@ body::before{
   }
 
   &__content {
-    background-color: #F2F0EC;
+    background-color: #fff;
     padding: 1.25rem 1rem 1.5rem 1rem;
     border-radius: 1rem;
     border: 1px solid #DCDCDC;
@@ -637,7 +637,7 @@ body::before{
     padding: 1.25rem 1rem;
     border: 1px solid #DCDCDC;
     border-radius: 1rem;
-    background-color: #F2F0EC;
+    background-color: #fff;
   }
   &__list{
     display: grid;
@@ -1037,7 +1037,7 @@ body::before{
       height: 100%;
       border-radius: 1rem;
       border: 1px solid #DCDCDC;
-      background-color: #F2F0EC;
+      background-color: #fff;
 
       padding:1.25rem .75rem ;
 
