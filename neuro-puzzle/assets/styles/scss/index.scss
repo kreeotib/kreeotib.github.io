@@ -62,7 +62,7 @@ body {
   font-family: var(--font-main);
   font-weight: 350;
   font-size: 1rem;
-  background-color: #F2F0EC;
+  background-color: #F2F0EC ;
 }
 
 body.no-scroll {
@@ -864,7 +864,7 @@ body::before{
   right: 0;
   top: 0;
   width: 100%;
-  height: 100svh;
+  height: 100vh;
   z-index: 10;
   max-width: 23.75rem;
 
