@@ -82,24 +82,23 @@
                         <div class="form__wrapper">
                             <div class="form__header">
                                 <p class="form__title">
-                                    Фото товара
+                                    Ретушь фотографий
                                 </p>
                             </div>
                             <div class="form__content">
-                                <div class="file-result">
-                                    <img src="assets/media/images/label.webp" alt="">
-                                </div>
+                                <label class="file-load loading">
+                                    <input type="file" class="file-load__input" accept="image/*">
+
+                                    <svg class="file-load__border" width="358" height="152" viewBox="0 0 358 152"
+                                         fill="none">
+                                        <rect x="1" y="1" width="356" height="150" rx="15" stroke-dasharray="10 10"></rect>
+                                    </svg>
+
+
+                                    <span class="file-load__text">Загрузка....</span>
+                                </label>
                             </div>
-                            <div class="form__content">
-                                <button class="button button--small button--dark button--full"
-                                        type="submit">
-                                    Скачать
-                                </button>
-                                <button class="button button--small button--dark button--full"
-                                        type="submit">
-                                    Новый запрос
-                                </button>
-                            </div>
+
                         </div>
                     </form>
                 </div>
