@@ -708,7 +708,7 @@ body::before {
   height: 100vh;
   z-index: 10;
   max-width: 23.75rem;
-  background: #fff;
+  background: #F2F0EC;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
