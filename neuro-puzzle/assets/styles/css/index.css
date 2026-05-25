@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 1240px) {
   :root {
-    --content-padding: 2rem;
+    --content-padding: 1rem;
   }
 }
 html {
