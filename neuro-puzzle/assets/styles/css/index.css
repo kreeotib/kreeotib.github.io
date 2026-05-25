@@ -817,7 +817,6 @@ body::before {
 @media screen and (max-width: 1240px) {
   .footer {
     border-radius: 1rem 1rem 0 0;
-    background-color: #252525;
   }
 }
 .footer__wrapper {
