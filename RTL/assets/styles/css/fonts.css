@@ -31,4 +31,5 @@
     src: url('../../fonts/Bounded/Bounded-Variable.woff') format('woff-variations');
     font-weight: 100 900;
     font-style: normal italic;
+    font-display: swap;
 }

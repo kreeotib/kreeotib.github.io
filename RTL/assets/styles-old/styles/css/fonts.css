@@ -1,5 +1,6 @@
 @font-face {
     font-family: 'Bounded';
+	font-display: optional;
     src: url('../../fonts/Bounded/Bounded-Bold.woff2') format('woff2'),
     url('../../fonts/Bounded/Bounded-Bold.woff') format('woff');
     font-weight: bold;
@@ -9,6 +10,7 @@
 
 @font-face {
     font-family: 'Bounded';
+	font-display: optional;
     src: url('../../fonts/Bounded/Bounded-Regular.woff2') format('woff2'),
     url('../../fonts/Bounded/Bounded-Regular.woff') format('woff');
     font-weight: normal;
@@ -18,6 +20,7 @@
 
 @font-face {
     font-family: 'Bounded';
+	font-display: optional;
     src: url('../../fonts/Bounded/Bounded-SemiBold.woff2') format('woff2'),
     url('../../fonts/Bounded/Bounded-SemiBold.woff') format('woff');
     font-weight: 600;
@@ -28,6 +31,7 @@
 
 @font-face {
     font-family: 'Bounded';
+	font-display: optional;
     src: url('../../fonts/Bounded/Bounded-Variable.woff') format('woff-variations');
     font-weight: 100 900;
     font-style: normal italic;
