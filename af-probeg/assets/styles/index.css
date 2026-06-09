@@ -102,7 +102,7 @@ p, a {
     left: 0;
     top: 0;
     width: 100%;
-    background: url("/assets/images/main-bg.webp") center center/cover no-repeat;
+    background: url("../images/main-bg.webp") center center/cover no-repeat;
     height: 100%;
     z-index: 0;
     pointer-events: none;
