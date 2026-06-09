@@ -19,6 +19,14 @@ const Popup = (() => {
         activePopup = null;
 
         ScrollLock.unlock();
+        const videoTag = popup.querySelectorAll("video");
+        if(videoTag.length){
+            videoTag.forEach(tag=>{
+                tag.pause();
+            })
+        }
+
+        console.log('234');
         popup.classList.add('is-closing');
 
         setTimeout(() => {

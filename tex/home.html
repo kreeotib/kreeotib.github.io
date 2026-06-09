@@ -6,6 +6,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://vk.ru/js/api/openapi.js?168"></script>
+    <!-- Yandex.Metrika counter-->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+          m[i] = m[i] || function () {
+              (m[i].a = m[i].a || []).push(arguments)
+          };
+          m[i].l = 1 * new Date();
+          for (var j = 0; j < document.scripts.length; j++) {
+              if (document.scripts[j].src === r) {
+                  return;
+              }
+          }
+          k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=109097968', 'ym');
+      ym(109097968, 'init', {
+          ssr: true,
+          webvisor: true,
+          clickmap: true,
+          ecommerce: "dataLayer",
+          referrer: document.referrer,
+          url: location.href,
+          accurateTrackBounce: true,
+          trackLinks: true
+      });
+    </script>
+    <noscript>
+      <div><img src="https://mc.yandex.ru/watch/109097968" style="position:absolute; left:-9999px;" alt=""></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter-->
     <link href="assets/libs/swiper/swiper.css" rel="stylesheet">
     <link href="assets/styles/reset.css" rel="stylesheet">
     <link href="assets/styles/index.css" rel="stylesheet">
@@ -267,12 +296,12 @@
                       <div class="swiper-slide team-slider__item">
                         <div class="team-card team-card--main">
                           <div class="team-card__wrapper">
-                            <div class="team-card__img image" data-video="assets/media/video/test.mp4">
+                            <div class="team-card__img image" data-video="assets/media/video/team/1.mp4">
                               <div class="play-icon">
                                 <svg class="icon">
                                   <use xlink:href="assets/media/images/sprite.svg#play"></use>
                                 </svg>
-                              </div><img class="image__item" src="assets/media/images/team/1.webp" draggable="false" ondragstart="return false;">
+                              </div><img class="image__item" src="assets/media/video/team/1.webp" draggable="false" ondragstart="return false;">
                             </div>
                             <div class="team-card__content">
                               <div class="team-card__header">
@@ -297,22 +326,35 @@
                       <div class="swiper-slide team-slider__item">
                         <div class="team-card">
                           <div class="team-card__wrapper">
-                            <div class="team-card__img image"><img class="image__item" src="assets/media/images/team/1.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="team-card__img image" data-video="assets/media/video/team/2.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/2.webp" draggable="false" ondragstart="return false;">
+                            </div>
                             <div class="team-card__content">
                               <div class="team-card__header">
-                                <p class="team-card__exp">44&nbsp;года</p>
+                                <p class="team-card__exp">42&nbsp;года</p>
                               </div>
                               <div class="team-card__info">
                                 <div class="team-card__desc">
                                   <div class="team-card__person">
-                                    <p class="team-card__name">Иванов Евгений</p>
-                                    <p class="text text--big">Руководитель компании</p>
+                                    <p class="team-card__name">Булаев Вячеслав</p>
+                                    <p class="text text--big">Прораб, Монтажник, Проектировщик, Менеджер по&nbsp;закупкам</p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium">Москва и&nbsp;МО</span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text">В&nbsp;компании с&nbsp;2018</p>
+                                    </div>
                                   </div>
                                   <div class="team-card__text">
-                                    <p>В&nbsp;профессии с&nbsp;2003&nbsp;году, начав путь в&nbsp;компании &laquo;ВиВО&raquo; обычным подсобником, которая во&nbsp;главе с&nbsp;Павлом Мостовым занималась монтажом систем отопления и&nbsp;водоснабжения в&nbsp;частных премиальных домах. Основной опыт получил там, проработав 10&nbsp;лет.</p>
-                                    <p>Всю историю становления компании можно почитать по&nbsp;ссылке ниже.</p>
+                                    <p>В&nbsp;профессии с&nbsp;2002&nbsp;года, начав монтаж в&nbsp;частной компании подсобником в&nbsp;городе Челябинск.</p>
                                   </div>
-                                </div><a class="button button--outline button--base" href="#">Смотреть первый объект</a>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
                               </div>
                             </div>
                           </div>
@@ -321,22 +363,405 @@
                       <div class="swiper-slide team-slider__item">
                         <div class="team-card">
                           <div class="team-card__wrapper">
-                            <div class="team-card__img image"><img class="image__item" src="assets/media/images/team/1.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="team-card__img image" data-video="assets/media/video/team/3.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/3.webp" draggable="false" ondragstart="return false;">
+                            </div>
                             <div class="team-card__content">
                               <div class="team-card__header">
-                                <p class="team-card__exp">44&nbsp;года</p>
+                                <p class="team-card__exp">32 года</p>
                               </div>
                               <div class="team-card__info">
                                 <div class="team-card__desc">
                                   <div class="team-card__person">
-                                    <p class="team-card__name">Иванов Евгений</p>
-                                    <p class="text text--big">Руководитель компании</p>
+                                    <p class="team-card__name">Зинган Денис</p>
+                                    <p class="text text--big">Прораб, Монтажник, Проектировщик</p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium">СПб и&nbsp;ЛО</span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text">В&nbsp;компании с&nbsp;2014</p>
+                                    </div>
                                   </div>
                                   <div class="team-card__text">
-                                    <p>В&nbsp;профессии с&nbsp;2003&nbsp;году, начав путь в&nbsp;компании &laquo;ВиВО&raquo; обычным подсобником, которая во&nbsp;главе с&nbsp;Павлом Мостовым занималась монтажом систем отопления и&nbsp;водоснабжения в&nbsp;частных премиальных домах. Основной опыт получил там, проработав 10&nbsp;лет.</p>
-                                    <p>Всю историю становления компании можно почитать по&nbsp;ссылке ниже.</p>
+                                    <p>В&nbsp;профессии с&nbsp;2014&nbsp;года, придя в&nbsp;профессию обычным помощником к&nbsp;<span class='text text--semibold'>Евгению Иванову</span>, когда тот монтировал ещё сам. Вместе с&nbsp;ним прошёл весь путь до&nbsp;сегодняшнего дня.</p>
                                   </div>
-                                </div><a class="button button--outline button--base" href="#">Смотреть первый объект</a>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/4.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/4.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp">44 года</p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Фокин Юрий</p>
+                                    <p class="text text--big">Прораб, Монтажник</p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium">СПб и&nbsp;ЛО</span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text">В&nbsp;компании с&nbsp;2017</p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p>В профессии с 2005 года, придя в профессию обычным помощником в частную бригаду.</p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/5.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/5.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp">45&nbsp;лет</p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Зуев Евгений</p>
+                                    <p class="text text--big">Прораб, Монтажник</p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium">СПб и&nbsp;ЛО</span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text">В&nbsp;компании с&nbsp;2022</p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p>В&nbsp;профессии с&nbsp;2010&nbsp;года, придя в&nbsp;профессию обычным помощником в&nbsp;частную бригаду.</p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/6.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/6.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp">34 года</p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Гуринов Сергей</p>
+                                    <p class="text text--big">Прораб, Монтажник, Проектировщик</p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium">СПб и&nbsp;ЛО</span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text">В&nbsp;компании с&nbsp;2021</p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p>В&nbsp;профессии с&nbsp;2021&nbsp;года, придя в&nbsp;нашу компанию обычным помощником в&nbsp;бригаду <span class='text text--semibold'>Вячеслава Булаева</span>. За&nbsp;два года получил знания и&nbsp;опыт, позволившие ему стать прорабом и&nbsp;вести объекты самостоятельно.</p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/7.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/7.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp"> 41 год</p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Гольцов Дмитрий</p>
+                                    <p class="text text--big">Прораб, Монтажник</p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium">СПб и&nbsp;ЛО</span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text">В&nbsp;компании с&nbsp;2021</p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p>В&nbsp;профессии с&nbsp;2021&nbsp;года, придя в&nbsp;нашу компанию обычным помощником в&nbsp;бригаду <span class='text text--semibold'>Дениса Зингана.</span> За&nbsp;два года получил знания и&nbsp;опыт, позволившие ему стать прорабом и&nbsp;вести объекты самостоятельно.</p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team8.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/8.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp">34 года</p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Цыбаков Денис</p>
+                                    <p class="text text--big">Прораб, Монтажник, Проектировщик</p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium">СПб и&nbsp;ЛО</span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text">В&nbsp;компании с&nbsp;2022</p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p>В&nbsp;профессии с&nbsp;2022&nbsp;года, придя в&nbsp;нашу компанию обычным помощником в&nbsp;бригаду <span class='text text--semibold'>Вячеслава Булаева</span>. За&nbsp;полтора года получил знания и&nbsp;опыт, позволившие ему стать прорабом и&nbsp;вести объекты самостоятельно.</p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/9.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/9.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp"> </p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Александр Прохоренко</p>
+                                    <p class="text text--big"></p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium"></span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text"></p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p></p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/10.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/10.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp"> </p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Александр Рузаев</p>
+                                    <p class="text text--big"></p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium"></span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text"></p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p></p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/11.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/11.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp"> </p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Алексей Зверев(главный электрик)</p>
+                                    <p class="text text--big"></p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium"></span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text"></p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p></p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/12.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/12.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp"> </p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Вадим Феоктистов(вентиляция</p>
+                                    <p class="text text--big"></p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium"></span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text"></p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p></p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide team-slider__item">
+                        <div class="team-card">
+                          <div class="team-card__wrapper">
+                            <div class="team-card__img image" data-video="assets/media/video/team/13.mp4">
+                              <div class="play-icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/media/images/sprite.svg#play"></use>
+                                </svg>
+                              </div><img class="image__item" src="assets/media/video/team/13.webp" draggable="false" ondragstart="return false;">
+                            </div>
+                            <div class="team-card__content">
+                              <div class="team-card__header">
+                                <p class="team-card__exp"> </p>
+                              </div>
+                              <div class="team-card__info">
+                                <div class="team-card__desc">
+                                  <div class="team-card__person">
+                                    <p class="team-card__name">Александр Филиппов(электрик).</p>
+                                    <p class="text text--big"></p>
+                                    <div class="team-info">
+                                      <p class="team-info__city">
+                                        <svg class="icon">
+                                          <use xlink:href="assets/media/images/sprite.svg#pin"></use>
+                                        </svg><span class="text text--medium"></span>
+                                      </p><span class="team-info__divider"></span>
+                                      <p class="text"></p>
+                                    </div>
+                                  </div>
+                                  <div class="team-card__text">
+                                    <p></p>
+                                  </div>
+                                </div><a class="button button--accent button--base" href="#">Читать историю компании</a>
                               </div>
                             </div>
                           </div>
@@ -445,9 +870,9 @@
           <section class="section how">
             <div class="section__wrapper">
               <div class="container">
-                <div class="grid grid-how" data-sticky>
+                <div class="grid grid-how">
                   <div class="grid-how__item">
-                    <div class="grid__sticky grid__sticky--top">
+                    <div class="grid__sticky" data-sticky>
                       <p class="title title--big">Как мы <span class="title title--grey--light">устраняем</span> проблемы, если они возникают</p>
                     </div>
                   </div>
@@ -562,7 +987,7 @@
                                   </ul>
                                 </div>
                               </div>
-                              <div class="offers-card__footer"><a class="offers-button button" href="#"><img class="offers-button__document" src="assets/media/images/icons/xls.svg" draggable="false" ondragstart="return false;"><span class="offers-button__text"><span class="text text--middle text--semibold offers-button__title">Посмотреть подробную смету в&nbsp;формате таблицы</span><span class="text text--base">для комплектации Комфорт</span></span>
+                              <div class="offers-card__footer"><a class="offers-button button" href="assets/media/files/comfort.pdf" target="_blank"><img class="offers-button__document" src="assets/media/images/icons/xls.svg" draggable="false" ondragstart="return false;"><span class="offers-button__text"><span class="text text--middle text--semibold offers-button__title">Посмотреть подробную смету в&nbsp;формате таблицы</span><span class="text text--base">для комплектации Комфорт</span></span>
                                   <svg class="offers-button__icon icon">
                                     <use xlink:href="assets/media/images/sprite.svg#arrow"></use>
                                   </svg><span class="button button--text offers-button__link">Смотреть
@@ -677,7 +1102,7 @@
                                   </ul>
                                 </div>
                               </div>
-                              <div class="offers-card__footer"><a class="offers-button offers-button--accent button" href="#"><img class="offers-button__document" src="assets/media/images/icons/xls.svg" draggable="false" ondragstart="return false;"><span class="offers-button__text"><span class="text text--middle text--semibold offers-button__title">Посмотреть подробную смету в&nbsp;формате таблицы</span><span class="text text--base">для комплектации Комфорт+</span></span>
+                              <div class="offers-card__footer"><a class="offers-button offers-button--accent button" href="assets/media/files/comfort-plus.pdf" target="_blank"><img class="offers-button__document" src="assets/media/images/icons/xls.svg" draggable="false" ondragstart="return false;"><span class="offers-button__text"><span class="text text--middle text--semibold offers-button__title">Посмотреть подробную смету в&nbsp;формате таблицы</span><span class="text text--base">для комплектации Комфорт+</span></span>
                                   <svg class="offers-button__icon icon">
                                     <use xlink:href="assets/media/images/sprite.svg#arrow"></use>
                                   </svg><span class="button button--text offers-button__link">Смотреть
@@ -762,7 +1187,7 @@
                             <p class="diff-card__title">Подробно о&nbsp;различиях тарифов</p>
                           </div>
                           <div class="diff-card__footer">
-                            <div class="play-button button">
+                            <div class="play-button button" data-video="assets/media/video/tariff.mp4">
                               <div class="play-icon">
                                 <svg class="icon">
                                   <use xlink:href="assets/media/images/sprite.svg#play"></use>
