@@ -1998,11 +1998,12 @@ a:not(.button):hover {
 .team-card__wrapper {
   display: flex;
   align-items: stretch;
-  height: 36.25rem;
+  min-height: 36.25rem;
 }
 @media screen and (max-width: 640px) {
   .team-card__wrapper {
     height: 100%;
+    min-height: 20.25rem;
   }
 }
 .team-card__content {

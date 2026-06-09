@@ -1,16 +1,25 @@
 @font-face {
-    font-family: 'LeksaSansPro';
-    src: url('../fonts/LeksaSansPro.woff2') format('woff2'),
-    url('../fonts/LeksaSansPro.woff') format('woff');
-    font-weight: normal;
+    font-family: 'Golos Text';
+    src: url('../fonts/GolosText-Bold.woff2') format('woff2'),
+    url('../fonts/GolosText-Bold.woff') format('woff');
+    font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'LeksaSansPro';
-    src: url('../fonts/LeksaSansPro-Bold.woff2') format('woff2'),
-    url('../fonts/LeksaSansPro-Bold.woff') format('woff');
+    font-family: 'Golos Text';
+    src: url('../fonts/GolosText-Medium.woff2') format('woff2'),
+    url('../fonts/GolosText-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Leksa Sans';
+    src: url('../fonts/LeksaSans-Bold.woff2') format('woff2'),
+    url('../fonts/LeksaSans-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -33,7 +42,7 @@
     --container-padding: 2rem;
 
 
-    --font-main: 'LeksaSansPro', 'Adjusted Arial Fallback';
+    --font-main: 'Leksa Sans', 'Adjusted Arial Fallback';
     --font-accent: "Golos Text", sans-serif;
 
 
@@ -377,6 +386,10 @@ p, a {
 .about-residence__wrapper {
     overflow: hidden;
     min-height: 0;
+}
+
+.about-residence__content{
+    padding-bottom: .5rem;
 }
 
 .about-residence__img {
