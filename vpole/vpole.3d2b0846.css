@@ -1,0 +1,32 @@
+@font-face {
+  font-family: Stolzl Book;
+  src: url("Stolzl-Book.c5b270d8.woff2") format("woff2"), url("Stolzl-Book.bd160028.woff") format("woff");
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Stolzl;
+  src: url("Stolzl-Light.2ed0a692.woff2") format("woff2"), url("Stolzl-Light.ed4f1717.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Stolzl;
+  src: url("Stolzl-Medium.96e9d7df.woff2") format("woff2"), url("Stolzl-Medium.dee6870a.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Stolzl;
+  src: url("Stolzl-Regular.a4cb6f5e.woff2") format("woff2"), url("Stolzl-Regular.5f030c46.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/*# sourceMappingURL=vpole.3d2b0846.css.map */
