@@ -1,3 +1,75 @@
+const Preloader = (() => {
+    const DEFAULTS = {
+        selector: '.preloader',
+        hiddenClass: 'preloader--hidden',
+        minDuration: 0,
+        removeAfterHide: true,
+        lockScroll: true,
+    };
+
+    let config = {...DEFAULTS};
+    let el = null;
+    let startTime = 0;
+    let hidden = false;
+
+    function hide() {
+        if (hidden) return;
+        hidden = true;
+
+        const elapsed = Date.now() - startTime;
+        const wait = Math.max(0, config.minDuration - elapsed);
+
+        setTimeout(() => {
+            if (!el) {
+
+                document.dispatchEvent(new CustomEvent('preloader:hidden'));
+                return;
+            }
+
+            el.classList.add(config.hiddenClass);
+
+            if (config.lockScroll) {
+                ScrollLock.unlock();
+            }
+
+            document.dispatchEvent(new CustomEvent('preloader:hidden'));
+
+            if (config.removeAfterHide) {
+                el.addEventListener('transitionend', () => {
+                    el?.remove();
+                }, {once: true});
+
+                setTimeout(() => el?.remove(), 1000);
+            }
+        }, wait);
+    }
+
+    function init(options = {}) {
+        config = {...DEFAULTS, ...options};
+        el = document.querySelector(config.selector);
+        startTime = Date.now();
+        hidden = false;
+
+        if (!el) {
+
+            console.warn('[Preloader] No element found for selector:', config.selector);
+            return;
+        }
+
+        if (config.lockScroll) {
+            ScrollLock.lock();
+        }
+    }
+
+    function isPresent() {
+        return el !== null;
+    }
+
+    return {init, hide, isPresent};
+})();
+
+window.Preloader = Preloader;
+
 const ScrollLock = (() => {
     let lockCount = 0;
     let scrollbarWidth = 0;
@@ -49,6 +121,12 @@ const ScrollLock = (() => {
 })();
 
 window.ScrollLock = ScrollLock;
+
+Preloader.init({minDuration: 2200});
+
+window.addEventListener('load', () => {
+    Preloader.hide();
+});
 
 
 const ParallaxEffect = (() => {
@@ -564,6 +642,7 @@ const RunoverEffect = (() => {
             { scale: 1, borderRadius: '0px' },
             {
                 scale: 1 - config.scaleReduction,
+                '--border-radius': `${config.borderRadius * 2}px`,
                 borderRadius: `0 0 ${config.borderRadius}px ${config.borderRadius}px`,
                 transformOrigin: 'center top',
                 ease: 'none',
@@ -604,6 +683,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 
+(function () {
+    const STORAGE_KEY = 'cookieAccepted';
+    const banner = document.querySelector('.cookie');
+
+    if (!banner) return;
+
+    if (localStorage.getItem(STORAGE_KEY) === 'true' || localStorage.getItem(STORAGE_KEY) === 'false') {
+        banner.style.display = 'none';
+        return;
+    }
+
+    const button = banner.querySelector('.cookie__accept');
+    const buttonDecline = banner.querySelector('.cookie__decline');
+    if (!button) return;
+
+    button.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, 'true');
+        banner.style.display = 'none';
+    });
+
+    buttonDecline.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, 'false');
+        banner.style.display = 'none';
+    });
+})();
+
 
 document.addEventListener('DOMContentLoaded', ()=>{
     try {
@@ -626,5 +731,3 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 })
-
-
