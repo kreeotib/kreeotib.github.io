@@ -603,7 +603,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const RunoverEffect = (() => {
     const DEFAULTS = {
         footerSelector: '.footer',
-        contentSelector: '.content',
+        triggerSelector: '.content',
+        contentSelector: '.content > .content__wrapper',
         scaleReduction: 0.1,
         borderRadius: 40,
         scrub: 1,
@@ -616,10 +617,15 @@ const RunoverEffect = (() => {
         config = { ...DEFAULTS, ...options };
 
         const footer = document.querySelector(config.footerSelector);
+        const trigger = document.querySelector(config.triggerSelector);
         const content = document.querySelector(config.contentSelector);
 
         if (!footer) {
             console.warn('[RunoverEffect] Footer not found:', config.footerSelector);
+            return;
+        }
+        if (!trigger) {
+            console.warn('[RunoverEffect] Trigger not found:', config.triggerSelector);
             return;
         }
         if (!content) {
@@ -629,7 +635,7 @@ const RunoverEffect = (() => {
 
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: content,
+                trigger: trigger,
                 start: 'bottom bottom',
                 end: 'bottom top',
                 scrub: config.scrub,
@@ -642,7 +648,6 @@ const RunoverEffect = (() => {
             { scale: 1, borderRadius: '0px' },
             {
                 scale: 1 - config.scaleReduction,
-                '--border-radius': `${config.borderRadius * 2}px`,
                 borderRadius: `0 0 ${config.borderRadius}px ${config.borderRadius}px`,
                 transformOrigin: 'center top',
                 ease: 'none',
@@ -650,7 +655,7 @@ const RunoverEffect = (() => {
             0
         );
 
-        items = [{ footer, content, tl }];
+        items = [{ footer, trigger, content, tl }];
     }
 
     function refresh() {
@@ -668,6 +673,8 @@ const RunoverEffect = (() => {
 
     return { init, refresh, destroy };
 })();
+
+window.RunoverEffect = RunoverEffect;
 
 window.RunoverEffect = RunoverEffect;
 
