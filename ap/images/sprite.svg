@@ -1,0 +1,20 @@
+<svg width="0" height="0" class="hidden">
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="risk">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M469.353 192.083v-42.667c0-11.316-4.496-22.168-12.496-30.17-8.003-8.002-18.854-12.496-30.17-12.496h-341.334c-11.316 0-22.169 4.495-30.17 12.496s-12.497 18.854-12.497 30.17v213.332c0 11.319 4.495 22.17 12.497 30.17 8.002 8.003 18.854 12.499 30.17 12.499h170.666M469.353 192.083h-341.333M469.353 192.083v42.667"></path>
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M459.731 315.158l-54.528-13.846c-6.889-1.75-14.103-1.75-20.992 0l-54.528 13.846c-2.759 0.698-5.197 2.31-6.921 4.572-1.721 2.264-2.63 5.041-2.573 7.886 3.671 122.839 74.519 141.696 74.519 141.696s70.848-18.858 74.519-141.696c0.17-5.846-3.821-11.008-9.495-12.459z"></path>
+    </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="upload">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M256.021 170.75v170.668M181.354 266.75l74.667 74.668 74.667-74.668M256.021 469.418c117.825 0 213.333-95.51 213.333-213.334s-95.507-213.333-213.333-213.333c-117.824 0-213.333 95.509-213.333 213.333s95.51 213.334 213.333 213.334z"></path>
+    </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="clock">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M256 128v128h128"></path>
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M256.021 469.418c117.825 0 213.333-95.51 213.333-213.334s-95.507-213.333-213.333-213.333c-117.824 0-213.333 95.509-213.333 213.333s95.51 213.334 213.333 213.334z"></path>
+    </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="format">
+        <path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M64 157.867v-81.067c0-3.395 1.349-6.65 3.749-9.051s5.656-3.749 9.051-3.749h123.734c3.394 0 6.65 1.348 9.051 3.749s3.749 5.656 3.749 9.051v81.067c0 3.395-1.349 6.65-3.749 9.051s-5.656 3.749-9.051 3.749h-123.734c-3.395 0-6.65-1.349-9.051-3.749s-3.749-5.656-3.749-9.051zM298.666 435.2v-81.065c0-3.395 1.349-6.653 3.749-9.053s5.656-3.747 9.051-3.747h123.733c3.395 0 6.649 1.347 9.050 3.747 2.403 2.4 3.75 5.658 3.75 9.053v81.065c0 3.395-1.347 6.649-3.75 9.050-2.4 2.403-5.654 3.75-9.050 3.75h-123.733c-3.394 0-6.65-1.347-9.051-3.75-2.401-2.4-3.749-5.654-3.749-9.050zM298.666 264.534v-187.733c0-3.395 1.349-6.65 3.749-9.051s5.656-3.749 9.051-3.749h123.733c3.395 0 6.649 1.349 9.050 3.749 2.403 2.4 3.75 5.656 3.75 9.051v187.733c0 3.394-1.347 6.651-3.75 9.051-2.4 2.401-5.654 3.749-9.050 3.749h-123.733c-3.394 0-6.65-1.349-9.051-3.749s-3.749-5.656-3.749-9.051zM64 435.2v-187.733c0-3.394 1.349-6.65 3.749-9.051s5.656-3.749 9.051-3.749h123.734c3.394 0 6.65 1.349 9.051 3.749s3.749 5.656 3.749 9.051v187.733c0 3.395-1.349 6.649-3.749 9.050-2.4 2.403-5.656 3.75-9.051 3.75h-123.734c-3.395 0-6.65-1.347-9.051-3.75-2.4-2.4-3.749-5.654-3.749-9.050z"></path>
+    </symbol>
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="eye">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M53.375 256.083c0 0 64-149.333 213.333-149.333s213.333 149.333 213.333 149.333c0 0-64 149.334-213.333 149.334s-213.333-149.334-213.333-149.334z"></path>
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M266.709 320.083c35.346 0 63.998-28.654 63.998-64s-28.653-64-63.998-64c-35.346 0-64 28.654-64 64s28.654 64 64 64z"></path>
+    </symbol>
+</svg>
