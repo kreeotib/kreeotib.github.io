@@ -373,7 +373,7 @@ const ScrollReveal = (() => {
 window.ScrollReveal = ScrollReveal;
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({initialDelay: 0});
+    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({initialDelay: 500});
 });
 
 document.addEventListener('DOMContentLoaded',()=>{
