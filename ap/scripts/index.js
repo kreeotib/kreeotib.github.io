@@ -386,6 +386,21 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         }
     })
+    const directionSlider = new Swiper('.direction-slider',{
+        spaceBetween:8,
+        slidesPerView:'auto',
+        slidesOffsetBefore: 0,
+
+        breakpoints:{
+            1241:{
+                slidesOffsetBefore: 0.6 * window.innerWidth,
+            },
+            641:{
+                slidesOffsetBefore: 0.5 * window.innerWidth,
+                spaceBetween:0
+            }
+        }
+    })
 
 
     SmoothScroll.init();
