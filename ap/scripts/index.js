@@ -376,10 +376,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({initialDelay: 500});
 });
 
+(function(){
+    const VALUES = [1, 10, 20, 50, 100, 200, 300, 500, 700, 900, '900+'];
+
+    const range = document.getElementById('range');
+    const railFill = document.getElementById('railFill');
+    const thumb = document.getElementById('thumb');
+    const valueLabel = document.getElementById('valueLabel');
+    const labelMin = document.getElementById('labelMin');
+    const labelMax = document.getElementById('labelMax');
+
+    const min = Number(range.min);
+    const max = Number(range.max);
+
+    function update(){
+        const index = Number(range.value);
+        const pct = ((index - min) / (max - min)) * 100;
+
+        railFill.style.width = pct + '%';
+        thumb.style.left = pct + '%';
+    }
+
+    range.addEventListener('input', update);
+    update();
+})();
+
 document.addEventListener('DOMContentLoaded',()=>{
     const servciesSlider = new Swiper('.services-slider',{
         spaceBetween:8,
         slidesPerView:'auto',
+        mousewheel: { invert: false, forceToAxis: true },
+        keyboard: { enabled: true },
         breakpoints:{
             641:{
                 spaceBetween:0
@@ -390,7 +417,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         spaceBetween:8,
         slidesPerView:'auto',
         slidesOffsetBefore: 0,
-
+        mousewheel: { invert: false, forceToAxis: true },
+        keyboard: { enabled: true },
         breakpoints:{
             1241:{
                 slidesOffsetBefore: 0.6 * window.innerWidth,
@@ -406,3 +434,4 @@ document.addEventListener('DOMContentLoaded',()=>{
     SmoothScroll.init();
     BurgerMenu.init();
 })
+

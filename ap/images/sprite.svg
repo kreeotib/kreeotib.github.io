@@ -57,4 +57,16 @@
     <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="book">
         <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32" stroke="currentColor" d="M245.333 149.333c0-22.632-8.99-44.337-24.994-60.34s-37.708-24.993-60.34-24.993h-128v320h149.333c16.974 0 33.252 6.743 45.255 18.745s18.745 28.281 18.745 45.255M245.333 149.333v298.667M245.333 149.333c0-22.632 8.99-44.337 24.994-60.34s37.708-24.993 60.339-24.993h128v320h-149.332c-16.974 0-33.252 6.743-45.255 18.745s-18.745 28.281-18.745 45.255M117.334 170.667h42.666M117.334 256h42.666M330.666 170.667h42.669M330.666 256h42.669"></path>
     </symbol>
+
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="check">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="42.6667" stroke="currentColor" d="M409.589 153.601l-204.799 230.399-102.4-102.399"></path>
+    </symbol>
+
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="arrow-down">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="32"  stroke="currentColor" d="M394.668 204.8l-149.334 149.333-149.333-149.333"></path>
+    </symbol>
+
+    <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="cross">
+        <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="38.4" stroke="currentColor" d="M119.764 120.236l271.529 271.527M119.764 391.763l271.529-271.527"></path>
+    </symbol>
 </svg>
