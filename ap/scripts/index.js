@@ -382,9 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const range = document.getElementById('range');
     const railFill = document.getElementById('railFill');
     const thumb = document.getElementById('thumb');
-    const valueLabel = document.getElementById('valueLabel');
-    const labelMin = document.getElementById('labelMin');
-    const labelMax = document.getElementById('labelMax');
 
     const min = Number(range.min);
     const max = Number(range.max);
@@ -392,13 +389,197 @@ document.addEventListener('DOMContentLoaded', () => {
     function update(){
         const index = Number(range.value);
         const pct = ((index - min) / (max - min)) * 100;
-
         railFill.style.width = pct + '%';
         thumb.style.left = pct + '%';
     }
 
     range.addEventListener('input', update);
     update();
+
+
+})();
+
+(() => {
+    'use strict';
+
+    const calculator = document.querySelector('.js-calculator');
+    if (!calculator) return;
+
+    const blocks = Array.from(calculator.querySelectorAll('.js-calculator-block'));
+    const resultInfo = calculator.querySelector('.calculator-result__info');
+    const resultTotal = calculator.querySelector('.js-calculator-result');
+
+    const cleanValue = (raw) => {
+        if (!raw) return '';
+        return raw.replace(/[^\d%]/g, '');
+    };
+
+    const parseItem = (input) => {
+        const rawValue = input.getAttribute('data-js-value') || '';
+        const text = input.getAttribute('data-js-text') || '';
+        const cleaned = cleanValue(rawValue);
+
+        if (!cleaned || !text) return null;
+
+        const isPercent = cleaned.indexOf('%') !== -1;
+        const digits = cleaned.replace('%', '');
+        const number = parseInt(digits, 10);
+        if (isNaN(number)) return null;
+
+        return { text, isPercent, value: number };
+    };
+
+    const formatNumber = (num) => Math.round(num).toLocaleString('ru-RU');
+
+    const formatItemValue = (item) => (
+        item.isPercent
+            ? '+' + formatNumber(item.value) + '%'
+            : formatNumber(item.value) + '\u00A0₽'
+    );
+
+    const parseRangeItem = (input) => {
+        const values = (input.getAttribute('data-js-value') || '')
+            .split(',')
+            .map((v) => parseInt(cleanValue(v.trim()), 10));
+
+        const labels = (input.getAttribute('data-js-label') || '')
+            .split(',')
+            .map((l) => l.trim());
+
+        const baseText = input.getAttribute('data-js-text') || '';
+
+        if (!values.length || !labels.length || !baseText) return null;
+
+        const lastIndex = Math.min(values.length, labels.length) - 1;
+        const index = Math.min(Math.max(Number(input.value) || 0, 0), lastIndex);
+
+        const value = values[index];
+        const label = labels[index];
+        if (isNaN(value) || !label) return null;
+
+        const prefixMatch = baseText.match(/^(.*?)\(/);
+        const prefix = prefixMatch ? prefixMatch[1] : baseText + ' ';
+        const text = (prefix + '(' + label + ' операций)').trim();
+
+        return { text, isPercent: false, value };
+    };
+
+    const collectBlockItems = (block) => {
+        const items = [];
+        const inputs = block.querySelectorAll('input[data-js-value]');
+
+        inputs.forEach((input) => {
+            if (input.type === 'range') {
+                const item = parseRangeItem(input);
+                if (item) items.push(item);
+                return;
+            }
+
+            if (!input.checked) return;
+            const item = parseItem(input);
+            if (item) items.push(item);
+        });
+
+        return items;
+    };
+
+    const getBlockTitle = (block) => {
+        const titleEl = block.querySelector('.calculator-block__header .checkbox__text');
+        return titleEl ? titleEl.textContent.trim() : '';
+    };
+
+    const isMainInputChecked = (block) => {
+        const mainInput = block.querySelector('.js-calculator-input');
+        return !!(mainInput && mainInput.checked);
+    };
+    const buildBlockMarkup = (title, items, subtotal, isMainSelected) => {
+        const rows = items.map((item) => (
+            '<div class="calculator-result__block-row">' +
+            '<p class="calculator-result__block-text">' + item.text + '</p>' +
+            '<p class="calculator-result__block-text">' + formatItemValue(item) + '</p>' +
+            '</div>'
+        )).join('');
+
+        const blockClass = 'calculator-result__block' +
+            (isMainSelected ? ' calculator-result__block--main-selected' : '');
+
+        return (
+            '<div class="' + blockClass + '">' +
+            '<div class="calculator-result__block-row">' +
+            '<p class="calculator-result__block-title">' + title + '</p>' +
+            '<p class="calculator-result__block-title">' + formatNumber(subtotal) + '\u00A0₽</p>' +
+            '</div>' +
+            '<div class="calculator-result__block-content">' +
+            rows +
+            '</div>' +
+            '</div>'
+        );
+    };
+
+
+    const recalculate = () => {
+        if (!resultInfo || !resultTotal) return;
+
+        let selectedItems = [];
+        let grandTotal = 0;
+        let blocksMarkup = '';
+
+        blocks.forEach((block) => {
+            // Главная логика: если главный инпут не выбран — полностью пропускаем блок
+            if (!isMainInputChecked(block)) return;
+
+            const items = collectBlockItems(block);
+            if (!items.length) return;
+
+            const subtotal = items.reduce((sum, item) => sum + item.value, 0);
+            grandTotal += subtotal;
+            selectedItems = selectedItems.concat(items);
+
+            const title = getBlockTitle(block);
+            const isMainSelected = true; // теперь всегда true, т.к. блок прошёл проверку
+
+            blocksMarkup += buildBlockMarkup(title, items, subtotal, isMainSelected);
+        });
+
+        resultInfo.innerHTML = blocksMarkup;
+        resultTotal.textContent = formatNumber(grandTotal) + '\u00A0₽';
+
+        return selectedItems;
+    };
+
+
+    const rangeInput = calculator.querySelector('#range');
+    const railFill = calculator.querySelector('#railFill');
+    const thumb = calculator.querySelector('#thumb');
+
+    const updateSlider = () => {
+        if (!rangeInput || !railFill || !thumb) return;
+        const min = Number(rangeInput.min) || 0;
+        const max = Number(rangeInput.max) || 100;
+        const value = Number(rangeInput.value) || 0;
+        const percent = ((value - min) / (max - min)) * 100;
+        railFill.style.width = percent + '%';
+        thumb.style.left = percent + '%';
+    };
+
+    if (rangeInput) {
+        rangeInput.addEventListener('input', () => {
+            updateSlider();
+            recalculate();
+        });
+        updateSlider();
+    }
+
+
+    calculator.addEventListener('change', (e) => {
+        const target = e.target;
+        if (target.matches && target.matches('input[type="checkbox"], input[type="radio"]')) {
+            recalculate();
+        }
+    });
+
+
+    recalculate();
 })();
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -434,4 +615,3 @@ document.addEventListener('DOMContentLoaded',()=>{
     SmoothScroll.init();
     BurgerMenu.init();
 })
-
