@@ -380,6 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const VALUES = [1, 10, 20, 50, 100, 200, 300, 500, 700, 900, '900+'];
 
     const range = document.getElementById('range');
+    if (!range) return;
     const railFill = document.getElementById('railFill');
     const thumb = document.getElementById('thumb');
 
@@ -582,6 +583,8 @@ document.addEventListener('DOMContentLoaded', () => {
     recalculate();
 })();
 
+(() => {
+
 document.addEventListener('DOMContentLoaded',()=>{
     const servciesSlider = new Swiper('.services-slider',{
         spaceBetween:8,
@@ -615,3 +618,4 @@ document.addEventListener('DOMContentLoaded',()=>{
     SmoothScroll.init();
     BurgerMenu.init();
 })
+})();
