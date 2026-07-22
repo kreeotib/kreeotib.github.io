@@ -376,7 +376,122 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({initialDelay: 500});
 });
 
-(function(){
+class DirectionScroller {
+    constructor({
+                    rootSelector = '.direction',
+                    wrapperSelector = '.direction__wrapper',
+                    sliderSelector = '.direction-slider',
+                    breakpoint = 640,
+                } = {}) {
+        this.root = document.querySelector(rootSelector);
+        this.wrapper = document.querySelector(wrapperSelector);
+        this.sliderSelector = sliderSelector;
+
+        if (!this.root || !this.wrapper) {
+            console.warn('DirectionScroller: root or wrapper not found');
+            return;
+        }
+
+        this.mediaQuery = window.matchMedia(`(max-width: ${breakpoint}px)`);
+        this.swiper = null;
+        this.scrollTween = null;
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    init() {
+        if (!this.root) return;
+        this.handleChange(this.mediaQuery);
+        this.mediaQuery.addEventListener('change', this.handleChange);
+    }
+
+    destroy() {
+        this.mediaQuery.removeEventListener('change', this.handleChange);
+        this.destroyMobile();
+        this.destroyDesktop();
+    }
+
+    handleChange(e) {
+        if (e.matches) {
+            this.destroyDesktop();
+            this.initMobile();
+        } else {
+            this.destroyMobile();
+            this.initDesktop();
+        }
+    }
+
+    initMobile() {
+        if (this.swiper) return; // уже инициализирован
+
+        this.swiper = new Swiper(this.sliderSelector, {
+            spaceBetween: 8,
+            slidesPerView: 'auto',
+            slidesOffsetBefore: 0,
+            mousewheel: {invert: false, forceToAxis: true},
+            keyboard: {enabled: true},
+            breakpoints: {
+                1241: {
+                    slidesOffsetBefore: 0.6 * window.innerWidth,
+                },
+                641: {
+                    slidesOffsetBefore: 0.5 * window.innerWidth,
+                    spaceBetween: 0,
+                },
+            },
+        });
+    }
+
+    destroyMobile() {
+        if (!this.swiper) return;
+        this.swiper.destroy(true, true);
+        this.swiper = null;
+    }
+
+    initDesktop() {
+        if (this.scrollTween) return;
+
+        const getTotalDistance = () =>
+            this.wrapper.scrollWidth - window.innerWidth;
+        const EXTRA_PIN = window.innerHeight * 0.15;
+
+        gsap.set(this.wrapper, {x: 0});
+
+        this.scrollTween = gsap.timeline({
+            scrollTrigger: {
+                trigger: this.root,
+                start: 'top top',
+                end: () => '+=' + (getTotalDistance() + EXTRA_PIN),
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                // markers: true,
+            },
+        }).to(this.wrapper, {
+            x: () => -getTotalDistance(),
+            ease: 'none',
+        });
+    }
+
+    destroyDesktop() {
+        if (!this.scrollTween) return;
+
+        const st = this.scrollTween.scrollTrigger;
+
+        if (st) st.kill();
+
+        this.scrollTween.kill();
+        this.scrollTween = null;
+
+        gsap.set([this.root, this.wrapper], {clearProps: 'all'});
+
+        ScrollTrigger.refresh();
+    }
+}
+
+
+(function () {
     const VALUES = [1, 10, 20, 50, 100, 200, 300, 500, 700, 900, '900+'];
 
     const range = document.getElementById('range');
@@ -387,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const min = Number(range.min);
     const max = Number(range.max);
 
-    function update(){
+    function update() {
         const index = Number(range.value);
         const pct = ((index - min) / (max - min)) * 100;
         railFill.style.width = pct + '%';
@@ -427,7 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const number = parseInt(digits, 10);
         if (isNaN(number)) return null;
 
-        return { text, isPercent, value: number };
+        return {text, isPercent, value: number};
     };
 
     const formatNumber = (num) => Math.round(num).toLocaleString('ru-RU');
@@ -462,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const prefix = prefixMatch ? prefixMatch[1] : baseText + ' ';
         const text = (prefix + '(' + label + ' операций)').trim();
 
-        return { text, isPercent: false, value };
+        return {text, isPercent: false, value};
     };
 
     const collectBlockItems = (block) => {
@@ -585,37 +700,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 (() => {
 
-document.addEventListener('DOMContentLoaded',()=>{
-    const servciesSlider = new Swiper('.services-slider',{
-        spaceBetween:8,
-        slidesPerView:'auto',
-        mousewheel: { invert: false, forceToAxis: true },
-        keyboard: { enabled: true },
-        breakpoints:{
-            641:{
-                spaceBetween:0
+    document.addEventListener('DOMContentLoaded', () => {
+        const servciesSlider = new Swiper('.services-slider', {
+            spaceBetween: 8,
+            slidesPerView: 'auto',
+            mousewheel: {invert: false, forceToAxis: true},
+            keyboard: {enabled: true},
+            breakpoints: {
+                641: {
+                    spaceBetween: 0
+                }
             }
-        }
-    })
-    const directionSlider = new Swiper('.direction-slider',{
-        spaceBetween:8,
-        slidesPerView:'auto',
-        slidesOffsetBefore: 0,
-        mousewheel: { invert: false, forceToAxis: true },
-        keyboard: { enabled: true },
-        breakpoints:{
-            1241:{
-                slidesOffsetBefore: 0.6 * window.innerWidth,
-            },
-            641:{
-                slidesOffsetBefore: 0.5 * window.innerWidth,
-                spaceBetween:0
-            }
-        }
-    })
+        })
 
 
-    SmoothScroll.init();
-    BurgerMenu.init();
-})
+        gsap.registerPlugin(ScrollTrigger);
+
+        const directionScroller = new DirectionScroller({
+            rootSelector: '.direction',
+            wrapperSelector: '.direction__wrapper',
+            sliderSelector: '.direction-slider',
+            breakpoint: 640,
+        });
+
+        directionScroller.init();
+
+        SmoothScroll.init();
+        BurgerMenu.init();
+    })
 })();
