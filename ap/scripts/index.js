@@ -457,6 +457,7 @@ class DirectionScroller {
             this.wrapper.scrollWidth - window.innerWidth;
         const EXTRA_PIN = window.innerHeight * 0.15;
 
+        console.log(this.wrapper.scrollWidth)
         gsap.set(this.wrapper, {x: 0});
 
         this.scrollTween = gsap.timeline({
@@ -471,7 +472,7 @@ class DirectionScroller {
                 // markers: true,
             },
         }).to(this.wrapper, {
-            x: () => -getTotalDistance(),
+            x: () => -(getTotalDistance() + EXTRA_PIN),
             ease: 'none',
         });
     }
