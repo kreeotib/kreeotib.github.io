@@ -381,11 +381,13 @@ class DirectionScroller {
                     rootSelector = '.direction',
                     wrapperSelector = '.direction__wrapper',
                     sliderSelector = '.direction-slider',
+                    sliderItemsSelector = '.direction-slider__item',
                     breakpoint = 640,
                 } = {}) {
         this.root = document.querySelector(rootSelector);
         this.wrapper = document.querySelector(wrapperSelector);
         this.sliderSelector = sliderSelector;
+        this.sliderItemsSelector = sliderItemsSelector;
 
         if (!this.root || !this.wrapper) {
             console.warn('DirectionScroller: root or wrapper not found');
@@ -451,8 +453,17 @@ class DirectionScroller {
     initDesktop() {
         if (this.scrollTween) return;
 
-        const getTotalDistance = () =>
-            this.wrapper.scrollWidth - window.innerWidth;
+        const getLastCard = () => {
+            const cards = this.wrapper.querySelectorAll(this.sliderItemsSelector);
+            return cards[cards.length - 1];
+        };
+
+        const getTotalDistance = () => {
+            const lastCardWidth = getLastCard().getBoundingClientRect().width;
+            const extraSpace = window.innerWidth - lastCardWidth;
+            return this.wrapper.scrollWidth - window.innerWidth + extraSpace;
+        };
+
         const EXTRA_PIN = window.innerHeight * 0.15;
 
         gsap.set(this.wrapper, {x: 0});
@@ -492,7 +503,6 @@ class DirectionScroller {
 
 
 (function () {
-    const VALUES = [1, 10, 20, 50, 100, 200, 300, 500, 700, 900, '900+'];
 
     const range = document.getElementById('range');
     if (!range) return;
