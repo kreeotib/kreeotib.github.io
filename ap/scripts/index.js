@@ -453,17 +453,8 @@ class DirectionScroller {
     initDesktop() {
         if (this.scrollTween) return;
 
-        const getLastCard = () => {
-            const cards = this.wrapper.querySelectorAll(this.sliderItemsSelector);
-            return cards[cards.length - 1];
-        };
-
-        const getTotalDistance = () => {
-            const lastCardWidth = getLastCard().getBoundingClientRect().width;
-            const extraSpace = window.innerWidth - lastCardWidth;
-            return this.wrapper.scrollWidth - window.innerWidth + extraSpace;
-        };
-
+        const getTotalDistance = () =>
+            this.wrapper.scrollWidth - window.innerWidth;
         const EXTRA_PIN = window.innerHeight * 0.15;
 
         gsap.set(this.wrapper, {x: 0});
