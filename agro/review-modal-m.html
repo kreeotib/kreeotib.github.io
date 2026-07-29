@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header__row">
+                <a href="#" class="header__logo logo">
+                    <svg class="logo__img">
+                        <use xlink:href="assets/images/sprite.svg#logo"></use>
+                    </svg>
+                </a>
+                <nav class="header-nav">
+                    <ul class="header-nav__list">
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                О компании
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Продукция
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Логистика
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-control">
+                    <div class="header-control__wrapper">
+                        <label class="header-search">
+                            <svg class="header-search__icon">
+                                <use xlink:href="assets/images/sprite.svg#loop"></use>
+                            </svg>
+                            <input type="text" class="header-search__input" placeholder="Поиск">
+                        </label>
+                        <div class="header-control__user">
+                            <div class="header-control__link cart-link">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#shop"></use>
+                                </svg>
+                                <div class="cart-modal">
+                                    <div class="cart-modal__wrapper">
+                                        <div class="cart-modal__list">
+                                            <div class="modal-item">
+                                                <div class="modal-item__wrapper">
+                                                    <div class="modal-item__img">
+                                                        <img src="assets/images/card.webp" alt="">
+                                                    </div>
+                                                    <div class="modal-item__header">
+                                                        <p class="text text--big">
+                                                            Селитра аммиачная
+                                                        </p>
+                                                        <p class="modal-item__text">
+                                                            Марка Б ГОСТ 2-2013
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-item__footer">
+                                                        <a href="#" class="modal-item__delete">
+                                                            <svg class="icon">
+                                                                <use xlink:href="assets/images/sprite.svg#cross"></use>
+                                                            </svg>
+                                                            Удалить из корзины
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-item">
+                                                <div class="modal-item__wrapper">
+                                                    <div class="modal-item__img">
+                                                        <img src="assets/images/card.webp" alt="">
+                                                    </div>
+                                                    <div class="modal-item__header">
+                                                        <p class="text text--big">
+                                                            Селитра аммиачная
+                                                        </p>
+                                                        <p class="modal-item__text">
+                                                            Марка Б ГОСТ 2-2013
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-item__footer">
+                                                        <a href="#" class="modal-item__delete">
+                                                            <svg class="icon">
+                                                                <use xlink:href="assets/images/sprite.svg#cross"></use>
+                                                            </svg>
+                                                            Удалить из корзины
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-modal__footer">
+                                            <div class="form-buttons">
+                                                <button class="button button--mobile--full button--text button--text--grey form-buttons__item--full">
+                                                    Очистить корзину
+                                                </button>
+                                                <span class="form-buttons__divider"></span>
+                                                <a href="#" data-popup=".popup-card"
+                                                   class="button button--mobile--full button--text button--text--accent form-buttons__item--full">
+                                                    Перейти в корзину
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="header-control__link">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#profile"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content page">
+        <div class="page__wrapper">
+            <div class="page-header page-header--mobile">
+                <div class="container">
+                    <div class="page-header__wrapper">
+                        <div class="page-header__back">
+                            <a href="#" class="back-link">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#chevron-left"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content section">
+                <div class="container">
+                    <div class="page-content__wrapper">
+                        <div class="form-popup__header">
+                            <p class="title title--base title--center">Оставьте отзыв</p>
+                            <p class="text text--big text--mobile--small">
+                                Помогите другим пользователям с выбором продукции
+                            </p>
+                        </div>
+                        <div class="form-popup">
+                            <div class="form-popup__wrapper">
+
+                                <div class="form-popup__content">
+                                    <div class="form__wrapper form__wrapper--full">
+                                        <div class="form__content form__content--gap--small">
+                                            <div class="form-block">
+                                                <div class="form-block__wrapper">
+                                                    <div class="form__list">
+                                                        <div class="input input--gap--big">
+
+                                                            <div class="input__content cart">
+                                                                <div class="cart-product">
+                                                                    <div class="cart-product__box">
+                                                                        <div class="cart-product__img cart-product__img--small">
+                                                                            <img src="assets/images/card.webp" alt="">
+                                                                        </div>
+                                                                        <div class="cart-product__content cart-product__block">
+                                                                            <div class="cart-product__header">
+                                                                                <p class="title title--small cart-product__title">
+                                                                                    Селитра аммиачная
+                                                                                </p>
+                                                                                <p class="title title--tiny cart-product__text">
+                                                                                    Марка Б ГОСТ 2-2013
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-block">
+                                                <div class="form-block__wrapper">
+                                                    <div class="input input--gap--big">
+                                                        <label for="text" class="input__label">
+                                                            Оставьте комментарий
+                                                        </label>
+                                                        <div class="input__content">
+
+                                                            <div class="input-item input-item--textarea">
+                                                        <textarea name="text" class=" " id="text"
+                                                                  placeholder="Пишите здесь"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-block">
+                                                <div class="form-block__wrapper">
+                                                    <div class="input input--gap--big">
+                                                        <div class="file-input-wrapper">
+                                                            <label class="file-input">
+                                                                <input type="file" multiple class="file-input__item">
+                                                                <span class="file-input__checkmark">
+                                                    <svg class="icon">
+                                                        <use xlink:href="assets/images/sprite.svg#file"></use>
+                                                    </svg>
+                                                    Прикрепите изображение (PNG, JPG)
+                                                </span>
+                                                            </label>
+                                                            <div class="file-input__grid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <button
+                                        class="button button--base button--base--equal button--accent  button--full">
+                                    Отправить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="footer__row">
+                <a href="#" class="button button--white button--base footer-button">
+                    Вся продукция
+                    <span class="button-icon">
+                                                    <svg class="button-icon__item">
+                                                        <use xlink:href="assets/images/sprite.svg#chevron-right"></use>
+                                                    </svg>
+                                                </span>
+                </a>
+                <div class="footer-info">
+                    <a href="#" class="footer__logo logo">
+                        <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="button button--white button--base">
+                        Вся продукция
+                        <span class="button-icon">
+                                                    <svg class="button-icon__item">
+                                                        <use xlink:href="assets/images/sprite.svg#chevron-right"></use>
+                                                    </svg>
+                                                </span>
+                    </a>
+                </div>
+                <div class="footer-block footer-block--divider">
+                    <div class="footer-block__wrapper">
+                        <p class="title title--small title--white--clear">
+                            Меню
+                        </p>
+                        <ul class="footer-block__list">
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">О компании</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">Каталог</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">Логистика</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">Контакты</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-block">
+                    <div class="footer-block__wrapper">
+                        <p class="title title--small title--white--clear">
+                            Контакты
+                        </p>
+                        <ul class="footer-block__list">
+                            <li>
+                                <a href="tel:+7 (342) 214 33 01" class="text text--middle text--white text--link">
+                                    +7 (342) 214 33 01
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@transagro.su" class="text text--middle text--white text--link">
+                                    info@transagro.su
+                                </a>
+                            </li>
+                            <li>
+                                <p class="text text--middle text--white">
+                                    614000, г. Пермь, ул. Монастырская 61
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-block">
+                    <div class="footer-block__wrapper">
+                        <p class="title title--small title--white--clear">
+                            Отдел продаж
+                        </p>
+                        <ul class="footer-block__list">
+                            <li>
+                                <a href="tel:+7 (902) 646 33 02" class="text text--middle text--white text--link">
+                                    +7 (902) 646 33 02
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@transagro.su" class="text text--middle text--white text--link">
+                                    info@transagro.su
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__contact">
+                <p class="text text--tiny text--white--clear text--opacity--small">
+                    Производство и дистрибуция минеральных удобрений
+                    <br>
+                    © ООО «ТрансАгро», 2025. Все права защищены.
+                </p>
+                <div class="social">
+                    <ul class="social-list">
+                        <li class="social-list__link">
+                            <a href="#" class="social-link">
+                                <svg class="social-link__icon">
+                                    <use xlink:href="assets/images/sprite.svg#wa"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="social-list__link">
+                            <a href="#" class="social-link">
+                                <svg class="social-link__icon">
+                                    <use xlink:href="assets/images/sprite.svg#tg"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<div class="popup popup-card ">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <div class="popup-close popup__close"></div>
+            <div class="form-popup">
+                <div class="form-popup__wrapper">
+                    <div class="form-popup__header">
+                        <p class="title title--base title--center">Оформление заказа</p>
+                        <p class="text text--big text--mobile--small">Заполните необходимые данные при оформлении
+                            заказа</p>
+                    </div>
+                    <div class="form-popup__content">
+                        <div class="form__wrapper form__wrapper--full">
+                            <div class="form__content form__content--gap--small">
+                                <div class="form-block">
+                                    <div class="form-block__wrapper">
+                                        <div class="form__list">
+                                            <div class="input input--gap--big">
+                                                <div class="input__label">
+                                                    Товары в заказе
+                                                </div>
+                                                <div class="input__content cart">
+                                                    <div class="cart__list cart__list--popup">
+                                                        <div class="cart-product">
+                                                            <div class="cart-product__box">
+                                                                <div class="cart-product__img cart-product__img--small">
+                                                                    <img src="assets/images/card.webp" alt="">
+                                                                </div>
+                                                                <div class="cart-product__content cart-product__block">
+                                                                    <div class="cart-product__header">
+                                                                        <p class="title title--small cart-product__title">
+                                                                            Сульфат аммония
+                                                                        </p>
+                                                                        <p class="title title--tiny cart-product__text">
+                                                                            NS 21:24
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cart-product__count cart-product__block">
+                                                                    <div class="cart-product__row cart-product__row--end">
+                                                                        <div class="product-block">
+                                                                            <div class="product-block__row ">
+                                                                                <div class="quantity  quantity--dark input">
+                                                                                    <div class="input__label">
+                                                                                        Количество:
+                                                                                    </div>
+                                                                                    <div class="quantity__wrapper">
+                                                                                        <input type="text" disabled
+                                                                                               class="quantity__input input-item"
+                                                                                               value="1">
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <p class="text text--big cart-product__number">
+                                                                                    1 т
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="cart-product">
+                                                            <div class="cart-product__box">
+                                                                <div class="cart-product__img cart-product__img--small">
+                                                                    <img src="assets/images/card.webp" alt="">
+                                                                </div>
+                                                                <div class="cart-product__content cart-product__block">
+                                                                    <div class="cart-product__header">
+                                                                        <p class="title title--small cart-product__title">
+                                                                            Сульфат аммония
+                                                                        </p>
+                                                                        <p class="title title--tiny cart-product__text">
+                                                                            NS 21:24
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cart-product__count cart-product__block">
+                                                                    <div class="cart-product__row cart-product__row--end">
+                                                                        <div class="product-block">
+                                                                            <div class="product-block__row ">
+                                                                                <div class="quantity  quantity--dark input">
+                                                                                    <div class="input__label">
+                                                                                        Количество:
+                                                                                    </div>
+                                                                                    <div class="quantity__wrapper">
+                                                                                        <input type="text" disabled
+                                                                                               class="quantity__input input-item"
+                                                                                               value="1">
+                                                                                        <p class="text text--big cart-product__number">
+                                                                                            1 т
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <p class="text text--big cart-product__number">
+                                                                                    1 т
+                                                                                </p>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-block">
+                                    <div class="form-block__wrapper">
+                                        <div class="form-block__header">
+                                            <p class="text text--big">
+                                                Способ поставки
+                                            </p>
+                                        </div>
+                                        <div class="form__list cart-delivery">
+                                            <div class="input input--gap--big">
+                                                <div class="input__label">
+                                                    Выберите способ поставки
+                                                </div>
+                                                <div class="input__content">
+                                                    <div class="input__grid">
+                                                        <label class="radio">
+                                                            <input type="radio" name="cart-delivery"
+                                                                   class="radio__input" data-delivery="railway">
+                                                            <span class="radio__checkmark"></span>
+                                                            <span class="text text--middle">ЖД транспорт</span>
+                                                        </label>
+                                                        <label class="radio">
+                                                            <input type="radio" name="cart-delivery"
+                                                                   class="radio__input" data-delivery="auto">
+                                                            <span class="radio__checkmark"></span>
+                                                            <span class="text text--middle">Автотранспорт</span>
+                                                        </label>
+                                                        <label class="radio">
+                                                            <input type="radio" name="cart-delivery"
+                                                                   class="radio__input" data-delivery="pickup">
+                                                            <span class="radio__checkmark"></span>
+                                                            <span class="text text--middle">Самовывоз</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-delivery__block" data-delivery-block="railway">
+                                                <div class="input">
+                                                    <div class="input__label">Куда</div>
+                                                    <div class="input__content">
+                                                        <div class="form__grid">
+                                                            <div class="custom-select custom-select--fill">
+                                                                <div class="custom-select__label">
+                                                                    <span class="custom-select__current">Выберите регион</span>
+                                                                    <svg class="custom-select__icon">
+                                                                        <use xlink:href="assets/images/sprite.svg#chevron-down"></use>
+                                                                    </svg>
+                                                                </div>
+                                                                <div class="custom-select__content">
+                                                                    <label class="custom-select__item">Все заказы
+                                                                        2113<input type="radio"></label>
+                                                                    <label class="custom-select__item">Все заказы<input
+                                                                            type="radio"></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="custom-select custom-select--fill">
+                                                                <div class="custom-select__label">
+                                                                    <span class="custom-select__current">Выберите ЖД станцию</span>
+                                                                    <svg class="custom-select__icon">
+                                                                        <use xlink:href="assets/images/sprite.svg#chevron-down"></use>
+                                                                    </svg>
+                                                                </div>
+                                                                <div class="custom-select__content">
+                                                                    <label class="custom-select__item">Все заказы
+                                                                        2113<input type="radio"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-delivery__block" data-delivery-block="auto">
+                                                <div class="input">
+                                                    <div class="input__label">Куда</div>
+                                                    <div class="input__content">
+                                                        <label class="search search--grey">
+                                                            <input type="text" class="search__input"
+                                                                   placeholder="Поиск">
+                                                            <svg class="search__icon">
+                                                                <use xlink:href="assets/images/sprite.svg#loop"></use>
+                                                            </svg>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-delivery__block" data-delivery-block="pickup">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-block">
+                                    <div class="form-block__wrapper">
+                                        <div class="form-block__header">
+                                            <p class="text text--big">
+                                                Данные заказчика
+                                            </p>
+                                        </div>
+                                        <div class="form__grid">
+                                            <div class="input">
+                                                <label for="cart-fio" class="input__label">
+                                                    ФИО
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="cart-fio" placeholder="+ 7"
+                                                               value="Фамилия Имя Отчество">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="cart-phone" class="input__label">
+                                                    Номер телефона
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="cart-phone" placeholder="+ 7"
+                                                               value="+ 7 (345) 456 - 67 -32">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="cart-inn" class="input__label">
+                                                    ИНН
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="cart-inn" placeholder=""
+                                                               value="1234567898">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="cart-email" class="input__label">
+                                                    Номер телефона
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="email" id="cart-email" placeholder=""
+                                                               value="TransAgro@gmail.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-buttons form-buttons--divider">
+                        <a href="#" data-popup=".popup-cancel"
+                           class="button button--mobile--full button--text button--text--grey form-buttons__item--full">
+                            Отменить оформление заказа
+                        </a>
+                        <span class="form-buttons__divider"></span>
+                        <a href="#" data-popup=".popup-confirm"
+                           class="button button--mobile--full button--base button--base--equal button--accent form-buttons__item--full">
+                            Оформить заказ
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup popup-cancel  ">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <div class="popup-close popup__close"></div>
+            <div class="form-popup">
+                <div class="form-popup__wrapper">
+                    <div class="popup-img">
+                        <div class="popup-img__icon">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#exclamation"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="form-popup__header form-popup__header--small">
+                        <p class="title title--base title--center">Вы уверены, что хотите отменить создание заказа?</p>
+                        <p class="text text--big text--mobile--small">Внесенные данные не сохранятся</p>
+                    </div>
+                    <div class="form-buttons form-buttons--divider">
+                        <a href="#"
+                           class="button button--mobile--full button--text button--text--grey form-buttons__item--full popup-close">
+                            Да, отменить
+                        </a>
+                        <span class="form-buttons__divider"></span>
+                        <a href="#" data-popup=".popup-form"
+                           class="button button--mobile--full button--text button--text--accent form-buttons__item--full">
+                            Нет, продолжить
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup popup-confirm  ">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <div class="popup-close popup__close"></div>
+            <div class="form-popup">
+                <div class="form-popup__wrapper">
+                    <div class="popup-img popup-img--check">
+                        <div class="popup-img__icon">
+                            <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#check-big"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="form-popup__header form-popup__header--small">
+                        <p class="title title--base title--center">Ваш заказ успешно оформлен</p>
+                        <p class="text text--big text--mobile--small">Через некоторое время с вами свяжется наш
+                            региональный менеджер, информация об оформленных заказах хранится в личном кабинете</p>
+                    </div>
+                    <div class="form-buttons form-buttons--divider">
+                        <a href="#"
+                           class="button button--mobile--full button--text button--text--grey form-buttons__item--full popup-close">
+                            Закрыть
+                        </a>
+                        <span class="form-buttons__divider"></span>
+                        <a href="#"
+                           class="button button--mobile--full button--text button--text--accent form-buttons__item--full">
+                            Перейти в личный кабинет
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>

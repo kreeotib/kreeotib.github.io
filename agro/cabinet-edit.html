@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/libs/swiper/swiper.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header__row">
+                <a href="#" class="header__logo logo">
+                    <svg class="logo__img">
+                        <use xlink:href="assets/images/sprite.svg#logo"></use>
+                    </svg>
+                </a>
+                <nav class="header-nav">
+                    <ul class="header-nav__list">
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                О компании
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Продукция
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Логистика
+                            </a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a href="#" class="header-nav__link">
+                                Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-control">
+                    <div class="header-control__wrapper">
+                        <label class="header-search">
+                            <svg class="header-search__icon">
+                                <use xlink:href="assets/images/sprite.svg#loop"></use>
+                            </svg>
+                            <input type="text" class="header-search__input" placeholder="Поиск">
+                        </label>
+                        <div class="header-control__user">
+                            <a href="#" class="header-control__link">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#shop"></use>
+                                </svg>
+                            </a>
+                            <a href="#" class="header-control__link active">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#profile"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content page">
+        <div class="page__wrapper">
+            <div class="page-header">
+                <div class="container">
+                    <div class="page-header__wrapper">
+                        <div class="section-tag page-header__tag">
+                            Личный кабинет
+                        </div>
+                        <div class="page-header__back">
+                            <a href="#" class="back-link">
+                                <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#chevron-left"></use>
+                                </svg>
+                            </a>
+                            <p class="text text--middle">
+                                Личный кабинет
+                            </p>
+                        </div>
+                        <div class="page-tabs">
+                            <div class="page-tabs__wrapper">
+                                <a href="#" class="page-tabs__link active">
+                                   <span class="page-tabs__icon">
+                                        <svg class="icon">
+                                           <use xlink:href="assets/images/sprite.svg#profile"></use>
+                                       </svg>
+                                   </span>
+                                    <span class="page-tabs__text">
+                                   Персональные данные
+                                   </span>
+                                </a>
+                                <a href="#" class="page-tabs__link">
+                                   <span class="page-tabs__icon">
+                                        <svg class="icon">
+                                           <use xlink:href="assets/images/sprite.svg#delivery"></use>
+                                       </svg>
+                                   </span>
+                                    <span class="page-tabs__text">
+                                       История заказов
+                                   </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="#" class="cabinet form">
+                <div class="container">
+                    <div class="cabinet__wrapper">
+                        <button class="button  button--text button--text--grey--light">
+                            <svg class="button__icon">
+                                <use xlink:href="assets/images/sprite.svg#edit"></use>
+                            </svg>
+                            Редактирование профиля
+                        </button>
+                        <div class="cabinet__row">
+                            <div class="cabinet-img">
+                                <div class="profile-img">
+                                    <div class="profile-img__item profile-img__item--main profile-img__item--current">
+                                        <img src="assets/images/profile/1.webp" alt="">
+                                        <a href="#" data-popup=".popup-images" class="profile-img__edit">
+                                            <svg class="icon">
+                                                <use xlink:href="assets/images/sprite.svg#edit"></use>
+                                            </svg>
+                                        </a>
+
+                                    </div>
+                                    <p class="profile-img__text title title--center title--tiny">
+                                        Изображение вашего профиля
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="cabinet__column">
+                                <div class="cabinet-block">
+                                    <div class="cabinet-block__wrapper">
+                                        <p class="title title--small cabinet-block__title">
+                                            Персональные данные
+                                        </p>
+                                        <div class="form__grid">
+                                            <div class="input">
+                                                <label for="fio" class="input__label">
+                                                    Ваше ФИО
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="fio" value="Фамилия Имя Отчество">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="phone" class="input__label">
+                                                    Ваш номер телефона
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="phone" value="+7 (456) 678 - 67 - 54">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="email" class="input__label">
+                                                    Ваша почта
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="email" id="email" value="TransAgro@gmail.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="pass" class="input__label">
+                                                    Ваш пароль
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item input-item-pass">
+                                                        <input type="password" id="pass" placeholder="">
+                                                        <span class="pass-icon"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="address" class="input__label">
+                                                    Ваш адрес
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="address" value="Регион, ул....">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cabinet-block">
+                                    <div class="cabinet-block__wrapper">
+                                        <p class="title title--small cabinet-block__title">
+                                            Сведения об организации
+                                        </p>
+                                        <div class="form__grid">
+                                            <div class="input">
+                                                <label for="inn" class="input__label">
+                                                    ИНН Организации
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="inn" value="-">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <label for="orgname" class="input__label">
+                                                    Наименование организации
+                                                </label>
+                                                <div class="input__content">
+                                                    <div class="input-item">
+                                                        <input type="text" id="orgname" value="-">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-buttons">
+                                    <button class="button button--mobile--full button--text button--text--grey">
+                                        Отменить редактирование
+                                    </button>
+                                    <span class="form-buttons__divider"></span>
+                                    <button type="submit"
+                                            class="button button--mobile--full button--base button--base--equal button--accent">
+                                        Сохранить изменения
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <div class="footer__row">
+                <a href="#" class="button button--white button--base footer-button">
+                    Вся продукция
+                    <span class="button-icon">
+                                                    <svg class="button-icon__item">
+                                                        <use xlink:href="assets/images/sprite.svg#chevron-right"></use>
+                                                    </svg>
+                                                </span>
+                </a>
+                <div class="footer-info">
+                    <a href="#" class="footer__logo logo">
+                        <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="button button--white button--base">
+                        Вся продукция
+                        <span class="button-icon">
+                                                    <svg class="button-icon__item">
+                                                        <use xlink:href="assets/images/sprite.svg#chevron-right"></use>
+                                                    </svg>
+                                                </span>
+                    </a>
+                </div>
+                <div class="footer-block footer-block--divider">
+                    <div class="footer-block__wrapper">
+                        <p class="title title--small title--white--clear">
+                            Меню
+                        </p>
+                        <ul class="footer-block__list">
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">О компании</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">Каталог</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">Логистика</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text text--middle text--white text--link">Контакты</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-block">
+                    <div class="footer-block__wrapper">
+                        <p class="title title--small title--white--clear">
+                            Контакты
+                        </p>
+                        <ul class="footer-block__list">
+                            <li>
+                                <a href="tel:+7 (342) 214 33 01" class="text text--middle text--white text--link">
+                                    +7 (342) 214 33 01
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@transagro.su" class="text text--middle text--white text--link">
+                                    info@transagro.su
+                                </a>
+                            </li>
+                            <li>
+                                <p class="text text--middle text--white">
+                                    614000, г. Пермь, ул. Монастырская 61
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-block">
+                    <div class="footer-block__wrapper">
+                        <p class="title title--small title--white--clear">
+                            Отдел продаж
+                        </p>
+                        <ul class="footer-block__list">
+                            <li>
+                                <a href="tel:+7 (902) 646 33 02" class="text text--middle text--white text--link">
+                                    +7 (902) 646 33 02
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@transagro.su" class="text text--middle text--white text--link">
+                                    info@transagro.su
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__contact">
+                <p class="text text--tiny text--white--clear text--opacity--small">
+                    Производство и дистрибуция минеральных удобрений
+                    <br>
+                    © ООО «ТрансАгро», 2025. Все права защищены.
+                </p>
+                <div class="social">
+                    <ul class="social-list">
+                        <li class="social-list__link">
+                            <a href="#" class="social-link">
+                                <svg class="social-link__icon">
+                                    <use xlink:href="assets/images/sprite.svg#wa"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="social-list__link">
+                            <a href="#" class="social-link">
+                                <svg class="social-link__icon">
+                                    <use xlink:href="assets/images/sprite.svg#tg"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<div class="popup popup-images">
+    <div class="popup__wrapper">
+        <div class="popup__container">
+            <div class="popup-close popup__close"></div>
+            <div class="form-popup">
+                <div class="form-popup__wrapper">
+                    <div class="form-popup__header">
+                        <p class="title title--base title--center">Изображение профиля</p>
+                        <p class="text text--big">Выберите изображение профиля</p>
+                    </div>
+                    <div class="form-popup__content">
+                        <div class="form-popup__grid">
+                            <div class="profile-img">
+                                <div class="profile-img__item ">
+                                    <img src="assets/images/profile/1.webp" alt="">
+                                </div>
+
+                            </div>
+                            <div class="profile-img">
+                                <div class="profile-img__item profile-img__item--current">
+                                    <img src="assets/images/profile/1.webp" alt="">
+                                </div>
+                                <p class="profile-img__text profile-img__text--current">
+                                    Текущее изображение
+                                </p>
+                            </div>
+                            <div class="profile-img">
+                                <div class="profile-img__item ">
+                                    <img src="assets/images/profile/1.webp" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons form-buttons--divider">
+                        <button class="button button--mobile--full button--text button--text--grey form-buttons__item--full ">
+                            Отменить редактирование
+                        </button>
+                        <span class="form-buttons__divider"></span>
+                        <button class="button button--mobile--full button--text button--text--accent form-buttons__item--full  ">
+                            Сохранить изменения
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/libs/swiper/swiper.js"></script>
+<script src="assets/scripts/index.js"></script>
+
+</body>
+</html>
