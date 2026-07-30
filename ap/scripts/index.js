@@ -500,10 +500,24 @@ class DirectionScroller {
     if (!range) return;
     const railFill = document.getElementById('railFill');
     const thumb = document.getElementById('thumb');
+    const dataLabels = range.dataset.jsLabel;
+    const dataLabelsBlock = document.querySelector('.labels');
+    if(dataLabelsBlock && dataLabels){
+        const dataLabelsArray = dataLabels.split(",");
+        range.max = dataLabelsArray.length;
+        dataLabelsArray.forEach(el=>{
+            const labelNew = document.createElement("p");
+            labelNew.classList.add('text', 'text--middle');
+            labelNew.innerHTML  = el;
+            dataLabelsBlock.append(labelNew)
+        })
+    }
+
 
     const min = Number(range.min);
     const max = Number(range.max);
 
+    console.log(range.max)
     function update() {
         const index = Number(range.value);
         const pct = ((index - min) / (max - min)) * 100;
@@ -532,63 +546,99 @@ class DirectionScroller {
         return raw.replace(/[^\d%]/g, '');
     };
 
-    const parseItem = (input) => {
-        const rawValue = input.getAttribute('data-js-value') || '';
-        const text = input.getAttribute('data-js-text') || '';
-        const cleaned = cleanValue(rawValue);
-
-        if (!cleaned || !text) return null;
-
-        const isPercent = cleaned.indexOf('%') !== -1;
+// Разбирает строку value: если в ней есть цифры — это число (и, возможно, %),
+// если цифр нет (просто текст) — это нечисловое значение: в расчёт идёт 0,
+// а в вывод — исходный текст как есть.
+    const parseValue = (raw) => {
+        const trimmed = raw.trim();
+        const cleaned = cleanValue(trimmed);
         const digits = cleaned.replace('%', '');
-        const number = parseInt(digits, 10);
-        if (isNaN(number)) return null;
 
-        return {text, isPercent, value: number};
+        if (digits === '') {
+            // текстовое значение: не участвует в сумме, но выводится как есть
+            return {value: 0, isPercent: false, isNumeric: false, rawText: trimmed};
+        }
+
+        return {
+            value: parseInt(digits, 10),
+            isPercent: cleaned.indexOf('%') !== -1,
+            isNumeric: true,
+            rawText: trimmed
+        };
+    };
+
+    const parseItem = (input) => {
+        const rawValue = input.getAttribute('data-js-value');
+        const text = input.getAttribute('data-js-text') || '';
+
+        // Пропускаем только по-настоящему пустые/отсутствующие data-js-value
+        if (rawValue === null || rawValue.trim() === '' || !text) return null;
+
+        const parsed = parseValue(rawValue);
+
+        return {text, isPercent: parsed.isPercent, value: parsed.value, isNumeric: parsed.isNumeric, rawText: parsed.rawText};
     };
 
     const formatNumber = (num) => Math.round(num).toLocaleString('ru-RU');
 
-    const formatItemValue = (item) => (
-        item.isPercent
+    const formatItemValue = (item) => {
+        if (!item.isNumeric) return item.rawText;
+
+        return item.isPercent
             ? '+' + formatNumber(item.value) + '%'
-            : formatNumber(item.value) + '\u00A0₽'
-    );
+            : formatNumber(item.value) + '\u00A0₽';
+    };
 
-    const parseRangeItem = (input) => {
-        const values = (input.getAttribute('data-js-value') || '')
-            .split(',')
-            .map((v) => parseInt(cleanValue(v.trim()), 10));
-
-        const labels = (input.getAttribute('data-js-label') || '')
-            .split(',')
-            .map((l) => l.trim());
-
+    const parseRangeItem = (input, rangeInputValue) => {
+        const rawValues = rangeInputValue.getAttribute('data-js-range') || '';
+        const rawLabels = input.getAttribute('data-js-label') || '';
         const baseText = input.getAttribute('data-js-text') || '';
 
-        if (!values.length || !labels.length || !baseText) return null;
+        if (!rawValues.trim() || !rawLabels.trim() || !baseText) return null;
+
+        // Пропускаем только пустые элементы списка; текстовые элементы оставляем
+        // (0 в расчёт, сам текст — в вывод)
+        const values = rawValues
+            .split(',')
+            .map((v) => v.trim())
+            .filter((v) => v !== '')
+            .map((v) => parseValue(v));
+
+        const labels = rawLabels
+            .split(',')
+            .map((l) => l.trim())
+            .filter((l) => l !== '');
+
+        if (!values.length || !labels.length) return null;
 
         const lastIndex = Math.min(values.length, labels.length) - 1;
         const index = Math.min(Math.max(Number(input.value) || 0, 0), lastIndex);
 
-        const value = values[index];
+        const parsedValue = values[index];
         const label = labels[index];
-        if (isNaN(value) || !label) return null;
+        if (!parsedValue || !label) return null;
 
         const prefixMatch = baseText.match(/^(.*?)\(/);
         const prefix = prefixMatch ? prefixMatch[1] : baseText + ' ';
         const text = (prefix + '(' + label + ' операций)').trim();
 
-        return {text, isPercent: false, value};
+        return {
+            text,
+            isPercent: parsedValue.isPercent,
+            value: parsedValue.value,
+            isNumeric: parsedValue.isNumeric,
+            rawText: parsedValue.rawText
+        };
     };
 
     const collectBlockItems = (block) => {
         const items = [];
         const inputs = block.querySelectorAll('input[data-js-value]');
-
         inputs.forEach((input) => {
             if (input.type === 'range') {
-                const item = parseRangeItem(input);
+                const rangeInputValue = block.querySelector('input[data-js-range]:checked');
+                if (!rangeInputValue) return;
+                const item = parseRangeItem(input, rangeInputValue);
                 if (item) items.push(item);
                 return;
             }
@@ -610,6 +660,7 @@ class DirectionScroller {
         const mainInput = block.querySelector('.js-calculator-input');
         return !!(mainInput && mainInput.checked);
     };
+
     const buildBlockMarkup = (title, items, subtotal, isMainSelected) => {
         const rows = items.map((item) => (
             '<div class="calculator-result__block-row">' +
@@ -634,7 +685,6 @@ class DirectionScroller {
         );
     };
 
-
     const recalculate = () => {
         if (!resultInfo || !resultTotal) return;
 
@@ -643,7 +693,6 @@ class DirectionScroller {
         let blocksMarkup = '';
 
         blocks.forEach((block) => {
-            // Главная логика: если главный инпут не выбран — полностью пропускаем блок
             if (!isMainInputChecked(block)) return;
 
             const items = collectBlockItems(block);
@@ -654,7 +703,7 @@ class DirectionScroller {
             selectedItems = selectedItems.concat(items);
 
             const title = getBlockTitle(block);
-            const isMainSelected = true; // теперь всегда true, т.к. блок прошёл проверку
+            const isMainSelected = true;
 
             blocksMarkup += buildBlockMarkup(title, items, subtotal, isMainSelected);
         });
@@ -664,7 +713,6 @@ class DirectionScroller {
 
         return selectedItems;
     };
-
 
     const rangeInput = calculator.querySelector('#range');
     const railFill = calculator.querySelector('#railFill');
@@ -688,14 +736,12 @@ class DirectionScroller {
         updateSlider();
     }
 
-
     calculator.addEventListener('change', (e) => {
         const target = e.target;
         if (target.matches && target.matches('input[type="checkbox"], input[type="radio"]')) {
             recalculate();
         }
     });
-
 
     recalculate();
 })();
