@@ -505,19 +505,18 @@ class DirectionScroller {
     if(dataLabelsBlock && dataLabels){
         const dataLabelsArray = dataLabels.split(",");
         range.max = dataLabelsArray.length;
-        dataLabelsArray.forEach(el=>{
+        [dataLabelsArray[0], dataLabelsArray[dataLabelsArray.length - 1]].forEach(el => {
             const labelNew = document.createElement("p");
             labelNew.classList.add('text', 'text--middle');
-            labelNew.innerHTML  = el;
-            dataLabelsBlock.append(labelNew)
-        })
+            labelNew.textContent = el;
+            dataLabelsBlock.append(labelNew);
+        });
     }
 
 
     const min = Number(range.min);
     const max = Number(range.max);
 
-    console.log(range.max)
     function update() {
         const index = Number(range.value);
         const pct = ((index - min) / (max - min)) * 100;
@@ -534,75 +533,138 @@ class DirectionScroller {
 (() => {
     'use strict';
 
-    const calculator = document.querySelector('.js-calculator');
-    if (!calculator) return;
-
-    const blocks = Array.from(calculator.querySelectorAll('.js-calculator-block'));
-    const resultInfo = calculator.querySelector('.calculator-result__info');
-    const resultTotal = calculator.querySelector('.js-calculator-result');
-
-    const cleanValue = (raw) => {
-        if (!raw) return '';
-        return raw.replace(/[^\d%]/g, '');
+    const SELECTORS = {
+        root: '.js-calculator',
+        block: '.js-calculator-block',
+        resultInfo: '.calculator-result__info',
+        resultTotal: '.js-calculator-result',
+        blockTitle: '.calculator-block__header .checkbox__text',
+        mainInput: '.js-calculator-input',
+        rangeSlider: '#range',
+        railFill: '#railFill',
+        thumb: '#thumb',
+        checkboxWrap: '.checkbox',
+        countWrapper: '.checkbox__count',
+        countMinus: '.checkbox__count-minus',
+        countPlus: '.checkbox__count-plus',
+        countLabel: '.checkbox__count-label'
     };
 
-// Разбирает строку value: если в ней есть цифры — это число (и, возможно, %),
-// если цифр нет (просто текст) — это нечисловое значение: в расчёт идёт 0,
-// а в вывод — исходный текст как есть.
-    const parseValue = (raw) => {
+    const calculator = document.querySelector(SELECTORS.root);
+    if (!calculator) return;
+
+    const blocks = Array.from(calculator.querySelectorAll(SELECTORS.block));
+    const resultInfo = calculator.querySelector(SELECTORS.resultInfo);
+    const resultTotal = calculator.querySelector(SELECTORS.resultTotal);
+
+// Оставляет только цифры и % (нужно, чтобы вычистить пробелы-разделители и символ ₽
+// из чисто числовых значений вроде "15 000 ₽" или "15%").
+    const cleanValue = (raw) => raw.replace(/[^\d%]/g, '');
+
+    /**
+     * Классифицирует сырое значение data-js-value / элемента data-js-range:
+     *  - 'money'   — чистое число ("15000", "15 000 ₽")
+     *  - 'percent' — чистое число с "%" ("15%")
+     *  - 'text'    — есть буквы (в т.ч. смешано с числом, напр. "15 операций")
+     *                 или цифр вообще нет. В расчёт НЕ идёт, выводится как есть.
+     */
+    const classifyValue = (raw) => {
         const trimmed = raw.trim();
+        const hasLetters = /\p{L}/u.test(trimmed);
+
+        if (hasLetters) {
+            return {type: 'text', value: 0, displayText: trimmed};
+        }
+
         const cleaned = cleanValue(trimmed);
         const digits = cleaned.replace('%', '');
 
         if (digits === '') {
-            // текстовое значение: не участвует в сумме, но выводится как есть
-            return {value: 0, isPercent: false, isNumeric: false, rawText: trimmed};
+            return {type: 'text', value: 0, displayText: trimmed};
         }
 
+        const number = parseInt(digits, 10);
+        const isPercent = cleaned.indexOf('%') !== -1;
+
         return {
-            value: parseInt(digits, 10),
-            isPercent: cleaned.indexOf('%') !== -1,
-            isNumeric: true,
-            rawText: trimmed
+            type: isPercent ? 'percent' : 'money',
+            value: Number.isNaN(number) ? 0 : number,
+            displayText: trimmed
         };
+    };
+
+    const formatNumber = (num) => Math.round(num).toLocaleString('ru-RU');
+
+    const formatItemValue = (item) => {
+        switch (item.type) {
+            case 'text':
+                return item.displayText;
+            case 'percent':
+                return '+' + formatNumber(item.value) + '%';
+            default:
+                return formatNumber(item.value) + '\u00A0₽';
+        }
+    };
+
+    /**
+     * Возвращает количество для чекбокса со счётчиком (.checkbox__count-label).
+     * Если у чекбокса нет счётчика в разметке — считаем, что количество = 1
+     * (обычный чекбокс "да/нет", ничего не меняется по сравнению со старым поведением).
+     */
+    const getItemQuantity = (input) => {
+        const wrap = input.closest(SELECTORS.checkboxWrap);
+        const countLabel = wrap ? wrap.querySelector(SELECTORS.countLabel) : null;
+
+        if (!countLabel) return {quantity: 1, hasCounter: false};
+
+        const quantity = parseInt(countLabel.textContent, 10);
+        return {quantity: Number.isNaN(quantity) ? 0 : quantity, hasCounter: true};
     };
 
     const parseItem = (input) => {
         const rawValue = input.getAttribute('data-js-value');
         const text = input.getAttribute('data-js-text') || '';
 
-        // Пропускаем только по-настоящему пустые/отсутствующие data-js-value
+        // Пропускаем (не выводим вообще) только по-настоящему пустой/отсутствующий data-js-value
         if (rawValue === null || rawValue.trim() === '' || !text) return null;
 
-        const parsed = parseValue(rawValue);
+        const classified = classifyValue(rawValue);
+        const {quantity, hasCounter} = getItemQuantity(input);
 
-        return {text, isPercent: parsed.isPercent, value: parsed.value, isNumeric: parsed.isNumeric, rawText: parsed.rawText};
-    };
+        // Если у чекбокса есть счётчик и количество равно 0 — считаем, что пункт
+        // фактически не выбран, даже если сам чекбокс отмечен.
+        if (hasCounter && quantity <= 0) return null;
 
-    const formatNumber = (num) => Math.round(num).toLocaleString('ru-RU');
+        const multiplier = hasCounter ? quantity : 1;
+        const value = classified.type === 'text' ? 0 : classified.value * multiplier;
 
-    const formatItemValue = (item) => {
-        if (!item.isNumeric) return item.rawText;
+        // При количестве больше 1 показываем его в подписи строки результата,
+        // чтобы было видно, за что именно берётся сумма.
+        const displayLabel = hasCounter && quantity > 1 ? text + ' × ' + quantity : text;
 
-        return item.isPercent
-            ? '+' + formatNumber(item.value) + '%'
-            : formatNumber(item.value) + '\u00A0₽';
+        return {
+            text: displayLabel,
+            type: classified.type,
+            value,
+            displayText: classified.displayText
+        };
     };
 
     const parseRangeItem = (input, rangeInputValue) => {
         const rawValues = rangeInputValue.getAttribute('data-js-range') || '';
         const rawLabels = input.getAttribute('data-js-label') || '';
         const baseText = input.getAttribute('data-js-text') || '';
+        const valueEl=document.querySelector('.value')
 
         if (!rawValues.trim() || !rawLabels.trim() || !baseText) return null;
 
-        // Пропускаем только пустые элементы списка; текстовые элементы оставляем
-        // (0 в расчёт, сам текст — в вывод)
+        // Пропускаем только пустые элементы списка; текстовые/смешанные элементы
+        // остаются, но не участвуют в сумме (см. classifyValue)
         const values = rawValues
             .split(',')
             .map((v) => v.trim())
             .filter((v) => v !== '')
-            .map((v) => parseValue(v));
+            .map((v) => classifyValue(v));
 
         const labels = rawLabels
             .split(',')
@@ -612,32 +674,43 @@ class DirectionScroller {
         if (!values.length || !labels.length) return null;
 
         const lastIndex = Math.min(values.length, labels.length) - 1;
-        const index = Math.min(Math.max(Number(input.value) || 0, 0), lastIndex);
+        const rawIndex = Number(input.value);
+        const index = Math.min(Math.max(Number.isNaN(rawIndex) ? 0 : rawIndex, 0), lastIndex);
 
-        const parsedValue = values[index];
+        const classified = values[index];
         const label = labels[index];
-        if (!parsedValue || !label) return null;
+        console.log(label)
+        valueEl.innerHTML = label;
+        if (!classified || !label) return null;
 
         const prefixMatch = baseText.match(/^(.*?)\(/);
         const prefix = prefixMatch ? prefixMatch[1] : baseText + ' ';
         const text = (prefix + '(' + label + ' операций)').trim();
 
+        // isRangeBase: значение range-инпута — это база блока для расчёта процентов
+        // (см. calcTotal). Один range на блок, как и раньше (см. collectBlockItems).
         return {
             text,
-            isPercent: parsedValue.isPercent,
-            value: parsedValue.value,
-            isNumeric: parsedValue.isNumeric,
-            rawText: parsedValue.rawText
+            type: classified.type,
+            value: classified.value,
+            displayText: classified.displayText,
+            isRangeBase: true
         };
     };
 
     const collectBlockItems = (block) => {
         const items = [];
         const inputs = block.querySelectorAll('input[data-js-value]');
+
         inputs.forEach((input) => {
             if (input.type === 'range') {
+                // Примечание: если в блоке несколько групп data-js-range, берётся
+                // первая отмеченная в DOM-порядке — для нескольких независимых
+                // range-групп в одном блоке потребуется явная привязка через
+                // отдельный data-атрибут (например, data-js-range-group).
                 const rangeInputValue = block.querySelector('input[data-js-range]:checked');
                 if (!rangeInputValue) return;
+
                 const item = parseRangeItem(input, rangeInputValue);
                 if (item) items.push(item);
                 return;
@@ -652,13 +725,56 @@ class DirectionScroller {
     };
 
     const getBlockTitle = (block) => {
-        const titleEl = block.querySelector('.calculator-block__header .checkbox__text');
+        const titleEl = block.querySelector(SELECTORS.blockTitle);
         return titleEl ? titleEl.textContent.trim() : '';
     };
 
     const isMainInputChecked = (block) => {
-        const mainInput = block.querySelector('.js-calculator-input');
+        const mainInput = block.querySelector(SELECTORS.mainInput);
         return !!(mainInput && mainInput.checked);
+    };
+
+    /**
+     * Считает сумму по набору items блока. Простой (не сложный) процент —
+     * проценты считаются один раз от базы, а не последовательно друг от друга.
+     *
+     * Два режима, в зависимости от того, есть ли в блоке range-инпут:
+     *
+     * 1) Есть range (isRangeBase) — его значение и есть база блока.
+     *    Проценты считаются именно от неё: base * percentSum / 100.
+     *    Остальные обычные денежные чекбоксы — плоские надбавки, они
+     *    прибавляются поверх итога, но сами в базу для процента не входят.
+     *    total = rangeBase + flatMoneySum + rangeBase * percentSum / 100
+     *
+     * 2) Range-инпута в блоке нет — старое поведение: базой служит сумма
+     *    всех 'money'-пунктов блока, проценты считаются от неё же.
+     *    total = moneySum + moneySum * percentSum / 100
+     *
+     * 'text'-значения в расчёт не входят в обоих случаях.
+     */
+    const calcTotal = (items) => {
+        let percentSum = 0;
+        items.forEach((item) => {
+            if (item.type === 'percent') percentSum += item.value;
+        });
+
+        const rangeItem = items.find((item) => item.isRangeBase && item.type === 'money');
+
+        if (rangeItem) {
+            const base = rangeItem.value;
+            const flatMoneySum = items.reduce((sum, item) => {
+                if (item === rangeItem || item.type !== 'money') return sum;
+                return sum + item.value;
+            }, 0);
+
+            return base + flatMoneySum + (base * percentSum) / 100;
+        }
+
+        const moneySum = items.reduce((sum, item) => (
+            item.type === 'money' ? sum + item.value : sum
+        ), 0);
+
+        return moneySum + (moneySum * percentSum) / 100;
     };
 
     const buildBlockMarkup = (title, items, subtotal, isMainSelected) => {
@@ -688,7 +804,6 @@ class DirectionScroller {
     const recalculate = () => {
         if (!resultInfo || !resultTotal) return;
 
-        let selectedItems = [];
         let grandTotal = 0;
         let blocksMarkup = '';
 
@@ -698,25 +813,23 @@ class DirectionScroller {
             const items = collectBlockItems(block);
             if (!items.length) return;
 
-            const subtotal = items.reduce((sum, item) => sum + item.value, 0);
+            // Проценты внутри блока применяются к сумме "денежных" значений
+            // этого же блока (напр. базовая цена + надбавка N%).
+            const subtotal = calcTotal(items);
             grandTotal += subtotal;
-            selectedItems = selectedItems.concat(items);
 
             const title = getBlockTitle(block);
-            const isMainSelected = true;
-
-            blocksMarkup += buildBlockMarkup(title, items, subtotal, isMainSelected);
+            blocksMarkup += buildBlockMarkup(title, items, subtotal, true);
         });
 
         resultInfo.innerHTML = blocksMarkup;
         resultTotal.textContent = formatNumber(grandTotal) + '\u00A0₽';
-
-        return selectedItems;
     };
 
-    const rangeInput = calculator.querySelector('#range');
-    const railFill = calculator.querySelector('#railFill');
-    const thumb = calculator.querySelector('#thumb');
+    const rangeInput = calculator.querySelector(SELECTORS.rangeSlider);
+    const railFill = calculator.querySelector(SELECTORS.railFill);
+    const thumb = calculator.querySelector(SELECTORS.thumb);
+    const valueEl = calculator.querySelector('.value');
 
     const updateSlider = () => {
         if (!rangeInput || !railFill || !thumb) return;
@@ -726,15 +839,67 @@ class DirectionScroller {
         const percent = ((value - min) / (max - min)) * 100;
         railFill.style.width = percent + '%';
         thumb.style.left = percent + '%';
+        valueEl.style.left = percent + '%';
+
+        
     };
 
-    if (rangeInput) {
-        rangeInput.addEventListener('input', () => {
+// Слайдер стреляет событием 'input' очень часто (на каждый пиксель драга),
+// а recalculate() делает innerHTML-перерисовку всего результата — без
+// троттлинга это заметно проседает на слабых устройствах.
+    let sliderFrameRequested = false;
+    const scheduleSliderUpdate = () => {
+        if (sliderFrameRequested) return;
+        sliderFrameRequested = true;
+        requestAnimationFrame(() => {
+            sliderFrameRequested = false;
             updateSlider();
             recalculate();
         });
+    };
+
+    if (rangeInput) {
+        rangeInput.addEventListener('input', scheduleSliderUpdate);
         updateSlider();
     }
+
+    /**
+     * Клик по +/- счётчика внутри label.checkbox.
+     * Важно: <span> внутри <label> по умолчанию при клике "проксирует" клик
+     * на связанный input и переключает checked — это стандартное поведение
+     * браузера для <label>. Чтобы клик по счётчику НЕ переключал чекбокс,
+     * дефолтное действие клика гасится через preventDefault() до того,
+     * как браузер применит его к label.
+     */
+    calculator.addEventListener('click', (e) => {
+        const countWrapper = e.target.closest(SELECTORS.countWrapper);
+        if (!countWrapper) return;
+
+        // Гасим и переключение чекбокса (дефолтное поведение label),
+        // и всплытие клика — весь блок счётчика "изолирован" от чекбокса.
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isPlus = !!e.target.closest(SELECTORS.countPlus);
+        const isMinus = !!e.target.closest(SELECTORS.countMinus);
+        if (!isPlus && !isMinus) return;
+
+        const label = countWrapper.querySelector(SELECTORS.countLabel);
+        if (!label) return;
+
+        const min = Number(countWrapper.getAttribute('data-js-count-min')) || 0;
+        const maxAttr = countWrapper.getAttribute('data-js-count-max');
+        const max = maxAttr !== null && maxAttr !== '' ? Number(maxAttr) : Infinity;
+
+        const current = parseInt(label.textContent, 10) || 0;
+        const next = isPlus ? current + 1 : current - 1;
+        const clamped = Math.min(Math.max(next, min), max);
+
+        if (clamped === current) return;
+
+        label.textContent = String(clamped);
+        recalculate();
+    });
 
     calculator.addEventListener('change', (e) => {
         const target = e.target;
