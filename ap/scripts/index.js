@@ -495,6 +495,8 @@ class DirectionScroller {
 
 
 
+'use strict';
+
 function resolveRangeValues(input) {
     const scope = input.closest('.js-calculator-block') || input.closest('.js-calculator') || document;
     const selected = scope.querySelector('input[data-js-range]:checked');
@@ -656,12 +658,19 @@ class PricingCalculator {
 
         this._handleClick = this._handleClick.bind(this);
         this._handleChange = this._handleChange.bind(this);
+        this._handleCounterInput = this._handleCounterInput.bind(this);
+        this._handleCounterCommit = this._handleCounterCommit.bind(this);
     }
 
     init() {
+        if (this.root.dataset.calculatorInit === 'true') return;
+        this.root.dataset.calculatorInit = 'true';
+
         this._initSliders();
         this.root.addEventListener('click', this._handleClick);
         this.root.addEventListener('change', this._handleChange);
+        this.root.addEventListener('input', this._handleCounterInput);
+        this.root.addEventListener('focusout', this._handleCounterCommit);
         this.recalculate();
     }
 
@@ -730,7 +739,7 @@ class PricingCalculator {
 
         if (!countLabel) return {quantity: 1, hasCounter: false};
 
-        const quantity = parseInt(countLabel.textContent, 10);
+        const quantity = parseInt(countLabel.value, 10);
         return {quantity: Number.isNaN(quantity) ? 0 : quantity, hasCounter: true};
     }
 
@@ -923,13 +932,48 @@ class PricingCalculator {
         const maxAttr = countWrapper.getAttribute('data-js-count-max');
         const max = maxAttr !== null && maxAttr !== '' ? Number(maxAttr) : Infinity;
 
-        const current = parseInt(label.textContent, 10) || 0;
+        const current = parseInt(label.value, 10) || 0;
         const next = isPlus ? current + 1 : current - 1;
         const clamped = Math.min(Math.max(next, min), max);
 
         if (clamped === current) return;
 
-        label.textContent = String(clamped);
+        label.value = String(clamped);
+        this.recalculate();
+    }
+
+    _handleCounterInput(e) {
+        const target = e.target;
+        if (!target.matches || !target.matches(PricingCalculator.SELECTORS.countLabel)) return;
+
+        const sanitized = target.value.replace(/\D/g, '');
+        if (sanitized !== target.value) {
+            const pos = target.selectionStart - (target.value.length - sanitized.length);
+            target.value = sanitized;
+            if (typeof target.setSelectionRange === 'function') {
+                target.setSelectionRange(pos, pos);
+            }
+        }
+
+        this.recalculate();
+    }
+
+    _handleCounterCommit(e) {
+        const target = e.target;
+        if (!target.matches || !target.matches(PricingCalculator.SELECTORS.countLabel)) return;
+
+        const countWrapper = target.closest(PricingCalculator.SELECTORS.countWrapper);
+        const min = countWrapper ? Number(countWrapper.getAttribute('data-js-count-min')) || 0 : 0;
+        const maxAttr = countWrapper ? countWrapper.getAttribute('data-js-count-max') : null;
+        const max = maxAttr !== null && maxAttr !== '' ? Number(maxAttr) : Infinity;
+
+        const current = parseInt(target.value, 10);
+        const clamped = Math.min(Math.max(Number.isNaN(current) ? min : current, min), max);
+
+        if (String(clamped) !== target.value) {
+            target.value = String(clamped);
+        }
+
         this.recalculate();
     }
 
@@ -945,14 +989,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.js-calculator').forEach((root) => {
         new PricingCalculator(root).init();
     });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.js-calculator').forEach((root) => {
-        new PricingCalculator(root).init();
-    });
-
-
 });
 
 (() => {
