@@ -1,0 +1,269 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+        <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+        <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+        <!-- OG / Social -->
+        <meta property="og:image" content="https://prm.779.su/assets/images/og.webp">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        <meta property="og:image:type" content="image/png">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:image" content="https://prm.779.su/assets/images/og.webp">
+
+        link(rel="stylesheet" href="assets/styles/css/reset.css")
+        link(rel="stylesheet" href="assets/styles/css/index.css")
+        title Периметр
+    body
+        .popup.popup-thanks
+            .popup__wrapper.popup__wrapper--container
+                .popup__overlay
+                .popup__content
+                    .modal.form
+                        span.modal__close.popup-close
+                        .modal__wrapper.modal__wrapper--thanks
+                            .form__wrapper
+                                p.title.title--base.title--white.title--center Спасибо за заявку
+                                p.text.text--base.text--white.title--center Мы скоро сввяжемся с вами
+        .popup.popup-enter
+            .popup__wrapper.popup__wrapper--container
+                .popup__overlay
+                .popup__content
+                    form(action="mail.php").modal.form
+                        span.modal__close.popup-close
+                        .modal__wrapper
+                            .form__wrapper
+                                p.title.title--base.title--white Войти в Периметр управления
+                                p.text.text--base.text--white.form__text Разберем процесс и адаптируем систему под ваши задачи
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон" class="js-phone-mask" pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+                                    .form-grid__item.form-grid__item--full
+                                        label.checkbox
+                                            input.checkbox__input(type="checkbox" required)
+                                            span.checkbox__checkmark
+                                                svg.icon
+                                                    use(xlink:href="assets/images/sprite.svg#check")
+                                            span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="policy-user.html") Политики конфиденциальности] и&nbsp;#[a(href="user-agre.html") Пользовательского соглашения]
+        .cookie
+            .cookie__wrapper
+                p.cookie__text Для оптимизации работы сайта мы используем #[a(href="#") файлы cookie]. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение
+                button.button.button--base.button--accent.button--full.cookie__button Отлично
+        .page-wrapper
+            header.header
+                .header__wrapper
+                    .container
+                        .header__row
+                            a(href="/").logo.header__logo.image
+                                svg.logo__img.image__item
+                                    use(xlink:href="assets/images/sprite.svg#logo")
+                            .header__buttons.button-list.button-list--header
+                                a(href="mailto:Hello@perimetr.one").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#mail")
+                                a(href="tel:+7 495 141 21 00").button.button--base.button--icon.button--bordered
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone")
+                                a(href="#" data-popup=".popup-enter").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Оставить заявку
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#connect")
+                                a(href="login.html").button.button--base.button--icon--mobile.button--bordered
+                                    span.button__text Войти
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#home")
+                                a(href="#footer").button.button--base.button--icon--mobile.button--accent
+                                    span.button__text Контакты
+                                    svg.button__icon
+                                        use(xlink:href="assets/images/sprite.svg#phone-burger")
+            main.content
+                .hero.hero--page
+                    .hero__bg.image
+                        picture.image__item
+                            <source srcset="assets/images/hero/bg-m.webp" media="(max-width: 640px)">
+                            img(src="assets/images/hero/bg.webp" draggable="false" ondragstart="return false;")
+                .content__wrapper.content__wrapper--small
+                    .section
+                        .container.container--small
+                            .section__column
+                                p.title.title--base.title--center.page-title О системе «ПериметрВан»
+                                p.text.text--base.text--center Актуальная версия от 04 мая 2026 г.
+                                .block-list
+                                    .block
+                                        .block__wrapper
+                                            label.block__header
+                                                p.title.title--small Вводная информация
+                                                span.block__icon
+                                                input(type="checkbox" checked).block__input
+                                            .block-content
+                                                .block-content__wrapper
+                                                    p.text.text--base #[b Программное обеспечение Информационная система «ПериметрВан»] <br> <br>
+                                                        | Общество с ограниченной ответственностью «ПЕРИМЕТРТЕХ» <br>
+                                                        | ОГРН 1267700023117, ИНН 9707055346 <br>
+                                                        | Адрес: 127055, г. Москва, вн.тер.г. Муниципальный Округ Тверской, ул Новослободская, д. <br>
+                                                        | 50/1 стр. 2, кв. 137
+
+                    .download
+                        .download__bg.image
+                            img.image__item(src="assets/images/download/bg.webp" draggable="false" ondragstart="return false;")
+                        .download__wrapper
+                            .container.container--small
+                                .download__grid
+                                    .download-card
+                                        .download-card__wrapper
+                                            p.download-card__title.title.title--white.title--base Функциональные характеристики ПО
+                                            p.text.text--base.text--white Настоящий документ представляет собой руководство пользователя программного обеспечения Информационная система «ПериметрВан».
+                                            a(href="#").button.button--base.button--accent.button--full Скачать документ
+                                    .download-card
+                                        .download-card__wrapper
+                                            p.download-card__title.title.title--white.title--base Руководство пользователя ПО
+                                            p.text.text--base.text--white Настоящий документ представляет собой руководство пользователя программного обеспечения Информационная система «ПериметрВан».
+                                            a(href="#").button.button--base.button--accent.button--full Скачать документ
+                .contact-showcase
+                    .container
+                        form(action="mail.php" method="POST").contact-showcase__row
+                            .contact-showcase__img.image
+                                picture.image__item
+                                    <source srcset="assets/images/contact/decor-m.webp" media="(max-width: 640px)">
+                                    img(src="assets/images/contact/decor.webp" draggable="false" ondragstart="return false;")
+                            .contact-showcase__header
+                                p.title.title--white.title--base Войти в Периметр управления
+                                p.text.text--base.text--white.contact-showcase__text Разберем процесс и адаптируем систему под ваши задачи
+                                label.checkbox
+                                    input.checkbox__input(type="checkbox" required)
+                                    span.checkbox__checkmark
+                                        svg.icon
+                                            use(xlink:href="assets/images/sprite.svg#check")
+                                    span.checkbox__text Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия #[a(href="policy-useer.html") Политики конфиденциальности] и&nbsp;#[a(href="user-agre.html") Пользовательского соглашения]
+                            .contact-showcase__form.form
+                                .form-grid
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Имя")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Название компании")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Телефон" class="js-phone-mask" pattern="\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}")
+                                    .form-grid__item
+                                        label.input
+                                            input.input__item(type="text" placeholder="Email")
+                                    .form-grid__item.form-grid__item--full
+                                        button(type="submit").button.button--full.button--big.button--white
+                                            span.button__text Отправить
+
+
+                footer.footer#footer
+                    .footer__wrapper
+                        .container
+                            .footer__column
+                                a.footer__logo.image
+                                    svg.image__ite
+                                        use(xlink:href="assets/images/sprite.svg#logo")
+                                .footer__row
+                                    .footer__block
+                                        a(href="tel:+7 495 141 21 00 ").button.button--base.button--accent.footer__button
+                                            span.button__text +7 495 141 21 00
+                                            svg.button__icon
+                                                use(xlink:href="assets/images/sprite.svg#phone")
+                                        a(href="about-system.html").button.button--base.button--bordered.footer__button
+                                            span.button__text О сервисе
+                                        a(href="about.html").button.button--base.button--bordered.footer__button
+                                            span.button__text О компании
+                                    .footer__block
+                                        a(href="policy.html").button.button--base.button--bordered.footer__button
+                                            span.button__text Политика обработки персональных данных
+                                        a(href="policy-user.html").button.button--base.button--bordered.footer__button
+                                            span.button__text Политика конфиденциальности
+                                    .footer__block
+                                        a(href="user-agre.html").button.button--base.button--bordered.footer__button
+                                            span.button__text Пользовательское соглашение
+                                        a(href="mailto:Hello@perimetr.one").button.button--base.button--accent.footer__button
+                                            span.button__text Hello@perimetr.one
+                                            svg.button__icon
+                                                use(xlink:href="assets/images/sprite.svg#mail")
+
+
+
+                                p.footer__text 2026 PERIMETR. All rights reserved
+                .nav
+                    .nav-buttons
+                        .button-list.button-list--accent.button-list--column
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-prev
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#arrow-top")
+                            a(href="#").button.button--base.button--icon.button--accent.anchor-next
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#arrow-down")
+                    ul.nav-list.button-list.button-list--nav
+                        li.nav-list__item
+                            a(href="/").button.button--base.button--icon.button--accent
+                                svg.button__icon.button__icon--logo
+                                    use(xlink:href="assets/images/sprite.svg#logo")
+                        li.nav-list__item
+                            a(href="index.html#about").button.button--base.button--icon--mobile.button--accent--light
+                                span.button__text О платформе
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#chat")
+                        li.nav-list__item
+                            a(href="index.html#functions").button.button--base.button--icon--mobile.button--accent--light
+
+                                span.button__text Функционал
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#action")
+                        li.nav-list__item
+                            a(href="index.html#roles").button.button--base.button--icon--mobile.button--accent--light
+
+                                span.button__text Роли пользователей
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#role")
+                        li.nav-list__item
+                            a(href="index.html#advantages").button.button--base.button--icon--mobile.button--accent--light
+
+                                span.button__text Преимущества
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#advantages")
+                        li.nav-list__item
+                            a(href="index.html#audience").button.button--base.button--icon--mobile.button--accent--light
+
+                                span.button__text Целевая аудитория
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#audience")
+                        li.nav-list__item
+                            a(href="login.html" ).button.button--base.button--icon.button--accent
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#home")
+                        li.nav-list__item
+                            a(href="#" data-popup=".popup-enter").button.button--base.button--icon.button--accent
+                                svg.button__icon
+                                    use(xlink:href="assets/images/sprite.svg#connect")
+        script(src="assets/scripts/imask.js")
+        script(src="assets/scripts/index.js")

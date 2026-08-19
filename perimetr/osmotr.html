@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<!-- OG / Social -->
+<meta property="og:image" content="https://prm.779.su/assets/images/og.webp">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:type" content="image/png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://prm.779.su/assets/images/og.webp">
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+    <title>Периметр</title>
+  </head>
+  <body>
+    <div class="popup popup-thanks">
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal form"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper modal__wrapper--thanks">
+              <div class="form__wrapper">
+                <p class="title title--base title--white title--center">Спасибо за заявку</p>
+                <p class="text text--base text--white title--center">Мы скоро сввяжемся с вами</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-enter">
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <form class="modal form" action="mail.php" method="POST"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper">
+              <div class="form__wrapper">
+                <p class="title title--base title--white">Войти в Периметр управления</p>
+                <p class="text text--base text--white form__text">Разберем процесс и адаптируем систему под ваши задачи</p>
+                <div class="form-grid">
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Имя">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Название компании">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item js-phone-mask" type="text" placeholder="Телефон" pattern="+7sd{3}sd{3}sd{2}sd{2}">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Email">
+                    </label>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <button class="button button--full button--big button--white" type="submit"><span class="button__text">Отправить</span></button>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <label class="checkbox">
+                      <input class="checkbox__input" type="checkbox" required><span class="checkbox__checkmark">
+                        <svg class="icon">
+                          <use xlink:href="assets/images/sprite.svg#check"></use>
+                        </svg></span><span class="checkbox__text">Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия <a href="policy-user.html">Политики конфиденциальности</a> и&nbsp;<a href="user-agre.html">Пользовательского соглашения</a></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cookie">
+      <div class="cookie__wrapper">
+        <p class="cookie__text">Для оптимизации работы сайта мы используем <a href="#">файлы cookie</a>. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение</p>
+        <button class="button button--base button--accent button--full cookie__button">Отлично</button>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <header class="header">
+        <div class="header__wrapper">
+          <div class="container">
+            <div class="header__row">
+              <div class="button-list button-list--white"><a class="logo header__logo image" href="/">
+                  <svg class="logo__img image__item">
+                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered active" href="osmort.html"><span class="button__text">Периметр Осмотр</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#assignment_add"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="home.html"><span class="button__text">Периметр Транспорт</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#car_tag"></use>
+                  </svg></a></div>
+              <div class="header__buttons button-list button-list--header"><a class="button button--base button--icon button--bordered" href="mailto:Hello@perimetr.one">
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#mail"></use>
+                  </svg></a><a class="button button--base button--icon button--bordered" href="tel:+7 495 141 21 00">
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#phone"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="login.html"><span class="button__text">Войти</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--accent" href="#footer"><span class="button__text">Контакты</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#phone-burger"></use>
+                  </svg></a></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="hero">
+          <div class="hero__bg hero__bg--small image">
+            <picture class="image__item"><img src="assets/images/hero/bg-osmotr.webp" draggable="false" ondragstart="return false;"></picture>
+          </div>
+          <div class="hero__wrapper">
+            <div class="container">
+              <div class="hero__content header__contnet--small">
+                <div class="hero__header">
+                  <p class="title title--base hero__title">Периметр Осмотр — осмотры любого имущества по единым стандартам</p>
+                  <p class="text text--base hero__header-text">Настраиваемые сценарии, контроль выполнения и&nbsp;цифровая история каждого объекта</p>
+                </div>
+                <div class="button-list button-list--shadow"><a class="button button--base button--accent" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                    <svg class="button__icon">
+                      <use xlink:href="assets/images/sprite.svg#connect"></use>
+                    </svg></a><a class="button button--base button--bordered" href="#about"><span class="button__text">Подробнее</span>
+                    <svg class="button__icon">
+                      <use xlink:href="assets/images/sprite.svg#symptom"></use>
+                    </svg></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content__wrapper">
+          <div class="section">
+            <div class="section__wrapper">
+              <div class="container">
+                <div class="partners">
+                  <div class="partners__wrapper">
+                    <div class="partners__grid">
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon" src="assets/images/partners/1.svg"></span>
+                            <p class="subcard__text subcard__text--accent">Реестр российского программного обеспечения</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon" src="assets/images/partners/2.svg"></span>
+                            <p class="subcard__text subcard__text--accent">Реестр аккредитованных ИТ-компаний Минцифры России</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon" src="assets/images/partners/3.svg"></span>
+                            <p class="subcard__text subcard__text--accent">Реестр операторов персональных данных</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon icon--wide" src="assets/images/partners/4.webp"></span>
+                            <p class="subcard__text subcard__text--accent">Государственная регистрация программы для ЭВМ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="partners__row"><a class="partners-store" href="#" target="_blank"><img class="partners-store__img" src="assets/images/stores/appstore.svg"></a><a class="partners-store" href="#" target="_blank"><img class="partners-store__img" src="assets/images/stores/googleplay.svg"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section about tabs" id="about">
+            <div class="section__wrapper">
+              <div class="container">
+                <div class="section__column section__column--small">
+                  <p class="title title--base title--center section__title">Какие задачи решает Периметр Осмотр ?</p>
+                  <div class="button-list button-list--shadow about__nav"><a class="button button--base button--icon button--accent about__button tabs-button tabs-button-prev" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#arrow-left"></use>
+                      </svg></a><a class="button button--base button--icon--mobile button--bordered about__button tabs-button" href="#"><span class="button__text">Земельные участки</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#forest"></use>
+                      </svg></a><a class="button button--base button--icon--mobile button--bordered about__button tabs-button" href="#"><span class="button__text">Коммерческие помещения</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_business"></use>
+                      </svg></a><a class="button button--base button--icon--mobile button--bordered about__button tabs-button" href="#"><span class="button__text">Оборудование</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#forklift"></use>
+                      </svg></a><a class="button button--base button--icon--mobile button--bordered about__button tabs-button" href="#"><span class="button__text">Этапы строительства</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#handyman"></use>
+                      </svg></a><a class="button button--base button--icon--mobile button--bordered about__button tabs-button" href="#"><span class="button__text">Квартиры</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#scene"></use>
+                      </svg></a><a class="button button--base button--icon--mobile button--bordered about__button tabs-button" href="#"><span class="button__text">ТМЦ</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#recycling"></use>
+                      </svg></a><a class="button button--base button--icon--mobile button--bordered about__button tabs-button" href="#"><span class="button__text">Транспортные средства</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#traffic_jam"></use>
+                      </svg></a><a class="button button--base button--icon button--accent about__button tabs-button tabs-button-next" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#arrow-right"></use>
+                      </svg></a></div>
+                  <div class="tabs-content-wrapper">
+                    <div class="tabs-content">
+                      <div class="tabs-content__wrapper">
+                        <div class="tasks-item">
+                          <div class="tasks-item__wrapper">
+                            <div class="tasks-item__img image"><img class="image__item" src="assets/images/tasks/1/1.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="tasks-item__content">
+                              <p class="title title--base title--white">Земельные участки</p>
+                              <p class="text text--base text--white">Удаленные осмотры земельных участков без выезда специалистов с получением достоверных материалов для принятия решений. <br> Удаленный контроль объектов без выезда специалистов</p>
+                              <div class="button-list button-list--grey">
+                                <div class="logo button-list__logo">
+                                  <svg class="logo__img">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg>
+                                </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                                  </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                                  </svg></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tabs-content">
+                      <div class="tabs-content__wrapper">
+                        <div class="tasks-item">
+                          <div class="tasks-item__wrapper">
+                            <div class="tasks-item__img image"><img class="image__item" src="assets/images/tasks/1/2.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="tasks-item__content">
+                              <p class="title title--base title--white">Коммерческая недвижимость</p>
+                              <p class="text text--base text--white">Контроль состояния помещений, фиксация изменений и проведение цифровых актов приема-передачи без бумажного документооборота. <br> Контроль состояния объектов и цифровые акты приема-передачи</p>
+                              <div class="button-list button-list--grey">
+                                <div class="logo button-list__logo">
+                                  <svg class="logo__img">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg>
+                                </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                                  </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                                  </svg></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tabs-content">
+                      <div class="tabs-content__wrapper">
+                        <div class="tasks-item">
+                          <div class="tasks-item__wrapper">
+                            <div class="tasks-item__img image"><img class="image__item" src="assets/images/tasks/1/3.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="tasks-item__content">
+                              <p class="title title--base title--white">Оборудование</p>
+                              <p class="text text--base text--white">Контроль состояния, комплектности и эксплуатации оборудования на любом этапе жизненного цикла. <br> Контроль состояния и комплектности оборудования</p>
+                              <div class="button-list button-list--grey">
+                                <div class="logo button-list__logo">
+                                  <svg class="logo__img">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg>
+                                </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                                  </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                                  </svg></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tabs-content">
+                      <div class="tabs-content__wrapper">
+                        <div class="tasks-item">
+                          <div class="tasks-item__wrapper">
+                            <div class="tasks-item__img image"><img class="image__item" src="assets/images/tasks/1/4.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="tasks-item__content">
+                              <p class="title title--base title--white">Этапы строительства</p>
+                              <p class="text text--base text--white">Контроль выполнения этапов строительства с фотофиксацией и подтверждением объемов выполненных работ. <br> Подтверждение выполнения строительных работ</p>
+                              <div class="button-list button-list--grey">
+                                <div class="logo button-list__logo">
+                                  <svg class="logo__img">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg>
+                                </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                                  </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                                  </svg></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tabs-content">
+                      <div class="tabs-content__wrapper">
+                        <div class="tasks-item">
+                          <div class="tasks-item__wrapper">
+                            <div class="tasks-item__img image"><img class="image__item" src="assets/images/tasks/1/5.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="tasks-item__content">
+                              <p class="title title--base title--white">Квартиры</p>
+                              <p class="text text--base text--white">Цифровые акты приема-передачи и фиксация состояния объекта при аренде, покупке или эксплуатации недвижимости.<br>Цифровая фиксация состояния объекта между сторонами</p>
+                              <div class="button-list button-list--grey">
+                                <div class="logo button-list__logo">
+                                  <svg class="logo__img">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg>
+                                </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                                  </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                                  </svg></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tabs-content">
+                      <div class="tabs-content__wrapper">
+                        <div class="tasks-item">
+                          <div class="tasks-item__wrapper">
+                            <div class="tasks-item__img image"><img class="image__item" src="assets/images/tasks/1/6.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="tasks-item__content">
+                              <p class="title title--base title--white">ТМЦ</p>
+                              <p class="text text--base text--white">Контроль наличия, состояния и комплектности товарно-материальных ценностей на складах и производственных площадках.<br>Контроль наличия и состояния материальных ценностей</p>
+                              <div class="button-list button-list--grey">
+                                <div class="logo button-list__logo">
+                                  <svg class="logo__img">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg>
+                                </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                                  </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                                  </svg></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tabs-content">
+                      <div class="tabs-content__wrapper">
+                        <div class="tasks-item">
+                          <div class="tasks-item__wrapper">
+                            <div class="tasks-item__img image"><img class="image__item" src="assets/images/tasks/1/7.webp" draggable="false" ondragstart="return false;"></div>
+                            <div class="tasks-item__content">
+                              <p class="title title--base title--white">Транспортные средства</p>
+                              <p class="text text--base text--white">Осмотр транспортных средств при передаче, эксплуатации, возврате и хранении с фиксацией состояния и повреждений.<br>Контроль состояния транспортных средств на всех этапах эксплуатации</p>
+                              <div class="button-list button-list--grey">
+                                <div class="logo button-list__logo">
+                                  <svg class="logo__img">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg>
+                                </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                                  </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                                  <svg class="button__icon">
+                                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                                  </svg></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="roles-wrapper">
+            <div class="advantages" id="advantages">
+              <div class="section">
+                <div class="section__wrapper">
+                  <div class="section__column">
+                    <div class="container">
+                      <div class="section__column">
+                        <p class="title title--base title--center">Кто использует Периметр Осмотр?</p>
+                        <div class="button-list button-list--shadow button-list--center"><a class="button button--base button--accent" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                            <svg class="button__icon">
+                              <use xlink:href="assets/images/sprite.svg#connect"></use>
+                            </svg></a><a class="button button--base button--accent" href="login.html"><span class="button__text">Войти</span>
+                            <svg class="button__icon">
+                              <use xlink:href="assets/images/sprite.svg#home"></use>
+                            </svg></a></div>
+                      </div>
+                    </div>
+                    <div class="advantages-content">
+                      <div class="advantages-content__bg image">
+                        <picture class="image__item"><source srcset="assets/images/advantages/bg-m.webp" media="(max-width: 640px)"><img src="assets/images/advantages/bg.webp" draggable="false" ondragstart="return false;"></picture>
+                      </div>
+                      <div class="advantages-content__wrapper">
+                        <div class="container">
+                          <div class="advantages-list advantages-list--small">
+                            <div class="advantages-card advantages-list__item" data-animation>
+                              <div class="advantages-card__wrapper">
+                                <div class="subcard subcard--advantages">
+                                  <div class="subcard__bg"></div>
+                                  <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                    <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                                  </svg>
+                                  <div class="subcard__content"><span class="subcard__icon">
+                                      <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#account_balance"></use>
+                                      </svg></span>
+                                    <p class="subcard__text subcard__text--middle">Мониторинг залогового имущества, контроль строительства и дистанционные осмотры объектов</p>
+                                  </div>
+                                </div>
+                                <p class="advantages-card__title advantages-card__title--small">Банки</p>
+                              </div>
+                            </div>
+                            <div class="advantages-card advantages-list__item" data-animation>
+                              <div class="advantages-card__wrapper">
+                                <div class="subcard subcard--advantages">
+                                  <div class="subcard__bg"></div>
+                                  <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                    <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                                  </svg>
+                                  <div class="subcard__content"><span class="subcard__icon">
+                                      <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#business_center"></use>
+                                      </svg></span>
+                                    <p class="subcard__text subcard__text--middle">Контроль наличия, состояния и документирование товарных запасов и оборудования</p>
+                                  </div>
+                                </div>
+                                <p class="advantages-card__title advantages-card__title--small">Факторинговые компании</p>
+                              </div>
+                            </div>
+                            <div class="advantages-card advantages-list__item" data-animation>
+                              <div class="advantages-card__wrapper">
+                                <div class="subcard subcard--advantages">
+                                  <div class="subcard__bg"></div>
+                                  <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                    <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                                  </svg>
+                                  <div class="subcard__content"><span class="subcard__icon">
+                                      <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#directions_car"></use>
+                                      </svg></span>
+                                    <p class="subcard__text subcard__text--middle">Осмотр предметов лизинга при передаче, эксплуатации и возврате</p>
+                                  </div>
+                                </div>
+                                <p class="advantages-card__title advantages-card__title--small">Лизинговые компании</p>
+                              </div>
+                            </div>
+                            <div class="advantages-card advantages-list__item" data-animation>
+                              <div class="advantages-card__wrapper">
+                                <div class="subcard subcard--advantages">
+                                  <div class="subcard__bg"></div>
+                                  <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                    <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                                  </svg>
+                                  <div class="subcard__content"><span class="subcard__icon">
+                                      <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#add_home_work"></use>
+                                      </svg></span>
+                                    <p class="subcard__text subcard__text--middle">Цифровые акты приема-передачи квартир и коммерческих помещений</p>
+                                  </div>
+                                </div>
+                                <p class="advantages-card__title advantages-card__title--small">Аренда недвижимости</p>
+                              </div>
+                            </div>
+                            <div class="advantages-card advantages-list__item" data-animation>
+                              <div class="advantages-card__wrapper">
+                                <div class="subcard subcard--advantages">
+                                  <div class="subcard__bg"></div>
+                                  <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                    <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                                  </svg>
+                                  <div class="subcard__content"><span class="subcard__icon">
+                                      <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#front_loader"></use>
+                                      </svg></span>
+                                    <p class="subcard__text subcard__text--middle">Контроль этапов строительства и подтверждение выполнения работ</p>
+                                  </div>
+                                </div>
+                                <p class="advantages-card__title advantages-card__title--small">Проектное финансирование</p>
+                              </div>
+                            </div>
+                            <div class="advantages-card advantages-list__item" data-animation>
+                              <div class="advantages-card__wrapper">
+                                <div class="subcard subcard--advantages">
+                                  <div class="subcard__bg"></div>
+                                  <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                    <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                                  </svg>
+                                  <div class="subcard__content"><span class="subcard__icon">
+                                      <svg class="icon">
+                                        <use xlink:href="assets/images/sprite.svg#deployed_code_alert"></use>
+                                      </svg></span>
+                                    <p class="subcard__text subcard__text--middle">Фиксация состояния имущества при передаче, получении и доставке</p>
+                                  </div>
+                                </div>
+                                <p class="advantages-card__title advantages-card__title--small">Логистика и поставки</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section steps inspection" id="functions">
+              <div class="inspection__bg image">
+                <picture class="image__item"><img src="assets/images/steps/bg-big.webp" draggable="false" ondragstart="return false;"></picture>
+              </div>
+              <div class="section__wrapper steps__wrapper inspection__wrapper">
+                <div class="section__column">
+                  <p class="title title--base title--center steps__title section__title">Осмотр может выполнить любой исполнитель</p>
+                  <div class="steps__buttons button-list button-list--shadow"><a class="button button--base button--accent" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#connect"></use>
+                      </svg></a><a class="button button--base button--accent" href="login.html"><span class="button__text">Войти</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#home"></use>
+                      </svg></a></div>
+                  <div class="steps-list">
+                    <div class="steps-list__item steps-card" data-animation>
+                      <div class="steps-card__wrapper"><span class="steps-card__image image"><img class="image__item" src="assets/images/steps/1.webp" draggable="false" ondragstart="return false;"></span>
+                        <p class="steps-card__title steps-card__title--middle">Desktop</p>
+                      </div>
+                    </div>
+                    <div class="steps-list__item steps-list__item--big steps-card">
+                      <div class="steps-card__wrapper steps-card__wrapper--full">
+                        <p class="logo steps-card__logo">
+                          <svg class="logo__img">
+                            <use xlink:href="assets/images/sprite.svg#logo"></use>
+                          </svg>
+                        </p>
+                        <p class="text text--base text--white text--center">Проведение осмотра без подключения к корпоративной системе. Достаточно направить ссылку на задание — исполнитель проходит осмотр по утвержденному сценарию, а система автоматически контролирует сбор материалов и сохраняет результаты в карточке объекта. <br> <br> Без регистрации, обучения и предоставления доступа к корпоративной системе.</p>
+                      </div>
+                    </div>
+                    <div class="steps-list__item steps-card" data-animation>
+                      <div class="steps-card__wrapper"><span class="steps-card__image image"><img class="image__item" src="assets/images/steps/2.webp" draggable="false" ondragstart="return false;"></span>
+                        <p class="steps-card__title steps-card__title--middle">Создание ссылки</p>
+                      </div>
+                    </div>
+                    <div class="steps-list__item steps-card" data-animation>
+                      <div class="steps-card__wrapper"><span class="steps-card__image image"><img class="image__item" src="assets/images/steps/3.webp" draggable="false" ondragstart="return false;"></span>
+                        <p class="steps-card__title steps-card__title--middle">SMS / Email</p>
+                      </div>
+                    </div>
+                    <div class="steps-list__item steps-card" data-animation>
+                      <div class="steps-card__wrapper"><span class="steps-card__image image"><img class="image__item" src="assets/images/steps/4.webp" draggable="false" ondragstart="return false;"></span>
+                        <p class="steps-card__title steps-card__title--middle">Mobile</p>
+                      </div>
+                    </div>
+                    <div class="steps-list__item steps-card" data-animation>
+                      <div class="steps-card__wrapper"><span class="steps-card__image image"><img class="image__item" src="assets/images/steps/5.webp" draggable="false" ondragstart="return false;"></span>
+                        <p class="steps-card__title steps-card__title--middle">Осмотр и проверка</p>
+                      </div>
+                    </div>
+                    <div class="steps-list__item steps-card" data-animation>
+                      <div class="steps-card__wrapper"><span class="steps-card__image image"><img class="image__item" src="assets/images/steps/6.webp" draggable="false" ondragstart="return false;"></span>
+                        <p class="steps-card__title steps-card__title--middle">Отчет</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section steps">
+              <div class="section__wrapper">
+                <div class="container">
+                  <div class="section__column">
+                    <p class="title title--base title--center steps__title section__title">Этапы проведения осмотра</p>
+                    <div class="button-list button-list--shadow button-list--center"><a class="button button--base button--accent" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                        <svg class="button__icon">
+                          <use xlink:href="assets/images/sprite.svg#connect"></use>
+                        </svg></a><a class="button button--base button--accent" href="login.html"><span class="button__text">Войти</span>
+                        <svg class="button__icon">
+                          <use xlink:href="assets/images/sprite.svg#home"></use>
+                        </svg></a></div>
+                    <div class="steps-list steps-list--grid">
+                      <div class="steps-list__bg image">
+                        <picture class="image__item"><source srcset="assets/images/steps/bg-m.webp" media="(max-width: 640px)"><img src="assets/images/steps/bg.webp" draggable="false" ondragstart="return false;"></picture>
+                      </div>
+                      <div class="stages-card" data-animation>
+                        <div class="stages-card__wrapper">
+                          <div class="stages-card__header"><span class="stages-card__image image"><img class="image__item" src="assets/images/stages/1.webp" draggable="false" ondragstart="return false;"></span>
+                            <div class="stages-card__subcard">
+                              <div class="subcard subcard--stages">
+                                <div class="subcard__bg"></div>
+                                <div class="subcard__content"><span class="subcard__icon">
+                                    <svg class="icon">
+                                      <use xlink:href="assets/images/sprite.svg#add_location_alt"></use>
+                                    </svg></span>
+                                  <p class="subcard__text subcard__text--base subcard__text subcard__text--mobile--small">Недвижимость, земельные участки, транспорт, оборудование, ТМЦ, строительство</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p class="stages-card__title">Актив</p>
+                        </div>
+                      </div>
+                      <div class="stages-card" data-animation>
+                        <div class="stages-card__wrapper">
+                          <div class="stages-card__header"><span class="stages-card__image image"><img class="image__item" src="assets/images/stages/2.webp" draggable="false" ondragstart="return false;"></span>
+                            <div class="stages-card__subcard">
+                              <div class="subcard subcard--stages">
+                                <div class="subcard__bg"></div>
+                                <div class="subcard__content"><span class="subcard__icon">
+                                    <svg class="icon">
+                                      <use xlink:href="assets/images/sprite.svg#linked_camera"></use>
+                                    </svg></span>
+                                  <p class="subcard__text subcard__text--base">Для каждого типа объекта создается собственный сценарий проведения осмотра с учетом требований заказчика</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p class="stages-card__title">Осмотр</p>
+                        </div>
+                      </div>
+                      <div class="stages-card" data-animation>
+                        <div class="stages-card__wrapper">
+                          <div class="stages-card__header"><span class="stages-card__image image"><img class="image__item" src="assets/images/stages/3.webp" draggable="false" ondragstart="return false;"></span>
+                            <div class="stages-card__subcard">
+                              <div class="subcard subcard--stages">
+                                <div class="subcard__bg"></div>
+                                <div class="subcard__content"><span class="subcard__icon">
+                                    <svg class="icon">
+                                      <use xlink:href="assets/images/sprite.svg#add_chart"></use>
+                                    </svg></span>
+                                  <p class="subcard__text subcard__text--base">После завершения осмотра все материалы автоматически поступают заказчику</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p class="stages-card__title">Анализ</p>
+                        </div>
+                      </div>
+                      <div class="stages-card" data-animation>
+                        <div class="stages-card__wrapper">
+                          <div class="stages-card__header"><span class="stages-card__image image"><img class="image__item" src="assets/images/stages/4.webp" draggable="false" ondragstart="return false;"></span>
+                            <div class="stages-card__subcard">
+                              <div class="subcard subcard--stages">
+                                <div class="subcard__bg"></div>
+                                <div class="subcard__content"><span class="subcard__icon">
+                                    <svg class="icon">
+                                      <use xlink:href="assets/images/sprite.svg#add_location_alt"></use>
+                                    </svg></span>
+                                  <p class="subcard__text subcard__text--base">Достоверная информация об объекте — основа принятия управленческого решения</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p class="stages-card__title">Решение</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section roles" id="roles">
+              <div class="section__wrapper">
+                <div class="roles__column">
+                  <div class="roles__title roles__title--big">
+                    <div class="container">
+                      <p class="title title--base title--center">Вся информация по объекту собрана в одном месте</p>
+                    </div>
+                  </div>
+                  <div class="roles-header">
+                    <div class="container">
+                      <div class="roles-header__wrapper">
+                        <div class="roles-header__info">
+                          <div class="roles-info">
+                            <div class="roles-info__box">
+                              <div class="roles-info__bg"></div>
+                              <svg class="roles-info__border" viewBox="0 0 326 199" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <path d="M48 0.5L180.436 0.5C193.244 0.5 199.508 0.50867 204.786 2.63281C209.465 4.51579 213.583 7.56726 216.747 11.4951C220.316 15.9261 222.148 21.9159 225.878 34.1689L226.499 36.2109C230.203 48.3799 232.088 54.6022 235.808 59.2207C239.079 63.2817 243.336 66.437 248.174 68.3838C253.675 70.5978 260.177 70.5889 272.897 70.5889H278C286.409 70.5889 292.686 70.5894 297.663 70.9961C302.635 71.4023 306.266 72.2108 309.393 73.8037C314.943 76.632 319.457 81.1455 322.285 86.6963C323.878 89.8226 324.687 93.4543 325.093 98.4258C325.499 103.403 325.5 109.68 325.5 118.089V151C325.5 159.409 325.499 165.686 325.093 170.663C324.687 175.635 323.878 179.266 322.285 182.393C319.457 187.943 314.943 192.457 309.393 195.285C306.266 196.878 302.635 197.687 297.663 198.093C292.686 198.499 286.409 198.5 278 198.5L48 198.5C39.591 198.5 33.3144 198.499 28.3369 198.093C23.3654 197.687 19.7338 196.878 16.6074 195.285C11.0566 192.457 6.54311 187.943 3.71484 182.393C2.12194 179.266 1.31341 175.635 0.907227 170.663C0.500561 165.686 0.5 159.409 0.5 151L0.5 48C0.5 39.591 0.500561 33.3144 0.907227 28.3369C1.31341 23.3654 2.12194 19.7338 3.71484 16.6074C6.54311 11.0566 11.0566 6.54311 16.6074 3.71484C19.7338 2.12194 23.3654 1.31341 28.3369 0.907227C33.3144 0.500561 39.591 0.5 48 0.5Z" stroke="#F7F7F9" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                              </svg>
+                              <svg class="roles-info__border roles-info__border--mobile" viewBox="0 0 185 146" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <path d="M48 0.25L82.1348 0.25C86.6054 0.25 88.8172 0.250479 90.7949 0.517578C100.894 1.88154 109.592 8.31985 113.847 17.5801C114.68 19.3936 115.326 21.5086 116.632 25.7842L116.996 26.9746C117.951 30.101 118.433 31.6814 119.008 33.0605C123.292 43.3373 132.874 50.4304 143.954 51.5254C145.441 51.6723 147.093 51.6719 150.362 51.6719C154.677 51.6719 156.812 51.6721 158.604 51.8906C172.178 53.547 182.875 64.2441 184.531 77.8184C184.75 79.6096 184.75 81.7447 184.75 86.0596L184.75 98.7109C184.75 106.78 184.75 112.818 184.373 117.615C183.997 122.41 183.245 125.945 181.754 129.011C178.841 135.001 174.001 139.841 168.011 142.754C164.945 144.245 161.41 144.997 156.615 145.373C151.818 145.75 145.78 145.75 137.711 145.75L48 145.75C39.5951 145.75 33.3064 145.749 28.3164 145.342C23.3295 144.934 19.6616 144.122 16.4941 142.508C10.8963 139.656 6.34442 135.104 3.49219 129.506C1.87839 126.338 1.06565 122.67 0.658203 117.684C0.250502 112.694 0.25 106.405 0.25 98L0.25 48C0.25 39.5951 0.250502 33.3064 0.658203 28.3164C1.06565 23.3295 1.87839 19.6616 3.49219 16.4941C6.34442 10.8963 10.8963 6.34442 16.4941 3.49219C19.6616 1.87839 23.3295 1.06565 28.3164 0.658203C33.3064 0.250502 39.5951 0.25 48 0.25Z" stroke="#F7F7F9" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                              </svg>
+                              <div class="roles-info__wrapper"><span class="roles-info__icon">
+                                  <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#desktop"></use>
+                                  </svg>Web</span>
+                                <p class="roles-info__text"><span class="dot">•</span> Создание и распределение заданий <br><span class="dot">•</span> Настройка сценариев осмотра <br>
+                                  <span class="dot">•</span> Проверка и согласование материалов <br>
+                                  <span class="dot">•</span> Работа с объектами и отчетностью
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="button-list button-list--accent button--list--shadows roles-header__buttons"><a class="button button--base button--accent--light roles-header__button" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                              <svg class="button__icon">
+                                <use xlink:href="assets/images/sprite.svg#connect"></use>
+                              </svg></a></div>
+                          <div class="roles-info">
+                            <div class="roles-info__box">
+                              <div class="roles-info__bg roles-info__bg--right"></div>
+                              <svg class="roles-info__border" viewBox="0 0 326 199" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <path d="M278 0.5L145.564 0.5C132.756 0.5 126.492 0.50867 121.214 2.63281C116.535 4.51579 112.417 7.56726 109.253 11.4951C105.684 15.9261 103.852 21.9159 100.122 34.1689L99.501 36.2109C95.797 48.3799 93.9123 54.6022 90.1924 59.2207C86.9214 63.2817 82.6636 66.437 77.8262 68.3838C72.3246 70.5978 65.823 70.5889 53.1025 70.5889H48C39.591 70.5889 33.3144 70.5894 28.3369 70.9961C23.3654 71.4023 19.7338 72.2108 16.6074 73.8037C11.0566 76.632 6.5431 81.1455 3.71484 86.6963C2.12197 89.8226 1.31341 93.4543 0.907227 98.4258C0.50057 103.403 0.5 109.68 0.5 118.089V151C0.5 159.409 0.50056 165.686 0.907227 170.663C1.31341 175.635 2.12194 179.266 3.71484 182.393C6.5431 187.943 11.0566 192.457 16.6074 195.285C19.7338 196.878 23.3654 197.687 28.3369 198.093C33.3144 198.499 39.591 198.5 48 198.5L278 198.5C286.409 198.5 292.686 198.499 297.663 198.093C302.635 197.687 306.266 196.878 309.393 195.285C314.943 192.457 319.457 187.943 322.285 182.393C323.878 179.266 324.687 175.635 325.093 170.663C325.499 165.686 325.5 159.409 325.5 151V48C325.5 39.591 325.499 33.3144 325.093 28.3369C324.687 23.3654 323.878 19.7338 322.285 16.6074C319.457 11.0566 314.943 6.54311 309.393 3.71484C306.266 2.12194 302.635 1.31341 297.663 0.907227C292.686 0.500561 286.409 0.5 278 0.5Z" stroke="#F7F7F9" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                              </svg>
+                              <svg class="roles-info__border roles-info__border--mobile" viewBox="0 0 185 146" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <path d="M137 0.25L102.865 0.25C98.3946 0.25 96.1828 0.250479 94.2051 0.517578C84.106 1.88154 75.4077 8.31985 71.1533 17.5801C70.3202 19.3936 69.674 21.5086 68.3682 25.7842L68.0039 26.9746C67.049 30.101 66.567 31.6814 65.9922 33.0605C61.7085 43.3373 52.1257 50.4304 41.0459 51.5254C39.559 51.6723 37.9067 51.6719 34.6377 51.6719C30.3228 51.6719 28.1877 51.6721 26.3965 51.8906C12.8222 53.547 2.12514 64.2441 0.46875 77.8184C0.250187 79.6096 0.25 81.7447 0.25 86.0596L0.25 98.7109C0.25 106.78 0.2503 112.818 0.626953 117.615C1.00341 122.41 1.755 125.945 3.24609 129.011C6.15936 135.001 10.9987 139.841 16.9893 142.754C20.0555 144.245 23.5903 144.997 28.3848 145.373C33.182 145.75 39.2196 145.75 47.2891 145.75L137 145.75C145.405 145.75 151.694 145.749 156.684 145.342C161.67 144.934 165.338 144.122 168.506 142.508C174.104 139.656 178.656 135.104 181.508 129.506C183.122 126.338 183.934 122.67 184.342 117.684C184.749 112.694 184.75 106.405 184.75 98L184.75 48C184.75 39.5951 184.749 33.3064 184.342 28.3164C183.934 23.3295 183.122 19.6616 181.508 16.4941C178.656 10.8963 174.104 6.34442 168.506 3.49219C165.338 1.87839 161.67 1.06565 156.684 0.658203C151.694 0.250502 145.405 0.25 137 0.25Z" stroke="#F7F7F9" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                              </svg>
+                              <div class="roles-info__wrapper roles-info__wrapper--right"><span class="roles-info__icon">App
+                                  <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#mobile"></use>
+                                  </svg></span>
+                                <p class="roles-info__text"> Получение задания <span class="dot">•</span> <br> Прохождение чек-листа <span class="dot">•</span> <br>
+                                   Фото- и видеофиксация <span class="dot">•</span> <br>
+                                   Загрузка документов <span class="dot">•</span> <br>
+                                   Проверка результата <span class="dot">•</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="roles-header__cards">
+                          <div class="roles-card">
+                            <div class="subcard">
+                              <div class="subcard__bg">
+                                <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                  <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                                </svg>
+                              </div>
+                              <div class="subcard__content"><span class="subcard__icon subcard__icon--logo">
+                                  <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg></span>
+                                <p class="subcard__text">Карточка объекта предназначена для идентификации объекта и хранения результатов проведенных осмотров</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="roles-card">
+                            <div class="subcard">
+                              <div class="subcard__bg"></div>
+                              <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <path d="M0 120.567C0 97.9233 18.3563 79.567 41 79.567H48.2643C70.2643 79.567 88.1257 61.7833 88.2215 39.7835C88.3174 17.7837 106.179 0 128.179 0H131.968C153.94 0 171.752 17.8117 171.752 39.7835C171.752 61.7553 189.563 79.567 211.535 79.567H219C241.644 79.567 260 97.9233 260 120.567V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V120.567Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                              </svg>
+                              <div class="subcard__content"><span class="subcard__icon subcard__icon--logo">
+                                  <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                                  </svg></span>
+                                <p class="subcard__text">Хранение только необходимой информации, для проведения и документирования осмотров</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roles-content">
+                    <div class="roles-img image"><span class="roles-img__decor" data-animation data-scale="0"></span><span class="roles-img__decor roles-img__decor--small" data-animation data-scale="0"></span><img class="image__item" src="assets/images/info/decor.webp" draggable="false" ondragstart="return false;"></div>
+                    <div class="container">
+                      <div class="photo-card photo-slider roles__desktop">
+                        <div class="photo-card__wrapper">
+                          <div class="photo-card__bg image"><img class="image__item" src="assets/images/photo/bg.webp" draggable="false" ondragstart="return false;"></div>
+                          <div class="photo-card__content"><span class="photo-card__icon">
+                              <svg class="icon">
+                                <use xlink:href="assets/images/sprite.svg#desktop"></use>
+                              </svg></span>
+                            <div class="photo-card__img photo-card__img--desktop">
+                              <div class="photo-slider__main">
+                                <div class="photo-slider__item"><img class="photo-slider__img" src="assets/images/info/img.webp" draggable="false" ondragstart="return false;"></div>
+                              </div>
+                              <div class="photo-slider__nav">
+                                <button class="photo-slider__button photo-slider__button--prev">
+                                  <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#arrow-top"></use>
+                                  </svg>
+                                </button>
+                                <div class="photo-slider__pagination"><span class="photo-slider__bullet"></span><span class="photo-slider__bullet photo-slider__bullet--active"></span></div>
+                                <button class="photo-slider__button photo-slider__button--next">
+                                  <svg class="icon">
+                                    <use xlink:href="assets/images/sprite.svg#arrow-down"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <div class="section__wrapper">
+              <div class="container">
+                <div class="section__column section__column--small">
+                  <p class="title title--base title--center section__title section__title--small">Почему выбирают Периметр Осмотр?</p>
+                  <div class="button-list button-list--grey button-list--center button-list--mobile--column"><a class="button button--base button--grey button--grey--bordered button--shadow" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_task"></use>
+                      </svg><span class="button__text">Земельные участки</span></a><a class="button button--base button--grey button--grey--bordered button--shadow" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_task"></use>
+                      </svg><span class="button__text">Любые имущественные активы</span></a><a class="button button--base button--grey button--grey--bordered button--shadow" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_task"></use>
+                      </svg><span class="button__text">Web + Mobile</span></a><a class="button button--base button--grey button--grey--bordered button--shadow" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_task"></use>
+                      </svg><span class="button__text">Одноразовые ссылки</span></a><a class="button button--base button--grey button--grey--bordered button--shadow" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_task"></use>
+                      </svg><span class="button__text">Проверка материалов</span></a><a class="button button--base button--grey button--grey--bordered button--shadow" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_task"></use>
+                      </svg><span class="button__text">История объекта</span></a><a class="button button--base button--grey button--grey--bordered button--shadow" href="#">
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#add_task"></use>
+                      </svg><span class="button__text">Отчеты</span></a></div>
+                  <div class="tasks-item">
+                    <div class="tasks-item__wrapper">
+                      <div class="tasks-item__img image"><img class="image__item" src="assets/images/why/main.webp" draggable="false" ondragstart="return false;"></div>
+                      <div class="tasks-item__content">
+                        <p class="title title--base title--white">Платформа объединяет заказчиков, подразделения и исполнителей в одном процессе</p>
+                        <div class="button-list button-list--grey">
+                          <div class="logo button-list__logo">
+                            <svg class="logo__img">
+                              <use xlink:href="assets/images/sprite.svg#logo"></use>
+                            </svg>
+                          </div><a class="button button--base button--grey button--grey--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                            <svg class="button__icon">
+                              <use xlink:href="assets/images/sprite.svg#connect"></use>
+                            </svg></a><a class="button button--base button--grey button--grey--bordered" href="login.html"><span class="button__text">Войти</span>
+                            <svg class="button__icon">
+                              <use xlink:href="assets/images/sprite.svg#home"></use>
+                            </svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-showcase">
+          <div class="container">
+            <form class="contact-showcase__row" action="mail.php" method="POST">
+              <div class="contact-showcase__img image">
+                <picture class="image__item"><source srcset="assets/images/contact/decor-m.webp" media="(max-width: 640px)"><img src="assets/images/contact/decor.webp" draggable="false" ondragstart="return false;"></picture>
+              </div>
+              <div class="contact-showcase__header">
+                <p class="title title--white title--base">Войти в Периметр управления</p>
+                <p class="text text--base text--white contact-showcase__text">Разберем процесс и адаптируем систему под ваши задачи</p>
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" required><span class="checkbox__checkmark">
+                    <svg class="icon">
+                      <use xlink:href="assets/images/sprite.svg#check"></use>
+                    </svg></span><span class="checkbox__text">Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия <a href="policy-useer.html">Политики конфиденциальности</a> и&nbsp;<a href="user-agre.html">Пользовательского соглашения</a></span>
+                </label>
+              </div>
+              <div class="contact-showcase__form form">
+                <div class="form-grid">
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Имя">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Название компании">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item js-phone-mask" type="text" placeholder="Телефон" pattern="+7sd{3}sd{3}sd{2}sd{2}">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Email">
+                    </label>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <button class="button button--full button--big button--white" type="submit"><span class="button__text">Отправить</span></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <footer class="footer" id="footer">
+          <div class="footer__wrapper">
+            <div class="container">
+              <div class="footer__column"><a class="footer__logo image">
+                  <svg class="image__item">
+                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                  </svg></a>
+                <div class="footer__row">
+                  <div class="footer__block"><a class="button button--base button--accent footer__button" href="tel:+7 495 141 21 00 "><span class="button__text">+7 495 141 21 00</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#phone"></use>
+                      </svg></a><a class="button button--base button--bordered footer__button" href="about-system.html"><span class="button__text">О сервисе</span></a><a class="button button--base button--bordered footer__button" href="about.html"><span class="button__text">О компании</span></a></div>
+                  <div class="footer__block"><a class="button button--base button--bordered footer__button" href="policy.html"><span class="button__text">Политика обработки персональных данных</span></a><a class="button button--base button--bordered footer__button" href="policy-user.html"><span class="button__text">Политика конфиденциальности</span></a></div>
+                  <div class="footer__block"><a class="button button--base button--bordered footer__button" href="user-agre.html"><span class="button__text">Пользовательское соглашение</span></a><a class="button button--base button--accent footer__button" href="mailto:Hello@perimetr.one"><span class="button__text">Hello@perimetr.one</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#mail"></use>
+                      </svg></a></div>
+                </div>
+                <p class="footer__text">2026 PERIMETR. All rights reserved</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <div class="nav">
+          <div class="nav-buttons">
+            <div class="button-list button-list--accent button-list--column"><a class="button button--base button--icon button--accent anchor-prev" href="#">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#arrow-top"></use>
+                </svg></a><a class="button button--base button--icon button--accent anchor-next" href="#">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#arrow-down"></use>
+                </svg></a></div>
+          </div>
+          <ul class="nav-list button-list button-list--nav">
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="/">
+                <svg class="button__icon button__icon--logo">
+                  <use xlink:href="assets/images/sprite.svg#logo"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#about"><span class="button__text">О платформе</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#chat"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#functions"><span class="button__text">Функционал</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#action"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#roles"><span class="button__text">Роли пользователей</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#role"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#advantages"><span class="button__text">Преимущества</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#advantages"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#audience"><span class="button__text">Целевая аудитория</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#audience"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="login.html">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#home"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="#" data-popup=".popup-enter">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#connect"></use>
+                </svg></a></li>
+          </ul>
+        </div>
+      </main>
+    </div>
+    <script src="assets/scripts/imask.js"></script>
+    <script src="assets/scripts/index.js"></script>
+  </body>
+</html>

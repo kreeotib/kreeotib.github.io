@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<!-- OG / Social -->
+<meta property="og:image" content="https://prm.779.su/assets/images/og.webp">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:type" content="image/png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://prm.779.su/assets/images/og.webp">
+    <link rel="stylesheet" href="assets/styles/css/reset.css">
+    <link rel="stylesheet" href="assets/styles/css/index.css">
+    <title>Периметр</title>
+  </head>
+  <body>
+    <div class="popup popup-thanks">
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <div class="modal form"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper modal__wrapper--thanks">
+              <div class="form__wrapper">
+                <p class="title title--base title--white title--center">Спасибо за заявку</p>
+                <p class="text text--base text--white title--center">Мы скоро сввяжемся с вами</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-enter">
+      <div class="popup__wrapper popup__wrapper--container">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+          <form class="modal form" action="mail.php" method="POST"><span class="modal__close popup-close"></span>
+            <div class="modal__wrapper">
+              <div class="form__wrapper">
+                <p class="title title--base title--white">Войти в Периметр управления</p>
+                <p class="text text--base text--white form__text">Разберем процесс и адаптируем систему под ваши задачи</p>
+                <div class="form-grid">
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Имя">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Название компании">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item js-phone-mask" type="text" placeholder="Телефон" pattern="+7sd{3}sd{3}sd{2}sd{2}">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Email">
+                    </label>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <button class="button button--full button--big button--white" type="submit"><span class="button__text">Отправить</span></button>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <label class="checkbox">
+                      <input class="checkbox__input" type="checkbox" required><span class="checkbox__checkmark">
+                        <svg class="icon">
+                          <use xlink:href="assets/images/sprite.svg#check"></use>
+                        </svg></span><span class="checkbox__text">Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия <a href="policy-user.html">Политики конфиденциальности</a> и&nbsp;<a href="user-agre.html">Пользовательского соглашения</a></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cookie">
+      <div class="cookie__wrapper">
+        <p class="cookie__text">Для оптимизации работы сайта мы используем <a href="#">файлы cookie</a>. Продолжая пользоваться нашим ресурсом, вы даете согласие на их применение</p>
+        <button class="button button--base button--accent button--full cookie__button">Отлично</button>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <header class="header">
+        <div class="header__wrapper">
+          <div class="container">
+            <div class="header__row">
+              <div class="button-list button-list--white"><a class="logo header__logo image" href="/">
+                  <svg class="logo__img image__item">
+                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="osmotr.html"><span class="button__text">Периметр Осмотр</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#assignment_add"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="home.html"><span class="button__text">Периметр Транспорт</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#car_tag"></use>
+                  </svg></a></div>
+              <div class="header__buttons button-list button-list--header"><a class="button button--base button--icon button--bordered" href="mailto:Hello@perimetr.one">
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#mail"></use>
+                  </svg></a><a class="button button--base button--icon button--bordered" href="tel:+7 495 141 21 00">
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#phone"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="#" data-popup=".popup-enter"><span class="button__text">Оставить заявку</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#connect"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--bordered" href="login.html"><span class="button__text">Войти</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#home"></use>
+                  </svg></a><a class="button button--base button--icon--mobile button--accent" href="#footer"><span class="button__text">Контакты</span>
+                  <svg class="button__icon">
+                    <use xlink:href="assets/images/sprite.svg#phone-burger"></use>
+                  </svg></a></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="hero">
+          <div class="hero__bg image">
+            <picture class="image__item"><img src="assets/images/hero/bg-main.webp" draggable="false" ondragstart="return false;"></picture>
+          </div>
+          <div class="hero__wrapper">
+            <div class="container">
+              <div class="hero__content hero__content--mobile--fit">
+                <div class="steps-list steps-list--grid steps-list--hero">
+                  <div class="stages-card" data-animation>
+                    <div class="stages-card__wrapper">
+                      <div class="stages-card__header"><span class="stages-card__image image"><img class="image__item" src="assets/images/main/1.webp" draggable="false" ondragstart="return false;"></span>
+                        <div class="stages-card__subcard">
+                          <div class="subcard subcard--stages">
+                            <div class="subcard__bg"></div>
+                            <div class="subcard__content"><span class="subcard__icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/images/sprite.svg#action_key"></use>
+                                </svg></span>
+                              <p class="subcard__text subcard__text--base">Периметр Осмотр — цифровая платформа проведения осмотров имущественных активов</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div><a class="stages-card__title" href="osmotr.html">Периметр Осмотр</a>
+                    </div>
+                  </div>
+                  <div class="stages-card" data-animation>
+                    <div class="stages-card__wrapper">
+                      <div class="stages-card__header"><span class="stages-card__image image"><img class="image__item" src="assets/images/main/2.webp" draggable="false" ondragstart="return false;"></span>
+                        <div class="stages-card__subcard">
+                          <div class="subcard subcard--stages">
+                            <div class="subcard__bg"></div>
+                            <div class="subcard__content"><span class="subcard__icon">
+                                <svg class="icon">
+                                  <use xlink:href="assets/images/sprite.svg#car_tag"></use>
+                                </svg></span>
+                              <p class="subcard__text subcard__text--base">Периметр Транспорт — цифровая платформа контроля жизненного цикла транспортных <br>средств</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div><a class="stages-card__title" href="index.html">Периметр Транспорт</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content__wrapper">
+          <div class="section">
+            <div class="section__wrapper">
+              <div class="container">
+                <div class="partners">
+                  <div class="partners__wrapper">
+                    <div class="partners__grid">
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon" src="assets/images/partners/1.svg"></span>
+                            <p class="subcard__text subcard__text--accent">Реестр российского программного обеспечения</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon" src="assets/images/partners/2.svg"></span>
+                            <p class="subcard__text subcard__text--accent">Реестр аккредитованных ИТ-компаний Минцифры России</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon" src="assets/images/partners/3.svg"></span>
+                            <p class="subcard__text subcard__text--accent">Реестр операторов персональных данных</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="partners-card">
+                        <div class="subcard subcard--partners">
+                          <div class="subcard__bg">
+                            <svg class="subcard__border subcard__border--shadow" viewBox="-1 -1 262 222" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                              <path d="M0 113.665C0 94.8333 15.2663 79.567 34.0982 79.567C52.8721 79.567 68.1143 64.3911 68.1961 45.6173L68.2215 39.7835C68.3174 17.7837 86.1787 0 108.179 0H151.968C173.94 0 191.752 17.8117 191.752 39.7835V45.4428C191.752 64.2891 207.03 79.567 225.876 79.567C244.722 79.567 260 94.8449 260 113.691V179C260 201.644 241.644 220 219 220H41C18.3563 220 0 201.644 0 179V113.665Z" stroke="#F7F7F9" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                          </div>
+                          <div class="subcard__content"><span class="subcard__icon subcard__icon--big"><img class="icon icon--wide" src="assets/images/partners/4.webp"></span>
+                            <p class="subcard__text subcard__text--accent">Государственная регистрация программы для ЭВМ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="partners__row"><a class="partners-store" href="#" target="_blank"><img class="partners-store__img" src="assets/images/stores/appstore.svg"></a><a class="partners-store" href="#" target="_blank"><img class="partners-store__img" src="assets/images/stores/googleplay.svg"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-showcase">
+          <div class="container">
+            <form class="contact-showcase__row" action="mail.php" method="POST">
+              <div class="contact-showcase__img image">
+                <picture class="image__item"><source srcset="assets/images/contact/decor-m.webp" media="(max-width: 640px)"><img src="assets/images/contact/decor.webp" draggable="false" ondragstart="return false;"></picture>
+              </div>
+              <div class="contact-showcase__header">
+                <p class="title title--white title--base">Войти в Периметр управления</p>
+                <p class="text text--base text--white contact-showcase__text">Разберем процесс и адаптируем систему под ваши задачи</p>
+                <label class="checkbox">
+                  <input class="checkbox__input" type="checkbox" required><span class="checkbox__checkmark">
+                    <svg class="icon">
+                      <use xlink:href="assets/images/sprite.svg#check"></use>
+                    </svg></span><span class="checkbox__text">Вы&nbsp;даете согласие на&nbsp;обработку персональных данных, принимаете условия <a href="policy-useer.html">Политики конфиденциальности</a> и&nbsp;<a href="user-agre.html">Пользовательского соглашения</a></span>
+                </label>
+              </div>
+              <div class="contact-showcase__form form">
+                <div class="form-grid">
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Имя">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Название компании">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item js-phone-mask" type="text" placeholder="Телефон" pattern="+7sd{3}sd{3}sd{2}sd{2}">
+                    </label>
+                  </div>
+                  <div class="form-grid__item">
+                    <label class="input">
+                      <input class="input__item" type="text" placeholder="Email">
+                    </label>
+                  </div>
+                  <div class="form-grid__item form-grid__item--full">
+                    <button class="button button--full button--big button--white" type="submit"><span class="button__text">Отправить</span></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <footer class="footer" id="footer">
+          <div class="footer__wrapper">
+            <div class="container">
+              <div class="footer__column"><a class="footer__logo image">
+                  <svg class="image__item">
+                    <use xlink:href="assets/images/sprite.svg#logo"></use>
+                  </svg></a>
+                <div class="footer__row">
+                  <div class="footer__block"><a class="button button--base button--accent footer__button" href="tel:+7 495 141 21 00 "><span class="button__text">+7 495 141 21 00</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#phone"></use>
+                      </svg></a><a class="button button--base button--bordered footer__button" href="about-system.html"><span class="button__text">О сервисе</span></a><a class="button button--base button--bordered footer__button" href="about.html"><span class="button__text">О компании</span></a></div>
+                  <div class="footer__block"><a class="button button--base button--bordered footer__button" href="policy.html"><span class="button__text">Политика обработки персональных данных</span></a><a class="button button--base button--bordered footer__button" href="policy-user.html"><span class="button__text">Политика конфиденциальности</span></a></div>
+                  <div class="footer__block"><a class="button button--base button--bordered footer__button" href="user-agre.html"><span class="button__text">Пользовательское соглашение</span></a><a class="button button--base button--accent footer__button" href="mailto:Hello@perimetr.one"><span class="button__text">Hello@perimetr.one</span>
+                      <svg class="button__icon">
+                        <use xlink:href="assets/images/sprite.svg#mail"></use>
+                      </svg></a></div>
+                </div>
+                <p class="footer__text">2026 PERIMETR. All rights reserved</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <div class="nav">
+          <div class="nav-buttons">
+            <div class="button-list button-list--accent button-list--column"><a class="button button--base button--icon button--accent anchor-prev" href="#">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#arrow-top"></use>
+                </svg></a><a class="button button--base button--icon button--accent anchor-next" href="#">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#arrow-down"></use>
+                </svg></a></div>
+          </div>
+          <ul class="nav-list button-list button-list--nav">
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="/">
+                <svg class="button__icon button__icon--logo">
+                  <use xlink:href="assets/images/sprite.svg#logo"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#about"><span class="button__text">О платформе</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#chat"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#functions"><span class="button__text">Функционал</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#action"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#roles"><span class="button__text">Роли пользователей</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#role"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#advantages"><span class="button__text">Преимущества</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#advantages"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon--mobile button--accent--light" href="index.html#audience"><span class="button__text">Целевая аудитория</span>
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#audience"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="login.html">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#home"></use>
+                </svg></a></li>
+            <li class="nav-list__item"><a class="button button--base button--icon button--accent" href="#" data-popup=".popup-enter">
+                <svg class="button__icon">
+                  <use xlink:href="assets/images/sprite.svg#connect"></use>
+                </svg></a></li>
+          </ul>
+        </div>
+      </main>
+    </div>
+    <script src="assets/scripts/imask.js"></script>
+    <script src="assets/scripts/index.js"></script>
+  </body>
+</html>
