@@ -848,6 +848,9 @@ b {
   justify-content: center;
   pointer-events: none;
 
+  @include mobile{
+    display: none;
+  }
   &.sticky{
     bottom: var(--container-padding);
   }
@@ -1505,7 +1508,7 @@ b {
       color: rgb(var(--color-accent));
       font-size: .875rem;
       @include mobile {
-        font-size: .625rem;
+        font-size: .5rem;
       }
     }
   }
@@ -1788,6 +1791,13 @@ b {
 }
 
 
+a.stages-card__title{
+  @include hover{
+    background-color: rgb(var(--color-accent));
+    border-color: rgb(var(--color-accent));
+  }
+}
+
 .stages{
   &-card{
     --bg-sub-color:rgba(var(--color-accent),.5);
@@ -1848,6 +1858,8 @@ b {
       background: rgba(var(--color-accent), 0.6);
 
       color: #EFF2FF;
+
+      transition: .3s background-color,.3s border-color;
       @include mobile{
         padding: .625rem;
         height: 2.25rem;

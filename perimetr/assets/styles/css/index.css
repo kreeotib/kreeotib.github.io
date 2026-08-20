@@ -692,6 +692,11 @@ b {
   justify-content: center;
   pointer-events: none;
 }
+@media screen and (max-width: 640px) {
+  .nav {
+    display: none;
+  }
+}
 .nav.sticky {
   bottom: var(--container-padding);
 }
@@ -1308,7 +1313,7 @@ b {
 }
 @media screen and (max-width: 640px) {
   .roles-info__text {
-    font-size: 0.625rem;
+    font-size: 0.5rem;
   }
 }
 .roles-header__info {
@@ -1572,6 +1577,13 @@ b {
   z-index: 0;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  a.stages-card__title:hover {
+    background-color: rgb(var(--color-accent));
+    border-color: rgb(var(--color-accent));
+  }
+}
+
 .stages-card {
   --bg-sub-color:rgba(var(--color-accent),.5);
 }
@@ -1629,6 +1641,7 @@ b {
   box-shadow: 0 10px 30px 0 rgba(var(--color-accent), 0.1);
   background: rgba(var(--color-accent), 0.6);
   color: #EFF2FF;
+  transition: 0.3s background-color, 0.3s border-color;
 }
 @media screen and (max-width: 640px) {
   .stages-card__title {
