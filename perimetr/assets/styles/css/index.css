@@ -1391,14 +1391,11 @@ b {
   }
 }
 .roles__title {
-  max-width: 45rem;
+  max-width: 60rem;
   width: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
-}
-.roles__title--big {
-  max-width: 60rem;
 }
 .roles__desktop {
   max-width: 71.25rem;
@@ -1529,9 +1526,9 @@ b {
 .tasks-item__content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 3.75rem;
-  padding: 3.75rem 5.875rem;
+  padding: 2rem 5.875rem 3.75rem 5.875rem;
 }
 @media screen and (max-width: 640px) {
   .tasks-item__content {
@@ -1675,6 +1672,13 @@ b {
   margin: 0 auto;
   counter-reset: advantages;
 }
+.steps-list__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
 .steps-list--grid {
   max-width: 100%;
   display: grid;
@@ -1782,7 +1786,7 @@ b {
   --sub-bg:rgba(var(--color-white-dark), 0.5);
   --card-bg:rgba(var(--color-white-dark), 0.5);
 }
-.steps-card:nth-child(-n+4) .steps-card__wrapper {
+.steps-card:nth-child(-n+3) .steps-card__wrapper {
   margin-top: auto;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1835,8 +1839,8 @@ b {
   padding: 1.25rem;
   background: rgba(219, 234, 254, 0.5);
   border: 1px solid rgb(var(--color-white));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 2.5rem;
   height: var(--card-height);
   pointer-events: none;
@@ -1936,6 +1940,9 @@ b {
   max-width: 50rem;
   width: 100%;
   margin: 0 auto;
+}
+.steps__title--big {
+  max-width: 68.75rem;
 }
 .steps__wrapper {
   position: relative;
@@ -2183,6 +2190,9 @@ b {
   width: 16.25rem;
   margin: 0 auto;
 }
+.subcard--advantages--big {
+  height: 14.375rem;
+}
 @media screen and (max-width: 640px) {
   .subcard--advantages {
     width: 100%;
@@ -2194,6 +2204,7 @@ b {
 }
 .subcard--advantages .subcard__text {
   margin: 0;
+  max-width: 13.125rem;
 }
 .subcard--audience {
   height: 100%;
@@ -2211,7 +2222,7 @@ b {
   color: rgb(var(--color-white));
 }
 .subcard--stages .subcard__bg {
-  mask-image: url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none" viewBox="-1 -1 322 304" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M0 150C0 121.281 23.2812 98 52 98H60C87.062 98 109 76.062 109 49C109 21.938 130.938 0 158 0H164C191.062 0 213 21.938 213 49C213 76.062 234.938 98 262 98H270C298.719 98 322 121.281 322 150V252C322 280.719 298.719 304 270 304H52C23.2812 304 0 280.719 0 252V150Z"/></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none" viewBox="-1 -1 323 305" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M0 150C0 121.281 23.2812 98 52 98H60C87.062 98 109 76.062 109 49C109 21.938 130.938 0 158 0H164C191.062 0 213 21.938 213 49C213 76.062 234.938 98 262 98H270C298.719 98 322 121.281 322 150V252C322 280.719 298.719 304 270 304H52C23.2812 304 0 280.719 0 252V150Z"/></svg>');
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -2276,6 +2287,7 @@ b {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   border-radius: 3.75rem;
   background: rgba(var(--color-white-dark), 0.5);
   border: 1px solid rgba(var(--color-white), 0.5);
