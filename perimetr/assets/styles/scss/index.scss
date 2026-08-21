@@ -29,7 +29,7 @@
 }
 @mixin hover {
   @media (hover: hover) and (pointer: fine) {
-    &:hover {
+    &:not(p):hover {
       @content;
     }
   }

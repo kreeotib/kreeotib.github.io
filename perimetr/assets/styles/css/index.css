@@ -243,7 +243,7 @@ b {
   border-color: transparent;
 }
 @media (hover: hover) and (pointer: fine) {
-  .button:hover {
+  .button:not(p):hover {
     cursor: pointer;
   }
 }
@@ -301,7 +301,7 @@ b {
   border-color: rgba(var(--color-white), 0.5);
 }
 @media (hover: hover) and (pointer: fine) {
-  .button--grey:hover {
+  .button--grey:not(p):hover {
     color: rgb(var(--color-white));
     background: rgba(var(--color-accent), 0.7);
   }
@@ -312,7 +312,7 @@ b {
   transition: 0.3s background-color;
 }
 @media (hover: hover) and (pointer: fine) {
-  .button--grey--dark:hover {
+  .button--grey--dark:not(p):hover {
     background: rgb(var(--color-white));
   }
 }
@@ -323,7 +323,7 @@ b {
   transition: 0.3s background-color, 0.3s color;
 }
 @media (hover: hover) and (pointer: fine) {
-  .button--bordered:hover {
+  .button--bordered:not(p):hover {
     background: rgb(var(--color-accent));
     color: rgb(var(--color-white));
   }
@@ -339,7 +339,7 @@ b {
   transition: 0.3s background-color, 0.3s color;
 }
 @media (hover: hover) and (pointer: fine) {
-  .button--accent:hover {
+  .button--accent:not(p):hover {
     background: rgba(var(--color-accent), 0.5);
     border-color: rgba(var(--color-accent), 0.5);
   }
@@ -356,7 +356,7 @@ b {
   transition: 0.3s background-color;
 }
 @media (hover: hover) and (pointer: fine) {
-  .button--accent--light:hover {
+  .button--accent--light:not(p):hover {
     background: rgb(var(--color-accent));
   }
 }
@@ -369,7 +369,7 @@ b {
   transition: 0.3s background-color;
 }
 @media (hover: hover) and (pointer: fine) {
-  .button--accent--dark:hover {
+  .button--accent--dark:not(p):hover {
     background: rgba(var(--color-white-dark), 0.3);
   }
 }
@@ -380,7 +380,7 @@ b {
   transition: 0.3s color, 0.3s background-color, 0.3s border-color;
 }
 @media (hover: hover) and (pointer: fine) {
-  .button--white:hover {
+  .button--white:not(p):hover {
     background: rgba(219, 234, 254, 0.5);
     border-color: rgba(var(--color-white), 0.5);
     color: rgb(var(--color-white));
@@ -501,7 +501,7 @@ b {
   --checkmark-size: 1.875rem;
 }
 @media (hover: hover) and (pointer: fine) {
-  .checkbox:hover {
+  .checkbox:not(p):hover {
     cursor: pointer;
   }
 }
@@ -913,7 +913,7 @@ b {
   transition: 0.3s background-color, 0.3s color;
 }
 @media (hover: hover) and (pointer: fine) {
-  .photo-slider__button:hover {
+  .photo-slider__button:not(p):hover {
     cursor: pointer;
     background-color: rgb(var(--color-accent));
     color: rgb(var(--color-white));
@@ -1065,7 +1065,7 @@ b {
   margin: 0 auto;
 }
 @media (hover: hover) and (pointer: fine) {
-  .about__button:hover {
+  .about__button:not(p):hover {
     border-color: rgb(var(--color-accent));
     color: rgb(var(--color-accent));
     background: rgba(var(--color-accent), 0.2);
@@ -1578,7 +1578,7 @@ b {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  a.stages-card__title:hover {
+  a.stages-card__title:not(p):hover {
     background-color: rgb(var(--color-accent));
     border-color: rgb(var(--color-accent));
   }
@@ -1803,7 +1803,7 @@ b {
   margin-top: auto;
 }
 @media (hover: hover) and (pointer: fine) {
-  .steps-card:hover {
+  .steps-card:not(p):hover {
     --sub-bg:rgba(var(--color-white-dark), 0.3);
     --card-height:100%;
     --card-bg:rgba(var(--color-accent), .6);
@@ -2085,7 +2085,7 @@ b {
   --bg-main-color: rgba(var(--color-white-dark), .5);
 }
 @media (hover: hover) and (pointer: fine) {
-  .advantages-card:hover {
+  .advantages-card:not(p):hover {
     color: rgb(var(--color-white));
     --shadow-opacity: 0;
     --bg-sub-color: rgba(var(--color-white-dark), 0.3);
@@ -2940,12 +2940,12 @@ b {
   }
 }
 @media (hover: hover) and (pointer: fine) {
-  .modal__close:hover {
+  .modal__close:not(p):hover {
     cursor: pointer;
   }
 }
 @media (hover: hover) and (pointer: fine) {
-  .modal__close:hover::before, .modal__close:hover::after {
+  .modal__close:not(p):hover::before, .modal__close:not(p):hover::after {
     background-color: rgba(var(--color-white-dark), 0.5);
   }
 }
@@ -3045,7 +3045,7 @@ b {
   content: counter(block) ". ";
 }
 @media (hover: hover) and (pointer: fine) {
-  .block label.block__header:hover {
+  .block label.block__header:not(p):hover {
     cursor: pointer;
   }
 }
