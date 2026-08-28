@@ -1,0 +1,16 @@
+{
+  "name": "vpole",
+  "version": "1.0.0",
+  "source": "src/index.pug",
+  "scripts": {
+    "dev": "parcel",
+    "build": "rm -rf dist .parcel-cache && parcel build --public-url ./ --no-content-hash"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.16.4",
+    "@parcel/transformer-pug": "^2.16.4",
+    "@parcel/transformer-sass": "^2.16.4",
+    "@parcel/transformer-webmanifest": "^2.16.4",
+    "parcel": "^2.16.4"
+  }
+}
