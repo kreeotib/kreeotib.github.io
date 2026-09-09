@@ -1022,3 +1022,26 @@ document.addEventListener('DOMContentLoaded', () => {
         BurgerMenu.init();
     })
 })();
+
+(function () {
+    const header = document.querySelector('.header');
+    const hero = document.querySelector('.hero');
+    const cls = 'header--scrolled';
+
+    if (!header) return;
+
+    var threshold = hero
+        ? hero.offsetTop + hero.offsetHeight
+        : 100;
+
+    function onScroll() {
+        if (window.scrollY >= threshold) {
+            header.classList.add(cls);
+        } else {
+            header.classList.remove(cls);
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
