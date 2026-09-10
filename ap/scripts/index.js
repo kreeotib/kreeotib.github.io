@@ -470,6 +470,11 @@ class DirectionScroller {
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
                 // markers: true,
+
+                onEnter: () => document.querySelector('.header')?.classList.add('header--hidden'),
+                onLeave: () => document.querySelector('.header')?.classList.remove('header--hidden'),
+                onEnterBack: () => document.querySelector('.header')?.classList.add('header--hidden'),
+                onLeaveBack: () => document.querySelector('.header')?.classList.remove('header--hidden'),
             },
         }).to(this.wrapper, {
             x: () => -(getTotalDistance() + EXTRA_PIN),
@@ -1044,4 +1049,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+})();
+
+(function () {
+    var header = document.querySelector('.header');
+    if (!header) return;
+
+    var scrolledCls = 'header--scrolled';
+    var hiddenCls = 'header--hidden';
+    var hero = document.querySelector('.hero');
+    var threshold = hero ? hero.offsetTop + hero.offsetHeight : 100;
+
+    function rectsOverlap(a, b) {
+        return !(
+            a.bottom <= b.top ||
+            a.top >= b.bottom ||
+            a.right <= b.left ||
+            a.left >= b.right
+        );
+    }
+
+    function checkCollisions() {
+        var headerRect = header.getBoundingClientRect();
+        var pins = document.querySelectorAll('[data-pin]');
+        var collided = false;
+
+        for (var i = 0; i < pins.length; i++) {
+            var rect = pins[i].getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) continue;
+
+            if (rectsOverlap(headerRect, rect)) {
+                collided = true;
+                break;
+            }
+        }
+
+        header.classList.toggle(hiddenCls, collided);
+    }
+
+    function onScroll() {
+        header.classList.toggle(scrolledCls, window.scrollY >= threshold);
+        checkCollisions();
+    }
+
+    var ticking = false;
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(function () {
+                onScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick);
+
+    if (window.ScrollTrigger) {
+        ScrollTrigger.addEventListener('refresh', requestTick);
+    }
+
+    requestTick();
 })();
