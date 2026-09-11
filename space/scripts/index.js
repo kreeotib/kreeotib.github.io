@@ -51,6 +51,8 @@ const ScrollLock = (() => {
 window.ScrollLock = ScrollLock;
 
 const VideoToggle = (() => {
+    const videoStates = new WeakMap(); // video -> { pending: boolean, lastAction: 'play'|'pause'|null }
+
     function find(selector, context = document) {
         const el = context.querySelector(selector);
         if (!el) {
@@ -60,15 +62,70 @@ const VideoToggle = (() => {
         return el;
     }
 
+    function getState(video) {
+        let state = videoStates.get(video);
+        if (!state) {
+            state = { pending: false, lastAction: null };
+            videoStates.set(video, state);
+        }
+        return state;
+    }
+
+    function safePlay(video) {
+        const state = getState(video);
+        if (state.pending || state.lastAction === 'play') return;
+
+        state.lastAction = 'play';
+        state.pending = true;
+
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.catch(() => {}).finally(() => {
+                state.pending = false;
+            });
+        } else {
+            state.pending = false;
+        }
+    }
+
+    function safePause(video) {
+        const state = getState(video);
+        if (state.lastAction === 'pause') return;
+        state.lastAction = 'pause';
+
+        if (state.pending) {
+            const waitAndPause = () => {
+                if (!state.pending) {
+                    video.pause();
+                } else {
+                    requestAnimationFrame(waitAndPause);
+                }
+            };
+            waitAndPause();
+        } else {
+            video.pause();
+        }
+    }
+
     function toggle(wrapper) {
         const video = find('.video__item', wrapper);
         if (!video) return;
 
+        if (video.readyState < HTMLMediaElement.HAVE_ENOUGH_DATA) {
+            if (!wrapper.dataset.videoLoading) {
+                wrapper.dataset.videoLoading = '1';
+                video.addEventListener('canplay', () => {
+                    delete wrapper.dataset.videoLoading;
+                }, { once: true });
+            }
+            return;
+        }
+
         if (video.paused) {
-            video.play();
+            safePlay(video);
             wrapper.classList.add('active');
         } else {
-            video.pause();
+            safePause(video);
             wrapper.classList.remove('active');
         }
     }
@@ -77,7 +134,6 @@ const VideoToggle = (() => {
         document.addEventListener('click', (e) => {
             const wrapper = e.target.closest('.video');
             if (!wrapper) return;
-
             toggle(wrapper);
         });
     }
@@ -85,12 +141,14 @@ const VideoToggle = (() => {
     function bindVideoEvents() {
         document.addEventListener('pause', (e) => {
             if (!e.target.matches('.video__item')) return;
+            getState(e.target).lastAction = 'pause';
             const wrapper = e.target.closest('.video');
             if (wrapper) wrapper.classList.remove('active');
         }, true);
 
         document.addEventListener('play', (e) => {
             if (!e.target.matches('.video__item')) return;
+            getState(e.target).lastAction = 'play';
             const wrapper = e.target.closest('.video');
             if (wrapper) wrapper.classList.add('active');
         }, true);
@@ -107,9 +165,17 @@ const VideoToggle = (() => {
                 if (!video) return;
 
                 if (entry.isIntersecting) {
-                    video.play().catch(() => {});
+                    if (video.readyState < HTMLMediaElement.HAVE_ENOUGH_DATA) {
+                        video.addEventListener('canplay', () => {
+                            const rect = wrapper.getBoundingClientRect();
+                            const stillVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                            if (stillVisible) safePlay(video);
+                        }, { once: true });
+                        return;
+                    }
+                    safePlay(video);
                 } else {
-                    video.pause();
+                    safePause(video);
                 }
             });
         }, {
@@ -125,7 +191,7 @@ const VideoToggle = (() => {
         bindAutoplay();
     }
 
-    return {init};
+    return { init };
 })();
 
 window.VideoToggle = VideoToggle;
