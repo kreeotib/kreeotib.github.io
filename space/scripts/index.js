@@ -96,9 +96,33 @@ const VideoToggle = (() => {
         }, true);
     }
 
+    function bindAutoplay() {
+        const wrappers = document.querySelectorAll('.video--autoplay');
+        if (!wrappers.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const wrapper = entry.target;
+                const video = find('.video__item', wrapper);
+                if (!video) return;
+
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        wrappers.forEach((wrapper) => observer.observe(wrapper));
+    }
+
     function init() {
         bindTriggers();
         bindVideoEvents();
+        bindAutoplay();
     }
 
     return {init};
@@ -298,7 +322,7 @@ const Tabs = (() => {
 
 
     function switchTo(instance, index) {
-        const { navButtons, contentPanels } = instance;
+        const { navButtons, contentPanels, tab } = instance;
 
         const total = navButtons.length;
         if (!total) return;
@@ -314,8 +338,16 @@ const Tabs = (() => {
         contentPanels.forEach((panel, i) => {
             panel.classList.toggle(config.activeContentClass, i === index);
         });
-    }
 
+        const activePanel = contentPanels[index];
+        const wrapper = activePanel
+            ? activePanel.querySelector('.tabs-content__wrapper')
+            : null;
+
+        instance.activeHeight = wrapper ? wrapper.offsetHeight : 0;
+
+        tab.style.setProperty('--tabs-content-height', `${instance.activeHeight}px`);
+    }
     function bindNavButtons(instance) {
         instance.navButtons = getNavButtons(instance);
 
@@ -361,6 +393,7 @@ const Tabs = (() => {
             navButtons: [],
             contentPanels,
             activeIndex: -1,
+            activeHeight: 0,
         };
 
 
