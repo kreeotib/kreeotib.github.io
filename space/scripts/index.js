@@ -602,3 +602,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 })();
+
+(() => {
+    const button = document.querySelector('.button-up');
+    const footerMap = document.querySelector('.footer__map-item');
+
+    if (!button || !footerMap) {
+        return;
+    }
+
+    const indent = 0;
+
+    const getDocOffsetBottom = (el) => {
+        const rect = el.getBoundingClientRect();
+        return rect.bottom + window.scrollY;
+    };
+
+    const updateButtonPosition = () => {
+        const buttonHeight = button.offsetHeight;
+        const footerDocBottom = getDocOffsetBottom(footerMap);
+        const stopBottom = footerDocBottom - indent;
+        const fixedBottomOffset = indent;
+        const currentBottomDocPos = window.scrollY + window.innerHeight - fixedBottomOffset;
+
+        if (currentBottomDocPos >= stopBottom) {
+            button.style.position = 'absolute';
+            button.style.bottom = 'auto';
+            button.style.top = `${stopBottom - buttonHeight}px`;
+        } else {
+            button.style.position = 'fixed';
+            button.style.top = 'auto';
+            button.style.bottom = `${fixedBottomOffset}px`;
+        }
+    };
+
+    window.addEventListener('scroll', updateButtonPosition);
+    window.addEventListener('resize', updateButtonPosition);
+
+    updateButtonPosition();
+})();
