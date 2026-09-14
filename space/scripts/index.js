@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const indent = 0;
+    const indent = 20;
 
     const getDocOffsetBottom = (el) => {
         const rect = el.getBoundingClientRect();
@@ -687,7 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateButtonPosition = () => {
         const buttonHeight = button.offsetHeight;
         const footerDocBottom = getDocOffsetBottom(footerMap);
-        const stopBottom = footerDocBottom - indent;
+        const stopBottom = footerDocBottom;
         const fixedBottomOffset = indent;
         const currentBottomDocPos = window.scrollY + window.innerHeight - fixedBottomOffset;
 
