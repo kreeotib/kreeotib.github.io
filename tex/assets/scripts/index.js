@@ -828,57 +828,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
-
-    const teamSlider = new Swiper('.team-slider', {
-        slidesPerView: 'auto',
-        spaceBetween: 10,
-        speed:500,
-        mousewheel: { invert: false, forceToAxis: true },
-        keyboard: { enabled: true },
-        navigation: {
-            prevEl: '.team-slider-button-prev',
-            nextEl: '.team-slider-button-next',
-        },
-        breakpoints: {
-            641: { spaceBetween: 20 },
-        },
-    });
-
-    (function enableEdgePeek(swiper) {
-        let edgeShown = false;
-
-        const getEdgeOffset = (dir) => {
-            const slideEl = swiper.slides[swiper.activeIndex];
-            if (!slideEl || slideEl.offsetWidth <= swiper.width) return null;
-
-            const start = swiper.slidesGrid[swiper.activeIndex];
-            return dir === 'next'
-                ? -(start + slideEl.offsetWidth - swiper.width)
-                : -start;
-        };
-
-        const originalNext = swiper.slideNext.bind(swiper);
-        const originalPrev = swiper.slidePrev.bind(swiper);
-
-        swiper.slideNext = (speed, runCallbacks, internal) => {
-            const offset = getEdgeOffset('next');
-            if (offset !== null && !edgeShown) {
-                edgeShown = true;
-                return swiper.translateTo(offset, speed ?? swiper.params.speed, runCallbacks);
-            }
-            edgeShown = false;
-            return originalNext(speed, runCallbacks, internal);
-        };
-
-        swiper.slidePrev = (speed, runCallbacks, internal) => {
-            edgeShown = false;
-            return originalPrev(speed, runCallbacks, internal);
-        };
-
-        swiper.on('touchStart slideChange resize', () => { edgeShown = false; });
-    })(teamSlider);
-
 });
 
 
@@ -929,5 +878,69 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.classList.remove('is-fixed')
             }
         })
+    }
+})();
+
+
+(function () {
+    'use strict';
+
+    const copyText = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+    };
+
+    document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.copy');
+        if (!btn) return;
+
+        e.preventDefault();
+
+        const source = btn.querySelector('.copy-text');
+        if (!source) return;
+
+        try {
+            await copyText(source.textContent.trim());
+            btn.classList.add('copied');
+            setTimeout(() => btn.classList.remove('copied'), 1500);
+        } catch (err) {
+            console.error('Не удалось скопировать:', err);
+        }
+    });
+})();
+
+(() => {
+    const grid = document.querySelector('.vk-project__grid');
+    if (!grid) return;
+
+    const PER_ROW = 3;
+    const items = [...grid.querySelectorAll('.vk-project__item')];
+
+    const queues = {
+        image: items.filter((el) => el.querySelector('.vk-project__image')),
+        video: items.filter((el) => el.querySelector('.vk-project__video')),
+    };
+
+    let type = 'image';
+    let index = 0;
+
+    while (queues.image.length || queues.video.length) {
+        if (!queues[type].length) type = type === 'image' ? 'video' : 'image';
+
+        queues[type].splice(0, PER_ROW).forEach((el) => {
+            el.style.setProperty('--row', Math.floor(index / PER_ROW) + 1);
+            el.style.setProperty('--col', (index % PER_ROW) + 1);
+            index++;
+        });
+
+        type = type === 'image' ? 'video' : 'image';
     }
 })();
