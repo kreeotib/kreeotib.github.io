@@ -25,6 +25,10 @@ const Popup = (() => {
                 tag.pause();
             })
         }
+        const frameTag = popup.querySelectorAll("iframe");
+        popup.querySelectorAll('iframe').forEach(frame => {
+            frame.src = 'about:blank';
+        });
 
         popup.classList.add('is-closing');
 
@@ -842,24 +846,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 (function () {
-    const dataVideo = document.querySelectorAll('[data-video]'),
-        popupVideo = document.querySelector('.popup-video');
+    const triggers = document.querySelectorAll('[data-video], [data-frame]'),
+        popup = document.querySelector('.popup-video');
 
-    if (dataVideo.length && popupVideo) {
-        const popupVideoElement = popupVideo.querySelector('video');
-        dataVideo.forEach(video => {
-            const videoSrc = video.dataset.video;
-            video.addEventListener('click', e => {
-                e.preventDefault();
+    if (!triggers.length || !popup) return;
 
-                popupVideoElement.src = videoSrc;
-                setTimeout(() => {
-                    Popup.open('.popup-video')
-                }, 300)
+    const videoEl = popup.querySelector('video'),
+        frameEl = popup.querySelector('iframe');
 
-            })
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', e => {
+            e.preventDefault();
+
+            const isFrame = trigger.hasAttribute('data-frame');
+            const src = isFrame ? trigger.dataset.frame : trigger.dataset.video;
+
+            if (isFrame) {
+                videoEl.pause();
+                videoEl.removeAttribute('src');
+                videoEl.hidden = true;
+
+                frameEl.src = src;
+                frameEl.hidden = false;
+            } else {
+                frameEl.src = 'about:blank';
+                frameEl.hidden = true;
+
+                videoEl.src = src;
+                videoEl.hidden = false;
+            }
+
+            setTimeout(() => {
+                Popup.open('.popup-video');
+            }, 300);
         });
-    }
+    });
 })();
 
 
