@@ -543,15 +543,35 @@ const ScrollLock = (() => {
 
 window.ScrollLock = ScrollLock;
 
+(function () {
+    document.querySelectorAll('.js-phone-mask').forEach(function (el) {
+        IMask(el, {
+            mask: '+7 (000) 000-00-00',
+        });
+    });
+})();
 
 document.addEventListener('DOMContentLoaded',()=>{
     const heroSlider = new Swiper('.hero-slider',{
         slidesPerView:1,
+        speed:500,
+        effect:"fade",
+        fadeEffect:{
+          crossFade:true
+        },
+        autoplay:{
+            delay:3500,
+        },
         pagination:{
             el:".hero-slider__nav",
-            autoplay:{
-                delay:3500
-            }
+
+        }
+    })
+    const modalSlider = new Swiper('.modal-product-slider',{
+        slidesPerView:1,
+        pagination:{
+            el:".modal-product-slider-nav",
         }
     })
 })
+
