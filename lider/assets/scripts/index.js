@@ -146,6 +146,179 @@ document.addEventListener('DOMContentLoaded', () => {
     AnchorSmoothScroll.init({});
 });
 
+const ScrollReveal = (() => {
+    const DEFAULTS = {
+        staggerDelay: 200,
+        duration: 1000,
+        easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
+        offsetY: '40px',
+        threshold: 0,
+        rootMargin: '0px 0px -40px 0px',
+        once: true,
+        initialDelay: 100,
+    };
+
+    let observer = null;
+    let initialized = false;
+    let config = {...DEFAULTS};
+
+    function hideItem(item) {
+        item.style.opacity = '0';
+        item.style.transform = `translateY(${config.offsetY})`;
+        item.style.transition = `opacity ${config.duration}ms ${config.easing}, transform ${config.duration}ms ${config.easing}`;
+        item.style.willChange = 'opacity, transform';
+    }
+
+    function revealItem(item, delay = 0) {
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+            item.style.willChange = '';
+
+            item.addEventListener('transitionend', () => {
+                if (item.hasAttribute('data-animation')) {
+                    item.removeAttribute('data-animation');
+                    item.setAttribute('data-animation-final', '');
+                    item.style.transition = '';
+                    item.style.opacity = '';
+                    item.style.transform = '';
+                }
+            }, {once: true});
+        }, delay);
+    }
+
+    function revealWrapper(wrapper) {
+        const items = wrapper.querySelectorAll('[data-animation]');
+        items.forEach((item, index) => revealItem(item, index * config.staggerDelay));
+        if (config.once) observer.unobserve(wrapper);
+    }
+
+    function revealSingle(item) {
+        revealItem(item);
+        if (config.once) observer.unobserve(item);
+    }
+
+    function getTargets() {
+        const wrappers = Array.from(document.querySelectorAll('.animation-wrapper'));
+
+        const standaloneItems = Array.from(document.querySelectorAll('[data-animation]')).filter(
+            item => !item.closest('.animation-wrapper')
+        );
+
+        return {wrappers, standaloneItems};
+    }
+
+    function prepareItems() {
+        const {wrappers, standaloneItems} = getTargets();
+        wrappers.forEach(wrapper => wrapper.querySelectorAll('[data-animation]').forEach(hideItem));
+        standaloneItems.forEach(hideItem);
+    }
+
+    function buildObserver() {
+        if (observer) observer.disconnect();
+
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    if (!config.once) {
+                        if (entry.target.classList.contains('animation-wrapper')) {
+                            entry.target.querySelectorAll('[data-animation]').forEach(hideItem);
+                        } else {
+                            hideItem(entry.target);
+                        }
+                    }
+                    return;
+                }
+
+                if (entry.target.classList.contains('animation-wrapper')) {
+                    revealWrapper(entry.target);
+                } else {
+                    revealSingle(entry.target);
+                }
+            });
+        }, {
+            threshold: config.threshold,
+            rootMargin: config.rootMargin,
+        });
+    }
+
+    function observeTargets() {
+        const {wrappers, standaloneItems} = getTargets();
+        wrappers.forEach(wrapper => observer.observe(wrapper));
+        standaloneItems.forEach(item => observer.observe(item));
+    }
+
+    function init(options = {}) {
+        config = {...DEFAULTS, ...options};
+        const {wrappers, standaloneItems} = getTargets();
+
+        if (!wrappers.length && !standaloneItems.length) {
+            console.warn('[ScrollReveal] No targets found.');
+            return;
+        }
+
+        prepareItems();
+
+        setTimeout(() => {
+            buildObserver();
+            observeTargets();
+            initialized = true;
+        }, config.initialDelay);
+    }
+
+    function reveal(target) {
+        const el = typeof target === 'string' ? document.querySelector(target) : target;
+        if (!el) return;
+
+        if (el.classList.contains('animation-wrapper')) {
+            revealWrapper(el);
+        } else {
+            revealSingle(el);
+        }
+    }
+
+    function refresh() {
+        if (!initialized) return;
+        prepareItems();
+        observeTargets();
+    }
+
+    function skipAll() {
+        document.querySelectorAll('[data-animation]').forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+            item.style.transition = '';
+            item.style.willChange = '';
+            item.removeAttribute('data-animation');
+            item.setAttribute('data-animation-final', '');
+        });
+    }
+
+    function reset() {
+        document.querySelectorAll('[data-animation-final]').forEach(item => {
+            item.removeAttribute('data-animation-final');
+            item.setAttribute('data-animation', '');
+        });
+        prepareItems();
+        if (observer) observeTargets();
+    }
+
+    function destroy() {
+        if (observer) {
+            observer.disconnect();
+            observer = null;
+        }
+        initialized = false;
+    }
+
+    return {init, reveal, refresh, skipAll, reset, destroy};
+})();
+
+window.ScrollReveal = ScrollReveal;
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.__SR_MANUAL_INIT__) ScrollReveal.init({initialDelay: 300});
+});
 
 const Popup = (() => {
     const CLOSE_DURATION = 210;
