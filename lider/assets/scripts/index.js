@@ -53,6 +53,80 @@ document.addEventListener('DOMContentLoaded', () => {
     SmoothScroll.init();
 });
 
+class CatalogFilter {
+    constructor(root, options = {}) {
+        this.root = root;
+        this.step = options.step || 3;
+
+        this.radios = root.querySelectorAll('input[name="catalog-filter"]');
+        this.items = Array.from(root.querySelectorAll('.catalog__items-item'));
+        this.moreBtn = root.querySelector('.button--center');
+
+        this.activeFilter = 'all';
+        this.visibleCount = this.step;
+
+        this.onFilterChange = this.onFilterChange.bind(this);
+        this.onMoreClick = this.onMoreClick.bind(this);
+
+        this.init();
+    }
+
+    init() {
+        this.radios.forEach((radio) =>
+            radio.addEventListener('change', this.onFilterChange)
+        );
+
+        if (this.moreBtn) {
+            this.moreBtn.addEventListener('click', this.onMoreClick);
+        }
+
+        const checked = this.root.querySelector('input[name="catalog-filter"]:checked');
+        this.activeFilter = checked ? checked.value : 'all';
+
+        this.render();
+    }
+
+    getMatched() {
+        return this.items.filter(
+            (item) =>
+                this.activeFilter === 'all' ||
+                item.dataset.filter === this.activeFilter
+        );
+    }
+
+    onFilterChange(e) {
+        this.activeFilter = e.target.value;
+        this.visibleCount = this.step;
+        this.render();
+    }
+
+    onMoreClick() {
+        this.visibleCount += this.step;
+        this.render();
+    }
+
+    render() {
+        const matched = this.getMatched();
+
+        this.items.forEach((item) => this.toggleItem(item, false));
+        matched.slice(0, this.visibleCount).forEach((item) => this.toggleItem(item, true));
+
+        if (this.moreBtn) {
+            this.moreBtn.style.display = matched.length > this.visibleCount ? '' : 'none';
+        }
+    }
+
+    toggleItem(item, isActive) {
+        item.classList.toggle('catalog__items-item--active', isActive);
+        item.style.display = isActive ? '' : 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('.section__wrapper');
+    if (section) new CatalogFilter(section, { step: 3 });
+});
+
 const AnchorSmoothScroll = (() => {
     const DEFAULTS = {
         selector: 'a[href^="#"]:not([href="#"])',
